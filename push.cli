@@ -11,6 +11,6 @@ git add src dist push.cli && \
 git add -u && \
 git commit -m "new tag" && \
 git push origin main && \
-git tag -a v1.2 -m "v1.2 release" && \
-git push origin v1.2 && \
-gh release create v1.2 dist/* --generate-notes
+git tag -a v1.2.0 -m "v1.2.0 release" && \
+git push origin v1.2.0 && \
+gh release create v1.2.0 dist/* --generate-notes
