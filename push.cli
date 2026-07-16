@@ -9,8 +9,13 @@ for f in src/*.css; do
 done && \
 git add src dist push.cli && \
 git add -u && \
-git commit -m "new tag" && \
+git commit -m "release" && \
 git push origin main && \
-git tag -a v1.2.0 -m "v1.2.0 release" && \
-git push origin v1.2.0 && \
-gh release create v1.2.0 dist/* --generate-notes
+COMMIT=$(git rev-parse --short HEAD) && \
+REPO=$(gh repo view --json nameWithOwner -q .nameWithOwner) && \
+git tag -a "$COMMIT" -m "$COMMIT release" && \
+git push origin "$COMMIT" && \
+gh release create "$COMMIT" dist/* --generate-notes --title "$COMMIT" && \
+echo "" && \
+echo "JS:  https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.js" && \
+echo "CSS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.css"
