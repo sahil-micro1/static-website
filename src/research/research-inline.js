@@ -3,7 +3,7 @@
 window.benchmarks_data = window.benchmarks_data || {};
 
 window.benchmarks_data["medical"] = {
-  lastUpdated: "June 18, 2026",
+  lastUpdated: "July 16, 2026",
   defaultTab: "best-at-3",
   tabs: [
     {
@@ -37,10 +37,11 @@ window.benchmarks_data["medical"] = {
   ],
 };
 
-window.benchmarks_data = window.benchmarks_data || {};
 
+window.benchmarks_data = window.benchmarks_data || {};
+  
 window.benchmarks_data["tax"] = {
-  lastUpdated: "July 10, 2026",
+  lastUpdated: "July 16, 2026",
   defaultTab: "best-at-3",
   tabs: [
     {
@@ -95,10 +96,11 @@ window.benchmarks_data["tax"] = {
     },
   ],
 };
+
 window.benchmarks_data = window.benchmarks_data || {};
 
 window.benchmarks_data["legal"] = {
-  lastUpdated: "July 10, 2026",
+  lastUpdated: "July 16, 2026",
   defaultTab: "best-at-3",
   tabs: [
     {
@@ -137,7 +139,7 @@ window.benchmarks_data["legal"] = {
 window.benchmarks_data = window.benchmarks_data || {};
 
 window.benchmarks_data["finance"] = {
-  lastUpdated: "July 10, 2026",
+  lastUpdated: "July 16, 2026",
   defaultTab: "best-at-3",
   tabs: [
     {
@@ -178,7 +180,7 @@ window.benchmarks_data["finance"] = {
 window.benchmarks_data = window.benchmarks_data || {};
 
 window.benchmarks_data["contract"] = {
-  lastUpdated: "July 10, 2026",
+  lastUpdated: "June 17, 2026",
   defaultTab: "mean",
   tabs: [
     {
@@ -193,11 +195,11 @@ window.benchmarks_data["contract"] = {
     },
   ],
 };
-
+  
 window.benchmarks_data = window.benchmarks_data || {};
 
 window.benchmarks_data["long-extraction"] = {
-  lastUpdated: "July 10, 2026",
+  lastUpdated: "June 30, 2026",
   defaultTab: "recall",
   tabs: [
     {

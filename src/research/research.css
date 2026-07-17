@@ -280,7 +280,8 @@
   background: #fff;
 }
 
-.leaderboard-full__icon--grok {
+.leaderboard-full__icon--grok,
+.leaderboard-full__icon--kimi {
   border: 0.5px solid #fff;
   background: #000;
 }
@@ -482,7 +483,8 @@
 }
 
 .leaderboard-preview__icon--grok,
-.leaderboard-preview__icon--llama-extract {
+.leaderboard-preview__icon--llama-extract,
+.leaderboard-preview__icon--kimi {
   border: 0.5px solid #fff;
   background: #000;
   opacity: 1;

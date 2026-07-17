@@ -40,6 +40,10 @@
       alt: "Datalab Extract",
       src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78193bf080de9d939f0c_datalab-extract.png",
     },
+    kimi: {
+      alt: "Kimi",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a9a1a377f14a491e60444_kimi.png",
+    },
   };
 
   const PREVIEW_COUNT = 3;
