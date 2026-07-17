@@ -186,14 +186,14 @@
       const th = root.tooltipEl.offsetHeight;
       const gap = 4;
 
+      // Prefer right of trigger; flip left only if it won't fit on the right.
+      // No horizontal clamp — clamping was sliding left-flipped tooltips back over the icon.
       let left = anchor.right - panel.left + gap;
-      let top = anchor.top - panel.top + (anchor.height - th) / 2;
-
       if (left + tw > panel.width - 8) {
         left = anchor.left - panel.left - tw - gap;
       }
 
-      left = Math.max(8, Math.min(left, panel.width - tw - 8));
+      const top = anchor.top - panel.top + (anchor.height - th) / 2;
 
       root.tooltipEl.style.left = left + "px";
       root.tooltipEl.style.top = top + "px";
