@@ -568,33 +568,19 @@
   width: 15px;
   height: 15px;
   pointer-events: none;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
 }
 
-.leaderboard-info-btn__icon--hover {
-  display: none;
-  position: absolute;
-  inset: 0;
-}
-
-.leaderboard-full__row.is-active .leaderboard-info-btn__icon--default,
-.leaderboard-preview__row.is-active .leaderboard-info-btn__icon--default {
-  display: none;
-}
-
-.leaderboard-full__row.is-active .leaderboard-info-btn__icon--hover,
-.leaderboard-preview__row.is-active .leaderboard-info-btn__icon--hover {
-  display: block;
+.leaderboard-full__row.is-active .leaderboard-info-btn__icon,
+.leaderboard-preview__row.is-active .leaderboard-info-btn__icon {
+  opacity: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .leaderboard-info-btn:hover .leaderboard-info-btn__icon--default,
-  .leaderboard-info-btn:focus-visible .leaderboard-info-btn__icon--default {
-    display: none;
-  }
-
-  .leaderboard-info-btn:hover .leaderboard-info-btn__icon--hover,
-  .leaderboard-info-btn:focus-visible .leaderboard-info-btn__icon--hover {
-    display: block;
+  .leaderboard-info-btn:hover .leaderboard-info-btn__icon,
+  .leaderboard-info-btn:focus-visible .leaderboard-info-btn__icon {
+    opacity: 1;
   }
 }
 

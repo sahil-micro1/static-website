@@ -129,15 +129,7 @@
 
   function infoBtn(label) {
     return `<button type="button" class="leaderboard-info-btn" aria-label="Details for ${escapeHtml(label || "model")}">
-      <svg class="leaderboard-info-btn__icon leaderboard-info-btn__icon--default" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="0.5" y="0.5" width="14" height="14" rx="7" stroke="white" stroke-opacity="0.1"/>
-        <path d="M5.91406 4.33545L9.07859 7.49998L5.91406 10.6645" stroke="white" stroke-opacity="0.6" stroke-width="0.632906" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <svg class="leaderboard-info-btn__icon leaderboard-info-btn__icon--hover" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="15" height="15" rx="7.5" fill="white" fill-opacity="0.8"/>
-        <rect x="0.5" y="0.5" width="14" height="14" rx="7" stroke="white" stroke-opacity="0.2"/>
-        <path d="M5.91406 4.33545L9.07859 7.49998L5.91406 10.6645" stroke="#121212" stroke-width="0.632906" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <img class="leaderboard-info-btn__icon" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a8e801fc06019dc875cf2_Frame-hover.png" alt="" width="15" height="15" />
     </button>`;
   }
 
