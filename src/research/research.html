@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research Leaderboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="research.css" />
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #121212;
+        padding-bottom: 64px;
+      }
+
+      .leaderboard-full + .leaderboard-full,
+      .leaderboard-full + [data-benchmark-id],
+      [data-benchmark-id] + [data-benchmark-id] {
+        margin-top: 48px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="leaderboard-full"
+      data-benchmark-id="tax"
+      style="--model-count: 13"
+    >
+      <div class="leaderboard-full__header">
+        <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
+        <p class="leaderboard-full__updated"></p>
+      </div>
+      <div class="leaderboard-full__panel">
+        <ol class="leaderboard-full__list"></ol>
+        <div class="leaderboard-tooltip" role="tooltip"></div>
+      </div>
+    </div>
+
+    <div
+      class="leaderboard-full"
+      data-benchmark-id="legal"
+      style="--model-count: 9"
+    >
+      <div class="leaderboard-full__header">
+        <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
+        <p class="leaderboard-full__updated"></p>
+      </div>
+      <div class="leaderboard-full__panel">
+        <ol class="leaderboard-full__list"></ol>
+        <div class="leaderboard-tooltip" role="tooltip"></div>
+      </div>
+    </div>
+
+    <div
+      class="leaderboard-full"
+      data-benchmark-id="finance"
+      style="--model-count: 10"
+    >
+      <div class="leaderboard-full__header">
+        <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
+        <p class="leaderboard-full__updated"></p>
+      </div>
+      <div class="leaderboard-full__panel">
+        <ol class="leaderboard-full__list"></ol>
+        <div class="leaderboard-tooltip" role="tooltip"></div>
+      </div>
+    </div>
+
+    <div
+      class="leaderboard-full"
+      data-benchmark-id="medical"
+      style="--model-count: 8"
+    >
+      <div class="leaderboard-full__header">
+        <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
+        <p class="leaderboard-full__updated"></p>
+      </div>
+      <div class="leaderboard-full__panel">
+        <ol class="leaderboard-full__list"></ol>
+        <div class="leaderboard-tooltip" role="tooltip"></div>
+      </div>
+    </div>
+
+    <div
+      class="leaderboard-full"
+      data-benchmark-id="contract"
+      style="--model-count: 4"
+    >
+      <div class="leaderboard-full__header">
+        <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
+        <p class="leaderboard-full__updated"></p>
+      </div>
+      <div class="leaderboard-full__panel">
+        <ol class="leaderboard-full__list"></ol>
+        <div class="leaderboard-tooltip" role="tooltip"></div>
+      </div>
+    </div>
+
+    <div
+      class="leaderboard-full"
+      data-benchmark-id="long-extraction"
+      style="--model-count: 7"
+    >
+      <div class="leaderboard-full__header">
+        <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
+        <p class="leaderboard-full__updated"></p>
+      </div>
+      <div class="leaderboard-full__panel">
+        <ol class="leaderboard-full__list"></ol>
+        <div class="leaderboard-tooltip" role="tooltip"></div>
+      </div>
+    </div>
+
+    <!-- Preview shells: parent holds data-benchmark-id; widget markup inside -->
+    <div data-benchmark-id="tax">
+      <div class="leaderboard-preview" style="--model-count: 3">
+        <ol class="leaderboard-preview__list"></ol>
+      </div>
+    </div>
+
+    <div data-benchmark-id="legal">
+      <div class="leaderboard-preview" style="--model-count: 3">
+        <ol class="leaderboard-preview__list"></ol>
+      </div>
+    </div>
+
+    <div data-benchmark-id="finance">
+      <div class="leaderboard-preview" style="--model-count: 3">
+        <ol class="leaderboard-preview__list"></ol>
+      </div>
+    </div>
+
+    <div data-benchmark-id="medical">
+      <div class="leaderboard-preview" style="--model-count: 3">
+        <ol class="leaderboard-preview__list"></ol>
+      </div>
+    </div>
+
+    <div data-benchmark-id="contract">
+      <div class="leaderboard-preview" style="--model-count: 3">
+        <ol class="leaderboard-preview__list"></ol>
+      </div>
+    </div>
+
+    <div data-benchmark-id="long-extraction">
+      <div class="leaderboard-preview" style="--model-count: 3">
+        <ol class="leaderboard-preview__list"></ol>
+      </div>
+    </div>
+
+    <script src="research-inline.js"></script>
+    <script src="research.js"></script>
+  </body>
+</html>

@@ -1,12 +1,9 @@
 mkdir -p dist && \
-for f in src/*.js; do
-  [ -f "$f" ] || continue
-  npx --yes esbuild "$f" --minify --outfile="dist/$(basename "${f%.js}").min.js"
-done && \
-for f in src/*.css; do
-  [ -f "$f" ] || continue
-  npx --yes esbuild "$f" --minify --outfile="dist/$(basename "${f%.css}").min.css"
-done && \
+npx --yes esbuild src/main.js --minify --outfile=dist/main.min.js && \
+npx --yes esbuild src/main.css --minify --outfile=dist/main.min.css && \
+npx --yes esbuild src/research/research.js --minify --outfile=dist/research.min.js && \
+npx --yes esbuild src/research/research.css --minify --outfile=dist/research.min.css && \
+npx --yes esbuild src/research/research-inline.js --minify --outfile=dist/research-inline.min.js && \
 git add src dist push.cli && \
 git add -u && \
 git commit -m "release" && \
@@ -17,5 +14,8 @@ git tag -a "$COMMIT" -m "$COMMIT release" && \
 git push origin "$COMMIT" && \
 gh release create "$COMMIT" dist/* --generate-notes --title "$COMMIT" && \
 echo "" && \
-echo "JS:  https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.js" && \
-echo "CSS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.css"
+echo "main JS:     https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.js" && \
+echo "main CSS:    https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.css" && \
+echo "research JS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research.min.js" && \
+echo "research CSS:https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research.min.css" && \
+echo "inline JS:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research-inline.min.js"
