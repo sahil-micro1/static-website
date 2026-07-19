@@ -1261,7 +1261,7 @@ const initForm = {
       progress.style.position = "absolute";
       progress.style.width = 0;
       progress.style.height = "100%";
-      progress.style.backgroundColor = "rgb(255, 255, 255, 0.8)";
+      progress.style.backgroundColor = "#BBC2F7";
       progress.style.transition = "all 300ms";
       progressBar.appendChild(progress);
 
@@ -1294,7 +1294,18 @@ const initForm = {
         formType,
       );
 
-      if (formWorkPopup) {
+      // year range steps: clamp inputs to 1970–current year
+      const currentYear = new Date().getFullYear();
+      allSteps.forEach((step) => {
+        const stepDiv = step.querySelector("div");
+        if (stepDiv?.dataset?.stepType !== "year") return;
+        stepDiv.querySelectorAll('input[type="number"]').forEach((input) => {
+          input.min = "1970";
+          input.max = String(currentYear);
+        });
+      });
+
+      if (formWorkPopup && formWorkCTA) {
         // set work popup trigger
         formWorkCTA.addEventListener("click", () => {
           formWorkPopup.style.display = "flex";
@@ -1394,6 +1405,19 @@ const initForm = {
               allInputFields[i].style.borderColor = "#f86567";
               allInputFields[i].focus();
 
+              if (formStep?.dataset?.stepType === "year") {
+                const startEmpty = allInputFields[0]?.value === "";
+                const endEmpty = allInputFields[1]?.value === "";
+
+                if (startEmpty && endEmpty) {
+                  // keep data-default-text
+                } else if (startEmpty) {
+                  errorText = "Please enter the start year.";
+                } else if (endEmpty) {
+                  errorText = "Please enter the end year.";
+                }
+              }
+
               if (allInputFields[1] && allInputFields[1].value == "") {
                 allInputFields[1].style.borderColor = "#f86567";
                 if (allInputFields[i].value !== "") {
@@ -1435,6 +1459,47 @@ const initForm = {
                 allInputFields[i].focus();
                 errorText = "Please enter a valid integer value.";
                 result = false;
+              } else if (formStep?.dataset?.stepType === "year") {
+                const maxYear = new Date().getFullYear();
+                const raw = String(allInputFields[i].value).trim();
+
+                if (!/^\d{4}$/.test(raw)) {
+                  allInputFields[i].style.borderColor = "#f86567";
+                  allInputFields[i].focus();
+                  errorText = "Please enter a 4-digit year (YYYY).";
+                  result = false;
+                  break;
+                }
+
+                const year = Number(raw);
+                if (year < 1970 || year > maxYear) {
+                  allInputFields[i].style.borderColor = "#f86567";
+                  allInputFields[i].focus();
+                  errorText = `Please enter a year between 1970 and ${maxYear}.`;
+                  result = false;
+                  break;
+                }
+
+                const startEl = allInputFields[0];
+                const endEl = allInputFields[1];
+                if (
+                  startEl &&
+                  endEl &&
+                  startEl.value !== "" &&
+                  endEl.value !== "" &&
+                  Number(startEl.value) > Number(endEl.value)
+                ) {
+                  startEl.style.borderColor = "#f86567";
+                  endEl.style.borderColor = "#f86567";
+                  startEl.focus();
+                  errorText =
+                    "Start year must be before or equal to end year.";
+                  result = false;
+                  break;
+                }
+
+                errorText = "Please enter the value in number";
+                result = true;
               } else {
                 errorText = "Please enter the value in number";
                 result = true;
@@ -1829,6 +1894,20 @@ const initForm = {
         });
 
         console.log(amplitudeEventParams);
+
+        if(formType === "data") {
+          const dataPayout = calcDataPayout({
+            employees: allFormData.get("data-size"),
+            years: {start: allFormData.get("data-year-start"), end: allFormData.get("data-year-end")},
+            entities: allFormData.get("data-entities"),
+            englishPct: allFormData.get("data-english"),
+            location: allFormData.get("data-location"),
+            highRisk: allFormData.get("data-sensitive"),
+          });
+          console.log(dataPayout);
+          document.querySelector(".data-payout").textContent = dataPayout;
+          utilities.updateInput(document.querySelectorAll(".data-payout-input"), dataPayout);
+        }
 
         await submitFormToMake(amplitudeEventParams);
       }
@@ -2822,3 +2901,4 @@ window.addEventListener("load", () => {
     }
   }, 1000);
 });
+
