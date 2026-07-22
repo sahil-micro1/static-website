@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Policy</title>
+</head>
+<body>
+  <div id="cookie-target"></div>
+
+  <script>
+    (async function () {
+      const host = document.getElementById("cookie-target");
+      if (!host) return;
+
+      const shadow = host.shadowRoot || host.attachShadow({ mode: "open" });
+      const sourceUrl =
+        "https://cdn.jsdelivr.net/gh/sahil-micro1/static-website@34cfdb8/dist/cookie.html";
+
+      // Breaks Webflow inheritance into the shadow tree (fonts, line-height, etc.).
+      const isolationStyle = `
+        <style data-cookie-isolation>
+          :host {
+            display: block;
+            all: initial;
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            background: #121212;
+            color: #cccccc;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 1.5;
+            letter-spacing: normal;
+            text-transform: none;
+            -webkit-font-smoothing: antialiased;
+          }
+
+          *, *::before, *::after {
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, sans-serif !important;
+          }
+
+          .cookie-loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 0;
+          }
+
+          .cookie-loader__spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            border-top-color: #6a79ff;
+            border-radius: 50%;
+            animation: cookie-spin 0.7s linear infinite;
+          }
+
+          @keyframes cookie-spin {
+            to { transform: rotate(360deg); }
+          }
+        </style>
+      `;
+
+      shadow.innerHTML = `
+        ${isolationStyle}
+        <div class="cookie-loader" aria-live="polite" aria-busy="true">
+          <div class="cookie-loader__spinner" role="status" aria-label="Loading"></div>
+        </div>
+      `;
+
+      try {
+        const res = await fetch(sourceUrl);
+        if (!res.ok) throw new Error(`Failed to load ${sourceUrl} (${res.status})`);
+
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+
+        const styles = Array.from(doc.querySelectorAll("style"))
+          .map((el) => el.outerHTML)
+          .join("");
+
+        const content =
+          doc.querySelector('[data-custom-class="body"]') || doc.body;
+
+        shadow.innerHTML =
+          isolationStyle + styles + (content ? content.outerHTML : html);
+      } catch (err) {
+        console.error(err);
+        shadow.innerHTML =
+          isolationStyle +
+          "<p>Could not load cookie policy content.</p>";
+      }
+    })();
+  </script>
+</body>
+</html>
