@@ -4,6 +4,7 @@ npx --yes esbuild src/main.css --minify --outfile=dist/main.min.css && \
 npx --yes esbuild src/research/research.js --minify --outfile=dist/research.min.js && \
 npx --yes esbuild src/research/research.css --minify --outfile=dist/research.min.css && \
 npx --yes esbuild src/research/research-inline.js --minify --outfile=dist/research-inline.min.js && \
+cp src/legal/cookie.html dist/cookie.html && \
 git add src dist push.cli && \
 git add -u && \
 git commit -m "release" && \
@@ -18,4 +19,5 @@ echo "main JS:     https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.j
 echo "main CSS:    https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.css" && \
 echo "research JS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research.min.js" && \
 echo "research CSS:https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research.min.css" && \
-echo "inline JS:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research-inline.min.js"
+echo "inline JS:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research-inline.min.js" && \
+echo "cookie HTML: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/cookie.html"
