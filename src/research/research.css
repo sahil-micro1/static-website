@@ -232,12 +232,19 @@
   z-index: 1;
 }
 
-.leaderboard-full__row.is-active::before {
-  opacity: 1;
-}
-
+/* ::before is CSS :hover only — is-active drives tooltip + sibling fade */
 .leaderboard-full__list.has-active .leaderboard-full__row:not(.is-active) {
   opacity: 0.4;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .leaderboard-full__row:hover {
+    z-index: 1;
+  }
+
+  .leaderboard-full__row:hover::before {
+    opacity: 1;
+  }
 }
 
 .leaderboard-full__meta {
