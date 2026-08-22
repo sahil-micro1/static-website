@@ -29,6 +29,7 @@ container.dataset.v1Init = "1";
 function ensureWebGLCanvas(host) {
   host.querySelectorAll("canvas").forEach((el) => el.remove());
   const el = document.createElement("canvas");
+  el.id = "universe";
   el.className = "universe-v1-canvas";
   el.setAttribute("aria-hidden", "true");
   host.appendChild(el);

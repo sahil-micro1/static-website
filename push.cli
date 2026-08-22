@@ -4,6 +4,8 @@ npx --yes esbuild src/main.css --minify --outfile=dist/main.min.css && \
 npx --yes esbuild src/research/research.js --minify --outfile=dist/research.min.js && \
 npx --yes esbuild src/research/research.css --minify --outfile=dist/research.min.css && \
 npx --yes esbuild src/research/research-inline.js --minify --outfile=dist/research-inline.min.js && \
+npm install three --no-save && \
+npx --yes esbuild src/human/universe-v1-embed.js --bundle --minify --outfile=dist/universe-v1-embed.min.js && \
 cp src/legal/cookie.html dist/cookie.html && \
 git add src dist push.cli && \
 git add -u && \
@@ -20,4 +22,5 @@ echo "main CSS:    https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.c
 echo "research JS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research.min.js" && \
 echo "research CSS:https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research.min.css" && \
 echo "inline JS:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research-inline.min.js" && \
-echo "cookie HTML: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/cookie.html"
+echo "cookie HTML: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/cookie.html" && \
+echo "universe JS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/universe-v1-embed.min.js"
