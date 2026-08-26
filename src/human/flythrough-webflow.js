@@ -153,14 +153,16 @@ function start() {
   const travelRoot =
     document.querySelector(".page-wrapper") || document.documentElement;
 
-  ScrollTrigger.create({
-    trigger: travelRoot,
-    start: "top top",
-    endTrigger: scene,
-    end: "top top",
-    scrub: 0.8,
-    onUpdate: (self) => {
-      state.travel = self.progress;
+  // scrub only smooths when linked to a tween — not bare onUpdate ScrollTriggers
+  gsap.to(state, {
+    travel: 1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: travelRoot,
+      start: "top top",
+      endTrigger: scene,
+      end: "top top",
+      scrub: 0.8,
     },
   });
 
@@ -190,20 +192,25 @@ function start() {
         trigger: scene,
         start: () => scene.offsetTop + LEAD() * 0.72,
         end: () => scene.offsetTop + LEAD(),
-        scrub: 0.6,
+        scrub: 0.8,
         invalidateOnRefresh: true,
       },
     }
   );
 
-  ScrollTrigger.create({
-    trigger: scene,
-    start: "top top",
-    end: () => scene.offsetTop + LEAD(),
-    scrub: 0.6,
-    invalidateOnRefresh: true,
-    onUpdate: (self) => {
-      const p = self.progress;
+  const morph = { p: 0 };
+  gsap.to(morph, {
+    p: 1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: scene,
+      start: "top top",
+      end: () => scene.offsetTop + LEAD(),
+      scrub: 0.8,
+      invalidateOnRefresh: true,
+    },
+    onUpdate: () => {
+      const p = morph.p;
       state.lock = smooth(clamp(p / 0.52));
       state.fade = 1 - clamp((p - 0.54) / 0.14);
 
@@ -225,7 +232,7 @@ function start() {
       );
 
       if (firstCardImg) {
-        firstCardImg.style.opacity = p >= 0.94 ? "1" : "0";
+        firstCardImg.style.opacity = String(clamp((p - 0.88) / 0.06));
       }
     },
   });
