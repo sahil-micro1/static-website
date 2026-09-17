@@ -1,11 +1,12 @@
-mkdir -p dist && \
+mkdir -p dist prod && \
 npx --yes esbuild src/main.js --minify --outfile=dist/main.min.js && \
 npx --yes esbuild src/main.css --minify --outfile=dist/main.min.css && \
-npx --yes esbuild src/research/research.js --minify --outfile=dist/research.min.js && \
-npx --yes esbuild src/research/research.css --minify --outfile=dist/research.min.css && \
-npx --yes esbuild src/research/research-inline.js --minify --outfile=dist/research-inline.min.js && \
+npx --yes esbuild src/research/research.js --minify --outfile=prod/research.min.js && \
+npx --yes esbuild src/research/research.css --minify --outfile=prod/research.min.css && \
+npx --yes esbuild src/research/leaderboard.js --minify --outfile=prod/leaderboard.min.js && \
+npx --yes esbuild src/research/leaderboard.css --minify --outfile=prod/leaderboard.min.css && \
 cp src/legal/cookie.html dist/cookie.html && \
-git add src dist push.cli && \
+git add src dist prod push.cli && \
 git add -u && \
 git commit -m "release" && \
 git push origin main && \
@@ -13,12 +14,14 @@ COMMIT=$(git rev-parse --short HEAD) && \
 REPO=$(gh repo view --json nameWithOwner -q .nameWithOwner) && \
 git tag -a "$COMMIT" -m "$COMMIT release" && \
 git push origin "$COMMIT" && \
-gh release create "$COMMIT" dist/* --generate-notes --title "$COMMIT" && \
+gh release create "$COMMIT" dist/* prod/* --generate-notes --title "$COMMIT" && \
 echo "" && \
 echo "main JS:     https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.js" && \
 echo "main CSS:    https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.css" && \
-echo "research JS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research.min.js" && \
-echo "research CSS:https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research.min.css" && \
-echo "inline JS:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/research-inline.min.js" && \
+echo "research JS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/prod/research.min.js" && \
+echo "research CSS:https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/prod/research.min.css" && \
+echo "leaderboard JS:  https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/prod/leaderboard.min.js" && \
+echo "leaderboard CSS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/prod/leaderboard.min.css" && \
+echo "inline JS:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/src/research/research-inline.js" && \
 echo "cookie HTML: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/cookie.html" && \
 echo "universe JS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/src/human/universe-v1-embed.js"

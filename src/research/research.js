@@ -455,7 +455,7 @@
     thumbResizers.add(() => syncTabThumb(false));
   }
 
-  /** Preview: top 3 rows + "+ N more" only (no title/description). */
+  /** Preview: default-tab label + top 3 rows + "View more". */
   function createLeaderboardPreview(mountEl, data) {
     const tab = getDefaultTab(data);
     const rows = tab?.rows || [];
@@ -475,6 +475,18 @@
       mountEl.appendChild(listEl);
     }
 
+    let labelEl = mountEl.querySelector(".leaderboard-preview__label");
+    if (!labelEl) {
+      labelEl = document.createElement("p");
+      labelEl.className = "leaderboard-preview__label";
+      mountEl.insertBefore(labelEl, listEl);
+    } else if (labelEl.nextElementSibling !== listEl) {
+      mountEl.insertBefore(labelEl, listEl);
+    }
+    const label = tab?.label || "";
+    labelEl.textContent = label;
+    labelEl.hidden = !label;
+
     const ranks = ranksForRows(rows);
     listEl.innerHTML = preview
       .map((row, i) =>
@@ -492,7 +504,7 @@
     const moreEl = document.createElement("div");
     moreEl.className = "leaderboard-preview__more";
     if (!more) moreEl.hidden = true;
-    moreEl.innerHTML = `<span>+ ${more} more</span>`;
+    moreEl.innerHTML = "<span>View more</span>";
     mountEl.appendChild(moreEl);
 
     const tooltipEl = document.createElement("div");

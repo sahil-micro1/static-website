@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataGrail consent — local test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: #121212;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background: #121212 url("assets/hero-blur-test.png") top center / cover no-repeat;
+    }
+  </style>
+  <style id="dg-consent-custom-style">
+:host(.dg-consent-banner) {
+  --dg-primary-font: Outfit, sans-serif;
+  --dg-secondary-font: Outfit, sans-serif;
+  --dg-primary-font-weight: 400;
+  --dg-secondary-font-weight: 400;
+  --dg-p-text-font-size: 14px;
+  --dg-p-text-line-height: 1.6;
+  --dg-body-font-size: 14px;
+  --dg-body-line-height: 1.6;
+  --dg-body-font-weight: 400;
+  --dg-body-font-color: rgba(255, 255, 255, 0.6);
+  --dg-title-font-color: rgba(255, 255, 255, 0.9);
+  --dg-consent-background-color: rgba(0, 0, 0, 0.4);
+  --dg-consent-background-border: 1px solid rgba(255, 255, 255, 0.1);
+  --consent-border-radius: 4px;
+  --dg-button-font-size: 14px;
+  --dg-button-font-weight: 500;
+  --dg-button-radius: 6px;
+  --dg-button-padding: 7px 9px;
+  --dg-z-index: 1000;
+  box-shadow: none;
+}
+
+:host(.dg-consent-banner) .dg-main-language-dropdown {
+  display: none;
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) {
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 1.5rem;
+  transform: none;
+  max-width: 71rem;
+  margin: 0 auto;
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-app {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0;
+  padding: 7px 9px;
+  max-height: none;
+  overflow: clip;
+  border-radius: 4px 4px 0 0;
+  backdrop-filter: blur(21.95px);
+  -webkit-backdrop-filter: blur(21.95px);
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-app:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  outline-offset: 2px;
+}
+
+/* Layer 1 only — keep header visible in preferences modal (.dg-left) */
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-header {
+  display: none;
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-main-content-explanation {
+  order: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0 12px 0 0;
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-main-content-explanation div:not(.dg-explanation-text) {
+  display: inline;
+}
+
+:host(.dg-consent-banner) .dg-text-body {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+:host(.dg-consent-banner) .dg-main-content-explanation a {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+  transition: color 0.2s ease;
+}
+
+:host(.dg-consent-banner) .dg-main-content-explanation a:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+:host(.dg-consent-banner) .dg-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.open_layer {
+  order: 2;
+  width: 137px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 7px 9px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.reject_all {
+  order: 3;
+  width: 119px;
+  margin-left: 11px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.accept_all {
+  order: 4;
+  width: 118px;
+  margin-left: 11px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #191919;
+}
+
+:host(.dg-consent-banner) .dg-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+  outline-offset: 2px;
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.open_layer:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.reject_all:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.accept_all:hover {
+  background: #fff;
+}
+
+/* Settings panel — Figma node 6687:50984 */
+:host(.dg-consent-banner.dg-left),
+:host(.dg-consent-banner.dg-right) {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  width: min(100%, 28rem);
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+
+:host(.dg-consent-banner.dg-right) {
+  left: auto;
+  right: 0;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-app,
+:host(.dg-consent-banner.dg-right) .dg-app {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "body body body"
+    "policies policies policies"
+    "reject accept save";
+  grid-template-columns: auto auto minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  align-items: stretch;
+  gap: 33px 11px;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: 100%;
+  padding: 36px 24px;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(47.85px);
+  -webkit-backdrop-filter: blur(47.85px);
+  --dg-consent-background-color: rgba(18, 18, 18, 0.6);
+  --dg-consent-background-border: 1px solid rgba(255, 255, 255, 0.2);
+  --dg-body-font-size: 16px;
+  --dg-body-line-height: 1.5;
+  --dg-body-font-color: rgba(255, 255, 255, 0.6);
+  --dg-title-font-size: 24px;
+  --dg-title-line-height: 1.4;
+  --dg-title-font-weight: 400;
+  --dg-title-font-color: rgba(255, 255, 255, 0.9);
+  --dg-policy-option-heading-size: 16px;
+  --dg-policy-option-heading-weight: 400;
+  --dg-policy-option-heading-color: #fff;
+  --dg-policy-option-description-font-size: 14px;
+  --dg-policy-option-description-font-color: rgba(255, 255, 255, 0.6);
+  --dg-policy-option-essential-label-font-size: 14px;
+  --dg-policy-option-essential-label-font-color: rgba(255, 255, 255, 0.6);
+  --dg-option-background: transparent;
+  --dg-slider-primary: #121212;
+  --dg-slider-secondary: rgba(255, 255, 255, 0.2);
+  --dg-slider-enabled-primary: #121212;
+  --dg-slider-enabled-secondary: #fff;
+}
+
+:host(.dg-consent-banner.dg-right) .dg-app {
+  border-right: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+:host(.dg-consent-banner.dg-left) .dg-header,
+:host(.dg-consent-banner.dg-right) .dg-header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-header .dg-text-title,
+:host(.dg-consent-banner.dg-right) .dg-header .dg-text-title {
+  flex: 1;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+:host(.dg-consent-banner.dg-left) .dg-header-close path,
+:host(.dg-consent-banner.dg-right) .dg-header-close path {
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-explanation.dg-text-body,
+:host(.dg-consent-banner.dg-right) .dg-main-content-explanation.dg-text-body {
+  grid-area: body;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+:host(.dg-consent-banner.dg-left) .dg-links,
+:host(.dg-consent-banner.dg-right) .dg-links {
+  display: none;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policies,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policies {
+  grid-area: policies;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policy-option,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policy-option {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policy-option:first-child,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policy-option:first-child {
+  border-top: none;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policy-option-heading,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policy-option-heading {
+  min-height: 46px;
+  height: auto;
+  padding: 13px 0;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policy-option-input,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policy-option-input {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  margin-left: auto;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-option-info,
+:host(.dg-consent-banner.dg-right) .dg-option-info {
+  display: flex;
+  align-items: center;
+  min-height: 20px;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-collapsible > *,
+:host(.dg-consent-banner.dg-right) .dg-collapsible > * {
+  min-height: 0;
+  overflow: hidden;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-chevron path,
+:host(.dg-consent-banner.dg-right) .dg-chevron path {
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policy-option-heading .clickable,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policy-option-heading .clickable {
+  flex: 1;
+  font-weight: 400;
+  gap: 4px;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policy-option-heading strong,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policy-option-heading strong {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #fff;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policy-option-description,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policy-option-description {
+  margin: 0;
+  padding: 0 8px 0 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  transition: padding-bottom 0.25s ease-out;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-collapsible.isOpen .dg-main-content-policy-option-description,
+:host(.dg-consent-banner.dg-right) .dg-collapsible.isOpen .dg-main-content-policy-option-description {
+  padding-bottom: 13px;
+}
+
+:host(.dg-consent-banner.dg-left) input[type="checkbox"]:not(:disabled) + label .dg-slider,
+:host(.dg-consent-banner.dg-right) input[type="checkbox"]:not(:disabled) + label .dg-slider {
+  width: 36px;
+  height: 20px;
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+:host(.dg-consent-banner.dg-left) input[type="checkbox"]:not(:disabled) + label .dg-slider::after,
+:host(.dg-consent-banner.dg-right) input[type="checkbox"]:not(:disabled) + label .dg-slider::after {
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+:host(.dg-consent-banner.dg-left) input[type="checkbox"]:not(:disabled):checked + label .dg-slider::after,
+:host(.dg-consent-banner.dg-right) input[type="checkbox"]:not(:disabled):checked + label .dg-slider::after {
+  left: 18px;
+  transform: translateY(-50%);
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 2px 5.5px rgba(39, 39, 39, 0.59);
+}
+
+:host(.dg-consent-banner.dg-left) input[type="checkbox"]:not(:disabled):not(:checked) + label .dg-slider::after,
+:host(.dg-consent-banner.dg-right) input[type="checkbox"]:not(:disabled):not(:checked) + label .dg-slider::after {
+  background: #fff;
+  box-shadow: 5px 0 4px rgba(39, 39, 39, 0.35);
+}
+
+:host(.dg-consent-banner.dg-left) .dg-slider.essential-label,
+:host(.dg-consent-banner.dg-right) .dg-slider.essential-label {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-button.reject_all,
+:host(.dg-consent-banner.dg-right) .dg-button.reject_all {
+  grid-area: reject;
+  display: inline-flex;
+  width: auto;
+  min-width: 103px;
+  margin: 0;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 7px 9px;
+  align-self: center;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-button.accept_all,
+:host(.dg-consent-banner.dg-right) .dg-button.accept_all {
+  grid-area: accept;
+  display: inline-flex;
+  width: auto;
+  min-width: 103px;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 7px 9px;
+  align-self: center;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-button.custom,
+:host(.dg-consent-banner.dg-right) .dg-button.custom,
+:host(.dg-consent-banner.dg-left) .dg-button.accept_some,
+:host(.dg-consent-banner.dg-right) .dg-button.accept_some {
+  grid-area: save;
+  display: inline-flex;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #191919;
+  padding: 7px 9px;
+  align-self: center;
+  justify-self: stretch;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-button.reject_all:hover,
+:host(.dg-consent-banner.dg-right) .dg-button.reject_all:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+:host(.dg-consent-banner.dg-left) .dg-button.accept_all:hover,
+:host(.dg-consent-banner.dg-right) .dg-button.accept_all:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+:host(.dg-consent-banner.dg-left) .dg-button.custom:hover,
+:host(.dg-consent-banner.dg-right) .dg-button.custom:hover,
+:host(.dg-consent-banner.dg-left) .dg-button.accept_some:hover,
+:host(.dg-consent-banner.dg-right) .dg-button.accept_some:hover {
+  background: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  :host(.dg-consent-banner.dg-left) .dg-app,
+  :host(.dg-consent-banner.dg-right) .dg-app {
+    grid-template-areas:
+      "header"
+      "body"
+      "policies"
+      "reject"
+      "accept"
+      "save";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto auto;
+    gap: 24px;
+    padding: 24px 16px;
+  }
+
+  :host(.dg-consent-banner.dg-left) .dg-button.reject_all,
+  :host(.dg-consent-banner.dg-right) .dg-button.reject_all,
+  :host(.dg-consent-banner.dg-left) .dg-button.accept_all,
+  :host(.dg-consent-banner.dg-right) .dg-button.accept_all,
+  :host(.dg-consent-banner.dg-left) .dg-button.custom,
+  :host(.dg-consent-banner.dg-right) .dg-button.custom,
+  :host(.dg-consent-banner.dg-left) .dg-button.accept_some,
+  :host(.dg-consent-banner.dg-right) .dg-button.accept_some {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-app {
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-main-content-explanation {
+    flex: 1 1 100%;
+    margin-right: 0;
+  }
+
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.open_layer,
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.reject_all,
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.accept_all {
+    width: auto;
+    flex: 1 1 auto;
+    margin-left: 0;
+  }
+
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.reject_all,
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.accept_all {
+    margin-left: 11px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-app {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button + .dg-button {
+    margin-top: 11px;
+  }
+
+  /* Mobile: 2-line clamp — use block + max-height (not -webkit-box), which
+     always clips from the top. Height is set in px by dg-consent-read-more.js. */
+  :host(.dg-consent-banner) .dg-main-content-explanation.dg-text-body.is-clamped {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  :host(.dg-consent-banner) .dg-main-content-explanation.dg-text-body.is-clamped > .dg-explanation-text {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    align-self: flex-start;
+  }
+
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right))
+    .dg-main-content-explanation.dg-text-body.is-clamped
+    > .dg-explanation-text {
+    display: block;
+  }
+
+  :host(.dg-consent-banner) .dg-main-content-explanation.dg-text-body.is-clamped > .dg-read-more {
+    display: inline;
+  }
+}
+
+:host(.dg-consent-banner) .dg-read-more {
+  display: none;
+  appearance: none;
+  margin: 4px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-position: from-font;
+  cursor: pointer;
+}
+
+:host(.dg-consent-banner) .dg-read-more:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+:host(.dg-consent-banner) .dg-read-more:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.35);
+  outline-offset: 2px;
+}
+  </style>
+  <!-- DataGrail Consent Script -->
+  <script type="text/javascript" src="https://api.consentjs.datagrail.io/a48e8743-7d84-41e8-a072-095c984aad86/34343c6f-6150-41ed-944b-b481e71f1e75/consent-loader.js" async></script>
+  <!-- End DataGrail Consent Script -->
+</head>
+<body>
+  <section class="hero" aria-hidden="true"></section>
+  <script>
+/**
+ * DataGrail consent — mobile “Read more” for explanation body text.
+ *
+ * Paste into Webflow Site Settings > Custom Code > Footer (no <script> tags
+ * if using the Scripts API). Works with open shadow roots on .dg-consent-banner.
+ *
+ * Pair with dg-consent-custom.css (.is-clamped / .dg-read-more).
+ * Clamps with max-height (top-down), not -webkit-line-clamp.
+ */
+(() => {
+  const HOST_SEL = ".dg-consent-banner";
+  const BODY_SEL = ".dg-main-content-explanation.dg-text-body";
+  const MQ = "(max-width: 600px)";
+  const LINES = 2;
+
+  function ensureTextWrap(explanation) {
+    let text = explanation.querySelector(":scope > .dg-explanation-text");
+    if (text) return text;
+
+    const onlyChild = explanation.firstElementChild;
+    if (
+      onlyChild &&
+      onlyChild.tagName === "DIV" &&
+      explanation.children.length === 1
+    ) {
+      onlyChild.classList.add("dg-explanation-text");
+      return onlyChild;
+    }
+
+    text = document.createElement("div");
+    text.className = "dg-explanation-text";
+    while (explanation.firstChild) {
+      text.appendChild(explanation.firstChild);
+    }
+    explanation.appendChild(text);
+    return text;
+  }
+
+  function lineHeightPx(el) {
+    const cs = getComputedStyle(el);
+    const lh = cs.lineHeight;
+    if (lh === "normal") {
+      return parseFloat(cs.fontSize) * 1.2;
+    }
+    const parsed = parseFloat(lh);
+    if (lh.endsWith("px")) return parsed;
+    return parsed * parseFloat(cs.fontSize);
+  }
+
+  function clearClampStyles(text) {
+    text.style.maxHeight = "";
+    text.style.overflow = "";
+  }
+
+  function enhanceExplanation(explanation) {
+    if (explanation.querySelector(":scope > .dg-read-more")) return;
+
+    const text = ensureTextWrap(explanation);
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "dg-read-more";
+    btn.textContent = "Read more";
+    explanation.appendChild(btn);
+
+    const applyClamp = () => {
+      if (btn.hidden) return;
+
+      if (!window.matchMedia(MQ).matches) {
+        explanation.classList.remove("is-clamped");
+        clearClampStyles(text);
+        return;
+      }
+
+      // Measure full height with clamp off.
+      explanation.classList.remove("is-clamped");
+      clearClampStyles(text);
+      const fullHeight = text.scrollHeight;
+      const maxHeight = Math.round(lineHeightPx(text) * LINES);
+
+      if (fullHeight <= maxHeight + 1) {
+        return;
+      }
+
+      explanation.classList.add("is-clamped");
+      text.style.maxHeight = `${maxHeight}px`;
+      text.style.overflow = "hidden";
+      text.scrollTop = 0;
+    };
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      explanation.classList.remove("is-clamped");
+      clearClampStyles(text);
+      btn.hidden = true;
+    });
+
+    applyClamp();
+    window.addEventListener("resize", applyClamp);
+  }
+
+  function enhanceHost(host) {
+    const root = host.shadowRoot;
+    if (!root) return;
+    root.querySelectorAll(BODY_SEL).forEach(enhanceExplanation);
+  }
+
+  function scan() {
+    document.querySelectorAll(HOST_SEL).forEach(enhanceHost);
+  }
+
+  const obs = new MutationObserver(scan);
+  obs.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class", "style"],
+  });
+
+  scan();
+})();
+  </script>
+</body>
+</html>

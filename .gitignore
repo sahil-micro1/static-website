@@ -1,1 +1,6 @@
 .DS_Store
+.agents/
+.tmp/
+.vscode/
+benchmarks-api/node_modules/
+benchmarks-api/.env

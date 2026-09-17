@@ -149,6 +149,21 @@
   color: rgba(255, 255, 255, 0.9) !important;
 }
 
+.leaderboard-preview__label {
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  font-size: 0.875rem !important;
+  font-style: normal;
+  font-weight: 500 !important;
+  line-height: 160% !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.leaderboard-preview__label[hidden] {
+  display: none;
+}
+
 .leaderboard-preview__name {
   margin: 0;
   font-size: 16px !important;
@@ -345,7 +360,7 @@
   );
 }
 
-/* ——— Preview leaderboard (bars + more only) ——— */
+/* ——— Preview leaderboard (label + bars + more) ——— */
 
 .leaderboard-preview {
   --white-90: rgba(255, 255, 255, 0.9);
@@ -359,9 +374,10 @@
   --bar-accent-end: #a0b3ff;
   --row-height: 62px;
   --model-count: 0;
+  --label-height: 1.4rem;
   --more-height: 38px;
-  --preview-gap: 25px;
-  --preview-min-height: 259px;
+  --preview-gap: 10px;
+  --preview-min-height: 276px;
 
   position: relative;
   box-sizing: border-box;
@@ -376,9 +392,10 @@
   min-height: max(
     var(--preview-min-height),
     calc(
-      var(--model-count) * var(--row-height) -
+      var(--label-height) +
+        var(--model-count) * var(--row-height) -
         (var(--model-count) - 1) * 1px +
-        var(--preview-gap) +
+        2 * var(--preview-gap) +
         var(--more-height)
     )
   );
@@ -551,14 +568,26 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
+  transition: background 0.2s ease;
 }
 
 .leaderboard-preview__more span {
   opacity: 0.6;
+  transition: opacity 0.2s ease;
 }
 
 .leaderboard-preview__more[hidden] {
   display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .leaderboard-preview__more:hover {
+    background: var(--white-6);
+  }
+
+  .leaderboard-preview__more:hover span {
+    opacity: 0.9;
+  }
 }
 
 /* ——— Shared ——— */
@@ -676,8 +705,8 @@
   }
 
   .leaderboard-preview {
-    --preview-gap: 15px;
-    --preview-min-height: 243px;
+    --preview-gap: 5px;
+    --preview-min-height: 260px;
   }
 
   .leaderboard-full__name,
