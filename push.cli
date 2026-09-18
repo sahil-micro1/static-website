@@ -8,6 +8,8 @@ npx --yes esbuild src/research/leaderboard.css --minify --outfile=prod/leaderboa
 cp src/legal/cookie.html dist/cookie.html && \
 rm -rf dist/benchmarks && \
 cp -R src/benchmarks dist/benchmarks && \
+rm -rf dist/robotics && \
+cp -R src/robotics dist/robotics && \
 git add src dist prod push.cli wrangler.jsonc && \
 git add -u && \
 git commit -m "release" && \
@@ -16,7 +18,7 @@ COMMIT=$(git rev-parse --short HEAD) && \
 REPO=$(gh repo view --json nameWithOwner -q .nameWithOwner) && \
 git tag -a "$COMMIT" -m "$COMMIT release" && \
 git push origin "$COMMIT" && \
-gh release create "$COMMIT" dist/* prod/* --generate-notes --title "$COMMIT" && \
+gh release create "$COMMIT" dist/main.min.js dist/main.min.css dist/cookie.html prod/*.js prod/*.css dist/robotics/*.html --generate-notes --title "$COMMIT" && \
 echo "" && \
 echo "main JS:     https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.js" && \
 echo "main CSS:    https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/main.min.css" && \
@@ -31,4 +33,10 @@ echo "benchmarks:  https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks
 echo "  tax:       https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/tax/data.json" && \
 echo "  legal:     https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/warren/data.json" && \
 echo "  finance:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/quantis/data.json" && \
-echo "  medical:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/medical/data.json"
+echo "  medical:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/medical/data.json" && \
+echo "robotics:    https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/robotics/" && \
+echo "  index:     https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/robotics/index.html" && \
+echo "  e1 opus:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/robotics/trace_tube_stir_claude_opus_5.html" && \
+echo "  e1 sonnet: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/robotics/trace_tube_stir_claude_sonnet_5.html" && \
+echo "  e2 opus:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/robotics/trace_claude_opus_5.html" && \
+echo "  e2 sonnet: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/robotics/trace_claude_sonnet_5.html"
