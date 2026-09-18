@@ -420,6 +420,10 @@
       background: var(--rb-white-16);
       border-color: var(--rb-white-60);
     }
+
+    .rb-turn.is-fault .rb-turn__summary:hover .rb-turn__bar {
+      background: color-mix(in srgb, var(--rb-fault) 28%, var(--rb-bg));
+    }
   }
 
   .rb-turn__body {
@@ -474,8 +478,8 @@
     min-width: 0;
   }
 
-  .rb-turn.is-fault .rb-turn__body {
-    box-shadow: inset 2px 0 0 var(--rb-fault);
+  .rb-turn.is-fault .rb-turn__bar {
+    background: color-mix(in srgb, var(--rb-fault) 22%, var(--rb-bg));
   }
 
   .rb-player {
@@ -510,6 +514,7 @@
     height: 32rem;
     border: 0;
     background: #121212;
+    margin-bottom: 2rem;
   }
 
   @media (max-width: 720px) {

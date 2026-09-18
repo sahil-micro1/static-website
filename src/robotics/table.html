@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standard table</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Preview only — do not copy into Webflow */
+    body {
+      margin: 0;
+      background: #121212;
+    }
+  </style>
+</head>
+<body>
+
+<style>
+  .rb {
+    --rb-bg: #121212;
+    --rb-white-90: rgba(255, 255, 255, 0.9);
+    --rb-white-80: rgba(255, 255, 255, 0.8);
+    --rb-white-60: rgba(255, 255, 255, 0.6);
+    --rb-white-16: rgba(255, 255, 255, 0.16);
+    --rb-white-10: rgba(255, 255, 255, 0.1);
+    --rb-white-6: rgba(255, 255, 255, 0.06);
+    --rb-header-bg: rgba(255, 255, 255, 0.06);
+    --rb-cell-bg: transparent;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: min(53.5rem, 100%);
+    min-width: 0;
+    position: relative;
+    isolation: isolate;
+    color: var(--rb-white-80);
+    font-family: "Outfit", sans-serif;
+    line-height: 1.4;
+  }
+
+  .rb *,
+  .rb *::before,
+  .rb *::after {
+    box-sizing: border-box;
+  }
+
+  .rb-scroll {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+  }
+
+  .rb-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .rb-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .rb-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .rb table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 42.5rem;
+    font-size: 14px;
+    letter-spacing: -0.14px;
+    background: transparent;
+  }
+
+  .rb th,
+  .rb td {
+    padding: 8px 12px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid var(--rb-white-6);
+    font-weight: 400;
+  }
+
+  .rb td:first-child {
+    padding-left: 8px;
+  }
+
+  .rb th {
+    background: var(--rb-header-bg);
+    color: var(--rb-white-80);
+  }
+
+  .rb td {
+    background: var(--rb-cell-bg);
+    color: var(--rb-white-60);
+  }
+
+  @media (max-width: 720px) {
+    .rb::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 2.5rem;
+      pointer-events: none;
+      z-index: 2;
+      background: linear-gradient(to right, rgba(18, 18, 18, 0), var(--rb-bg));
+    }
+  }
+</style>
+
+<div class="rb">
+  <div class="rb-scroll">
+    <table>
+      <tr>
+        <th>Column</th>
+        <th>Description</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        <td>Row one</td>
+        <td>Body copy for this cell.</td>
+        <td>Optional extra detail.</td>
+      </tr>
+      <tr>
+        <td>Row two</td>
+        <td>Body copy for this cell.</td>
+        <td>Optional extra detail.</td>
+      </tr>
+      <tr>
+        <td>Row three</td>
+        <td>Body copy for this cell.</td>
+        <td>Optional extra detail.</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
