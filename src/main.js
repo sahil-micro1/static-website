@@ -1813,6 +1813,12 @@ const initForm = {
           90,
         );
 
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "form_submit_success",
+          product: formType,
+        });
+
         // if general form
         // const leadType = allFormData.get("general-requirement");
         // if (leadType) {
