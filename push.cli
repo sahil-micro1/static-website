@@ -6,6 +6,7 @@ npx --yes esbuild src/research/research.css --minify --outfile=prod/research.min
 npx --yes esbuild src/research/leaderboard.js --minify --outfile=prod/leaderboard.min.js && \
 npx --yes esbuild src/research/leaderboard.css --minify --outfile=prod/leaderboard.min.css && \
 cp src/legal/cookie.html dist/cookie.html && \
+cp src/_headers dist/_headers && \
 rm -rf dist/benchmarks && \
 cp -R src/benchmarks dist/benchmarks && \
 rm -rf dist/robotics && \
