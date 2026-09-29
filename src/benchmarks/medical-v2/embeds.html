@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical-v2 embeds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Preview only — do not copy into Webflow */
+    body {
+      margin: 0;
+      background: #121212;
+    }
+
+    .medv2-score-chips,
+    .medv2-table,
+    .medv2-example-callout,
+    .medv2-methodology-callout,
+    .medv2-failure-narratives {
+      max-width: 816px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     SHARED CSS — paste this once (first embed on the Webflow page)
+     ============================================================ -->
+<style>
+  /* —— Score chips —— */
+  .medv2-score-chips {
+    --medv2-chip-bg: rgba(255, 255, 255, 0.05);
+    --medv2-name: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 11px;
+    font-family: "Outfit", sans-serif;
+    color: #fff;
+  }
+
+  .medv2-score-chips *,
+  .medv2-score-chips *::before,
+  .medv2-score-chips *::after {
+    box-sizing: border-box;
+  }
+
+  .medv2-score-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    padding: 8px 14px 8px 8px;
+    background: var(--medv2-chip-bg);
+  }
+
+  .medv2-score-chip__icon {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    opacity: 0.9;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .medv2-score-chip__icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .medv2-score-chip__meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .medv2-score-chip__name {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--medv2-name);
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .medv2-score-chip__value {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+    opacity: 0.8;
+  }
+
+  .medv2-score-chip--lead .medv2-score-chip__name {
+    opacity: 0.9;
+  }
+
+  .medv2-score-chip--lead .medv2-score-chip__value {
+    opacity: 1;
+  }
+
+  /* —— Tables —— */
+  .medv2-table {
+    --medv2-bg: #121212;
+    --medv2-white-90: rgba(255, 255, 255, 0.9);
+    --medv2-white-60: rgba(255, 255, 255, 0.6);
+    --medv2-white-10: rgba(255, 255, 255, 0.1);
+    --medv2-white-6: rgba(255, 255, 255, 0.06);
+    --medv2-white-1: rgba(255, 255, 255, 0.01);
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    position: relative;
+    background: var(--medv2-bg);
+    color: var(--medv2-white-90);
+    font-family: "Outfit", sans-serif;
+  }
+
+  .medv2-table::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 8px;
+    width: 50px;
+    pointer-events: none;
+    z-index: 3;
+    background: linear-gradient(
+      to left,
+      rgba(18, 18, 18, 0.95) 0%,
+      rgba(18, 18, 18, 0) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .medv2-table.is-scrollable::after {
+    opacity: 1;
+  }
+
+  .medv2-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.06);
+  }
+
+  .medv2-table-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .medv2-table-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .medv2-table-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+
+  .medv2-table *,
+  .medv2-table *::before,
+  .medv2-table *::after {
+    box-sizing: border-box;
+  }
+
+  .medv2-table table {
+    width: 100%;
+    min-width: 0;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .medv2-table th,
+  .medv2-table td {
+    border: 1px solid var(--medv2-white-6);
+    vertical-align: top;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+
+  .medv2-table thead th {
+    background: var(--medv2-white-10);
+    color: var(--medv2-white-90);
+    line-height: 1.6;
+    text-align: left;
+    letter-spacing: 0;
+  }
+
+  .medv2-table tbody td {
+    background: var(--medv2-white-1);
+    color: var(--medv2-white-60);
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  .medv2-table tbody td.medv2-table__category,
+  .medv2-table tbody td.medv2-table__action {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+
+  .medv2-category-share-table col.medv2-col--category {
+    width: 28%;
+  }
+
+  .medv2-category-share-table col.medv2-col--share {
+    width: 10%;
+  }
+
+  .medv2-category-share-table col.medv2-col--action {
+    width: 62%;
+  }
+
+
+  .medv2-model-results-table col.medv2-col--model {
+    width: 17%;
+  }
+
+  .medv2-model-results-table col.medv2-col--effort {
+    width: 14%;
+  }
+
+  .medv2-model-results-table col.medv2-col--mean,
+  .medv2-model-results-table col.medv2-col--best,
+  .medv2-model-results-table col.medv2-col--pass,
+  .medv2-model-results-table col.medv2-col--perfect,
+  .medv2-model-results-table col.medv2-col--won {
+    width: 9%;
+  }
+
+  .medv2-model-results-table col.medv2-col--ci {
+    width: 15%;
+  }
+
+  .medv2-model-results-table th,
+  .medv2-model-results-table td {
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 13px;
+  }
+
+  .medv2-model-results-table th:not(:first-child),
+  .medv2-model-results-table td:not(:first-child) {
+    text-align: center;
+  }
+
+
+  .medv2-fable-comparison-table col.medv2-col--comparison {
+    width: 26%;
+  }
+
+  .medv2-fable-comparison-table col.medv2-col--mean-diff {
+    width: 16%;
+  }
+
+  .medv2-fable-comparison-table col.medv2-col--ci {
+    width: 20%;
+  }
+
+  .medv2-fable-comparison-table col.medv2-col--separated {
+    width: 12%;
+  }
+
+  .medv2-fable-comparison-table col.medv2-col--tasks-wlt {
+    width: 26%;
+  }
+
+  .medv2-fable-comparison-table th:not(:first-child),
+  .medv2-fable-comparison-table td:not(:first-child) {
+    text-align: center;
+  }
+
+  .medv2-fable-comparison-table .medv2-separated--no {
+    color: rgba(255, 115, 115, 0.9);
+  }
+
+  .medv2-fable-comparison-table .medv2-separated--yes {
+    color: rgba(44, 236, 92, 0.9);
+  }
+
+
+  .medv2-capability-score-table col.medv2-col--model {
+    width: 22%;
+  }
+
+  .medv2-capability-score-table col.medv2-col--capability {
+    width: 15.6%;
+  }
+
+  .medv2-capability-score-table th,
+  .medv2-capability-score-table td {
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 13px;
+  }
+
+  .medv2-capability-score-table th:not(:first-child),
+  .medv2-capability-score-table td:not(:first-child) {
+    text-align: center;
+  }
+
+
+  .medv2-criterion-type-table col.medv2-col--model {
+    width: 18%;
+  }
+
+  .medv2-criterion-type-table col.medv2-col--criterion {
+    width: 20.5%;
+  }
+
+  .medv2-criterion-type-table th,
+  .medv2-criterion-type-table td {
+    padding-left: 6px;
+    padding-right: 6px;
+    font-size: 13px;
+  }
+
+  .medv2-criterion-type-table th {
+    line-height: 1.3;
+  }
+
+  .medv2-criterion-type-table th:not(:first-child),
+  .medv2-criterion-type-table td:not(:first-child) {
+    text-align: center;
+  }
+
+
+  .medv2-hardest-tasks-table col.medv2-col--task {
+    width: 150px;
+  }
+
+  .medv2-hardest-tasks-table col.medv2-col--mean {
+    width: 80px;
+  }
+
+  .medv2-hardest-tasks-table col.medv2-col--strongest,
+  .medv2-hardest-tasks-table col.medv2-col--weakest {
+    width: 110px;
+  }
+
+  .medv2-hardest-tasks-table col.medv2-col--anchor {
+    width: calc(791px - 150px - 80px - 110px - 110px);
+  }
+
+
+  .medv2-spread-tasks-table col.medv2-col--task {
+    width: 150px;
+  }
+
+  .medv2-spread-tasks-table col.medv2-col--spread {
+    width: 90px;
+  }
+
+  .medv2-spread-tasks-table col.medv2-col--strongest,
+  .medv2-spread-tasks-table col.medv2-col--weakest {
+    width: 110px;
+  }
+
+  .medv2-spread-tasks-table col.medv2-col--separated-by {
+    width: calc(791px - 150px - 90px - 110px - 110px);
+  }
+
+
+  .medv2-failure-signal-table col.medv2-col--failure {
+    width: 240px;
+  }
+
+  .medv2-failure-signal-table col.medv2-col--where {
+    width: 180px;
+  }
+
+  .medv2-failure-signal-table col.medv2-col--signal {
+    width: calc(791px - 240px - 180px);
+  }
+
+
+  .medv2-efficiency-table col.medv2-col--model {
+    width: 180px;
+  }
+
+  .medv2-efficiency-table col.medv2-col--metric {
+    width: 130px;
+  }
+
+  .medv2-efficiency-table th:not(:first-child),
+  .medv2-efficiency-table td:not(:first-child) {
+    text-align: center;
+  }
+
+
+  .medv2-comparison-table col.medv2-col--comparison {
+    width: 316px;
+  }
+
+  .medv2-comparison-table col.medv2-col--delta {
+    width: calc((791px - 316px) / 2);
+  }
+
+
+  .medv2-task-anchor-table col.medv2-col--task {
+    width: 213px;
+  }
+
+  .medv2-task-anchor-table col.medv2-col--metric {
+    width: 118px;
+  }
+
+  .medv2-task-anchor-table col.medv2-col--anchor {
+    width: 224px;
+  }
+
+
+  .medv2-failure-mode-table col.medv2-col--failure {
+    width: 240px;
+  }
+
+  .medv2-failure-mode-table col.medv2-col--share {
+    width: 177px;
+  }
+
+  .medv2-failure-mode-table col.medv2-col--definition {
+    width: calc(791px - 240px - 177px);
+  }
+
+
+  .medv2-trace-table col.medv2-col--trace {
+    width: 22%;
+  }
+
+  .medv2-trace-table col.medv2-col--reward {
+    width: 23%;
+  }
+
+  .medv2-trace-table col.medv2-col--happened {
+    width: 55%;
+  }
+
+  .medv2-trace-table td p {
+    margin: 0;
+  }
+
+  .medv2-trace-table td p + p {
+    margin-top: 12px;
+  }
+
+  .medv2-trace-table .medv2-trace-model {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .medv2-trace-table .medv2-trace-model-icon {
+    width: 19.273px;
+    height: 19.273px;
+    border-radius: 2px;
+    flex: 0 0 19.273px;
+  }
+
+  .medv2-trace-table .medv2-trace-muted {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .medv2-trace-table .medv2-trace-anchor-label {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .medv2-trace-table .medv2-reward-bad,
+  .medv2-trace-table .medv2-trace-failed {
+    color: rgba(255, 115, 115, 0.9);
+  }
+
+  .medv2-trace-table .medv2-reward-good,
+  .medv2-trace-table .medv2-trace-satisfied {
+    color: rgba(44, 236, 92, 0.9);
+  }
+
+
+  .medv2-model-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .medv2-model-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    object-fit: cover;
+    flex: 0 0 16px;
+    opacity: 0.9;
+  }
+
+
+  .medv2-turn-header-table thead th {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+  }
+
+  .medv2-wide-model-table table {
+    width: 100%;
+  }
+
+  .medv2-wide-model-table col.medv2-col--model {
+    width: 180px;
+  }
+
+  .medv2-wide-model-table col.medv2-col--metric {
+    width: 122px;
+  }
+
+  .medv2-wide-model-table thead th {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+  }
+
+  .medv2-wide-model-table th,
+  .medv2-wide-model-table td {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+
+  .medv2-actor-share-table col.medv2-col--actor {
+    width: 276px;
+  }
+
+  .medv2-actor-share-table col.medv2-col--share {
+    width: 257px;
+  }
+
+  .medv2-actor-share-table thead th {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+  }
+
+
+  .medv2-actor-metrics-table col.medv2-col--actor {
+    width: 276px;
+  }
+
+  .medv2-actor-metrics-table col.medv2-col--metric {
+    width: 171px;
+  }
+
+  .medv2-actor-metrics-table thead th {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+  }
+
+  /* —— Callouts (for later embeds) —— */
+  .medv2-example-callout {
+    --medv2-white-90: rgba(255, 255, 255, 0.9);
+    --medv2-white-60: rgba(255, 255, 255, 0.6);
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    font-family: "Outfit", sans-serif;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 1px solid #fd7878;
+    padding: 16px;
+  }
+
+  .medv2-example-callout .medv2-example-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .medv2-example-callout p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--medv2-white-90);
+  }
+
+  .medv2-example-callout .medv2-muted {
+    color: var(--medv2-white-60);
+  }
+
+  .medv2-example-callout .medv2-example-kicker {
+    color: rgba(255, 115, 115, 0.9);
+  }
+
+  .medv2-example-callout .medv2-example-dot {
+    margin: 0 4px;
+  }
+
+  .medv2-example-callout .medv2-verdict {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 3px;
+    background: rgba(222, 75, 75, 0.11);
+    border: 1px solid rgba(241, 87, 87, 0.1);
+  }
+
+  .medv2-example-callout .medv2-failed {
+    color: #fd7878;
+  }
+
+  .medv2-failure-narratives {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .medv2-failure-narratives .heading-style-h5 {
+    margin-top: 1.5rem;
+  }
+
+  .medv2-failure-narratives .heading-style-h5:first-child {
+    margin-top: 0;
+  }
+
+  .medv2-methodology-callout {
+    --medv2-white-90: rgba(255, 255, 255, 0.9);
+    --medv2-white-60: rgba(255, 255, 255, 0.6);
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    font-family: "Outfit", sans-serif;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 1px solid rgba(255, 255, 255, 1);
+    padding: 14px 16px;
+  }
+
+  .medv2-methodology-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .medv2-methodology-title,
+  .medv2-methodology-text {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .medv2-methodology-title {
+    color: var(--medv2-white-90);
+  }
+
+  .medv2-methodology-text {
+    color: var(--medv2-white-60);
+  }
+
+  /* —— Icon helpers (trace / model cells) —— */
+  .medv2-model-logo {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .medv2-logo-claude {
+    background-image: url("https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a32a69e9a9fcc1eb53a1e2f_claude.png");
+  }
+
+  .medv2-logo-chatgpt {
+    background-image: url("https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a32a6a0caaea5723289e6d3_chatgpt.png");
+  }
+
+  .medv2-logo-gemini {
+    background-image: url("https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a32a69cd1d9a98fefd9e19a_gemini.png");
+  }
+
+  @media (max-width: 900px) {
+    .medv2-score-chips {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 1280px) {
+    .medv2-table table {
+      min-width: 760px;
+    }
+
+    .medv2-category-share-table table,
+    .medv2-hardest-tasks-table table,
+    .medv2-spread-tasks-table table,
+    .medv2-failure-signal-table table,
+    .medv2-comparison-table table,
+    .medv2-task-anchor-table table,
+    .medv2-failure-mode-table table {
+      min-width: 791px;
+    }
+
+    .medv2-model-results-table table {
+      min-width: 920px;
+    }
+
+    .medv2-capability-score-table table {
+      min-width: 820px;
+    }
+
+    .medv2-criterion-type-table table {
+      min-width: 860px;
+    }
+
+    .medv2-efficiency-table table {
+      min-width: 700px;
+    }
+
+    .medv2-fable-comparison-table table {
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .medv2-fable-comparison-table table {
+      min-width: 640px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .medv2-score-chips {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
+<script>
+  (function () {
+    function syncTable(table) {
+      const scroller = table.querySelector(".medv2-table-scroll");
+      if (!scroller) return;
+      const canScroll = scroller.scrollWidth > scroller.clientWidth + 1;
+      const atEnd =
+        scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1;
+      table.classList.toggle("is-scrollable", canScroll && !atEnd);
+    }
+
+    function syncAll() {
+      document.querySelectorAll(".medv2-table").forEach(syncTable);
+    }
+
+    document.querySelectorAll(".medv2-table-scroll").forEach(function (scroller) {
+      scroller.addEventListener(
+        "scroll",
+        function () {
+          syncTable(scroller.closest(".medv2-table"));
+        },
+        { passive: true }
+      );
+    });
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", syncAll);
+    } else {
+      syncAll();
+    }
+  })();
+</script>
+<!-- /SHARED CSS -->
+
+<!-- ============================================================
+     EMBED: Spectra score chips (mean reward)
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-score-chips" aria-label="Model mean verifier reward">
+  <div class="medv2-score-chip medv2-score-chip--lead">
+    <div class="medv2-score-chip__icon medv2-score-chip__icon--claude" aria-hidden="true">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png" alt="" width="38" height="38" />
+    </div>
+    <div class="medv2-score-chip__meta">
+      <p class="medv2-score-chip__name">Claude Fable 5.1</p>
+      <p class="medv2-score-chip__value">78.0%</p>
+    </div>
+  </div>
+
+  <div class="medv2-score-chip">
+    <div class="medv2-score-chip__icon medv2-score-chip__icon--muse" aria-hidden="true">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78197846ac25a02e18ff_meta.png" alt="" width="38" height="38" />
+    </div>
+    <div class="medv2-score-chip__meta">
+      <p class="medv2-score-chip__name">Muse Spark 1.3</p>
+      <p class="medv2-score-chip__value">75.8%</p>
+    </div>
+  </div>
+
+  <div class="medv2-score-chip">
+    <div class="medv2-score-chip__icon medv2-score-chip__icon--claude" aria-hidden="true">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png" alt="" width="38" height="38" />
+    </div>
+    <div class="medv2-score-chip__meta">
+      <p class="medv2-score-chip__name">Claude Opus 5</p>
+      <p class="medv2-score-chip__value">75.2%</p>
+    </div>
+  </div>
+
+  <div class="medv2-score-chip">
+    <div class="medv2-score-chip__icon medv2-score-chip__icon--muse" aria-hidden="true">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78197846ac25a02e18ff_meta.png" alt="" width="38" height="38" />
+    </div>
+    <div class="medv2-score-chip__meta">
+      <p class="medv2-score-chip__name">Muse Spark 1.1</p>
+      <p class="medv2-score-chip__value">74.9%</p>
+    </div>
+  </div>
+
+  <div class="medv2-score-chip">
+    <div class="medv2-score-chip__icon medv2-score-chip__icon--grok" aria-hidden="true">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png" alt="" width="38" height="38" />
+    </div>
+    <div class="medv2-score-chip__meta">
+      <p class="medv2-score-chip__name">Grok 4.6</p>
+      <p class="medv2-score-chip__value">72.1%</p>
+    </div>
+  </div>
+
+  <div class="medv2-score-chip">
+    <div class="medv2-score-chip__icon medv2-score-chip__icon--claude" aria-hidden="true">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png" alt="" width="38" height="38" />
+    </div>
+    <div class="medv2-score-chip__meta">
+      <p class="medv2-score-chip__name">Claude Sonnet 5</p>
+      <p class="medv2-score-chip__value">71.7%</p>
+    </div>
+  </div>
+
+  <div class="medv2-score-chip">
+    <div class="medv2-score-chip__icon medv2-score-chip__icon--openai" aria-hidden="true">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png" alt="" width="38" height="38" />
+    </div>
+    <div class="medv2-score-chip__meta">
+      <p class="medv2-score-chip__name">GPT-6 Astra</p>
+      <p class="medv2-score-chip__value">70.3%</p>
+    </div>
+  </div>
+
+  <div class="medv2-score-chip">
+    <div class="medv2-score-chip__icon medv2-score-chip__icon--gemini" aria-hidden="true">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png" alt="" width="38" height="38" />
+    </div>
+    <div class="medv2-score-chip__meta">
+      <p class="medv2-score-chip__name">Gemini 3.8 Flash</p>
+      <p class="medv2-score-chip__value">66.3%</p>
+    </div>
+  </div>
+</div>
+<!-- /EMBED: Spectra score chips (mean reward) -->
+
+<!-- ============================================================
+     EMBED: Category guidance table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-category-share-table" aria-label="Category guidance table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--category" />
+        <col class="medv2-col--share" />
+        <col class="medv2-col--action" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Share</th>
+          <th>What the agent must do</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="medv2-table__category" data-label="Category">Hematopathology and bone marrow</td>
+          <td data-label="Share">18%</td>
+          <td class="medv2-table__action" data-label="What the agent must do">
+            Reconcile myelogram, flow, biopsy and cytogenetics; preserve
+            differentials such as MDS versus aplastic anemia and AML MRD versus morphology
+          </td>
+        </tr>
+        <tr>
+          <td class="medv2-table__category" data-label="Category">Breast</td>
+          <td data-label="Share">14%</td>
+          <td class="medv2-table__action" data-label="What the agent must do">
+            Grade, stage and report biomarkers without inferring receptor
+            status or stage from a partial specimen
+          </td>
+        </tr>
+        <tr>
+          <td class="medv2-table__category" data-label="Category">Thyroid, cytology and resection</td>
+          <td data-label="Share">14%</td>
+          <td class="medv2-table__action" data-label="What the agent must do">
+            Assign and hold the correct Bethesda category; avoid converting
+            suspicion into diagnosis or surgery
+          </td>
+        </tr>
+        <tr>
+          <td class="medv2-table__category" data-label="Category">Gastrointestinal</td>
+          <td data-label="Share">16%</td>
+          <td class="medv2-table__action" data-label="What the agent must do">
+            Report OLGA and OLGIM, Barrett esophagus and colorectal staging as
+            stated; flag site discordance
+          </td>
+        </tr>
+        <tr>
+          <td class="medv2-table__category" data-label="Category">Genitourinary, renal, prostate, bladder</td>
+          <td data-label="Share">16%</td>
+          <td class="medv2-table__action" data-label="What the agent must do">
+            Reconcile stage discrepancies, for example perirenal fat versus pT1b;
+            grade prostate exactly
+          </td>
+        </tr>
+        <tr>
+          <td class="medv2-table__category" data-label="Category">Dermatopathology</td>
+          <td data-label="Share">8%</td>
+          <td class="medv2-table__action" data-label="What the agent must do">
+            Hold qualifier language; do not assess margins on a punch biopsy
+          </td>
+        </tr>
+        <tr>
+          <td class="medv2-table__category" data-label="Category">Gynecologic and cytology, cervical, HPV</td>
+          <td data-label="Share">8%</td>
+          <td class="medv2-table__action" data-label="What the agent must do">
+            Report molecular genotyping only; do not infer cytology from a PCR
+            specimen
+          </td>
+        </tr>
+        <tr>
+          <td class="medv2-table__category" data-label="Category">Thoracic and biomarker, IHC studies</td>
+          <td data-label="Share">6%</td>
+          <td class="medv2-table__action" data-label="What the agent must do">
+            Keep organizing pneumonia a pattern, not a diagnosis; report CPS
+            exactly
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Category guidance table -->
+
+<!-- ============================================================
+     EMBED: Model results table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-model-results-table" aria-label="Model results table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--model" />
+        <col class="medv2-col--effort" />
+        <col class="medv2-col--mean" />
+        <col class="medv2-col--ci" />
+        <col class="medv2-col--best" />
+        <col class="medv2-col--pass" />
+        <col class="medv2-col--perfect" />
+        <col class="medv2-col--won" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Effort</th>
+          <th>Mean</th>
+          <th>95% CI</th>
+          <th>Best of 3</th>
+          <th>Pass@3</th>
+          <th>Perfect</th>
+          <th>Tasks won</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Model">Claude Fable 5.1</td>
+          <td data-label="Effort">max</td>
+          <td data-label="Mean">0.780</td>
+          <td data-label="95% CI">0.742 to 0.817</td>
+          <td data-label="Best of 3">0.836</td>
+          <td data-label="Pass@3">0.62</td>
+          <td data-label="Perfect">10%</td>
+          <td data-label="Tasks won">14%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Opus 5.5</td>
+          <td data-label="Effort">max</td>
+          <td data-label="Mean">0.770</td>
+          <td data-label="95% CI">0.731 to 0.807</td>
+          <td data-label="Best of 3">0.825</td>
+          <td data-label="Pass@3">0.66</td>
+          <td data-label="Perfect">5%</td>
+          <td data-label="Tasks won">16%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Muse Spark 1.3</td>
+          <td data-label="Effort">xhigh</td>
+          <td data-label="Mean">0.758</td>
+          <td data-label="95% CI">0.714 to 0.799</td>
+          <td data-label="Best of 3">0.819</td>
+          <td data-label="Pass@3">0.62</td>
+          <td data-label="Perfect">9%</td>
+          <td data-label="Tasks won">12%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Opus 5</td>
+          <td data-label="Effort">max</td>
+          <td data-label="Mean">0.752</td>
+          <td data-label="95% CI">0.707 to 0.793</td>
+          <td data-label="Best of 3">0.810</td>
+          <td data-label="Pass@3">0.62</td>
+          <td data-label="Perfect">7%</td>
+          <td data-label="Tasks won">12%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Muse Spark 1.1</td>
+          <td data-label="Effort">xhigh</td>
+          <td data-label="Mean">0.749</td>
+          <td data-label="95% CI">0.703 to 0.790</td>
+          <td data-label="Best of 3">0.809</td>
+          <td data-label="Pass@3">0.62</td>
+          <td data-label="Perfect">9%</td>
+          <td data-label="Tasks won">6%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Grok 4.7</td>
+          <td data-label="Effort">xhigh</td>
+          <td data-label="Mean">0.731</td>
+          <td data-label="95% CI">0.684 to 0.774</td>
+          <td data-label="Best of 3">0.793</td>
+          <td data-label="Pass@3">0.56</td>
+          <td data-label="Perfect">8%</td>
+          <td data-label="Tasks won">6%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Grok 4.6</td>
+          <td data-label="Effort">high</td>
+          <td data-label="Mean">0.721</td>
+          <td data-label="95% CI">0.670 to 0.769</td>
+          <td data-label="Best of 3">0.792</td>
+          <td data-label="Pass@3">0.56</td>
+          <td data-label="Perfect">9%</td>
+          <td data-label="Tasks won">8%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Sonnet 5</td>
+          <td data-label="Effort">default</td>
+          <td data-label="Mean">0.717</td>
+          <td data-label="95% CI">0.674 to 0.757</td>
+          <td data-label="Best of 3">0.790</td>
+          <td data-label="Pass@3">0.52</td>
+          <td data-label="Perfect">4%</td>
+          <td data-label="Tasks won">8%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">GPT-6 Astra</td>
+          <td data-label="Effort">max, task denied</td>
+          <td data-label="Mean">0.703</td>
+          <td data-label="95% CI">0.660 to 0.744</td>
+          <td data-label="Best of 3">0.753</td>
+          <td data-label="Pass@3">0.38</td>
+          <td data-label="Perfect">4%</td>
+          <td data-label="Tasks won">2%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">GPT-6 Sol</td>
+          <td data-label="Effort">max, task denied</td>
+          <td data-label="Mean">0.693</td>
+          <td data-label="95% CI">0.656 to 0.728</td>
+          <td data-label="Best of 3">0.747</td>
+          <td data-label="Pass@3">0.38</td>
+          <td data-label="Perfect">1%</td>
+          <td data-label="Tasks won">6%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Gemini 3.8 Flash</td>
+          <td data-label="Effort">high</td>
+          <td data-label="Mean">0.663</td>
+          <td data-label="95% CI">0.608 to 0.712</td>
+          <td data-label="Best of 3">0.726</td>
+          <td data-label="Pass@3">0.46</td>
+          <td data-label="Perfect">2%</td>
+          <td data-label="Tasks won">0%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Model results table -->
+
+<!-- ============================================================
+     EMBED: Fable comparison table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-fable-comparison-table" aria-label="Fable comparison table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--comparison" />
+        <col class="medv2-col--mean-diff" />
+        <col class="medv2-col--ci" />
+        <col class="medv2-col--separated" />
+        <col class="medv2-col--tasks-wlt" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Comparison</th>
+          <th>Mean difference</th>
+          <th>95% CI</th>
+          <th>Separated</th>
+          <th>Tasks won / lost / tied</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Comparison">Fable vs Opus 5.5</td>
+          <td data-label="Mean difference">+1.0 pts</td>
+          <td data-label="95% CI">-1.3 to +3.3</td>
+          <td class="medv2-separated--no" data-label="Separated">no</td>
+          <td data-label="Tasks won / lost / tied">52 / 38 / 10%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Muse 1.3</td>
+          <td data-label="Mean difference">+2.2 pts</td>
+          <td data-label="95% CI">-0.9 to +5.6</td>
+          <td class="medv2-separated--no" data-label="Separated">no</td>
+          <td data-label="Tasks won / lost / tied">50 / 46 / 4%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Opus 5</td>
+          <td data-label="Mean difference">+2.8 pts</td>
+          <td data-label="95% CI">+1.0 to +4.7</td>
+          <td class="medv2-separated--yes" data-label="Separated">yes</td>
+          <td data-label="Tasks won / lost / tied">60 / 38 / 2%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Muse 1.1</td>
+          <td data-label="Mean difference">+3.1 pts</td>
+          <td data-label="95% CI">+0.4 to +5.8</td>
+          <td class="medv2-separated--yes" data-label="Separated">yes</td>
+          <td data-label="Tasks won / lost / tied">60 / 38 / 2%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Grok 4.7</td>
+          <td data-label="Mean difference">+4.9 pts</td>
+          <td data-label="95% CI">+2.3 to +7.7</td>
+          <td class="medv2-separated--yes" data-label="Separated">yes</td>
+          <td data-label="Tasks won / lost / tied">56 / 40 / 4%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Grok 4.6</td>
+          <td data-label="Mean difference">+5.9 pts</td>
+          <td data-label="95% CI">+2.5 to +9.3</td>
+          <td class="medv2-separated--yes" data-label="Separated">yes</td>
+          <td data-label="Tasks won / lost / tied">60 / 38 / 2%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Sonnet</td>
+          <td data-label="Mean difference">+6.3 pts</td>
+          <td data-label="95% CI">+3.2 to +9.4</td>
+          <td class="medv2-separated--yes" data-label="Separated">yes</td>
+          <td data-label="Tasks won / lost / tied">68 / 24 / 8%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Astra</td>
+          <td data-label="Mean difference">+7.7 pts</td>
+          <td data-label="95% CI">+4.8 to +10.8</td>
+          <td class="medv2-separated--yes" data-label="Separated">yes</td>
+          <td data-label="Tasks won / lost / tied">76 / 20 / 4%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Sol</td>
+          <td data-label="Mean difference">+8.7 pts</td>
+          <td data-label="95% CI">+5.8 to +11.7</td>
+          <td class="medv2-separated--yes" data-label="Separated">yes</td>
+          <td data-label="Tasks won / lost / tied">74 / 22 / 4%</td>
+        </tr>
+        <tr>
+          <td data-label="Comparison">Fable vs Gemini</td>
+          <td data-label="Mean difference">+11.7 pts</td>
+          <td data-label="95% CI">+8.6 to +14.9</td>
+          <td class="medv2-separated--yes" data-label="Separated">yes</td>
+          <td data-label="Tasks won / lost / tied">82 / 16 / 2%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Fable comparison table -->
+
+<!-- ============================================================
+     EMBED: Capability scores table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-capability-score-table" aria-label="Capability scores table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--model" />
+        <col class="medv2-col--capability" />
+        <col class="medv2-col--capability" />
+        <col class="medv2-col--capability" />
+        <col class="medv2-col--capability" />
+        <col class="medv2-col--capability" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Extraction</th>
+          <th>Classification</th>
+          <th>Interpretation</th>
+          <th>Management</th>
+          <th>Communication</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Model">Claude Fable 5.1</td>
+          <td data-label="Extraction">96.6%</td>
+          <td data-label="Classification">88.9%</td>
+          <td data-label="Interpretation">85.2%</td>
+          <td data-label="Management">85.5%</td>
+          <td data-label="Communication">80.6%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Opus 5.5</td>
+          <td data-label="Extraction">95.2%</td>
+          <td data-label="Classification">88.9%</td>
+          <td data-label="Interpretation">81.3%</td>
+          <td data-label="Management">82.9%</td>
+          <td data-label="Communication">80.4%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Muse Spark 1.3</td>
+          <td data-label="Extraction">94.6%</td>
+          <td data-label="Classification">86.1%</td>
+          <td data-label="Interpretation">75.3%</td>
+          <td data-label="Management">82.8%</td>
+          <td data-label="Communication">78.5%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Opus 5</td>
+          <td data-label="Extraction">96.4%</td>
+          <td data-label="Classification">85.8%</td>
+          <td data-label="Interpretation">84.5%</td>
+          <td data-label="Management">87.0%</td>
+          <td data-label="Communication">79.4%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Muse Spark 1.1</td>
+          <td data-label="Extraction">94.8%</td>
+          <td data-label="Classification">89.8%</td>
+          <td data-label="Interpretation">74.6%</td>
+          <td data-label="Management">81.4%</td>
+          <td data-label="Communication">72.5%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Grok 4.7</td>
+          <td data-label="Extraction">91.7%</td>
+          <td data-label="Classification">84.9%</td>
+          <td data-label="Interpretation">71.2%</td>
+          <td data-label="Management">63.1%</td>
+          <td data-label="Communication">76.4%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Grok 4.6</td>
+          <td data-label="Extraction">92.8%</td>
+          <td data-label="Classification">81.8%</td>
+          <td data-label="Interpretation">69.7%</td>
+          <td data-label="Management">70.9%</td>
+          <td data-label="Communication">65.0%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Sonnet 5</td>
+          <td data-label="Extraction">91.7%</td>
+          <td data-label="Classification">82.4%</td>
+          <td data-label="Interpretation">73.9%</td>
+          <td data-label="Management">74.4%</td>
+          <td data-label="Communication">71.2%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">GPT-6 Astra</td>
+          <td data-label="Extraction">88.2%</td>
+          <td data-label="Classification">78.1%</td>
+          <td data-label="Interpretation">56.4%</td>
+          <td data-label="Management">68.2%</td>
+          <td data-label="Communication">80.7%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">GPT-6 Sol</td>
+          <td data-label="Extraction">86.3%</td>
+          <td data-label="Classification">78.1%</td>
+          <td data-label="Interpretation">59.2%</td>
+          <td data-label="Management">72.7%</td>
+          <td data-label="Communication">70.3%</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Gemini 3.8 Flash</td>
+          <td data-label="Extraction">93.3%</td>
+          <td data-label="Classification">87.2%</td>
+          <td data-label="Interpretation">71.8%</td>
+          <td data-label="Management">73.0%</td>
+          <td data-label="Communication">57.1%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Capability scores table -->
+
+<!-- ============================================================
+     EMBED: Criterion type scores table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-criterion-type-table" aria-label="Criterion type scores table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--model" />
+        <col class="medv2-col--criterion" />
+        <col class="medv2-col--criterion" />
+        <col class="medv2-col--criterion" />
+        <col class="medv2-col--criterion" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>In the report (n=478)</th>
+          <th>Needs outside knowledge (n=294)</th>
+          <th>Numeric (n=175)</th>
+          <th>Textual (n=597)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Model">Claude Fable 5.1</td>
+          <td data-label="In the report (n=478)">0.921</td>
+          <td data-label="Needs outside knowledge (n=294)">0.868</td>
+          <td data-label="Numeric (n=175)">0.948</td>
+          <td data-label="Textual (n=597)">0.883</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Opus 5.5</td>
+          <td data-label="In the report (n=478)">0.901</td>
+          <td data-label="Needs outside knowledge (n=294)">0.849</td>
+          <td data-label="Numeric (n=175)">0.955</td>
+          <td data-label="Textual (n=597)">0.856</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Muse Spark 1.3</td>
+          <td data-label="In the report (n=478)">0.900</td>
+          <td data-label="Needs outside knowledge (n=294)">0.789</td>
+          <td data-label="Numeric (n=175)">0.881</td>
+          <td data-label="Textual (n=597)">0.844</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Opus 5</td>
+          <td data-label="In the report (n=478)">0.924</td>
+          <td data-label="Needs outside knowledge (n=294)">0.848</td>
+          <td data-label="Numeric (n=175)">0.929</td>
+          <td data-label="Textual (n=597)">0.880</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Muse Spark 1.1</td>
+          <td data-label="In the report (n=478)">0.895</td>
+          <td data-label="Needs outside knowledge (n=294)">0.798</td>
+          <td data-label="Numeric (n=175)">0.900</td>
+          <td data-label="Textual (n=597)">0.840</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Grok 4.7</td>
+          <td data-label="In the report (n=478)">0.853</td>
+          <td data-label="Needs outside knowledge (n=294)">0.740</td>
+          <td data-label="Numeric (n=175)">0.850</td>
+          <td data-label="Textual (n=597)">0.791</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Grok 4.6</td>
+          <td data-label="In the report (n=478)">0.851</td>
+          <td data-label="Needs outside knowledge (n=294)">0.737</td>
+          <td data-label="Numeric (n=175)">0.861</td>
+          <td data-label="Textual (n=597)">0.785</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Sonnet 5</td>
+          <td data-label="In the report (n=478)">0.846</td>
+          <td data-label="Needs outside knowledge (n=294)">0.782</td>
+          <td data-label="Numeric (n=175)">0.855</td>
+          <td data-label="Textual (n=597)">0.807</td>
+        </tr>
+        <tr>
+          <td data-label="Model">GPT-6 Astra</td>
+          <td data-label="In the report (n=478)">0.822</td>
+          <td data-label="Needs outside knowledge (n=294)">0.637</td>
+          <td data-label="Numeric (n=175)">0.809</td>
+          <td data-label="Textual (n=597)">0.722</td>
+        </tr>
+        <tr>
+          <td data-label="Model">GPT-6 Sol</td>
+          <td data-label="In the report (n=478)">0.804</td>
+          <td data-label="Needs outside knowledge (n=294)">0.666</td>
+          <td data-label="Numeric (n=175)">0.824</td>
+          <td data-label="Textual (n=597)">0.721</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Gemini 3.8 Flash</td>
+          <td data-label="In the report (n=478)">0.837</td>
+          <td data-label="Needs outside knowledge (n=294)">0.794</td>
+          <td data-label="Numeric (n=175)">0.875</td>
+          <td data-label="Textual (n=597)">0.802</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Criterion type scores table -->
+
+<!-- ============================================================
+     EMBED: Hardest tasks table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-hardest-tasks-table" aria-label="Hardest tasks table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--task" />
+        <col class="medv2-col--mean" />
+        <col class="medv2-col--strongest" />
+        <col class="medv2-col--weakest" />
+        <col class="medv2-col--anchor" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Mean</th>
+          <th>Strongest</th>
+          <th>Weakest</th>
+          <th>Anchor most often missed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Task">report_2605240</td>
+          <td data-label="Mean">38.5%</td>
+          <td data-label="Strongest">Opus 5.5</td>
+          <td data-label="Weakest">Gemini</td>
+          <td data-label="Anchor most often missed">
+            Maintain the Bethesda Category II designation rather than
+            reclassifying the specimen as nondiagnostic
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Task">report_2605258</td>
+          <td data-label="Mean">42.1%</td>
+          <td data-label="Strongest">Opus 5.5</td>
+          <td data-label="Weakest">Grok 4.6</td>
+          <td data-label="Anchor most often missed">
+            State that the decision to proceed cannot be determined from the
+            report and name what is required
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Task">report_2605306</td>
+          <td data-label="Mean">43.0%</td>
+          <td data-label="Strongest">Sol</td>
+          <td data-label="Weakest">Gemini</td>
+          <td data-label="Anchor most often missed">
+            Flag the internal site discordance: block level microscopy assigns
+            active H. pylori gastritis to the body, the final diagnosis assigns
+            it to the antrum
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Task">report_2605351</td>
+          <td data-label="Mean">48.8%</td>
+          <td data-label="Strongest">Muse 1.3</td>
+          <td data-label="Weakest">Grok 4.7</td>
+          <td data-label="Anchor most often missed">
+            Accept the reported OLGA stage rather than recomputing it and drifting
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Task">report_2605222</td>
+          <td data-label="Mean">53.4%</td>
+          <td data-label="Strongest">Opus 5.5</td>
+          <td data-label="Weakest">Gemini</td>
+          <td data-label="Anchor most often missed">
+            State that the HPV 52 versus HPV 18 ranking is population dependent,
+            not universal
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Hardest tasks table -->
+
+<!-- ============================================================
+     EMBED: Highest-spread tasks table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-spread-tasks-table" aria-label="Highest-spread tasks table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--task" />
+        <col class="medv2-col--spread" />
+        <col class="medv2-col--strongest" />
+        <col class="medv2-col--weakest" />
+        <col class="medv2-col--separated-by" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Spread</th>
+          <th>Strongest</th>
+          <th>Weakest</th>
+          <th>What separated the models</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Task">report_2605303</td>
+          <td data-label="Spread">48.7 pts</td>
+          <td data-label="Strongest">Fable</td>
+          <td data-label="Weakest">Muse 1.3</td>
+          <td data-label="What separated the models">
+            Stating that the receptor subtype is not established and must be
+            confirmed before the result can be assessed
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Task">report_2605363</td>
+          <td data-label="Spread">47.3 pts</td>
+          <td data-label="Strongest">Muse 1.3</td>
+          <td data-label="Weakest">Grok 4.6</td>
+          <td data-label="What separated the models">
+            Reporting the biomarkers as done on a prior specimen, and the
+            primary as not characterized on this nodal specimen
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Task">report_2605281</td>
+          <td data-label="Spread">42.7 pts</td>
+          <td data-label="Strongest">Opus 5</td>
+          <td data-label="Weakest">Astra</td>
+          <td data-label="What separated the models">
+            Holding management open until the pending HPV PCR result is
+            incorporated
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Task">report_2605694</td>
+          <td data-label="Spread">39.9 pts</td>
+          <td data-label="Strongest">Muse 1.3</td>
+          <td data-label="Weakest">Gemini</td>
+          <td data-label="What separated the models">
+            Stating what a curettage cannot establish: lymphovascular invasion
+            elsewhere, the molecular subgroup, or management before staging
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Task">report_2605191</td>
+          <td data-label="Spread">38.0 pts</td>
+          <td data-label="Strongest">Astra</td>
+          <td data-label="Weakest">Gemini</td>
+          <td data-label="What separated the models">
+            Keeping the specimens separate and reporting the ascending colon
+            tumor as conventional, not serrated, adenocarcinoma
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Highest-spread tasks table -->
+
+<!-- ============================================================
+     EMBED: Failure modes table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-failure-signal-table" aria-label="Failure modes table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--failure" />
+        <col class="medv2-col--where" />
+        <col class="medv2-col--signal" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Failure mode</th>
+          <th>Where it shows up</th>
+          <th>Signal in the results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Failure mode">Definitive answer on insufficient evidence</td>
+          <td data-label="Where it shows up">Interpretation, Communication</td>
+          <td data-label="Signal in the results">
+            Overreach is the most tripped penalty, 123 of the 299
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Failure mode">Inaccurate or unjustified management</td>
+          <td data-label="Where it shows up">Management</td>
+          <td data-label="Signal in the results">
+            Management met 63 to 87%; recommendations close but not case specific
+            do not earn
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Failure mode">Unreconciled uncertainty, missing verification</td>
+          <td data-label="Where it shows up">Management, Interpretation</td>
+          <td data-label="Signal in the results">
+            Five criteria are met by no model in any run; two ask the model to
+            qualify a result rather than assert it
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Failure mode">Reading the report too literally</td>
+          <td data-label="Where it shows up">Interpretation</td>
+          <td data-label="Signal in the results">
+            Interpretation is 43 to 52% of every model lost weight
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Failure modes table -->
+
+<!-- ============================================================
+     EMBED: Efficiency table
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-table medv2-efficiency-table" aria-label="Efficiency table">
+  <div class="medv2-table-scroll">
+    <table>
+      <colgroup>
+        <col class="medv2-col--model" />
+        <col class="medv2-col--metric" />
+        <col class="medv2-col--metric" />
+        <col class="medv2-col--metric" />
+        <col class="medv2-col--metric" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Turns</th>
+          <th>Tool calls</th>
+          <th>Minutes</th>
+          <th>Reasoning tokens (k)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Model">Claude Fable 5.1</td>
+          <td data-label="Turns">9.3</td>
+          <td data-label="Tool calls">8.3</td>
+          <td data-label="Minutes">10.1</td>
+          <td data-label="Reasoning tokens (k)">20.9</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Opus 5.5</td>
+          <td data-label="Turns">25.7</td>
+          <td data-label="Tool calls">32.4</td>
+          <td data-label="Minutes">19.2</td>
+          <td data-label="Reasoning tokens (k)">64.3</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Muse Spark 1.3</td>
+          <td data-label="Turns">5.3</td>
+          <td data-label="Tool calls">4.4</td>
+          <td data-label="Minutes">2.8</td>
+          <td data-label="Reasoning tokens (k)">2.8</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Opus 5</td>
+          <td data-label="Turns">7.0</td>
+          <td data-label="Tool calls">7.2</td>
+          <td data-label="Minutes">5.3</td>
+          <td data-label="Reasoning tokens (k)">6.6</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Muse Spark 1.1</td>
+          <td data-label="Turns">4.2</td>
+          <td data-label="Tool calls">3.2</td>
+          <td data-label="Minutes">3.4</td>
+          <td data-label="Reasoning tokens (k)">3.0</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Grok 4.7</td>
+          <td data-label="Turns">5.4</td>
+          <td data-label="Tool calls">5.9</td>
+          <td data-label="Minutes">6.5</td>
+          <td data-label="Reasoning tokens (k)">15.1</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Grok 4.6</td>
+          <td data-label="Turns">3.3</td>
+          <td data-label="Tool calls">2.4</td>
+          <td data-label="Minutes">3.0</td>
+          <td data-label="Reasoning tokens (k)">2.6</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Claude Sonnet 5</td>
+          <td data-label="Turns">3.7</td>
+          <td data-label="Tool calls">2.8</td>
+          <td data-label="Minutes">3.1</td>
+          <td data-label="Reasoning tokens (k)">3.2</td>
+        </tr>
+        <tr>
+          <td data-label="Model">GPT-6 Astra</td>
+          <td data-label="Turns">9.4</td>
+          <td data-label="Tool calls">11.9</td>
+          <td data-label="Minutes">4.9</td>
+          <td data-label="Reasoning tokens (k)">5.1</td>
+        </tr>
+        <tr>
+          <td data-label="Model">GPT-6 Sol</td>
+          <td data-label="Turns">9.8</td>
+          <td data-label="Tool calls">11.5</td>
+          <td data-label="Minutes">3.2</td>
+          <td data-label="Reasoning tokens (k)">6.0</td>
+        </tr>
+        <tr>
+          <td data-label="Model">Gemini 3.8 Flash</td>
+          <td data-label="Turns">11.2</td>
+          <td data-label="Tool calls">10.2</td>
+          <td data-label="Minutes">3.8</td>
+          <td data-label="Reasoning tokens (k)">18.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Efficiency table -->
+
+<!-- ============================================================
+     EMBED: Failure mode narratives
+     Copy from the next line through the matching /EMBED comment
+     ============================================================ -->
+<div class="medv2-failure-narratives" aria-label="Failure mode narratives">
+  <h3 class="heading-style-h5">Definitive answer where the report withholds one</h3>
+  <p>
+    The model states a diagnosis, a stage, or a value the report does not support,
+    in place of holding the category the report actually renders. This is the
+    overreach that dominates the observed penalties, and it is a discipline
+    problem more than a knowledge problem.
+  </p>
+
+  <div class="medv2-example-callout" aria-label="Task report_2605240">
+    <div class="medv2-example-content">
+      <p class="medv2-example-title">
+        <span class="medv2-example-kicker">Task</span>
+        <span class="medv2-example-dot">&middot;</span>
+        <span>report_2605240 &mdash; a thyroid fine needle aspiration reported as Bethesda Category II.</span>
+      </p>
+      <p>
+        <span class="medv2-label">Rubric criterion: </span>
+        <span class="medv2-muted">
+          Maintains the Bethesda Category II designation. (weight 8; Claude Opus 5
+          met this in 0 of 3 runs, the other models in 87%.)
+        </span>
+      </p>
+      <p>
+        <span class="medv2-label">Model response: </span>
+        <span class="medv2-muted">
+          Claude Opus 5 stated that the original Bethesda II diagnosis is not
+          defensible, reclassified the case to Bethesda I, nondiagnostic, and
+          instructed the team to treat it as a nondiagnostic aspirate rather than
+          a benign nodule.
+        </span>
+      </p>
+      <p class="medv2-verdict">
+        <span class="medv2-label">Verdict: </span>
+        <span class="medv2-failed">FAILED</span>
+      </p>
+      <p>
+        <span class="medv2-label">Judge: </span>
+        <span class="medv2-muted">
+          The submitted response explicitly states that the original Bethesda
+          Category II diagnosis is not defensible, reclassifies the case to
+          Bethesda Category I, and instructs the team to treat it as a
+          nondiagnostic aspirate rather than a benign nodule. Therefore it does
+          not maintain the Bethesda Category II designation.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <p>
+    The correct answer holds the reported category; overriding it with a more
+    confident reclassification invents a call the specimen does not carry. This
+    is overreach, the largest penalty category in the set: 123 of the 299 penalty
+    criteria describe it, against 105 for misclassification and 53 for fabrication.
+  </p>
+
+  <h3 class="heading-style-h5">Inaccurate or unjustified management</h3>
+  <p>
+    The task asks for a pathology report interpretation, and the model answers
+    like a treating clinician, naming a test or therapy the report records only as
+    a suggestion, or gives a recommendation that is close to right but not the one
+    this case calls for. Overreach into management is the single most tripped
+    penalty; the mirror problem is a correct recommendation stated too loosely to
+    earn its criterion.
+  </p>
+
+  <div class="medv2-example-callout" aria-label="Task report_2605236">
+    <div class="medv2-example-content">
+      <p class="medv2-example-title">
+        <span class="medv2-example-kicker">Task</span>
+        <span class="medv2-example-dot">&middot;</span>
+        <span>report_2605236 &mdash; a resection where the pathologist suggested genetic counselling.</span>
+      </p>
+      <p>
+        <span class="medv2-label">Rubric criterion: </span>
+        <span class="medv2-muted">
+          States that the pathologist suggested genetic counselling, without
+          asserting that germline testing is indicated. (weight 10; Claude Fable
+          5.1 met this in 0 of 3 runs, the other models in 73%.)
+        </span>
+      </p>
+      <p>
+        <span class="medv2-label">Model response: </span>
+        <span class="medv2-muted">
+          Claude Fable 5.1 stated that the pathologist suggested genetic
+          counselling, then went further and recommended proceeding to germline
+          multigene testing.
+        </span>
+      </p>
+      <p class="medv2-verdict">
+        <span class="medv2-label">Verdict: </span>
+        <span class="medv2-failed">FAILED</span>
+      </p>
+      <p>
+        <span class="medv2-label">Judge: </span>
+        <span class="medv2-muted">
+          The response does state that the pathologist suggested genetic
+          counselling, but it goes further and explicitly recommends proceeding
+          to germline multigene testing. That overstates the criterion, which
+          requires mentioning genetic counselling without asserting that germline
+          testing is indicated.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <p>
+    The report records a suggestion; asserting that germline testing is indicated
+    invents a downstream decision the report does not make. The retargeted rubrics
+    require the benefit of any recommended testing to be stated, not only its
+    justification, so a recommendation that is reasonable in general but not the
+    one this report calls for does not earn the criterion.
+  </p>
+
+  <h3 class="heading-style-h5">Uncertainty resolved instead of verified</h3>
+  <p>
+    The report deliberately leaves a question open, an unresolved differential, a
+    discordance between modalities, a result that must be confirmed, and the model
+    either resolves it too decisively or acts on it without naming the step that
+    would verify it.
+  </p>
+
+  <div class="medv2-example-callout" aria-label="Task report_2605303">
+    <div class="medv2-example-content">
+      <p class="medv2-example-title">
+        <span class="medv2-example-kicker">Task</span>
+        <span class="medv2-example-dot">&middot;</span>
+        <span>report_2605303 &mdash; a specimen with a PD-L1 result but no established receptor subtype.</span>
+      </p>
+      <p>
+        <span class="medv2-label">Rubric criterion: </span>
+        <span class="medv2-muted">
+          Notes that the receptor subtype is not established in this report and
+          must be confirmed before the implications of the result can be fully
+          assessed. (weight 10; Muse Spark 1.3 met this in 0 of 3 runs, the other
+          models in 80%.)
+        </span>
+      </p>
+      <p>
+        <span class="medv2-label">Model response: </span>
+        <span class="medv2-muted">
+          Muse Spark 1.3 discussed the PD-L1 result and advised correlating it
+          with the prior case biomarker profile, but did not note that the
+          receptor subtype is unestablished or that it must be confirmed first.
+        </span>
+      </p>
+      <p class="medv2-verdict">
+        <span class="medv2-label">Verdict: </span>
+        <span class="medv2-failed">FAILED</span>
+      </p>
+      <p>
+        <span class="medv2-label">Judge: </span>
+        <span class="medv2-muted">
+          The submitted response discusses the PD-L1 result and advises
+          correlating it with the prior case biomarker profile, but it does not
+          explicitly note that the receptor subtype is not established in this
+          report or state that it must be confirmed before the implications of
+          the result can be fully assessed.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <p>
+    Acting on a result is not enough; the focus requires naming the confirmation
+    the result still needs. The same pattern runs through the hardest cases: on
+    report_2605222 the rubric asks the model to state that the HPV 52 versus HPV
+    18 ranking is population dependent rather than universal, a criterion no model
+    met in any run, and on report_2605281 to hold management open until the pending
+    HPV PCR result is incorporated rather than finalizing on histology alone.
+  </p>
+
+  <h3 class="heading-style-h5">Reading the report too literally</h3>
+  <p>
+    The model restates the report faithfully but does not read it for meaning: it
+    repeats a staging code without saying what the code implies, applies a named
+    system by rote to a case it does not fit, or relabels a specimen more
+    specifically than the report allows.
+  </p>
+
+  <div class="medv2-example-callout" aria-label="Task report_2605510">
+    <div class="medv2-example-content">
+      <p class="medv2-example-title">
+        <span class="medv2-example-kicker">Task</span>
+        <span class="medv2-example-dot">&middot;</span>
+        <span>report_2605510 &mdash; a partial nephrectomy staged pT1b, Nx, Mx.</span>
+      </p>
+      <p>
+        <span class="medv2-label">Rubric criterion: </span>
+        <span class="medv2-muted">
+          States that Nx and Mx indicate that nodal and distant staging are not
+          assessed in this specimen. (weight 6; Muse Spark 1.1 met this in 0 of 3
+          runs, the other models in 70%.)
+        </span>
+      </p>
+      <p>
+        <span class="medv2-label">Model response: </span>
+        <span class="medv2-muted">
+          Muse Spark 1.1 reported the stage as pT1b, Nx, Mx, but did not state that
+          Nx and Mx mean nodal and distant staging are not assessed in this
+          specimen.
+        </span>
+      </p>
+      <p class="medv2-verdict">
+        <span class="medv2-label">Verdict: </span>
+        <span class="medv2-failed">FAILED</span>
+      </p>
+      <p>
+        <span class="medv2-label">Judge: </span>
+        <span class="medv2-muted">
+          The response mentions the reported stage as pT1b, Nx, Mx, but it does
+          not explicitly state that Nx and Mx mean nodal and distant staging are
+          not assessed in this specimen.
+        </span>
+      </p>
+    </div>
+  </div>
+
+  <p>
+    The report states a code; the model must state its meaning. Over literal
+    reading also drives the interpretation misses that separate the field: on
+    report_2605191 the ascending colon tumor must be reported as a conventional
+    adenocarcinoma rather than relabeled as a serrated subtype, and on
+    report_2605291 the rubric asks the model to note that the infiltrative
+    follicular subtype carries a less favorable behavior than the classic subtype,
+    a reading no model made in any run.
+  </p>
+</div>
+<!-- /EMBED: Failure mode narratives -->
+
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Side by side trajectory viewer</title>
+    <link rel="stylesheet" href="report.css" />
+  </head>
+  <body style="background: #000">
+    <div class="container">
+      <div class="section traj-hero">
+        <div id="report-root" class="traj-root"></div>
+      </div>
+    </div>
+    <script>
+      /**
+       * Side-by-side trajectory viewer — model + task selects, meta grid,
+       * tabs: Prompt / Grading / Summary / Trajectory.
+       * Shell mounts immediately; JSON fills meta + panel asynchronously.
+       */
+      (function () {
+        const TRAJ_DATA_URL = "data.json";
+
+        const MODEL_ICONS = {
+          claude: {
+            alt: "Claude",
+            src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png",
+          },
+          openai: {
+            alt: "OpenAI",
+            src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png",
+          },
+          grok: {
+            alt: "Grok",
+            src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png",
+          },
+          gemini: {
+            alt: "Gemini",
+            src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png",
+          },
+          meta: {
+            alt: "Meta",
+            src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78197846ac25a02e18ff_meta.png",
+          },
+        };
+
+        let DATA = null;
+        let activePanel = "prompt";
+        let currentModelId = null;
+        let currentTaskId = null;
+
+        const LAYOUT_HTML = `
+        <div class="traj-layout">
+          <div class="traj-top-block">
+            <div class="traj-selects-row">
+              <div class="traj-select-field">
+                <div class="traj-dd is-disabled" id="traj-model-dd" data-kind="model">
+                  <button type="button" class="traj-dd-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Select model">
+                    <span class="traj-dd-trigger-inner">
+                      <span class="traj-dd-icon-spacer" aria-hidden="true"></span>
+                      <span class="traj-dd-label">Loading…</span>
+                    </span>
+                    <span class="traj-dd-chevron" aria-hidden="true"></span>
+                  </button>
+                  <div class="traj-dd-menu" role="listbox" hidden></div>
+                </div>
+              </div>
+              <div class="traj-select-field">
+                <div class="traj-dd is-disabled" id="traj-task-dd" data-kind="task">
+                  <button type="button" class="traj-dd-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Select task">
+                    <span class="traj-dd-trigger-inner">
+                      <span class="traj-dd-label">Loading…</span>
+                    </span>
+                    <span class="traj-dd-chevron" aria-hidden="true"></span>
+                  </button>
+                  <div class="traj-dd-menu" role="listbox" hidden></div>
+                </div>
+              </div>
+            </div>
+            <div id="traj-meta-grid" class="traj-meta-grid"></div>
+          </div>
+          <div class="traj-panels-wrap">
+            <div class="traj-segments" id="traj-segments" role="tablist" aria-label="Run detail">
+              <button type="button" class="traj-seg active" data-panel="prompt" role="tab" aria-selected="true">Prompt</button>
+              <button type="button" class="traj-seg" data-panel="grading" role="tab" aria-selected="false">Grading</button>
+              <button type="button" class="traj-seg" data-panel="summary" role="tab" aria-selected="false">Summary</button>
+              <button type="button" class="traj-seg" data-panel="trajectory" role="tab" aria-selected="false">Trajectory</button>
+            </div>
+            <div class="traj-panel-outer">
+              <div id="traj-panel-body" class="traj-panel-body" role="tabpanel"></div>
+            </div>
+          </div>
+        </div>`;
+
+        function mountLayout(root) {
+          root.innerHTML = LAYOUT_HTML;
+        }
+
+        function escapeHtml(s) {
+          if (s == null) return "";
+          return String(s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        }
+
+        function fmtNum(n) {
+          if (n == null) return "—";
+          return Number(n).toLocaleString("en-US");
+        }
+
+        function fmtReward(n) {
+          if (n == null) return "—";
+          return Number(n).toFixed(3);
+        }
+
+        function fmtReps(reps) {
+          if (!Array.isArray(reps) || !reps.length) return "—";
+          return reps
+            .map((x) => (x == null ? "—" : Number(x).toFixed(2)))
+            .join(", ");
+        }
+
+        function modelIconKey(model) {
+          if (model && model.iconStyle && MODEL_ICONS[model.iconStyle]) {
+            return model.iconStyle;
+          }
+          const id = String((model && model.id) || "").toLowerCase();
+          const label = String((model && model.label) || "").toLowerCase();
+          if (
+            id.includes("anthropic") ||
+            id.includes("claude") ||
+            label.includes("claude")
+          )
+            return "claude";
+          if (
+            id.includes("openai") ||
+            id.includes("gpt") ||
+            label.includes("gpt")
+          )
+            return "openai";
+          if (
+            id.includes("xai") ||
+            id.includes("grok") ||
+            label.includes("grok")
+          )
+            return "grok";
+          if (
+            id.includes("google") ||
+            id.includes("gemini") ||
+            label.includes("gemini")
+          )
+            return "gemini";
+          if (
+            id.includes("meta") ||
+            id.includes("muse") ||
+            label.includes("muse")
+          )
+            return "meta";
+          return null;
+        }
+
+        function iconHtml(iconKey) {
+          const icon = iconKey && MODEL_ICONS[iconKey];
+          if (!icon) return "";
+          return `<img class="traj-dd-icon traj-dd-icon--${escapeHtml(iconKey)}" src="${escapeHtml(icon.src)}" alt="" width="20" height="20" />`;
+        }
+
+        function closeAllDropdowns(exceptId) {
+          document.querySelectorAll(".traj-dd.is-open").forEach((dd) => {
+            if (exceptId && dd.id === exceptId) return;
+            dd.classList.remove("is-open");
+            const trigger = dd.querySelector(".traj-dd-trigger");
+            const menu = dd.querySelector(".traj-dd-menu");
+            if (trigger) trigger.setAttribute("aria-expanded", "false");
+            if (menu) menu.hidden = true;
+          });
+        }
+
+        function setDropdownOpen(dd, open) {
+          if (!dd || dd.classList.contains("is-disabled")) return;
+          const trigger = dd.querySelector(".traj-dd-trigger");
+          const menu = dd.querySelector(".traj-dd-menu");
+          if (!trigger || !menu) return;
+          if (open) closeAllDropdowns(dd.id);
+          dd.classList.toggle("is-open", open);
+          trigger.setAttribute("aria-expanded", open ? "true" : "false");
+          menu.hidden = !open;
+        }
+
+        function updateDropdownTrigger(dd, value, label, withIcon) {
+          const inner = dd.querySelector(".traj-dd-trigger-inner");
+          if (!inner) return;
+          const iconKey = withIcon
+            ? modelIconKey({ id: value, label })
+            : null;
+          const icon = iconHtml(iconKey);
+          inner.innerHTML =
+            (icon || (withIcon ? '<span class="traj-dd-icon-spacer" aria-hidden="true"></span>' : "")) +
+            `<span class="traj-dd-label">${escapeHtml(label || "—")}</span>`;
+          dd.dataset.value = value || "";
+        }
+
+        function syncDropdownSelection(dd, value) {
+          dd.querySelectorAll(".traj-dd-option").forEach((opt) => {
+            const on = opt.dataset.value === value;
+            opt.classList.toggle("is-selected", on);
+            opt.setAttribute("aria-selected", on ? "true" : "false");
+          });
+        }
+
+        function buildDropdownOptions(dd, items, selectedId, withIcon) {
+          const menu = dd.querySelector(".traj-dd-menu");
+          if (!menu) return;
+          menu.innerHTML = items
+            .map((item) => {
+              const selected = item.id === selectedId;
+              const icon = withIcon ? iconHtml(modelIconKey(item)) : "";
+              return `<button type="button" class="traj-dd-option${selected ? " is-selected" : ""}" role="option" data-value="${escapeHtml(item.id)}" aria-selected="${selected ? "true" : "false"}">${icon}<span class="traj-dd-option-text">${escapeHtml(item.label)}</span></button>`;
+            })
+            .join("");
+          const selected = items.find((x) => x.id === selectedId) || items[0];
+          if (selected) {
+            updateDropdownTrigger(
+              dd,
+              selected.id,
+              selected.label,
+              withIcon,
+            );
+          }
+        }
+
+        function primeLoadingSelects() {
+          const modelDd = document.getElementById("traj-model-dd");
+          const taskDd = document.getElementById("traj-task-dd");
+          if (modelDd) {
+            updateDropdownTrigger(modelDd, "", "Loading…", true);
+          }
+          if (taskDd) {
+            updateDropdownTrigger(taskDd, "", "Loading…", false);
+          }
+        }
+
+        const META_LABELS = [
+          "Reward (this run)",
+          "All 3 reps",
+          "Answer words",
+          "Turns / tool calls",
+          "Reasoning tokens",
+          "Minutes",
+        ];
+
+        function showLoadingMetaGrid() {
+          const grid = document.getElementById("traj-meta-grid");
+          if (!grid) return;
+          const rowHtml = (slice) =>
+            slice
+              .map(
+                (label) =>
+                  `<div class="traj-stat-card"><div class="traj-stat-label">${escapeHtml(label)}</div><div class="traj-stat-value">—</div></div>`,
+              )
+              .join("");
+          grid.innerHTML = `<div class="traj-meta-row">${rowHtml(META_LABELS.slice(0, 3))}</div><div class="traj-meta-row">${rowHtml(META_LABELS.slice(3))}</div>`;
+        }
+
+        function showLoadingPanel() {
+          const body = document.getElementById("traj-panel-body");
+          if (!body) return;
+          body.innerHTML =
+            '<div class="traj-loader" aria-live="polite" aria-busy="true">' +
+            '<div class="traj-loader__spinner" aria-hidden="true"></div>' +
+            "<span>Loading run data…</span>" +
+            "</div>";
+        }
+
+        function showErrorInPanel(message) {
+          const body = document.getElementById("traj-panel-body");
+          if (!body) return;
+          body.innerHTML =
+            '<div class="traj-error" role="alert">' +
+            escapeHtml(message || "Failed to load data.") +
+            "</div>";
+        }
+
+        function setTrajControlsEnabled(on) {
+          ["traj-model-dd", "traj-task-dd"].forEach((id) => {
+            const dd = document.getElementById(id);
+            if (!dd) return;
+            dd.classList.toggle("is-disabled", !on);
+            const trigger = dd.querySelector(".traj-dd-trigger");
+            if (trigger) trigger.disabled = !on;
+            if (!on) setDropdownOpen(dd, false);
+          });
+          document.querySelectorAll("#traj-segments .traj-seg").forEach((b) => {
+            b.disabled = !on;
+          });
+        }
+
+        const EXPAND_LINES_PROSE = 10;
+        const EXPAND_LINES_MONO = 14;
+        const EXPAND_CHARS_PROSE = 420;
+        const EXPAND_CHARS_THINKING = 520;
+        const EXPAND_CHARS_MONO = 560;
+        let trajExpandSeq = 0;
+
+        function wrapExpandable(escapedInnerHtml, maxLines) {
+          const ml = maxLines != null ? maxLines : EXPAND_LINES_PROSE;
+          const id = "traj-exp-" + ++trajExpandSeq;
+          return (
+            `<div class="traj-expandable" data-traj-max-lines="${ml}">` +
+            `<div class="traj-expandable-inner" id="${id}">${escapedInnerHtml}</div>` +
+            `<button type="button" class="traj-expand-toggle" aria-expanded="false" aria-controls="${id}">Show more</button>` +
+            `</div>`
+          );
+        }
+
+        function effectiveCharLengthForExpandGate(rawText, maxLines) {
+          const s = String(rawText == null ? "" : rawText).trim();
+          if (maxLines === EXPAND_LINES_MONO) return s.length;
+          return s.replace(/\s+/g, " ").length;
+        }
+
+        function trajectoryExpandableBlock(
+          rawText,
+          maxLines,
+          minCharsOverride,
+        ) {
+          const t = rawText == null ? "" : String(rawText);
+          const escaped = escapeHtml(t);
+          let thresh;
+          if (minCharsOverride != null) {
+            thresh = minCharsOverride;
+          } else {
+            thresh =
+              maxLines === EXPAND_LINES_MONO
+                ? EXPAND_CHARS_MONO
+                : EXPAND_CHARS_PROSE;
+          }
+          const gateLen = effectiveCharLengthForExpandGate(t, maxLines);
+          if (gateLen <= thresh) return escaped;
+          return wrapExpandable(escaped, maxLines);
+        }
+
+        function lineHeightPx(el) {
+          const lh = getComputedStyle(el).lineHeight;
+          let px = parseFloat(lh);
+          if (!Number.isFinite(px) || lh === "normal") {
+            px = parseFloat(getComputedStyle(el).fontSize) * 1.45;
+          }
+          return px;
+        }
+
+        let trajExpandFontsHook = false;
+
+        function initTrajectoryExpandCollapse(container) {
+          if (!container) return;
+          const clipEpsilonPx = 1;
+
+          container.querySelectorAll(".traj-expandable").forEach((wrap) => {
+            const inner = wrap.querySelector(".traj-expandable-inner");
+            const btn = wrap.querySelector(".traj-expand-toggle");
+            if (!inner || !btn) return;
+
+            wrap.classList.remove(
+              "traj-expandable--open",
+              "traj-expandable--no-expand",
+            );
+            inner.style.removeProperty("max-height");
+            inner.style.removeProperty("overflow");
+            void inner.offsetHeight;
+
+            const maxLines = parseInt(
+              wrap.dataset.trajMaxLines || String(EXPAND_LINES_PROSE),
+              10,
+            );
+            const maxH = maxLines * lineHeightPx(inner);
+
+            inner.style.setProperty("max-height", maxH + "px");
+            inner.style.setProperty("overflow", "hidden");
+            void inner.offsetHeight;
+
+            const clipped =
+              inner.scrollHeight > inner.clientHeight + clipEpsilonPx;
+
+            if (!clipped) {
+              wrap.classList.add("traj-expandable--no-expand");
+              inner.style.removeProperty("max-height");
+              inner.style.removeProperty("overflow");
+              btn.hidden = true;
+              btn.setAttribute("aria-hidden", "true");
+              btn.textContent = "Show more";
+              btn.setAttribute("aria-expanded", "false");
+              return;
+            }
+
+            btn.hidden = false;
+            btn.removeAttribute("aria-hidden");
+            btn.textContent = "Show more";
+            btn.setAttribute("aria-expanded", "false");
+          });
+        }
+
+        function scheduleTrajectoryExpandables() {
+          const run = () => {
+            const trajScroll = document.querySelector(
+              "#traj-panel-body .traj-panel-scroll--traj",
+            );
+            initTrajectoryExpandCollapse(trajScroll);
+          };
+          requestAnimationFrame(run);
+          if (document.fonts && document.fonts.ready && !trajExpandFontsHook) {
+            trajExpandFontsHook = true;
+            document.fonts.ready.then(run);
+          }
+        }
+
+        function getTask(taskId) {
+          return (DATA.tasks || []).find((t) => t.id === taskId) || null;
+        }
+
+        function getRun(taskId, modelId) {
+          const byTask = (DATA.runs || {})[taskId];
+          if (!byTask) return null;
+          return byTask[modelId] || null;
+        }
+
+        function renderMetaGrid(run) {
+          const meta = (run && run.meta) || {};
+          const turns = meta.turns != null ? meta.turns : "—";
+          const tools = meta.tool_calls != null ? meta.tool_calls : "—";
+          const cards = [
+            { label: "Reward (this run)", value: fmtReward(meta.reward) },
+            { label: "All 3 reps", value: fmtReps(meta.reps) },
+            { label: "Answer words", value: fmtNum(meta.answer_words) },
+            {
+              label: "Turns / tool calls",
+              value: `${turns} / ${tools}`,
+            },
+            {
+              label: "Reasoning tokens",
+              value: fmtNum(meta.reasoning_tokens),
+            },
+            {
+              label: "Minutes",
+              value: meta.minutes != null ? String(meta.minutes) : "—",
+            },
+          ];
+          const card = (x) =>
+            `<div class="traj-stat-card"><div class="traj-stat-label">${escapeHtml(x.label)}</div><div class="traj-stat-value">${escapeHtml(String(x.value))}</div></div>`;
+          return `<div class="traj-meta-row">${cards.slice(0, 3).map(card).join("")}</div><div class="traj-meta-row">${cards.slice(3).map(card).join("")}</div>`;
+        }
+
+        function verdictClass(verdict) {
+          const v = String(verdict || "").trim().toLowerCase();
+          if (v === "pass" || v === "ok" || v === "yes") return "pass";
+          if (v === "partial") return "partial";
+          return "fail";
+        }
+
+        function renderGrading(run) {
+          const rows = (run && run.grading) || [];
+          if (!rows.length)
+            return '<div class="traj-empty">No grading data.</div>';
+          let html =
+            '<div class="traj-grading-card"><div class="traj-grading-header"><div>Verdict</div><div>Weight</div><div>Criterion</div></div>';
+          html += '<div class="traj-grading">';
+          for (const r of rows) {
+            const verdict = r.verdict != null ? String(r.verdict) : "—";
+            const cls = verdictClass(verdict);
+            const rawWeight = r.weight != null ? r.weight : 0;
+            const isNegative =
+              r.kind === "negative" || Number(rawWeight) < 0;
+            const signedWeight = isNegative
+              ? -Math.abs(Number(rawWeight))
+              : Number(rawWeight);
+            const weightStr =
+              signedWeight > 0 ? `+${signedWeight}` : String(signedWeight);
+            const weightCls = signedWeight < 0 ? "weight neg" : "weight";
+            const kindBadge = isNegative
+              ? ` <span class="crit-kind-neg">PENALTY</span>`
+              : "";
+            const judge = r.judge || r.reasoning || r.judge_reasoning || "";
+            html += `<div class="traj-grading-row">
+        <div class="traj-grading-kv traj-grading-kv--score">
+          <span class="traj-grading-mobile-label">Verdict</span>
+          <div class="score ${cls}">${escapeHtml(verdict)}</div>
+        </div>
+        <div class="traj-grading-kv traj-grading-kv--weight">
+          <span class="traj-grading-mobile-label">Weight</span>
+          <div class="${weightCls}">${escapeHtml(weightStr)}</div>
+        </div>
+        <div class="traj-grading-kv traj-grading-kv--criterion">
+          <span class="traj-grading-mobile-label">Criterion</span>
+          <div class="traj-grading-criterion-body">
+            <div class="crit-text">${escapeHtml(r.criterion || "")}${kindBadge}</div>
+            ${judge ? `<div class="judge-note"><span class="judge-note-label">Judge</span><span class="judge-note-body">${escapeHtml(judge)}</span></div>` : ""}
+          </div>
+        </div>
+      </div>`;
+          }
+          html += "</div></div>";
+          return html;
+        }
+
+        function renderToolCall(tc) {
+          let args = tc.arguments || "";
+          try {
+            const parsed = JSON.parse(args);
+            args = JSON.stringify(parsed, null, 2);
+          } catch (e) {
+            /* leave raw */
+          }
+          return `<div class="traj-tool-call">
+      <div class="traj-tool-call-name">${escapeHtml(tc.name || "tool_call")}</div>
+      <div class="traj-tool-call-args">${trajectoryExpandableBlock(args, EXPAND_LINES_MONO)}</div>
+    </div>`;
+        }
+
+        function renderMessage(msg, idx) {
+          const role = msg.role || "unknown";
+          const cls =
+            role === "assistant"
+              ? "assistant"
+              : role === "tool"
+                ? "tool"
+                : "user";
+          const turnLabel =
+            msg.turn != null
+              ? `<span class="traj-turn-kicker">Turn</span><span class="traj-turn-num">${escapeHtml(String(msg.turn))}</span>`
+              : `<span class="traj-turn-kicker">${escapeHtml(role)}</span><span class="traj-turn-num">${escapeHtml(String(idx))}</span>`;
+
+          let inner = "";
+          const thinking = msg.thinking || msg.reasoning || "";
+          if (thinking && String(thinking).trim()) {
+            inner +=
+              '<div class="traj-msg-thinking">' +
+              '<div class="traj-msg-thinking-label">reasoning summary</div>' +
+              `<div class="traj-msg-thinking-body">${trajectoryExpandableBlock(String(thinking).trim(), EXPAND_LINES_PROSE, EXPAND_CHARS_THINKING)}</div>` +
+              "</div>";
+          }
+          const text = msg.content || msg.text || "";
+          if (text && String(text).trim()) {
+            inner += `<div class="traj-msg-content">${trajectoryExpandableBlock(String(text).trim(), EXPAND_LINES_PROSE)}</div>`;
+          }
+          for (const tc of msg.tool_calls || []) {
+            inner += renderToolCall(tc);
+          }
+
+          const headerHtml = `<div class="traj-msg-header ${cls}">${turnLabel}</div>`;
+          return `<div class="traj-msg ${cls}">${headerHtml}<div class="traj-msg-thread-body">${inner}</div></div>`;
+        }
+
+        function renderTrajectory(run) {
+          trajExpandSeq = 0;
+          const traj = (run && run.trajectory) || [];
+          if (!traj.length)
+            return '<div class="traj-empty">No trajectory data.</div>';
+          return traj.map((m, i) => renderMessage(m, i)).join("");
+        }
+
+        function panelBodyHtml(run, task, panel) {
+          switch (panel) {
+            case "prompt":
+              return `<div class="traj-prompt-shell"><div class="traj-prompt-body">${escapeHtml((task && task.prompt) || "(prompt unavailable)")}</div></div>`;
+            case "grading":
+              return `<div class="traj-panel-scroll">${renderGrading(run)}</div>`;
+            case "summary":
+              return `<div class="traj-prompt-shell"><div class="traj-memo traj-memo--panel">${escapeHtml((run && run.summary) || "(no summary)")}</div></div>`;
+            case "trajectory":
+              return `<div class="traj-panel-scroll traj-panel-scroll--traj">${renderTrajectory(run)}</div>`;
+            default:
+              return "";
+          }
+        }
+
+        function syncSegmentUI() {
+          document.querySelectorAll(".traj-seg").forEach((b) => {
+            const on = b.dataset.panel === activePanel;
+            b.classList.toggle("active", on);
+            b.setAttribute("aria-selected", on ? "true" : "false");
+          });
+        }
+
+        function render() {
+          if (!DATA) return;
+          const run = getRun(currentTaskId, currentModelId);
+          const task = getTask(currentTaskId);
+          const grid = document.getElementById("traj-meta-grid");
+          if (grid) {
+            grid.innerHTML = run
+              ? renderMetaGrid(run)
+              : `<div class="traj-empty">No run for this model + task.</div>`;
+          }
+          const body = document.getElementById("traj-panel-body");
+          if (body) {
+            body.innerHTML = run
+              ? panelBodyHtml(run, task, activePanel)
+              : '<div class="traj-empty">No run for this model + task.</div>';
+          }
+          scheduleTrajectoryExpandables();
+        }
+
+        function setPanel(panel) {
+          activePanel = panel;
+          syncSegmentUI();
+          render();
+        }
+
+        function fillSelects() {
+          const modelDd = document.getElementById("traj-model-dd");
+          const taskDd = document.getElementById("traj-task-dd");
+          if (!modelDd || !taskDd) return;
+
+          if (!currentModelId && DATA.models && DATA.models[0]) {
+            currentModelId = DATA.models[0].id;
+          }
+          if (!currentTaskId && DATA.tasks && DATA.tasks[0]) {
+            currentTaskId = DATA.tasks[0].id;
+          }
+
+          buildDropdownOptions(
+            modelDd,
+            DATA.models || [],
+            currentModelId,
+            true,
+          );
+          buildDropdownOptions(
+            taskDd,
+            DATA.tasks || [],
+            currentTaskId,
+            false,
+          );
+        }
+
+        function wireEvents() {
+          const root = document.getElementById("report-root");
+          if (!root) return;
+
+          root.addEventListener("click", (e) => {
+            const trigger = e.target.closest(".traj-dd-trigger");
+            if (trigger && root.contains(trigger)) {
+              const dd = trigger.closest(".traj-dd");
+              if (!dd || dd.classList.contains("is-disabled")) return;
+              setDropdownOpen(dd, !dd.classList.contains("is-open"));
+              return;
+            }
+
+            const option = e.target.closest(".traj-dd-option");
+            if (option && root.contains(option)) {
+              const dd = option.closest(".traj-dd");
+              if (!dd || !DATA) return;
+              const value = option.dataset.value;
+              const label =
+                option.querySelector(".traj-dd-option-text")?.textContent ||
+                value;
+              const withIcon = dd.dataset.kind === "model";
+              updateDropdownTrigger(dd, value, label, withIcon);
+              syncDropdownSelection(dd, value);
+              setDropdownOpen(dd, false);
+              if (dd.dataset.kind === "model") {
+                currentModelId = value;
+              } else if (dd.dataset.kind === "task") {
+                currentTaskId = value;
+              }
+              render();
+              return;
+            }
+
+            const toggle = e.target.closest(".traj-expand-toggle");
+            if (toggle && root.contains(toggle)) {
+              if (!toggle.closest(".traj-panel-scroll--traj")) return;
+              const wrap = toggle.closest(".traj-expandable");
+              const inner =
+                wrap && wrap.querySelector(".traj-expandable-inner");
+              if (!wrap || !inner) return;
+              if (wrap.classList.contains("traj-expandable--no-expand")) return;
+
+              const opening = !wrap.classList.contains("traj-expandable--open");
+              wrap.classList.toggle("traj-expandable--open", opening);
+              if (opening) {
+                inner.style.removeProperty("max-height");
+                inner.style.removeProperty("overflow");
+                toggle.textContent = "Show less";
+                toggle.setAttribute("aria-expanded", "true");
+              } else {
+                const maxLines = parseInt(
+                  wrap.dataset.trajMaxLines || String(EXPAND_LINES_PROSE),
+                  10,
+                );
+                inner.style.setProperty(
+                  "max-height",
+                  maxLines * lineHeightPx(inner) + "px",
+                );
+                inner.style.setProperty("overflow", "hidden");
+                toggle.textContent = "Show more";
+                toggle.setAttribute("aria-expanded", "false");
+              }
+            }
+          });
+
+          document
+            .getElementById("traj-segments")
+            .addEventListener("click", (e) => {
+              if (!DATA) return;
+              const btn = e.target.closest(".traj-seg");
+              if (!btn) return;
+              setPanel(btn.dataset.panel);
+            });
+
+          document.addEventListener("click", (e) => {
+            if (e.target.closest(".traj-dd")) return;
+            closeAllDropdowns();
+          });
+
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeAllDropdowns();
+          });
+        }
+
+        function initViewer(data) {
+          if (!data || !data.models || !data.tasks || !data.runs) {
+            showErrorInPanel(
+              "Invalid data: expected models, tasks, and runs.",
+            );
+            return;
+          }
+          DATA = data;
+          fillSelects();
+          render();
+          syncSegmentUI();
+          setTrajControlsEnabled(true);
+        }
+
+        function loadTrajectoryJson() {
+          fetch(TRAJ_DATA_URL)
+            .then((r) => {
+              if (!r.ok)
+                throw new Error(
+                  "Could not load " + TRAJ_DATA_URL + " (" + r.status + ")",
+                );
+              return r.json();
+            })
+            .then((data) => initViewer(data))
+            .catch((err) => {
+              showErrorInPanel(
+                err.message || "Network error while loading run data.",
+              );
+            });
+        }
+
+        function start() {
+          const root = document.getElementById("report-root");
+          if (!root) return;
+          mountLayout(root);
+          primeLoadingSelects();
+          showLoadingMetaGrid();
+          showLoadingPanel();
+          setTrajControlsEnabled(false);
+          wireEvents();
+          requestAnimationFrame(function () {
+            loadTrajectoryJson();
+          });
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", start);
+        } else {
+          start();
+        }
+      })();
+    </script>
+  </body>
+</html>

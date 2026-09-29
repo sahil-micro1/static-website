@@ -3,6 +3,47 @@
 
 window.benchmarks_data = window.benchmarks_data || {};
 
+window.benchmarks_data["medical-v2"] = {
+  lastUpdated: "September 29, 2026",
+  defaultTab: "mean",
+  tabs: [
+    {
+      id: "best-at-3",
+      label: "Best@3 score",
+      rows: [
+        { name: "Claude Fable 5.1 (max)", score: 83.6, iconStyle: "claude" },
+        { name: "Claude Opus 5.5 (max)", score: 82.5, iconStyle: "claude" },
+        { name: "Muse Spark 1.3 (xhigh)", score: 81.9, iconStyle: "meta" },
+        { name: "Claude Opus 5 (max)", score: 81, iconStyle: "claude" },
+        { name: "Muse Spark 1.1 (xhigh)", score: 80.9, iconStyle: "meta" },
+        { name: "Grok 4.7 (xhigh)", score: 79.3, iconStyle: "grok" },
+        { name: "Grok 4.6 (high)", score: 79.2, iconStyle: "grok" },
+        { name: "Claude Sonnet 5", score: 79, iconStyle: "claude" },
+        { name: "GPT-6 Astra (max, task tool denied)", score: 75.3, iconStyle: "openai" },
+        { name: "GPT-6 Sol (max, task tool denied)", score: 74.7, iconStyle: "openai" },
+        { name: "Gemini 3.8 Flash (high)", score: 72.6, iconStyle: "gemini" },
+      ],
+    },
+    {
+      id: "mean",
+      label: "Mean score",
+      rows: [
+        { name: "Claude Fable 5.1 (max)", score: 78, iconStyle: "claude" },
+        { name: "Claude Opus 5.5 (max)", score: 77, iconStyle: "claude" },
+        { name: "Muse Spark 1.3 (xhigh)", score: 75.8, iconStyle: "meta" },
+        { name: "Claude Opus 5 (max)", score: 75.2, iconStyle: "claude" },
+        { name: "Muse Spark 1.1 (xhigh)", score: 74.9, iconStyle: "meta" },
+        { name: "Grok 4.7 (xhigh)", score: 73.1, iconStyle: "grok" },
+        { name: "Grok 4.6 (high)", score: 72.1, iconStyle: "grok" },
+        { name: "Claude Sonnet 5", score: 71.7, iconStyle: "claude" },
+        { name: "GPT-6 Astra (max, task tool denied)", score: 70.3, iconStyle: "openai" },
+        { name: "GPT-6 Sol (max, task tool denied)", score: 69.3, iconStyle: "openai" },
+        { name: "Gemini 3.8 Flash (high)", score: 66.3, iconStyle: "gemini" },
+      ],
+    },
+  ],
+};
+
 window.benchmarks_data["medical"] = {
   lastUpdated: "July 19, 2026",
   defaultTab: "best-at-3",
