@@ -1836,18 +1836,26 @@ const initForm = {
 
         console.log(amplitudeEventParams);
 
-        if(formType === "data") {
-          const dataPayout = calcDataPayout({
-            employees: allFormData.get("data-size"),
-            years: allFormData.get("data-year-start"),
-            entities: allFormData.get("data-entities"),
-            englishPct: allFormData.get("data-english"),
-            location: allFormData.get("data-location"),
-            highRisk: allFormData.get("data-sensitive"),
-          });
-          console.log(dataPayout);
-          document.querySelector(".data-payout").textContent = dataPayout;
-          utilities.updateInput(document.querySelectorAll(".data-payout-input"), dataPayout);
+        if (formType === "data") {
+          try {
+            const dataPayout = await fetchDataPayout({
+              employees: allFormData.get("data-size"),
+              years: allFormData.get("data-year-start"),
+              entities: allFormData.get("data-entities"),
+              englishPct: allFormData.get("data-english"),
+              location: allFormData.get("data-location"),
+              highRisk: allFormData.get("data-sensitive"),
+            });
+            console.log(dataPayout);
+            const payoutEl = document.querySelector(".data-payout");
+            if (payoutEl) payoutEl.textContent = dataPayout;
+            utilities.updateInput(
+              document.querySelectorAll(".data-payout-input"),
+              dataPayout,
+            );
+          } catch (err) {
+            console.error(err);
+          }
         }
 
         await submitFormToMake(amplitudeEventParams);
@@ -2844,72 +2852,31 @@ window.addEventListener("load", () => {
 });
 
 /**
- * Calculate indicative payout range from form inputs.
- * Self-contained — includes all rates and volume constants.
- *
- * @param {object} input
- * @param {number} input.employees - Knowledge workers
- * @param {number} [input.years] - Years of history
- * @param {number} [input.entities=1] - Business entities
- * @param {number} [input.englishPct=100] - % of data in English (0-100)
- * @param {"US"|"Canada/Europe"|"Other"} [input.location="US"]
- * @param {string} [input.highRisk="no"] - Sensitive/regulated data ("yes"|"no")
- * @returns {string} Formatted payout range, e.g. "$100,000-$200,000"
+ * Fetch the original-wizard payout range from the Cloudflare Worker.
+ * @returns {Promise<string>} Formatted range, e.g. "$100,000-$200,000"
  */
-function calcDataPayout(input) {
-  const RATES = {
-    baseFee: 140000,
-    perEmployee: 2333,
-    perGB: 15.75,
-    perYear: 11667,
-    entityUplift: 0.125,
-    riskMultiplier: 1.5,
-    location: {
-      US: 1,
-      "Canada/Europe": 0.75,
-      Other: 0.3,
+async function fetchDataPayout(input) {
+  const res = await fetch(
+    "https://data-payout-calculator.sahil-773.workers.dev/payout/original",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        employees: input.employees,
+        years: input.years,
+        entities: input.entities,
+        englishPct: input.englishPct,
+        location: input.location || "US",
+        highRisk: String(input.highRisk || "").toLowerCase() === "yes",
+      }),
     },
-  };
+  );
 
-  const DATA_VOLUME = {
-    lowGB: 1,   // light stack (GB per worker per year)
-    highGB: 14, // heavy stack (GB per worker per year)
-  };
+  if (!res.ok) throw new Error("Payout request failed");
 
-  const PAYOUT_RANGE_LOW = 0.75;  // -25%
-  const PAYOUT_RANGE_HIGH = 1.25; // +25%
-
-  const employees = Math.max(0, Number(input.employees) || 0);
-  const entities = Math.max(1, Math.floor(Number(input.entities) || 1));
-  const englishPct = Math.min(100, Math.max(0, Number(input.englishPct) ?? 100));
-  const location = input.location || "US";
-  const highRisk = String(input.highRisk || "").toLowerCase() === "yes";
-  const years = Math.max(1, Number(input.years) || 1);
-
-  const base = Math.max(0, employees * years);
-  const lowTB = Math.max(0.1, (base * DATA_VOLUME.lowGB) / 1000);
-  const highTB = Math.max(0.2, (base * DATA_VOLUME.highGB) / 1000);
-
-  const entityMult = 1 + (entities - 1) * RATES.entityUplift;
-  const languageMult = englishPct / 100;
-  const locationMult = RATES.location[location] ?? 1;
-  const riskMult = highRisk ? RATES.riskMultiplier : 1;
-  const mult = entityMult * languageMult * locationMult * riskMult;
-
-  const payAtTB = (dataTB) =>
-    (employees * RATES.perEmployee +
-      dataTB * 1000 * RATES.perGB +
-      years * RATES.perYear +
-      RATES.baseFee) *
-    mult;
-
-  const formatUSD = (n) =>
-    "$" + Math.round(n).toLocaleString("en-US");
-
-  const low = payAtTB(lowTB) * PAYOUT_RANGE_LOW;
-  const high = payAtTB(highTB) * PAYOUT_RANGE_HIGH;
-
-  return `${formatUSD(low)}-${formatUSD(high)}`;
+  const data = await res.json();
+  const formatUSD = (n) => "$" + Math.round(Number(n)).toLocaleString("en-US");
+  return `${formatUSD(data.low)}-${formatUSD(data.high)}`;
 }
 
 
