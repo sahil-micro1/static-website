@@ -256,3 +256,22 @@ window.benchmarks_data["long-extraction"] = {
     },
   ],
 };
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["cortex-retrieval-bench"] = {
+  lastUpdated: "October 1, 2026",
+  defaultTab: "authority-success-at-1",
+  tabs: [
+    {
+      id: "authority-success-at-1",
+      label: "Authority Success@1",
+      rows: [
+        { name: "OpenAI dense", score: 69.3, iconStyle: "openai" },
+        { name: "BGE Dense", score: 62.1, iconStyle: "bge-dense" },
+        { name: "Local hybrid", score: 60.7, iconStyle: "local" },
+        { name: "BM25", score: 42.1, iconStyle: "bm25" },
+      ],
+    },
+  ],
+};

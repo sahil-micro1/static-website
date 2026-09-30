@@ -44,6 +44,18 @@
       alt: "Kimi",
       src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a9a1a377f14a491e60444_kimi.png",
     },
+    bm25: {
+      alt: "BM25",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6abd5e130437ca314d0a75d3_bm25.png",
+    },
+    "bge-dense": {
+      alt: "BGE Dense",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6abd5e130437ca314d0a75af_bge-dense.png",
+    },
+    local: {
+      alt: "Local hybrid",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6abd5e12e5e1c9562ef39209_local.png",
+    },
   };
 
   const PREVIEW_COUNT = 3;
@@ -190,14 +202,18 @@
       const th = root.tooltipEl.offsetHeight;
       const gap = 4;
 
-      // Prefer right of trigger; flip left only if it won't fit on the right.
-      // No horizontal clamp — clamping was sliding left-flipped tooltips back over the icon.
+      const pad = 8;
       let left = anchor.right - panel.left + gap;
-      if (left + tw > panel.width - 8) {
-        left = anchor.left - panel.left - tw - gap;
-      }
+      let top = anchor.top - panel.top + (anchor.height - th) / 2;
+      const fitsRight = left + tw <= panel.width - pad;
+      const flipped = anchor.left - panel.left - tw - gap;
 
-      const top = anchor.top - panel.top + (anchor.height - th) / 2;
+      if (!fitsRight && flipped >= pad) {
+        left = flipped;
+      } else if (!fitsRight) {
+        left = Math.max(pad, Math.min(anchor.left - panel.left, panel.width - tw - pad));
+        top = anchor.bottom - panel.top + gap;
+      }
 
       root.tooltipEl.style.left = left + "px";
       root.tooltipEl.style.top = top + "px";

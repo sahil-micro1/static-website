@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cortex Retrieval Bench embeds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Preview only — do not copy into Webflow */
+    body {
+      margin: 0;
+      background: #121212;
+    }
+
+    .crb-table {
+      max-width: 816px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     EMBED: Related benchmarks table
+     Self-contained. Copy from the <style> through the /EMBED comment.
+     ============================================================ -->
+<style>
+  .crb-table {
+    --crb-bg: #121212;
+    --crb-white-90: rgba(255, 255, 255, 0.9);
+    --crb-white-60: rgba(255, 255, 255, 0.6);
+    --crb-white-10: rgba(255, 255, 255, 0.1);
+    --crb-white-6: rgba(255, 255, 255, 0.06);
+    --crb-white-1: rgba(255, 255, 255, 0.01);
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    position: relative;
+    background: var(--crb-bg);
+    color: var(--crb-white-90);
+    font-family: "Outfit", sans-serif;
+  }
+
+  .crb-table::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 8px;
+    width: 50px;
+    pointer-events: none;
+    z-index: 3;
+    background: linear-gradient(
+      to left,
+      rgba(18, 18, 18, 0.95) 0%,
+      rgba(18, 18, 18, 0) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .crb-table.is-scrollable::after {
+    opacity: 1;
+  }
+
+  .crb-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.06);
+  }
+
+  .crb-table-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .crb-table-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .crb-table-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+
+  .crb-table *,
+  .crb-table *::before,
+  .crb-table *::after {
+    box-sizing: border-box;
+  }
+
+  .crb-table table {
+    width: 100%;
+    min-width: 0;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .crb-table th,
+  .crb-table td {
+    border: 1px solid var(--crb-white-6);
+    vertical-align: top;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+
+  .crb-table thead th {
+    background: var(--crb-white-10);
+    color: var(--crb-white-90);
+    line-height: 1.6;
+    text-align: left;
+    letter-spacing: 0;
+  }
+
+  .crb-table tbody td {
+    background: var(--crb-white-1);
+    color: var(--crb-white-60);
+    line-height: 1.6;
+    letter-spacing: 0;
+  }
+
+  .crb-table tbody td.crb-table__benchmark {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    color: var(--crb-white-90);
+  }
+
+  .crb-related-table col.crb-col--benchmark {
+    width: 26%;
+  }
+
+  .crb-related-table col.crb-col--task {
+    width: 34%;
+  }
+
+  .crb-related-table col.crb-col--relationship {
+    width: 40%;
+  }
+
+  @media (max-width: 1280px) {
+    .crb-related-table table {
+      min-width: 791px;
+    }
+  }
+</style>
+<script>
+  (function () {
+    function syncTable(table) {
+      const scroller = table.querySelector(".crb-table-scroll");
+      if (!scroller) return;
+      const canScroll = scroller.scrollWidth > scroller.clientWidth + 1;
+      const atEnd =
+        scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1;
+      table.classList.toggle("is-scrollable", canScroll && !atEnd);
+    }
+
+    function syncAll() {
+      document.querySelectorAll(".crb-table").forEach(syncTable);
+    }
+
+    document.querySelectorAll(".crb-table-scroll").forEach(function (scroller) {
+      scroller.addEventListener(
+        "scroll",
+        function () {
+          syncTable(scroller.closest(".crb-table"));
+        },
+        { passive: true }
+      );
+    });
+
+    window.addEventListener("resize", syncAll);
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", syncAll);
+    } else {
+      syncAll();
+    }
+  })();
+</script>
+
+<div class="crb-table crb-related-table" aria-label="Related benchmarks compared with CortexRetrievalBench">
+  <div class="crb-table-scroll">
+    <table>
+      <colgroup>
+        <col class="crb-col--benchmark" />
+        <col class="crb-col--task" />
+        <col class="crb-col--relationship" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Benchmark / year</th>
+          <th>Primary task and retrieval unit</th>
+          <th>Relationship to the CortexRetrievalBench</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">TREC (1992&ndash;); BEIR (2021); FiQA (2018)</td>
+          <td data-label="Primary task and retrieval unit">General IR test collections; document or passage retrieval across domains.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Supplies pooling, qrels, metrics, and cross-domain baselines. Cortex is finance-specific and has a shallower, incumbent-derived relevance pool.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinQA / TAT-QA / ConvFinQA (2021&ndash;2022)</td>
+          <td data-label="Primary task and retrieval unit">Numerical and table-text reasoning with supplied report context.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Evaluates reasoning after context selection; Cortex tests the upstream source-document choice.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinanceBench (2023)</td>
+          <td data-label="Primary task and retrieval unit">Open-book financial QA over company filings; retrieval inside an end-to-end pipeline.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Strong practitioner-style QA precedent, but exact-document ranking is not the isolated endpoint.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinDER (2025)</td>
+          <td data-label="Primary task and retrieval unit">Expert financial queries with annotated supporting evidence; passage or evidence retrieval.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Closely related professional-query benchmark; narrower retrieval unit than Cortex&rsquo;s complete source file.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinAgentBench (2025)</td>
+          <td data-label="Primary task and retrieval unit">LLM-guided document-type selection followed by passage retrieval.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Closest agentic retrieval analogue; it selects a document type and then retrieves passages, rather than ranking exact files within a heterogeneous document pack.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">T<sup>2</sup>-RAGBench (2026)</td>
+          <td data-label="Primary task and retrieval unit">Corpus-level retrieval of text/table context before numerical reasoning.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Text-table RAG evaluation built from oracle-context QA data; not an authority-selection benchmark.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">RARE / RedQA (2026)</td>
+          <td data-label="Primary task and retrieval unit">Redundancy-aware evaluation using fact-level evidence across finance, legal, and patent corpora.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Shares Cortex&rsquo;s pooling and alternate-evidence caveat; evaluates evidence sufficiency, not exact-source authority.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">LEDGER (2026)</td>
+          <td data-label="Primary task and retrieval unit">Page-level KPI retrieval across 4,999 annual reports with TREC-style judgments.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Deeply judged; narrower in source-document type and retrieval granularity.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinRank (2026)</td>
+          <td data-label="Primary task and retrieval unit">Passage retrieval and reranking over 10-K/10-Q filings from 22 companies, with entity, period, and disclosure-context hard negatives.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Closest provenance-sensitive comparator; it ranks passages within filings, while Cortex ranks complete files across mixed document functions.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinMRAGBench (2026)</td>
+          <td data-label="Primary task and retrieval unit">Multi-document, multimodal financial RAG over annual reports; 887 expert-verified QA pairs.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Broader evidence integration and end-to-end RAG; Cortex isolates exact-file authority.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">LOFin / HiREC (2025)</td>
+          <td data-label="Primary task and retrieval unit">Hierarchical document and passage retrieval over 145,897 SEC filings and 1,595 QA pairs.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Major scale precedent for document-first retrieval; standardized filings and end-to-end QA rather than exact authority selection across mixed source types.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinDoc-RAG (2025)</td>
+          <td data-label="Primary task and retrieval unit">RAG evaluation over 600+ questions from 46 heterogeneous documents, all from UBS entities.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Strong enterprise-document precedent within one institution; Cortex adds cross-company source packs and isolates exact-file authority.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">OmniEval (2025)</td>
+          <td data-label="Primary task and retrieval unit">Chinese-language financial RAG evaluation across five task classes and 16 topics.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Broadly evaluates retrieval and generation across topics and task types; Cortex isolates English exact-document authority selection.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinTMMBench (2025)</td>
+          <td data-label="Primary task and retrieval unit">Temporal-aware multimodal RAG over tables, news, stock prices, and charts from NASDAQ-100 companies.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Strong temporal and cross-modal comparator; it evaluates retrieval and analysis across modalities rather than exact source-file authority.</td>
+        </tr>
+        <tr>
+          <td class="crb-table__benchmark" data-label="Benchmark / year">FinRAGBench-V (2025)</td>
+          <td data-label="Primary task and retrieval unit">Bilingual visual RAG over text, tables, and charts with page- and block-level visual citation.</td>
+          <td data-label="Relationship to the CortexRetrievalBench">Important visual-retrieval and citation precedent; Cortex scores complete source documents rather than visual evidence blocks.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- /EMBED: Related benchmarks table -->
+
+</body>
+</html>
