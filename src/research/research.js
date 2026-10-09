@@ -56,6 +56,18 @@
       alt: "Local hybrid",
       src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6abd5e12e5e1c9562ef39209_local.png",
     },
+    muse: {
+      alt: "Muse",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac965ffaf650a28033b1c1a_muse.png",
+    },
+    "grok-bot": {
+      alt: "Grok Bot",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac9660c2379790d5e8a29d2_grok-bot.png",
+    },
+    instinct: {
+      alt: "Instinct",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac9660b3065c35e77c84a39_instinct.png",
+    },
   };
 
   const PREVIEW_COUNT = 3;

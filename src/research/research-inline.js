@@ -275,3 +275,32 @@ window.benchmarks_data["cortex-retrieval-bench"] = {
     },
   ],
 };
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["personal-agent"] = {
+  lastUpdated: "October 5, 2026",
+  defaultTab: "trusted-completion",
+  tabs: [
+    {
+      id: "trusted-completion",
+      label: "Trusted Completion",
+      rows: [
+        { name: "Gemini Spark", score: 60, iconStyle: "gemini" },
+        { name: "Instinct", score: 40, iconStyle: "instinct" },
+        { name: "Grok Bot", score: 30, iconStyle: "grok-bot" },
+        { name: "Muse", score: 20, iconStyle: "muse" },
+      ],
+    },
+    {
+      id: "task-completion",
+      label: "Task Completion",
+      rows: [
+        { name: "Gemini Spark", score: 70, iconStyle: "gemini" },
+        { name: "Instinct", score: 40, iconStyle: "instinct" },
+        { name: "Grok Bot", score: 30, iconStyle: "grok-bot" },
+        { name: "Muse", score: 20, iconStyle: "muse" },
+      ],
+    },
+  ],
+};

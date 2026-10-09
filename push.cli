@@ -7,11 +7,11 @@ npx --yes esbuild src/research/leaderboard.js --minify --outfile=prod/leaderboar
 npx --yes esbuild src/research/leaderboard.css --minify --outfile=prod/leaderboard.min.css && \
 cp src/legal/cookie.html dist/cookie.html && \
 cp src/_headers dist/_headers && \
-rm -rf dist/benchmarks && \
-cp -R src/benchmarks dist/benchmarks && \
+mkdir -p dist/benchmarks && \
+rsync -a --delete --exclude /cortex-retrieval-bench --exclude /agents src/benchmarks/ dist/benchmarks/ && \
 rm -rf dist/robotics && \
 cp -R src/robotics dist/robotics && \
-git add src dist prod push.cli wrangler.jsonc && \
+git add src ':!src/legal' ':!src/attribution' ':!src/benchmarks/agents' src/legal/cookie.html dist prod push.cli wrangler.jsonc && \
 git add -u && \
 git commit -m "release" && \
 git push origin main && \
