@@ -68,6 +68,14 @@
       alt: "Instinct",
       src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac9660b3065c35e77c84a39_instinct.png",
     },
+    dots: {
+      alt: "Dots",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6acba266b4d5b0c81639d957_Rectangle%20828901%20(2).png",
+    },
+    hark: {
+      alt: "Hark",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6acba268d423991cbf7b0735_Rectangle%20828901%20(1).png",
+    },
   };
 
   const PREVIEW_COUNT = 3;

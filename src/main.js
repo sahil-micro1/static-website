@@ -609,6 +609,8 @@ const initTracking = {
         "new-stage.talent.micro1.ai",
         "talent.micro1.ai",
         "new-stage.client.micro1.ai",
+        "company.micro1.ai",
+        "new-stage.company.micro1.ai"
       ];
 
       const portalLinks = addParamsToURLs(paramsObjPortal, domainList);
@@ -634,6 +636,10 @@ const initTracking = {
             "intelligence.micro1.ai",
             "new-stage.intelligence.micro1.ai",
           );
+          link.href = link.href.replace(
+            "company.micro1.ai",
+            "new-stage.company.micro1.ai",
+          );
         }
       });
 
@@ -643,6 +649,8 @@ const initTracking = {
         "refer.micro1.ai",
         "new-stage.refer.micro1.ai",
         "interview.micro1.ai",
+        "company.micro1.ai",
+        "new-stage.company.micro1.ai"
       ];
 
       const jobLinks = addParamsToURLs(paramsObj, domainListJob);

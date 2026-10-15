@@ -1,0 +1,28 @@
+<!-- Teaching the reviewer · TL;DR (self-contained Webflow embed)
+     Paste into a Webflow Embed element. Requires a dark page background (~#121212). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap">
+<style>
+.tr-widget-tldr{
+  box-sizing:border-box;max-width:856px;width:100%;
+  margin:0 0 8px;padding:20px;
+  border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.01);
+  color:rgba(255,255,255,.9);
+  font:16px/1.6 Outfit,Arial,sans-serif;-webkit-font-smoothing:antialiased;
+}
+.tr-widget-tldr *,.tr-widget-tldr *::before,.tr-widget-tldr *::after{box-sizing:border-box}
+.tr-widget-tldr .t{font-size:20px;margin:0 0 10px;font-weight:400;color:rgba(255,255,255,.9)}
+.tr-widget-tldr p{margin:0 0 10px}
+.tr-widget-tldr ul{margin:0;padding-left:20px}
+.tr-widget-tldr li{margin:6px 0}
+</style>
+<aside class="tr-widget-tldr tldr">
+  <p class="t">TL;DR</p>
+  <p>flow qc reviews the tasks used to train and evaluate models before an expert has to. Getting a model to find problems was easy. Getting it to stop reporting problems that are not there was the real work.</p>
+  <ul>
+    <li>In production, 83% of tasks that fail a check are revised by their expert, and the median fix lands 18 minutes later.</li>
+    <li>A model told to look for errors will report errors. So every finding has to cite evidence: the expert's worked solution and sources, probes run in a sandbox, and the exact lines it inspected.</li>
+    <li>We measure both kinds of error on paired tasks, an expert-verified original and a copy with one planted defect.</li>
+    <li>Every adjudicated expert correction becomes two tests: a case the flow qc agent must now pass, and a near-twin it must still flag. A fix cannot win by going quiet.</li>
+    <li>We tune the flow qc agent's instructions for each project offline with GEPA. A change ships only if it wins on tasks it never saw.</li>
+  </ul>
+</aside>

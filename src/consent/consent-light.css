@@ -1,0 +1,66 @@
+/* Light theme — activated by body.light-mode (via :host-context for shadow DOM)
+   Customize popup reference: Figma 7029:22548 */
+:host-context(body.light-mode) {
+  --dg-body-font-color: rgba(18, 18, 18, 0.6);
+  --dg-title-font-color: #191919;
+  --dg-consent-background-color: rgba(255, 255, 255, 0.72);
+  --dg-consent-background-border: 1px solid rgba(0, 0, 0, 0.08);
+
+  --dg-focus-outline: rgba(18, 18, 18, 0.35);
+  --dg-focus-outline-strong: rgba(18, 18, 18, 0.35);
+  --dg-link-color: #191919;
+  --dg-link-hover-color: rgba(25, 25, 25, 0.7);
+  --dg-icon-fill: #191919;
+
+  --dg-btn-open-color: #121212;
+  --dg-btn-reject-bg: transparent;
+  --dg-btn-reject-border: 1px solid rgba(0, 0, 0, 0.2);
+  --dg-btn-reject-color: #191919;
+  --dg-btn-reject-hover-bg: rgba(0, 0, 0, 0.04);
+  --dg-btn-accept-bg: #191919;
+  --dg-btn-accept-border: 1px solid rgba(255, 255, 255, 0.2);
+  --dg-btn-accept-color: #ebebf4;
+  --dg-btn-accept-hover-bg: #121212;
+
+  --dg-panel-bg: rgba(255, 255, 255, 0.6);
+  --dg-panel-border: 1px solid rgba(0, 0, 0, 0.08);
+  --dg-policy-border: 1px solid rgba(0, 0, 0, 0.2);
+  --dg-policy-heading-color: #121212;
+
+  --dg-slider-primary: rgba(255, 255, 255, 0.4);
+  --dg-slider-secondary: transparent;
+  --dg-slider-enabled-primary: rgba(255, 255, 255, 0.9);
+  --dg-slider-enabled-secondary: #191919;
+  --dg-slider-knob-border: 1px solid rgba(0, 0, 0, 0.2);
+  --dg-slider-knob-checked-border: rgba(255, 255, 255, 0.2);
+  --dg-slider-knob-checked-bg: rgba(255, 255, 255, 0.9);
+  --dg-slider-knob-checked-shadow: none;
+  --dg-slider-knob-unchecked-bg: rgba(255, 255, 255, 0.4);
+  --dg-slider-knob-unchecked-shadow: none;
+
+  --dg-btn-panel-reject-color: #121212;
+  --dg-btn-panel-reject-hover-color: rgba(18, 18, 18, 0.7);
+  --dg-btn-panel-accept-bg: transparent;
+  --dg-btn-panel-accept-border: 1px solid rgba(0, 0, 0, 0.2);
+  --dg-btn-panel-accept-color: #191919;
+  --dg-btn-panel-accept-hover-bg: rgba(0, 0, 0, 0.04);
+  --dg-btn-save-bg: #191919;
+  --dg-btn-save-border: 1px solid rgba(255, 255, 255, 0.2);
+  --dg-btn-save-color: #ebebf4;
+  --dg-btn-save-hover-bg: #121212;
+}
+
+/* Off track: outline via inset shadow so knob isn't clipped by border box */
+:host-context(body.light-mode) input[type="checkbox"]:not(:disabled):not(:checked) + label .dg-slider {
+  background: transparent;
+  border: none;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+/* On track: #191919 fill */
+:host-context(body.light-mode) input[type="checkbox"]:not(:disabled):checked + label .dg-slider {
+  background: #191919;
+  border: none;
+  box-shadow: none;
+}
+

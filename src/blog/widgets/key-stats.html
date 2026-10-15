@@ -1,0 +1,55 @@
+<!-- Evaluating deployed agents · key stats (self-contained Webflow embed)
+     Paste into a Webflow Embed element. Requires a dark page background (~#121212). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap">
+<style>
+.tr-widget-stats{
+  box-sizing:border-box;max-width:856px;width:100%;
+  margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
+  color:rgba(255,255,255,.9)!important;
+  font:16px/1.5 Outfit,Arial,sans-serif!important;
+  -webkit-font-smoothing:antialiased;
+}
+.tr-widget-stats *,.tr-widget-stats *::before,.tr-widget-stats *::after{box-sizing:border-box}
+.tr-widget-stats .card{
+  display:flex;flex-direction:column;gap:5px;align-items:flex-start;
+  min-height:181px;padding:15px 20px;
+  background:rgba(255,255,255,.01);border:1px solid rgba(255,255,255,.06);
+  overflow-wrap:break-word;word-break:break-word;
+}
+.tr-widget-stats .v{
+  margin:0!important;width:100%;
+  font-size:20px!important;font-weight:500!important;line-height:1.6!important;
+  color:rgba(255,255,255,.9)!important;
+}
+.tr-widget-stats .d{
+  margin:0!important;width:100%;
+  font-size:16px!important;font-weight:400!important;line-height:1.5!important;
+  color:rgba(255,255,255,.6)!important;
+}
+@media(max-width:720px){
+  .tr-widget-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tr-widget-stats .card{min-height:0}
+}
+@media(max-width:420px){
+  .tr-widget-stats{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+<aside class="tr-widget-stats" aria-label="Key findings">
+  <div class="card">
+    <p class="v">0.79 SD</p>
+    <p class="d">How far apart two reviewers scored the same interviews</p>
+  </div>
+  <div class="card">
+    <p class="v">+0.53 SD</p>
+    <p class="d">the agent's improvement after adjusting for who scored each interview</p>
+  </div>
+  <div class="card">
+    <p class="v">~5 weeks</p>
+    <p class="d">until an evaluation reading stops being informative</p>
+  </div>
+  <div class="card">
+    <p class="v">−10% / month</p>
+    <p class="d">interview complaints, relative to other technical tickets</p>
+  </div>
+</aside>

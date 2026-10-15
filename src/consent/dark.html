@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataGrail consent — dark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: #121212;
+    }
+
+    body.light-mode {
+      background-color: #ebebf4;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background: #121212 url("../assets/hero-blur-test.png") top center / cover no-repeat;
+    }
+
+    body.light-mode .hero {
+      background: linear-gradient(180deg, #f7f7fb 0%, #ebebf4 100%);
+    }
+  </style>
+  <style id="dg-consent-custom-style"></style>
+  <script src="./load-styles.js"></script>
+</head>
+<body>
+  <section class="hero" aria-hidden="true"></section>
+</body>
+</html>

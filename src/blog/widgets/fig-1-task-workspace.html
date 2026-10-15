@@ -1,0 +1,132 @@
+<!-- Teaching the reviewer · Figure 1 (self-contained Webflow embed)
+     Paste into a Webflow Embed element. Requires a dark page background (~#121212). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap">
+<style>
+/* Webflow site typography (body/p/li/span colors) often overrides embeds.
+   Colors use !important so light text stays visible on the dark mock. */
+.tr-widget-fig1{
+  --ink:rgba(255,255,255,.92);--ink2:rgba(255,255,255,.74);--mute:rgba(255,255,255,.56);
+  --hair:rgba(255,255,255,.08);--rule:rgba(255,255,255,.16);
+  --coral:#e8968c;--coral-t:#f0b4ab;--coral-bg:rgba(83,38,38,.34);--coral-bd:#6e3b3b;
+  --green:#199e70;--green-l:#8cc8a0;--green-t:#9fd0ae;--green-bg:rgba(38,83,56,.3);--green-bd:#2f5a40;
+  --violet:#9085e9;--violet-t:#c6bff2;--violet-bg:rgba(58,52,96,.34);--violet-bd:#4a4280;
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  margin:40px 0;max-width:856px;width:100%;
+  color:rgba(255,255,255,.9)!important;
+  font:16px/1.6 Outfit,Arial,sans-serif!important;
+  -webkit-font-smoothing:antialiased;
+  box-sizing:border-box;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 16px;
+}
+.tr-widget-fig1 *,.tr-widget-fig1 *::before,.tr-widget-fig1 *::after{box-sizing:border-box}
+.tr-widget-fig1 p,.tr-widget-fig1 li,.tr-widget-fig1 span,.tr-widget-fig1 div,
+.tr-widget-fig1 b,.tr-widget-fig1 strong,.tr-widget-fig1 mark,.tr-widget-fig1 code,
+.tr-widget-fig1 ol,.tr-widget-fig1 ul,.tr-widget-fig1 section,.tr-widget-fig1 button{
+  font-family:inherit!important;line-height:inherit;
+}
+.tr-widget-fig1 .claim{font-size:17px!important;font-weight:500!important;line-height:1.45!important;letter-spacing:-.005em;color:#fff!important;margin:0 0 14px!important}
+.tr-widget-fig1 .mk{display:inline-grid!important;place-items:center;flex:none;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.88)!important;color:#000!important;font:600 11px/1 Outfit,Arial,sans-serif!important;font-style:normal;vertical-align:1px;margin:0 2px 0 5px}
+.tr-widget-fig1 .mk.r{background:var(--coral)!important;color:#1c0e0c!important}
+.tr-widget-fig1 .ic{flex:none;display:inline-grid!important;place-items:center;width:16px;height:16px;border-radius:4px;background:var(--coral)!important;color:#1c0e0c!important;font:700 11px/1 Outfit,Arial,sans-serif!important}
+.tr-widget-fig1 .demo-frame{background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:18.75px}
+.tr-widget-fig1 .demo{background:#121212 radial-gradient(120% 60% at 85% -10%,rgba(255,255,255,.05),transparent 60%);border-radius:6px;padding:20px;color:#ddd!important;font-size:13px!important;line-height:1.5!important}
+.tr-widget-fig1 .demo-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.tr-widget-fig1 .demo-nav{display:flex;align-items:center;gap:10px;font-size:13.4px!important;font-weight:600!important;color:#eee!important;min-width:0}
+.tr-widget-fig1 .demo-nav span{color:#eee!important}
+.tr-widget-fig1 .demo-nav img{height:13px;width:auto;display:block}
+.tr-widget-fig1 .demo-nav .sep{width:1px;height:13px;background:rgba(255,255,255,.2)}
+.tr-widget-fig1 .demo-tag{font-size:12px!important;padding:3px 7px;border-radius:4.5px;background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.08);color:#ddd!important;white-space:nowrap}
+.tr-widget-fig1 .flabel{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:12px!important;color:#8c8c8c!important;margin:0 0 6px!important}
+.tr-widget-fig1 .flabel>span{color:#8c8c8c!important}
+.tr-widget-fig1 .flabel>span:first-child{color:#d4d4d4!important;font-weight:500!important}
+.tr-widget-fig1 .flabel.gap{margin-top:18px!important}
+.tr-widget-fig1 .input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:4.5px;padding:10px 12px;color:#ddd!important;font-size:13px!important}
+.tr-widget-fig1 .demo mark{background:none!important;color:#fff!important;text-decoration:underline;text-decoration-color:rgba(255,255,255,.6);text-decoration-thickness:1px;text-underline-offset:3px}
+.tr-widget-fig1 .demo code{font:12px var(--mono)!important;background:rgba(255,255,255,.08)!important;padding:1px 5px;border-radius:3px;color:#e6e6e6!important;overflow-wrap:anywhere}
+.tr-widget-fig1 .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tr-widget-fig1 .cols>*{min-width:0}
+.tr-widget-fig1 .ui-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:6px;overflow:hidden}
+.tr-widget-fig1 .crit{list-style:none!important;margin:0!important;padding:0!important}
+.tr-widget-fig1 .crit li{display:grid!important;grid-template-columns:16px 1fr auto;gap:8px;align-items:baseline;padding:8px 12px;border-top:1px solid rgba(255,255,255,.06);transition:opacity .25s;color:#ddd!important;font-size:13px!important;margin:0!important}
+.tr-widget-fig1 .crit li:first-child{border-top:0}
+.tr-widget-fig1 .crit li>span{color:#ddd!important}
+.tr-widget-fig1 .crit .n,.tr-widget-fig1 .crit .pts{font-size:12px!important;color:#8c8c8c!important;font-variant-numeric:tabular-nums}
+.tr-widget-fig1 .crit li.flag{background:var(--coral-bg)}
+.tr-widget-fig1 .crit li.flag>span:nth-child(2){color:var(--coral-t)!important}
+.tr-widget-fig1 .crit li.struck{opacity:.4}
+.tr-widget-fig1 .crit li.struck>span:nth-child(2){text-decoration:line-through}
+.tr-widget-fig1 .scoreline{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:12px!important;color:#9a9a9a!important;margin:0 12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.1)}
+.tr-widget-fig1 .scoreline span{color:#9a9a9a!important}
+.tr-widget-fig1 .scoreline b{font-size:13px!important;font-weight:500!important;color:var(--green-t)!important;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tr-widget-fig1 .scoreline b.lost{color:var(--coral)!important}
+.tr-widget-fig1 .finding{margin-top:14px;background:var(--coral-bg);border:1px solid rgba(232,150,140,.14);border-radius:4.5px;padding:12px 14px}
+.tr-widget-fig1 .finding .ft{display:flex;gap:8px;align-items:center;font-size:14px!important;font-weight:500!important;color:#f2f2f2!important}
+.tr-widget-fig1 .ev{list-style:none!important;margin:10px 0 0!important;padding:0!important;display:grid;gap:6px;font-size:13px!important;color:#cfcfcf!important}
+.tr-widget-fig1 .ev li{display:flex;gap:8px;align-items:baseline;color:#cfcfcf!important;margin:0!important;font-size:13px!important}
+.tr-widget-fig1 .ev .mk{margin:0}
+.tr-widget-fig1 .actions{display:flex;align-items:center;gap:8px 14px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+.tr-widget-fig1 .demo button{font:500 12px Outfit,Arial,sans-serif!important;border-radius:4.5px;padding:8.9px 14.9px;cursor:pointer;border:0;background:rgba(255,255,255,.69)!important;color:#000!important;transition:background .15s}
+.tr-widget-fig1 .demo button:hover{background:rgba(255,255,255,.85)!important}
+.tr-widget-fig1 .demo button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.tr-widget-fig1 .status{flex:1 1 220px;font-size:12px!important;color:#b0b0b0!important}
+.tr-widget-fig1 #demo-1 .crit .mk{margin-left:6px}
+.tr-widget-fig1 .caption,.tr-widget-fig1 figcaption{display:block!important;font-size:13.6px!important;line-height:1.5!important;color:rgba(255,255,255,.55)!important;margin:12px 0 0!important;padding:0;border:0;background:none}
+@media(max-width:720px){
+  .tr-widget-fig1 .demo-frame{padding:10px}
+  .tr-widget-fig1 .demo{padding:14px}
+  .tr-widget-fig1 .demo-top{flex-wrap:wrap}
+  .tr-widget-fig1 .cols{grid-template-columns:minmax(0,1fr)}
+  .tr-widget-fig1 .claim{font-size:16px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .tr-widget-fig1 .demo *{transition:none!important}
+}
+</style>
+<figure id="fig-1" class="tr-widget-fig1"><p class="claim">A correct answer to this task can score at most 60%, because the rubric grades two things the prompt never asks for.</p>
+<div class="demo-frame"><section class="demo" id="demo-1" aria-label="Task review of a rubric">
+ <div class="demo-top"><div class="demo-nav"><img src="data:image/png;base64,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" alt="flow"><span class="sep" aria-hidden="true"></span><span>Task workspace</span></div><span class="demo-tag">flow qc · 1 finding</span></div>
+ <div class="cols">
+  <div><div class="flabel"><span>Prompt</span><span>the solver sees this</span></div><div class="input">Using <code>purchase_reports.xlsx</code>, list the <mark>three largest suppliers</mark><span class="mk">1</span> by 2025 spend. One bullet per supplier. Cite the ledger row.</div></div>
+  <div><div class="flabel"><span>Worked solution</span><span>only the flow qc agent sees this</span></div><div class="input">Summed 2025 spend per supplier. <mark>Top three: Alder, Birch, Cedar.</mark><span class="mk">2</span></div></div>
+ </div>
+ <div class="flabel gap"><span>Rubric</span><span>what earns credit</span></div>
+ <div class="ui-card"><ol class="crit">
+  <li><span class="n">1</span><span>Names Alder as the largest supplier</span><span class="pts">1 pt</span></li>
+  <li><span class="n">2</span><span>Names Birch as the second largest</span><span class="pts">1 pt</span></li>
+  <li><span class="n">3</span><span>Names Cedar as the third largest</span><span class="pts">1 pt</span></li>
+  <li class="x flag"><span class="n">4</span><span>Names Dogwood as the fourth largest<span class="mk r">3</span></span><span class="pts">1 pt</span></li>
+  <li class="x flag"><span class="n">5</span><span>Explains why spend changed from 2024<span class="mk r">3</span></span><span class="pts">1 pt</span></li>
+ </ol><div class="scoreline"><span>Best score for an answer that does exactly what was asked</span><b id="d1-score" class="lost">3 of 5 · 60%</b></div></div>
+ <section class="finding">
+  <div class="ft"><span class="ic" aria-hidden="true">!</span>Rubric items 4 and 5 grade work the prompt never asks for</div>
+  <ul class="ev"><li><span class="mk">1</span>The prompt asks for three suppliers.</li><li><span class="mk">2</span>The worked solution also stops at three.</li><li><span class="mk r">3</span>Items 4 and 5 add a fourth supplier and an explanation.</li></ul>
+  <div class="actions"><button type="button" id="d1-fix" aria-pressed="false">Apply the proposed fix</button><span class="status" id="d1-decision" role="status" aria-live="polite">Remove items 4 and 5. The expert can also widen the prompt instead.</span></div>
+ </section>
+</section></div>
+<p class="caption">Figure 1. Press the button to apply the fix flow qc proposes. The worked solution points to the rubric as the half that drifted, and the expert makes the call.</p></figure>
+<script>
+(function(){
+  var root=document.querySelector('.tr-widget-fig1');
+  if(!root||root.dataset.bound)return;
+  root.dataset.bound='1';
+  var fix=root.querySelector('#d1-fix');
+  if(!fix)return;
+  fix.addEventListener('click',function(){
+    var on=fix.getAttribute('aria-pressed')!=='true';
+    fix.setAttribute('aria-pressed',String(on));
+    root.querySelectorAll('#demo-1 .x').forEach(function(li){
+      li.classList.toggle('struck',on);
+      li.classList.toggle('flag',!on);
+    });
+    var s=root.querySelector('#d1-score');
+    s.textContent=on?'3 of 3 · 100%':'3 of 5 · 60%';
+    s.classList.toggle('lost',!on);
+    fix.textContent=on?'Restore the original rubric':'Apply the proposed fix';
+    root.querySelector('#d1-decision').textContent=on
+      ?'Items 4 and 5 removed. A complete answer now earns full credit.'
+      :'Remove items 4 and 5. The expert can also widen the prompt instead.';
+  });
+})();
+</script>

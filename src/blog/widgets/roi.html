@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROI article widgets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* Preview only — do not copy into Webflow */
+    body {
+      margin: 0;
+      padding: 40px 16px;
+      background: #121212;
+      font-family: "Outfit", sans-serif;
+    }
+    .preview-stack {
+      max-width: 856px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+  </style>
+</head>
+<body>
+<div class="preview-stack">
+
+<!-- ============================================================
+     EMBED 1: Key stats
+     Self-contained. Copy from the <style> through the /EMBED comment.
+     Paste into a Webflow Embed. Requires dark page background (~#121212).
+     Figma: node 9521:35775
+     ============================================================ -->
+<style>
+h3 {
+    margin-top: 3rem;
+}
+
+figure {
+    margin-bottom: 3rem;
+}
+.tr-widget-stats{
+margin-top: 1rem;
+  box-sizing:border-box;max-width:856px;width:100%;
+  margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
+  color:rgba(255,255,255,.9)!important;
+  font:16px/1.5 Outfit,Arial,sans-serif!important;
+  -webkit-font-smoothing:antialiased;
+}
+.tr-widget-stats *,.tr-widget-stats *::before,.tr-widget-stats *::after{box-sizing:border-box}
+.tr-widget-stats .card{
+  display:flex;flex-direction:column;gap:5px;align-items:flex-start;
+  min-height:181px;padding:15px 20px;
+  background:rgba(255,255,255,.01);border:1px solid rgba(255,255,255,.06);
+  overflow-wrap:break-word;word-break:break-word;
+}
+.tr-widget-stats .v{
+  margin:0!important;width:100%;
+  font-size:20px!important;font-weight:500!important;line-height:1.6!important;
+  color:rgba(255,255,255,.9)!important;
+}
+.tr-widget-stats .d{
+  margin:0!important;width:100%;
+  font-size:16px!important;font-weight:400!important;line-height:1.5!important;
+  color:rgba(255,255,255,.6)!important;
+}
+@media(max-width:720px){
+  .tr-widget-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tr-widget-stats .card{min-height:0}
+}
+@media(max-width:420px){
+  .tr-widget-stats{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+<aside class="tr-widget-stats" aria-label="Key findings">
+  <div class="card">
+    <p class="v">0.79 SD</p>
+    <p class="d">How far apart two reviewers scored the same interviews</p>
+  </div>
+  <div class="card">
+    <p class="v">+0.53 SD</p>
+    <p class="d">the agent's improvement after adjusting for who scored each interview</p>
+  </div>
+  <div class="card">
+    <p class="v">~5 weeks</p>
+    <p class="d">until an evaluation reading stops being informative</p>
+  </div>
+  <div class="card">
+    <p class="v">−10% / month</p>
+    <p class="d">interview complaints, relative to other technical tickets</p>
+  </div>
+</aside>
+<!-- /EMBED 1: Key stats -->
+
+
+<!-- ============================================================
+     EMBED 2: Finding 4 capsule
+     Self-contained. Copy from the <style> through the /EMBED comment.
+     Paste into a Webflow Embed. Requires dark page background (~#121212).
+     Figma: node 9562:39034
+     ============================================================ -->
+<style>
+.tr-widget-finding4{
+       transform: translate(0px, 1.5rem);
+    margin-top: 1rem;
+  box-sizing:border-box;
+  display:inline-flex;align-items:flex-start;
+  width:max-content;max-width:100%;
+  margin:0;padding:12px;height:41px;
+  background:rgba(255,255,255,.06);
+  border:1px solid #363636;
+  border-radius:3px;
+  color:#fff!important;
+  font:16px/1.08 Outfit,Arial,sans-serif!important;
+  font-weight:400!important;
+  -webkit-font-smoothing:antialiased;
+  white-space:nowrap;
+}
+.tr-widget-finding4 *,.tr-widget-finding4 *::before,.tr-widget-finding4 *::after{box-sizing:border-box}
+.tr-widget-finding4 p{
+  margin:0!important;
+  font:inherit!important;
+  color:#fff!important;
+  line-height:1.08!important;
+}
+</style>
+<aside class="tr-widget-finding4" aria-label="Finding 4">
+  <p>Finding 4</p>
+</aside>
+<!-- /EMBED 2: Finding 4 capsule -->
+
+
+<!-- ============================================================
+     EMBED 3: Evaluation program calculator
+     Self-contained. Copy from the <style> through the /EMBED comment.
+     Paste into a Webflow Embed. Requires dark page background (~#121212).
+     Figma: node 9567:39280
+     ============================================================ -->
+<style>
+.tr-widget-calc{
+margin-top: 1rem;
+    margin-bottom: 2rem;
+  box-sizing:border-box;max-width:824px;width:100%;
+  margin:0;padding:0;
+  display:grid;grid-template-columns:326px minmax(0,1fr);gap:19px;align-items:stretch;
+  color:rgba(255,255,255,.8)!important;
+  font:13px/1.5 Outfit,Arial,sans-serif!important;
+  -webkit-font-smoothing:antialiased;
+}
+.tr-widget-calc *,.tr-widget-calc *::before,.tr-widget-calc *::after{box-sizing:border-box}
+.tr-widget-calc p,.tr-widget-calc span,.tr-widget-calc div,.tr-widget-calc label,.tr-widget-calc button{
+  font-family:Outfit,Arial,sans-serif!important;
+}
+.tr-widget-calc .panel{
+  background:rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:6px;
+}
+.tr-widget-calc .controls{
+  padding:20px 24px;
+  display:flex;flex-direction:column;gap:14px;justify-content:space-between;
+}
+.tr-widget-calc .ctl{
+  display:flex;flex-direction:column;gap:7px;width:100%;
+}
+.tr-widget-calc .ctl-top{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  line-height:1.5!important;white-space:nowrap;
+}
+.tr-widget-calc .ctl-lbl{
+  margin:0!important;font-size:13px!important;font-weight:400!important;
+  color:rgba(255,255,255,.8)!important;
+  transition:color .18s ease;
+}
+.tr-widget-calc .ctl:hover .ctl-lbl{
+  color:#fff!important;
+}
+.tr-widget-calc .ctl-val{
+  margin:0!important;font-size:14px!important;font-weight:400!important;
+  color:#fff!important;font-variant-numeric:tabular-nums;
+}
+.tr-widget-calc .ctl-help{
+  margin:0!important;font-size:11px!important;font-weight:400!important;
+  line-height:1.46!important;color:rgba(255,255,255,.6)!important;
+}
+.tr-widget-calc input[type="range"]{
+  --fill:#474cb8;
+  --track:rgba(255,255,255,.1);
+  -webkit-appearance:none;appearance:none;
+  width:100%;height:7px;margin:2px 0;padding:0;
+  border-radius:2px;
+  background:linear-gradient(to right,var(--fill) 0%,var(--fill) var(--pct,33%),var(--track) var(--pct,33%),var(--track) 100%);
+  outline:none;cursor:pointer;display:block;
+  transition:filter .18s ease,transform .18s ease;
+}
+.tr-widget-calc input[type="range"]:hover{
+  --fill:#5d63d6;
+  --track:rgba(255,255,255,.16);
+}
+.tr-widget-calc input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:16px;height:11px;border-radius:2px;
+  background:#fff;border:1px solid #cdcdcd;
+  cursor:grab;box-shadow:0 0 0 0 rgba(109,124,255,0);
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s ease,border-color .18s ease,background-color .18s ease;
+}
+.tr-widget-calc input[type="range"]:hover::-webkit-slider-thumb{
+  transform:scale(1.14);
+  border-color:#fff;
+  box-shadow:0 0 0 4px rgba(109,124,255,.22);
+}
+.tr-widget-calc input[type="range"]:active::-webkit-slider-thumb{
+  cursor:grabbing;
+  transform:scale(1.06);
+  box-shadow:0 0 0 6px rgba(109,124,255,.32);
+}
+.tr-widget-calc input[type="range"]::-moz-range-thumb{
+  width:16px;height:11px;border-radius:2px;
+  background:#fff;border:1px solid #cdcdcd;
+  cursor:grab;box-sizing:border-box;
+  box-shadow:0 0 0 0 rgba(109,124,255,0);
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s ease,border-color .18s ease,background-color .18s ease;
+}
+.tr-widget-calc input[type="range"]:hover::-moz-range-thumb{
+  transform:scale(1.14);
+  border-color:#fff;
+  box-shadow:0 0 0 4px rgba(109,124,255,.22);
+}
+.tr-widget-calc input[type="range"]:active::-moz-range-thumb{
+  cursor:grabbing;
+  transform:scale(1.06);
+  box-shadow:0 0 0 6px rgba(109,124,255,.32);
+}
+.tr-widget-calc input[type="range"]::-moz-range-track{
+  height:7px;border-radius:2px;background:transparent;
+}
+.tr-widget-calc input[type="range"]:focus-visible{
+  outline:1px solid rgba(255,255,255,.5);outline-offset:3px;
+}
+.tr-widget-calc .reset-btn{
+  width:100%;height:38px;margin-top:3px;padding:8px 10px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.06)!important;
+  border:1px solid rgba(255,255,255,.1)!important;
+  border-radius:3px;
+  color:rgba(255,255,255,.8)!important;
+  font:500 14px/1.4 Outfit,Arial,sans-serif!important;
+  cursor:pointer;
+  transition:background .18s ease,border-color .18s ease,color .18s ease,transform .15s ease;
+}
+.tr-widget-calc .reset-btn:hover{
+  background:rgba(255,255,255,.12)!important;
+  border-color:rgba(255,255,255,.24)!important;
+  color:#fff!important;
+  transform:translateY(-1px);
+}
+.tr-widget-calc .reset-btn:active{
+  transform:translateY(0);
+}
+.tr-widget-calc .results{
+  padding:16px 20px 18px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:14px;
+  min-width:0;
+}
+.tr-widget-calc .out-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 8px;
+}
+.tr-widget-calc .out-card{
+  background:rgba(255,255,255,.01);
+  border:1px solid rgba(255,255,255,.06);
+  padding:15px 20px;min-height:132px;
+  display:flex;flex-direction:column;gap:5px;align-items:flex-start;
+  overflow-wrap:break-word;word-break:break-word;
+}
+.tr-widget-calc .out-v{
+  margin:0!important;width:100%;
+  font-size:20px!important;font-weight:500!important;line-height:1.6!important;
+  color:rgba(255,255,255,.9)!important;font-variant-numeric:tabular-nums;
+}
+.tr-widget-calc .out-l{
+  margin:0!important;width:100%;
+  font-size:13px!important;font-weight:400!important;line-height:1.6!important;
+  color:rgba(255,255,255,.6)!important;
+}
+.tr-widget-calc .chart-wrap{
+  width:100%;margin-top:auto;
+}
+.tr-widget-calc .chart-wrap svg{
+  display:block;width:100%;height:auto;overflow:visible;
+}
+@media(max-width:760px){
+  .tr-widget-calc{grid-template-columns:minmax(0,1fr)}
+  .tr-widget-calc .results{order:-1}
+}
+@media(max-width:460px){
+  .tr-widget-calc .out-grid{grid-template-columns:minmax(0,1fr)}
+  .tr-widget-calc .out-card{min-height:0}
+}
+</style>
+<section class="tr-widget-calc" aria-label="Evaluation program calculator">
+  <div class="panel controls">
+    <div class="ctl">
+      <div class="ctl-top"><span class="ctl-lbl">Recordings per batch</span><span class="ctl-val" data-v="n">300</span></div>
+      <input type="range" data-k="n" min="50" max="600" step="10" value="300" aria-label="Recordings per batch">
+    </div>
+    <div class="ctl">
+      <div class="ctl-top"><span class="ctl-lbl">Weeks between batches</span><span class="ctl-val" data-v="h">2</span></div>
+      <input type="range" data-k="h" min="1" max="12" step="1" value="2" aria-label="Weeks between batches">
+    </div>
+    <div class="ctl">
+      <div class="ctl-top"><span class="ctl-lbl">Unlogged movement per week, in SD</span><span class="ctl-val" data-v="q">0.086</span></div>
+      <input type="range" data-k="q" min="0.02" max="0.25" step="0.001" value="0.086" aria-label="Unlogged movement per week, in SD">
+    </div>
+    <div class="ctl">
+      <div class="ctl-top"><span class="ctl-lbl">Drift big enough to act on, in SD</span><span class="ctl-val" data-v="D">0.20</span></div>
+      <input type="range" data-k="D" min="0.05" max="0.6" step="0.01" value="0.20" aria-label="Drift big enough to act on, in SD">
+      <p class="ctl-help">The smallest unlogged shift in the index that would make you hold a release or open an incident. For scale: this agent's largest single deploy moved the index 0.20 SD, its whole five-month improvement was 0.53 SD, and its two reviewers differed by 0.79 SD</p>
+    </div>
+    <div class="ctl">
+      <div class="ctl-top"><span class="ctl-lbl">Program cost per month</span><span class="ctl-val" data-v="c">$7,806</span></div>
+      <input type="range" data-k="c" min="1000" max="40000" step="1" value="7806" aria-label="Program cost per month">
+    </div>
+    <div class="ctl">
+      <div class="ctl-top"><span class="ctl-lbl">Cost of one escalation</span><span class="ctl-val" data-v="p">$100</span></div>
+      <input type="range" data-k="p" min="10" max="400" step="5" value="100" aria-label="Cost of one escalation">
+    </div>
+    <div class="ctl">
+      <div class="ctl-top"><span class="ctl-lbl">Escalations avoided per month</span><span class="ctl-val" data-v="r">428</span></div>
+      <input type="range" data-k="r" min="0" max="2000" step="1" value="428" aria-label="Escalations avoided per month">
+    </div>
+    <button type="button" class="reset-btn" data-reset>Reset to this agent</button>
+  </div>
+
+  <div class="panel results">
+    <div class="out-grid">
+      <div class="out-card">
+        <p class="out-v" data-o="se">0.052 SD</p>
+        <p class="out-l">precision of one batch (standard error of its mean, in SD)</p>
+      </div>
+      <div class="out-card">
+        <p class="out-v" data-o="det">0.14 SD</p>
+        <p class="out-l">Smallest change two consecutive batches can tell apart (95%)</p>
+      </div>
+      <div class="out-card">
+        <p class="out-v" data-o="wk">5.2 weeks</p>
+        <p class="out-l">Weeks after a batch until uncertainty reaches the drift you would act on</p>
+      </div>
+      <div class="out-card">
+        <p class="out-v" data-o="cr">18%</p>
+        <p class="out-l">Credit for the avoided escalations the program needs to cover its cost</p>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 439 210" data-chart aria-label="Forecast uncertainty over weeks since the last batch"></svg>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var root=document.querySelector('.tr-widget-calc');
+  if(!root||root.dataset.bound)return;
+  root.dataset.bound='1';
+
+  var sigma2=0.7966777525701347;
+  var defaults={n:300,h:2,q:0.086,D:0.20,c:7806,p:100,r:428};
+  var keys=['n','h','q','D','c','p','r'];
+  var inputs={};
+  var vals={};
+  keys.forEach(function(k){
+    inputs[k]=root.querySelector('[data-k="'+k+'"]');
+    vals[k]=root.querySelector('[data-v="'+k+'"]');
+  });
+  var outSe=root.querySelector('[data-o="se"]');
+  var outDet=root.querySelector('[data-o="det"]');
+  var outWk=root.querySelector('[data-o="wk"]');
+  var outCr=root.querySelector('[data-o="cr"]');
+  var svg=root.querySelector('[data-chart]');
+
+  function fmtUSD(n){
+    return '$'+Math.round(n).toLocaleString('en-US');
+  }
+
+  function niceTicks(maxVal,count){
+    var rawStep=maxVal/count;
+    var mag=Math.pow(10,Math.floor(Math.log10(rawStep)));
+    var res=rawStep/mag;
+    var step=res<=1?1:res<=2?2:res<=2.5?2.5:res<=5?5:10;
+    step*=mag;
+    var ticks=[];
+    for(var v=0;v<=maxVal+step*0.01;v+=step){
+      ticks.push(+v.toFixed(6));
+    }
+    return {ticks:ticks,max:ticks[ticks.length-1]||maxVal};
+  }
+
+  function update(){
+    var v={};
+    keys.forEach(function(k){
+      var el=inputs[k];
+      var num=+el.value;
+      v[k]=num;
+      var min=+el.min,max=+el.max;
+      var pct=((num-min)/(max-min))*100;
+      el.style.setProperty('--pct',pct.toFixed(2)+'%');
+    });
+
+    vals.n.textContent=v.n;
+    vals.h.textContent=v.h;
+    vals.q.textContent=v.q.toFixed(3);
+    vals.D.textContent=v.D.toFixed(2);
+    vals.c.textContent=fmtUSD(v.c);
+    vals.p.textContent=fmtUSD(v.p);
+    vals.r.textContent=v.r;
+
+    var q=v.q*v.q, qh=q*v.h;
+    var P0=(Math.sqrt(qh*qh+4*qh*sigma2/v.n)-qh)/2;
+    var se=Math.sqrt(sigma2/v.n);
+    var det=1.96*Math.sqrt(2*sigma2/v.n);
+    var wk=(v.D*v.D-P0)/q;
+
+    outSe.textContent=se.toFixed(3)+' SD';
+    outDet.textContent=det.toFixed(2)+' SD';
+    outWk.textContent=wk<=0?'already':(wk>99?'>99':wk.toFixed(1))+' weeks';
+    var credit=v.r>0?v.c/(v.p*v.r):Infinity;
+    outCr.textContent=isFinite(credit)?(credit>1?'over 100%':(credit*100).toFixed(0)+'%'):'n/a';
+
+    var sd=function(h){return Math.sqrt(P0+q*h);};
+    var yMaxRaw=Math.max(v.D*1.3,sd(16)*1.05,0.3);
+    var nt=niceTicks(yMaxRaw,4);
+    var yMax=Math.max(yMaxRaw,nt.max);
+
+    var ml=59,mr=18,mt=10,mb=46,W=439,H=210;
+    var pw=W-ml-mr, ph=H-mt-mb;
+    var x=function(w){return ml+(w/16)*pw;};
+    var y=function(val){return mt+ph-(val/yMax)*ph;};
+
+    var parts=[];
+    var font='Outfit, Arial, sans-serif';
+
+    nt.ticks.forEach(function(t){
+      if(t>yMax*1.001)return;
+      var yy=y(t);
+      if(t>0){
+        parts.push('<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+yy.toFixed(2)+'" y2="'+yy.toFixed(2)+'" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>');
+      }
+      parts.push('<text x="'+(ml-9)+'" y="'+(yy+4).toFixed(2)+'" text-anchor="end" fill="rgba(255,255,255,0.6)" font-family="'+font+'" font-size="11.1">'+t.toFixed(2)+'</text>');
+    });
+
+    var y0=y(0);
+    parts.push('<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+y0.toFixed(2)+'" y2="'+y0.toFixed(2)+'" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>');
+    for(var w=0;w<=16;w+=2){
+      var xx=x(w);
+      parts.push('<line x1="'+xx.toFixed(2)+'" x2="'+xx.toFixed(2)+'" y1="'+y0.toFixed(2)+'" y2="'+(y0+6).toFixed(2)+'" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>');
+      parts.push('<text x="'+xx.toFixed(2)+'" y="'+(y0+20).toFixed(2)+'" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-family="'+font+'" font-size="11.1">'+w+'</text>');
+    }
+
+    var yD=y(v.D);
+    parts.push('<line x1="'+ml+'" x2="'+(W-mr)+'" y1="'+yD.toFixed(2)+'" y2="'+yD.toFixed(2)+'" stroke="#e2676b" stroke-width="1.2" stroke-dasharray="6 4"/>');
+    parts.push('<text x="'+(ml+4)+'" y="'+(yD-6).toFixed(2)+'" fill="#e2676b" font-family="'+font+'" font-size="10.4">drift you would act on</text>');
+
+    var d='';
+    for(var hw=0;hw<=16.001;hw+=0.25){
+      var px=x(hw), py=y(sd(hw));
+      d+=(hw===0?'M':'L')+px.toFixed(2)+','+py.toFixed(2);
+    }
+    parts.push('<path d="'+d+'" fill="none" stroke="#6d7cff" stroke-width="2.2"/>');
+
+    if(wk>0&&wk<=16){
+      var cx=x(wk), cy=y(v.D);
+      var lblX=cx+10, anchor='start';
+      if(cx>W-mr-70){lblX=cx-10;anchor='end';}
+      parts.push('<circle cx="'+cx.toFixed(2)+'" cy="'+cy.toFixed(2)+'" r="4.5" fill="#fff" stroke="#6d7cff" stroke-width="2.5"/>');
+      parts.push('<text x="'+lblX.toFixed(2)+'" y="'+(cy+18).toFixed(2)+'" text-anchor="'+anchor+'" fill="#6d7cff" font-family="'+font+'" font-size="13" font-weight="500">'+wk.toFixed(1)+' weeks</text>');
+    }
+
+    parts.push('<text x="'+((ml+W-mr)/2).toFixed(2)+'" y="'+(H-4)+'" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="'+font+'" font-size="11.1">weeks since the last batch</text>');
+    parts.push('<text transform="translate(11,'+((mt+H-mb)/2).toFixed(2)+') rotate(-90)" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-family="'+font+'" font-size="11.1">uncertainty, SD</text>');
+
+    svg.innerHTML=parts.join('');
+  }
+
+  keys.forEach(function(k){
+    inputs[k].addEventListener('input',update);
+  });
+  root.querySelector('[data-reset]').addEventListener('click',function(){
+    keys.forEach(function(k){inputs[k].value=defaults[k];});
+    update();
+  });
+  update();
+})();
+</script>
+<!-- /EMBED 3: Evaluation program calculator -->
+
+
+<!-- ============================================================
+     EMBED 4: Evaluation program rules (2x2 cards)
+     Self-contained. Copy from the <style> through the /EMBED comment.
+     Paste into a Webflow Embed. Requires dark page background (~#121212).
+     Figma: node 9567:39541
+     ============================================================ -->
+<style>
+.tr-widget-rules{
+  box-sizing:border-box;max-width:824px;width:100%;
+  margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+  color:rgba(255,255,255,.9)!important;
+  font:16px/1.5 Outfit,Arial,sans-serif!important;
+  -webkit-font-smoothing:antialiased;
+}
+.tr-widget-rules *,.tr-widget-rules *::before,.tr-widget-rules *::after{box-sizing:border-box}
+.tr-widget-rules .card{
+  display:flex;flex-direction:column;gap:5px;align-items:flex-start;
+  min-height:165px;padding:15px 20px;
+  background:rgba(255,255,255,.01);border:1px solid rgba(255,255,255,.06);
+  overflow-wrap:break-word;word-break:break-word;
+}
+.tr-widget-rules .t{
+  margin:0!important;width:100%;
+  font-size:20px!important;font-weight:500!important;line-height:1.6!important;
+  letter-spacing:-.2px;
+  color:rgba(255,255,255,.9)!important;
+}
+.tr-widget-rules .d{
+  margin:0!important;width:100%;
+  font-size:16px!important;font-weight:400!important;line-height:1.5!important;
+  color:rgba(255,255,255,.6)!important;
+}
+@media(max-width:640px){
+  .tr-widget-rules{grid-template-columns:minmax(0,1fr)}
+  .tr-widget-rules .card{min-height:0}
+}
+</style>
+<aside class="tr-widget-rules" aria-label="Evaluation program rules">
+  <div class="card">
+    <p class="t">Overlap raters; never read a raw average</p>
+    <p class="d">A program whose raters do not overlap cannot separate its raters from its agent, and raw averages misread the agent exactly when the roster changes.</p>
+  </div>
+  <div class="card">
+    <p class="t">Report families, not an index</p>
+    <p class="d">The index hides where the agent changed. The families are where engineering acts, and where the change log can be checked against the scores.</p>
+  </div>
+  <div class="card">
+    <p class="t">Measure your own drift rate</p>
+    <p class="d">How often to evaluate has a parameter: the movement your records do not account for. An agent with pinned vendor snapshots and version-controlled configuration drifts less.</p>
+  </div>
+  <div class="card">
+    <p class="t">Design for attribution before you start</p>
+    <p class="d">Record which finding motivated each change. Vary evaluation intensity on purpose. Afterwards, there is no comparison arm.</p>
+  </div>
+</aside>
+<!-- /EMBED 4: Evaluation program rules (2x2 cards) -->
+
+</div>
+</body>
+</html>
