@@ -1293,6 +1293,19 @@
     background: linear-gradient(90deg, #7065f0 0%, #3a347f 100%);
   }
 
+  /* LRB-only practice areas — same pink as RU closed-universe bars */
+  .mpa-row.is-lrb .mpa-bar {
+    background: rgba(191, 101, 240, 0.1);
+  }
+
+  .mpa-row.is-lrb .mpa-bar-fill {
+    background: linear-gradient(
+      90deg,
+      rgba(191, 101, 240, 0.87) 0%,
+      rgba(99, 52, 127, 0.87) 100%
+    );
+  }
+
   .mpa-bar-val {
     flex-shrink: 0;
     font-size: 12px;
@@ -4228,7 +4241,7 @@
           <span class="mpa-bar-val">20%</span>
         </div>
       </div>
-      <div class="mpa-row">
+      <div class="mpa-row is-lrb">
         <span class="mpa-label">criminal law &amp; procedure</span>
         <div class="mpa-bar" style="--mpa-w: 33.3333%;">
           <div class="mpa-bar-fill" data-tip="criminal law & procedure: 10%"></div>
@@ -4242,7 +4255,7 @@
           <span class="mpa-bar-val">10%</span>
         </div>
       </div>
-      <div class="mpa-row">
+      <div class="mpa-row is-lrb">
         <span class="mpa-label">civil rights</span>
         <div class="mpa-bar" style="--mpa-w: 26.6667%;">
           <div class="mpa-bar-fill" data-tip="civil rights: 8%"></div>
@@ -4277,7 +4290,7 @@
           <span class="mpa-bar-val">4%</span>
         </div>
       </div>
-      <div class="mpa-row">
+      <div class="mpa-row is-lrb">
         <span class="mpa-label">administrative law</span>
         <div class="mpa-bar" style="--mpa-w: 6.6667%;">
           <div class="mpa-bar-fill" data-tip="administrative law: 2%"></div>
@@ -4291,7 +4304,7 @@
           <span class="mpa-bar-val">2%</span>
         </div>
       </div>
-      <div class="mpa-row">
+      <div class="mpa-row is-lrb">
         <span class="mpa-label">sports law</span>
         <div class="mpa-bar" style="--mpa-w: 6.6667%;">
           <div class="mpa-bar-fill" data-tip="sports law: 2%"></div>
@@ -4397,7 +4410,7 @@
         <div class="cfv-grid-row"></div>
         <div class="cfv-grid-row"></div>
       </div>
-      <div class="cfv-axis-line" aria-hidden="true">
+      <div class="cfv-axis-line" aria-hidden="true"
         <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="539.654" height="269.451" viewBox="0 0 539.654 269.451" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M0.450623 0V269H539.654" stroke="#848484" stroke-width="0.901247"/>
         </svg>
