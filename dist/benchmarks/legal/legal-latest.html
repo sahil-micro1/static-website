@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LegalReasonBench Design Figures</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Outfit', sans-serif; background: #1A1A1C; color: #F3F4F6; line-height: 1.6; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); }
+::-webkit-scrollbar-thumb { background: #2D2D2D; border-radius: 999px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; border-bottom: 1px solid rgba(217,217,231,0.12); margin-bottom: 2rem; }
+.header-left { display: flex; align-items: center; gap: 1rem; }
+.header img { height: 28px; }
+.header h1 { font-size: 1.5rem; font-weight: 600; }
+.header .subtitle { color: #9CA3AF; font-size: 0.875rem; margin-top: 0.15rem; }
+.header .meta { color: #6B7280; font-size: 0.8rem; }
+
+.hero { margin-bottom: 2.5rem; }
+.hero h2 { font-size: 1.8rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.3; }
+.hero .lede { color: #D1D5DB; font-size: 1.05rem; line-height: 1.75; max-width: 70ch; }
+
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; margin-top: 2rem; }
+.stat-card { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 1.25rem; border: 1px solid rgba(217,217,231,0.1); }
+.stat-card .label { color: #9CA3AF; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.stat-card .value { font-size: 1.7rem; font-weight: 700; margin-top: 0.2rem; }
+.stat-card .detail { color: #6B7280; font-size: 0.78rem; margin-top: 0.3rem; }
+
+.section { margin-bottom: 3rem; }
+.section h2 { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(217,217,231,0.08); }
+.section .kicker { color: #818CF8; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem; }
+p.prose { color: #D1D5DB; font-size: 0.95rem; line-height: 1.75; margin-bottom: 1rem; max-width: 75ch; }
+p.prose code { background: rgba(255,255,255,0.08); padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.85em; font-family: 'Courier New', monospace; color: #F3F4F6; }
+
+.callout { background: rgba(129,140,248,0.08); border-left: 3px solid #818CF8; padding: 1rem 1.25rem; border-radius: 4px; margin: 1rem 0; color: #E5E7EB; font-size: 0.95rem; }
+.callout strong { color: #A5B4FC; }
+
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.25rem; }
+@media (max-width: 900px) { .chart-row { grid-template-columns: 1fr; } }
+.chart-card { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 1.25rem; border: 1px solid rgba(217,217,231,0.08); }
+.chart-card h3 { font-size: 0.9rem; font-weight: 500; margin-bottom: 0.75rem; color: #D1D5DB; }
+.chart-card canvas { max-height: 320px; }
+.chart-footnote { color: #6B7280; font-size: 0.72rem; margin-top: 0.75rem; font-style: italic; line-height: 1.5; }
+
+.fs-display { background: #111112; border: 1px solid rgba(217,217,231,0.08); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; }
+.fs-tree { font-family: 'Courier New', monospace; font-size: 0.82rem; color: #9CA3AF; line-height: 1.7; white-space: pre; }
+.fs-tree .dir { color: #818CF8; }
+.fs-tree .file { color: #D1D5DB; }
+.fs-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+.fs-chip { background: rgba(129,140,248,0.1); color: #C7D2FE; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.78rem; font-family: 'Courier New', monospace; border: 1px solid rgba(129,140,248,0.2); }
+.fs-chip .fs-ext { color: #818CF8; font-weight: 600; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th { background: #1e1e20; padding: 0.6rem 0.75rem; text-align: left; font-weight: 500; color: #D1D5DB; border-bottom: 1px solid rgba(217,217,231,0.12); position: sticky; top: 0; }
+td { padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(217,217,231,0.06); }
+tr:hover td { background: rgba(255,255,255,0.03); }
+.table-wrap { background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(217,217,231,0.1); overflow-x: auto; max-height: 560px; overflow-y: auto; }
+
+.tool-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }
+.tool-badges code { background: rgba(52,211,153,0.1); color: #6EE7B7; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; font-family: 'Courier New', monospace; border: 1px solid rgba(52,211,153,0.22); }
+
+.footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid rgba(217,217,231,0.08); color: #6B7280; font-size: 0.8rem; }
+
+ul.bullets { color: #D1D5DB; padding-left: 1.25rem; margin: 0.5rem 0 1rem; }
+ul.bullets li { margin-bottom: 0.5rem; line-height: 1.7; }
+
+.two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; }
+@media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+h3.sub { font-size: 1.05rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: #F3F4F6; }
+
+/* Trajectory viewer */
+.traj-viewer { background: rgba(255,255,255,0.03); border: 1px solid rgba(217,217,231,0.1); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; }
+.traj-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; border-bottom: 1px solid rgba(217,217,231,0.08); padding-bottom: 0.75rem; }
+.traj-tab { background: transparent; color: #9CA3AF; border: 1px solid rgba(217,217,231,0.15); border-radius: 6px; padding: 0.5rem 0.9rem; font-family: inherit; font-size: 0.85rem; cursor: pointer; transition: all 0.15s; }
+.traj-tab:hover { color: #F3F4F6; border-color: rgba(217,217,231,0.3); }
+.traj-tab.active { background: rgba(129,140,248,0.15); color: #C7D2FE; border-color: rgba(129,140,248,0.4); }
+.traj-tab .traj-tab-reward { color: inherit; font-family: 'Courier New', monospace; opacity: 0.75; margin-left: 0.4rem; font-size: 0.8em; }
+.traj-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+.traj-meta-card { background: rgba(255,255,255,0.04); padding: 0.6rem 0.8rem; border-radius: 4px; }
+.traj-meta-card .label { color: #6B7280; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.traj-meta-card .value { color: #F3F4F6; font-size: 1.05rem; font-weight: 600; margin-top: 0.15rem; }
+.traj-section { margin-top: 1rem; border: 1px solid rgba(217,217,231,0.08); border-radius: 6px; }
+.traj-section summary { padding: 0.7rem 1rem; cursor: pointer; color: #D1D5DB; font-size: 0.9rem; font-weight: 500; user-select: none; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.traj-section summary::-webkit-details-marker { display: none; }
+.traj-section summary::after { content: "▼"; color: #6B7280; font-size: 0.7rem; transition: transform 0.2s; }
+.traj-section[open] summary::after { transform: rotate(180deg); }
+.traj-section summary:hover { background: rgba(255,255,255,0.03); }
+.traj-section .traj-section-body { padding: 0.5rem 1rem 1rem; border-top: 1px solid rgba(217,217,231,0.06); }
+
+.traj-grading { font-size: 0.83rem; }
+.traj-grading-row { padding: 0.6rem 0.5rem; border-bottom: 1px solid rgba(217,217,231,0.05); display: grid; grid-template-columns: 60px 60px 1fr; gap: 0.75rem; align-items: start; }
+.traj-grading-row:last-child { border-bottom: none; }
+.traj-grading-row .score { font-family: 'Courier New', monospace; font-weight: 600; text-align: center; padding: 0.15rem 0.3rem; border-radius: 3px; height: fit-content; }
+.traj-grading-row .score.fail { color: #FCA5A5; background: rgba(248,113,113,0.12); }
+.traj-grading-row .score.partial { color: #FCD34D; background: rgba(252,211,77,0.12); }
+.traj-grading-row .score.pass { color: #6EE7B7; background: rgba(110,231,183,0.12); }
+.traj-grading-row .weight { color: #6B7280; font-size: 0.78rem; text-align: center; padding-top: 0.25rem; font-family: 'Courier New', monospace; }
+.traj-grading-row .weight.neg { color: #FCA5A5; }
+.traj-grading-row .crit-text { color: #D1D5DB; font-size: 0.83rem; line-height: 1.5; }
+.traj-grading-row .crit-kind-neg { display: inline-block; margin-left: 0.4rem; color: #FCA5A5; background: rgba(248,113,113,0.12); padding: 0.05rem 0.35rem; border-radius: 3px; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.06em; vertical-align: 1px; }
+.traj-grading-row .judge-note { margin-top: 0.5rem; padding: 0.5rem 0.7rem; background: rgba(255,255,255,0.025); border-left: 2px solid rgba(129,140,248,0.5); border-radius: 0 3px 3px 0; display: flex; gap: 0.6rem; align-items: flex-start; }
+.traj-grading-row .judge-note-label { color: #818CF8; font-size: 0.66rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding-top: 0.05rem; flex-shrink: 0; }
+.traj-grading-row .judge-note-body { color: #9CA3AF; font-size: 0.78rem; line-height: 1.55; font-style: italic; }
+.traj-grading-header { display: grid; grid-template-columns: 60px 60px 1fr; gap: 0.75rem; padding: 0.4rem 0.5rem; color: #6B7280; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(217,217,231,0.1); }
+
+.traj-memo { font-family: 'Outfit', sans-serif; color: #D1D5DB; font-size: 0.88rem; line-height: 1.7; max-height: 600px; overflow-y: auto; padding: 0.5rem; background: #111112; border-radius: 4px; white-space: pre-wrap; }
+
+.fsv-root { background: #111112; border-radius: 4px; padding: 0.75rem; max-height: 600px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.82rem; line-height: 1.6; }
+.fsv-rootlabel { color: #818CF8; margin-bottom: 0.3rem; font-weight: 500; }
+.fsv-dir { margin-left: 0; }
+.fsv-dir summary { cursor: pointer; padding: 0.18rem 0; color: #818CF8; user-select: none; list-style: none; display: flex; align-items: center; gap: 0.5rem; }
+.fsv-dir summary::-webkit-details-marker { display: none; }
+.fsv-dir summary::before { content: "▶"; color: #6B7280; font-size: 0.6rem; transition: transform 0.15s; display: inline-block; flex-shrink: 0; }
+.fsv-dir[open] > summary::before { transform: rotate(90deg); }
+.fsv-dir summary:hover { color: #A5B4FC; background: rgba(255,255,255,0.02); }
+.fsv-dir summary .fsv-size { margin-left: auto; }
+.fsv-children { margin-left: 1.1rem; padding-left: 0.6rem; border-left: 1px solid rgba(129,140,248,0.18); }
+.fsv-row { display: flex; align-items: center; gap: 0.5rem; padding: 0.12rem 0; padding-left: 1.1rem; }
+.fsv-row .fsv-size { margin-left: auto; }
+.fsv-file .fsv-name { color: #D1D5DB; }
+.fsv-size { color: #6B7280; font-size: 0.76rem; flex-shrink: 0; }
+
+.traj-msg { margin: 0.6rem 0; padding: 0.7rem 0.9rem; border-radius: 6px; border: 1px solid rgba(217,217,231,0.06); }
+.traj-msg.assistant { background: rgba(129,140,248,0.06); border-color: rgba(129,140,248,0.2); }
+.traj-msg.user { background: rgba(255,255,255,0.03); }
+.traj-msg.tool { background: rgba(110,231,183,0.04); border-color: rgba(110,231,183,0.18); }
+.traj-msg-header { font-size: 0.7rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.4rem; font-family: 'Courier New', monospace; }
+.traj-msg-header.assistant { color: #C7D2FE; }
+.traj-msg-header.tool { color: #6EE7B7; }
+.traj-msg-content { color: #D1D5DB; font-size: 0.85rem; line-height: 1.65; white-space: pre-wrap; word-break: break-word; }
+.traj-msg-thinking { background: rgba(255,255,255,0.02); border-left: 2px solid rgba(217,217,231,0.15); padding: 0.5rem 0.75rem; margin: 0.4rem 0; color: #9CA3AF; font-size: 0.8rem; line-height: 1.55; font-style: italic; }
+.traj-msg-thinking-label { font-size: 0.65rem; color: #6B7280; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem; font-style: normal; }
+.traj-tool-call { background: rgba(255,255,255,0.04); border: 1px solid rgba(217,217,231,0.1); border-radius: 4px; padding: 0.5rem 0.7rem; margin: 0.4rem 0; }
+.traj-tool-call-name { font-family: 'Courier New', monospace; font-size: 0.78rem; color: #6EE7B7; margin-bottom: 0.3rem; }
+.traj-tool-call-args { font-family: 'Courier New', monospace; font-size: 0.74rem; color: #9CA3AF; white-space: pre-wrap; word-break: break-word; max-height: 220px; overflow-y: auto; }
+.traj-empty { color: #6B7280; font-style: italic; padding: 0.5rem; }
+
+.swatch { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:0.5rem; vertical-align:middle; }
+.table-wrap table td { white-space: nowrap; }
+.table-wrap table th { white-space: normal; line-height:1.3; }
+.table-wrap table td:nth-child(2) { white-space: normal; }
+.note { color:#9CA3AF; font-size:0.82rem; line-height:1.6; }
+.hero .stats-row { margin-top:1.5rem; margin-bottom:1.5rem; }
+.hero h3.sub { margin-top:1.5rem; }
+.hero p.prose { max-width:70ch; }
+.callout em { color:#E5E7EB; }
+.traj-step-title { font-size:0.95rem; font-weight:600; color:#F3F4F6; margin:1.25rem 0 0.5rem; padding-top:1rem; border-top:1px solid rgba(217,217,231,0.1); }
+.vote-row { display:flex; gap:0.4rem; margin-top:0.35rem; flex-wrap:wrap; }
+.vote { font-size:0.7rem; padding:0.15rem 0.45rem; border-radius:3px; font-family:'Courier New', monospace; }
+.vote.yes { background: rgba(110,231,183,0.14); color:#6EE7B7; }
+.vote.no { background: rgba(248,113,113,0.14); color:#FCA5A5; }
+.vote.none { background: rgba(255,255,255,0.06); color:#9CA3AF; }
+.judge-note { margin-top:0.35rem; font-size:0.78rem; color:#9CA3AF; line-height:1.5; }
+.judge-note-label { color:#6B7280; text-transform:uppercase; font-size:0.65rem; letter-spacing:0.05em; margin-right:0.4rem; }
+.traj-grading-header { display:grid; grid-template-columns: 60px 60px 1fr; gap:0.5rem; font-size:0.68rem; color:#6B7280; text-transform:uppercase; letter-spacing:0.06em; padding:0.4rem 0.5rem; }
+.traj-grading-row { display:grid; grid-template-columns: 60px 60px 1fr; gap:0.5rem; align-items:start; }
+.traj-memo { white-space:pre-wrap; font-size:0.82rem; line-height:1.6; color:#D1D5DB; max-height:520px; overflow-y:auto; font-family:'Courier New', monospace; }
+@media print { .chart-card, .table-wrap, .callout, .stat-card { break-inside: avoid; } }
+.placeholder { border:1.5px dashed #F59E0B; border-radius:8px; padding:0.9rem 1.1rem; margin:0.75rem 0 1.25rem; background:rgba(245,158,11,0.06); color:#FCD34D; }
+.placeholder .ph-label { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:#F59E0B; margin-bottom:0.35rem; }
+.placeholder p, .placeholder li { color:#FDE68A; font-size:0.9rem; }
+.material { border-left:3px solid #6366F1; padding:0.25rem 0 0.25rem 1rem; margin:1.25rem 0; }
+.material .mat-label { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:#818CF8; margin-bottom:0.5rem; }
+.chart-stack > .chart-card { margin-bottom:1rem; }
+.lead-note { border:1.5px solid #F59E0B; border-radius:8px; padding:0.8rem 1.1rem; margin:1rem 0; background:rgba(245,158,11,0.08); }
+.lead-note p { color:#FDE68A; font-size:0.88rem; margin:0; }
+.lead-note .ph-label { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:#F59E0B; margin-bottom:0.35rem; }
+.pending-note { border:1px solid rgba(156,163,175,0.35); border-radius:6px; padding:0.6rem 0.9rem; color:#D1D5DB; font-size:0.85rem; background:rgba(255,255,255,0.03); }
+</style>
+
+<style>
+.table-wrap { max-height: none !important; }
+.fs-display { overflow-x: auto; }
+.chart-card canvas { max-height: none !important; }
+.cv { position: relative; height: var(--h); }
+@media (max-width: 600px) { .cv { height: calc(var(--h) + 120px); } .container { padding: 1rem; } }
+.dz-item { margin: 0 0 2.75rem; scroll-margin-top: 1rem; }
+.dz-head { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: baseline; margin-bottom: 0.2rem; }
+.dz-num { font-weight: 700; font-size: 1.05rem; color: #F3F4F6; }
+.dz-sec { color: #818CF8; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.dz-ref { color: #D1D5DB; font-style: italic; margin-bottom: 0.6rem; font-size: 0.95rem; }
+.dz-note { border-left: 3px solid #F59E0B; background: rgba(245,158,11,0.08); color: #FDE68A; font-size: 0.85rem; padding: 0.5rem 0.9rem; border-radius: 4px; margin-bottom: 0.75rem; max-width: 80ch; }
+.dz-index td, .dz-index th { white-space: normal !important; }
+.dz-index a { color: #A5B4FC; text-decoration: none; white-space: nowrap; }
+.dz-intro { color: #D1D5DB; font-size: 0.95rem; line-height: 1.7; max-width: 80ch; margin-bottom: 0.75rem; }
+@media print { .dz-item { break-inside: avoid; } }
+
+/* Figma widget: Uploaded files per matter (node 9650:12111) */
+.ufm-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 791px;
+  min-height: 483px;
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 31px 24px 23px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+}
+.ufm-title {
+  margin: 0 0 20px;
+  max-width: 469px;
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.21px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+.ufm-chart-scroll {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  margin-bottom: 28px;
+}
+.ufm-chart {
+  position: relative;
+  width: 578.46px;
+  height: 306px;
+  flex-shrink: 0;
+}
+.ufm-grid {
+  position: absolute;
+  left: 39.01px;
+  top: 8.11px;
+  width: 539px;
+  height: 269.473px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+}
+.ufm-grid-row {
+  flex: 1 0 0;
+  min-height: 1px;
+  width: 539px;
+  background: rgba(217, 217, 217, 0);
+  border: 0.901px dashed #252525;
+  box-sizing: border-box;
+}
+.ufm-axis-line {
+  position: absolute;
+  left: 38.81px;
+  top: 8px;
+  width: 539.654px;
+  height: 269.451px;
+  pointer-events: none;
+}
+.ufm-axis-line img {
+  display: block;
+  max-width: none;
+}
+.ufm-axis-ticks {
+  position: absolute;
+  left: 33.96px;
+  top: 7.66px;
+  width: 5.858px;
+  height: 270.374px;
+  pointer-events: none;
+}
+.ufm-axis-ticks img {
+  display: block;
+  max-width: none;
+}
+.ufm-y-labels {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26.817px;
+  height: 283.893px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10.815px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  user-select: none;
+}
+.ufm-y-labels span {
+  display: block;
+  width: 100%;
+}
+.ufm-bars {
+  position: absolute;
+  left: 86.14px;
+  top: 8px;
+  width: 444.527px;
+  height: 268px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ufm-bar-col {
+  width: 45px;
+  height: 268px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.ufm-bar-val {
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+.ufm-bar-fill {
+  width: 100%;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #7065f0 0%, #3a347f 100%);
+  flex-shrink: 0;
+}
+.ufm-x-labels {
+  position: absolute;
+  left: 58.46px;
+  top: 290px;
+  width: 498px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+.ufm-x-labels span {
+  flex: 1 0 0;
+  min-width: 1px;
+}
+.ufm-footnote {
+  margin: 0;
+  max-width: 579px;
+  width: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 0.7;
+  text-align: center;
+}
+</style>
+<script>Chart.defaults.maintainAspectRatio = false;</script>
+</head>
+<body>
+<div class="container">
+  <div class="header"><div class="header-left"><div>
+    <h1>LegalReasonBench · figures and tables for design</h1>
+    <div class="subtitle">18 figures and 20 tables, the set the publication write-up keeps (10/15 tab)</div>
+  </div></div></div>
+  <p class="dz-intro">Each item below is a figure or table that the write-up calls out in a bracketed reference, in the order the write-up uses. The label over each item repeats that reference word for word, with the write-up section it sits in. Nothing else from the report is included.</p>
+  <p class="dz-intro">Every number is copied unchanged from the report posted on 10/14 at 11:17pm ET, which the write-up's figures reference, and every chart is drawn from the same data. Charts are interactive: hover for exact values and 95% intervals. Gemini 4 Argon* carries an asterisk throughout because it was added after the other seven models had run, and answered newer versions of 17 of the 50 matters. The head-to-head table (Table 5) compares models only on matters where both answered the same version.</p>
+  <p class="dz-intro">The orange-highlighted boxes carry the write-up's own notes to design, what changed from the 10/14 tab, and three chart axes widened since the 10/14 report because they cut off data. No number changed.</p>
+  <div class="section"><h2>Index</h2>
+  <div class="table-wrap dz-index"><table style="font-size:0.82rem;"><thead><tr><th>Item</th><th>Reference in the write-up</th><th>Section</th></tr></thead><tbody><tr><td><a href="#tab-1">Table 1</a></td><td>Table: Benchmark tasks at a glance</td><td>2.1 Task construction</td></tr><tr><td><a href="#fig-1">Figure 1</a></td><td>Figure: Matters by practice area</td><td>2.1 Task construction</td></tr><tr><td><a href="#fig-2">Figure 2</a></td><td>Figure: Uploaded files per matter</td><td>2.1 Task construction</td></tr><tr><td><a href="#fig-3">Figure 3</a></td><td>Figure: Case-file volume per matter</td><td>2.1 Task construction</td></tr><tr><td><a href="#fig-4">Figure 4</a></td><td>Figure: sandbox directory tree, /app/ with attachments/, response1.md, response2.md</td><td>2.2 Agent&#x27;s environment</td></tr><tr><td><a href="#tab-2">Table 2</a></td><td>Table: Criteria classified (table under IRAC classification panel)</td><td>2.3 Evaluation protocol</td></tr><tr><td><a href="#tab-3">Table 3</a></td><td>Table: Judge agreement and yes-share per seat</td><td>2.3 Evaluation protocol</td></tr><tr><td><a href="#fig-5">Figure 5</a></td><td>Figure: Panel verdict against each single seat</td><td>2.3 Evaluation protocol</td></tr><tr><td><a href="#fig-6">Figure 6</a></td><td>Figure: Mean reward per model, mean of matter means with 95% CI</td><td>Leaderboard</td></tr><tr><td><a href="#tab-4">Table 4</a></td><td>Table: Per-model summary</td><td>Leaderboard</td></tr><tr><td><a href="#tab-5">Table 5</a></td><td>Table: Head-to-head differences, row model minus column model</td><td>Reading Gemini 4 Argon&#x27;s result</td></tr><tr><td><a href="#fig-7">Figure 7</a></td><td>Figure: Score against solver cost per matter, log scale</td><td>Tokenomics</td></tr><tr><td><a href="#tab-6">Table 6</a></td><td>Table: Cost per matter, solver and evaluation reported separately</td><td>Tokenomics</td></tr><tr><td><a href="#fig-8">Figure 8</a></td><td>Figure: Score against agent working time per matter</td><td>Time</td></tr><tr><td><a href="#tab-7">Table 7</a></td><td>Table: Agent working time and end-to-end time per matter</td><td>Time</td></tr><tr><td><a href="#fig-9">Figure 9</a></td><td>Figure: Weighted mean score per IRAC bucket, positive criteria</td><td>4.1 IRAC</td></tr><tr><td><a href="#tab-8">Table 8</a></td><td>Table: IRAC bucket scores and Issue contrasts</td><td>4.1 IRAC</td></tr><tr><td><a href="#fig-10">Figure 10</a></td><td>Figure: Penalty criteria triggered, by bucket (lower is better)</td><td>4.1 IRAC</td></tr><tr><td><a href="#tab-9">Table 9</a></td><td>Table: Penalty fire rate by IRAC bucket</td><td>4.1 IRAC</td></tr><tr><td><a href="#fig-11">Figure 11</a></td><td>Figure: Rule score by research universe</td><td>4.2 Research universe</td></tr><tr><td><a href="#fig-11">Figure 12</a></td><td>Figure: Application score by research universe</td><td>4.2 Research universe</td></tr><tr><td><a href="#fig-13">Figure 13</a></td><td>Figure: Web lookups per matter, by research universe</td><td>4.2 Research universe</td></tr><tr><td><a href="#tab-10">Table 10</a></td><td>Table: Verbosity by model, with length-adjusted means</td><td>4.3 Verbosity</td></tr><tr><td><a href="#fig-14">Figure 14</a></td><td>Figure: What a doubling of length buys, same model, same assignment</td><td>4.3 Verbosity</td></tr><tr><td><a href="#tab-11">Table 11</a></td><td>Table: Score and length, court-facing against memoranda, per model</td><td>4.3 Verbosity</td></tr><tr><td><a href="#tab-12">Table 12</a></td><td>Table: Filing-limit compliance per model</td><td>4.3 Verbosity</td></tr><tr><td><a href="#fig-15">Figure 15</a></td><td>Figure: Change in mean assignment score, A1 to A2+</td><td>4.4 Long-horizon performance</td></tr><tr><td><a href="#fig-16">Figure 16</a></td><td>Figure: Does early success persist? r(A1, A2+)</td><td>4.4 Long-horizon performance</td></tr><tr><td><a href="#tab-13">Table 13</a></td><td>Table: Dependency split</td><td>4.4 Long-horizon performance</td></tr><tr><td><a href="#tab-14">Table 14</a></td><td>Table: Record-evolution split</td><td>4.4 Long-horizon performance</td></tr><tr><td><a href="#tab-15">Table 15</a></td><td>Table: Later-assignment failure categories by model</td><td>4.4 Long-horizon performance</td></tr><tr><td><a href="#fig-17">Figure 17</a></td><td>Figure: Criteria that need a visual exhibit against the rest</td><td>4.5 Tool use and file processing</td></tr><tr><td><a href="#tab-16">Table 16</a></td><td>Table: Visual criteria against the rest, per model</td><td>4.5 Tool use and file processing</td></tr><tr><td><a href="#tab-17">Table 17</a></td><td>Table: File-access trace audit, failure categories by model</td><td>4.5 Tool use and file processing</td></tr><tr><td><a href="#fig-18">Figure 18</a></td><td>Figure: Tool calls per matter</td><td>4.5 Tool use and file processing</td></tr><tr><td><a href="#tab-18">Table 18</a></td><td>Table: Tool calls per run, by tool</td><td>4.5 Tool use and file processing</td></tr><tr><td><a href="#tab-19">Table 19</a></td><td>Table: Web use by research universe</td><td>4.5 Tool use and file processing</td></tr><tr><td><a href="#tab-20">Table 20</a></td><td>Table: No-research compliance per model</td><td>4.5 Tool use and file processing</td></tr></tbody></table></div>
+  </div>
+  <div class="section"><h2>2. Methodology</h2>
+  <section class="dz-item" id="tab-1">
+    <div class="dz-head"><span class="dz-num">Table 1</span><span class="dz-sec">2.1 Task construction</span></div>
+    <p class="dz-ref">[Table: Benchmark tasks at a glance]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.82rem;"><thead><tr><th>Dimension</th><th>Headline</th><th>Detail</th></tr></thead><tbody><tr><td style='color:#9CA3AF;white-space:nowrap;'>Matters</td><td><strong>50</strong></td><td style='white-space:normal;color:#D1D5DB;'>22 open-universe (web research allowed), 28 closed-universe (confined to the uploaded record)</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>Assignments per matter</td><td><strong>122 in total</strong></td><td style='white-space:normal;color:#D1D5DB;'>74% with 2, 14% with 3, 6% with 4, 6% with 5 assignments</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>Deliverable types</td><td><strong>74% legal memorandum</strong></td><td style='white-space:normal;color:#D1D5DB;'>24% motions, briefs and pleadings; 2% administrative-agency submissions; 0.8% correspondence</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>Research universe</td><td><strong>44% open</strong></td><td style='white-space:normal;color:#D1D5DB;'>56% closed; the label is the matter's own instruction on web search</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>State dependency</td><td><strong>68% dependent</strong></td><td style='white-space:normal;color:#D1D5DB;'>later work materially builds on the first assignment; 32% low-dependency</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>Record evolution</td><td><strong>86% evolving</strong></td><td style='white-space:normal;color:#D1D5DB;'>the record changes after the first assignment; 14% static-record</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>Case files per matter</td><td><strong>median 6.5</strong></td><td style='white-space:normal;color:#D1D5DB;'>range 3 to 25; 395 files in total (309 PDF, 64 DOCX, 22 images); 9 matters ship image exhibits and 41 PDFs in 22 matters are scans or screenshots with no text layer</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>Case-file volume</td><td><strong>median 46k tokens</strong></td><td style='white-space:normal;color:#D1D5DB;'>interquartile range 11k to 126k, maximum 4,074k tokens per matter; 116 pages median</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>Rubric criteria</td><td><strong>2,236</strong></td><td style='white-space:normal;color:#D1D5DB;'>1,883 positive (23,882 points) and 353 penalty criteria (6,237 points); 3 to 54 per assignment, median 16</td></tr><tr><td style='color:#9CA3AF;white-space:nowrap;'>Rubric composition (IRAC)</td><td><strong>Application 57% of positive weight</strong></td><td style='white-space:normal;color:#D1D5DB;'>Issue 7% of criteria / 5% of weight; Rule 29% of criteria / 23% of weight; Application 51% of criteria / 57% of weight; Conclusion 12% of criteria / 14% of weight; Other 1% of criteria / 1% of weight</td></tr></tbody></table>
+  </div>
+  </section>
+  <section class="dz-item" id="fig-1">
+    <div class="dz-head"><span class="dz-num">Figure 1</span><span class="dz-sec">2.1 Task construction</span></div>
+    <p class="dz-ref">[Figure: Matters by practice area]</p>
+    
+    <div class="chart-card">
+      <h3>Matters by practice area</h3>
+      <div class="cv" style="--h:440px"><canvas id="chart-practice-area"></canvas></div>
+      <p class="chart-footnote">Share of the 50 matters. Harvey LAB v1.0 practice areas plus four LegalReasonBench additions (criminal law and procedure, civil rights, administrative law, sports law).</p>
+    </div>
+  </section>
+  <section class="dz-item" id="fig-2">
+    <div class="dz-head"><span class="dz-num">Figure 2</span><span class="dz-sec">2.1 Task construction</span></div>
+    <p class="dz-ref">[Figure: Uploaded files per matter]</p>
+    
+    <div class="ufm-card" role="figure" aria-label="Uploaded files per matter">
+      <h3 class="ufm-title">Uploaded files per matter</h3>
+      <div class="ufm-chart-scroll">
+        <div class="ufm-chart">
+          <div class="ufm-grid" aria-hidden="true">
+            <div class="ufm-grid-row"></div>
+            <div class="ufm-grid-row"></div>
+            <div class="ufm-grid-row"></div>
+            <div class="ufm-grid-row"></div>
+            <div class="ufm-grid-row"></div>
+          </div>
+          <div class="ufm-axis-line" aria-hidden="true">
+            <img alt="" src="./assets/axis-line.svg" />
+          </div>
+          <div class="ufm-axis-ticks" aria-hidden="true">
+            <img alt="" src="./assets/axis-ticks.svg" />
+          </div>
+          <div class="ufm-y-labels" aria-hidden="true">
+            <span>50%</span>
+            <span>40%</span>
+            <span>30%</span>
+            <span>20%</span>
+            <span>10%</span>
+            <span>0%</span>
+          </div>
+          <div class="ufm-bars">
+            <div class="ufm-bar-col">
+              <div class="ufm-bar-val">16%</div>
+              <div class="ufm-bar-fill" style="height: 85.76px;"></div>
+            </div>
+            <div class="ufm-bar-col">
+              <div class="ufm-bar-val">34%</div>
+              <div class="ufm-bar-fill" style="height: 182.24px;"></div>
+            </div>
+            <div class="ufm-bar-col">
+              <div class="ufm-bar-val">20%</div>
+              <div class="ufm-bar-fill" style="height: 107.2px;"></div>
+            </div>
+            <div class="ufm-bar-col">
+              <div class="ufm-bar-val">24%</div>
+              <div class="ufm-bar-fill" style="height: 128.64px;"></div>
+            </div>
+            <div class="ufm-bar-col">
+              <div class="ufm-bar-val">6%</div>
+              <div class="ufm-bar-fill" style="height: 32.16px;"></div>
+            </div>
+          </div>
+          <div class="ufm-x-labels">
+            <span>3 - 6</span>
+            <span>5 - 6</span>
+            <span>7 - 9</span>
+            <span>10 - 14</span>
+            <span>15 or more</span>
+          </div>
+        </div>
+      </div>
+      <p class="ufm-footnote">Share of matters by number of uploaded case files (pleadings, orders, opinions, contracts, deposition excerpts, exhibits).</p>
+    </div>
+  </section>
+  <section class="dz-item" id="fig-3">
+    <div class="dz-head"><span class="dz-num">Figure 3</span><span class="dz-sec">2.1 Task construction</span></div>
+    <p class="dz-ref">[Figure: Case-file volume per matter]</p>
+    <p class="dz-note">Axis now runs to 60%. In the 10/14 report it stopped at 50% and cut off the 52% &quot;under 50k&quot; bar.</p>
+    <div class="chart-card">
+      <h3>Case-file volume per matter</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-file-tokens"></canvas></div>
+      <p class="chart-footnote">Tokens (o200k) of extractable text across a matter's uploaded files: PDFs through pdftotext, DOCX through pandoc; image files carry no text. 50 of 50 matters.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="fig-4">
+    <div class="dz-head"><span class="dz-num">Figure 4</span><span class="dz-sec">2.2 Agent&#x27;s environment</span></div>
+    <p class="dz-ref">[Figure: sandbox directory tree, /app/ with attachments/, response1.md, response2.md]</p>
+    <p class="dz-note">Shown as the report draws it. The three file names under attachments/ are illustrative.</p>
+    <div class="fs-display">
+    <div class="fs-tree"><span class="dir">/app/</span>
+├── <span class="dir">attachments/</span>          The matter's documents (PDF, DOCX, occasionally PNG/JPG)
+│   ├── <span class="file">order-granting-petition.docx</span>
+│   ├── <span class="file">complaint.pdf</span>
+│   └── <span class="file">exhibit-b-photo.jpg</span>
+├── <span class="file">response1.md</span>          Deliverable for assignment 1 (graded when the assignment ends)
+└── <span class="file">response2.md</span>          Deliverable for assignment 2, written with response1.md still on disk</div>
+  </div>
+  </section>
+  <section class="dz-item" id="tab-2">
+    <div class="dz-head"><span class="dz-num">Table 2</span><span class="dz-sec">2.3 Evaluation protocol</span></div>
+    <p class="dz-ref">[Table: Criteria classified (table under IRAC classification panel)]</p>
+    <p class="dz-note">New in the 10/15 tab; not in the 10/14 tab.</p>
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.8rem;"><thead><tr><th>Criteria classified</th><th>Unanimous</th><th>Majority (2 of 3)</th><th>Three-way split (unresolved)</th><th>Resolved by the legal lead</th><th>Fleiss' kappa</th></tr></thead>
+    <tbody><tr><td>2,249</td><td>1,764 (78%)</td><td>446 (20%)</td><td><strong>0</strong></td><td>39</td><td>0.773</td></tr></tbody></table>
+  </div>
+  </section>
+  <section class="dz-item" id="tab-3">
+    <div class="dz-head"><span class="dz-num">Table 3</span><span class="dz-sec">2.3 Evaluation protocol</span></div>
+    <p class="dz-ref">[Table: Judge agreement and yes-share per seat]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.8rem;">
+      <thead><tr><th>Model graded</th><th>Positive criteria graded</th><th>Unanimous</th><th>Split 2 to 1</th><th>GPT-5.6 Terra yes</th><th>Claude Sonnet 5 yes</th><th>Gemini 3.8 Flash yes</th><th>Seat agrees with panel</th></tr></thead>
+      <tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>5,628</td><td>79%</td><td>21%</td><td>69%</td><td>68%</td><td>60%</td><td>92% to 94%</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>5,649</td><td>78%</td><td>22%</td><td>70%</td><td>66%</td><td>58%</td><td>92% to 93%</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>5,550</td><td>77%</td><td>23%</td><td>66%</td><td>64%</td><td>55%</td><td>91% to 93%</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>5,638</td><td>77%</td><td>23%</td><td>63%</td><td>57%</td><td>50%</td><td>92% to 93%</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>5,649</td><td>77%</td><td>23%</td><td>59%</td><td>56%</td><td>48%</td><td>91% to 93%</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>5,649</td><td>79%</td><td>21%</td><td>59%</td><td>56%</td><td>50%</td><td>93% to 93%</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>5,562</td><td>78%</td><td>22%</td><td>56%</td><td>55%</td><td>48%</td><td>92% to 93%</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>5,649</td><td>78%</td><td>22%</td><td>47%</td><td>46%</td><td>38%</td><td>92% to 93%</td></tr></tbody>
+    </table>
+  </div>
+<p class="chart-footnote">Positive criteria only. "Yes" is the seat's yes-share; "seat agrees with panel" is the range across seats of the share of criteria where the seat's vote equals the majority verdict.</p>
+  </section>
+  <section class="dz-item" id="fig-5">
+    <div class="dz-head"><span class="dz-num">Figure 5</span><span class="dz-sec">2.3 Evaluation protocol</span></div>
+    <p class="dz-ref">[Figure: Panel verdict against each single seat]</p>
+    <p class="dz-note">The 10/15 tab changes this from a table to a figure: the chart under &quot;What each judge alone would have scored&quot;.</p>
+    <div class="chart-card">
+      <h3>Panel verdict against each single seat</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-judges"></canvas></div>
+      <p class="chart-footnote">Mean of matter means recomputed from one seat's votes on every criterion, penalties included, next to the panel's majority result.</p>
+    </div>
+  </section></div><div class="section"><h2>3. Overall performance: leaderboard, cost, time</h2>
+  <section class="dz-item" id="fig-6">
+    <div class="dz-head"><span class="dz-num">Figure 6</span><span class="dz-sec">Leaderboard</span></div>
+    <p class="dz-ref">[Figure: Mean reward per model, mean of matter means with 95% CI]</p>
+    
+    <div class="chart-card">
+      <h3>Mean reward per model (mean of matter means, 95% CI)</h3>
+      <div class="cv" style="--h:360px"><canvas id="chart-mean-reward"></canvas></div>
+      <p class="chart-footnote">Each model ran every matter three times (1,200 accepted runs). The bar is the mean of the 50 per-matter means; whiskers are a paired matter bootstrap (10,000 resamples).</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-4">
+    <div class="dz-head"><span class="dz-num">Table 4</span><span class="dz-sec">Leaderboard</span></div>
+    <p class="dz-ref">[Table: Per-model summary]</p>
+    
+    <div class="table-wrap" style="max-height:none;border:none;background:transparent;">
+        <table style="font-size:0.82rem;">
+          <thead><tr><th>Model</th><th>Mean</th><th>Median</th><th>95% CI</th><th>best@3</th><th>All-pass</th><th>Wins</th><th>Runs / matters</th></tr></thead>
+          <tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td><strong>0.508</strong></td><td>0.517</td><td>[0.469, 0.548]</td><td>0.582</td><td>0 / 150</td><td>19</td><td style='color:#9CA3AF'>150 / 50</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td><strong>0.506</strong></td><td>0.520</td><td>[0.468, 0.544]</td><td>0.567</td><td>0 / 150</td><td>12</td><td style='color:#9CA3AF'>150 / 50</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td><strong>0.465</strong></td><td>0.425</td><td>[0.420, 0.510]</td><td>0.532</td><td>0 / 147</td><td>7</td><td style='color:#9CA3AF'>150 / 50</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td><strong>0.404</strong></td><td>0.390</td><td>[0.363, 0.448]</td><td>0.468</td><td>0 / 150</td><td>2</td><td style='color:#9CA3AF'>150 / 50</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td><strong>0.404</strong></td><td>0.383</td><td>[0.366, 0.444]</td><td>0.474</td><td>0 / 150</td><td>2</td><td style='color:#9CA3AF'>150 / 50</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td><strong>0.396</strong></td><td>0.379</td><td>[0.358, 0.436]</td><td>0.456</td><td>0 / 150</td><td>1</td><td style='color:#9CA3AF'>150 / 50</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td><strong>0.395</strong></td><td>0.415</td><td>[0.350, 0.440]</td><td>0.441</td><td>0 / 147</td><td>6</td><td style='color:#9CA3AF'>150 / 50</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td><strong>0.319</strong></td><td>0.290</td><td>[0.278, 0.363]</td><td>0.374</td><td>0 / 150</td><td>1</td><td style='color:#9CA3AF'>150 / 50</td></tr></tbody>
+        </table>
+      </div>
+<p class="chart-footnote">best@3: mean over matters of the best of the three runs. All-pass: runs that satisfied every positive criterion and triggered no penalty on every assignment of the matter, the Harvey LAB completion standard. Wins: matters where the model has the highest mean.</p>
+  </section>
+  <section class="dz-item" id="tab-5">
+    <div class="dz-head"><span class="dz-num">Table 5</span><span class="dz-sec">Reading Gemini 4 Argon&#x27;s result</span></div>
+    <p class="dz-ref">[Table: Head-to-head differences, row model minus column model]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.78rem;"><thead><tr><th>Row model minus column model</th><th>Argon*</th><th>Fable</th><th>Opus</th><th>Muse</th><th>Grok</th><th>Gemini</th><th>Astra</th><th>Sol</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td style='background:rgba(255,255,255,0.03)'></td><td style='background:transparent;text-align:center' title='Gemini 4 Argon* minus Claude Fable 5.1 over 33 matters, 95% CI [-0.026, +0.046]'>+0.009<br><span class='note'>33</span></td><td style='background:transparent;text-align:center' title='Gemini 4 Argon* minus Claude Opus 5.5 over 33 matters, 95% CI [-0.010, +0.105]'>+0.045<br><span class='note'>33</span></td><td style='background:rgba(16,185,129,0.35);text-align:center' title='Gemini 4 Argon* minus Muse Spark 1.3 over 48 matters, 95% CI [+0.065, +0.137]'><strong>+0.102</strong><br><span class='note'>48</span></td><td style='background:rgba(16,185,129,0.37);text-align:center' title='Gemini 4 Argon* minus Grok 4.7 over 33 matters, 95% CI [+0.058, +0.160]'><strong>+0.110</strong><br><span class='note'>33</span></td><td style='background:rgba(16,185,129,0.39);text-align:center' title='Gemini 4 Argon* minus Gemini 3.8 Flash over 33 matters, 95% CI [+0.085, +0.157]'><strong>+0.121</strong><br><span class='note'>33</span></td><td style='background:rgba(16,185,129,0.40);text-align:center' title='Gemini 4 Argon* minus GPT-6 Astra over 33 matters, 95% CI [+0.067, +0.184]'><strong>+0.125</strong><br><span class='note'>33</span></td><td style='background:rgba(16,185,129,0.52);text-align:center' title='Gemini 4 Argon* minus GPT-6 Sol over 33 matters, 95% CI [+0.124, +0.229]'><strong>+0.177</strong><br><span class='note'>33</span></td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td style='background:transparent;text-align:center' title='Claude Fable 5.1 minus Gemini 4 Argon* over 33 matters, 95% CI [-0.046, +0.026]'>-0.009<br><span class='note'>33</span></td><td style='background:rgba(255,255,255,0.03)'></td><td style='background:rgba(16,185,129,0.21);text-align:center' title='Claude Fable 5.1 minus Claude Opus 5.5 over 50 matters, 95% CI [+0.012, +0.076]'><strong>+0.041</strong><br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.35);text-align:center' title='Claude Fable 5.1 minus Muse Spark 1.3 over 46 matters, 95% CI [+0.071, +0.134]'><strong>+0.103</strong><br><span class='note'>46</span></td><td style='background:rgba(16,185,129,0.35);text-align:center' title='Claude Fable 5.1 minus Grok 4.7 over 50 matters, 95% CI [+0.071, +0.133]'><strong>+0.102</strong><br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.37);text-align:center' title='Claude Fable 5.1 minus Gemini 3.8 Flash over 50 matters, 95% CI [+0.079, +0.142]'><strong>+0.110</strong><br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.37);text-align:center' title='Claude Fable 5.1 minus GPT-6 Astra over 50 matters, 95% CI [+0.072, +0.150]'><strong>+0.111</strong><br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.54);text-align:center' title='Claude Fable 5.1 minus GPT-6 Sol over 50 matters, 95% CI [+0.151, +0.221]'><strong>+0.186</strong><br><span class='note'>50</span></td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td style='background:transparent;text-align:center' title='Claude Opus 5.5 minus Gemini 4 Argon* over 33 matters, 95% CI [-0.105, +0.010]'>-0.045<br><span class='note'>33</span></td><td style='background:rgba(239,68,68,0.21);text-align:center' title='Claude Opus 5.5 minus Claude Fable 5.1 over 50 matters, 95% CI [-0.076, -0.012]'><strong>-0.041</strong><br><span class='note'>50</span></td><td style='background:rgba(255,255,255,0.03)'></td><td style='background:rgba(16,185,129,0.27);text-align:center' title='Claude Opus 5.5 minus Muse Spark 1.3 over 46 matters, 95% CI [+0.022, +0.108]'><strong>+0.066</strong><br><span class='note'>46</span></td><td style='background:rgba(16,185,129,0.26);text-align:center' title='Claude Opus 5.5 minus Grok 4.7 over 50 matters, 95% CI [+0.026, +0.096]'><strong>+0.061</strong><br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.27);text-align:center' title='Claude Opus 5.5 minus Gemini 3.8 Flash over 50 matters, 95% CI [+0.031, +0.105]'><strong>+0.069</strong><br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.28);text-align:center' title='Claude Opus 5.5 minus GPT-6 Astra over 50 matters, 95% CI [+0.026, +0.112]'><strong>+0.070</strong><br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.45);text-align:center' title='Claude Opus 5.5 minus GPT-6 Sol over 50 matters, 95% CI [+0.102, +0.184]'><strong>+0.145</strong><br><span class='note'>50</span></td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td style='background:rgba(239,68,68,0.35);text-align:center' title='Muse Spark 1.3 minus Gemini 4 Argon* over 48 matters, 95% CI [-0.137, -0.065]'><strong>-0.102</strong><br><span class='note'>48</span></td><td style='background:rgba(239,68,68,0.35);text-align:center' title='Muse Spark 1.3 minus Claude Fable 5.1 over 46 matters, 95% CI [-0.134, -0.071]'><strong>-0.103</strong><br><span class='note'>46</span></td><td style='background:rgba(239,68,68,0.27);text-align:center' title='Muse Spark 1.3 minus Claude Opus 5.5 over 46 matters, 95% CI [-0.108, -0.022]'><strong>-0.066</strong><br><span class='note'>46</span></td><td style='background:rgba(255,255,255,0.03)'></td><td style='background:transparent;text-align:center' title='Muse Spark 1.3 minus Grok 4.7 over 46 matters, 95% CI [-0.032, +0.027]'>-0.003<br><span class='note'>46</span></td><td style='background:transparent;text-align:center' title='Muse Spark 1.3 minus Gemini 3.8 Flash over 46 matters, 95% CI [-0.033, +0.037]'>+0.001<br><span class='note'>46</span></td><td style='background:transparent;text-align:center' title='Muse Spark 1.3 minus GPT-6 Astra over 46 matters, 95% CI [-0.040, +0.048]'>+0.004<br><span class='note'>46</span></td><td style='background:rgba(16,185,129,0.29);text-align:center' title='Muse Spark 1.3 minus GPT-6 Sol over 46 matters, 95% CI [+0.041, +0.112]'><strong>+0.077</strong><br><span class='note'>46</span></td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td style='background:rgba(239,68,68,0.37);text-align:center' title='Grok 4.7 minus Gemini 4 Argon* over 33 matters, 95% CI [-0.160, -0.058]'><strong>-0.110</strong><br><span class='note'>33</span></td><td style='background:rgba(239,68,68,0.35);text-align:center' title='Grok 4.7 minus Claude Fable 5.1 over 50 matters, 95% CI [-0.133, -0.071]'><strong>-0.102</strong><br><span class='note'>50</span></td><td style='background:rgba(239,68,68,0.26);text-align:center' title='Grok 4.7 minus Claude Opus 5.5 over 50 matters, 95% CI [-0.096, -0.026]'><strong>-0.061</strong><br><span class='note'>50</span></td><td style='background:transparent;text-align:center' title='Grok 4.7 minus Muse Spark 1.3 over 46 matters, 95% CI [-0.027, +0.032]'>+0.003<br><span class='note'>46</span></td><td style='background:rgba(255,255,255,0.03)'></td><td style='background:transparent;text-align:center' title='Grok 4.7 minus Gemini 3.8 Flash over 50 matters, 95% CI [-0.022, +0.038]'>+0.008<br><span class='note'>50</span></td><td style='background:transparent;text-align:center' title='Grok 4.7 minus GPT-6 Astra over 50 matters, 95% CI [-0.030, +0.048]'>+0.009<br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.31);text-align:center' title='Grok 4.7 minus GPT-6 Sol over 50 matters, 95% CI [+0.048, +0.117]'><strong>+0.084</strong><br><span class='note'>50</span></td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td style='background:rgba(239,68,68,0.39);text-align:center' title='Gemini 3.8 Flash minus Gemini 4 Argon* over 33 matters, 95% CI [-0.157, -0.085]'><strong>-0.121</strong><br><span class='note'>33</span></td><td style='background:rgba(239,68,68,0.37);text-align:center' title='Gemini 3.8 Flash minus Claude Fable 5.1 over 50 matters, 95% CI [-0.142, -0.079]'><strong>-0.110</strong><br><span class='note'>50</span></td><td style='background:rgba(239,68,68,0.27);text-align:center' title='Gemini 3.8 Flash minus Claude Opus 5.5 over 50 matters, 95% CI [-0.105, -0.031]'><strong>-0.069</strong><br><span class='note'>50</span></td><td style='background:transparent;text-align:center' title='Gemini 3.8 Flash minus Muse Spark 1.3 over 46 matters, 95% CI [-0.037, +0.033]'>-0.001<br><span class='note'>46</span></td><td style='background:transparent;text-align:center' title='Gemini 3.8 Flash minus Grok 4.7 over 50 matters, 95% CI [-0.038, +0.022]'>-0.008<br><span class='note'>50</span></td><td style='background:rgba(255,255,255,0.03)'></td><td style='background:transparent;text-align:center' title='Gemini 3.8 Flash minus GPT-6 Astra over 50 matters, 95% CI [-0.040, +0.044]'>+0.002<br><span class='note'>50</span></td><td style='background:rgba(16,185,129,0.29);text-align:center' title='Gemini 3.8 Flash minus GPT-6 Sol over 50 matters, 95% CI [+0.033, +0.119]'><strong>+0.077</strong><br><span class='note'>50</span></td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td style='background:rgba(239,68,68,0.40);text-align:center' title='GPT-6 Astra minus Gemini 4 Argon* over 33 matters, 95% CI [-0.184, -0.067]'><strong>-0.125</strong><br><span class='note'>33</span></td><td style='background:rgba(239,68,68,0.37);text-align:center' title='GPT-6 Astra minus Claude Fable 5.1 over 50 matters, 95% CI [-0.150, -0.072]'><strong>-0.111</strong><br><span class='note'>50</span></td><td style='background:rgba(239,68,68,0.28);text-align:center' title='GPT-6 Astra minus Claude Opus 5.5 over 50 matters, 95% CI [-0.112, -0.026]'><strong>-0.070</strong><br><span class='note'>50</span></td><td style='background:transparent;text-align:center' title='GPT-6 Astra minus Muse Spark 1.3 over 46 matters, 95% CI [-0.048, +0.040]'>-0.004<br><span class='note'>46</span></td><td style='background:transparent;text-align:center' title='GPT-6 Astra minus Grok 4.7 over 50 matters, 95% CI [-0.048, +0.030]'>-0.009<br><span class='note'>50</span></td><td style='background:transparent;text-align:center' title='GPT-6 Astra minus Gemini 3.8 Flash over 50 matters, 95% CI [-0.044, +0.040]'>-0.002<br><span class='note'>50</span></td><td style='background:rgba(255,255,255,0.03)'></td><td style='background:rgba(16,185,129,0.29);text-align:center' title='GPT-6 Astra minus GPT-6 Sol over 50 matters, 95% CI [+0.032, +0.111]'><strong>+0.075</strong><br><span class='note'>50</span></td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td style='background:rgba(239,68,68,0.52);text-align:center' title='GPT-6 Sol minus Gemini 4 Argon* over 33 matters, 95% CI [-0.229, -0.124]'><strong>-0.177</strong><br><span class='note'>33</span></td><td style='background:rgba(239,68,68,0.54);text-align:center' title='GPT-6 Sol minus Claude Fable 5.1 over 50 matters, 95% CI [-0.221, -0.151]'><strong>-0.186</strong><br><span class='note'>50</span></td><td style='background:rgba(239,68,68,0.45);text-align:center' title='GPT-6 Sol minus Claude Opus 5.5 over 50 matters, 95% CI [-0.184, -0.102]'><strong>-0.145</strong><br><span class='note'>50</span></td><td style='background:rgba(239,68,68,0.29);text-align:center' title='GPT-6 Sol minus Muse Spark 1.3 over 46 matters, 95% CI [-0.112, -0.041]'><strong>-0.077</strong><br><span class='note'>46</span></td><td style='background:rgba(239,68,68,0.31);text-align:center' title='GPT-6 Sol minus Grok 4.7 over 50 matters, 95% CI [-0.117, -0.048]'><strong>-0.084</strong><br><span class='note'>50</span></td><td style='background:rgba(239,68,68,0.29);text-align:center' title='GPT-6 Sol minus Gemini 3.8 Flash over 50 matters, 95% CI [-0.119, -0.033]'><strong>-0.077</strong><br><span class='note'>50</span></td><td style='background:rgba(239,68,68,0.29);text-align:center' title='GPT-6 Sol minus GPT-6 Astra over 50 matters, 95% CI [-0.111, -0.032]'><strong>-0.075</strong><br><span class='note'>50</span></td><td style='background:rgba(255,255,255,0.03)'></td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">Each cell: mean over shared matching-version matters of (row model's matter mean minus column model's), with the number of matters underneath. Shaded and bold: the 95% matter-bootstrap interval excludes zero (green, row ahead; red, row behind). Policy zeros count as zero. Hover a cell for its interval.</p>
+  </section>
+  <section class="dz-item" id="fig-7">
+    <div class="dz-head"><span class="dz-num">Figure 7</span><span class="dz-sec">Tokenomics</span></div>
+    <p class="dz-ref">[Figure: Score against solver cost per matter, log scale]</p>
+    
+    <div class="chart-card">
+      <h3>Score against solver cost per matter</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-score-cost"></canvas></div>
+      <p class="chart-footnote">Mean of matter means against mean solver spend per matter, log scale.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-6">
+    <div class="dz-head"><span class="dz-num">Table 6</span><span class="dz-sec">Tokenomics</span></div>
+    <p class="dz-ref">[Table: Cost per matter, solver and evaluation reported separately]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Solver cost per matter</th><th>Evaluation (judge panel) per matter</th><th>Sandbox and executor per matter</th><th>Total per matter</th><th>Solver per assignment</th><th>Solver, all accepted runs</th><th>Evaluation and compute, all accepted runs</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td><strong>$6.71</strong></td><td>$6.59</td><td>$0.02</td><td>$13.32</td><td>$2.75</td><td>$1,007</td><td>$991</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td><strong>$19.74</strong></td><td>$5.16</td><td>$0.28</td><td>$25.17</td><td>$8.09</td><td>$2,960</td><td>$815</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td><strong>$8.08</strong></td><td>$4.76</td><td>$0.22</td><td>$13.06</td><td>$3.31</td><td>$1,212</td><td>$747</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td><strong>$0.87</strong></td><td>$4.11</td><td>$0.11</td><td>$5.09</td><td>$0.36</td><td>$130</td><td>$633</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td><strong>$3.42</strong></td><td>$3.65</td><td>$0.21</td><td>$7.28</td><td>$1.40</td><td>$514</td><td>$579</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td><strong>$3.96</strong></td><td>$5.18</td><td>$0.17</td><td>$9.31</td><td>$1.62</td><td>$595</td><td>$802</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td><strong>$22.06</strong></td><td>$3.16</td><td>$0.12</td><td>$25.35</td><td>$9.04</td><td>$3,309</td><td>$492</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td><strong>$2.45</strong></td><td>$1.77</td><td>$0.08</td><td>$4.30</td><td>$1.01</td><td>$368</td><td>$277</td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">Means over accepted runs (one run works one matter end to end). Solver: the model under test, every token of every assignment, including the subagent-free tool loop. Evaluation: the three-seat judge panel grading every criterion of every assignment. Across the lineup, accepted runs cost $15,432, of which $10,095 is solver spend.</p>
+  </section>
+  <section class="dz-item" id="fig-8">
+    <div class="dz-head"><span class="dz-num">Figure 8</span><span class="dz-sec">Time</span></div>
+    <p class="dz-ref">[Figure: Score against agent working time per matter]</p>
+    
+    <div class="chart-card">
+      <h3>Score against agent working time per matter</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-score-time"></canvas></div>
+      <p class="chart-footnote">Mean of matter means against the median agent working time per matter, in minutes.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-7">
+    <div class="dz-head"><span class="dz-num">Table 7</span><span class="dz-sec">Time</span></div>
+    <p class="dz-ref">[Table: Agent working time and end-to-end time per matter]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Agent minutes per matter (median)</th><th>Agent minutes per matter (mean)</th><th>Agent minutes per assignment</th><th>End-to-end minutes per matter (mean)</th><th>Overhead (mean end-to-end minus agent)</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td><strong>45</strong></td><td>58</td><td>23.9</td><td>112</td><td>53</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td><strong>38</strong></td><td>38</td><td>15.6</td><td>43</td><td>5</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td><strong>30</strong></td><td>30</td><td>12.4</td><td>35</td><td>5</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td><strong>11</strong></td><td>12</td><td>5.0</td><td>16</td><td>4</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td><strong>26</strong></td><td>28</td><td>11.6</td><td>33</td><td>5</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td><strong>18</strong></td><td>22</td><td>9.1</td><td>27</td><td>5</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td><strong>16</strong></td><td>15</td><td>6.3</td><td>20</td><td>5</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td><strong>9</strong></td><td>9</td><td>3.8</td><td>14</td><td>4</td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">Agent working time sums, over a matter's assignments, the span from the first to the last step of the agent's trajectory: the time the model is thinking, calling tools and writing. End-to-end time runs from run start to run completion and adds sandbox setup, the transfer of files between assignments, queueing for a worker and grading by the panel. Wall-clock time depends on provider load on the run dates and is not a property of the model alone.</p>
+  </section></div><div class="section"><h2>4. Decomposing model performance</h2>
+  <section class="dz-item" id="fig-9">
+    <div class="dz-head"><span class="dz-num">Figure 9</span><span class="dz-sec">4.1 IRAC</span></div>
+    <p class="dz-ref">[Figure: Weighted mean score per IRAC bucket, positive criteria]</p>
+    <p class="dz-note">10/14 comment: the legend was missing GPT-6 Sol. GPT-6 Sol is in the chart&#x27;s data and shows in its legend at standard widths. Chart.js drops legend rows that do not fit a small chart, the likely cause; every chart here is drawn with room for its full legend.</p>
+    <div class="chart-card">
+      <h3>Weighted mean score per IRAC bucket (positive criteria)</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-irac-mean"></canvas></div>
+      <p class="chart-footnote">Positive-weight criteria, pooled over criterion-runs and weighted by rubric points.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-8">
+    <div class="dz-head"><span class="dz-num">Table 8</span><span class="dz-sec">4.1 IRAC</span></div>
+    <p class="dz-ref">[Table: IRAC bucket scores and Issue contrasts]</p>
+    
+    <div class="table-wrap" style="margin-top:1rem;max-height:none;">
+    <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Issue</th><th>Rule</th><th>Application</th><th>Conclusion</th><th>Issue minus Rule (95% CI)</th><th>Issue minus Application (95% CI)</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>0.742</td><td>0.566</td><td>0.579</td><td>0.592</td><td><strong>+0.176</strong> <span class='note'>[+0.04, +0.33]</span></td><td><strong>+0.163</strong> <span class='note'>[+0.03, +0.31]</span></td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>0.676</td><td>0.559</td><td>0.554</td><td>0.564</td><td><strong>+0.117</strong> <span class='note'>[-0.06, +0.30]</span></td><td><strong>+0.122</strong> <span class='note'>[-0.04, +0.29]</span></td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>0.670</td><td>0.521</td><td>0.514</td><td>0.545</td><td><strong>+0.149</strong> <span class='note'>[-0.02, +0.33]</span></td><td><strong>+0.156</strong> <span class='note'>[+0.01, +0.31]</span></td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>0.636</td><td>0.511</td><td>0.444</td><td>0.429</td><td><strong>+0.125</strong> <span class='note'>[-0.03, +0.29]</span></td><td><strong>+0.192</strong> <span class='note'>[+0.05, +0.34]</span></td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>0.497</td><td>0.472</td><td>0.430</td><td>0.464</td><td><strong>+0.024</strong> <span class='note'>[-0.12, +0.20]</span></td><td><strong>+0.067</strong> <span class='note'>[-0.07, +0.23]</span></td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>0.632</td><td>0.440</td><td>0.448</td><td>0.482</td><td><strong>+0.193</strong> <span class='note'>[+0.01, +0.39]</span></td><td><strong>+0.184</strong> <span class='note'>[+0.01, +0.37]</span></td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>0.649</td><td>0.453</td><td>0.403</td><td>0.419</td><td><strong>+0.196</strong> <span class='note'>[+0.01, +0.38]</span></td><td><strong>+0.246</strong> <span class='note'>[+0.06, +0.43]</span></td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>0.516</td><td>0.354</td><td>0.313</td><td>0.328</td><td><strong>+0.163</strong> <span class='note'>[+0.01, +0.34]</span></td><td><strong>+0.203</strong> <span class='note'>[+0.06, +0.36]</span></td></tr></tbody></table>
+  </div>
+  </section>
+  <section class="dz-item" id="fig-10">
+    <div class="dz-head"><span class="dz-num">Figure 10</span><span class="dz-sec">4.1 IRAC</span></div>
+    <p class="dz-ref">[Figure: Penalty criteria triggered, by bucket (lower is better)]</p>
+    
+    <div class="chart-card">
+      <h3>Penalty criteria triggered, by bucket (lower is better)</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-penalties"></canvas></div>
+      <p class="chart-footnote">Share of penalty-criterion instances the grading panel marked as present.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-9">
+    <div class="dz-head"><span class="dz-num">Table 9</span><span class="dz-sec">4.1 IRAC</span></div>
+    <p class="dz-ref">[Table: Penalty fire rate by IRAC bucket]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+      <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Issue</th><th>Rule</th><th>Application</th><th>Conclusion</th><th>Other</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>30% <span class='note'>63</span></td><td>16% <span class='note'>273</span></td><td>30% <span class='note'>483</span></td><td>38% <span class='note'>192</span></td><td>9% <span class='note'>45</span></td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>27% <span class='note'>63</span></td><td>13% <span class='note'>276</span></td><td>23% <span class='note'>483</span></td><td>39% <span class='note'>192</span></td><td>24% <span class='note'>45</span></td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>30% <span class='note'>63</span></td><td>13% <span class='note'>273</span></td><td>26% <span class='note'>465</span></td><td>27% <span class='note'>192</span></td><td>22% <span class='note'>45</span></td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>35% <span class='note'>63</span></td><td>13% <span class='note'>273</span></td><td>27% <span class='note'>483</span></td><td>36% <span class='note'>192</span></td><td>20% <span class='note'>45</span></td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>32% <span class='note'>63</span></td><td>16% <span class='note'>276</span></td><td>21% <span class='note'>483</span></td><td>28% <span class='note'>192</span></td><td>11% <span class='note'>45</span></td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>41% <span class='note'>63</span></td><td>18% <span class='note'>276</span></td><td>27% <span class='note'>483</span></td><td>36% <span class='note'>192</span></td><td>7% <span class='note'>45</span></td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>37% <span class='note'>60</span></td><td>8% <span class='note'>273</span></td><td>15% <span class='note'>474</span></td><td>16% <span class='note'>180</span></td><td>4% <span class='note'>45</span></td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>27% <span class='note'>63</span></td><td>7% <span class='note'>276</span></td><td>12% <span class='note'>483</span></td><td>14% <span class='note'>192</span></td><td>2% <span class='note'>45</span></td></tr></tbody></table>
+      <p class="chart-footnote">Fire rate, with the number of penalty-criterion instances underneath.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="fig-11">
+    <div class="dz-head"><span class="dz-num">Figure 11 and 12</span><span class="dz-sec">4.2 Research universe</span></div>
+    <p class="dz-ref">[Figure: Rule score by research universe] [Figure: Application score by research universe]</p>
+    <p class="dz-note">Note to design in the doc: no need for tables; these two figures can be presented side by side.</p>
+    <div class="chart-row"><div class="chart-card">
+      <h3>Rule score by research universe</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-rule-universe"></canvas></div>
+      <p class="chart-footnote">Mean over matters of the matter's Rule score (earned over available Rule points, runs averaged). Whiskers: matter bootstrap 95% CI.</p>
+    </div><div class="chart-card">
+      <h3>Application score by research universe</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-app-universe"></canvas></div>
+      <p class="chart-footnote">Same construction, Application criteria.</p>
+    </div></div>
+  </section>
+  <section class="dz-item" id="fig-13">
+    <div class="dz-head"><span class="dz-num">Figure 13</span><span class="dz-sec">4.2 Research universe</span></div>
+    <p class="dz-ref">[Figure: Web lookups per matter, by research universe]</p>
+    
+    <div class="chart-card">
+      <h3>Web lookups per matter, by research universe</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-web-universe"></canvas></div>
+      <p class="chart-footnote">Mean websearch plus webfetch calls per run, open-universe matters against closed-universe matters. Whiskers on the open bars: matter-cluster bootstrap 95% CI.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-10">
+    <div class="dz-head"><span class="dz-num">Table 10</span><span class="dz-sec">4.3 Verbosity</span></div>
+    <p class="dz-ref">[Table: Verbosity by model, with length-adjusted means]</p>
+    
+    <div class="table-wrap" style="margin-top:1.25rem;">
+    <table style="font-size:0.8rem;">
+      <thead><tr><th>Model</th><th>Median words</th><th>Longest in cell</th><th>Longest rep best</th><th>Reward per 2x</th><th>Coverage per 2x</th><th>Penalties per 2x</th><th>Mean</th><th>Adjusted</th></tr></thead>
+      <tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>10,574</td><td>57%</td><td>38%</td><td>+0.183</td><td>+0.120</td><td>+0.059</td><td>0.508</td><td>0.490</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>9,710</td><td>20%</td><td>36%</td><td>+0.088</td><td>+0.071</td><td>+0.025</td><td>0.506</td><td>0.491</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>8,856</td><td>4%</td><td>35%</td><td>-0.016</td><td>+0.008</td><td>-0.034</td><td>0.465</td><td>0.455</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>6,670</td><td>1%</td><td>38%</td><td>+0.030</td><td>+0.053</td><td>-0.013</td><td>0.404</td><td>0.406</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>7,140</td><td>1%</td><td>35%</td><td>+0.029</td><td>+0.030</td><td>-0.003</td><td>0.404</td><td>0.404</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>8,592</td><td>16%</td><td>36%</td><td>+0.061</td><td>+0.071</td><td>-0.017</td><td>0.396</td><td>0.387</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>5,752</td><td>0%</td><td>36%</td><td>-0.035</td><td>+0.017</td><td>-0.055</td><td>0.395</td><td>0.404</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>2,716</td><td>0%</td><td>32%</td><td>+0.048</td><td>+0.022</td><td>+0.033</td><td>0.319</td><td>0.361</td></tr></tbody>
+    </table>
+  </div>
+<p class="chart-footnote">Per assignment deliverable; interquartile ranges, token counts and per-matter totals are in data_analysis/verbosity_summary.md. "Longest in cell" is the share of the 122 task steps where this model wrote the longest deliverable of any model. "Longest rep best" compares the model's three repetitions of the same assignment (chance 33%). "Per 2x" columns are the change per doubling of length, with assignment fixed effects within the model. "Mean" is the leaderboard mean; "Adjusted" adds the shift from rescoring every graded deliverable at its assignment's typical length using the pooled slope.</p>
+  </section>
+  <section class="dz-item" id="fig-14">
+    <div class="dz-head"><span class="dz-num">Figure 14</span><span class="dz-sec">4.3 Verbosity</span></div>
+    <p class="dz-ref">[Figure: What a doubling of length buys, same model, same assignment]</p>
+    <p class="dz-note">Axis now runs to +0.20. In the 10/14 report it stopped at +0.15 and cut off Gemini 4 Argon*&#x27;s +0.18 net-reward bar.</p>
+    <div class="chart-card">
+      <h3>What a doubling of length buys, same model, same assignment</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-length-decomp"></canvas></div>
+      <p class="chart-footnote">Slope of step reward, rubric coverage (positive points earned over the positive total) and penalties (negative points over the positive total) on ln(words), per model with assignment fixed effects, expressed per doubling of length.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-11">
+    <div class="dz-head"><span class="dz-num">Table 11</span><span class="dz-sec">4.3 Verbosity</span></div>
+    <p class="dz-ref">[Table: Score and length, court-facing against memoranda, per model]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Subject to a word limit (court-facing)</th><th>Not subject (memoranda, letters)</th><th>Difference (95% CI)</th><th>Median words, court-facing</th><th>Median words, memoranda</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>0.503</td><td>0.567</td><td><strong>-0.064</strong> <span class='note'>[-0.15, +0.03]</span></td><td>8,552</td><td>11,895</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>0.511</td><td>0.570</td><td><strong>-0.059</strong> <span class='note'>[-0.14, +0.03]</span></td><td>8,761</td><td>10,235</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>0.500</td><td>0.543</td><td><strong>-0.044</strong> <span class='note'>[-0.14, +0.06]</span></td><td>7,824</td><td>9,154</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>0.436</td><td>0.467</td><td><strong>-0.031</strong> <span class='note'>[-0.14, +0.09]</span></td><td>6,057</td><td>6,795</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>0.448</td><td>0.459</td><td><strong>-0.012</strong> <span class='note'>[-0.11, +0.09]</span></td><td>7,574</td><td>7,049</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>0.419</td><td>0.463</td><td><strong>-0.044</strong> <span class='note'>[-0.14, +0.05]</span></td><td>8,150</td><td>8,744</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>0.362</td><td>0.496</td><td><strong>-0.134</strong> <span class='note'>[-0.25, -0.02]</span></td><td>4,997</td><td>5,892</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>0.304</td><td>0.413</td><td><strong>-0.109</strong> <span class='note'>[-0.21, -0.00]</span></td><td>2,576</td><td>2,726</td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">Mean assignment score over every graded deliverable in each group; the interval resamples matters, keeping all of a matter's assignments together.</p>
+  </section>
+  <section class="dz-item" id="tab-12">
+    <div class="dz-head"><span class="dz-num">Table 12</span><span class="dz-sec">4.3 Verbosity</span></div>
+    <p class="dz-ref">[Table: Filing-limit compliance per model]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Briefs with a stated limit</th><th>Within the limit</th><th>Median words</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>48</td><td><strong>83%</strong></td><td>8,280</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>48</td><td><strong>56%</strong></td><td>8,329</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>48</td><td><strong>90%</strong></td><td>7,342</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>48</td><td><strong>100%</strong></td><td>5,710</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>48</td><td><strong>92%</strong></td><td>7,270</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>48</td><td><strong>96%</strong></td><td>8,042</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>48</td><td><strong>100%</strong></td><td>4,826</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>48</td><td><strong>100%</strong></td><td>2,320</td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">The role prompt states numeric limits for briefs supporting or opposing a motion (8,750 words) and replies (3,500), so compliance can be counted on those 16 assignments, three runs each; the other court-facing assignments carry no number in the prompt to check against. Words over the whole deliverable.</p>
+  </section>
+  <section class="dz-item" id="fig-15">
+    <div class="dz-head"><span class="dz-num">Figure 15</span><span class="dz-sec">4.4 Long-horizon performance</span></div>
+    <p class="dz-ref">[Figure: Change in mean assignment score, A1 to A2+]</p>
+    
+    <div class="chart-card">
+      <h3>Change in mean assignment score, A1 to A2+</h3>
+      <div class="cv" style="--h:360px"><canvas id="chart-horizon-delta"></canvas></div>
+      <p class="chart-footnote">Mean over runs of (A2+ minus A1), same run. Whiskers: matter-cluster bootstrap 95% CI (10,000 resamples, all runs of a resampled matter retained).</p>
+    </div>
+  </section>
+  <section class="dz-item" id="fig-16">
+    <div class="dz-head"><span class="dz-num">Figure 16</span><span class="dz-sec">4.4 Long-horizon performance</span></div>
+    <p class="dz-ref">[Figure: Does early success persist? r(A1, A2+)]</p>
+    <p class="dz-note">Axis now runs from -0.6 to +0.6. In the 10/14 report it stopped at +0.5, just short of the top of GPT-6 Sol&#x27;s interval (+0.505).</p>
+    <div class="chart-card">
+      <h3>Does early success persist? r(A1, A2+)</h3>
+      <div class="cv" style="--h:360px"><canvas id="chart-horizon-r"></canvas></div>
+      <p class="chart-footnote">Pearson correlation across same-run pairs of the first-assignment score and the mean of the later assignments, with matter-cluster 95% CI.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-13">
+    <div class="dz-head"><span class="dz-num">Table 13</span><span class="dz-sec">4.4 Long-horizon performance</span></div>
+    <p class="dz-ref">[Table: Dependency split]</p>
+    
+    <div class="table-wrap">
+    <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Change, low-dependency</th><th>Change, dependent</th><th>Dependent minus low</th><th>r, low-dependency</th><th>r, dependent</th><th>Matters low / dep.</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>+0.041</td><td>+0.034</td><td><strong>-0.007</strong><br><span class='note'>[-0.17, +0.16]</span></td><td>+0.21</td><td>-0.06</td><td style='color:#9CA3AF'>16 / 34</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>+0.032</td><td>-0.005</td><td><strong>-0.036</strong><br><span class='note'>[-0.21, +0.14]</span></td><td>-0.16</td><td>-0.02</td><td style='color:#9CA3AF'>16 / 34</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>-0.034</td><td>-0.014</td><td><strong>+0.021</strong><br><span class='note'>[-0.15, +0.19]</span></td><td>-0.03</td><td>+0.00</td><td style='color:#9CA3AF'>16 / 33</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>-0.059</td><td>+0.002</td><td><strong>+0.061</strong><br><span class='note'>[-0.11, +0.23]</span></td><td>+0.06</td><td>+0.25</td><td style='color:#9CA3AF'>16 / 34</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>-0.042</td><td>-0.010</td><td><strong>+0.032</strong><br><span class='note'>[-0.12, +0.19]</span></td><td>+0.21</td><td>+0.11</td><td style='color:#9CA3AF'>16 / 34</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>+0.041</td><td>-0.026</td><td><strong>-0.067</strong><br><span class='note'>[-0.24, +0.11]</span></td><td>+0.21</td><td>+0.05</td><td style='color:#9CA3AF'>16 / 34</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>-0.064</td><td>-0.042</td><td><strong>+0.022</strong><br><span class='note'>[-0.14, +0.17]</span></td><td>+0.11</td><td>+0.14</td><td style='color:#9CA3AF'>15 / 34</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>-0.067</td><td>-0.058</td><td><strong>+0.009</strong><br><span class='note'>[-0.15, +0.16]</span></td><td>+0.18</td><td>+0.25</td><td style='color:#9CA3AF'>16 / 34</td></tr></tbody></table>
+  </div>
+  </section>
+  <section class="dz-item" id="tab-14">
+    <div class="dz-head"><span class="dz-num">Table 14</span><span class="dz-sec">4.4 Long-horizon performance</span></div>
+    <p class="dz-ref">[Table: Record-evolution split]</p>
+    
+    <div class="table-wrap">
+    <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Change, static record</th><th>Change, evolving record</th><th>Evolving minus static</th><th>r, static</th><th>r, evolving</th><th>Matters static / evolv.</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>-0.004</td><td>+0.043</td><td><strong>+0.047</strong><br><span class='note'>[-0.19, +0.28]</span></td><td>+0.30</td><td>-0.03</td><td style='color:#9CA3AF'>7 / 43</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>-0.033</td><td>+0.013</td><td><strong>+0.046</strong><br><span class='note'>[-0.16, +0.25]</span></td><td>+0.07</td><td>-0.08</td><td style='color:#9CA3AF'>7 / 43</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>-0.034</td><td>-0.018</td><td><strong>+0.015</strong><br><span class='note'>[-0.20, +0.21]</span></td><td>+0.19</td><td>-0.01</td><td style='color:#9CA3AF'>7 / 42</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>-0.066</td><td>-0.010</td><td><strong>+0.056</strong><br><span class='note'>[-0.16, +0.27]</span></td><td>+0.40</td><td>+0.16</td><td style='color:#9CA3AF'>7 / 43</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>-0.071</td><td>-0.012</td><td><strong>+0.060</strong><br><span class='note'>[-0.16, +0.27]</span></td><td>+0.24</td><td>+0.11</td><td style='color:#9CA3AF'>7 / 43</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>+0.030</td><td>-0.010</td><td><strong>-0.041</strong><br><span class='note'>[-0.32, +0.24]</span></td><td>-0.03</td><td>+0.11</td><td style='color:#9CA3AF'>7 / 43</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>-0.203</td><td>-0.023</td><td><strong>+0.180</strong><br><span class='note'>[-0.05, +0.39]</span></td><td>+0.29</td><td>+0.15</td><td style='color:#9CA3AF'>7 / 42</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>-0.123</td><td>-0.051</td><td><strong>+0.072</strong><br><span class='note'>[-0.07, +0.21]</span></td><td>+0.73</td><td>+0.13</td><td style='color:#9CA3AF'>7 / 43</td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">Dependency and record-evolution labels are the research lead's manual coding of each matter. Static-record cells (n = 7) are exploratory.</p>
+  </section>
+  <section class="dz-item" id="tab-15">
+    <div class="dz-head"><span class="dz-num">Table 15</span><span class="dz-sec">4.4 Long-horizon performance</span></div>
+    <p class="dz-ref">[Table: Later-assignment failure categories by model]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.78rem;"><thead><tr><th>Model</th><th>Context loss</th><th>Available, not used</th><th>Contradicted</th><th>Earlier finding never made</th><th>Carried forward, failed on new analysis</th><th>Carried forward unrevised</th><th>Revised, reason the rubric rejects</th><th>Undetermined</th><th>Audited failures</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td></td><td>1</td><td></td><td></td><td>4</td><td></td><td>1</td><td></td><td>6</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td></td><td>1</td><td></td><td>1</td><td>3</td><td>1</td><td></td><td></td><td>6</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td></td><td></td><td></td><td>2</td><td>4</td><td></td><td></td><td></td><td>6</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td></td><td>1</td><td></td><td>3</td><td>1</td><td>1</td><td></td><td></td><td>6</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td></td><td></td><td></td><td>2</td><td>2</td><td>1</td><td>1</td><td></td><td>6</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td></td><td>1</td><td>1</td><td></td><td>3</td><td></td><td></td><td>1</td><td>6</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td></td><td>2</td><td></td><td>3</td><td>1</td><td></td><td></td><td></td><td>6</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>1</td><td></td><td></td><td>1</td><td>4</td><td></td><td></td><td></td><td>6</td></tr><tr><td><strong>All sampled failures</strong></td><td><strong>1</strong></td><td><strong>6</strong></td><td><strong>1</strong></td><td><strong>12</strong></td><td><strong>22</strong></td><td><strong>3</strong></td><td><strong>2</strong></td><td><strong>1</strong></td><td><strong>48</strong></td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">Counts describe a seeded, stratified sample of failed criterion-runs read trace by trace, not the population of failures. Of the 16 matched successes, 15 used the earlier finding correctly; 1 lost the earlier finding but re-derived it from the case file. Every row, with its quoted evidence, is in data_analysis/v3_audits/horizon/audit.json.</p>
+  </section>
+  <section class="dz-item" id="fig-17">
+    <div class="dz-head"><span class="dz-num">Figure 17</span><span class="dz-sec">4.5 Tool use and file processing</span></div>
+    <p class="dz-ref">[Figure: Criteria that need a visual exhibit against the rest]</p>
+    
+    <div class="chart-card">
+      <h3>Criteria that need a visual exhibit vs the rest</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-multimodal"></canvas></div>
+      <p class="chart-footnote">Weighted mean score on the flagged criteria against all other positive criteria, per model.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-16">
+    <div class="dz-head"><span class="dz-num">Table 16</span><span class="dz-sec">4.5 Tool use and file processing</span></div>
+    <p class="dz-ref">[Table: Visual criteria against the rest, per model]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+      <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Runs on image matters</th><th>Opened an exhibit</th><th>Visual criteria</th><th>Other criteria</th><th>Visual, per matter</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>27</td><td>100%</td><td>0.59</td><td>0.59</td><td>0.63 <span class='note'>[0.49, 0.76]</span></td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>27</td><td>100%</td><td>0.45</td><td>0.57</td><td>0.46 <span class='note'>[0.32, 0.61]</span></td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>27</td><td>100%</td><td>0.46</td><td>0.53</td><td>0.47 <span class='note'>[0.34, 0.59]</span></td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>27</td><td>100%</td><td>0.40</td><td>0.47</td><td>0.36 <span class='note'>[0.23, 0.50]</span></td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>27</td><td>100%</td><td>0.27</td><td>0.46</td><td>0.33 <span class='note'>[0.22, 0.45]</span></td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>27</td><td>100%</td><td>0.49</td><td>0.46</td><td>0.53 <span class='note'>[0.39, 0.67]</span></td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>27</td><td>100%</td><td>0.41</td><td>0.43</td><td>0.43 <span class='note'>[0.28, 0.59]</span></td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>27</td><td>100%</td><td>0.24</td><td>0.34</td><td>0.23 <span class='note'>[0.13, 0.35]</span></td></tr></tbody></table>
+      <p class="chart-footnote">A run counts as opening an exhibit when a tool call reads or processes one of the matter's image files. The last column is the mean over the 16 matters with flagged criteria, with a matter-bootstrap 95% CI.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-17">
+    <div class="dz-head"><span class="dz-num">Table 17</span><span class="dz-sec">4.5 Tool use and file processing</span></div>
+    <p class="dz-ref">[Table: File-access trace audit, failure categories by model]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.78rem;"><thead><tr><th>Model</th><th>Not opened</th><th>Opened, content not obtained</th><th>Content obtained, inference failed</th><th>Undetermined</th><th>Audited failures</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>1</td><td></td><td>3</td><td>4</td><td>8</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td></td><td>3</td><td>5</td><td></td><td>8</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td></td><td></td><td>7</td><td></td><td>7</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td></td><td>2</td><td>6</td><td></td><td>8</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td></td><td>1</td><td>6</td><td></td><td>7</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td></td><td></td><td>7</td><td></td><td>7</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td></td><td></td><td>7</td><td>1</td><td>8</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td></td><td></td><td>7</td><td></td><td>7</td></tr><tr><td><strong>All sampled failures</strong></td><td><strong>1</strong></td><td><strong>6</strong></td><td><strong>48</strong></td><td><strong>5</strong></td><td><strong>60</strong></td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">Counts describe a seeded, stratified sample of failed criterion-runs read trace by trace, not the population of failures. Of the 25 matched successes, 25 traced to the file&#x27;s content. Every row, with its quoted evidence, is in data_analysis/v3_audits/files/audit.json.</p>
+  </section>
+  <section class="dz-item" id="fig-18">
+    <div class="dz-head"><span class="dz-num">Figure 18</span><span class="dz-sec">4.5 Tool use and file processing</span></div>
+    <p class="dz-ref">[Figure: Tool calls per matter]</p>
+    
+    <div class="chart-card">
+      <h3>Tool calls per matter</h3>
+      <div class="cv" style="--h:400px"><canvas id="chart-calls"></canvas></div>
+      <p class="chart-footnote">Mean tool calls per run across all assignments of the matter, all matters.</p>
+    </div>
+  </section>
+  <section class="dz-item" id="tab-18">
+    <div class="dz-head"><span class="dz-num">Table 18</span><span class="dz-sec">4.5 Tool use and file processing</span></div>
+    <p class="dz-ref">[Table: Tool calls per run, by tool]</p>
+    
+    <div class="table-wrap" style="margin-top:1rem;">
+    <table style="font-size:0.8rem;">
+      <thead><tr><th>Model</th><th>Tool calls</th><th>Turns</th><th>Web calls</th><th>bash</th><th>read</th><th>Minutes</th><th>Output tokens</th><th>r(reward, calls)</th></tr></thead>
+      <tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>120.7</td><td>76</td><td>26.1</td><td>32.2</td><td>35.4</td><td>112</td><td>169k</td><td>-0.39</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>108.3</td><td>111</td><td>12.5</td><td>57.7</td><td>19.7</td><td>43</td><td>86k</td><td>-0.23</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>107.9</td><td>93</td><td>12.6</td><td>61.5</td><td>23.3</td><td>35</td><td>74k</td><td>-0.41</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>52.4</td><td>41</td><td>7.8</td><td>24.6</td><td>15.3</td><td>16</td><td>36k</td><td>-0.24</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>89.9</td><td>46</td><td>18.0</td><td>38.1</td><td>21.8</td><td>33</td><td>38k</td><td>-0.21</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>148.3</td><td>150</td><td>8.7</td><td>111.2</td><td>13.2</td><td>27</td><td>213k</td><td>-0.02</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>139.8</td><td>50</td><td>54.7</td><td>42.5</td><td>22.7</td><td>20</td><td>33k</td><td>-0.15</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>106.6</td><td>53</td><td>37.5</td><td>35.7</td><td>14.8</td><td>14</td><td>23k</td><td>-0.21</td></tr></tbody>
+    </table>
+  </div>
+<p class="chart-footnote">Per run means across all assignments and all matters. r is the Pearson correlation across the model's runs.</p>
+  </section>
+  <section class="dz-item" id="tab-19">
+    <div class="dz-head"><span class="dz-num">Table 19</span><span class="dz-sec">4.5 Tool use and file processing</span></div>
+    <p class="dz-ref">[Table: Web use by research universe]</p>
+    <p class="dz-note">In the report this table sits in 4.2, under the web-lookups figure; the doc calls it out in 4.5.</p>
+    <div class="table-wrap" style="margin-top:1.25rem;">
+    <table style="font-size:0.8rem;">
+      <thead><tr><th>Model</th><th>Open: web calls per run</th><th>Open: runs using web</th><th>Open: r(reward, web)</th><th>Closed: web calls per run</th><th>Closed: runs using web</th><th>Closed: r(reward, web)</th></tr></thead>
+      <tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>55.8 <span class='note'>[40, 73]</span></td><td>100%</td><td>-0.38</td><td>2.8</td><td>4%</td><td>-0.10</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>27.2 <span class='note'>[22, 33]</span></td><td>100%</td><td>-0.09</td><td>1.0</td><td>4%</td><td>-0.05</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>28.0 <span class='note'>[22, 35]</span></td><td>100%</td><td>-0.25</td><td>1.0</td><td>4%</td><td>-0.08</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>17.0 <span class='note'>[15, 20]</span></td><td>100%</td><td>0.24</td><td>0.5</td><td>4%</td><td>-0.18</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>39.2 <span class='note'>[33, 45]</span></td><td>100%</td><td>0.18</td><td>1.3</td><td>4%</td><td>-0.17</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>18.0 <span class='note'>[13, 24]</span></td><td>100%</td><td>0.05</td><td>1.5</td><td>19%</td><td>-0.07</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>116.4 <span class='note'>[103, 131]</span></td><td>100%</td><td>0.10</td><td>4.4</td><td>4%</td><td>-0.03</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>81.3 <span class='note'>[73, 90]</span></td><td>100%</td><td>-0.08</td><td>3.2</td><td>4%</td><td>-0.14</td></tr></tbody>
+    </table>
+  </div>
+<p class="chart-footnote">Per run means; r is the Pearson correlation across the model's runs in that universe (66 open, 84 closed for most models).</p>
+  </section>
+  <section class="dz-item" id="tab-20">
+    <div class="dz-head"><span class="dz-num">Table 20</span><span class="dz-sec">4.5 Tool use and file processing</span></div>
+    <p class="dz-ref">[Table: No-research compliance per model]</p>
+    
+    <div class="table-wrap" style="max-height:none;">
+    <table style="font-size:0.8rem;"><thead><tr><th>Model</th><th>Prohibited assignment runs</th><th>With any web access</th><th>Matter runs with at least one violation</th><th>Web calls on prohibited assignments</th><th>Limited assignments with web use</th></tr></thead><tbody><tr><td><span class='swatch' style='background:#FDE047'></span>Gemini 4 Argon*</td><td>207</td><td><strong>0</strong> (0%)</td><td>0 of 81 (0%)</td><td>0</td><td>22 of 24</td></tr><tr><td><span class='swatch' style='background:#6366F1'></span>Claude Fable 5.1</td><td>207</td><td><strong>0</strong> (0%)</td><td>0 of 81 (0%)</td><td>0</td><td>24 of 24</td></tr><tr><td><span class='swatch' style='background:#A855F7'></span>Claude Opus 5.5</td><td>207</td><td><strong>0</strong> (0%)</td><td>0 of 81 (0%)</td><td>0</td><td>24 of 24</td></tr><tr><td><span class='swatch' style='background:#84CC16'></span>Muse Spark 1.3</td><td>207</td><td><strong>0</strong> (0%)</td><td>0 of 81 (0%)</td><td>0</td><td>23 of 24</td></tr><tr><td><span class='swatch' style='background:#EC4899'></span>Grok 4.7</td><td>207</td><td><strong>0</strong> (0%)</td><td>0 of 81 (0%)</td><td>0</td><td>24 of 24</td></tr><tr><td><span class='swatch' style='background:#F97316'></span>Gemini 3.8 Flash</td><td>207</td><td><strong>13</strong> (6%)</td><td>13 of 81 (16%)</td><td>51</td><td>23 of 24</td></tr><tr><td><span class='swatch' style='background:#10B981'></span>GPT-6 Astra</td><td>201</td><td><strong>0</strong> (0%)</td><td>0 of 78 (0%)</td><td>0</td><td>24 of 24</td></tr><tr><td><span class='swatch' style='background:#06B6D4'></span>GPT-6 Sol</td><td>207</td><td><strong>0</strong> (0%)</td><td>0 of 81 (0%)</td><td>0</td><td>24 of 24</td></tr></tbody></table>
+  </div>
+<p class="chart-footnote">Assignment runs: one model run of one assignment. Graded runs only (the content-filter zeros produced no trajectory to check). Limited assignments allow research only as needed to identify the governing rules, so web use there is permitted.</p>
+  </section></div>
+</div>
+<script>(function () {
+var done = false;
+function draw() {
+if (done) return; done = true;
+
+
+Chart.defaults.color = '#D1D5DB';
+Chart.defaults.borderColor = 'rgba(217,217,231,0.08)';
+Chart.defaults.font.family = 'Outfit';
+// No animation: the PDF export prints a chart as soon as it is laid out.
+Chart.defaults.animation = false;
+const MODELS = ["google/gemini-4-argon", "anthropic/claude-fable-5-1", "anthropic/claude-opus-5-5", "meta/muse-spark-1.3", "xai/grok-4.7", "google/gemini-3.8-flash", "openai/gpt-6-astra", "openai/gpt-6-sol"];
+const LABELS = {"google/gemini-4-argon": "Gemini 4 Argon*", "anthropic/claude-fable-5-1": "Claude Fable 5.1", "anthropic/claude-opus-5-5": "Claude Opus 5.5", "meta/muse-spark-1.3": "Muse Spark 1.3", "xai/grok-4.7": "Grok 4.7", "google/gemini-3.8-flash": "Gemini 3.8 Flash", "openai/gpt-6-astra": "GPT-6 Astra", "openai/gpt-6-sol": "GPT-6 Sol"};
+const SHORT = {"google/gemini-4-argon": "Argon*", "anthropic/claude-fable-5-1": "Fable", "anthropic/claude-opus-5-5": "Opus", "meta/muse-spark-1.3": "Muse", "xai/grok-4.7": "Grok", "google/gemini-3.8-flash": "Gemini", "openai/gpt-6-astra": "Astra", "openai/gpt-6-sol": "Sol"};
+const COLORS = {"google/gemini-4-argon": "#FDE047", "anthropic/claude-fable-5-1": "#6366F1", "anthropic/claude-opus-5-5": "#A855F7", "meta/muse-spark-1.3": "#84CC16", "xai/grok-4.7": "#EC4899", "google/gemini-3.8-flash": "#F97316", "openai/gpt-6-astra": "#10B981", "openai/gpt-6-sol": "#06B6D4"};
+
+const ciPlugin = {
+  id: 'ci',
+  afterDatasetsDraw(chart) {
+    const horizontal = chart.options.indexAxis === 'y';
+    const scale = horizontal ? chart.scales.x : chart.scales.y;
+    const ctx = chart.ctx;
+    chart.data.datasets.forEach((ds, di) => {
+      if (!ds.ci) return;
+      const meta = chart.getDatasetMeta(di);
+      if (meta.hidden) return;
+      ctx.save();
+      ctx.strokeStyle = 'rgba(243,244,246,0.85)';
+      ctx.lineWidth = 1.5;
+      meta.data.forEach((bar, i) => {
+        const c = ds.ci[i];
+        if (!c || c[0] == null || c[1] == null) return;
+        const lo = scale.getPixelForValue(c[0]);
+        const hi = scale.getPixelForValue(c[1]);
+        if (horizontal) {
+          const y = bar.y;
+          ctx.beginPath(); ctx.moveTo(lo, y); ctx.lineTo(hi, y); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(lo, y - 4); ctx.lineTo(lo, y + 4); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(hi, y - 4); ctx.lineTo(hi, y + 4); ctx.stroke();
+        } else {
+          const x = bar.x;
+          ctx.beginPath(); ctx.moveTo(x, lo); ctx.lineTo(x, hi); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x - 4, lo); ctx.lineTo(x + 4, lo); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x - 4, hi); ctx.lineTo(x + 4, hi); ctx.stroke();
+        }
+      });
+      ctx.restore();
+    });
+  }
+};
+
+function tickFmt(opts) {
+  if (opts && opts.pct) return v => (v * 100).toFixed(0) + '%';
+  if (opts && opts.signed) return v => (v > 0 ? '+' : '') + v.toFixed(2);
+  if (opts && opts.int) return v => v.toLocaleString();
+  return v => v.toFixed(2);
+}
+
+function grouped(id, labels, series, opts) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  opts = opts || {};
+  new Chart(el, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: series.map(s => ({
+        label: s.label,
+        data: s.data,
+        ci: s.ci,
+        backgroundColor: s.color + '66',
+        borderColor: s.color,
+        borderWidth: 2,
+        borderRadius: 3,
+      }))
+    },
+    options: {
+      indexAxis: opts.horizontal ? 'y' : 'x',
+      plugins: { legend: { display: opts.legend !== false, position: 'bottom', labels: { boxWidth: 12 } }, tooltip: { callbacks: { label: c => { const v = opts.horizontal ? c.parsed.x : c.parsed.y; const ds = c.dataset; const ci = ds.ci && ds.ci[c.dataIndex]; return c.dataset.label + ': ' + (opts.pct ? (v * 100).toFixed(1) + '%' : v.toFixed(3)) + (ci ? '  CI [' + ci[0].toFixed(3) + ', ' + ci[1].toFixed(3) + ']' : ''); } } } },
+      scales: opts.horizontal
+        ? { x: { beginAtZero: opts.min === undefined, min: opts.min, max: opts.max, ticks: { callback: tickFmt(opts) } } }
+        : { y: { beginAtZero: opts.min === undefined, min: opts.min, max: opts.max, ticks: { callback: tickFmt(opts) } } }
+    },
+    plugins: [ciPlugin]
+  });
+}
+
+function hbar(id, labels, values, cis, colors, opts) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  opts = opts || {};
+  new Chart(el, {
+    type: 'bar',
+    data: { labels, datasets: [{ data: values, ci: cis, backgroundColor: colors.map(c => c + '55'), borderColor: colors, borderWidth: 2, borderRadius: 4 }] },
+    options: {
+      indexAxis: 'y',
+      layout: { padding: { left: 8, right: 16 } },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => (opts.pct ? (c.parsed.x * 100).toFixed(1) + '%' : (opts.signed && c.parsed.x > 0 ? '+' : '') + c.parsed.x.toFixed(3)) + (cis && cis[c.dataIndex] ? '  CI [' + cis[c.dataIndex][0].toFixed(3) + ', ' + cis[c.dataIndex][1].toFixed(3) + ']' : '') } } },
+      scales: { x: { beginAtZero: opts.min === undefined, min: opts.min, max: opts.max, ticks: { callback: tickFmt(opts) } }, y: { afterFit: (axis) => { if (opts.small) axis.width = Math.max(axis.width, 180); }, ticks: { autoSkip: false, font: { size: opts.small ? 10 : 11 } } } }
+    },
+    plugins: [ciPlugin]
+  });
+}
+
+hbar('chart-mean-reward', MODELS.map(m => LABELS[m]), [0.508335400947163, 0.5058665385842098, 0.4649303818321217, 0.4044300673000157, 0.4038840621409725, 0.3963035111241968, 0.39476186748345754, 0.319472843235525], [[0.469435397010565, 0.5477741715477805], [0.46790163539949164, 0.5443847470609692], [0.4196415829136815, 0.5099564436383155], [0.3630252630499651, 0.4480632856169149], [0.36582916845273156, 0.4444330095574381], [0.357854174587788, 0.4357035106582977], [0.35025440527899243, 0.4397595004167452], [0.27810696121393563, 0.36334521558211086]], MODELS.map(m => COLORS[m]), { max: 1 });
+hbar('chart-headline', MODELS.map(m => LABELS[m]), [0.508335400947163, 0.5058665385842098, 0.4649303818321217, 0.4044300673000157, 0.4038840621409725, 0.3963035111241968, 0.39476186748345754, 0.319472843235525], [[0.469435397010565, 0.5477741715477805], [0.46790163539949164, 0.5443847470609692], [0.4196415829136815, 0.5099564436383155], [0.3630252630499651, 0.4480632856169149], [0.36582916845273156, 0.4444330095574381], [0.357854174587788, 0.4357035106582977], [0.35025440527899243, 0.4397595004167452], [0.27810696121393563, 0.36334521558211086]], MODELS.map(m => COLORS[m]), { max: 1 });
+const COSTPTS = [{"label": "Gemini 4 Argon*", "color": "#FDE047", "score": 0.508335400947163, "cost": 6.712663602666667, "minutes": 44.59893333315849}, {"label": "Claude Fable 5.1", "color": "#6366F1", "score": 0.5058665385842098, "cost": 19.735959031666663, "minutes": 38.06515833536784}, {"label": "Claude Opus 5.5", "color": "#A855F7", "score": 0.4649303818321217, "cost": 8.083318001333334, "minutes": 30.467708333333334}, {"label": "Muse Spark 1.3", "color": "#84CC16", "score": 0.4044300673000157, "cost": 0.8666043593333335, "minutes": 11.199266666173935}, {"label": "Grok 4.7", "color": "#EC4899", "score": 0.4038840621409725, "cost": 3.4236692533333333, "minutes": 26.091083331902823}, {"label": "Gemini 3.8 Flash", "color": "#F97316", "score": 0.3963035111241968, "cost": 3.964690181, "minutes": 17.669391665856043}, {"label": "GPT-6 Astra", "color": "#10B981", "score": 0.39476186748345754, "cost": 22.06270771333333, "minutes": 15.764908333619436}, {"label": "GPT-6 Sol", "color": "#06B6D4", "score": 0.319472843235525, "cost": 2.4528098186666667, "minutes": 8.98267500201861}];
+function scatterXY(id, key, xTitle, logX) {
+  const el = document.getElementById(id);
+  if (!el || !COSTPTS.length) return;
+  new Chart(el, {
+    type: 'scatter',
+    data: { datasets: COSTPTS.map(p => ({ label: p.label, data: [{ x: p[key], y: p.score }], backgroundColor: p.color, borderColor: p.color, pointRadius: 7, pointHoverRadius: 9 })) },
+    options: {
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } }, tooltip: { callbacks: { label: c => `${c.dataset.label}: ${c.parsed.y.toFixed(3)} at ${key === 'cost' ? '$' + c.parsed.x.toFixed(2) : c.parsed.x.toFixed(0) + ' min'}` } } },
+      scales: {
+        x: { type: logX ? 'logarithmic' : 'linear', title: { display: true, text: xTitle }, ticks: { callback: v => key === 'cost' ? '$' + v : v } },
+        y: { title: { display: true, text: 'mean of matter means' }, suggestedMin: 0.25, suggestedMax: 0.55 },
+      },
+    },
+  });
+}
+scatterXY('chart-score-cost', 'cost', 'solver spend per matter (USD, log scale)', true);
+scatterXY('chart-score-time', 'minutes', 'agent minutes per matter (median)', false);
+hbar('chart-practice-area', ["litigation & disputes", "intellectual property", "criminal law & procedure", "real estate", "civil rights", "employment & labor", "healthcare & life sciences", "capital markets", "immigration", "administrative law", "corporate governance", "sports law"], [0.24, 0.2, 0.1, 0.1, 0.08, 0.08, 0.06, 0.04, 0.04, 0.02, 0.02, 0.02], null, ["litigation & disputes", "intellectual property", "criminal law & procedure", "real estate", "civil rights", "employment & labor", "healthcare & life sciences", "capital markets", "immigration", "administrative law", "corporate governance", "sports law"].map(() => '#818CF8'), { pct: true, max: 0.3, small: true });
+grouped('chart-file-count', ["3 to 4", "5 to 6", "7 to 9", "10 to 14", "15 or more"], [{ label: 'Share of matters', color: '#9CA3AF', data: [0.16, 0.34, 0.2, 0.24, 0.06] }], { pct: true, max: 0.5, legend: false });
+grouped('chart-file-tokens', ["under 50k", "50k to 100k", "100k to 200k", "200k to 400k", "400k or more"], [{ label: 'Share of matters', color: '#9CA3AF', data: [0.52, 0.16, 0.14, 0.02, 0.16] }], { pct: true, max: 0.6, legend: false });
+grouped('chart-votes', ['Unanimous', 'Split 2 to 1'], [{"label": "Gemini 4 Argon*", "color": "#FDE047", "data": [0.7898009950248757, 0.21019900497512436]}, {"label": "Claude Fable 5.1", "color": "#6366F1", "data": [0.7762435829350327, 0.22375641706496724]}, {"label": "Claude Opus 5.5", "color": "#A855F7", "data": [0.765045045045045, 0.23495495495495494]}, {"label": "Muse Spark 1.3", "color": "#84CC16", "data": [0.7706633557999291, 0.22933664420007094]}, {"label": "Grok 4.7", "color": "#EC4899", "data": [0.7679235262878386, 0.23207647371216145]}, {"label": "Gemini 3.8 Flash", "color": "#F97316", "data": [0.7921756063020003, 0.20782439369799965]}, {"label": "GPT-6 Astra", "color": "#10B981", "data": [0.7840704782452356, 0.2159295217547645]}, {"label": "GPT-6 Sol", "color": "#06B6D4", "data": [0.7838555496548062, 0.21614445034519383]}], { max: 1, pct: true });
+grouped('chart-judge-yes', MODELS.map(m => SHORT[m]), [{"label": "GPT-5.6 Terra", "color": "#60A5FA", "data": [0.6886993603411514, 0.69676048858205, 0.6592792792792793, 0.6277048598793898, 0.5850593025314215, 0.5930253142149053, 0.560230133045667, 0.4728270490352275]}, {"label": "Claude Sonnet 5", "color": "#A78BFA", "data": [0.6791044776119403, 0.6633032395114179, 0.6409009009009009, 0.5734302944306492, 0.5606302000354045, 0.5641706496725084, 0.548363897878461, 0.4576031155956807]}, {"label": "Gemini 3.8 Flash", "color": "#F59E0B", "data": [0.59772565742715, 0.5845282350858559, 0.5540540540540541, 0.5001773678609436, 0.4790228359001593, 0.49831828642237563, 0.47518878101402373, 0.38024429102496016]}], { max: 1, pct: true });
+grouped('chart-judges', ["Panel (majority)", "GPT-5.6 Terra alone", "Claude Sonnet 5 alone", "Gemini 3.8 Flash alone"], [{"label": "Gemini 4 Argon*", "color": "#FDE047", "data": [0.508335400947163, 0.5081114696189452, 0.5318949494111657, 0.4604386446851085]}, {"label": "Claude Fable 5.1", "color": "#6366F1", "data": [0.5058665385842098, 0.5253138822664044, 0.526528546449985, 0.44877947232714877]}, {"label": "Claude Opus 5.5", "color": "#A855F7", "data": [0.4649303818321217, 0.4730636363455323, 0.49354123462816735, 0.40768631414020684]}, {"label": "Muse Spark 1.3", "color": "#84CC16", "data": [0.4044300673000157, 0.44845677363170194, 0.428019764853609, 0.3511566088654123]}, {"label": "Grok 4.7", "color": "#EC4899", "data": [0.4038840621409725, 0.42092071953737586, 0.42387284758204324, 0.35109919279825663]}, {"label": "Gemini 3.8 Flash", "color": "#F97316", "data": [0.3963035111241968, 0.40780367340482826, 0.4121981029849557, 0.35609897635049514]}, {"label": "GPT-6 Astra", "color": "#10B981", "data": [0.39476186748345754, 0.4074919276793538, 0.43043955679152424, 0.3555236738946144]}, {"label": "GPT-6 Sol", "color": "#06B6D4", "data": [0.319472843235525, 0.34404167384517315, 0.33951913821171464, 0.28991618094617544]}], { max: 1 });
+grouped('chart-irac-mean', ["Issue", "Rule", "Application", "Conclusion", "Other"], [{"label": "Gemini 4 Argon*", "color": "#FDE047", "data": [0.7419620774938169, 0.5658038643820634, 0.5786102868447082, 0.5915820029027576, 0.5370370370370371]}, {"label": "Claude Fable 5.1", "color": "#6366F1", "data": [0.6760098928277, 0.5592411334662558, 0.5537098560354374, 0.5638122883405903, 0.6090534979423868]}, {"label": "Claude Opus 5.5", "color": "#A855F7", "data": [0.67013587742122, 0.5213046410397891, 0.5137607799025122, 0.5453294001966569, 0.8559670781893004]}, {"label": "Muse Spark 1.3", "color": "#84CC16", "data": [0.6356141797197032, 0.5108458555501697, 0.44363035326623246, 0.4289308176100629, 0.6090534979423868]}, {"label": "Grok 4.7", "color": "#EC4899", "data": [0.49683979115141524, 0.472479004289771, 0.4299495508797834, 0.46386066763425254, 0.5370370370370371]}, {"label": "Gemini 3.8 Flash", "color": "#F97316", "data": [0.6320417697169552, 0.43949006102350313, 0.4476928755998523, 0.4815674891146589, 0.5164609053497943]}, {"label": "GPT-6 Astra", "color": "#10B981", "data": [0.6489750070204998, 0.4531027214679809, 0.402507790473364, 0.4188289094343374, 0.4382716049382716]}, {"label": "GPT-6 Sol", "color": "#06B6D4", "data": [0.5163506457818082, 0.35357380218717904, 0.3133997785160576, 0.3283018867924528, 0.4794238683127572]}], { max: 1 });
+grouped('chart-irac-gaps', MODELS.map(m => SHORT[m]), [{"label": "Issue minus Rule", "color": "#F472B6", "data": [0.1762, 0.1168, 0.1488, 0.1248, 0.0244, 0.1926, 0.1959, 0.1628], "ci": [[0.0363, 0.3263], [-0.056, 0.2968], [-0.0182, 0.3302], [-0.0253, 0.2869], [-0.118, 0.1988], [0.0076, 0.3902], [0.007, 0.3822], [0.0122, 0.3355]]}, {"label": "Issue minus Application", "color": "#818CF8", "data": [0.1634, 0.1223, 0.1564, 0.192, 0.0669, 0.1843, 0.2465, 0.203], "ci": [[0.0263, 0.3072], [-0.0362, 0.2869], [0.0051, 0.314], [0.0479, 0.3427], [-0.0688, 0.2331], [0.011, 0.3704], [0.0617, 0.4256], [0.0596, 0.3626]]}], { signed: true });
+grouped('chart-penalties', ["Issue", "Rule", "Application", "Conclusion", "Other"].concat(['All penalties']), [{"label": "Gemini 4 Argon*", "color": "#FDE047", "data": [0.30158730158730157, 0.1575091575091575, 0.29606625258799174, 0.3802083333333333, 0.08888888888888889, 0.26704545454545453]}, {"label": "Claude Fable 5.1", "color": "#6366F1", "data": [0.2698412698412698, 0.13405797101449277, 0.2277432712215321, 0.390625, 0.24444444444444444, 0.2360717658168083]}, {"label": "Claude Opus 5.5", "color": "#A855F7", "data": [0.30158730158730157, 0.1282051282051282, 0.25806451612903225, 0.2708333333333333, 0.2222222222222222, 0.22736030828516376]}, {"label": "Muse Spark 1.3", "color": "#84CC16", "data": [0.3492063492063492, 0.1282051282051282, 0.2691511387163561, 0.3645833333333333, 0.2, 0.2518939393939394]}, {"label": "Grok 4.7", "color": "#EC4899", "data": [0.31746031746031744, 0.15579710144927536, 0.2070393374741201, 0.28125, 0.1111111111111111, 0.2096317280453258]}, {"label": "Gemini 3.8 Flash", "color": "#F97316", "data": [0.4126984126984127, 0.18478260869565216, 0.2732919254658385, 0.3645833333333333, 0.06666666666666667, 0.26628895184135976]}, {"label": "GPT-6 Astra", "color": "#10B981", "data": [0.36666666666666664, 0.07692307692307693, 0.14767932489451477, 0.15555555555555556, 0.044444444444444446, 0.1385658914728682]}, {"label": "GPT-6 Sol", "color": "#06B6D4", "data": [0.2698412698412698, 0.06521739130434782, 0.11801242236024845, 0.13541666666666666, 0.022222222222222223, 0.11237016052880075]}], { max: 1, pct: true });
+grouped('chart-rule-universe', MODELS.map(m => SHORT[m]), [{"label": "Open universe", "color": "#F472B6", "data": [0.4823828044100351, 0.4226840067554454, 0.39282204989485453, 0.3489468032500136, 0.331831571476536, 0.30529452798717865, 0.34102382887978766, 0.24907040047983428], "ci": [[0.4017050318400943, 0.5560419982834437], [0.3531953189903023, 0.48737215325504046], [0.320348017753825, 0.4623214646907855], [0.2854291677581619, 0.4144880078664327], [0.2771927140589335, 0.3830449916996423], [0.24226403936560223, 0.36634951909317176], [0.2663689493790405, 0.41219229714766464], [0.18966874542029383, 0.30834359412985235]]}, {"label": "Closed universe", "color": "#818CF8", "data": [0.7381611710316657, 0.802645529588519, 0.7672247610266858, 0.7037353915688135, 0.6925750674854575, 0.6508918021488371, 0.7072952069450611, 0.5730295763307818], "ci": [[0.6553512727198848, 0.8187286524840811], [0.7396418774074695, 0.8644051857958739], [0.6938360952058619, 0.8362874559285689], [0.5996108160109196, 0.7975404681893351], [0.6028892409207225, 0.7786900805212656], [0.5680792642539957, 0.7335007197344523], [0.6169199575916907, 0.7951866201681616], [0.4732332410272864, 0.6696834268039117]]}], { max: 1 });
+grouped('chart-app-universe', MODELS.map(m => SHORT[m]), [{"label": "Open universe", "color": "#F472B6", "data": [0.5492812746556793, 0.4958240622365972, 0.4483732575613363, 0.3774952355690942, 0.3355892743909133, 0.3736473864388115, 0.37858957225512113, 0.2646547232869371], "ci": [[0.48559698721305106, 0.6164437996586494], [0.42497229310622114, 0.5737781123573759], [0.3696833732869888, 0.5372871351335224], [0.3209366785090859, 0.43535648268766464], [0.27800448690546153, 0.40041013592170793], [0.3130673613877626, 0.44555754802722736], [0.3071328252115129, 0.45582589864112677], [0.21185424934121325, 0.3196869040984908]]}, {"label": "Closed universe", "color": "#818CF8", "data": [0.6798974968494652, 0.6855867197462722, 0.6434714036753794, 0.5745710035955681, 0.5824121664965037, 0.579896724112574, 0.49068176780889905, 0.41472973309109545], "ci": [[0.6121785075241671, 0.7452812405441279], [0.6221337275539065, 0.7493425212518281], [0.5763092365796072, 0.7090559449913867], [0.5029194308622849, 0.6481433030174202], [0.5143125455392689, 0.6486434171256055], [0.515557693499568, 0.6411434588162928], [0.4131516344672633, 0.5690548588352231], [0.35095117572499596, 0.48112206553719117]]}], { max: 1 });
+hbar('chart-horizon-delta', MODELS.map(m => LABELS[m]), [0.03632058682376535, 0.006898082944008135, -0.020435669025893128, -0.01785176345662421, -0.020011952781222107, -0.004689206496625202, -0.04856765939388998, -0.06077841337978691], [[-0.04311113420192297, 0.11786134980080105], [-0.07016184917259839, 0.08198023906122803], [-0.10122386164448516, 0.061677462628251106], [-0.09392982347498277, 0.061997851679172995], [-0.09489672564207187, 0.05745641157707222], [-0.08592349166360211, 0.07738901738605322], [-0.1256970141285651, 0.032440115846998546], [-0.1338659682617206, 0.014072524256616805]], MODELS.map(m => COLORS[m]), { signed: true, min: -0.15, max: 0.15 });
+hbar('chart-horizon-r', MODELS.map(m => LABELS[m]), [0.0305513667547101, -0.05563208281830941, 0.019429624896612045, 0.196614308281272, 0.1363166487989842, 0.10553200291058723, 0.1569343529867359, 0.23899122987830262], [[-0.23313166771884358, 0.29594559030783707], [-0.299301800750009, 0.19350451484514475], [-0.2072342801498225, 0.26124669335098066], [-0.06304574582192815, 0.43215210523940456], [-0.1028169922407677, 0.35860941360802856], [-0.14331298004365398, 0.3498542677692919], [-0.14220180744510486, 0.41665448377718944], [-0.06871913605051112, 0.5047399995424192]], MODELS.map(m => COLORS[m]), { signed: true, min: -0.6, max: 0.6 });
+grouped('chart-multimodal', ['Needs a visual exhibit', 'Other criteria'], [{"label": "Gemini 4 Argon*", "color": "#FDE047", "data": [0.5901495162708883, 0.5852716659182757]}, {"label": "Claude Fable 5.1", "color": "#6366F1", "data": [0.4466230936819172, 0.5710003579098067]}, {"label": "Claude Opus 5.5", "color": "#A855F7", "data": [0.4605664488017429, 0.5349554229127748]}, {"label": "Muse Spark 1.3", "color": "#84CC16", "data": [0.40201665935992986, 0.47240730227972155]}, {"label": "Grok 4.7", "color": "#EC4899", "data": [0.2690631808278867, 0.4610922214268671]}, {"label": "Gemini 3.8 Flash", "color": "#F97316", "data": [0.485838779956427, 0.45878072059174424]}, {"label": "GPT-6 Astra", "color": "#10B981", "data": [0.4106753812636166, 0.4303203644012651]}, {"label": "GPT-6 Sol", "color": "#06B6D4", "data": [0.24139433551198258, 0.34275829157718923]}], { max: 1 });
+grouped('chart-web-universe', MODELS.map(m => SHORT[m]), [{"label": "Open universe (research allowed)", "color": "#F472B6", "data": [55.78787878787879, 27.166666666666668, 27.984126984126984, 17.03030303030303, 39.166666666666664, 18.0, 116.4090909090909, 81.28787878787878], "ci": [[39.71174242424242, 72.97007575757576], [21.78787878787879, 33.18219696969696], [22.142857142857142, 35.20634920634921], [14.93939393939394, 19.500378787878784], [33.46969696969697, 45.31818181818182], [12.772727272727273, 23.666666666666668], [103.13598484848485, 130.8185606060606], [72.75757575757575, 90.24242424242425]]}, {"label": "Closed universe (record only)", "color": "#818CF8", "data": [2.7738095238095237, 0.9880952380952381, 0.9880952380952381, 0.5357142857142857, 1.3452380952380953, 1.4523809523809523, 4.432098765432099, 3.1547619047619047]}], { int: true });
+grouped('chart-calls', [''], [{"label": "Gemini 4 Argon*", "color": "#FDE047", "data": [120.68666666666667]}, {"label": "Claude Fable 5.1", "color": "#6366F1", "data": [108.34666666666666]}, {"label": "Claude Opus 5.5", "color": "#A855F7", "data": [107.87755102040816]}, {"label": "Muse Spark 1.3", "color": "#84CC16", "data": [52.373333333333335]}, {"label": "Grok 4.7", "color": "#EC4899", "data": [89.86666666666666]}, {"label": "Gemini 3.8 Flash", "color": "#F97316", "data": [148.32]}, {"label": "GPT-6 Astra", "color": "#10B981", "data": [139.79591836734693]}, {"label": "GPT-6 Sol", "color": "#06B6D4", "data": [106.61333333333333]}], { int: true });
+grouped('chart-length-decomp', ['Net reward', 'Rubric coverage', 'Penalties'], [{"label": "Gemini 4 Argon*", "color": "#FDE047", "data": [0.18324327054171902, 0.11975674664186016, 0.05915930717807724]}, {"label": "Claude Fable 5.1", "color": "#6366F1", "data": [0.08797636867635143, 0.07107792185489692, 0.025419532723211027]}, {"label": "Claude Opus 5.5", "color": "#A855F7", "data": [-0.01602410711143306, 0.008436469935352176, -0.034151769409060694]}, {"label": "Muse Spark 1.3", "color": "#84CC16", "data": [0.029659956800878972, 0.05329638196336339, -0.012956949299606238]}, {"label": "Grok 4.7", "color": "#EC4899", "data": [0.02913126008570813, 0.029611478747361968, -0.002661204983213795]}, {"label": "Gemini 3.8 Flash", "color": "#F97316", "data": [0.06050477368307821, 0.07138354987853446, -0.01739783075417376]}, {"label": "GPT-6 Astra", "color": "#10B981", "data": [-0.034702194812440516, 0.016559655626117175, -0.054648894498791685]}, {"label": "GPT-6 Sol", "color": "#06B6D4", "data": [0.048171238287368794, 0.022431202038367716, 0.03341386339031709]}], { signed: true, min: -0.1, max: 0.2 });
+(function lengthBins() {
+  const el = document.getElementById('chart-length-bins');
+  if (!el) return;
+  const CI = [[-0.11385216158385056, -0.06703233399179814], [-0.05296692478816171, -0.009984545516471502], [-0.024318813571981405, -0.002599801424944939], [0.015108698061237045, 0.041730757000592825], [0.0389625898975954, 0.09273952016639682], [-0.033396210804683135, 0.1532171384324663]];
+  new Chart(el, {
+    type: 'bar',
+    data: { labels: ["<0.5x (n=422)", "0.5-0.75x (n=328)", "0.75-1x (n=703)", "1-1.33x (n=985)", "1.33-2x (n=409)", ">2x (n=63)"], datasets: [{ data: [-0.08974425844373037, -0.031477927010620174, -0.013977318126550436, 0.028778173134266873, 0.0650243232247454, 0.04891179411950558], ci: CI, backgroundColor: 'rgba(156,163,175,0.35)', borderColor: '#9CA3AF', borderWidth: 2, borderRadius: 3 }] },
+    options: {
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => (c.parsed.y > 0 ? '+' : '') + c.parsed.y.toFixed(3) + '  CI [' + CI[c.dataIndex][0].toFixed(3) + ', ' + CI[c.dataIndex][1].toFixed(3) + ']' } } },
+      scales: { y: { ticks: { callback: v => (v > 0 ? '+' : '') + v.toFixed(2) } } }
+    },
+    plugins: [ciPlugin]
+  });
+})();
+
+(function trajViewer() {
+  const node = document.getElementById('traj-data');
+  if (!node) return;
+  const DATA = JSON.parse(node.textContent);
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function fmtNum(n) { if (n == null) return 'n/a'; if (n >= 1e6) return (n / 1e6).toFixed(2) + 'M'; if (n >= 1e3) return (n / 1e3).toFixed(0) + 'K'; return String(n); }
+  function meta(run) {
+    const tools = {}; let turns = 0; let prompt = 0; let completion = 0;
+    for (const st of run.steps) { for (const [k, v] of Object.entries(st.tool_counts || {})) tools[k] = (tools[k] || 0) + v; turns += (st.trajectory || []).filter(x => x.source === 'agent').length; prompt += (st.metrics || {}).total_prompt_tokens || 0; completion += (st.metrics || {}).total_completion_tokens || 0; }
+    const total = Object.values(tools).reduce((a, b) => a + b, 0);
+    const cards = [['matter reward', run.reward.toFixed(3)], ['assignments', run.steps.length], ['agent turns', turns], ['tool calls', total], ['web lookups', (tools.websearch || 0) + (tools.webfetch || 0)], ['input tokens', fmtNum(prompt)], ['output tokens', fmtNum(completion)]];
+    return '<div class="traj-meta">' + cards.map(([l, v]) => `<div class="traj-meta-card"><div class="label">${esc(l)}</div><div class="value">${esc(v)}</div></div>`).join('') + '</div>';
+  }
+  function grading(step) {
+    let h = '<div class="traj-grading-header"><div>Result</div><div>Weight</div><div>Criterion and votes</div></div><div class="traj-grading">';
+    for (const c of step.criteria) {
+      const neg = (c.weight || 0) < 0;
+      const hit = c.value >= 0.5;
+      const pass = neg ? !hit : hit;
+      const cls = pass ? 'pass' : 'fail';
+      const label = neg ? (hit ? 'PEN' : 'ok') : (hit ? 'yes' : 'no');
+      const votes = (c.votes || []).map(v => `<span class="vote ${v.value == null ? 'none' : (v.value >= 0.5 ? 'yes' : 'no')}" title="${esc(v.reasoning)}">${esc((v.judge || '').split('/').pop())}: ${v.value == null ? '?' : (v.value >= 0.5 ? 'yes' : 'no')}</span>`).join('');
+      const dissent = (c.votes || []).filter(v => v.reasoning).map(v => `<div class="judge-note"><span class="judge-note-label">${esc((v.judge || '').split('/').pop())}</span>${esc(v.reasoning)}</div>`).join('');
+      h += `<div class="traj-grading-row"><div class="score ${cls}">${esc(label)}</div><div class="weight${neg ? ' neg' : ''}">${neg ? '' : '+'}${c.weight}</div><div><div class="crit-text">${esc(c.text)}${neg ? ' <span class="crit-kind-neg">PENALTY</span>' : ''}</div><div class="vote-row">${votes}</div><details><summary style="font-size:0.72rem;color:#6B7280;cursor:pointer;">judge reasoning</summary>${dissent}</details></div></div>`;
+    }
+    return h + '</div>';
+  }
+  function trajectory(step) {
+    const rows = step.trajectory || [];
+    return rows.map((s, i) => {
+      const cls = s.source === 'agent' ? 'assistant' : 'user';
+      let h = `<div class="traj-msg ${cls}"><div class="traj-msg-header ${cls}">[${i}] ${esc(s.source)}</div>`;
+      if (s.reasoning) h += `<div class="traj-msg-thinking"><div class="traj-msg-thinking-label">reasoning</div>${esc(s.reasoning)}</div>`;
+      if (s.message && s.message.trim()) h += `<div class="traj-msg-content">${esc(s.message.trim())}</div>`;
+      for (const tc of (s.tool_calls || [])) h += `<div class="traj-tool-call"><div class="traj-tool-call-name">→ ${esc(tc.name)}</div><div class="traj-tool-call-args">${esc(tc.arguments)}</div></div>`;
+      for (const o of (s.observations || [])) h += `<div class="traj-tool-call"><div class="traj-tool-call-name" style="color:#9CA3AF">← result</div><div class="traj-tool-call-args">${esc(o)}</div></div>`;
+      return h + '</div>';
+    }).join('');
+  }
+  function render(model) {
+    const run = DATA.runs[model];
+    if (!run) return;
+    let h = meta(run);
+    run.steps.forEach((st, i) => {
+      const spec = DATA.steps[i] || {};
+      h += `<div class="traj-step-title">Assignment ${i + 1}${spec.title ? ': ' + esc(spec.title) : ''} <span style="color:#9CA3AF;font-weight:400">· reward ${st.reward == null ? 'n/a' : st.reward.toFixed(3)} (${st.earned} of ${st.positive_total} points)</span></div>`;
+      h += `<details class="traj-section"><summary>Assignment prompt <span style="color:#6B7280;font-size:0.78em;font-weight:400;">(${(spec.prompt || '').length.toLocaleString()} chars)</span></summary><div class="traj-section-body"><div class="traj-memo">${esc(spec.prompt || '')}</div></div></details>`;
+      h += `<details class="traj-section" ${i === 0 ? 'open' : ''}><summary>Per-criterion grading <span style="color:#6B7280;font-size:0.78em;font-weight:400;">(${st.criteria.length} criteria, three votes each)</span></summary><div class="traj-section-body">${grading(st)}</div></details>`;
+      h += `<details class="traj-section"><summary>Submitted deliverable <span style="color:#6B7280;font-size:0.78em;font-weight:400;">(${(st.answer || '').length.toLocaleString()} chars)</span></summary><div class="traj-section-body"><div class="traj-memo">${esc(st.answer || '(no deliverable found)')}</div></div></details>`;
+      h += `<details class="traj-section"><summary>Trajectory <span style="color:#6B7280;font-size:0.78em;font-weight:400;">(${(st.trajectory || []).length} messages, tool results truncated)</span></summary><div class="traj-section-body">${trajectory(st)}</div></details>`;
+    });
+    document.getElementById('traj-content').innerHTML = h;
+  }
+  document.getElementById('traj-tabs').addEventListener('click', (e) => {
+    const btn = e.target.closest('.traj-tab');
+    if (!btn) return;
+    document.querySelectorAll('.traj-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render(btn.dataset.traj);
+  });
+  const first = document.querySelector('.traj-tab');
+  if (first) render(first.dataset.traj);
+})();
+
+
+}
+var f = document.fonts;
+if (!f || !f.load) { draw(); return; }
+Promise.all([f.load('400 12px Outfit'), f.load('500 12px Outfit')]).then(draw, draw);
+setTimeout(draw, 3000);
+})();</script>
+</body>
+</html>

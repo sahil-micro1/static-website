@@ -9,6 +9,8 @@ cp src/legal/cookie.html dist/cookie.html && \
 cp src/_headers dist/_headers && \
 mkdir -p dist/benchmarks && \
 rsync -a --delete --exclude /cortex-retrieval-bench --exclude /agents src/benchmarks/ dist/benchmarks/ && \
+mkdir -p dist/benchmarks/legal && \
+npx --yes esbuild src/benchmarks/legal/embeds.min.css --minify --outfile=dist/benchmarks/legal/embeds.min.css && \
 rm -rf dist/robotics && \
 cp -R src/robotics dist/robotics && \
 git add src ':!src/legal' ':!src/attribution' ':!src/benchmarks/agents' src/legal/cookie.html dist prod push.cli wrangler.jsonc && \
@@ -33,6 +35,8 @@ echo "universe JS: https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/src/human/unive
 echo "benchmarks:  https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/" && \
 echo "  tax:       https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/tax/data.json" && \
 echo "  legal:     https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/warren/data.json" && \
+echo "  lrb css:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/legal/embeds.min.css" && \
+echo "  lrb html:  https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/legal/embeds.html" && \
 echo "  finance:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/quantis/data.json" && \
 echo "  medical:   https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/benchmarks/medical/data.json" && \
 echo "robotics:    https://cdn.jsdelivr.net/gh/${REPO}@${COMMIT}/dist/robotics/" && \

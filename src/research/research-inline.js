@@ -308,3 +308,40 @@ window.benchmarks_data["personal-agent"] = {
     },
   ],
 };
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["legal-reason-bench"] = {
+  lastUpdated: "October 16, 2026",
+  defaultTab: "mean",
+  tabs: [
+    {
+      id: "mean",
+      label: "Mean score",
+      rows: [
+        { name: "Gemini 4 Argon*", score: 50.8, iconStyle: "gemini" },
+        { name: "Claude Fable 5.1", score: 50.6, iconStyle: "claude" },
+        { name: "Claude Opus 5.5", score: 46.5, iconStyle: "claude" },
+        { name: "Muse Spark 1.3", score: 40.4, iconStyle: "meta" },
+        { name: "Grok 4.7", score: 40.4, iconStyle: "grok" },
+        { name: "Gemini 3.8 Flash", score: 39.6, iconStyle: "gemini" },
+        { name: "GPT-6 Astra", score: 39.5, iconStyle: "openai" },
+        { name: "GPT-6 Sol", score: 31.9, iconStyle: "openai" },
+      ],
+    },
+    {
+      id: "best-at-3",
+      label: "Best@3 score",
+      rows: [
+        { name: "Gemini 4 Argon*", score: 58.2, iconStyle: "gemini" },
+        { name: "Claude Fable 5.1", score: 56.7, iconStyle: "claude" },
+        { name: "Claude Opus 5.5", score: 53.2, iconStyle: "claude" },
+        { name: "Grok 4.7", score: 47.4, iconStyle: "grok" },
+        { name: "Muse Spark 1.3", score: 46.8, iconStyle: "meta" },
+        { name: "Gemini 3.8 Flash", score: 45.6, iconStyle: "gemini" },
+        { name: "GPT-6 Astra", score: 44.1, iconStyle: "openai" },
+        { name: "GPT-6 Sol", score: 37.4, iconStyle: "openai" },
+      ],
+    },
+  ],
+};
