@@ -641,7 +641,7 @@
     font-family: "Outfit", sans-serif;
   }
 
-  .chart-card h3 {
+  .chart-card [class$="-title"], .chart-card h3 {
     font-size: 0.9rem;
     font-weight: 500;
     margin: 0 0 0.75rem;
@@ -1419,7 +1419,7 @@
     list-style: none;
   }
 
-  .pvs-legend li {
+  .pvs-legend > div {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -2329,7 +2329,7 @@
     list-style: none;
   }
 
-  .ssc-legend li {
+  .ssc-legend > div {
     display: flex;
     align-items: center;
     gap: 0.45em;
@@ -2343,7 +2343,7 @@
 
   .ssc-swatch {
     flex-shrink: 0;
-    /* em tracks .ssc-legend li font-size (labels + swatch shrink together) */
+    /* em tracks .ssc-legend > div font-size (labels + swatch shrink together) */
     width: 1.05em;
     height: 1.05em;
     border-radius: 0.13em;
@@ -2584,7 +2584,7 @@
       margin-bottom: 16px;
     }
 
-    .ssc-legend li {
+    .ssc-legend > div {
       font-size: clamp(10px, 2.7vw, 12px);
     }
 
@@ -2629,7 +2629,7 @@
       gap: 5px 8px;
     }
 
-    .ssc-legend li {
+    .ssc-legend > div {
       font-size: clamp(9px, 2.5vw, 11px);
     }
   }
@@ -2678,7 +2678,7 @@
     list-style: none;
   }
 
-  .ru-legend li {
+  .ru-legend > div {
     display: flex;
     align-items: center;
     gap: 7px;
@@ -3047,7 +3047,7 @@
     list-style: none;
   }
 
-  .ve-legend li {
+  .ve-legend > div {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -3380,7 +3380,7 @@
     list-style: none;
   }
 
-  .tc-legend li {
+  .tc-legend > div {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -3677,7 +3677,7 @@
     list-style: none;
   }
 
-  .dlb-legend li {
+  .dlb-legend > div {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -4204,7 +4204,7 @@
      Design: Figma 9650:11781. Data/scale from HTML (axis max = 30%).
      ============================================================ -->
 <div class="mpa-card" role="figure" aria-label="Matters by practice area">
-  <h3 class="mpa-title">Matters by practice area</h3>
+  <div class="mpa-title">Matters by practice area</div>
   <div class="mpa-chart">
     <div class="mpa-grid" aria-hidden="true">
       <div class="mpa-grid-col"></div>
@@ -4213,94 +4213,94 @@
       <div class="mpa-grid-col"></div>
       <div class="mpa-grid-col"></div>
     </div>
-    <ul class="mpa-rows">
-      <li class="mpa-row">
+    <div class="mpa-rows">
+      <div class="mpa-row">
         <span class="mpa-label">litigation &amp; disputes</span>
         <div class="mpa-bar" style="--mpa-w: 80%;">
           <div class="mpa-bar-fill" data-tip="litigation & disputes: 24%"></div>
           <span class="mpa-bar-val">24%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">intellectual property</span>
         <div class="mpa-bar" style="--mpa-w: 66.6667%;">
           <div class="mpa-bar-fill" data-tip="intellectual property: 20%"></div>
           <span class="mpa-bar-val">20%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">criminal law &amp; procedure</span>
         <div class="mpa-bar" style="--mpa-w: 33.3333%;">
           <div class="mpa-bar-fill" data-tip="criminal law & procedure: 10%"></div>
           <span class="mpa-bar-val">10%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">real estate</span>
         <div class="mpa-bar" style="--mpa-w: 33.3333%;">
           <div class="mpa-bar-fill" data-tip="real estate: 10%"></div>
           <span class="mpa-bar-val">10%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">civil rights</span>
         <div class="mpa-bar" style="--mpa-w: 26.6667%;">
           <div class="mpa-bar-fill" data-tip="civil rights: 8%"></div>
           <span class="mpa-bar-val">8%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">employment &amp; labor</span>
         <div class="mpa-bar" style="--mpa-w: 26.6667%;">
           <div class="mpa-bar-fill" data-tip="employment & labor: 8%"></div>
           <span class="mpa-bar-val">8%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">healthcare &amp; life sciences</span>
         <div class="mpa-bar" style="--mpa-w: 20%;">
           <div class="mpa-bar-fill" data-tip="healthcare & life sciences: 6%"></div>
           <span class="mpa-bar-val">6%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">capital markets</span>
         <div class="mpa-bar" style="--mpa-w: 13.3333%;">
           <div class="mpa-bar-fill" data-tip="capital markets: 4%"></div>
           <span class="mpa-bar-val">4%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">immigration</span>
         <div class="mpa-bar" style="--mpa-w: 13.3333%;">
           <div class="mpa-bar-fill" data-tip="immigration: 4%"></div>
           <span class="mpa-bar-val">4%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">administrative law</span>
         <div class="mpa-bar" style="--mpa-w: 6.6667%;">
           <div class="mpa-bar-fill" data-tip="administrative law: 2%"></div>
           <span class="mpa-bar-val">2%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">corporate governance</span>
         <div class="mpa-bar" style="--mpa-w: 6.6667%;">
           <div class="mpa-bar-fill" data-tip="corporate governance: 2%"></div>
           <span class="mpa-bar-val">2%</span>
         </div>
-      </li>
-      <li class="mpa-row">
+      </div>
+      <div class="mpa-row">
         <span class="mpa-label">sports law</span>
         <div class="mpa-bar" style="--mpa-w: 6.6667%;">
           <div class="mpa-bar-fill" data-tip="sports law: 2%"></div>
           <span class="mpa-bar-val">2%</span>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
-  <p class="mpa-footnote">Share of the 50 matters. Harvey LAB v1.0 practice areas plus four LegalReasonBench additions (criminal law and procedure, civil rights, administrative law, sports law).</p>
+  <div class="mpa-footnote">Share of the 50 matters. Harvey LAB v1.0 practice areas plus four LegalReasonBench additions (criminal law and procedure, civil rights, administrative law, sports law).</div>
 </div>
 <!-- /EMBED: Figure 1: Matters by practice area -->
 <!-- ============================================================
@@ -4308,7 +4308,7 @@
      Copy from the next line through the matching /EMBED comment
      ============================================================ -->
 <div class="ufm-card" role="figure" aria-label="Uploaded files per matter">
-      <h3 class="ufm-title">Uploaded files per matter</h3>
+      <div class="ufm-title">Uploaded files per matter</div>
       <div class="lrb-h-scroll">
 <div class="ufm-chart-scroll">
         <div class="ufm-chart">
@@ -4376,7 +4376,7 @@
         </div>
       </div>
 </div>
-      <p class="ufm-footnote">Share of matters by number of uploaded case files (pleadings, orders, opinions, contracts, deposition excerpts, exhibits).</p>
+      <div class="ufm-footnote">Share of matters by number of uploaded case files (pleadings, orders, opinions, contracts, deposition excerpts, exhibits).</div>
     </div>
 <!-- /EMBED: Figure 2: Uploaded files per matter -->
 <!-- ============================================================
@@ -4385,7 +4385,7 @@
      Design: Figma 9650:12238. Data/scale from HTML (axis max = 60%).
      ============================================================ -->
 <div class="cfv-card" role="figure" aria-label="Case-file volume per matter">
-  <h3 class="cfv-title">Case-file volume per matter</h3>
+  <div class="cfv-title">Case-file volume per matter</div>
   <div class="lrb-h-scroll">
 <div class="cfv-chart-scroll">
     <div class="cfv-chart">
@@ -4456,7 +4456,7 @@
     </div>
   </div>
 </div>
-  <p class="cfv-footnote">Tokens (o200k) of extractable text across a matter's uploaded files: PDFs through pdftotext, DOCX through pandoc; image files carry no text. 50 of 50 matters.</p>
+  <div class="cfv-footnote">Tokens (o200k) of extractable text across a matter's uploaded files: PDFs through pdftotext, DOCX through pandoc; image files carry no text. 50 of 50 matters.</div>
 </div>
 <!-- /EMBED: Figure 3: Case-file volume per matter -->
 <!-- ============================================================
@@ -4505,17 +4505,17 @@
      (includes Gemini 4 Argon*, omitted in Figma). Axis max = 1.00.
      ============================================================ -->
 <div class="pvs-card" role="figure" aria-label="Panel verdict against each single seat">
-  <h3 class="pvs-title">Panel verdict against each single seat</h3>
-  <ul class="pvs-legend">
-    <li><span class="pvs-swatch" style="--pvs-from:#2F75BE;--pvs-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></li>
-    <li><span class="pvs-swatch is-muted" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#007dfd;--pvs-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#696969;--pvs-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#65a8f0;--pvs-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></li>
-    <li><span class="pvs-swatch is-muted" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></li>
-  </ul>
+  <div class="pvs-title">Panel verdict against each single seat</div>
+  <div class="pvs-legend">
+    <div><span class="pvs-swatch" style="--pvs-from:#2F75BE;--pvs-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></div>
+    <div><span class="pvs-swatch is-muted" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#007dfd;--pvs-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#696969;--pvs-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#65a8f0;--pvs-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></div>
+    <div><span class="pvs-swatch is-muted" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="pvs-chart-scroll">
     <div class="pvs-chart">
@@ -4602,7 +4602,7 @@
     </div>
   </div>
 </div>
-  <p class="pvs-footnote">Mean of matter means recomputed from one seat's votes on every criterion, penalties included, next to the panel's majority result.</p>
+  <div class="pvs-footnote">Mean of matter means recomputed from one seat's votes on every criterion, penalties included, next to the panel's majority result.</div>
 </div>
 <!-- /EMBED: Figure 5: Panel verdict against each single seat -->
 <!-- ============================================================
@@ -4612,8 +4612,8 @@
      ============================================================ -->
 <div class="mr-card" role="figure" aria-label="Mean reward per model (mean of matter means, 95% CI)">
   <div class="mr-header">
-    <h3 class="mr-title">Leaderboard</h3>
-    <p class="mr-subtitle">Mean reward per model (mean of matter means, 95% CI)</p>
+    <div class="mr-title">Leaderboard</div>
+    <div class="mr-subtitle">Mean reward per model (mean of matter means, 95% CI)</div>
   </div>
   <div class="mr-chart">
     <div class="mr-plot">
@@ -4623,8 +4623,8 @@
       <div class="mr-h-grid" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
-      <ul class="mr-rows">
-        <li class="mr-row is-leader" style="--mr-w: 72.6193%; --mr-ci-l: 67.0622%; --mr-ci-w: 11.1913%;">
+      <div class="mr-rows">
+        <div class="mr-row is-leader" style="--mr-w: 72.6193%; --mr-ci-l: 67.0622%; --mr-ci-w: 11.1913%;">
           <span class="mr-name">Gemini 4 Argon*</span>
           <div class="mr-track" data-tip="0.508 CI [0.469, 0.548]">
             <div class="mr-bar">
@@ -4632,8 +4632,8 @@
             </div>
             <span class="mr-ci" aria-hidden="true"><span class="mr-ci-line"></span></span>
           </div>
-        </li>
-        <li class="mr-row" style="--mr-w: 72.2666%; --mr-ci-l: 66.8431%; --mr-ci-w: 10.9262%;">
+        </div>
+        <div class="mr-row" style="--mr-w: 72.2666%; --mr-ci-l: 66.8431%; --mr-ci-w: 10.9262%;">
           <span class="mr-name">Claude Fable 5.1</span>
           <div class="mr-track" data-tip="0.506 CI [0.468, 0.544]">
             <div class="mr-bar">
@@ -4641,8 +4641,8 @@
             </div>
             <span class="mr-ci" aria-hidden="true"><span class="mr-ci-line"></span></span>
           </div>
-        </li>
-        <li class="mr-row" style="--mr-w: 66.4186%; --mr-ci-l: 59.9488%; --mr-ci-w: 12.9021%;">
+        </div>
+        <div class="mr-row" style="--mr-w: 66.4186%; --mr-ci-l: 59.9488%; --mr-ci-w: 12.9021%;">
           <span class="mr-name">Claude Opus 5.5</span>
           <div class="mr-track" data-tip="0.465 CI [0.420, 0.510]">
             <div class="mr-bar">
@@ -4650,8 +4650,8 @@
             </div>
             <span class="mr-ci" aria-hidden="true"><span class="mr-ci-line"></span></span>
           </div>
-        </li>
-        <li class="mr-row" style="--mr-w: 57.7757%; --mr-ci-l: 51.8608%; --mr-ci-w: 12.1483%;">
+        </div>
+        <div class="mr-row" style="--mr-w: 57.7757%; --mr-ci-l: 51.8608%; --mr-ci-w: 12.1483%;">
           <span class="mr-name">Muse Spark 1.3</span>
           <div class="mr-track" data-tip="0.404 CI [0.363, 0.448]">
             <div class="mr-bar">
@@ -4659,8 +4659,8 @@
             </div>
             <span class="mr-ci" aria-hidden="true"><span class="mr-ci-line"></span></span>
           </div>
-        </li>
-        <li class="mr-row" style="--mr-w: 57.6977%; --mr-ci-l: 52.2613%; --mr-ci-w: 11.2291%;">
+        </div>
+        <div class="mr-row" style="--mr-w: 57.6977%; --mr-ci-l: 52.2613%; --mr-ci-w: 11.2291%;">
           <span class="mr-name">Grok 4.7</span>
           <div class="mr-track" data-tip="0.404 CI [0.366, 0.444]">
             <div class="mr-bar">
@@ -4668,8 +4668,8 @@
             </div>
             <span class="mr-ci" aria-hidden="true"><span class="mr-ci-line"></span></span>
           </div>
-        </li>
-        <li class="mr-row" style="--mr-w: 56.6148%; --mr-ci-l: 51.1220%; --mr-ci-w: 11.1213%;">
+        </div>
+        <div class="mr-row" style="--mr-w: 56.6148%; --mr-ci-l: 51.1220%; --mr-ci-w: 11.1213%;">
           <span class="mr-name">Gemini 3.8 Flash</span>
           <div class="mr-track" data-tip="0.396 CI [0.358, 0.436]">
             <div class="mr-bar">
@@ -4677,8 +4677,8 @@
             </div>
             <span class="mr-ci" aria-hidden="true"><span class="mr-ci-line"></span></span>
           </div>
-        </li>
-        <li class="mr-row" style="--mr-w: 56.3946%; --mr-ci-l: 50.0363%; --mr-ci-w: 12.7864%;">
+        </div>
+        <div class="mr-row" style="--mr-w: 56.3946%; --mr-ci-l: 50.0363%; --mr-ci-w: 12.7864%;">
           <span class="mr-name">GPT-6 Astra</span>
           <div class="mr-track" data-tip="0.395 CI [0.350, 0.440]">
             <div class="mr-bar">
@@ -4686,8 +4686,8 @@
             </div>
             <span class="mr-ci" aria-hidden="true"><span class="mr-ci-line"></span></span>
           </div>
-        </li>
-        <li class="mr-row" style="--mr-w: 45.6390%; --mr-ci-l: 39.7296%; --mr-ci-w: 12.1769%;">
+        </div>
+        <div class="mr-row" style="--mr-w: 45.6390%; --mr-ci-l: 39.7296%; --mr-ci-w: 12.1769%;">
           <span class="mr-name">GPT-6 Sol</span>
           <div class="mr-track" data-tip="0.319 CI [0.278, 0.363]">
             <div class="mr-bar">
@@ -4695,8 +4695,8 @@
             </div>
             <span class="mr-ci" aria-hidden="true"><span class="mr-ci-line"></span></span>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
     <div class="mr-x-axis" aria-hidden="true">
       <div class="mr-x-spacer"></div>
@@ -4705,7 +4705,7 @@
       </div>
     </div>
   </div>
-  <p class="mr-footnote">Each model ran every matter three times (1,200 accepted runs). The bar is the mean of the 50 per-matter means; whiskers are a paired matter bootstrap (10,000 resamples).</p>
+  <div class="mr-footnote">Each model ran every matter three times (1,200 accepted runs). The bar is the mean of the 50 per-matter means; whiskers are a paired matter bootstrap (10,000 resamples).</div>
 </div>
 <!-- /EMBED: Figure 6: Mean reward per model -->
 <!-- ============================================================
@@ -4741,17 +4741,17 @@
      placeholder minutes axis and omitted Gemini 4 Argon*.
      ============================================================ -->
 <div class="ssc-card" role="figure" aria-label="Score against solver cost per matter">
-  <h3 class="ssc-title">Score against solver cost per matter</h3>
-  <ul class="ssc-legend">
-    <li><span class="ssc-swatch" style="--ssc-color:#2F75BE;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#c46d50;" aria-hidden="true"></span><span>Claude Fable 5.1</span></li>
-    <li><span class="ssc-swatch is-muted" style="--ssc-color:#c46d50;" aria-hidden="true"></span><span>Claude Opus 5.5</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#007dfd;" aria-hidden="true"></span><span>Muse Spark 1.3</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#696969;" aria-hidden="true"></span><span>Grok 4.7</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#65a8f0;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#ffffff;" aria-hidden="true"></span><span>GPT-6 Astra</span></li>
-    <li><span class="ssc-swatch is-muted" style="--ssc-color:#ffffff;" aria-hidden="true"></span><span>GPT-6 Sol</span></li>
-  </ul>
+  <div class="ssc-title">Score against solver cost per matter</div>
+  <div class="ssc-legend">
+    <div><span class="ssc-swatch" style="--ssc-color:#2F75BE;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#c46d50;" aria-hidden="true"></span><span>Claude Fable 5.1</span></div>
+    <div><span class="ssc-swatch is-muted" style="--ssc-color:#c46d50;" aria-hidden="true"></span><span>Claude Opus 5.5</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#007dfd;" aria-hidden="true"></span><span>Muse Spark 1.3</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#696969;" aria-hidden="true"></span><span>Grok 4.7</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#65a8f0;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#ffffff;" aria-hidden="true"></span><span>GPT-6 Astra</span></div>
+    <div><span class="ssc-swatch is-muted" style="--ssc-color:#ffffff;" aria-hidden="true"></span><span>GPT-6 Sol</span></div>
+  </div>
   <div class="ssc-body">
     <div class="ssc-y-title" aria-hidden="true">Mean of matter means</div>
     <div class="ssc-chart">
@@ -4796,7 +4796,7 @@
     <span class="ssc-axis-title"><span class="ssc-axis-key">X-axis:</span> solver spend per matter (USD, log scale)</span>
     <span class="ssc-axis-title"><span class="ssc-axis-key">Y-axis:</span> Mean of matter means</span>
   </div>
-  <p class="ssc-footnote">Mean of matter means against mean solver spend per matter, log scale.</p>
+  <div class="ssc-footnote">Mean of matter means against mean solver spend per matter, log scale.</div>
 </div>
 <!-- /EMBED: Figure 7: Score against solver cost per matter -->
 <!-- ============================================================
@@ -4817,17 +4817,17 @@
      Data/axes/colors/footnote from HTML (linear minutes × score).
      ============================================================ -->
 <div class="ssc-card" role="figure" aria-label="Score against agent working time per matter">
-  <h3 class="ssc-title">Score against agent working time per matter</h3>
-  <ul class="ssc-legend">
-    <li><span class="ssc-swatch" style="--ssc-color:#2F75BE;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#c46d50;" aria-hidden="true"></span><span>Claude Fable 5.1</span></li>
-    <li><span class="ssc-swatch is-muted" style="--ssc-color:#c46d50;" aria-hidden="true"></span><span>Claude Opus 5.5</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#007dfd;" aria-hidden="true"></span><span>Muse Spark 1.3</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#696969;" aria-hidden="true"></span><span>Grok 4.7</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#65a8f0;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></li>
-    <li><span class="ssc-swatch" style="--ssc-color:#ffffff;" aria-hidden="true"></span><span>GPT-6 Astra</span></li>
-    <li><span class="ssc-swatch is-muted" style="--ssc-color:#ffffff;" aria-hidden="true"></span><span>GPT-6 Sol</span></li>
-  </ul>
+  <div class="ssc-title">Score against agent working time per matter</div>
+  <div class="ssc-legend">
+    <div><span class="ssc-swatch" style="--ssc-color:#2F75BE;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#c46d50;" aria-hidden="true"></span><span>Claude Fable 5.1</span></div>
+    <div><span class="ssc-swatch is-muted" style="--ssc-color:#c46d50;" aria-hidden="true"></span><span>Claude Opus 5.5</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#007dfd;" aria-hidden="true"></span><span>Muse Spark 1.3</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#696969;" aria-hidden="true"></span><span>Grok 4.7</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#65a8f0;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></div>
+    <div><span class="ssc-swatch" style="--ssc-color:#ffffff;" aria-hidden="true"></span><span>GPT-6 Astra</span></div>
+    <div><span class="ssc-swatch is-muted" style="--ssc-color:#ffffff;" aria-hidden="true"></span><span>GPT-6 Sol</span></div>
+  </div>
   <div class="ssc-body">
     <div class="ssc-y-title" aria-hidden="true">Mean of matter means</div>
     <div class="ssc-chart">
@@ -4870,7 +4870,7 @@
     <span class="ssc-axis-title"><span class="ssc-axis-key">X-axis:</span> agent minutes per matter (median)</span>
     <span class="ssc-axis-title"><span class="ssc-axis-key">Y-axis:</span> Mean of matter means</span>
   </div>
-  <p class="ssc-footnote">Mean of matter means against the median agent working time per matter, in minutes.</p>
+  <div class="ssc-footnote">Mean of matter means against the median agent working time per matter, in minutes.</div>
 </div>
 <!-- /EMBED: Figure 8: Score against agent working time -->
 <!-- ============================================================
@@ -4890,17 +4890,17 @@
      Design: reuse .pvs-card chrome (Panel verdict). Data/titles/footnote from HTML.
      ============================================================ -->
 <div class="pvs-card" role="figure" aria-label="Weighted mean score per IRAC bucket (positive criteria)">
-  <h3 class="pvs-title">Weighted mean score per IRAC bucket (positive criteria)</h3>
-  <ul class="pvs-legend">
-    <li><span class="pvs-swatch" style="--pvs-from:#2F75BE;--pvs-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></li>
-    <li><span class="pvs-swatch is-muted" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#007dfd;--pvs-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#696969;--pvs-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#65a8f0;--pvs-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></li>
-    <li><span class="pvs-swatch is-muted" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></li>
-  </ul>
+  <div class="pvs-title">Weighted mean score per IRAC bucket (positive criteria)</div>
+  <div class="pvs-legend">
+    <div><span class="pvs-swatch" style="--pvs-from:#2F75BE;--pvs-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></div>
+    <div><span class="pvs-swatch is-muted" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#007dfd;--pvs-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#696969;--pvs-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#65a8f0;--pvs-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></div>
+    <div><span class="pvs-swatch is-muted" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="pvs-chart-scroll">
     <div class="pvs-chart">
@@ -4998,7 +4998,7 @@
     </div>
   </div>
 </div>
-  <p class="pvs-footnote">Positive-weight criteria, pooled over criterion-runs and weighted by rubric points.</p>
+  <div class="pvs-footnote">Positive-weight criteria, pooled over criterion-runs and weighted by rubric points.</div>
 </div>
 <!-- /EMBED: Figure 9: Weighted mean score per IRAC bucket -->
 <!-- ============================================================
@@ -5017,17 +5017,17 @@
      Design: reuse .pvs-card chrome (Panel verdict). Data/titles/footnote from HTML.
      ============================================================ -->
 <div class="pvs-card" role="figure" aria-label="Penalty criteria triggered, by bucket (lower is better)">
-  <h3 class="pvs-title">Penalty criteria triggered, by bucket (lower is better)</h3>
-  <ul class="pvs-legend">
-    <li><span class="pvs-swatch" style="--pvs-from:#2F75BE;--pvs-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></li>
-    <li><span class="pvs-swatch is-muted" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#007dfd;--pvs-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#696969;--pvs-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#65a8f0;--pvs-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></li>
-    <li><span class="pvs-swatch" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></li>
-    <li><span class="pvs-swatch is-muted" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></li>
-  </ul>
+  <div class="pvs-title">Penalty criteria triggered, by bucket (lower is better)</div>
+  <div class="pvs-legend">
+    <div><span class="pvs-swatch" style="--pvs-from:#2F75BE;--pvs-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></div>
+    <div><span class="pvs-swatch is-muted" style="--pvs-from:#c46d50;--pvs-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#007dfd;--pvs-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#696969;--pvs-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#65a8f0;--pvs-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></div>
+    <div><span class="pvs-swatch" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></div>
+    <div><span class="pvs-swatch is-muted" style="--pvs-from:#ffffff;--pvs-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="pvs-chart-scroll">
     <div class="pvs-chart">
@@ -5136,7 +5136,7 @@
     </div>
   </div>
 </div>
-  <p class="pvs-footnote">Share of penalty-criterion instances the grading panel marked as present.</p>
+  <div class="pvs-footnote">Share of penalty-criterion instances the grading panel marked as present.</div>
 </div>
 <!-- /EMBED: Figure 10: Penalty criteria triggered by bucket -->
 <!-- ============================================================
@@ -5156,11 +5156,11 @@
      Design: Figma 9650:13197 (layout). Data/models/CIs/colors/footnotes from HTML.
      ============================================================ -->
 <div class="ru-card" role="figure" aria-label="Rule score by research universe (open vs closed, 95% CI)">
-  <h3 class="ru-title">Rule score by research universe</h3>
-  <ul class="ru-legend">
-    <li><span class="ru-swatch" style="--ru-from:#7065F0;--ru-to:#3A347F;" aria-hidden="true"></span><span>Open universe</span></li>
-    <li><span class="ru-swatch" style="--ru-from:rgba(191,101,240,0.87);--ru-to:rgba(99,52,127,0.87);" aria-hidden="true"></span><span>Closed universe</span></li>
-  </ul>
+  <div class="ru-title">Rule score by research universe</div>
+  <div class="ru-legend">
+    <div><span class="ru-swatch" style="--ru-from:#7065F0;--ru-to:#3A347F;" aria-hidden="true"></span><span>Open universe</span></div>
+    <div><span class="ru-swatch" style="--ru-from:rgba(191,101,240,0.87);--ru-to:rgba(99,52,127,0.87);" aria-hidden="true"></span><span>Closed universe</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="ru-chart">
     <div class="ru-plot">
@@ -5299,15 +5299,15 @@
     </div>
   </div>
 </div>
-  <p class="ru-footnote">Mean over matters of the matter's Rule score (earned over available Rule points, runs averaged). Whiskers: matter bootstrap 95% CI.</p>
+  <div class="ru-footnote">Mean over matters of the matter's Rule score (earned over available Rule points, runs averaged). Whiskers: matter bootstrap 95% CI.</div>
 </div>
 
 <div class="ru-card" role="figure" aria-label="Application score by research universe (open vs closed, 95% CI)">
-  <h3 class="ru-title">Application score by research universe</h3>
-  <ul class="ru-legend">
-    <li><span class="ru-swatch" style="--ru-from:#7065F0;--ru-to:#3A347F;" aria-hidden="true"></span><span>Open universe</span></li>
-    <li><span class="ru-swatch" style="--ru-from:rgba(191,101,240,0.87);--ru-to:rgba(99,52,127,0.87);" aria-hidden="true"></span><span>Closed universe</span></li>
-  </ul>
+  <div class="ru-title">Application score by research universe</div>
+  <div class="ru-legend">
+    <div><span class="ru-swatch" style="--ru-from:#7065F0;--ru-to:#3A347F;" aria-hidden="true"></span><span>Open universe</span></div>
+    <div><span class="ru-swatch" style="--ru-from:rgba(191,101,240,0.87);--ru-to:rgba(99,52,127,0.87);" aria-hidden="true"></span><span>Closed universe</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="ru-chart">
     <div class="ru-plot">
@@ -5446,7 +5446,7 @@
     </div>
   </div>
 </div>
-  <p class="ru-footnote">Same construction, Application criteria.</p>
+  <div class="ru-footnote">Same construction, Application criteria.</div>
 </div>
 <!-- /EMBED: Figures 11–12: Rule and Application score by research universe -->
 <!-- ============================================================
@@ -5455,11 +5455,11 @@
      Design: Figma 9653:14092 (layout/colors). Data/models/CIs/footnote from HTML.
      ============================================================ -->
 <div class="ru-card" role="figure" aria-label="Web lookups per matter by research universe (open vs closed, 95% CI)">
-  <h3 class="ru-title">Web lookups per matter, by research universe</h3>
-  <ul class="ru-legend">
-    <li><span class="ru-swatch" style="--ru-from:#7065F0;--ru-to:#3A347F;" aria-hidden="true"></span><span>Open universe</span></li>
-    <li><span class="ru-swatch" style="--ru-from:rgba(191,101,240,0.87);--ru-to:rgba(99,52,127,0.87);" aria-hidden="true"></span><span>Closed universe</span></li>
-  </ul>
+  <div class="ru-title">Web lookups per matter, by research universe</div>
+  <div class="ru-legend">
+    <div><span class="ru-swatch" style="--ru-from:#7065F0;--ru-to:#3A347F;" aria-hidden="true"></span><span>Open universe</span></div>
+    <div><span class="ru-swatch" style="--ru-from:rgba(191,101,240,0.87);--ru-to:rgba(99,52,127,0.87);" aria-hidden="true"></span><span>Closed universe</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="ru-chart">
     <div class="ru-plot">
@@ -5590,7 +5590,7 @@
     </div>
   </div>
 </div>
-  <p class="ru-footnote">Mean websearch plus webfetch calls per run, open-universe matters against closed-universe matters. Whiskers on the open bars: matter-cluster bootstrap 95% CI.</p>
+  <div class="ru-footnote">Mean websearch plus webfetch calls per run, open-universe matters against closed-universe matters. Whiskers on the open bars: matter-cluster bootstrap 95% CI.</div>
 </div>
 <!-- /EMBED: Figure 13: Web lookups per matter by research universe -->
 <!-- ============================================================
@@ -5616,17 +5616,17 @@
      placeholder title, length-bin x labels, and a single purple series.
      ============================================================ -->
 <div class="dlb-card" role="figure" aria-label="What a doubling of length buys, same model, same assignment">
-  <h3 class="dlb-title">What a doubling of length buys, same model, same assignment</h3>
-  <ul class="dlb-legend">
-    <li><span class="dlb-swatch" style="--dlb-from:#2F75BE;--dlb-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></li>
-    <li><span class="dlb-swatch" style="--dlb-from:#c46d50;--dlb-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></li>
-    <li><span class="dlb-swatch is-muted" style="--dlb-from:#c46d50;--dlb-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></li>
-    <li><span class="dlb-swatch" style="--dlb-from:#007dfd;--dlb-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></li>
-    <li><span class="dlb-swatch" style="--dlb-from:#696969;--dlb-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></li>
-    <li><span class="dlb-swatch" style="--dlb-from:#65a8f0;--dlb-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></li>
-    <li><span class="dlb-swatch" style="--dlb-from:#ffffff;--dlb-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></li>
-    <li><span class="dlb-swatch is-muted" style="--dlb-from:#ffffff;--dlb-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></li>
-  </ul>
+  <div class="dlb-title">What a doubling of length buys, same model, same assignment</div>
+  <div class="dlb-legend">
+    <div><span class="dlb-swatch" style="--dlb-from:#2F75BE;--dlb-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></div>
+    <div><span class="dlb-swatch" style="--dlb-from:#c46d50;--dlb-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></div>
+    <div><span class="dlb-swatch is-muted" style="--dlb-from:#c46d50;--dlb-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></div>
+    <div><span class="dlb-swatch" style="--dlb-from:#007dfd;--dlb-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></div>
+    <div><span class="dlb-swatch" style="--dlb-from:#696969;--dlb-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></div>
+    <div><span class="dlb-swatch" style="--dlb-from:#65a8f0;--dlb-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></div>
+    <div><span class="dlb-swatch" style="--dlb-from:#ffffff;--dlb-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></div>
+    <div><span class="dlb-swatch is-muted" style="--dlb-from:#ffffff;--dlb-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="dlb-chart">
     <div class="dlb-plot">
@@ -5760,7 +5760,7 @@
     </div>
   </div>
 </div>
-  <p class="dlb-footnote">Slope of step reward, rubric coverage (positive points earned over the positive total) and penalties (negative points over the positive total) on ln(words), per model with assignment fixed effects, expressed per doubling of length.</p>
+  <div class="dlb-footnote">Slope of step reward, rubric coverage (positive points earned over the positive total) and penalties (negative points over the positive total) on ln(words), per model with assignment fixed effects, expressed per doubling of length.</div>
 </div>
 <!-- /EMBED: Figure 14: What a doubling of length buys -->
 <!-- ============================================================
@@ -5791,15 +5791,15 @@
      Design: Figma 9650:13483 (chrome; zero-centered). Data/scale/names/CIs from HTML (signed).
      ============================================================ -->
 <div class="hd-card" role="figure" aria-label="Change in mean assignment score, A1 to A2+">
-  <h3 class="hd-title">Change in mean assignment score, A1 to A2+</h3>
+  <div class="hd-title">Change in mean assignment score, A1 to A2+</div>
   <div class="hd-chart">
     <div class="hd-plot">
       <div class="hd-grid" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
       <div class="hd-zero" aria-hidden="true"></div>
-      <ul class="hd-rows">
-        <li class="hd-row" data-sign="pos" style="--hd-color: #2F75BE; --hd-bar-l: 50%; --hd-bar-w: 12.1069%; --hd-ci-l: 35.6296%; --hd-ci-w: 53.6575%;" data-tip="Gemini 4 Argon*: +0.036 CI [-0.043, +0.118]">
+      <div class="hd-rows">
+        <div class="hd-row" data-sign="pos" style="--hd-color: #2F75BE; --hd-bar-l: 50%; --hd-bar-w: 12.1069%; --hd-ci-l: 35.6296%; --hd-ci-w: 53.6575%;" data-tip="Gemini 4 Argon*: +0.036 CI [-0.043, +0.118]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Gemini 4 Argon*</span>
@@ -5808,8 +5808,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="pos" style="--hd-color: #c46d50; --hd-bar-l: 50%; --hd-bar-w: 2.2994%; --hd-ci-l: 26.6127%; --hd-ci-w: 50.7140%;" data-tip="Claude Fable 5.1: +0.007 CI [-0.070, +0.082]">
+        </div>
+        <div class="hd-row" data-sign="pos" style="--hd-color: #c46d50; --hd-bar-l: 50%; --hd-bar-w: 2.2994%; --hd-ci-l: 26.6127%; --hd-ci-w: 50.7140%;" data-tip="Claude Fable 5.1: +0.007 CI [-0.070, +0.082]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Claude Fable 5.1</span>
@@ -5818,8 +5818,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row is-muted" data-sign="neg" style="--hd-color: #c46d50; --hd-bar-l: 43.1881%; --hd-bar-w: 6.8119%; --hd-ci-l: 16.2587%; --hd-ci-w: 54.3004%;" data-tip="Claude Opus 5.5: -0.020 CI [-0.101, +0.062]">
+        </div>
+        <div class="hd-row is-muted" data-sign="neg" style="--hd-color: #c46d50; --hd-bar-l: 43.1881%; --hd-bar-w: 6.8119%; --hd-ci-l: 16.2587%; --hd-ci-w: 54.3004%;" data-tip="Claude Opus 5.5: -0.020 CI [-0.101, +0.062]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Claude Opus 5.5</span>
@@ -5828,8 +5828,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="neg" style="--hd-color: #007dfd; --hd-bar-l: 44.0494%; --hd-bar-w: 5.9506%; --hd-ci-l: 18.6901%; --hd-ci-w: 51.9759%;" data-tip="Muse Spark 1.3: -0.018 CI [-0.094, +0.062]">
+        </div>
+        <div class="hd-row" data-sign="neg" style="--hd-color: #007dfd; --hd-bar-l: 44.0494%; --hd-bar-w: 5.9506%; --hd-ci-l: 18.6901%; --hd-ci-w: 51.9759%;" data-tip="Muse Spark 1.3: -0.018 CI [-0.094, +0.062]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac965ffaf650a28033b1c1a_muse.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Muse Spark 1.3</span>
@@ -5838,8 +5838,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="neg" style="--hd-color: #696969; --hd-bar-l: 43.3293%; --hd-bar-w: 6.6707%; --hd-ci-l: 18.3678%; --hd-ci-w: 50.7844%;" data-tip="Grok 4.7: -0.020 CI [-0.095, +0.057]">
+        </div>
+        <div class="hd-row" data-sign="neg" style="--hd-color: #696969; --hd-bar-l: 43.3293%; --hd-bar-w: 6.6707%; --hd-ci-l: 18.3678%; --hd-ci-w: 50.7844%;" data-tip="Grok 4.7: -0.020 CI [-0.095, +0.057]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Grok 4.7</span>
@@ -5848,8 +5848,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="neg" style="--hd-color: #65a8f0; --hd-bar-l: 48.4369%; --hd-bar-w: 1.5631%; --hd-ci-l: 21.3588%; --hd-ci-w: 54.4375%;" data-tip="Gemini 3.8 Flash: -0.005 CI [-0.086, +0.077]">
+        </div>
+        <div class="hd-row" data-sign="neg" style="--hd-color: #65a8f0; --hd-bar-l: 48.4369%; --hd-bar-w: 1.5631%; --hd-ci-l: 21.3588%; --hd-ci-w: 54.4375%;" data-tip="Gemini 3.8 Flash: -0.005 CI [-0.086, +0.077]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Gemini 3.8 Flash</span>
@@ -5858,8 +5858,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="neg" style="--hd-color: #ffffff; --hd-bar-l: 33.8108%; --hd-bar-w: 16.1892%; --hd-ci-l: 8.1010%; --hd-ci-w: 52.7124%;" data-tip="GPT-6 Astra: -0.049 CI [-0.126, +0.032]">
+        </div>
+        <div class="hd-row" data-sign="neg" style="--hd-color: #ffffff; --hd-bar-l: 33.8108%; --hd-bar-w: 16.1892%; --hd-ci-l: 8.1010%; --hd-ci-w: 52.7124%;" data-tip="GPT-6 Astra: -0.049 CI [-0.126, +0.032]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">GPT-6 Astra</span>
@@ -5868,8 +5868,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row is-muted" data-sign="neg" style="--hd-color: #ffffff; --hd-bar-l: 29.7405%; --hd-bar-w: 20.2595%; --hd-ci-l: 5.3780%; --hd-ci-w: 49.3128%;" data-tip="GPT-6 Sol: -0.061 CI [-0.134, +0.014]">
+        </div>
+        <div class="hd-row is-muted" data-sign="neg" style="--hd-color: #ffffff; --hd-bar-l: 29.7405%; --hd-bar-w: 20.2595%; --hd-ci-l: 5.3780%; --hd-ci-w: 49.3128%;" data-tip="GPT-6 Sol: -0.061 CI [-0.134, +0.014]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">GPT-6 Sol</span>
@@ -5878,8 +5878,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
     <div class="hd-x-axis" aria-hidden="true">
       <div class="hd-x-spacer"></div>
@@ -5888,7 +5888,7 @@
       </div>
     </div>
   </div>
-  <p class="hd-footnote">Mean over runs of (A2+ minus A1), same run. Whiskers: matter-cluster bootstrap 95% CI (10,000 resamples, all runs of a resampled matter retained).</p>
+  <div class="hd-footnote">Mean over runs of (A2+ minus A1), same run. Whiskers: matter-cluster bootstrap 95% CI (10,000 resamples, all runs of a resampled matter retained).</div>
 </div>
 <!-- /EMBED: Figure 15: Change in mean assignment score A1 to A2+ -->
 <!-- ============================================================
@@ -5897,15 +5897,15 @@
      Design: same chrome as Figure 15 (hd-card). Data/scale -0.6…+0.6 from HTML.
      ============================================================ -->
 <div class="hd-card" role="figure" aria-label="Does early success persist? r(A1, A2+)">
-  <h3 class="hd-title">Does early success persist? r(A1, A2+)</h3>
+  <div class="hd-title">Does early success persist? r(A1, A2+)</div>
   <div class="hd-chart">
     <div class="hd-plot">
       <div class="hd-grid" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
       <div class="hd-zero" aria-hidden="true"></div>
-      <ul class="hd-rows">
-        <li class="hd-row" data-sign="pos" style="--hd-color: #2F75BE; --hd-bar-l: 50%; --hd-bar-w: 2.5459%; --hd-ci-l: 30.5724%; --hd-ci-w: 44.0898%;" data-tip="Gemini 4 Argon*: +0.031 CI [-0.233, +0.296]">
+      <div class="hd-rows">
+        <div class="hd-row" data-sign="pos" style="--hd-color: #2F75BE; --hd-bar-l: 50%; --hd-bar-w: 2.5459%; --hd-ci-l: 30.5724%; --hd-ci-w: 44.0898%;" data-tip="Gemini 4 Argon*: +0.031 CI [-0.233, +0.296]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Gemini 4 Argon*</span>
@@ -5914,8 +5914,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="neg" style="--hd-color: #c46d50; --hd-bar-l: 45.3640%; --hd-bar-w: 4.6360%; --hd-ci-l: 25.0582%; --hd-ci-w: 41.0672%;" data-tip="Claude Fable 5.1: -0.056 CI [-0.299, +0.194]">
+        </div>
+        <div class="hd-row" data-sign="neg" style="--hd-color: #c46d50; --hd-bar-l: 45.3640%; --hd-bar-w: 4.6360%; --hd-ci-l: 25.0582%; --hd-ci-w: 41.0672%;" data-tip="Claude Fable 5.1: -0.056 CI [-0.299, +0.194]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Claude Fable 5.1</span>
@@ -5924,8 +5924,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row is-muted" data-sign="pos" style="--hd-color: #c46d50; --hd-bar-l: 50%; --hd-bar-w: 1.6191%; --hd-ci-l: 32.7305%; --hd-ci-w: 39.0401%;" data-tip="Claude Opus 5.5: +0.019 CI [-0.207, +0.261]">
+        </div>
+        <div class="hd-row is-muted" data-sign="pos" style="--hd-color: #c46d50; --hd-bar-l: 50%; --hd-bar-w: 1.6191%; --hd-ci-l: 32.7305%; --hd-ci-w: 39.0401%;" data-tip="Claude Opus 5.5: +0.019 CI [-0.207, +0.261]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Claude Opus 5.5</span>
@@ -5934,8 +5934,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="pos" style="--hd-color: #007dfd; --hd-bar-l: 50%; --hd-bar-w: 16.3845%; --hd-ci-l: 44.7462%; --hd-ci-w: 41.2665%;" data-tip="Muse Spark 1.3: +0.197 CI [-0.063, +0.432]">
+        </div>
+        <div class="hd-row" data-sign="pos" style="--hd-color: #007dfd; --hd-bar-l: 50%; --hd-bar-w: 16.3845%; --hd-ci-l: 44.7462%; --hd-ci-w: 41.2665%;" data-tip="Muse Spark 1.3: +0.197 CI [-0.063, +0.432]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac965ffaf650a28033b1c1a_muse.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Muse Spark 1.3</span>
@@ -5944,8 +5944,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="pos" style="--hd-color: #696969; --hd-bar-l: 50%; --hd-bar-w: 11.3597%; --hd-ci-l: 41.4319%; --hd-ci-w: 38.4522%;" data-tip="Grok 4.7: +0.136 CI [-0.103, +0.359]">
+        </div>
+        <div class="hd-row" data-sign="pos" style="--hd-color: #696969; --hd-bar-l: 50%; --hd-bar-w: 11.3597%; --hd-ci-l: 41.4319%; --hd-ci-w: 38.4522%;" data-tip="Grok 4.7: +0.136 CI [-0.103, +0.359]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Grok 4.7</span>
@@ -5954,8 +5954,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="pos" style="--hd-color: #65a8f0; --hd-bar-l: 50%; --hd-bar-w: 8.7943%; --hd-ci-l: 38.0573%; --hd-ci-w: 41.0973%;" data-tip="Gemini 3.8 Flash: +0.106 CI [-0.143, +0.350]">
+        </div>
+        <div class="hd-row" data-sign="pos" style="--hd-color: #65a8f0; --hd-bar-l: 50%; --hd-bar-w: 8.7943%; --hd-ci-l: 38.0573%; --hd-ci-w: 41.0973%;" data-tip="Gemini 3.8 Flash: +0.106 CI [-0.143, +0.350]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">Gemini 3.8 Flash</span>
@@ -5964,8 +5964,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row" data-sign="pos" style="--hd-color: #ffffff; --hd-bar-l: 50%; --hd-bar-w: 13.0779%; --hd-ci-l: 38.1498%; --hd-ci-w: 46.5714%;" data-tip="GPT-6 Astra: +0.157 CI [-0.142, +0.417]">
+        </div>
+        <div class="hd-row" data-sign="pos" style="--hd-color: #ffffff; --hd-bar-l: 50%; --hd-bar-w: 13.0779%; --hd-ci-l: 38.1498%; --hd-ci-w: 46.5714%;" data-tip="GPT-6 Astra: +0.157 CI [-0.142, +0.417]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">GPT-6 Astra</span>
@@ -5974,8 +5974,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-        <li class="hd-row is-muted" data-sign="pos" style="--hd-color: #ffffff; --hd-bar-l: 50%; --hd-bar-w: 19.9159%; --hd-ci-l: 44.2734%; --hd-ci-w: 47.7883%;" data-tip="GPT-6 Sol: +0.239 CI [-0.069, +0.505]">
+        </div>
+        <div class="hd-row is-muted" data-sign="pos" style="--hd-color: #ffffff; --hd-bar-l: 50%; --hd-bar-w: 19.9159%; --hd-ci-l: 44.2734%; --hd-ci-w: 47.7883%;" data-tip="GPT-6 Sol: +0.239 CI [-0.069, +0.505]">
           <div class="hd-model">
             <img class="hd-model-logo" src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png" alt="" width="14" height="14" aria-hidden="true" />
             <span class="hd-name">GPT-6 Sol</span>
@@ -5984,8 +5984,8 @@
             <div class="hd-bar"></div>
             <span class="hd-ci" aria-hidden="true"><span class="hd-ci-line"></span></span>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
     <div class="hd-x-axis" aria-hidden="true">
       <div class="hd-x-spacer"></div>
@@ -5994,7 +5994,7 @@
       </div>
     </div>
   </div>
-  <p class="hd-footnote">Pearson correlation across same-run pairs of the first-assignment score and the mean of the later assignments, with matter-cluster 95% CI.</p>
+  <div class="hd-footnote">Pearson correlation across same-run pairs of the first-assignment score and the mean of the later assignments, with matter-cluster 95% CI.</div>
 </div>
 <!-- /EMBED: Figure 16: Does early success persist? r(A1, A2+) -->
 <!-- ============================================================
@@ -6036,17 +6036,17 @@
      (includes Gemini 4 Argon*, omitted in Figma). Axis max = 1.00.
      ============================================================ -->
 <div class="ve-card" role="figure" aria-label="Criteria that need a visual exhibit vs the rest">
-  <h3 class="ve-title">Criteria that need a visual exhibit vs the rest</h3>
-  <ul class="ve-legend">
-    <li><span class="ve-swatch" style="--ve-from:#2F75BE;--ve-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></li>
-    <li><span class="ve-swatch" style="--ve-from:#c46d50;--ve-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></li>
-    <li><span class="ve-swatch is-muted" style="--ve-from:#c46d50;--ve-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></li>
-    <li><span class="ve-swatch" style="--ve-from:#007dfd;--ve-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></li>
-    <li><span class="ve-swatch" style="--ve-from:#696969;--ve-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></li>
-    <li><span class="ve-swatch" style="--ve-from:#65a8f0;--ve-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></li>
-    <li><span class="ve-swatch" style="--ve-from:#ffffff;--ve-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></li>
-    <li><span class="ve-swatch is-muted" style="--ve-from:#ffffff;--ve-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></li>
-  </ul>
+  <div class="ve-title">Criteria that need a visual exhibit vs the rest</div>
+  <div class="ve-legend">
+    <div><span class="ve-swatch" style="--ve-from:#2F75BE;--ve-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></div>
+    <div><span class="ve-swatch" style="--ve-from:#c46d50;--ve-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></div>
+    <div><span class="ve-swatch is-muted" style="--ve-from:#c46d50;--ve-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></div>
+    <div><span class="ve-swatch" style="--ve-from:#007dfd;--ve-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></div>
+    <div><span class="ve-swatch" style="--ve-from:#696969;--ve-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></div>
+    <div><span class="ve-swatch" style="--ve-from:#65a8f0;--ve-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></div>
+    <div><span class="ve-swatch" style="--ve-from:#ffffff;--ve-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></div>
+    <div><span class="ve-swatch is-muted" style="--ve-from:#ffffff;--ve-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="ve-chart-scroll">
     <div class="ve-chart">
@@ -6143,7 +6143,7 @@
     </div>
   </div>
 </div>
-  <p class="ve-footnote">Weighted mean score on the flagged criteria against all other positive criteria, per model.</p>
+  <div class="ve-footnote">Weighted mean score on the flagged criteria against all other positive criteria, per model.</div>
 </div>
 <!-- /EMBED: Figure 17: Criteria that need a visual exhibit -->
 <!-- ============================================================
@@ -6175,17 +6175,17 @@
      from HTML (includes Gemini 4 Argon*, omitted in Figma). Axis max = 160.
      ============================================================ -->
 <div class="tc-card" role="figure" aria-label="Tool calls per matter">
-  <h3 class="tc-title">Tool calls per matter</h3>
-  <ul class="tc-legend">
-    <li><span class="tc-swatch" style="--tc-from:#2F75BE;--tc-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></li>
-    <li><span class="tc-swatch" style="--tc-from:#c46d50;--tc-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></li>
-    <li><span class="tc-swatch is-muted" style="--tc-from:#c46d50;--tc-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></li>
-    <li><span class="tc-swatch" style="--tc-from:#007dfd;--tc-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></li>
-    <li><span class="tc-swatch" style="--tc-from:#696969;--tc-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></li>
-    <li><span class="tc-swatch" style="--tc-from:#65a8f0;--tc-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></li>
-    <li><span class="tc-swatch" style="--tc-from:#ffffff;--tc-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></li>
-    <li><span class="tc-swatch is-muted" style="--tc-from:#ffffff;--tc-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></li>
-  </ul>
+  <div class="tc-title">Tool calls per matter</div>
+  <div class="tc-legend">
+    <div><span class="tc-swatch" style="--tc-from:#2F75BE;--tc-to:#173446;" aria-hidden="true"></span><span>Gemini 4 Argon*</span></div>
+    <div><span class="tc-swatch" style="--tc-from:#c46d50;--tc-to:#7e4431;" aria-hidden="true"></span><span>Claude Fable 5.1</span></div>
+    <div><span class="tc-swatch is-muted" style="--tc-from:#c46d50;--tc-to:#7e4431;" aria-hidden="true"></span><span>Claude Opus 5.5</span></div>
+    <div><span class="tc-swatch" style="--tc-from:#007dfd;--tc-to:#004891;" aria-hidden="true"></span><span>Muse Spark 1.3</span></div>
+    <div><span class="tc-swatch" style="--tc-from:#696969;--tc-to:#1d1d1d;" aria-hidden="true"></span><span>Grok 4.7</span></div>
+    <div><span class="tc-swatch" style="--tc-from:#65a8f0;--tc-to:#34657f;" aria-hidden="true"></span><span>Gemini 3.8 Flash</span></div>
+    <div><span class="tc-swatch" style="--tc-from:#ffffff;--tc-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Astra</span></div>
+    <div><span class="tc-swatch is-muted" style="--tc-from:#ffffff;--tc-to:#6c6c6c;" aria-hidden="true"></span><span>GPT-6 Sol</span></div>
+  </div>
   <div class="lrb-h-scroll">
 <div class="tc-chart-scroll">
     <div class="tc-chart">
@@ -6245,7 +6245,7 @@
     </div>
   </div>
 </div>
-  <p class="tc-footnote">Mean tool calls per run across all assignments of the matter, all matters.</p>
+  <div class="tc-footnote">Mean tool calls per run across all assignments of the matter, all matters.</div>
 </div>
 <!-- /EMBED: Figure 18: Tool calls per matter -->
 <!-- ============================================================
