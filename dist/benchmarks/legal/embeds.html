@@ -1209,7 +1209,7 @@
   }
 
   .mpa-title {
-    margin: 0 0 40px;
+    margin: 0;
     max-width: 469px;
     width: 100%;
     font-size: 21px;
@@ -1218,6 +1218,39 @@
     letter-spacing: -0.21px;
     color: rgba(255, 255, 255, 0.8);
     text-align: center;
+  }
+
+  .mpa-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 24px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 15px 0 28px;
+    padding: 0;
+  }
+
+  .mpa-legend > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .mpa-swatch {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--mpa-from) 0%, var(--mpa-to) 100%);
+  }
+
+  .mpa-legend span:not(.mpa-swatch) {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
   }
 
   .mpa-chart {
@@ -1341,6 +1374,15 @@
     .mpa-title {
       font-size: clamp(16px, 4.5vw, 18px);
       letter-spacing: -0.18px;
+    }
+
+    .mpa-legend {
+      gap: 8px 12px;
+      margin-bottom: 16px;
+    }
+
+    .mpa-legend span:not(.mpa-swatch) {
+      font-size: clamp(11px, 2.9vw, 13px);
     }
 
     .mpa-grid {
@@ -4218,6 +4260,10 @@
      ============================================================ -->
 <div class="mpa-card" role="figure" aria-label="Matters by practice area">
   <div class="mpa-title">Matters by practice area</div>
+  <div class="mpa-legend">
+    <div><span class="mpa-swatch" style="--mpa-from:#7065F0;--mpa-to:#3A347F;" aria-hidden="true"></span><span>Harvey LAB</span></div>
+    <div><span class="mpa-swatch" style="--mpa-from:rgba(191,101,240,0.87);--mpa-to:rgba(99,52,127,0.87);" aria-hidden="true"></span><span>LegalReasonBench additions</span></div>
+  </div>
   <div class="mpa-chart">
     <div class="mpa-grid" aria-hidden="true">
       <div class="mpa-grid-col"></div>
@@ -4313,7 +4359,7 @@
       </div>
     </div>
   </div>
-  <div class="mpa-footnote">Share of the 50 matters. Harvey LAB v1.0 practice areas plus four LegalReasonBench additions (criminal law and procedure, civil rights, administrative law, sports law).</div>
+  <div class="mpa-footnote">Share of the 50 matters.</div>
 </div>
 <!-- /EMBED: Figure 1: Matters by practice area -->
 <!-- ============================================================
