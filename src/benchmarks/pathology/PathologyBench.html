@@ -71,13 +71,13 @@ img{max-width:100%;display:block}
 em{font-style:normal}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--rpb-accent-80);outline-offset:2px;border-radius:var(--rpb-radius-sm)}
-.rpb-wrap{width:min(824px,calc(100% - 32px));margin:0 auto}
+.rpb-wrap{width:min(824px,100%);margin:0 auto;padding:0}
 h1,h2,h3,h4{font-family:Outfit,system-ui,sans-serif;font-weight:600;text-wrap:balance;margin:0}
 p{margin:0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 
 /* ---------- hero: back link, title, scoreboard card, overview (Pharma Bench designed reference) ---------- */
-.rpb-hero{padding:clamp(56px,8vw,96px) 0 40px}
+.rpb-hero{padding:0}
 .rpb-hero-back{display:inline-flex;align-items:center;margin:0 0 36px;color:var(--rpb-white-60);font:400 14px/1.4 var(--rpb-sans);text-decoration:none;transition:color .15s ease}
 .rpb-hero-back:hover{color:var(--rpb-white-100)}
 .rpb-hero h1{margin:0;font:600 32px/1.2 var(--rpb-sans);color:var(--rpb-white-100)}
@@ -615,9 +615,9 @@ footer .rpb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
    ========================================================================== */
 @media (max-width:360px){
   html{-webkit-text-size-adjust:100%}
-  .rpb-wrap{width:calc(100% - 32px)}
+  .rpb-wrap{width:100%;padding:0}
   /* hero */
-  .rpb-hero{padding-top:40px}
+  .rpb-hero{padding:0}
   .rpb-hero-back{margin-bottom:24px}
   .rpb-hero h1{font-size:28px;line-height:1.2;overflow-wrap:anywhere}
   .rpb-hero .rpb-q{font-size:15px}
@@ -634,7 +634,7 @@ footer .rpb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
   .rpb-leaderboard-full__score{font-size:13px}
   .rpb-leaderboard-info-btn{width:24px;height:24px;margin-left:0}
   /* section rhythm and type */
-  section.rpb-band{padding-block:32px}
+  section.rpb-band{padding:0}
   .rpb-sec-title{font-size:20px}
   .rpb-sub-title{font-size:18px;line-height:1.4;margin-top:32px}
   .rpb-finding h3{font-size:16px}
@@ -934,7 +934,7 @@ section.rpb-band{margin:0 0 68px;padding:0}
 .rpb-sec-title,.rpb-overview h2{margin:0 0 16px;font-family:Outfit,system-ui,sans-serif;font-size:28px;font-weight:400;line-height:1.4;letter-spacing:-0.28px}
 .rpb-sub-title{margin:40px 0 16px;font-family:Outfit,system-ui,sans-serif;font-size:24px;font-weight:400;line-height:1.5;letter-spacing:-0.48px}
 .rpb-prose{margin:0 0 16px;font-size:16px;line-height:1.6;font-weight:400}
-.rpb-hero{margin:0 0 68px;padding:32px 0 0}
+.rpb-hero{margin:0 0 68px;padding:0}
 @media (max-width:767px){
   .rpb-section>h2,.rpb-sec-title,.rpb-overview h2{font-size:19.2px;letter-spacing:-0.19px}
   .rpb-section h3,.rpb-sub-title{font-size:18px;line-height:1.4;letter-spacing:-0.36px}
@@ -1047,15 +1047,15 @@ h3{letter-spacing:normal}
 <ol class="rpb-takeaways"><li><b>Treat extraction as reliable and put human review where judgment happens.</b><span>All thirteen models read messy reports and produce coherent structured summaries; extraction criteria are met 93% of the time. The reward is lost downstream, at the point where the model decides whether to stop at the report. Human review is most valuable there, not on the extraction layer.</span></li><li><b>The dangerous errors are confident additions and resolved uncertainty, not missing facts.</b><span>Overreach is the largest penalty category, 123 of the 299, and the penalties reorder the field: on positive criteria alone the order would be Fable, Opus 5, Opus 5.5, Sonnet 5.5, Wonder, Muse 1.1, Muse 1.3, Sonnet 5, Gemini, Grok 4.7, Grok 4.6, Sol, Astra. A reviewer should check that every stage, biomarker and recommendation in the output is present in the source report, and that every stated certainty is one the report actually supports.</span></li><li><b>Score behavior, and do not reward effort.</b><span>The models cluster tightly on headline score, and the separations that exist are penalty separations: Gemini 3.8 Flash gives back 0.159 of its earned weight to penalties while GPT-6 Astra gives back only 0.044. The most process heavy agent in the field, Claude Opus 5.5, costs more than twice as much per run as the leader without beating it. Teams evaluating models for this work should read how an answer was produced and treat length as a warning sign, not a proxy for care.</span></li></ol></div></section>
 <section class="rpb-band" id="rpb-method"><div class="rpb-wrap"><h2 class="rpb-sec-title">Methodology note</h2>
 <p class="rpb-prose">The dataset of expert authored pathology tasks, most single report interpretations and a smaller set of multi report integrations, was reauthored and signed off by domain reviewers over 17 to 20 September 2026. Thirteen frontier models: Claude Fable 5.1 (max), Claude Sonnet 5.5 (max), Claude Opus 5.5 (max), Muse Wonder (max, via OpenRouter), Muse Spark 1.3 (xhigh), Claude Opus 5 (max), Muse Spark 1.1 (xhigh), Grok 4.7 (xhigh), Grok 4.6 (high), Claude Sonnet 5 (default), GPT-6 Astra and GPT-6 Sol (max, with the subagent task tool denied), and Gemini 3.8 Flash (high); three rollouts per task. The eight launch models ran in Daytona sandboxes; Grok 4.7, GPT-6 Sol and Claude Opus 5.5, released the following week, ran on the identical pinned task versions in Modal sandboxes. Claude Sonnet 5.5 and Muse Wonder were added later on the same pinned task versions, harness and judge. Twelve repetitions that failed for infrastructure reasons, a provider stream timeout or a harness idle stall with no answer written, were rerun once with the same configuration and matched by task, never selected by score; there were no exclusions. Reports are anonymized. Agents run in a sandboxed OpenCode container with the report PDFs available and a generic toolkit of a shell, file read, write and edit, search over files, a todo list, and web search and web fetch; each writes a single structured interpretation, which the verifier grades. One judge, GPT-5.4 mini, snapshot of 17 March 2026 at medium effort, grades every criterion against a hidden expert answer, one call per criterion. Rubrics carry 1,071 criteria, 772 positive and 299 penalty (overreach 123, misclassification 105, fabrication 53, omission 10, other 8), 12 to 29 per task. Reward is earned positive weight over total positive weight, floored at zero; a penalty subtracts its weight when the behavior is present. Because the earlier rubrics carried no penalties, these results are a new comparison identity and are not continuous with the earlier release.</p></div></section>
-<footer><div class="rpb-wrap"><span>micro1 · RealmPathology Benchmark · Pathology-report reasoning benchmark</span><span>October 2026</span></div></footer>
 </div>
 
 <script>
 const LOGOS = {claude:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png",gemini:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png",gpt:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png",grok:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png",muse:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac965ffaf650a28033b1c1a_muse.png"};
 (async function(){
+const EXT = 'https://static-website.sahil-773.workers.dev/benchmarks/pathology/ext/';
 let X;
 try {
-  const res = await fetch(new URL('ext/data.json', document.baseURI));
+  const res = await fetch(new URL('data.json', EXT));
   if (!res.ok) throw new Error(String(res.status));
   X = await res.json();
 } catch (e) {
@@ -1284,7 +1284,7 @@ renderPen();
 const dd = document.getElementById('rpb-deep');
 if (dd) (async function(){
   try {
-    const res = await fetch(new URL('ext/tasks.html', document.baseURI));
+    const res = await fetch(new URL('tasks.html', EXT));
     if (!res.ok) throw new Error(String(res.status));
     dd.insertAdjacentHTML('beforeend', await res.text());
   } catch (e) {

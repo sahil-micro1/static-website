@@ -1,0 +1,446 @@
+<div class="rpb"><section class="rpb-band" id="rpb-method"><div class="rpb-wrap"><h2 class="rpb-sec-title">Methodology note</h2><p class="rpb-prose">The dataset of expert authored pathology tasks, most single report interpretations and a smaller set of multi report integrations, was reauthored and signed off by domain reviewers over 17 to 20 September 2026. Thirteen frontier models: Claude Fable 5.1 (max), Claude Sonnet 5.5 (max), Claude Opus 5.5 (max), Muse Wonder (max, via OpenRouter), Muse Spark 1.3 (xhigh), Claude Opus 5 (max), Muse Spark 1.1 (xhigh), Grok 4.7 (xhigh), Grok 4.6 (high), Claude Sonnet 5 (default), GPT-6 Astra and GPT-6 Sol (max, with the subagent task tool denied), and Gemini 3.8 Flash (high); three rollouts per task. The eight launch models ran in Daytona sandboxes; Grok 4.7, GPT-6 Sol and Claude Opus 5.5, released the following week, ran on the identical pinned task versions in Modal sandboxes. Claude Sonnet 5.5 and Muse Wonder were added later on the same pinned task versions, harness and judge. Twelve repetitions that failed for infrastructure reasons, a provider stream timeout or a harness idle stall with no answer written, were rerun once with the same configuration and matched by task, never selected by score; there were no exclusions. Reports are anonymized. Agents run in a sandboxed OpenCode container with the report PDFs available and a generic toolkit of a shell, file read, write and edit, search over files, a todo list, and web search and web fetch; each writes a single structured interpretation, which the verifier grades. One judge, GPT-5.4 mini, snapshot of 17 March 2026 at medium effort, grades every criterion against a hidden expert answer, one call per criterion. Rubrics carry 1,071 criteria, 772 positive and 299 penalty (overreach 123, misclassification 105, fabrication 53, omission 10, other 8), 12 to 29 per task. Reward is earned positive weight over total positive weight, floored at zero; a penalty subtracts its weight when the behavior is present. Because the earlier rubrics carried no penalties, these results are a new comparison identity and are not continuous with the earlier release.</p></div></section></div><script>
+const LOGOS = {claude:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png",gemini:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png",gpt:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png",grok:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png",muse:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac965ffaf650a28033b1c1a_muse.png"};
+(async function(){
+const EXT = 'https://static-website.sahil-773.workers.dev/benchmarks/pathology/ext/';
+let X;
+try {
+  const res = await fetch(new URL('data.json', EXT));
+  if (!res.ok) throw new Error(String(res.status));
+  X = await res.json();
+} catch (e) {
+  return;
+}
+const M = X.models, SH = X.shorts, IDS = X.ids;
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const f3 = x => x.toFixed(3);
+const cap1 = s => s.charAt(0).toUpperCase() + s.slice(1);
+
+/* ---------- model marks: family gradient, lighter for older versions ---------- */
+const OP = {'Claude Fable 5.1':1,'Claude Sonnet 5.5':.8,'Claude Opus 5.5':.6,'Claude Opus 5':.45,'Claude Sonnet 5':.35,
+  'Muse Wonder':1,'Muse Spark 1.3':.75,'Muse Spark 1.1':.5,'Grok 4.7':1,'Grok 4.6':.6,'GPT-6 Astra':1,'GPT-6 Sol':.6,'Gemini 3.8 Flash':1};
+const fam = m => /Claude/.test(m) ? 'claude' : /Muse/.test(m) ? 'muse' : /Grok/.test(m) ? 'grok' : /Gemini/.test(m) ? 'gemini' : 'gpt';
+const mv = m => `--rpb-mbg:var(--rpb-m-${fam(m)});--mo:${OP[m] ?? 1}`;
+const logo = m => `<span class="rpb-mlogo ${fam(m)}" aria-hidden="true"></span>`;
+const nameHtml = m => `${logo(m)}<span class="rpb-nm-l">${esc(m)}</span><span class="rpb-nm-s">${esc(SH[M.indexOf(m)])}</span>`;
+const TK = {Extraction:'ext', Classification:'cls', Interpretation:'int', Management:'mgmt', Communication:'comm'};
+
+
+/* ---------- hero scoreboard card ---------- */
+(function(){
+  const mount = $('#rpb-hero-board'); if (!mount) return;
+  const tabs = [
+    {id:'mean', label:'Mean score', vals:X.mean, fmt:v => v.toFixed(3)},
+    {id:'best', label:'Best@3 score', vals:X.sb.best, fmt:v => v.toFixed(3)}
+  ];
+  const el = {toggle:$('.rpb-leaderboard-full__toggle', mount), upd:$('.rpb-leaderboard-full__updated', mount), list:$('.rpb-leaderboard-full__list', mount), tip:$('.rpb-leaderboard-tooltip', mount), panel:$('.rpb-leaderboard-full__panel', mount)};
+  const HOVER = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  let active = 'mean', leave = null;
+  const tab = () => tabs.find(t => t.id === active);
+  const style = m => fam(m) === 'gpt' ? 'openai' : fam(m);
+  const scale = v => 'scaleX(' + Math.max(0, Math.min(1, v)) + ')';
+  const INFO = '<svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true" focusable="false"><path d="M14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 7.5C7.63261 7.5 7.75979 7.55268 7.85355 7.64645C7.94732 7.74021 8 7.86739 8 8V10.5C8 10.6326 8.05268 10.7598 8.14645 10.8536C8.24021 10.9473 8.36739 11 8.5 11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.75 6C8.16421 6 8.5 5.66421 8.5 5.25C8.5 4.83579 8.16421 4.5 7.75 4.5C7.33579 4.5 7 4.83579 7 5.25C7 5.66421 7.33579 6 7.75 6Z" fill="currentColor"/></svg>';
+  const rowEls = {};
+  M.forEach(m => {
+    const li = document.createElement('li');
+    li.className = 'rpb-leaderboard-full__row'; li.dataset.rpbModel = m;
+    li.innerHTML = `<div class="rpb-leaderboard-full__meta"><div class="rpb-leaderboard-full__identity"><div class="rpb-leaderboard-full__icon rpb-leaderboard-full__icon--${style(m)}"><img src="${LOGOS[fam(m)]}" alt="" width="20" height="20"></div><p class="rpb-leaderboard-full__name">${esc(m)}</p><button type="button" class="rpb-leaderboard-info-btn" aria-label="Details for ${esc(m)}">${INFO}</button></div><p class="rpb-leaderboard-full__score"></p></div><div class="rpb-leaderboard-full__track" aria-hidden="true"><div class="rpb-leaderboard-full__fill"></div></div>`;
+    rowEls[m] = li;
+  });
+  const clear = () => { clearTimeout(leave); $$('.rpb-is-active', el.list).forEach(r => { r.classList.remove('rpb-is-active'); $('.rpb-leaderboard-info-btn', r).blur(); }); el.list.classList.remove('rpb-has-active'); el.tip.classList.remove('rpb-is-visible'); };
+  function show(li){
+    const m = li.dataset.rpbModel, i = M.indexOf(m), rank = li.dataset.rpbRank;
+    clearTimeout(leave);
+    $$('.rpb-is-active', el.list).forEach(r => r.classList.remove('rpb-is-active'));
+    li.classList.add('rpb-is-active'); el.list.classList.add('rpb-has-active');
+    const lines = tabs.map(t => [t.label + ':', t.fmt(t.vals[i])]).concat([['95% interval:', `${f3(X.ci[i][0])} to ${f3(X.ci[i][1])}`], ['Rank:', 'Top ' + rank]]);
+    el.tip.innerHTML = lines.map(([l, v]) => `<div class="rpb-leaderboard-tooltip__row"><p class="rpb-leaderboard-tooltip__label">${esc(l)}</p><p class="rpb-leaderboard-tooltip__value">${esc(v)}</p></div>`).join('');
+    const p = el.panel.getBoundingClientRect(), a = $('.rpb-leaderboard-info-btn', li).getBoundingClientRect(), tw = el.tip.offsetWidth, th = el.tip.offsetHeight;
+    let left = a.right - p.left + 4, top = a.top - p.top + (a.height - th) / 2;
+    if (left + tw > p.width - 8) { const f = a.left - p.left - tw - 4; if (f >= 8) left = f; else { left = Math.max(8, Math.min(a.left - p.left, p.width - tw - 8)); top = a.bottom - p.top + 4; } }
+    el.tip.style.left = left + 'px'; el.tip.style.top = top + 'px'; el.tip.classList.add('rpb-is-visible');
+  }
+  M.forEach(m => {
+    const li = rowEls[m], b = $('.rpb-leaderboard-info-btn', li);
+    if (HOVER) { b.addEventListener('mouseenter', () => show(li)); b.addEventListener('mouseleave', () => { leave = setTimeout(clear, 60); }); b.addEventListener('focus', () => show(li)); b.addEventListener('blur', () => { leave = setTimeout(clear, 60); }); }
+    else b.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); li.classList.contains('rpb-is-active') ? clear() : show(li); });
+  });
+  if (!HOVER) document.addEventListener('click', e => { if (!e.target.closest('#rpb-hero-board')) clear(); });
+  function render(animate){
+    clear();
+    const t = tab(), ord = M.map((m, i) => i).sort((a, b) => (t.vals[b] - t.vals[a]) || (a - b));
+    const shown = ord.map(i => t.fmt(t.vals[i]));
+    const rank = ord.map((i, k) => shown.indexOf(shown[k]) + 1);
+    const pend = [];
+    el.list.replaceChildren(...ord.map((i, k) => {
+      const m = M[i], li = rowEls[m], f = $('.rpb-leaderboard-full__fill', li);
+      li.dataset.rpbRank = rank[k];
+      li.classList.toggle('rpb-leaderboard-full__row--lead', rank[k] === 1);
+      $('.rpb-leaderboard-full__score', li).textContent = shown[k];
+      if (animate) pend.push([f, t.vals[i]]); else { f.style.transition = 'none'; f.style.transform = scale(t.vals[i]); }
+      return li;
+    }));
+    if (animate) requestAnimationFrame(() => pend.forEach(([f, v]) => { f.style.transition = ''; f.style.transform = scale(v); }));
+    else requestAnimationFrame(() => $$('.rpb-leaderboard-full__fill', el.list).forEach(f => f.style.transition = ''));
+  }
+  el.toggle.innerHTML = tabs.map(t => `<button type="button" class="rpb-leaderboard-full__toggle-btn" data-rpb-id="${t.id}" aria-pressed="${t.id === active}">${t.label}</button>`).join('');
+  el.toggle.addEventListener('click', e => { const b = e.target.closest('button'); if (!b || b.dataset.rpbId === active) return; active = b.dataset.rpbId; $$('button', el.toggle).forEach(x => x.setAttribute('aria-pressed', x === b)); render(true); });
+  el.upd.textContent = 'Last updated October 20th, 2026';
+  render(false);
+})();
+
+/* ---------- 1. scoreboard ---------- */
+const AX = {
+  mean:{lo:.5, hi:.9, ticks:[.5,.6,.7,.8,.9]},
+  cov: {lo:.5, hi:1,  ticks:[.5,.6,.7,.8,.9,1]},
+  best:{lo:.5, hi:1,  ticks:[.5,.6,.7,.8,.9,1]},
+  pass:{lo:.3, hi:.7, ticks:[.3,.4,.5,.6,.7]}
+};
+const VAL = {mean:X.mean, cov:X.cov, best:X.sb.best, pass:X.sb.pass};
+const lbRows = $('#rpb-lb-rows'), lbEls = {};
+M.forEach(m => {
+  const r = document.createElement('div');
+  r.className = 'rpb-lb-row'; r.dataset.rpbModel = m;
+  r.innerHTML = `<div class="rpb-lb-rank"></div><div class="rpb-lb-name rpb-nm">${nameHtml(m)}</div><div class="rpb-lb-track"><span class="rpb-grids"></span><i class="rpb-lb-stem"></i><i class="rpb-lb-ci rpb-mk" style="${mv(m)}"></i><i class="rpb-lb-dot rpb-mk" style="${mv(m)}"></i></div><div class="rpb-lb-score"></div>`;
+  lbRows.append(r); lbEls[m] = r;
+});
+let metric = 'mean';
+function renderLb(){
+  const ax = AX[metric], xp = v => (Math.max(ax.lo, Math.min(ax.hi, v)) - ax.lo) / (ax.hi - ax.lo) * 100;
+  $('#rpb-lb-axis').innerHTML = ax.ticks.map(t => `<span style="left:${xp(t)}%">${t.toFixed(1)}</span>`).join('');
+  const vals = VAL[metric];
+  const ord = M.map((_, i) => i).sort((a, b) => vals[b] - vals[a]);
+  const rowH = parseFloat(getComputedStyle(lbRows).getPropertyValue('--rpb-row')) || 40;
+  lbRows.style.height = (rowH * M.length) + 'px';
+  ord.forEach((i, k) => {
+    const m = M[i], r = lbEls[m], v = vals[i];
+    r.style.transform = `translateY(${k * rowH}px)`;
+    $('.rpb-lb-rank', r).textContent = k + 1;
+    $('.rpb-grids', r).innerHTML = ax.ticks.map(t => `<i class="rpb-lb-grid" style="left:${xp(t)}%"></i>`).join('');
+    $('.rpb-lb-stem', r).style.width = xp(v) + '%';
+    $('.rpb-lb-dot', r).style.left = xp(v) + '%';
+    const ci = $('.rpb-lb-ci', r);
+    if (metric === 'mean') { ci.classList.remove('rpb-off'); ci.style.left = xp(X.ci[i][0]) + '%'; ci.style.width = (xp(X.ci[i][1]) - xp(X.ci[i][0])) + '%'; }
+    else ci.classList.add('rpb-off');
+    $('.rpb-lb-score', r).innerHTML = metric === 'mean' ? `${f3(v)}<small>${f3(X.ci[i][0])} to ${f3(X.ci[i][1])}</small>`
+      : metric === 'pass' ? `${v.toFixed(2)}<small></small>` : `${f3(v)}<small></small>`;
+  });
+  $('#rpb-sb-note').innerHTML = X.sb.notes[metric];
+  $('#rpb-lb-cap').hidden = metric !== 'mean';
+}
+lbRows.classList.add('rpb-still'); renderLb();
+requestAnimationFrame(() => requestAnimationFrame(() => lbRows.classList.remove('rpb-still')));
+$('#rpb-sb-seg').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  $$('#rpb-sb-seg button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  metric = b.dataset.rpbM; renderLb();
+});
+
+/* ---------- 2. score decomposition ---------- */
+(function(){
+  const lo = .5, hi = .95, x = v => (v - lo) / (hi - lo) * 100;
+  $('#rpb-decomp-rows').innerHTML = M.map((m, i) => {
+    const score = X.mean[i], cov = X.cov[i], pen = -X.pdd[i];
+    return `<div class="rpb-stack-row" data-rpb-model="${esc(m)}"><span class="rpb-nm">${nameHtml(m)}</span><div class="rpb-bars" title="${esc(m)}: coverage ${f3(cov)}, penalties ${f3(pen)}, score ${f3(score)}"><i class="rpb-s rpb-mk" style="width:${x(score)}%;${mv(m)}"></i><i class="rpb-p" style="left:${x(score)}%;width:${x(cov) - x(score)}%"></i></div><span class="rpb-v">${f3(score)} <b>−${f3(pen)}</b></span></div>`;
+  }).join('');
+  $('#rpb-decomp-axis').innerHTML = `<div>${[.5,.6,.7,.8,.9].map(t => `<span style="left:${x(t)}%">${t.toFixed(1)}</span>`).join('')}</div>`;
+})();
+
+/* ---------- 3. where lost points come from ---------- */
+const narrow = matchMedia('(max-width:640px)');
+/* round the five shares so every row adds to exactly 100% */
+const pctRound = a => {
+  const s = a.reduce((x, y) => x + y, 0), raw = a.map(v => v / s * 100), fl = raw.map(Math.floor);
+  let rem = 100 - fl.reduce((x, y) => x + y, 0);
+  raw.map((v, i) => [v - fl[i], i]).sort((p, q) => q[0] - p[0]).slice(0, rem).forEach(([, i]) => fl[i]++);
+  return fl;
+};
+function renderLost(){
+  const T = X.lost.types, th = narrow.matches ? 12 : 0;
+  $('#rpb-lost-rows').innerHTML = M.map((m, i) => {
+    const p = pctRound(T.map(t => X.lost.data[t][i]));
+    const tip = T.map((t, j) => `${t} ${p[j]}%`).join(', ');
+    return `<div class="rpb-lost-row" data-rpb-model="${esc(m)}"><span class="rpb-nm">${nameHtml(m)}</span><div class="rpb-seg-bar" title="${esc(m)}: ${esc(tip)}">${T.map((t, j) => `<i class="rpb-t-${TK[t]}" style="flex:${X.lost.data[t][i]} 1 0">${p[j] >= th ? p[j] + '%' : ''}</i>`).join('')}</div></div>`;
+  }).join('');
+  $('#rpb-lost-key').innerHTML = T.map(t => `<span><i style="background:var(--rpb-t-${TK[t]})"></i>${esc(t)}</span>`).join('');
+}
+renderLost();
+narrow.addEventListener('change', renderLost);
+
+/* ---------- 4. penalty trip rate by kind ---------- */
+(function(){
+  const K = X.trip.kinds, mx = .45;
+  $('#rpb-trip-head').innerHTML = `<span></span>${K.map(k => `<span>${cap1(k)}</span>`).join('')}`;
+  $('#rpb-trip-rows').innerHTML = M.map((m, i) => `<div class="rpb-pm-row" data-rpb-model="${esc(m)}"><span class="rpb-nm">${nameHtml(m)}</span>${K.map((k, j) => { const v = X.trip.data[m][j]; return `<div class="rpb-pm-cell" title="${esc(m)}, ${k}: ${(v * 100).toFixed(1)}%"><b>${Math.round(v * 100)}%</b><span class="rpb-tr"><i style="width:${v / mx * 100}%"></i></span></div>`; }).join('')}</div>`).join('');
+})();
+
+/* ---------- shared row card for the miss and penalty explorers ---------- */
+const stat = (label, v, cls) => `<div class="rpb-xr-stat"><span class="rpb-xr-big">${v}%</span><span class="rpb-xr-lab">${esc(label)}</span><span class="rpb-tr"><i class="${cls}" style="width:${Math.max(v, 1.5)}%"></i></span></div>`;
+
+/* ---------- 5. misses by kind of work ---------- */
+const TYPES = X.types, MISS = X.miss, mxw = $('#rpb-miss-x');
+let curType = TYPES[0].name;
+function renderMiss(){
+  const t = TYPES.find(x => x.name === curType), k = TK[t.name];
+  const items = MISS.filter(m => m.type === curType);
+  $('.rpb-mx-tabs', mxw).innerHTML = TYPES.map(tp => `<button class="rpb-mx-tab" role="tab" aria-selected="${tp.name === curType}" data-rpb-t="${esc(tp.name)}" style="--rpb-c:var(--rpb-t-${TK[tp.name]})"><span class="rpb-mx-name">${esc(tp.name)}</span><span class="rpb-mx-meter"><i style="width:${tp.pass}%"></i></span><span class="rpb-mx-num">${tp.pass}% met</span></button>`).join('');
+  $('.rpb-mx-head', mxw).innerHTML = `<div class="rpb-mx-def" style="--rpb-cs:var(--rpb-ts-${k})"><b>${esc(t.name)}</b> ${esc(t.def)}</div><div class="rpb-mx-facts"><span class="rpb-pill"><b>${t.n}</b> criteria</span><span class="rpb-pill"><b>${t.weight}%</b> of positive weight</span><span class="rpb-pill"><b>${t.pass}%</b> met, average across models</span></div>`;
+  $('.rpb-mx-grid', mxw).innerHTML = items.map(m => {
+    const i = M.indexOf(m.model);
+    return `<article class="rpb-xrow${focus === m.model ? ' rpb-hl' : ''}${focus && focus !== m.model ? ' rpb-dim' : ''}" data-rpb-model="${esc(m.model)}">
+      <div class="rpb-xr-main">
+        <div class="rpb-xr-top"><span class="rpb-xr-model">${logo(m.model)}${esc(m.model)}</span><span class="rpb-pill">Weight ${m.weight}</span></div>
+        <p class="rpb-xr-rule">${esc(m.crit)}</p>
+        <p class="rpb-xr-task">${m.multi ? '<em>multi</em>' : ''}${esc(m.task)}</p>
+      </div>
+      <div class="rpb-xr-stats">${stat(`${SH[i]} met it`, m.model_rate, 'rpb-me')}${stat('Other models met it', m.others_rate, 'rpb-ok')}</div>
+      <details class="rpb-xr-why"><summary>Judge's reason</summary><p>${esc(m.judge)}</p></details>
+    </article>`;
+  }).join('');
+}
+mxw.addEventListener('click', e => { const b = e.target.closest('.rpb-mx-tab'); if (b) { curType = b.dataset.rpbT; renderMiss(); } });
+mxw.prepend($('.rpb-mx-head', mxw));
+renderMiss();
+
+/* ---------- 6. penalties that fired most ---------- */
+const PEN = X.pen, PK = X.penkinds, px = $('#rpb-pen-x');
+const tot = PK.reduce((a, k) => a + k[1], 0);
+$('.rpb-px-mix', px).innerHTML = PK.map(([k, n]) => `<div class="rpb-k-${k}" style="flex:${n} 1 0" title="${cap1(k)}: ${n} of ${tot} penalty criteria">${n >= 50 ? `${cap1(k)}<span>&nbsp;${n}</span>` : ''}</div>`).join('');
+$('.rpb-px-mix', px).insertAdjacentHTML('afterend', `<p class="rpb-px-note">The ${tot} penalty criteria by kind: ${PK.map(([k, n]) => `${k} ${n}`).join(', ')}.</p>`);
+let pkind = 'all';
+const kinds = ['all', ...new Set(PEN.map(p => p.kind))];
+const hiJudge = t => esc(t).replace(/&quot;(.+?)&quot;/g, '<mark>$1</mark>');
+function renderPen(){
+  $('.rpb-px-filter', px).innerHTML = kinds.map(k => `<button class="rpb-chip" data-rpb-k="${k}" aria-pressed="${k === pkind}">${k === 'all' ? 'All' : cap1(k)}<span class="rpb-n">${k === 'all' ? PEN.length : PEN.filter(p => p.kind === k).length}</span></button>`).join('');
+  $('.rpb-xgrid', px).innerHTML = PEN.filter(p => pkind === 'all' || p.kind === pkind).map(p => {
+    const i = M.indexOf(p.model);
+    return `<article class="rpb-xrow${focus === p.model ? ' rpb-hl' : ''}${focus && focus !== p.model ? ' rpb-dim' : ''}" data-rpb-model="${esc(p.model)}">
+      <div class="rpb-xr-main">
+        <div class="rpb-xr-top"><span class="rpb-tag rpb-weak">${cap1(p.kind)}</span><span class="rpb-xr-model">${logo(p.model)}${esc(p.model)}</span><span class="rpb-pill">Weight ${String(p.weight).replace('-', '−')}</span></div>
+        <p class="rpb-xr-rule">${esc(p.crit)}</p>
+        <p class="rpb-xr-task">${p.multi ? '<em>multi</em>' : ''}${esc(p.task)}</p>
+      </div>
+      <div class="rpb-xr-stats">${stat(`${SH[i]} tripped it`, p.model_rate, 'me')}${stat('Other models tripped it', p.others_rate, 'ot')}</div>
+      <details class="rpb-xr-why"><summary>Judge's reason</summary><p>${hiJudge(p.judge)}</p></details>
+    </article>`;
+  }).join('');
+}
+px.addEventListener('click', e => { const b = e.target.closest('.rpb-chip'); if (b) { pkind = b.dataset.rpbK; renderPen(); } });
+renderPen();
+
+/* ---------- deep dive: task and model pickers, tabs, one content panel (Figma 3592:22238) ---------- */
+const dd = document.getElementById('rpb-deep');
+if (dd) (async function(){
+  try {
+    const res = await fetch(new URL('tasks.html', EXT));
+    if (!res.ok) throw new Error(String(res.status));
+    dd.insertAdjacentHTML('beforeend', await res.text());
+  } catch (e) {
+    dd.insertAdjacentHTML('beforeend', '<p class="rpb-prose">Sample tasks could not be loaded.</p>');
+    return;
+  }
+  const idOf = m => IDS[M.indexOf(m)];
+  const modelOf = id => M[IDS.indexOf(id)];
+  const tasks = $$('.rpb-dd-task', dd);
+  const sect = (panel, starts) => $$('details.rpb-traj-section', panel).find(d => $('summary', d).textContent.startsWith(starts));
+  const metaOf = panel => { const o = {}; $$('.rpb-traj-meta-card', panel).forEach(c => o[$('.rpb-label', c).textContent.trim()] = $('.rpb-value', c).textContent.trim()); return o; };
+  const num = s => parseFloat(String(s).replace('−', '-').replace(/,/g, ''));
+  const DD = tasks.map(t => {
+    const panels = {}, rewards = {};
+    $$('.rpb-traj-panel', t).forEach(p => panels[p.dataset.rpbModel] = p);
+    $$('.rpb-traj-tab', t).forEach(b => rewards[b.dataset.rpbModel] = parseFloat($('.rpb-traj-tab-reward', b).textContent));
+    const pm = $(':scope > details.rpb-traj-section .rpb-traj-memo', t);
+    return {panels, rewards, prompt: pm ? pm.textContent.trim() : '', rows: {}};
+  });
+  const parseRows = panel => $$('.rpb-traj-grading-row', panel).map(r => {
+    const sc = $('.rpb-score', r), w = $('.rpb-weight', r), c = $('.rpb-crit-text', r), jn = $('.rpb-judge-note-body', r);
+    const neg = w.classList.contains('rpb-neg'), kind = sc.classList.contains('rpb-pass') ? 'pass' : sc.classList.contains('rpb-fail') ? 'fail' : 'partial';
+    const label = neg ? (kind === 'fail' ? 'Tripped' : 'Avoided') : kind === 'pass' ? 'Met' : kind === 'fail' ? 'Missed' : 'Partial';
+    return {neg, kind, label, weight: w.textContent.trim().replace('-', '−'), judge: jn ? jn.textContent.trim() : '',
+      crit: [...c.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join('').trim()};
+  });
+  const rowsOf = (k, id) => DD[k].rows[id] || (DD[k].rows[id] = parseRows(DD[k].panels[id]));
+  const failed = r => r.neg ? r.kind === 'fail' : r.kind !== 'pass';
+  const critRow = r => `<div class="rpb-cr"><span class="rpb-score rpb-${r.kind}">${r.label}</span><span class="rpb-weight${r.neg ? ' rpb-neg' : ''}">${esc(r.weight)}</span><div class="rpb-cr-main"><p>${esc(r.crit)}${r.neg ? '<span class="rpb-crit-kind-neg">Penalty</span>' : ''}</p>${r.judge ? `<details class="rpb-xr-why"><summary>Judge's reason</summary><p>${esc(r.judge)}</p></details>` : ''}</div></div>`;
+  const chips = a => `<div class="rpb-mx-facts">${a.map(([n, l]) => `<span class="rpb-pill"><b>${n}</b> ${l}</span>`).join('')}</div>`;
+  const tone = v => v >= .7 ? 'ok' : v >= .4 ? 'mid' : 'low';
+  const paras = s => s.split(/\n\s*\n/).map(p => `<p>${esc(p.trim())}</p>`).join('');
+
+  const TABS = [['overview', 'Overview'], ['prompt', 'Prompt'], ['failures', 'Failure mode'], ['trajectory', 'Trajectories'], ['criteria', 'Criteria'], ['results', 'Results']];
+  const st = {task: 0, model: 'all', tab: 'overview', crit: 'failed'};
+  dd.insertAdjacentHTML('afterbegin', `<div id="rpb-dd-ui">
+    <div class="rpb-dd-fields">
+      <label class="rpb-field"><span>Task</span><span class="rpb-sel"><select id="rpb-dd-task">${X.deep.map((d, k) => `<option value="${k}">${esc(d.id)}, ${esc(d.spec)}</option>`).join('')}</select></span></label>
+      <label class="rpb-field"><span>Model</span><span class="rpb-sel"><select id="rpb-dd-model"></select></span></label>
+    </div>
+    <div class="rpb-dd-tabs" role="tablist">${TABS.map(([k, l]) => `<button role="tab" data-rpb-t="${k}" aria-selected="${k === st.tab}">${l}</button>`).join('')}</div>
+    <div class="rpb-dd-panel"><div class="rpb-dd-inner" id="rpb-dd-body"></div></div></div>`);
+  const selTask = $('#rpb-dd-task'), selModel = $('#rpb-dd-model'), body = $('#rpb-dd-body');
+
+  function fillModels(){
+    const rw = DD[st.task].rewards;
+    selModel.innerHTML = '<option value="all">All models</option>' + M.map((m, i) => `<option value="${IDS[i]}">${esc(m)}, ${rw[IDS[i]].toFixed(2)}</option>`).join('');
+    selModel.value = st.model;
+  }
+  const fitClamps = root => $$('.rpb-clampable', root).forEach(p => { const b = p.nextElementSibling; if (b && b.classList.contains('rpb-see') && p.scrollHeight > p.clientHeight + 2) b.hidden = false; });
+
+  const statusDot = r => `<i class="rpb-dot rpb-${r.kind === 'partial' ? 'part' : failed(r) ? 'bad' : r.neg ? 'avoid' : 'ok'}"></i>`;
+
+  /* one run: header, answer excerpt, agent steps (Figma 3592:23547) */
+  const runHead = (t, id) => {
+    const panel = t.panels[id], mName = modelOf(id), mt = metaOf(panel), reward = t.rewards[id], [turns, calls] = (mt['turns / tool calls'] || '').split('/').map(s => s.trim());
+    return `<div class="rpb-runcard"><div class="rpb-runcard-l"><div class="rpb-runcard-m">${logo(mName)}${esc(mName)}</div><div class="rpb-runcard-c"><span class="rpb-chip2">${esc(turns || '0')} steps</span><span class="rpb-chip2">${esc(calls || '0')} tool calls</span>${mt.minutes ? `<span class="rpb-chip2">${esc(mt.minutes)} min</span>` : ''}</div></div><span class="rpb-scorechip rpb-${tone(reward)}">${reward.toFixed(3)}</span></div>`;
+  };
+  const runBody = (t, id) => {
+    const panel = t.panels[id];
+    const ans = sect(panel, "The model's summary"), memo = ans ? $('.rpb-traj-memo', ans) : null;
+    const tb = sect(panel, 'Trajectory'), msgs = tb ? $$('.rpb-traj-msg', tb) : [];
+    const steps = msgs.map(m => {
+      const n = $('.rpb-traj-msg-header', m).textContent.replace(/turn\s*/i, '').trim();
+      const th = $('.rpb-traj-msg-thinking', m), think = th ? [...th.childNodes].filter(x => x.nodeType === 3).map(x => x.textContent).join('').trim() : '';
+      const say = ($('.rpb-traj-msg-content', m)?.textContent || '').trim();
+      const tools = $$('.rpb-traj-tool-call', m).map(c => ({name: $('.rpb-traj-tool-call-name', c).textContent.trim(), args: $('.rpb-traj-tool-call-args', c).textContent.trim()}));
+      return `<div class="rpb-step"><div class="rpb-step-h"><span class="rpb-agent"><i></i>Agent</span><span class="rpb-step-n">Step ${esc(n)}</span></div>
+        ${think ? `<div class="rpb-step-think"><p class="rpb-clampable">${esc(think)}</p><button class="rpb-see" hidden>See more</button></div>` : ''}
+        ${say ? `<p class="rpb-step-say rpb-clampable">${esc(say)}</p><button class="rpb-see" hidden>See more</button>` : ''}
+        ${tools.map(c => `<div class="rpb-step-tool"><p class="rpb-step-tool-n">${esc(c.name)}</p><div class="rpb-step-rule"></div><p class="rpb-step-tool-a rpb-clampable">${esc(c.args)}</p><button class="rpb-see" hidden>See more</button></div>`).join('')}</div>`;
+    }).join('');
+    return `${memo ? `<div class="rpb-excerpt"><div class="rpb-excerpt-in"><p class="rpb-excerpt-h">Answer excerpt</p><div class="rpb-excerpt-b rpb-clampable">${esc(memo.textContent.trim())}</div><button class="rpb-see" hidden>See more</button></div></div>` : ''}
+      <details class="rpb-steps"><summary><span>Trajectory excerpt</span><span class="rpb-chip2">${msgs.length} steps</span></summary><div class="rpb-steps-b">${steps}</div></details>`;
+  };
+
+  /* graded criteria for one run: two score cards, a filter, then one expandable row per criterion */
+  const critSection = rows => {
+    const req = rows.filter(r => !r.neg), pens = rows.filter(r => r.neg);
+    const met = req.filter(r => r.kind === 'pass').length, trip = pens.filter(r => r.kind === 'fail').length;
+    const bad = rows.filter(failed), good = rows.filter(r => !failed(r));
+    if (st.crit === 'failed' && !bad.length) st.crit = 'all';
+    const list = (st.crit === 'failed' ? bad : st.crit === 'passed' ? good : [...bad, ...good]);
+    const f = (k, l, n) => `<button class="rpb-chip" data-rpb-cf="${k}" aria-pressed="${st.crit === k}">${l}<span class="rpb-n">${n}</span></button>`;
+    return `<div class="rpb-cs">
+        <div class="rpb-cs-card"><p class="rpb-cs-n"><b>${met}</b> / ${req.length}</p><p class="rpb-cs-l">required criteria met</p><span class="rpb-cs-bar"><i class="rpb-ok" style="width:${req.length ? met / req.length * 100 : 0}%"></i></span></div>
+        <div class="rpb-cs-card"><p class="rpb-cs-n"><b>${trip}</b> / ${pens.length}</p><p class="rpb-cs-l">penalties tripped</p><span class="rpb-cs-bar"><i class="rpb-bad" style="width:${pens.length ? trip / pens.length * 100 : 0}%"></i></span></div>
+      </div>
+      <div class="rpb-chips rpb-cs-f">${f('failed', 'Failed', bad.length)}${f('passed', 'Passed', good.length)}${f('all', 'All', rows.length)}</div>
+      <div class="rpb-cr2-list">${list.map(r => `<details class="rpb-cr2"><summary><span class="rpb-score rpb-${r.kind}">${r.label}</span><span class="rpb-cr2-w${r.neg ? ' rpb-neg' : ''}">${esc(r.weight)}</span><span class="rpb-cr2-t">${esc(r.crit)}${r.neg ? '<span class="rpb-crit-kind-neg">Penalty</span>' : ''}</span></summary>${r.judge ? `<div class="rpb-cr2-b"><span class="rpb-lab">Judge's reason</span><p>${esc(r.judge)}</p></div>` : ''}</details>`).join('')}</div>`;
+  };
+
+  const views = {
+    overview(t, panel, mName){
+      const all = st.model === 'all';
+      const sorted = Object.entries(t.rewards).sort((a, b) => b[1] - a[1]), h = Math.ceil(sorted.length / 2);
+      const bar = ([id, r]) => `<button class="rpb-dd-bar${id === st.model ? ' rpb-on' : ''}" data-rpb-id="${esc(id)}"><span class="rpb-nm">${nameHtml(modelOf(id))}</span><span class="rpb-tr"><i class="rpb-mk" style="width:${r * 100}%;${mv(modelOf(id))}"></i></span><b>${r.toFixed(2)}</b></button>`;
+      const hi = sorted[0], lo = sorted[sorted.length - 1];
+      return `${all ? '' : `<h4 class="rpb-dd-h rpb-first">${esc(mName)}, this run</h4>${$('.rpb-traj-meta', panel).outerHTML}<h4 class="rpb-dd-h">All models on this task</h4>`}<p class="rpb-dd-lead">Median rollout reward on this task. Best is <b>${esc(modelOf(hi[0]))}</b> at ${hi[1].toFixed(2)}, lowest is <b>${esc(modelOf(lo[0]))}</b> at ${lo[1].toFixed(2)}. Select a model to read its run in the other tabs.</p><div class="rpb-dd-cols"><div>${sorted.slice(0, h).map(bar).join('')}</div><div>${sorted.slice(h).map(bar).join('')}</div></div>`;
+    },
+    prompt(t){
+      return `<div class="rpb-dd-prompt"><div class="rpb-dd-prompt-in">${paras(t.prompt)}</div></div>`;
+    },
+    /* Figma 3592:23423: one card per criterion, stacked */
+    failures(t){
+      const k = st.task, one = st.model !== 'all', per = M.map((m, i) => rowsOf(k, IDS[i])), base = per[0];
+      let modes = base.map((r, idx) => {
+        const fails = [];
+        per.forEach((rows, i) => { const x = rows.find(y => y.crit === r.crit); if (x && failed(x)) fails.push({m: M[i], label: x.label}); });
+        return {n: idx + 1, r, fails};
+      }).filter(x => x.fails.length && (!one || x.fails.some(f => f.m === modelOf(st.model))));
+      modes = modes.sort((a, b) => b.fails.length - a.fails.length || Math.abs(num(b.r.weight)) - Math.abs(num(a.r.weight))).slice(0, one ? 12 : 6);
+      const lead = one ? `The criteria <b>${esc(modelOf(st.model))}</b> failed on ${esc(X.deep[st.task].id)}, with the other models that failed them.` : `The criteria that the most models failed on ${esc(X.deep[st.task].id)}. A penalty counts as failed when a model tripped it.`;
+      return `<p class="rpb-dd-lead">${lead}</p><h4 class="rpb-dd-h">Main failure modes</h4>
+        <div class="rpb-fm2-grid">${modes.map(x => `<article class="rpb-fm2"><h5 class="rpb-fm2-h">C${x.n}<span>|</span>weight ${esc(x.r.weight.replace(/^[+−]/, ''))}${x.r.neg ? '<em class="rpb-crit-kind-neg">Penalty</em>' : ''}</h5><p class="rpb-fm2-t">${esc(x.r.crit)}</p><p class="rpb-fm2-n">${x.r.neg ? 'Tripped' : 'Missed'} by ${x.fails.length} of ${M.length} models</p><div class="rpb-fm2-chips">${x.fails.map(f => `<span class="rpb-mchip${f.m === modelOf(st.model) ? ' rpb-me' : ''}">${logo(f.m)}${esc(SH[M.indexOf(f.m)])}<b>: ${f.label}</b></span>`).join('')}</div></article>`).join('')}</div>`;
+    },
+    trajectory(t){
+      if (st.model !== 'all') return runHead(t, st.model) + runBody(t, st.model);
+      const ids = Object.keys(t.rewards).sort((a, b) => t.rewards[b] - t.rewards[a]);
+      return `<p class="rpb-dd-lead">Every model's run on this task, best first. Open a run to read its answer and steps.</p><div class="rpb-runlist">${ids.map(id => `<details class="rpb-runfold" data-rpb-id="${esc(id)}"><summary>${runHead(t, id)}</summary><div class="rpb-runfold-b"></div></details>`).join('')}</div>`;
+    },
+    results(t, panel, mName){
+      const rk = M.map((m, i) => { const id = IDS[i], reps = (metaOf(t.panels[id])['all 3 reps'] || '').split(',').map(num).filter(isFinite);
+        return {id, m, reps, avg: reps.reduce((a, b) => a + b, 0) / (reps.length || 1), best: Math.max(...reps), worst: Math.min(...reps), med: t.rewards[id]}; }).sort((a, b) => b.avg - a.avg);
+      const table = `<div class="rpb-tablewrap rpb-rt"><table class="rpb-mini"><thead><tr><th>Rank</th><th>Model</th><th>Average</th><th>Best</th><th>Worst</th><th>Runs</th></tr></thead><tbody>${rk.map((r, i) => `<tr data-rpb-id="${esc(r.id)}"${r.id === st.model ? ' class="rpb-is-sel"' : ''}><td>${i + 1}.</td><td><span class="rpb-mlogo ${fam(r.m)}" aria-hidden="true"></span>${esc(r.m)}</td><td>${r.avg.toFixed(3)}<small>median run ${r.med.toFixed(3)}</small></td><td>${r.best.toFixed(2)}</td><td>${r.worst.toFixed(2)}</td><td>${r.reps.length}</td></tr>`).join('')}</tbody></table></div>
+        <p class="rpb-cap">Average, best and worst are over the three rollouts.</p>`;
+      return table;
+    },
+    criteria(t, panel, mName){
+      if (st.model !== 'all') return `<p class="rpb-dd-lead">Graded criteria for <b>${esc(mName)}</b> on ${esc(X.deep[st.task].id)}. A penalty counts as failed when the model tripped it.</p><h4 class="rpb-dd-h">${esc(mName)}, graded criteria</h4>` + critSection(rowsOf(st.task, st.model));
+      const per = M.map((m, i) => rowsOf(st.task, IDS[i])), base = per[0];
+      const head = M.map(m => `<th><span class="rpb-mhead" data-rpb-name="${esc(m)}" tabindex="0"><span class="rpb-mlogo ${fam(m)}" aria-hidden="true"></span><span class="rpb-sr">${esc(m)}</span></span></th>`).join('');
+      const rowsH = base.map((r, idx) => `<tr><td class="rpb-mx2-c"><b>C${idx + 1}</b><span>${esc(r.crit)}</span>${r.neg ? '<em class="rpb-crit-kind-neg">Penalty</em>' : ''}</td><td class="rpb-mx2-w${r.neg ? ' rpb-neg' : ''}">${esc(r.weight)}</td>${per.map((rows, i) => { const x = rows.find(y => y.crit === r.crit); return `<td title="${esc(M[i])}: ${x ? x.label : 'n/a'}">${x ? statusDot(x) : ''}</td>`; }).join('')}</tr>`).join('');
+      const cards = base.map((r, idx) => {
+        const st2 = per.map((rows, i) => { const x = rows.find(y => y.crit === r.crit); return {m: M[i], x}; }).filter(o => o.x);
+        const bad = st2.filter(o => failed(o.x)), okN = st2.length - bad.length;
+        return `<article class="rpb-mxc"><div class="rpb-mxc-h"><b>C${idx + 1}</b><span class="rpb-mxc-w${r.neg ? ' rpb-neg' : ''}">${esc(r.weight)}</span>${r.neg ? '<em class="rpb-crit-kind-neg">Penalty</em>' : ''}</div><p class="rpb-mxc-t">${esc(r.crit)}</p><div class="rpb-mxc-s"><span>${r.neg ? 'Avoided' : 'Met'} by <b>${okN}</b> of ${st2.length}</span><span class="rpb-tr"><i style="width:${okN / st2.length * 100}%"></i></span></div>${bad.length ? `<div class="rpb-mxc-chips">${bad.map(o => `<span class="rpb-mchip${o.x.kind === 'partial' ? ' rpb-part' : ''}">${logo(o.m)}${esc(SH[M.indexOf(o.m)])}</span>`).join('')}</div>` : ''}</article>`;
+      }).join('');
+      return `<p class="rpb-dd-lead">Every criterion on ${esc(X.deep[st.task].id)}, for every model. A penalty counts as failed when a model tripped it.</p><h4 class="rpb-dd-h">Every criterion, every model</h4><div class="rpb-mxc-list"><p class="rpb-dd-lead">How many models got each criterion right; the chips are the ones that did not.</p>${cards}</div><p class="rpb-cap rpb-keyline2 rpb-key-top"><span><i class="rpb-dot rpb-ok"></i>Met</span><span><i class="rpb-dot rpb-avoid"></i>Penalty avoided</span><span><i class="rpb-dot rpb-bad"></i>Missed or tripped</span><span><i class="rpb-dot rpb-part"></i>Partial</span></p><div class="rpb-tablewrap rpb-mx2"><table class="rpb-mini"><thead><tr><th>Criterion</th><th>Weight</th>${head}</tr></thead><tbody>${rowsH}</tbody></table></div>`;
+    }
+  };
+  function render(keep){
+    const top = keep ? body.scrollTop : 0;
+    const t = DD[st.task], all = st.model === 'all', panel = all ? null : t.panels[st.model], mName = all ? 'All models' : modelOf(st.model);
+    $$('.rpb-dd-tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.rpbT === st.tab));
+    body.innerHTML = views[st.tab](t, panel, mName);
+    body.scrollTop = top;
+    fitClamps(body);
+  }
+  fillModels(); render();
+  selTask.addEventListener('change', () => { st.task = +selTask.value; fillModels(); render(); });
+  selModel.addEventListener('change', () => { st.model = selModel.value; render(); });
+  $('.rpb-dd-tabs', dd).addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.tab = b.dataset.rpbT; render(); } });
+  body.addEventListener('click', e => {
+    const bar = e.target.closest('.rpb-dd-bar'); if (bar) { st.model = bar.dataset.rpbId; selModel.value = st.model; render(); return; }
+    const cf = e.target.closest('[data-rpb-cf]'); if (cf) { st.crit = cf.dataset.rpbCf; render(true); return; }
+    const see = e.target.closest('.rpb-see'); if (see) { const p = see.previousElementSibling, open = p.classList.toggle('rpb-open'); see.textContent = open ? 'See less' : 'See more'; }
+  });
+  /* all-models trajectories: each run builds its body the first time it opens */
+  body.addEventListener('toggle', e => {
+    const d = e.target; if (!d.classList || !d.classList.contains('rpb-runfold') || !d.open) return;
+    const b = $('.rpb-runfold-b', d); if (b.dataset.rpbDone) return;
+    b.dataset.rpbDone = '1'; b.innerHTML = runBody(DD[st.task], d.dataset.rpbId); fitClamps(b);
+  }, true);
+})();
+})();
+
+</script><script>
+/* penalty kinds as a list for small screens */
+(function(){
+  var mix = document.querySelector('.rpb-px-mix'); if (!mix) return;
+  var rows = [].slice.call(mix.children).map(function(d){ var m = (d.getAttribute('title')||'').match(/^(.+?): (\d+) of (\d+)/); return m ? {k:m[1], n:+m[2], t:+m[3], cls:d.className} : null; }).filter(Boolean);
+  if (!rows.length) return;
+  var list = document.createElement('div'); list.className = 'rpb-px-list';
+  list.innerHTML = rows.map(function(r){ return '<div><span>'+r.k+'</span><b>'+r.n+'</b><span class="rpb-tr"><i class="'+r.cls+'" style="width:'+(r.n/r.t*100).toFixed(1)+'%"></i></span></div>'; }).join('');
+  mix.insertAdjacentElement('afterend', list);
+})();
+</script><script>
+/* scroll fades and nav arrows: wraps every scroll container, shows a fade on the side that can still scroll */
+(function(){
+  var SEL = '.rpb-rows,.rpb-lb-rows,.rpb-pm-scroll,.rpb-tablewrap,.rpb-px-list,.rpb-xgrid,.rpb-cr2-list,.rpb-mxc-list,.rpb-runlist,.rpb-fm2-grid,.rpb-dd-inner,.rpb-seg,.rpb-dd-tabs,.rpb-mx-tabs,.rpb-px-filter,.rpb-traj-meta';
+  var NAV = ['rpb-seg','rpb-dd-tabs','rpb-mx-tabs','rpb-px-filter'];
+  function wrap(el){
+    if (el.dataset.rpbSw) return;
+    el.dataset.rpbSw = '1'; el.classList.add('rpb-sw-el');
+    var w = document.createElement('div'); w.className = 'rpb-sw';
+    el.parentNode.insertBefore(w, el); w.appendChild(el);
+    ['r','l','b','t'].forEach(function(k){ var f = document.createElement('i'); f.className = 'rpb-sw-fade rpb-' + k; w.appendChild(f); });
+    if (NAV.some(function(c){ return el.classList.contains(c); })) {
+      ['l','r'].forEach(function(k){ var b = document.createElement('button'); b.type = 'button'; b.className = 'rpb-sw-btn rpb-' + k; b.setAttribute('aria-label', k === 'r' ? 'Scroll right' : 'Scroll left');
+        b.addEventListener('click', function(){ el.scrollBy({left: (k === 'r' ? 1 : -1) * Math.max(120, el.clientWidth * .6), behavior: 'smooth'}); }); w.appendChild(b); });
+    }
+    var upd = function(){
+      var cs = getComputedStyle(el), sx = /auto|scroll/.test(cs.overflowX), sy = /auto|scroll/.test(cs.overflowY);
+      var x = sx && el.scrollWidth - el.clientWidth > 2, y = sy && el.scrollHeight - el.clientHeight > 2;
+      w.classList.toggle('rpb-can-r', x && el.scrollLeft < el.scrollWidth - el.clientWidth - 2);
+      w.classList.toggle('rpb-can-l', x && el.scrollLeft > 2);
+      w.classList.toggle('rpb-can-b', y && el.scrollTop < el.scrollHeight - el.clientHeight - 2);
+      w.classList.toggle('rpb-can-t', y && el.scrollTop > 2);
+    };
+    el.addEventListener('scroll', upd, {passive:true}); el.__swUpd = upd; upd();
+    if ('ResizeObserver' in window) new ResizeObserver(upd).observe(el);
+  }
+  function scan(root){ (root || document).querySelectorAll(SEL).forEach(wrap); }
+  scan();
+  window.addEventListener('resize', function(){ document.querySelectorAll('.rpb-sw-el').forEach(function(e){ e.__swUpd && e.__swUpd(); }); }, {passive:true});
+  if ('MutationObserver' in window) new MutationObserver(function(ms){ ms.forEach(function(m){ m.addedNodes.forEach(function(n){ if (n.nodeType === 1) { if (n.matches && n.matches(SEL)) wrap(n); scan(n); } }); }); document.querySelectorAll('.rpb-sw-el').forEach(function(e){ e.__swUpd && e.__swUpd(); }); }).observe(document.body, {childList:true, subtree:true});
+  setTimeout(function(){ document.querySelectorAll('.rpb-sw-el').forEach(function(e){ e.__swUpd && e.__swUpd(); }); }, 800);
+})();
+</script>
