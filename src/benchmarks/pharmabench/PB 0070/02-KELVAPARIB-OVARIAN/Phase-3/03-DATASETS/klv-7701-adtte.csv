@@ -1,0 +1,1584 @@
+STUDYID,USUBJID,PARAMCD,PARAM,AVAL,AVALU,CNSR,STARTDT,ADT,EVNTDESC,TRT01P
+KLV-7701,KLV-7701-1001,DOR,Duration of response,0.9,MONTHS,0,2019-09-14,2019-10-11,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1001,PFS,Progression-free survival,24.3,MONTHS,0,2019-09-14,2021-09-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1001,OS,Overall survival,24.3,MONTHS,0,2019-09-14,2021-09-23,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1002,DOR,Duration of response,4.2,MONTHS,1,2020-10-18,2021-02-23,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1002,PFS,Progression-free survival,4.2,MONTHS,0,2020-10-18,2021-02-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1002,OS,Overall survival,4.2,MONTHS,0,2020-10-18,2021-02-23,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1003,DOR,Duration of response,9.0,MONTHS,1,2021-08-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1003,PFS,Progression-free survival,2.9,MONTHS,1,2021-08-14,2021-11-10,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1003,OS,Overall survival,9.0,MONTHS,1,2021-08-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1004,PFS,Progression-free survival,5.2,MONTHS,0,2021-10-28,2022-04-04,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1004,OS,Overall survival,6.6,MONTHS,1,2021-10-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1005,PFS,Progression-free survival,4.8,MONTHS,0,2019-09-28,2020-02-21,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1005,OS,Overall survival,11.4,MONTHS,1,2019-09-28,2020-09-09,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1006,PFS,Progression-free survival,9.4,MONTHS,0,2020-07-07,2021-04-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1006,OS,Overall survival,19.6,MONTHS,0,2020-07-07,2022-02-24,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1007,PFS,Progression-free survival,6.7,MONTHS,0,2020-05-03,2020-11-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1007,OS,Overall survival,22.5,MONTHS,1,2020-05-03,2022-03-19,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1008,DOR,Duration of response,4.9,MONTHS,0,2020-08-08,2021-01-04,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1008,PFS,Progression-free survival,0.5,MONTHS,0,2020-08-08,2020-08-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1008,OS,Overall survival,21.2,MONTHS,1,2020-08-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1009,DOR,Duration of response,0.9,MONTHS,0,2019-11-29,2019-12-26,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1009,PFS,Progression-free survival,8.9,MONTHS,0,2019-11-29,2020-08-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1009,OS,Overall survival,15.9,MONTHS,1,2019-11-29,2021-03-27,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1010,DOR,Duration of response,3.6,MONTHS,1,2021-06-13,2021-10-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1010,PFS,Progression-free survival,4.3,MONTHS,0,2021-06-13,2021-10-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1010,OS,Overall survival,11.1,MONTHS,1,2021-06-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1011,DOR,Duration of response,1.5,MONTHS,1,2021-08-29,2021-10-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1011,PFS,Progression-free survival,8.5,MONTHS,1,2021-08-29,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1011,OS,Overall survival,8.5,MONTHS,1,2021-08-29,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1012,DOR,Duration of response,17.7,MONTHS,1,2020-11-11,2022-05-04,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1012,PFS,Progression-free survival,8.7,MONTHS,0,2020-11-11,2021-08-03,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1012,OS,Overall survival,17.7,MONTHS,0,2020-11-11,2022-05-04,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1013,DOR,Duration of response,6.2,MONTHS,1,2021-11-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1013,PFS,Progression-free survival,6.2,MONTHS,1,2021-11-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1013,OS,Overall survival,6.2,MONTHS,1,2021-11-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1014,DOR,Duration of response,7.6,MONTHS,1,2020-06-05,2021-01-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1014,PFS,Progression-free survival,1.0,MONTHS,1,2020-06-05,2020-07-05,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1014,OS,Overall survival,16.4,MONTHS,1,2020-06-05,2021-10-17,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1015,DOR,Duration of response,3.1,MONTHS,1,2020-01-09,2020-04-12,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1015,PFS,Progression-free survival,3.1,MONTHS,0,2020-01-09,2020-04-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1015,OS,Overall survival,3.1,MONTHS,0,2020-01-09,2020-04-13,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1016,PFS,Progression-free survival,20.1,MONTHS,0,2020-03-27,2021-11-29,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1016,OS,Overall survival,20.1,MONTHS,0,2020-03-27,2021-11-29,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1017,DOR,Duration of response,4.3,MONTHS,1,2022-01-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1017,PFS,Progression-free survival,4.3,MONTHS,1,2022-01-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1017,OS,Overall survival,4.3,MONTHS,1,2022-01-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1018,PFS,Progression-free survival,0.5,MONTHS,1,2019-09-23,2019-10-08,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1018,OS,Overall survival,4.7,MONTHS,1,2019-09-23,2020-02-13,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1019,DOR,Duration of response,5.7,MONTHS,0,2021-09-13,2022-03-05,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1019,PFS,Progression-free survival,8.0,MONTHS,1,2021-09-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1019,OS,Overall survival,8.0,MONTHS,1,2021-09-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1020,PFS,Progression-free survival,3.1,MONTHS,1,2022-02-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1020,OS,Overall survival,3.1,MONTHS,1,2022-02-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1021,PFS,Progression-free survival,0.7,MONTHS,0,2021-04-19,2021-05-10,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1021,OS,Overall survival,12.9,MONTHS,1,2021-04-19,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1022,DOR,Duration of response,9.1,MONTHS,1,2021-08-12,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1022,PFS,Progression-free survival,8.9,MONTHS,0,2021-08-12,2022-05-10,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1022,OS,Overall survival,9.1,MONTHS,1,2021-08-12,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1023,PFS,Progression-free survival,3.9,MONTHS,0,2020-02-07,2020-06-05,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1023,OS,Overall survival,27.2,MONTHS,1,2020-02-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1024,DOR,Duration of response,12.5,MONTHS,1,2021-03-04,2022-03-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1024,PFS,Progression-free survival,3.4,MONTHS,1,2021-03-04,2021-06-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1024,OS,Overall survival,14.4,MONTHS,1,2021-03-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1025,DOR,Duration of response,6.9,MONTHS,1,2020-09-16,2021-04-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1025,PFS,Progression-free survival,11.8,MONTHS,0,2020-09-16,2021-09-10,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1025,OS,Overall survival,19.9,MONTHS,1,2020-09-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1026,PFS,Progression-free survival,1.7,MONTHS,0,2020-04-17,2020-06-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1026,OS,Overall survival,11.7,MONTHS,0,2020-04-17,2021-04-08,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1027,DOR,Duration of response,10.1,MONTHS,0,2019-11-04,2020-09-06,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1027,PFS,Progression-free survival,12.3,MONTHS,0,2019-11-04,2020-11-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1027,OS,Overall survival,12.3,MONTHS,1,2019-11-04,2020-11-12,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1028,DOR,Duration of response,9.4,MONTHS,0,2020-12-05,2021-09-17,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1028,PFS,Progression-free survival,0.5,MONTHS,0,2020-12-05,2020-12-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1028,OS,Overall survival,17.3,MONTHS,1,2020-12-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1029,DOR,Duration of response,0.9,MONTHS,1,2020-10-29,2020-11-25,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1029,PFS,Progression-free survival,1.8,MONTHS,0,2020-10-29,2020-12-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1029,OS,Overall survival,1.8,MONTHS,0,2020-10-29,2020-12-24,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1030,DOR,Duration of response,14.9,MONTHS,1,2021-02-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1030,PFS,Progression-free survival,4.9,MONTHS,1,2021-02-16,2021-07-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1030,OS,Overall survival,14.9,MONTHS,1,2021-02-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1031,DOR,Duration of response,1.5,MONTHS,0,2021-02-21,2021-04-08,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1031,PFS,Progression-free survival,2.9,MONTHS,0,2021-02-21,2021-05-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1031,OS,Overall survival,14.8,MONTHS,1,2021-02-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1032,PFS,Progression-free survival,2.4,MONTHS,1,2020-10-13,2020-12-25,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1032,OS,Overall survival,19.1,MONTHS,1,2020-10-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1033,PFS,Progression-free survival,7.6,MONTHS,1,2021-09-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1033,OS,Overall survival,7.6,MONTHS,1,2021-09-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1034,DOR,Duration of response,10.1,MONTHS,1,2020-08-19,2021-06-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1034,PFS,Progression-free survival,11.7,MONTHS,0,2020-08-19,2021-08-10,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1034,OS,Overall survival,20.1,MONTHS,1,2020-08-19,2022-04-23,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1035,DOR,Duration of response,7.3,MONTHS,1,2020-10-24,2021-06-03,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1035,PFS,Progression-free survival,1.2,MONTHS,0,2020-10-24,2020-11-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1035,OS,Overall survival,14.4,MONTHS,1,2020-10-24,2022-01-05,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1036,DOR,Duration of response,0.9,MONTHS,0,2020-06-27,2020-07-24,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1036,PFS,Progression-free survival,5.0,MONTHS,0,2020-06-27,2020-11-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1036,OS,Overall survival,20.7,MONTHS,0,2020-06-27,2022-03-19,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1037,DOR,Duration of response,10.0,MONTHS,0,2020-03-15,2021-01-13,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1037,PFS,Progression-free survival,7.4,MONTHS,0,2020-03-15,2020-10-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1037,OS,Overall survival,26.0,MONTHS,1,2020-03-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1038,DOR,Duration of response,1.8,MONTHS,0,2019-12-18,2020-02-11,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1038,PFS,Progression-free survival,8.1,MONTHS,0,2019-12-18,2020-08-21,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1038,OS,Overall survival,16.1,MONTHS,0,2019-12-18,2021-04-21,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1039,PFS,Progression-free survival,8.9,MONTHS,1,2019-11-02,2020-07-30,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1039,OS,Overall survival,13.8,MONTHS,1,2019-11-02,2020-12-26,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1040,PFS,Progression-free survival,5.3,MONTHS,1,2021-07-01,2021-12-09,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1040,OS,Overall survival,10.5,MONTHS,1,2021-07-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1041,DOR,Duration of response,17.2,MONTHS,1,2020-11-24,2022-05-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1041,PFS,Progression-free survival,6.7,MONTHS,1,2020-11-24,2021-06-16,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1041,OS,Overall survival,17.7,MONTHS,1,2020-11-24,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1042,DOR,Duration of response,2.6,MONTHS,1,2019-12-07,2020-02-24,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1042,PFS,Progression-free survival,4.6,MONTHS,0,2019-12-07,2020-04-25,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1042,OS,Overall survival,28.0,MONTHS,1,2019-12-07,2022-04-07,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1043,DOR,Duration of response,0.9,MONTHS,0,2020-01-02,2020-01-29,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1043,PFS,Progression-free survival,8.3,MONTHS,1,2020-01-02,2020-09-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1043,OS,Overall survival,27.2,MONTHS,1,2020-01-02,2022-04-09,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1044,DOR,Duration of response,5.3,MONTHS,0,2019-10-31,2020-04-09,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1044,PFS,Progression-free survival,0.5,MONTHS,1,2019-10-31,2019-11-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1044,OS,Overall survival,30.5,MONTHS,1,2019-10-31,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1045,DOR,Duration of response,9.5,MONTHS,0,2021-05-11,2022-02-24,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1045,PFS,Progression-free survival,12.2,MONTHS,1,2021-05-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1045,OS,Overall survival,12.2,MONTHS,1,2021-05-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1046,DOR,Duration of response,10.2,MONTHS,0,2019-12-10,2020-10-15,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1046,PFS,Progression-free survival,4.8,MONTHS,1,2019-12-10,2020-05-04,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1046,OS,Overall survival,29.2,MONTHS,1,2019-12-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1047,DOR,Duration of response,5.3,MONTHS,0,2020-09-18,2021-02-26,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1047,PFS,Progression-free survival,0.5,MONTHS,0,2020-09-18,2020-10-03,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1047,OS,Overall survival,17.2,MONTHS,0,2020-09-18,2022-02-24,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1048,PFS,Progression-free survival,0.5,MONTHS,0,2021-09-10,2021-09-25,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1048,OS,Overall survival,8.1,MONTHS,1,2021-09-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1049,DOR,Duration of response,2.6,MONTHS,1,2019-11-28,2020-02-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1049,PFS,Progression-free survival,14.8,MONTHS,0,2019-11-28,2021-02-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1049,OS,Overall survival,14.8,MONTHS,1,2019-11-28,2021-02-20,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1050,PFS,Progression-free survival,0.5,MONTHS,0,2020-02-15,2020-03-01,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1050,OS,Overall survival,27.0,MONTHS,1,2020-02-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1051,PFS,Progression-free survival,10.5,MONTHS,0,2020-12-06,2021-10-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1051,OS,Overall survival,14.8,MONTHS,0,2020-12-06,2022-03-01,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1052,DOR,Duration of response,8.8,MONTHS,1,2021-08-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1052,PFS,Progression-free survival,8.8,MONTHS,1,2021-08-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1052,OS,Overall survival,8.8,MONTHS,1,2021-08-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1053,DOR,Duration of response,3.6,MONTHS,0,2021-01-27,2021-05-17,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1053,PFS,Progression-free survival,0.5,MONTHS,1,2021-01-27,2021-02-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1053,OS,Overall survival,15.6,MONTHS,1,2021-01-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1054,PFS,Progression-free survival,11.6,MONTHS,1,2021-04-05,2022-03-24,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1054,OS,Overall survival,13.3,MONTHS,1,2021-04-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1055,PFS,Progression-free survival,12.9,MONTHS,1,2020-03-21,2021-04-18,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1055,OS,Overall survival,25.8,MONTHS,1,2020-03-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1056,DOR,Duration of response,6.7,MONTHS,1,2021-10-24,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1056,PFS,Progression-free survival,0.7,MONTHS,0,2021-10-24,2021-11-14,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1056,OS,Overall survival,6.7,MONTHS,1,2021-10-24,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1057,PFS,Progression-free survival,14.0,MONTHS,1,2021-03-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1057,OS,Overall survival,14.0,MONTHS,1,2021-03-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1058,PFS,Progression-free survival,0.5,MONTHS,0,2021-10-14,2021-10-29,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1058,OS,Overall survival,7.0,MONTHS,1,2021-10-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1059,PFS,Progression-free survival,0.5,MONTHS,0,2021-12-27,2022-01-11,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1059,OS,Overall survival,4.6,MONTHS,1,2021-12-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1060,DOR,Duration of response,8.2,MONTHS,1,2019-12-13,2020-08-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1060,PFS,Progression-free survival,6.3,MONTHS,1,2019-12-13,2020-06-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1060,OS,Overall survival,25.4,MONTHS,1,2019-12-13,2022-01-24,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1061,PFS,Progression-free survival,1.8,MONTHS,0,2019-12-28,2020-02-21,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1061,OS,Overall survival,24.5,MONTHS,0,2019-12-28,2022-01-12,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1062,PFS,Progression-free survival,0.3,MONTHS,0,2019-10-08,2019-10-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1062,OS,Overall survival,0.3,MONTHS,0,2019-10-08,2019-10-17,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1063,DOR,Duration of response,3.4,MONTHS,1,2020-06-16,2020-09-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1063,PFS,Progression-free survival,0.5,MONTHS,1,2020-06-16,2020-07-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1063,OS,Overall survival,23.0,MONTHS,1,2020-06-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1064,DOR,Duration of response,12.7,MONTHS,1,2019-09-12,2020-10-03,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1064,PFS,Progression-free survival,3.5,MONTHS,1,2019-09-12,2019-12-28,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1064,OS,Overall survival,18.2,MONTHS,1,2019-09-12,2021-03-19,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1065,PFS,Progression-free survival,9.2,MONTHS,0,2021-02-21,2021-11-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1065,OS,Overall survival,14.8,MONTHS,1,2021-02-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1066,DOR,Duration of response,3.8,MONTHS,1,2020-06-15,2020-10-09,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1066,PFS,Progression-free survival,12.2,MONTHS,1,2020-06-15,2021-06-21,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1066,OS,Overall survival,23.0,MONTHS,1,2020-06-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1067,DOR,Duration of response,12.5,MONTHS,1,2021-05-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1067,PFS,Progression-free survival,1.5,MONTHS,1,2021-05-01,2021-06-16,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1067,OS,Overall survival,12.5,MONTHS,1,2021-05-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1068,DOR,Duration of response,5.9,MONTHS,1,2021-11-18,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1068,PFS,Progression-free survival,5.9,MONTHS,1,2021-11-18,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1068,OS,Overall survival,5.9,MONTHS,1,2021-11-18,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1069,PFS,Progression-free survival,2.9,MONTHS,0,2021-06-11,2021-09-07,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1069,OS,Overall survival,2.9,MONTHS,0,2021-06-11,2021-09-08,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1070,DOR,Duration of response,0.9,MONTHS,0,2020-12-12,2021-01-08,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1070,PFS,Progression-free survival,2.1,MONTHS,0,2020-12-12,2021-02-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1070,OS,Overall survival,2.1,MONTHS,0,2020-12-12,2021-02-13,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1071,PFS,Progression-free survival,6.5,MONTHS,1,2021-10-29,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1071,OS,Overall survival,6.5,MONTHS,1,2021-10-29,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1072,DOR,Duration of response,15.8,MONTHS,0,2020-11-29,2022-03-25,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1072,PFS,Progression-free survival,13.1,MONTHS,0,2020-11-29,2022-01-02,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1072,OS,Overall survival,17.5,MONTHS,1,2020-11-29,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1073,DOR,Duration of response,6.5,MONTHS,1,2020-12-29,2021-07-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1073,PFS,Progression-free survival,16.0,MONTHS,0,2020-12-29,2022-04-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1073,OS,Overall survival,16.0,MONTHS,1,2020-12-29,2022-04-30,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1074,DOR,Duration of response,0.9,MONTHS,1,2020-02-16,2020-03-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1074,PFS,Progression-free survival,0.5,MONTHS,0,2020-02-16,2020-03-02,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1074,OS,Overall survival,26.9,MONTHS,1,2020-02-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1075,PFS,Progression-free survival,10.0,MONTHS,1,2019-11-03,2020-09-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1075,OS,Overall survival,30.4,MONTHS,1,2019-11-03,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1076,PFS,Progression-free survival,6.5,MONTHS,0,2021-07-20,2022-02-03,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1076,OS,Overall survival,9.9,MONTHS,1,2021-07-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1077,DOR,Duration of response,7.1,MONTHS,1,2021-10-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1077,PFS,Progression-free survival,7.1,MONTHS,1,2021-10-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1077,OS,Overall survival,7.1,MONTHS,1,2021-10-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1078,PFS,Progression-free survival,9.7,MONTHS,0,2021-03-24,2022-01-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1078,OS,Overall survival,13.7,MONTHS,1,2021-03-24,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1079,PFS,Progression-free survival,6.9,MONTHS,1,2021-09-14,2022-04-12,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1079,OS,Overall survival,8.0,MONTHS,1,2021-09-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1080,DOR,Duration of response,5.6,MONTHS,1,2021-02-19,2021-08-08,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1080,PFS,Progression-free survival,1.9,MONTHS,0,2021-02-19,2021-04-18,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1080,OS,Overall survival,8.6,MONTHS,1,2021-02-19,2021-11-08,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1081,DOR,Duration of response,3.6,MONTHS,1,2022-01-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1081,PFS,Progression-free survival,3.6,MONTHS,1,2022-01-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1081,OS,Overall survival,3.6,MONTHS,1,2022-01-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1082,PFS,Progression-free survival,16.5,MONTHS,1,2020-12-30,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1082,OS,Overall survival,16.5,MONTHS,1,2020-12-30,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1083,DOR,Duration of response,7.5,MONTHS,1,2021-04-17,2021-12-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1083,PFS,Progression-free survival,4.8,MONTHS,1,2021-04-17,2021-09-10,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1083,OS,Overall survival,12.9,MONTHS,1,2021-04-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1084,PFS,Progression-free survival,16.6,MONTHS,1,2020-12-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1084,OS,Overall survival,16.6,MONTHS,1,2020-12-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1085,PFS,Progression-free survival,10.6,MONTHS,1,2020-06-21,2021-05-10,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1085,OS,Overall survival,22.8,MONTHS,1,2020-06-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1086,DOR,Duration of response,2.2,MONTHS,0,2021-01-05,2021-03-12,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1086,PFS,Progression-free survival,2.2,MONTHS,0,2021-01-05,2021-03-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1086,OS,Overall survival,2.2,MONTHS,0,2021-01-05,2021-03-12,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1087,PFS,Progression-free survival,11.2,MONTHS,1,2021-02-18,2022-01-25,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1087,OS,Overall survival,14.9,MONTHS,1,2021-02-18,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1088,PFS,Progression-free survival,6.8,MONTHS,1,2021-04-03,2021-10-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1088,OS,Overall survival,13.4,MONTHS,1,2021-04-03,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1089,PFS,Progression-free survival,7.9,MONTHS,0,2020-10-21,2021-06-18,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1089,OS,Overall survival,18.8,MONTHS,1,2020-10-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1090,DOR,Duration of response,6.7,MONTHS,1,2021-10-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1090,PFS,Progression-free survival,1.4,MONTHS,0,2021-10-25,2021-12-07,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1090,OS,Overall survival,6.7,MONTHS,1,2021-10-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1091,DOR,Duration of response,5.3,MONTHS,1,2021-12-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1091,PFS,Progression-free survival,0.5,MONTHS,1,2021-12-05,2021-12-20,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1091,OS,Overall survival,5.3,MONTHS,1,2021-12-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1092,DOR,Duration of response,11.6,MONTHS,1,2020-07-27,2021-07-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1092,PFS,Progression-free survival,0.5,MONTHS,1,2020-07-27,2020-08-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1092,OS,Overall survival,21.6,MONTHS,1,2020-07-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1093,DOR,Duration of response,5.2,MONTHS,0,2019-08-22,2020-01-27,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1093,PFS,Progression-free survival,17.2,MONTHS,1,2019-08-22,2021-01-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1093,OS,Overall survival,31.5,MONTHS,1,2019-08-22,2022-04-07,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1094,PFS,Progression-free survival,0.5,MONTHS,1,2021-05-31,2021-06-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1094,OS,Overall survival,11.5,MONTHS,1,2021-05-31,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1095,DOR,Duration of response,2.1,MONTHS,1,2022-03-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1095,PFS,Progression-free survival,2.1,MONTHS,1,2022-03-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1095,OS,Overall survival,2.1,MONTHS,1,2022-03-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1096,PFS,Progression-free survival,15.4,MONTHS,1,2019-11-09,2021-02-20,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1096,OS,Overall survival,15.4,MONTHS,1,2019-11-09,2021-02-20,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1097,PFS,Progression-free survival,7.5,MONTHS,0,2020-01-24,2020-09-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1097,OS,Overall survival,17.8,MONTHS,0,2020-01-24,2021-07-19,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1098,DOR,Duration of response,11.5,MONTHS,1,2021-05-31,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1098,PFS,Progression-free survival,11.5,MONTHS,1,2021-05-31,2022-05-16,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1098,OS,Overall survival,11.5,MONTHS,1,2021-05-31,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1099,PFS,Progression-free survival,1.8,MONTHS,0,2021-03-11,2021-05-05,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1099,OS,Overall survival,1.8,MONTHS,0,2021-03-11,2021-05-05,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1100,DOR,Duration of response,4.3,MONTHS,1,2022-01-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1100,PFS,Progression-free survival,4.3,MONTHS,1,2022-01-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1100,OS,Overall survival,4.3,MONTHS,1,2022-01-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1101,DOR,Duration of response,7.7,MONTHS,0,2020-10-11,2021-06-02,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1101,PFS,Progression-free survival,2.8,MONTHS,0,2020-10-11,2021-01-04,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1101,OS,Overall survival,16.5,MONTHS,0,2020-10-11,2022-02-25,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1102,PFS,Progression-free survival,13.4,MONTHS,1,2020-05-20,2021-07-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1102,OS,Overall survival,23.9,MONTHS,1,2020-05-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1103,DOR,Duration of response,18.8,MONTHS,0,2020-06-14,2022-01-07,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1103,PFS,Progression-free survival,14.8,MONTHS,0,2020-06-14,2021-09-07,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1103,OS,Overall survival,20.8,MONTHS,1,2020-06-14,2022-03-09,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1104,PFS,Progression-free survival,6.4,MONTHS,0,2020-03-11,2020-09-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1104,OS,Overall survival,22.6,MONTHS,1,2020-03-11,2022-01-28,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1105,DOR,Duration of response,0.3,MONTHS,0,2020-07-09,2020-07-18,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1105,PFS,Progression-free survival,0.3,MONTHS,0,2020-07-09,2020-07-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1105,OS,Overall survival,0.3,MONTHS,0,2020-07-09,2020-07-19,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1106,PFS,Progression-free survival,12.4,MONTHS,0,2021-03-30,2022-04-11,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1106,OS,Overall survival,12.4,MONTHS,0,2021-03-30,2022-04-11,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1107,DOR,Duration of response,3.4,MONTHS,1,2022-02-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1107,PFS,Progression-free survival,3.4,MONTHS,1,2022-02-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1107,OS,Overall survival,3.4,MONTHS,1,2022-02-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1108,PFS,Progression-free survival,2.4,MONTHS,0,2020-12-19,2021-03-03,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1108,OS,Overall survival,2.4,MONTHS,0,2020-12-19,2021-03-03,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1109,PFS,Progression-free survival,7.4,MONTHS,0,2021-01-17,2021-08-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1109,OS,Overall survival,15.9,MONTHS,1,2021-01-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1110,DOR,Duration of response,0.4,MONTHS,0,2021-10-31,2021-11-12,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1110,PFS,Progression-free survival,0.4,MONTHS,0,2021-10-31,2021-11-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1110,OS,Overall survival,0.4,MONTHS,0,2021-10-31,2021-11-13,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1111,DOR,Duration of response,8.9,MONTHS,1,2020-07-31,2021-04-28,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1111,PFS,Progression-free survival,15.5,MONTHS,0,2020-07-31,2021-11-15,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1111,OS,Overall survival,15.5,MONTHS,0,2020-07-31,2021-11-15,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1112,DOR,Duration of response,10.1,MONTHS,1,2021-07-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1112,PFS,Progression-free survival,2.8,MONTHS,0,2021-07-13,2021-10-06,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1112,OS,Overall survival,10.1,MONTHS,1,2021-07-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1113,DOR,Duration of response,8.5,MONTHS,0,2020-12-24,2021-09-09,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1113,PFS,Progression-free survival,6.4,MONTHS,1,2020-12-24,2021-07-07,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1113,OS,Overall survival,16.7,MONTHS,1,2020-12-24,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1114,DOR,Duration of response,15.9,MONTHS,0,2020-12-18,2022-04-16,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1114,PFS,Progression-free survival,11.8,MONTHS,0,2020-12-18,2021-12-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1114,OS,Overall survival,16.9,MONTHS,1,2020-12-18,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1115,DOR,Duration of response,12.3,MONTHS,1,2020-09-18,2021-09-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1115,PFS,Progression-free survival,12.6,MONTHS,0,2020-09-18,2021-10-07,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1115,OS,Overall survival,12.6,MONTHS,0,2020-09-18,2021-10-07,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1116,PFS,Progression-free survival,9.5,MONTHS,0,2020-10-23,2021-08-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1116,OS,Overall survival,18.7,MONTHS,1,2020-10-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1117,PFS,Progression-free survival,6.3,MONTHS,1,2020-09-21,2021-04-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1117,OS,Overall survival,19.8,MONTHS,1,2020-09-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1118,PFS,Progression-free survival,13.3,MONTHS,1,2021-04-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1118,OS,Overall survival,13.3,MONTHS,1,2021-04-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1119,DOR,Duration of response,2.1,MONTHS,0,2019-08-22,2019-10-25,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1119,PFS,Progression-free survival,9.1,MONTHS,0,2019-08-22,2020-05-25,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1119,OS,Overall survival,32.8,MONTHS,1,2019-08-22,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1120,PFS,Progression-free survival,8.8,MONTHS,1,2020-05-14,2021-02-06,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1120,OS,Overall survival,24.0,MONTHS,1,2020-05-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1121,DOR,Duration of response,4.4,MONTHS,0,2020-06-14,2020-10-26,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1121,PFS,Progression-free survival,2.4,MONTHS,0,2020-06-14,2020-08-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1121,OS,Overall survival,23.0,MONTHS,1,2020-06-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1122,DOR,Duration of response,13.4,MONTHS,1,2021-04-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1122,PFS,Progression-free survival,0.5,MONTHS,1,2021-04-04,2021-04-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1122,OS,Overall survival,13.4,MONTHS,1,2021-04-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1123,PFS,Progression-free survival,5.5,MONTHS,1,2020-05-05,2020-10-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1123,OS,Overall survival,24.3,MONTHS,1,2020-05-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1124,DOR,Duration of response,0.9,MONTHS,1,2021-09-20,2021-10-17,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1124,PFS,Progression-free survival,3.4,MONTHS,0,2021-09-20,2022-01-03,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1124,OS,Overall survival,3.4,MONTHS,0,2021-09-20,2022-01-03,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1125,PFS,Progression-free survival,3.8,MONTHS,0,2021-06-11,2021-10-05,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1125,OS,Overall survival,11.1,MONTHS,1,2021-06-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1126,DOR,Duration of response,4.5,MONTHS,1,2021-09-11,2022-01-26,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1126,PFS,Progression-free survival,0.6,MONTHS,1,2021-09-11,2021-09-29,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1126,OS,Overall survival,8.1,MONTHS,1,2021-09-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1127,PFS,Progression-free survival,17.6,MONTHS,0,2020-07-07,2021-12-25,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1127,OS,Overall survival,22.3,MONTHS,1,2020-07-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1128,PFS,Progression-free survival,0.5,MONTHS,0,2020-04-11,2020-04-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1128,OS,Overall survival,25.1,MONTHS,1,2020-04-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1129,DOR,Duration of response,6.6,MONTHS,1,2020-11-18,2021-06-07,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1129,PFS,Progression-free survival,7.4,MONTHS,1,2020-11-18,2021-07-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1129,OS,Overall survival,17.9,MONTHS,1,2020-11-18,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1130,PFS,Progression-free survival,0.6,MONTHS,1,2022-04-23,2022-05-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1130,OS,Overall survival,0.8,MONTHS,1,2022-04-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1131,DOR,Duration of response,5.5,MONTHS,0,2020-12-25,2021-06-10,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1131,PFS,Progression-free survival,16.4,MONTHS,0,2020-12-25,2022-05-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1131,OS,Overall survival,16.7,MONTHS,1,2020-12-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1132,DOR,Duration of response,12.3,MONTHS,1,2019-10-25,2020-11-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1132,PFS,Progression-free survival,0.6,MONTHS,0,2019-10-25,2019-11-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1132,OS,Overall survival,12.9,MONTHS,1,2019-10-25,2020-11-21,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1133,DOR,Duration of response,12.6,MONTHS,1,2021-02-27,2022-03-18,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1133,PFS,Progression-free survival,0.6,MONTHS,1,2021-02-27,2021-03-17,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1133,OS,Overall survival,14.6,MONTHS,1,2021-02-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1134,DOR,Duration of response,7.4,MONTHS,0,2020-10-04,2021-05-17,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1134,PFS,Progression-free survival,10.4,MONTHS,0,2020-10-04,2021-08-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1134,OS,Overall survival,15.6,MONTHS,1,2020-10-04,2022-01-22,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1135,DOR,Duration of response,2.1,MONTHS,0,2019-12-14,2020-02-16,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1135,PFS,Progression-free survival,11.9,MONTHS,1,2019-12-14,2020-12-10,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1135,OS,Overall survival,20.0,MONTHS,1,2019-12-14,2021-08-14,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1136,DOR,Duration of response,15.7,MONTHS,1,2020-05-23,2021-09-13,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1136,PFS,Progression-free survival,12.7,MONTHS,1,2020-05-23,2021-06-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1136,OS,Overall survival,21.8,MONTHS,1,2020-05-23,2022-03-18,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1137,PFS,Progression-free survival,3.3,MONTHS,0,2021-04-14,2021-07-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1137,OS,Overall survival,13.0,MONTHS,1,2021-04-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1138,DOR,Duration of response,2.1,MONTHS,1,2020-08-08,2020-10-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1138,PFS,Progression-free survival,4.5,MONTHS,0,2020-08-08,2020-12-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1138,OS,Overall survival,21.2,MONTHS,1,2020-08-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1139,PFS,Progression-free survival,7.9,MONTHS,1,2020-04-05,2020-12-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1139,OS,Overall survival,25.3,MONTHS,1,2020-04-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1140,DOR,Duration of response,7.9,MONTHS,0,2020-08-20,2021-04-17,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1140,PFS,Progression-free survival,10.1,MONTHS,1,2020-08-20,2021-06-23,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1140,OS,Overall survival,20.8,MONTHS,1,2020-08-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1141,PFS,Progression-free survival,10.9,MONTHS,1,2021-03-20,2022-02-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1141,OS,Overall survival,13.9,MONTHS,1,2021-03-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1142,DOR,Duration of response,4.8,MONTHS,1,2021-12-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1142,PFS,Progression-free survival,0.5,MONTHS,0,2021-12-21,2022-01-05,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1142,OS,Overall survival,4.8,MONTHS,1,2021-12-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1143,DOR,Duration of response,1.8,MONTHS,1,2021-10-09,2021-12-03,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1143,PFS,Progression-free survival,2.1,MONTHS,0,2021-10-09,2021-12-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1143,OS,Overall survival,7.2,MONTHS,1,2021-10-09,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1144,DOR,Duration of response,2.0,MONTHS,1,2019-12-15,2020-02-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1144,PFS,Progression-free survival,2.0,MONTHS,0,2019-12-15,2020-02-14,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1144,OS,Overall survival,2.0,MONTHS,0,2019-12-15,2020-02-14,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1145,PFS,Progression-free survival,1.6,MONTHS,0,2021-09-20,2021-11-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1145,OS,Overall survival,7.8,MONTHS,1,2021-09-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1146,PFS,Progression-free survival,16.4,MONTHS,1,2021-01-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1146,OS,Overall survival,16.4,MONTHS,1,2021-01-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1147,PFS,Progression-free survival,7.7,MONTHS,1,2021-09-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1147,OS,Overall survival,7.7,MONTHS,1,2021-09-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1148,DOR,Duration of response,11.4,MONTHS,0,2020-02-01,2021-01-13,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1148,PFS,Progression-free survival,0.5,MONTHS,0,2020-02-01,2020-02-16,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1148,OS,Overall survival,16.7,MONTHS,0,2020-02-01,2021-06-23,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1149,PFS,Progression-free survival,6.2,MONTHS,1,2021-04-09,2021-10-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1149,OS,Overall survival,13.2,MONTHS,1,2021-04-09,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1150,PFS,Progression-free survival,7.9,MONTHS,1,2021-09-19,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1150,OS,Overall survival,7.9,MONTHS,1,2021-09-19,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1151,PFS,Progression-free survival,0.5,MONTHS,1,2020-02-17,2020-03-03,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1151,OS,Overall survival,26.9,MONTHS,1,2020-02-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1152,DOR,Duration of response,18.4,MONTHS,0,2020-06-03,2021-12-15,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1152,PFS,Progression-free survival,5.5,MONTHS,0,2020-06-03,2020-11-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1152,OS,Overall survival,12.3,MONTHS,1,2020-06-03,2021-06-12,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1153,PFS,Progression-free survival,4.1,MONTHS,0,2021-04-15,2021-08-18,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1153,OS,Overall survival,13.0,MONTHS,1,2021-04-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1154,PFS,Progression-free survival,9.7,MONTHS,0,2021-05-07,2022-02-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1154,OS,Overall survival,9.7,MONTHS,0,2021-05-07,2022-02-26,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1155,DOR,Duration of response,12.3,MONTHS,1,2021-05-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1155,PFS,Progression-free survival,11.5,MONTHS,0,2021-05-08,2022-04-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1155,OS,Overall survival,12.3,MONTHS,1,2021-05-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1156,PFS,Progression-free survival,4.5,MONTHS,0,2019-08-03,2019-12-18,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1156,OS,Overall survival,22.5,MONTHS,0,2019-08-03,2021-06-18,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1157,DOR,Duration of response,13.4,MONTHS,1,2020-05-01,2021-06-13,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1157,PFS,Progression-free survival,4.7,MONTHS,1,2020-05-01,2020-09-21,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1157,OS,Overall survival,16.5,MONTHS,1,2020-05-01,2021-09-15,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1158,DOR,Duration of response,3.6,MONTHS,1,2020-09-26,2021-01-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1158,PFS,Progression-free survival,10.3,MONTHS,0,2020-09-26,2021-08-06,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1158,OS,Overall survival,19.6,MONTHS,1,2020-09-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1159,DOR,Duration of response,0.9,MONTHS,0,2019-08-25,2019-09-21,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1159,PFS,Progression-free survival,13.2,MONTHS,0,2019-08-25,2020-09-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1159,OS,Overall survival,13.2,MONTHS,0,2019-08-25,2020-09-30,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1160,PFS,Progression-free survival,10.4,MONTHS,1,2019-08-11,2020-06-23,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1160,OS,Overall survival,10.4,MONTHS,1,2019-08-11,2020-06-23,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1161,DOR,Duration of response,0.6,MONTHS,0,2021-06-02,2021-06-19,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1161,PFS,Progression-free survival,0.6,MONTHS,0,2021-06-02,2021-06-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1161,OS,Overall survival,0.6,MONTHS,0,2021-06-02,2021-06-19,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1162,PFS,Progression-free survival,8.2,MONTHS,1,2021-09-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1162,OS,Overall survival,8.2,MONTHS,1,2021-09-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1163,PFS,Progression-free survival,1.9,MONTHS,1,2021-05-30,2021-07-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1163,OS,Overall survival,11.5,MONTHS,1,2021-05-30,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1164,PFS,Progression-free survival,11.1,MONTHS,1,2020-03-30,2021-03-03,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1164,OS,Overall survival,25.5,MONTHS,1,2020-03-30,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1165,DOR,Duration of response,14.4,MONTHS,1,2019-09-09,2020-11-20,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1165,PFS,Progression-free survival,7.2,MONTHS,0,2019-09-09,2020-04-15,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1165,OS,Overall survival,10.2,MONTHS,1,2019-09-09,2020-07-15,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1166,PFS,Progression-free survival,14.2,MONTHS,1,2020-05-21,2021-07-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1166,OS,Overall survival,23.8,MONTHS,1,2020-05-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1167,DOR,Duration of response,12.2,MONTHS,1,2020-05-12,2021-05-18,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1167,PFS,Progression-free survival,2.8,MONTHS,1,2020-05-12,2020-08-05,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1167,OS,Overall survival,16.6,MONTHS,1,2020-05-12,2021-09-29,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1168,DOR,Duration of response,0.9,MONTHS,1,2020-09-25,2020-10-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1168,PFS,Progression-free survival,2.8,MONTHS,0,2020-09-25,2020-12-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1168,OS,Overall survival,2.8,MONTHS,0,2020-09-25,2020-12-20,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1169,DOR,Duration of response,4.1,MONTHS,0,2020-05-25,2020-09-27,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1169,PFS,Progression-free survival,21.0,MONTHS,0,2020-05-25,2022-02-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1169,OS,Overall survival,23.7,MONTHS,1,2020-05-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1170,DOR,Duration of response,4.1,MONTHS,1,2020-09-26,2021-01-29,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1170,PFS,Progression-free survival,14.5,MONTHS,1,2020-09-26,2021-12-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1170,OS,Overall survival,18.9,MONTHS,1,2020-09-26,2022-04-24,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1171,PFS,Progression-free survival,14.5,MONTHS,0,2019-09-08,2020-11-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1171,OS,Overall survival,18.1,MONTHS,1,2019-09-08,2021-03-12,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1172,PFS,Progression-free survival,1.7,MONTHS,1,2022-03-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1172,OS,Overall survival,1.7,MONTHS,1,2022-03-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1173,DOR,Duration of response,0.6,MONTHS,0,2021-07-23,2021-08-10,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1173,PFS,Progression-free survival,0.6,MONTHS,0,2021-07-23,2021-08-10,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1173,OS,Overall survival,0.6,MONTHS,0,2021-07-23,2021-08-10,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1174,PFS,Progression-free survival,10.5,MONTHS,0,2019-08-22,2020-07-07,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1174,OS,Overall survival,12.5,MONTHS,0,2019-08-22,2020-09-05,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1175,PFS,Progression-free survival,1.2,MONTHS,0,2021-04-20,2021-05-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1175,OS,Overall survival,1.2,MONTHS,0,2021-04-20,2021-05-28,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1176,DOR,Duration of response,21.8,MONTHS,0,2019-12-23,2021-10-17,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1176,PFS,Progression-free survival,9.3,MONTHS,0,2019-12-23,2020-10-01,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1176,OS,Overall survival,26.9,MONTHS,0,2019-12-23,2022-03-21,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1177,PFS,Progression-free survival,5.7,MONTHS,0,2021-06-09,2021-11-29,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1177,OS,Overall survival,11.2,MONTHS,1,2021-06-09,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1178,DOR,Duration of response,7.4,MONTHS,0,2020-01-02,2020-08-14,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1178,PFS,Progression-free survival,9.0,MONTHS,0,2020-01-02,2020-10-02,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1178,OS,Overall survival,16.2,MONTHS,1,2020-01-02,2021-05-09,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1179,PFS,Progression-free survival,8.2,MONTHS,1,2021-07-17,2022-03-24,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1179,OS,Overall survival,10.0,MONTHS,1,2021-07-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1180,PFS,Progression-free survival,0.5,MONTHS,0,2021-08-29,2021-09-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1180,OS,Overall survival,0.8,MONTHS,0,2021-08-29,2021-09-22,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1181,PFS,Progression-free survival,7.9,MONTHS,0,2021-08-30,2022-04-27,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1181,OS,Overall survival,8.5,MONTHS,1,2021-08-30,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1182,PFS,Progression-free survival,4.6,MONTHS,1,2021-02-17,2021-07-07,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1182,OS,Overall survival,14.9,MONTHS,1,2021-02-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1183,DOR,Duration of response,4.3,MONTHS,1,2022-01-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1183,PFS,Progression-free survival,4.3,MONTHS,1,2022-01-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1183,OS,Overall survival,4.3,MONTHS,1,2022-01-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1184,PFS,Progression-free survival,11.0,MONTHS,0,2020-08-19,2021-07-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1184,OS,Overall survival,20.9,MONTHS,1,2020-08-19,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1185,DOR,Duration of response,7.6,MONTHS,1,2021-09-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1185,PFS,Progression-free survival,5.1,MONTHS,0,2021-09-26,2022-02-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1185,OS,Overall survival,7.6,MONTHS,1,2021-09-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1186,DOR,Duration of response,5.6,MONTHS,1,2021-11-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1186,PFS,Progression-free survival,0.5,MONTHS,1,2021-11-27,2021-12-12,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1186,OS,Overall survival,5.6,MONTHS,1,2021-11-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1187,DOR,Duration of response,9.1,MONTHS,1,2020-07-29,2021-05-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1187,PFS,Progression-free survival,7.6,MONTHS,0,2020-07-29,2021-03-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1187,OS,Overall survival,17.9,MONTHS,1,2020-07-29,2022-01-25,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1188,DOR,Duration of response,9.4,MONTHS,0,2020-08-30,2021-06-12,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1188,PFS,Progression-free survival,11.2,MONTHS,0,2020-08-30,2021-08-06,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1188,OS,Overall survival,18.5,MONTHS,0,2020-08-30,2022-03-16,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1189,PFS,Progression-free survival,6.6,MONTHS,1,2021-10-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1189,OS,Overall survival,6.6,MONTHS,1,2021-10-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1190,DOR,Duration of response,15.3,MONTHS,1,2021-02-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1190,PFS,Progression-free survival,6.5,MONTHS,0,2021-02-04,2021-08-21,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1190,OS,Overall survival,15.3,MONTHS,1,2021-02-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1191,DOR,Duration of response,6.2,MONTHS,0,2021-09-23,2022-03-31,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1191,PFS,Progression-free survival,3.5,MONTHS,0,2021-09-23,2022-01-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1191,OS,Overall survival,7.7,MONTHS,1,2021-09-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1192,DOR,Duration of response,12.8,MONTHS,1,2020-01-01,2021-01-25,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1192,PFS,Progression-free survival,9.7,MONTHS,1,2020-01-01,2020-10-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1192,OS,Overall survival,17.6,MONTHS,1,2020-01-01,2021-06-20,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1193,PFS,Progression-free survival,4.4,MONTHS,0,2021-01-26,2021-06-09,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1193,OS,Overall survival,15.6,MONTHS,1,2021-01-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1194,PFS,Progression-free survival,7.7,MONTHS,1,2021-09-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1194,OS,Overall survival,7.7,MONTHS,1,2021-09-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1195,DOR,Duration of response,6.8,MONTHS,0,2021-06-04,2021-12-28,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1195,PFS,Progression-free survival,0.9,MONTHS,1,2021-06-04,2021-07-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1195,OS,Overall survival,11.4,MONTHS,1,2021-06-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1196,DOR,Duration of response,6.9,MONTHS,1,2020-06-23,2021-01-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1196,PFS,Progression-free survival,0.5,MONTHS,1,2020-06-23,2020-07-08,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1196,OS,Overall survival,22.7,MONTHS,1,2020-06-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1197,PFS,Progression-free survival,8.1,MONTHS,0,2020-05-21,2021-01-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1197,OS,Overall survival,19.2,MONTHS,0,2020-05-21,2021-12-26,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1198,DOR,Duration of response,2.6,MONTHS,1,2021-07-15,2021-10-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1198,PFS,Progression-free survival,2.6,MONTHS,0,2021-07-15,2021-10-03,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1198,OS,Overall survival,2.6,MONTHS,0,2021-07-15,2021-10-03,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1199,PFS,Progression-free survival,11.7,MONTHS,1,2021-05-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1199,OS,Overall survival,11.7,MONTHS,1,2021-05-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1200,PFS,Progression-free survival,7.2,MONTHS,1,2020-03-26,2020-10-31,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1200,OS,Overall survival,24.0,MONTHS,1,2020-03-26,2022-03-26,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1201,PFS,Progression-free survival,0.5,MONTHS,0,2021-08-22,2021-09-06,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1201,OS,Overall survival,8.8,MONTHS,1,2021-08-22,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1202,DOR,Duration of response,11.7,MONTHS,0,2021-03-26,2022-03-17,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1202,PFS,Progression-free survival,1.1,MONTHS,1,2021-03-26,2021-04-28,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1202,OS,Overall survival,13.7,MONTHS,1,2021-03-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1203,DOR,Duration of response,2.3,MONTHS,0,2021-02-24,2021-05-05,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1203,PFS,Progression-free survival,0.5,MONTHS,0,2021-02-24,2021-03-11,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1203,OS,Overall survival,2.3,MONTHS,0,2021-02-24,2021-05-06,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1204,PFS,Progression-free survival,10.6,MONTHS,0,2021-03-23,2022-02-09,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1204,OS,Overall survival,13.8,MONTHS,1,2021-03-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1205,DOR,Duration of response,9.9,MONTHS,0,2020-10-07,2021-08-04,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1205,PFS,Progression-free survival,7.5,MONTHS,0,2020-10-07,2021-05-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1205,OS,Overall survival,19.3,MONTHS,1,2020-10-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1206,DOR,Duration of response,9.3,MONTHS,0,2019-08-01,2020-05-10,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1206,PFS,Progression-free survival,27.2,MONTHS,0,2019-08-01,2021-11-06,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1206,OS,Overall survival,27.2,MONTHS,0,2019-08-01,2021-11-06,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1207,PFS,Progression-free survival,4.2,MONTHS,0,2020-11-07,2021-03-15,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1207,OS,Overall survival,17.9,MONTHS,1,2020-11-07,2022-05-06,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1208,DOR,Duration of response,0.9,MONTHS,1,2020-01-27,2020-02-23,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1208,PFS,Progression-free survival,16.6,MONTHS,1,2020-01-27,2021-06-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1208,OS,Overall survival,27.6,MONTHS,1,2020-01-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1209,PFS,Progression-free survival,13.2,MONTHS,1,2021-04-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1209,OS,Overall survival,13.2,MONTHS,1,2021-04-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1210,DOR,Duration of response,10.8,MONTHS,1,2019-08-16,2020-07-10,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1210,PFS,Progression-free survival,4.2,MONTHS,0,2019-08-16,2019-12-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1210,OS,Overall survival,28.0,MONTHS,1,2019-08-16,2021-12-15,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1211,DOR,Duration of response,9.6,MONTHS,0,2020-07-10,2021-04-28,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1211,PFS,Progression-free survival,6.3,MONTHS,0,2020-07-10,2021-01-18,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1211,OS,Overall survival,21.8,MONTHS,1,2020-07-10,2022-05-05,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1212,PFS,Progression-free survival,1.1,MONTHS,0,2021-05-03,2021-06-05,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1212,OS,Overall survival,5.4,MONTHS,0,2021-05-03,2021-10-14,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1213,PFS,Progression-free survival,18.3,MONTHS,1,2020-11-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1213,OS,Overall survival,18.3,MONTHS,1,2020-11-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1214,DOR,Duration of response,3.5,MONTHS,1,2022-01-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1214,PFS,Progression-free survival,3.5,MONTHS,1,2022-01-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1214,OS,Overall survival,3.5,MONTHS,1,2022-01-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1215,PFS,Progression-free survival,0.5,MONTHS,1,2020-09-02,2020-09-17,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1215,OS,Overall survival,20.4,MONTHS,1,2020-09-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1216,PFS,Progression-free survival,6.4,MONTHS,0,2021-03-17,2021-09-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1216,OS,Overall survival,14.0,MONTHS,1,2021-03-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1217,DOR,Duration of response,2.9,MONTHS,1,2019-11-23,2020-02-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1217,PFS,Progression-free survival,0.9,MONTHS,0,2019-11-23,2019-12-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1217,OS,Overall survival,27.1,MONTHS,0,2019-11-23,2022-02-25,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1218,DOR,Duration of response,4.4,MONTHS,1,2021-01-24,2021-06-07,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1218,PFS,Progression-free survival,5.4,MONTHS,0,2021-01-24,2021-07-07,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1218,OS,Overall survival,15.7,MONTHS,1,2021-01-24,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1219,PFS,Progression-free survival,4.0,MONTHS,1,2020-09-16,2021-01-16,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1219,OS,Overall survival,19.9,MONTHS,1,2020-09-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1220,PFS,Progression-free survival,24.7,MONTHS,0,2019-11-10,2021-12-01,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1220,OS,Overall survival,24.7,MONTHS,0,2019-11-10,2021-12-01,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1221,PFS,Progression-free survival,12.4,MONTHS,0,2020-12-15,2021-12-27,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1221,OS,Overall survival,17.0,MONTHS,1,2020-12-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1222,DOR,Duration of response,0.9,MONTHS,1,2020-07-15,2020-08-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1222,PFS,Progression-free survival,4.0,MONTHS,0,2020-07-15,2020-11-14,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1222,OS,Overall survival,22.0,MONTHS,1,2020-07-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1223,PFS,Progression-free survival,5.0,MONTHS,1,2021-12-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1223,OS,Overall survival,5.0,MONTHS,1,2021-12-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1224,DOR,Duration of response,8.1,MONTHS,0,2020-12-16,2021-08-20,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1224,PFS,Progression-free survival,0.5,MONTHS,0,2020-12-16,2020-12-31,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1224,OS,Overall survival,17.0,MONTHS,1,2020-12-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1225,DOR,Duration of response,12.5,MONTHS,1,2020-05-01,2021-05-16,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1225,PFS,Progression-free survival,8.5,MONTHS,0,2020-05-01,2021-01-15,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1225,OS,Overall survival,24.5,MONTHS,1,2020-05-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1226,PFS,Progression-free survival,4.9,MONTHS,1,2021-01-24,2021-06-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1226,OS,Overall survival,15.7,MONTHS,1,2021-01-24,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1227,DOR,Duration of response,17.4,MONTHS,1,2020-02-02,2021-07-16,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1227,PFS,Progression-free survival,13.7,MONTHS,0,2020-02-02,2021-03-25,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1227,OS,Overall survival,27.4,MONTHS,1,2020-02-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1228,DOR,Duration of response,13.9,MONTHS,1,2021-01-28,2022-03-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1228,PFS,Progression-free survival,11.2,MONTHS,0,2021-01-28,2022-01-04,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1228,OS,Overall survival,15.5,MONTHS,1,2021-01-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1229,DOR,Duration of response,8.2,MONTHS,1,2020-03-22,2020-11-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1229,PFS,Progression-free survival,1.5,MONTHS,1,2020-03-22,2020-05-07,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1229,OS,Overall survival,19.0,MONTHS,1,2020-03-22,2021-10-21,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1230,DOR,Duration of response,0.9,MONTHS,1,2020-01-18,2020-02-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1230,PFS,Progression-free survival,7.2,MONTHS,1,2020-01-18,2020-08-24,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1230,OS,Overall survival,20.8,MONTHS,1,2020-01-18,2021-10-12,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1231,DOR,Duration of response,12.3,MONTHS,0,2020-04-19,2021-04-28,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1231,PFS,Progression-free survival,10.5,MONTHS,0,2020-04-19,2021-03-05,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1231,OS,Overall survival,19.5,MONTHS,0,2020-04-19,2021-12-04,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1232,DOR,Duration of response,11.8,MONTHS,1,2019-11-25,2020-11-18,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1232,PFS,Progression-free survival,0.5,MONTHS,1,2019-11-25,2019-12-10,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1232,OS,Overall survival,29.0,MONTHS,1,2019-11-25,2022-04-26,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1233,DOR,Duration of response,13.6,MONTHS,0,2019-12-18,2021-02-04,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1233,PFS,Progression-free survival,17.0,MONTHS,0,2019-12-18,2021-05-18,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1233,OS,Overall survival,17.0,MONTHS,0,2019-12-18,2021-05-18,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1234,PFS,Progression-free survival,9.5,MONTHS,1,2019-12-12,2020-09-26,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1234,OS,Overall survival,29.1,MONTHS,1,2019-12-12,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1235,DOR,Duration of response,4.0,MONTHS,1,2020-11-05,2021-03-07,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1235,PFS,Progression-free survival,4.8,MONTHS,0,2020-11-05,2021-03-31,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1235,OS,Overall survival,18.3,MONTHS,1,2020-11-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1236,PFS,Progression-free survival,9.1,MONTHS,1,2021-08-12,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1236,OS,Overall survival,9.1,MONTHS,1,2021-08-12,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1237,DOR,Duration of response,1.6,MONTHS,0,2020-03-02,2020-04-20,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1237,PFS,Progression-free survival,0.5,MONTHS,0,2020-03-02,2020-03-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1237,OS,Overall survival,26.4,MONTHS,1,2020-03-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1238,DOR,Duration of response,3.0,MONTHS,0,2021-08-09,2021-11-08,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1238,PFS,Progression-free survival,4.9,MONTHS,1,2021-08-09,2022-01-05,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1238,OS,Overall survival,9.2,MONTHS,1,2021-08-09,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1239,DOR,Duration of response,6.5,MONTHS,0,2021-02-04,2021-08-21,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1239,PFS,Progression-free survival,7.4,MONTHS,1,2021-02-04,2021-09-17,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1239,OS,Overall survival,15.3,MONTHS,1,2021-02-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1240,DOR,Duration of response,14.5,MONTHS,1,2021-03-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1240,PFS,Progression-free survival,0.5,MONTHS,1,2021-03-02,2021-03-17,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1240,OS,Overall survival,14.5,MONTHS,1,2021-03-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1241,PFS,Progression-free survival,7.4,MONTHS,0,2021-05-06,2021-12-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1241,OS,Overall survival,12.3,MONTHS,1,2021-05-06,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1242,DOR,Duration of response,1.0,MONTHS,1,2020-04-02,2020-05-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1242,PFS,Progression-free survival,1.0,MONTHS,0,2020-04-02,2020-05-02,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1242,OS,Overall survival,1.0,MONTHS,0,2020-04-02,2020-05-02,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1243,PFS,Progression-free survival,9.1,MONTHS,1,2021-08-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1243,OS,Overall survival,9.1,MONTHS,1,2021-08-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1244,DOR,Duration of response,4.9,MONTHS,0,2021-02-23,2021-07-22,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1244,PFS,Progression-free survival,14.7,MONTHS,1,2021-02-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1244,OS,Overall survival,14.7,MONTHS,1,2021-02-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1245,PFS,Progression-free survival,12.3,MONTHS,0,2020-12-15,2021-12-24,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1245,OS,Overall survival,12.3,MONTHS,0,2020-12-15,2021-12-24,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1246,PFS,Progression-free survival,12.5,MONTHS,1,2020-07-08,2021-07-23,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1246,OS,Overall survival,22.2,MONTHS,1,2020-07-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1247,DOR,Duration of response,1.5,MONTHS,0,2021-01-29,2021-03-16,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1247,PFS,Progression-free survival,7.6,MONTHS,1,2021-01-29,2021-09-17,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1247,OS,Overall survival,10.2,MONTHS,1,2021-01-29,2021-12-05,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1248,PFS,Progression-free survival,12.2,MONTHS,0,2021-01-27,2022-02-02,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1248,OS,Overall survival,15.6,MONTHS,1,2021-01-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1249,PFS,Progression-free survival,3.1,MONTHS,1,2021-07-15,2021-10-17,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1249,OS,Overall survival,10.0,MONTHS,1,2021-07-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1250,PFS,Progression-free survival,0.5,MONTHS,1,2021-07-16,2021-07-31,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1250,OS,Overall survival,10.0,MONTHS,1,2021-07-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1251,DOR,Duration of response,1.4,MONTHS,1,2021-10-11,2021-11-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1251,PFS,Progression-free survival,1.4,MONTHS,0,2021-10-11,2021-11-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1251,OS,Overall survival,1.4,MONTHS,0,2021-10-11,2021-11-22,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1252,PFS,Progression-free survival,3.4,MONTHS,0,2020-05-15,2020-08-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1252,OS,Overall survival,3.4,MONTHS,0,2020-05-15,2020-08-28,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1253,PFS,Progression-free survival,8.2,MONTHS,1,2021-09-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1253,OS,Overall survival,8.2,MONTHS,1,2021-09-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1254,DOR,Duration of response,6.4,MONTHS,0,2019-11-21,2020-06-03,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1254,PFS,Progression-free survival,7.3,MONTHS,0,2019-11-21,2020-06-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1254,OS,Overall survival,27.8,MONTHS,1,2019-11-21,2022-03-16,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1255,DOR,Duration of response,4.5,MONTHS,0,2021-05-21,2021-10-05,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1255,PFS,Progression-free survival,11.8,MONTHS,1,2021-05-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1255,OS,Overall survival,11.8,MONTHS,1,2021-05-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1256,DOR,Duration of response,11.5,MONTHS,1,2019-09-11,2020-08-26,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1256,PFS,Progression-free survival,13.4,MONTHS,1,2019-09-11,2020-10-23,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1256,OS,Overall survival,32.1,MONTHS,1,2019-09-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1257,DOR,Duration of response,8.5,MONTHS,0,2020-04-26,2021-01-10,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1257,PFS,Progression-free survival,8.8,MONTHS,0,2020-04-26,2021-01-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1257,OS,Overall survival,24.6,MONTHS,1,2020-04-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1258,DOR,Duration of response,12.2,MONTHS,1,2019-10-21,2020-10-26,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1258,PFS,Progression-free survival,12.5,MONTHS,1,2019-10-21,2020-11-04,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1258,OS,Overall survival,14.7,MONTHS,1,2019-10-21,2021-01-10,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1259,DOR,Duration of response,5.1,MONTHS,0,2020-06-20,2020-11-22,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1259,PFS,Progression-free survival,0.5,MONTHS,0,2020-06-20,2020-07-05,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1259,OS,Overall survival,16.3,MONTHS,0,2020-06-20,2021-10-29,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1260,DOR,Duration of response,9.4,MONTHS,0,2021-04-10,2022-01-21,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1260,PFS,Progression-free survival,13.2,MONTHS,1,2021-04-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1260,OS,Overall survival,13.2,MONTHS,1,2021-04-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1261,PFS,Progression-free survival,8.4,MONTHS,0,2020-08-17,2021-04-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1261,OS,Overall survival,13.3,MONTHS,1,2020-08-17,2021-09-26,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1262,DOR,Duration of response,1.5,MONTHS,1,2020-08-01,2020-09-16,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1262,PFS,Progression-free survival,0.5,MONTHS,0,2020-08-01,2020-08-16,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1262,OS,Overall survival,21.5,MONTHS,1,2020-08-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1263,DOR,Duration of response,13.0,MONTHS,1,2021-04-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1263,PFS,Progression-free survival,13.0,MONTHS,1,2021-04-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1263,OS,Overall survival,13.0,MONTHS,1,2021-04-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1264,DOR,Duration of response,0.9,MONTHS,0,2021-10-30,2021-11-26,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1264,PFS,Progression-free survival,1.3,MONTHS,0,2021-10-30,2021-12-10,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1264,OS,Overall survival,1.3,MONTHS,0,2021-10-30,2021-12-10,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1265,DOR,Duration of response,5.8,MONTHS,0,2021-10-10,2022-04-05,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1265,PFS,Progression-free survival,7.2,MONTHS,1,2021-10-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1265,OS,Overall survival,7.2,MONTHS,1,2021-10-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1266,DOR,Duration of response,10.1,MONTHS,1,2021-01-08,2021-11-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1266,PFS,Progression-free survival,16.2,MONTHS,1,2021-01-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1266,OS,Overall survival,16.2,MONTHS,1,2021-01-08,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1267,DOR,Duration of response,13.9,MONTHS,0,2020-02-21,2021-04-19,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1267,PFS,Progression-free survival,3.2,MONTHS,0,2020-02-21,2020-05-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1267,OS,Overall survival,19.8,MONTHS,1,2020-02-21,2021-10-16,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1268,DOR,Duration of response,4.9,MONTHS,1,2020-09-06,2021-02-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1268,PFS,Progression-free survival,0.5,MONTHS,1,2020-09-06,2020-09-21,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1268,OS,Overall survival,14.1,MONTHS,1,2020-09-06,2021-11-09,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1269,DOR,Duration of response,2.9,MONTHS,1,2021-12-02,2022-02-28,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1269,PFS,Progression-free survival,5.4,MONTHS,1,2021-12-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1269,OS,Overall survival,5.4,MONTHS,1,2021-12-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1270,DOR,Duration of response,7.5,MONTHS,1,2020-02-16,2020-10-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1270,PFS,Progression-free survival,7.5,MONTHS,0,2020-02-16,2020-10-01,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1270,OS,Overall survival,26.9,MONTHS,1,2020-02-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1271,DOR,Duration of response,12.0,MONTHS,0,2020-10-15,2021-10-15,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1271,PFS,Progression-free survival,8.3,MONTHS,0,2020-10-15,2021-06-25,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1271,OS,Overall survival,19.0,MONTHS,1,2020-10-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1272,DOR,Duration of response,15.9,MONTHS,0,2019-09-02,2020-12-29,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1272,PFS,Progression-free survival,26.5,MONTHS,0,2019-09-02,2021-11-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1272,OS,Overall survival,26.5,MONTHS,0,2019-09-02,2021-11-17,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1273,DOR,Duration of response,2.8,MONTHS,1,2020-08-16,2020-11-09,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1273,PFS,Progression-free survival,2.8,MONTHS,0,2020-08-16,2020-11-09,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1273,OS,Overall survival,2.8,MONTHS,0,2020-08-16,2020-11-09,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1274,DOR,Duration of response,3.0,MONTHS,0,2021-08-08,2021-11-07,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1274,PFS,Progression-free survival,3.0,MONTHS,0,2021-08-08,2021-11-07,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1274,OS,Overall survival,3.0,MONTHS,0,2021-08-08,2021-11-08,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1275,DOR,Duration of response,3.4,MONTHS,0,2021-03-19,2021-06-30,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1275,PFS,Progression-free survival,10.1,MONTHS,0,2021-03-19,2022-01-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1275,OS,Overall survival,13.9,MONTHS,1,2021-03-19,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1276,PFS,Progression-free survival,1.4,MONTHS,0,2019-10-07,2019-11-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1276,OS,Overall survival,26.0,MONTHS,1,2019-10-07,2021-12-06,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1277,PFS,Progression-free survival,18.5,MONTHS,0,2020-10-01,2022-04-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1277,OS,Overall survival,18.5,MONTHS,1,2020-10-01,2022-04-17,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1278,DOR,Duration of response,6.4,MONTHS,1,2021-11-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1278,PFS,Progression-free survival,6.4,MONTHS,1,2021-11-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1278,OS,Overall survival,6.4,MONTHS,1,2021-11-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1279,DOR,Duration of response,4.9,MONTHS,1,2019-08-05,2020-01-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1279,PFS,Progression-free survival,5.8,MONTHS,0,2019-08-05,2020-01-29,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1279,OS,Overall survival,5.8,MONTHS,0,2019-08-05,2020-01-29,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1280,PFS,Progression-free survival,3.2,MONTHS,0,2021-01-13,2021-04-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1280,OS,Overall survival,16.0,MONTHS,1,2021-01-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1281,PFS,Progression-free survival,0.5,MONTHS,1,2019-11-02,2019-11-17,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1281,OS,Overall survival,30.4,MONTHS,1,2019-11-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1282,DOR,Duration of response,12.2,MONTHS,1,2020-04-04,2021-04-10,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1282,PFS,Progression-free survival,8.1,MONTHS,1,2020-04-04,2020-12-07,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1282,OS,Overall survival,22.4,MONTHS,1,2020-04-04,2022-02-15,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1283,PFS,Progression-free survival,9.0,MONTHS,1,2021-08-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1283,OS,Overall survival,9.0,MONTHS,1,2021-08-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1284,DOR,Duration of response,12.2,MONTHS,1,2021-05-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1284,PFS,Progression-free survival,12.2,MONTHS,1,2021-05-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1284,OS,Overall survival,12.2,MONTHS,1,2021-05-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1285,PFS,Progression-free survival,2.9,MONTHS,0,2021-09-17,2021-12-14,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1285,OS,Overall survival,2.9,MONTHS,0,2021-09-17,2021-12-15,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1286,DOR,Duration of response,5.2,MONTHS,0,2020-04-29,2020-10-04,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1286,PFS,Progression-free survival,6.2,MONTHS,0,2020-04-29,2020-11-04,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1286,OS,Overall survival,20.4,MONTHS,1,2020-04-29,2022-01-10,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1287,DOR,Duration of response,1.1,MONTHS,0,2020-04-28,2020-05-30,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1287,PFS,Progression-free survival,1.1,MONTHS,0,2020-04-28,2020-05-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1287,OS,Overall survival,1.1,MONTHS,0,2020-04-28,2020-05-30,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1288,PFS,Progression-free survival,0.5,MONTHS,0,2020-02-07,2020-02-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1288,OS,Overall survival,25.6,MONTHS,0,2020-02-07,2022-03-27,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1289,DOR,Duration of response,2.6,MONTHS,0,2021-10-16,2022-01-03,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1289,PFS,Progression-free survival,2.6,MONTHS,0,2021-10-16,2022-01-04,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1289,OS,Overall survival,2.6,MONTHS,0,2021-10-16,2022-01-04,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1290,DOR,Duration of response,9.1,MONTHS,1,2020-08-31,2021-06-04,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1290,PFS,Progression-free survival,11.4,MONTHS,0,2020-08-31,2021-08-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1290,OS,Overall survival,14.8,MONTHS,0,2020-08-31,2021-11-24,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1291,DOR,Duration of response,13.4,MONTHS,0,2019-10-30,2020-12-11,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1291,PFS,Progression-free survival,2.5,MONTHS,0,2019-10-30,2020-01-14,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1291,OS,Overall survival,24.6,MONTHS,1,2019-10-30,2021-11-17,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1292,DOR,Duration of response,14.9,MONTHS,1,2020-04-26,2021-07-24,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1292,PFS,Progression-free survival,11.8,MONTHS,1,2020-04-26,2021-04-20,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1292,OS,Overall survival,11.8,MONTHS,1,2020-04-26,2021-04-20,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1293,PFS,Progression-free survival,8.3,MONTHS,1,2021-08-05,2022-04-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1293,OS,Overall survival,9.3,MONTHS,1,2021-08-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1294,PFS,Progression-free survival,8.3,MONTHS,0,2021-01-14,2021-09-24,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1294,OS,Overall survival,16.0,MONTHS,1,2021-01-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1295,DOR,Duration of response,0.9,MONTHS,0,2020-05-07,2020-06-03,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1295,PFS,Progression-free survival,7.6,MONTHS,0,2020-05-07,2020-12-24,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1295,OS,Overall survival,9.0,MONTHS,1,2020-05-07,2021-02-05,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1296,DOR,Duration of response,4.0,MONTHS,1,2020-03-27,2020-07-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1296,PFS,Progression-free survival,0.5,MONTHS,1,2020-03-27,2020-04-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1296,OS,Overall survival,25.6,MONTHS,1,2020-03-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1297,DOR,Duration of response,7.6,MONTHS,1,2021-09-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1297,PFS,Progression-free survival,7.6,MONTHS,1,2021-09-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1297,OS,Overall survival,7.6,MONTHS,1,2021-09-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1298,PFS,Progression-free survival,9.0,MONTHS,0,2021-01-29,2021-10-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1298,OS,Overall survival,10.3,MONTHS,1,2021-01-29,2021-12-09,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1299,DOR,Duration of response,0.9,MONTHS,1,2021-06-22,2021-07-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1299,PFS,Progression-free survival,6.6,MONTHS,1,2021-06-22,2022-01-09,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1299,OS,Overall survival,6.6,MONTHS,1,2021-06-22,2022-01-09,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1300,PFS,Progression-free survival,0.5,MONTHS,0,2019-11-09,2019-11-24,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1300,OS,Overall survival,12.3,MONTHS,1,2019-11-09,2020-11-17,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1301,PFS,Progression-free survival,5.7,MONTHS,0,2020-07-07,2020-12-27,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1301,OS,Overall survival,22.3,MONTHS,1,2020-07-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1302,DOR,Duration of response,1.1,MONTHS,1,2021-08-16,2021-09-18,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1302,PFS,Progression-free survival,9.0,MONTHS,1,2021-08-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1302,OS,Overall survival,9.0,MONTHS,1,2021-08-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1303,DOR,Duration of response,16.2,MONTHS,0,2020-07-30,2021-12-05,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1303,PFS,Progression-free survival,0.5,MONTHS,1,2020-07-30,2020-08-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1303,OS,Overall survival,21.5,MONTHS,1,2020-07-30,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1304,DOR,Duration of response,14.7,MONTHS,1,2020-08-18,2021-11-08,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1304,PFS,Progression-free survival,8.3,MONTHS,0,2020-08-18,2021-04-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1304,OS,Overall survival,13.9,MONTHS,1,2020-08-18,2021-10-15,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1305,PFS,Progression-free survival,2.9,MONTHS,0,2021-03-17,2021-06-14,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1305,OS,Overall survival,2.9,MONTHS,0,2021-03-17,2021-06-14,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1306,PFS,Progression-free survival,14.2,MONTHS,0,2020-08-22,2021-10-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1306,OS,Overall survival,20.8,MONTHS,1,2020-08-22,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1307,PFS,Progression-free survival,5.5,MONTHS,0,2021-07-17,2021-12-31,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1307,OS,Overall survival,10.0,MONTHS,1,2021-07-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1308,PFS,Progression-free survival,7.9,MONTHS,1,2020-03-13,2020-11-08,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1308,OS,Overall survival,11.8,MONTHS,1,2020-03-13,2021-03-07,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1309,PFS,Progression-free survival,0.5,MONTHS,0,2020-06-04,2020-06-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1309,OS,Overall survival,23.4,MONTHS,1,2020-06-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1310,DOR,Duration of response,6.6,MONTHS,0,2020-02-19,2020-09-07,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1310,PFS,Progression-free survival,4.3,MONTHS,0,2020-02-19,2020-06-29,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1310,OS,Overall survival,6.9,MONTHS,1,2020-02-19,2020-09-16,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1311,DOR,Duration of response,9.2,MONTHS,1,2021-03-15,2021-12-20,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1311,PFS,Progression-free survival,4.9,MONTHS,0,2021-03-15,2021-08-11,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1311,OS,Overall survival,14.0,MONTHS,1,2021-03-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1312,DOR,Duration of response,0.9,MONTHS,0,2021-07-21,2021-08-17,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1312,PFS,Progression-free survival,1.6,MONTHS,0,2021-07-21,2021-09-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1312,OS,Overall survival,9.8,MONTHS,1,2021-07-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1313,DOR,Duration of response,11.3,MONTHS,1,2020-03-23,2021-03-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1313,PFS,Progression-free survival,9.3,MONTHS,0,2020-03-23,2020-12-31,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1313,OS,Overall survival,25.8,MONTHS,1,2020-03-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1314,DOR,Duration of response,11.0,MONTHS,1,2020-02-15,2021-01-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1314,PFS,Progression-free survival,15.1,MONTHS,0,2020-02-15,2021-05-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1314,OS,Overall survival,15.1,MONTHS,0,2020-02-15,2021-05-20,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1315,DOR,Duration of response,12.8,MONTHS,0,2019-11-14,2020-12-08,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1315,PFS,Progression-free survival,8.5,MONTHS,0,2019-11-14,2020-07-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1315,OS,Overall survival,30.0,MONTHS,1,2019-11-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1316,DOR,Duration of response,7.8,MONTHS,1,2021-09-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1316,PFS,Progression-free survival,5.6,MONTHS,0,2021-09-20,2022-03-09,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1316,OS,Overall survival,7.8,MONTHS,1,2021-09-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1317,PFS,Progression-free survival,10.8,MONTHS,0,2019-11-06,2020-09-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1317,OS,Overall survival,16.9,MONTHS,1,2019-11-06,2021-04-03,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1318,PFS,Progression-free survival,1.8,MONTHS,0,2020-03-03,2020-04-27,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1318,OS,Overall survival,1.8,MONTHS,0,2020-03-03,2020-04-28,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1319,DOR,Duration of response,14.3,MONTHS,0,2019-09-14,2020-11-22,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1319,PFS,Progression-free survival,3.5,MONTHS,0,2019-09-14,2019-12-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1319,OS,Overall survival,10.5,MONTHS,1,2019-09-14,2020-07-30,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1320,DOR,Duration of response,1.6,MONTHS,0,2020-07-02,2020-08-20,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1320,PFS,Progression-free survival,2.7,MONTHS,0,2020-07-02,2020-09-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1320,OS,Overall survival,22.4,MONTHS,1,2020-07-02,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1321,DOR,Duration of response,3.3,MONTHS,1,2021-07-07,2021-10-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1321,PFS,Progression-free survival,0.5,MONTHS,0,2021-07-07,2021-07-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1321,OS,Overall survival,10.3,MONTHS,1,2021-07-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1322,DOR,Duration of response,6.2,MONTHS,1,2020-09-13,2021-03-21,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1322,PFS,Progression-free survival,0.5,MONTHS,1,2020-09-13,2020-09-28,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1322,OS,Overall survival,20.0,MONTHS,1,2020-09-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1323,DOR,Duration of response,6.1,MONTHS,1,2021-06-29,2022-01-01,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1323,PFS,Progression-free survival,3.3,MONTHS,0,2021-06-29,2021-10-07,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1323,OS,Overall survival,10.5,MONTHS,1,2021-06-29,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1324,DOR,Duration of response,4.1,MONTHS,1,2021-10-23,2022-02-25,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1324,PFS,Progression-free survival,6.0,MONTHS,1,2021-10-23,2022-04-24,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1324,OS,Overall survival,6.7,MONTHS,1,2021-10-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1325,DOR,Duration of response,3.6,MONTHS,1,2019-12-14,2020-04-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1325,PFS,Progression-free survival,11.3,MONTHS,0,2019-12-14,2020-11-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1325,OS,Overall survival,11.3,MONTHS,0,2019-12-14,2020-11-22,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1326,DOR,Duration of response,9.4,MONTHS,1,2021-08-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1326,PFS,Progression-free survival,0.5,MONTHS,1,2021-08-04,2021-08-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1326,OS,Overall survival,9.4,MONTHS,1,2021-08-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1327,DOR,Duration of response,0.9,MONTHS,0,2021-07-14,2021-08-10,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1327,PFS,Progression-free survival,3.5,MONTHS,0,2021-07-14,2021-10-29,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1327,OS,Overall survival,3.5,MONTHS,0,2021-07-14,2021-10-29,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1328,DOR,Duration of response,0.9,MONTHS,1,2019-12-29,2020-01-25,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1328,PFS,Progression-free survival,3.1,MONTHS,0,2019-12-29,2020-04-01,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1328,OS,Overall survival,19.5,MONTHS,0,2019-12-29,2021-08-14,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1329,DOR,Duration of response,5.6,MONTHS,1,2021-04-15,2021-10-02,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1329,PFS,Progression-free survival,8.7,MONTHS,1,2021-04-15,2022-01-05,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1329,OS,Overall survival,13.0,MONTHS,1,2021-04-15,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1330,DOR,Duration of response,12.8,MONTHS,1,2020-12-25,2022-01-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1330,PFS,Progression-free survival,8.1,MONTHS,1,2020-12-25,2021-08-29,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1330,OS,Overall survival,16.7,MONTHS,1,2020-12-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1331,PFS,Progression-free survival,10.3,MONTHS,1,2020-10-16,2021-08-26,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1331,OS,Overall survival,19.0,MONTHS,1,2020-10-16,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1332,PFS,Progression-free survival,7.6,MONTHS,1,2019-09-18,2020-05-06,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1332,OS,Overall survival,17.9,MONTHS,1,2019-09-18,2021-03-16,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1333,DOR,Duration of response,2.6,MONTHS,0,2020-10-24,2021-01-11,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1333,PFS,Progression-free survival,14.5,MONTHS,1,2020-10-24,2022-01-08,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1333,OS,Overall survival,18.5,MONTHS,1,2020-10-24,2022-05-10,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1334,DOR,Duration of response,3.1,MONTHS,0,2020-07-08,2020-10-10,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1334,PFS,Progression-free survival,0.5,MONTHS,0,2020-07-08,2020-07-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1334,OS,Overall survival,3.1,MONTHS,0,2020-07-08,2020-10-10,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1335,PFS,Progression-free survival,7.1,MONTHS,1,2021-08-26,2022-03-30,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1335,OS,Overall survival,8.6,MONTHS,1,2021-08-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1336,DOR,Duration of response,0.9,MONTHS,0,2020-12-03,2020-12-30,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1336,PFS,Progression-free survival,10.6,MONTHS,0,2020-12-03,2021-10-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1336,OS,Overall survival,10.6,MONTHS,0,2020-12-03,2021-10-22,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1337,PFS,Progression-free survival,5.3,MONTHS,0,2021-04-15,2021-09-23,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1337,OS,Overall survival,8.2,MONTHS,0,2021-04-15,2021-12-21,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1338,PFS,Progression-free survival,0.5,MONTHS,0,2020-02-11,2020-02-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1338,OS,Overall survival,21.7,MONTHS,0,2020-02-11,2021-12-02,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1339,DOR,Duration of response,7.1,MONTHS,0,2021-01-22,2021-08-26,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1339,PFS,Progression-free survival,12.3,MONTHS,0,2021-01-22,2022-01-31,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1339,OS,Overall survival,15.7,MONTHS,1,2021-01-22,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1340,DOR,Duration of response,7.3,MONTHS,1,2019-08-06,2020-03-15,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1340,PFS,Progression-free survival,0.5,MONTHS,1,2019-08-06,2019-08-21,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1340,OS,Overall survival,26.7,MONTHS,1,2019-08-06,2021-10-27,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1341,PFS,Progression-free survival,0.5,MONTHS,1,2020-12-12,2020-12-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1341,OS,Overall survival,6.9,MONTHS,1,2020-12-12,2021-07-10,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1342,DOR,Duration of response,15.1,MONTHS,1,2019-08-18,2020-11-20,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1342,PFS,Progression-free survival,13.6,MONTHS,1,2019-08-18,2020-10-05,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1342,OS,Overall survival,13.6,MONTHS,1,2019-08-18,2020-10-05,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1343,DOR,Duration of response,1.1,MONTHS,0,2022-03-16,2022-04-18,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1343,PFS,Progression-free survival,1.1,MONTHS,0,2022-03-16,2022-04-18,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1343,OS,Overall survival,1.1,MONTHS,0,2022-03-16,2022-04-18,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1344,PFS,Progression-free survival,3.6,MONTHS,1,2020-08-22,2020-12-10,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1344,OS,Overall survival,20.8,MONTHS,1,2020-08-22,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1345,PFS,Progression-free survival,9.1,MONTHS,1,2019-11-23,2020-08-26,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1345,OS,Overall survival,26.3,MONTHS,1,2019-11-23,2022-02-01,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1346,DOR,Duration of response,12.0,MONTHS,0,2020-05-02,2021-05-02,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1346,PFS,Progression-free survival,19.8,MONTHS,0,2020-05-02,2021-12-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1346,OS,Overall survival,19.8,MONTHS,0,2020-05-02,2021-12-26,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1347,DOR,Duration of response,2.4,MONTHS,0,2022-02-17,2022-05-01,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1347,PFS,Progression-free survival,0.5,MONTHS,0,2022-02-17,2022-03-04,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1347,OS,Overall survival,2.4,MONTHS,0,2022-02-17,2022-05-02,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1348,DOR,Duration of response,2.2,MONTHS,0,2020-11-06,2021-01-12,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1348,PFS,Progression-free survival,2.2,MONTHS,0,2020-11-06,2021-01-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1348,OS,Overall survival,2.2,MONTHS,0,2020-11-06,2021-01-13,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1349,PFS,Progression-free survival,5.7,MONTHS,0,2020-12-31,2021-06-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1349,OS,Overall survival,16.5,MONTHS,1,2020-12-31,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1350,DOR,Duration of response,7.2,MONTHS,1,2021-10-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1350,PFS,Progression-free survival,5.6,MONTHS,1,2021-10-10,2022-03-29,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1350,OS,Overall survival,7.2,MONTHS,1,2021-10-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1351,PFS,Progression-free survival,7.3,MONTHS,0,2020-11-20,2021-06-30,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1351,OS,Overall survival,17.8,MONTHS,1,2020-11-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1352,PFS,Progression-free survival,2.3,MONTHS,0,2021-01-14,2021-03-26,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1352,OS,Overall survival,2.3,MONTHS,0,2021-01-14,2021-03-26,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1353,PFS,Progression-free survival,3.1,MONTHS,0,2020-10-07,2021-01-09,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1353,OS,Overall survival,19.3,MONTHS,1,2020-10-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1354,DOR,Duration of response,8.4,MONTHS,1,2020-09-23,2021-06-06,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1354,PFS,Progression-free survival,1.0,MONTHS,1,2020-09-23,2020-10-23,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1354,OS,Overall survival,17.5,MONTHS,1,2020-09-23,2022-03-10,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1355,PFS,Progression-free survival,3.6,MONTHS,0,2019-11-11,2020-02-29,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1355,OS,Overall survival,3.6,MONTHS,0,2019-11-11,2020-02-29,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1356,DOR,Duration of response,10.8,MONTHS,1,2021-06-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1356,PFS,Progression-free survival,10.8,MONTHS,1,2021-06-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1356,OS,Overall survival,10.8,MONTHS,1,2021-06-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1357,PFS,Progression-free survival,15.5,MONTHS,1,2020-08-28,2021-12-13,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1357,OS,Overall survival,20.6,MONTHS,1,2020-08-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1358,DOR,Duration of response,2.2,MONTHS,1,2021-05-25,2021-07-31,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1358,PFS,Progression-free survival,4.6,MONTHS,0,2021-05-25,2021-10-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1358,OS,Overall survival,11.7,MONTHS,1,2021-05-25,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1359,DOR,Duration of response,0.9,MONTHS,1,2019-12-10,2020-01-06,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1359,PFS,Progression-free survival,18.8,MONTHS,0,2019-12-10,2021-07-04,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1359,OS,Overall survival,18.8,MONTHS,0,2019-12-10,2021-07-04,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1360,PFS,Progression-free survival,1.2,MONTHS,0,2019-11-15,2019-12-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1360,OS,Overall survival,24.8,MONTHS,0,2019-11-15,2021-12-09,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1361,PFS,Progression-free survival,2.1,MONTHS,0,2020-06-05,2020-08-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1361,OS,Overall survival,2.1,MONTHS,0,2020-06-05,2020-08-09,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1362,PFS,Progression-free survival,7.0,MONTHS,1,2021-05-26,2021-12-25,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1362,OS,Overall survival,11.7,MONTHS,1,2021-05-26,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1363,DOR,Duration of response,9.2,MONTHS,0,2020-03-14,2020-12-19,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1363,PFS,Progression-free survival,13.0,MONTHS,0,2020-03-14,2021-04-14,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1363,OS,Overall survival,26.1,MONTHS,1,2020-03-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1364,PFS,Progression-free survival,3.6,MONTHS,0,2021-01-01,2021-04-21,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1364,OS,Overall survival,3.6,MONTHS,0,2021-01-01,2021-04-22,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1365,PFS,Progression-free survival,2.5,MONTHS,0,2021-04-17,2021-07-02,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1365,OS,Overall survival,2.5,MONTHS,0,2021-04-17,2021-07-02,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1366,DOR,Duration of response,1.5,MONTHS,0,2020-05-26,2020-07-10,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1366,PFS,Progression-free survival,1.5,MONTHS,0,2020-05-26,2020-07-10,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1366,OS,Overall survival,1.5,MONTHS,0,2020-05-26,2020-07-10,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1367,DOR,Duration of response,0.9,MONTHS,0,2020-02-03,2020-03-01,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1367,PFS,Progression-free survival,10.6,MONTHS,1,2020-02-03,2020-12-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1367,OS,Overall survival,14.5,MONTHS,1,2020-02-03,2021-04-19,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1368,PFS,Progression-free survival,4.8,MONTHS,0,2021-04-10,2021-09-03,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1368,OS,Overall survival,11.1,MONTHS,1,2021-04-10,2022-03-14,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1369,DOR,Duration of response,8.4,MONTHS,1,2020-09-13,2021-05-27,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1369,PFS,Progression-free survival,12.2,MONTHS,0,2020-09-13,2021-09-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1369,OS,Overall survival,16.5,MONTHS,0,2020-09-13,2022-01-28,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1370,DOR,Duration of response,7.0,MONTHS,1,2021-06-29,2022-01-28,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1370,PFS,Progression-free survival,2.8,MONTHS,0,2021-06-29,2021-09-22,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1370,OS,Overall survival,10.5,MONTHS,1,2021-06-29,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1371,DOR,Duration of response,0.7,MONTHS,1,2021-06-22,2021-07-13,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1371,PFS,Progression-free survival,0.7,MONTHS,0,2021-06-22,2021-07-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1371,OS,Overall survival,0.7,MONTHS,0,2021-06-22,2021-07-13,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1372,PFS,Progression-free survival,9.6,MONTHS,1,2021-07-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1372,OS,Overall survival,9.6,MONTHS,1,2021-07-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1373,DOR,Duration of response,0.9,MONTHS,1,2019-08-08,2019-09-04,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1373,PFS,Progression-free survival,31.5,MONTHS,0,2019-08-08,2022-03-24,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1373,OS,Overall survival,31.5,MONTHS,0,2019-08-08,2022-03-24,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1374,DOR,Duration of response,2.6,MONTHS,1,2022-02-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1374,PFS,Progression-free survival,2.6,MONTHS,1,2022-02-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1374,OS,Overall survival,2.6,MONTHS,1,2022-02-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1375,DOR,Duration of response,11.6,MONTHS,1,2020-09-17,2021-09-05,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1375,PFS,Progression-free survival,7.6,MONTHS,0,2020-09-17,2021-05-06,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1375,OS,Overall survival,19.9,MONTHS,1,2020-09-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1376,DOR,Duration of response,4.4,MONTHS,0,2021-08-23,2022-01-04,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1376,PFS,Progression-free survival,8.7,MONTHS,1,2021-08-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1376,OS,Overall survival,8.7,MONTHS,1,2021-08-23,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1377,PFS,Progression-free survival,11.1,MONTHS,0,2019-12-10,2020-11-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1377,OS,Overall survival,11.1,MONTHS,0,2019-12-10,2020-11-12,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1378,PFS,Progression-free survival,7.1,MONTHS,0,2021-07-19,2022-02-20,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1378,OS,Overall survival,9.9,MONTHS,1,2021-07-19,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1379,PFS,Progression-free survival,1.3,MONTHS,0,2019-11-26,2020-01-05,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1379,OS,Overall survival,1.3,MONTHS,0,2019-11-26,2020-01-06,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1380,DOR,Duration of response,14.3,MONTHS,1,2020-12-24,2022-03-04,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1380,PFS,Progression-free survival,5.8,MONTHS,0,2020-12-24,2021-06-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1380,OS,Overall survival,16.7,MONTHS,1,2020-12-24,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1381,DOR,Duration of response,3.4,MONTHS,1,2020-11-08,2021-02-19,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1381,PFS,Progression-free survival,6.5,MONTHS,0,2020-11-08,2021-05-25,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1381,OS,Overall survival,10.7,MONTHS,0,2020-11-08,2021-09-30,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1382,DOR,Duration of response,14.4,MONTHS,0,2021-01-26,2022-04-09,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1382,PFS,Progression-free survival,9.2,MONTHS,0,2021-01-26,2021-11-02,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1382,OS,Overall survival,13.0,MONTHS,1,2021-01-26,2022-02-26,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1383,DOR,Duration of response,7.9,MONTHS,0,2021-07-02,2022-02-27,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1383,PFS,Progression-free survival,4.5,MONTHS,0,2021-07-02,2021-11-16,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1383,OS,Overall survival,4.5,MONTHS,1,2021-07-02,2021-11-16,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1384,DOR,Duration of response,8.8,MONTHS,0,2019-10-03,2020-06-27,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1384,PFS,Progression-free survival,18.9,MONTHS,1,2019-10-03,2021-04-30,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1384,OS,Overall survival,19.9,MONTHS,1,2019-10-03,2021-05-31,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1385,PFS,Progression-free survival,5.2,MONTHS,0,2021-05-01,2021-10-06,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1385,OS,Overall survival,12.5,MONTHS,1,2021-05-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1386,DOR,Duration of response,4.8,MONTHS,1,2021-12-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1386,PFS,Progression-free survival,4.8,MONTHS,1,2021-12-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1386,OS,Overall survival,4.8,MONTHS,1,2021-12-21,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1387,DOR,Duration of response,12.6,MONTHS,1,2021-04-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1387,PFS,Progression-free survival,0.5,MONTHS,0,2021-04-28,2021-05-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1387,OS,Overall survival,12.6,MONTHS,1,2021-04-28,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1388,DOR,Duration of response,16.0,MONTHS,1,2021-01-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1388,PFS,Progression-free survival,13.6,MONTHS,1,2021-01-13,2022-03-03,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1388,OS,Overall survival,16.0,MONTHS,1,2021-01-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1389,PFS,Progression-free survival,10.9,MONTHS,1,2020-03-05,2021-01-31,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1389,OS,Overall survival,24.9,MONTHS,1,2020-03-05,2022-04-02,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1390,PFS,Progression-free survival,6.4,MONTHS,0,2020-11-30,2021-06-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1390,OS,Overall survival,17.5,MONTHS,1,2020-11-30,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1391,DOR,Duration of response,0.9,MONTHS,0,2020-09-29,2020-10-26,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1391,PFS,Progression-free survival,1.6,MONTHS,0,2020-09-29,2020-11-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1391,OS,Overall survival,19.5,MONTHS,1,2020-09-29,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1392,DOR,Duration of response,9.7,MONTHS,0,2021-05-13,2022-03-04,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1392,PFS,Progression-free survival,12.1,MONTHS,1,2021-05-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1392,OS,Overall survival,12.1,MONTHS,1,2021-05-13,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1393,DOR,Duration of response,11.9,MONTHS,1,2020-03-10,2021-03-07,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1393,PFS,Progression-free survival,0.5,MONTHS,1,2020-03-10,2020-03-25,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1393,OS,Overall survival,26.2,MONTHS,1,2020-03-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1394,DOR,Duration of response,5.1,MONTHS,0,2021-12-05,2022-05-09,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1394,PFS,Progression-free survival,5.3,MONTHS,1,2021-12-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1394,OS,Overall survival,5.3,MONTHS,1,2021-12-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1395,DOR,Duration of response,12.2,MONTHS,1,2021-05-09,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1395,PFS,Progression-free survival,2.1,MONTHS,0,2021-05-09,2021-07-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1395,OS,Overall survival,12.2,MONTHS,1,2021-05-09,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1396,PFS,Progression-free survival,12.2,MONTHS,1,2019-09-28,2020-10-03,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1396,OS,Overall survival,16.5,MONTHS,1,2019-09-28,2021-02-11,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1397,PFS,Progression-free survival,9.5,MONTHS,1,2020-08-19,2021-06-04,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1397,OS,Overall survival,16.4,MONTHS,1,2020-08-19,2021-12-31,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1398,DOR,Duration of response,12.2,MONTHS,0,2020-04-27,2021-05-03,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1398,PFS,Progression-free survival,0.5,MONTHS,0,2020-04-27,2020-05-12,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1398,OS,Overall survival,19.8,MONTHS,1,2020-04-27,2021-12-21,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1399,DOR,Duration of response,8.4,MONTHS,0,2021-04-10,2021-12-22,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1399,PFS,Progression-free survival,12.6,MONTHS,0,2021-04-10,2022-04-29,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1399,OS,Overall survival,13.2,MONTHS,1,2021-04-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1400,DOR,Duration of response,4.1,MONTHS,0,2020-10-20,2021-02-22,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1400,PFS,Progression-free survival,11.6,MONTHS,0,2020-10-20,2021-10-08,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1400,OS,Overall survival,18.8,MONTHS,1,2020-10-20,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1401,PFS,Progression-free survival,12.1,MONTHS,0,2020-03-14,2021-03-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1401,OS,Overall survival,26.1,MONTHS,1,2020-03-14,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1402,DOR,Duration of response,14.4,MONTHS,1,2021-03-05,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1402,PFS,Progression-free survival,11.5,MONTHS,0,2021-03-05,2022-02-18,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1402,OS,Overall survival,11.5,MONTHS,1,2021-03-05,2022-02-18,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1403,DOR,Duration of response,9.2,MONTHS,0,2020-04-07,2021-01-12,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1403,PFS,Progression-free survival,10.7,MONTHS,0,2020-04-07,2021-02-27,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1403,OS,Overall survival,12.5,MONTHS,1,2020-04-07,2021-04-22,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1404,DOR,Duration of response,6.4,MONTHS,1,2020-04-08,2020-10-20,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1404,PFS,Progression-free survival,0.5,MONTHS,1,2020-04-08,2020-04-23,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1404,OS,Overall survival,21.0,MONTHS,1,2020-04-08,2022-01-07,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1405,DOR,Duration of response,0.9,MONTHS,0,2020-04-13,2020-05-10,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1405,PFS,Progression-free survival,0.5,MONTHS,0,2020-04-13,2020-04-28,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1405,OS,Overall survival,14.0,MONTHS,1,2020-04-13,2021-06-13,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1406,PFS,Progression-free survival,9.2,MONTHS,0,2020-09-10,2021-06-17,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1406,OS,Overall survival,20.1,MONTHS,1,2020-09-10,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1407,DOR,Duration of response,7.8,MONTHS,0,2019-09-25,2020-05-19,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1407,PFS,Progression-free survival,1.2,MONTHS,0,2019-09-25,2019-11-01,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1407,OS,Overall survival,13.4,MONTHS,1,2019-09-25,2020-11-06,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1408,PFS,Progression-free survival,4.4,MONTHS,0,2020-08-01,2020-12-13,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1408,OS,Overall survival,21.5,MONTHS,1,2020-08-01,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1409,DOR,Duration of response,1.6,MONTHS,1,2020-08-11,2020-09-29,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1409,PFS,Progression-free survival,4.5,MONTHS,1,2020-08-11,2020-12-26,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1409,OS,Overall survival,15.2,MONTHS,1,2020-08-11,2021-11-17,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1410,DOR,Duration of response,4.4,MONTHS,1,2021-07-17,2021-11-28,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1410,PFS,Progression-free survival,4.0,MONTHS,0,2021-07-17,2021-11-16,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1410,OS,Overall survival,10.0,MONTHS,1,2021-07-17,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1411,DOR,Duration of response,15.2,MONTHS,1,2019-11-08,2021-02-13,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1411,PFS,Progression-free survival,11.2,MONTHS,0,2019-11-08,2020-10-14,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1411,OS,Overall survival,28.5,MONTHS,0,2019-11-08,2022-03-24,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1412,PFS,Progression-free survival,3.6,MONTHS,1,2022-01-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1412,OS,Overall survival,3.6,MONTHS,1,2022-01-27,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1413,DOR,Duration of response,11.0,MONTHS,1,2020-08-10,2021-07-11,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1413,PFS,Progression-free survival,0.5,MONTHS,0,2020-08-10,2020-08-25,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1413,OS,Overall survival,17.2,MONTHS,0,2020-08-10,2022-01-16,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1414,PFS,Progression-free survival,6.1,MONTHS,1,2021-03-04,2021-09-06,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1414,OS,Overall survival,14.4,MONTHS,1,2021-03-04,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1415,DOR,Duration of response,0.9,MONTHS,0,2020-11-11,2020-12-08,Response ended,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1415,PFS,Progression-free survival,8.2,MONTHS,0,2020-11-11,2021-07-19,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1415,OS,Overall survival,18.1,MONTHS,1,2020-11-11,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1416,DOR,Duration of response,1.1,MONTHS,1,2019-09-19,2019-10-22,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1416,PFS,Progression-free survival,10.7,MONTHS,0,2019-09-19,2020-08-10,Progression-free survival,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1416,OS,Overall survival,17.9,MONTHS,0,2019-09-19,2021-03-17,Death,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1417,PFS,Progression-free survival,2.6,MONTHS,1,2020-02-25,2020-05-14,Censored at last assessment,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1417,OS,Overall survival,15.6,MONTHS,1,2020-02-25,2021-06-14,Censored at last contact,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1418,PFS,Progression-free survival,3.2,MONTHS,1,2022-02-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1418,OS,Overall survival,3.2,MONTHS,1,2022-02-07,2022-05-16,Censored at data cut-off,Kelvaparib 300 mg
+KLV-7701,KLV-7701-1419,PFS,Progression-free survival,14.7,MONTHS,0,2020-06-08,2021-08-29,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1419,OS,Overall survival,23.2,MONTHS,1,2020-06-08,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1420,DOR,Duration of response,0.9,MONTHS,0,2022-01-06,2022-02-02,Response ended,Placebo
+KLV-7701,KLV-7701-1420,PFS,Progression-free survival,0.5,MONTHS,0,2022-01-06,2022-01-21,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1420,OS,Overall survival,4.3,MONTHS,1,2022-01-06,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1421,PFS,Progression-free survival,3.6,MONTHS,0,2020-01-27,2020-05-15,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1421,OS,Overall survival,3.6,MONTHS,0,2020-01-27,2020-05-15,Death,Placebo
+KLV-7701,KLV-7701-1422,PFS,Progression-free survival,7.0,MONTHS,0,2020-09-11,2021-04-12,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1422,OS,Overall survival,20.1,MONTHS,1,2020-09-11,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1423,DOR,Duration of response,0.9,MONTHS,1,2021-04-21,2021-05-18,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1423,PFS,Progression-free survival,2.8,MONTHS,0,2021-04-21,2021-07-15,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1423,OS,Overall survival,12.8,MONTHS,1,2021-04-21,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1424,DOR,Duration of response,1.3,MONTHS,1,2021-01-12,2021-02-21,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1424,PFS,Progression-free survival,3.4,MONTHS,0,2021-01-12,2021-04-25,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1424,OS,Overall survival,3.4,MONTHS,0,2021-01-12,2021-04-25,Death,Placebo
+KLV-7701,KLV-7701-1425,PFS,Progression-free survival,5.9,MONTHS,0,2019-09-14,2020-03-12,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1425,OS,Overall survival,26.8,MONTHS,0,2019-09-14,2021-12-08,Death,Placebo
+KLV-7701,KLV-7701-1426,PFS,Progression-free survival,10.2,MONTHS,0,2021-01-30,2021-12-06,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1426,OS,Overall survival,15.0,MONTHS,1,2021-01-30,2022-05-02,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1427,PFS,Progression-free survival,0.5,MONTHS,1,2020-08-01,2020-08-16,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1427,OS,Overall survival,21.5,MONTHS,1,2020-08-01,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1428,PFS,Progression-free survival,14.5,MONTHS,0,2021-01-25,2022-04-11,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1428,OS,Overall survival,14.5,MONTHS,0,2021-01-25,2022-04-11,Death,Placebo
+KLV-7701,KLV-7701-1429,PFS,Progression-free survival,1.8,MONTHS,0,2019-12-07,2020-01-31,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1429,OS,Overall survival,29.3,MONTHS,1,2019-12-07,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1430,PFS,Progression-free survival,0.5,MONTHS,0,2020-12-10,2020-12-25,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1430,OS,Overall survival,11.0,MONTHS,1,2020-12-10,2021-11-10,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1431,PFS,Progression-free survival,6.4,MONTHS,1,2020-03-17,2020-09-28,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1431,OS,Overall survival,26.0,MONTHS,1,2020-03-17,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1432,PFS,Progression-free survival,11.3,MONTHS,0,2019-10-23,2020-10-01,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1432,OS,Overall survival,30.4,MONTHS,0,2019-10-23,2022-05-05,Death,Placebo
+KLV-7701,KLV-7701-1433,DOR,Duration of response,9.0,MONTHS,0,2019-08-05,2020-05-05,Response ended,Placebo
+KLV-7701,KLV-7701-1433,PFS,Progression-free survival,5.9,MONTHS,1,2019-08-05,2020-02-01,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1433,OS,Overall survival,33.3,MONTHS,1,2019-08-05,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1434,PFS,Progression-free survival,1.2,MONTHS,0,2020-01-28,2020-03-05,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1434,OS,Overall survival,1.2,MONTHS,0,2020-01-28,2020-03-06,Death,Placebo
+KLV-7701,KLV-7701-1435,DOR,Duration of response,0.9,MONTHS,0,2020-04-26,2020-05-23,Response ended,Placebo
+KLV-7701,KLV-7701-1435,PFS,Progression-free survival,5.1,MONTHS,1,2020-04-26,2020-09-28,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1435,OS,Overall survival,21.7,MONTHS,1,2020-04-26,2022-02-15,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1436,PFS,Progression-free survival,4.4,MONTHS,0,2020-05-25,2020-10-06,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1436,OS,Overall survival,23.7,MONTHS,1,2020-05-25,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1437,PFS,Progression-free survival,0.5,MONTHS,0,2021-03-04,2021-03-19,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1437,OS,Overall survival,1.0,MONTHS,0,2021-03-04,2021-04-02,Death,Placebo
+KLV-7701,KLV-7701-1438,PFS,Progression-free survival,3.2,MONTHS,1,2020-08-28,2020-12-03,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1438,OS,Overall survival,20.6,MONTHS,1,2020-08-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1439,PFS,Progression-free survival,5.4,MONTHS,0,2021-06-22,2021-12-03,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1439,OS,Overall survival,10.8,MONTHS,1,2021-06-22,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1440,PFS,Progression-free survival,12.1,MONTHS,1,2020-12-21,2021-12-24,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1440,OS,Overall survival,16.8,MONTHS,1,2020-12-21,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1441,PFS,Progression-free survival,4.2,MONTHS,0,2020-10-20,2021-02-25,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1441,OS,Overall survival,4.2,MONTHS,0,2020-10-20,2021-02-25,Death,Placebo
+KLV-7701,KLV-7701-1442,PFS,Progression-free survival,0.7,MONTHS,0,2021-05-21,2021-06-11,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1442,OS,Overall survival,0.7,MONTHS,0,2021-05-21,2021-06-11,Death,Placebo
+KLV-7701,KLV-7701-1443,PFS,Progression-free survival,7.9,MONTHS,1,2020-02-22,2020-10-19,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1443,OS,Overall survival,26.7,MONTHS,1,2020-02-22,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1444,DOR,Duration of response,15.1,MONTHS,1,2020-03-02,2021-06-05,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1444,PFS,Progression-free survival,9.5,MONTHS,1,2020-03-02,2020-12-16,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1444,OS,Overall survival,26.4,MONTHS,1,2020-03-02,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1445,PFS,Progression-free survival,2.9,MONTHS,0,2020-06-11,2020-09-07,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1445,OS,Overall survival,17.5,MONTHS,0,2020-06-11,2021-11-26,Death,Placebo
+KLV-7701,KLV-7701-1446,PFS,Progression-free survival,4.1,MONTHS,0,2019-10-28,2020-03-01,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1446,OS,Overall survival,17.9,MONTHS,1,2019-10-28,2021-04-25,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1447,DOR,Duration of response,7.1,MONTHS,1,2021-08-21,2022-03-25,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1447,PFS,Progression-free survival,0.5,MONTHS,1,2021-08-21,2021-09-05,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1447,OS,Overall survival,8.8,MONTHS,1,2021-08-21,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1448,PFS,Progression-free survival,8.4,MONTHS,0,2020-11-18,2021-08-01,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1448,OS,Overall survival,17.9,MONTHS,1,2020-11-18,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1449,DOR,Duration of response,11.1,MONTHS,1,2021-01-08,2021-12-12,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1449,PFS,Progression-free survival,11.1,MONTHS,0,2021-01-08,2021-12-12,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1449,OS,Overall survival,11.1,MONTHS,0,2021-01-08,2021-12-12,Death,Placebo
+KLV-7701,KLV-7701-1450,PFS,Progression-free survival,3.7,MONTHS,1,2021-08-14,2021-12-05,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1450,OS,Overall survival,9.0,MONTHS,1,2021-08-14,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1451,PFS,Progression-free survival,1.3,MONTHS,1,2021-05-19,2021-06-28,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1451,OS,Overall survival,1.3,MONTHS,1,2021-05-19,2021-06-28,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1452,DOR,Duration of response,2.9,MONTHS,0,2020-06-04,2020-08-31,Response ended,Placebo
+KLV-7701,KLV-7701-1452,PFS,Progression-free survival,4.6,MONTHS,0,2020-06-04,2020-10-22,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1452,OS,Overall survival,23.4,MONTHS,1,2020-06-04,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1453,PFS,Progression-free survival,8.2,MONTHS,0,2021-07-25,2022-04-01,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1453,OS,Overall survival,8.2,MONTHS,0,2021-07-25,2022-04-01,Death,Placebo
+KLV-7701,KLV-7701-1454,PFS,Progression-free survival,7.4,MONTHS,0,2021-04-26,2021-12-07,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1454,OS,Overall survival,12.6,MONTHS,1,2021-04-26,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1455,DOR,Duration of response,15.5,MONTHS,1,2021-01-29,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1455,PFS,Progression-free survival,15.5,MONTHS,1,2021-01-29,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1455,OS,Overall survival,15.5,MONTHS,1,2021-01-29,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1456,DOR,Duration of response,2.8,MONTHS,1,2020-06-23,2020-09-16,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1456,PFS,Progression-free survival,6.4,MONTHS,0,2020-06-23,2021-01-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1456,OS,Overall survival,14.1,MONTHS,1,2020-06-23,2021-08-26,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1457,DOR,Duration of response,6.4,MONTHS,1,2021-09-10,2022-03-24,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1457,PFS,Progression-free survival,8.1,MONTHS,1,2021-09-10,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1457,OS,Overall survival,8.1,MONTHS,1,2021-09-10,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1458,DOR,Duration of response,9.5,MONTHS,1,2020-01-11,2020-10-26,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1458,PFS,Progression-free survival,0.5,MONTHS,0,2020-01-11,2020-01-26,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1458,OS,Overall survival,28.1,MONTHS,1,2020-01-11,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1459,PFS,Progression-free survival,2.6,MONTHS,0,2019-09-01,2019-11-19,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1459,OS,Overall survival,16.8,MONTHS,1,2019-09-01,2021-01-24,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1460,PFS,Progression-free survival,6.8,MONTHS,0,2020-10-25,2021-05-20,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1460,OS,Overall survival,18.7,MONTHS,1,2020-10-25,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1461,DOR,Duration of response,12.9,MONTHS,1,2021-04-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1461,PFS,Progression-free survival,10.2,MONTHS,0,2021-04-19,2022-02-23,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1461,OS,Overall survival,12.9,MONTHS,1,2021-04-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1462,PFS,Progression-free survival,1.5,MONTHS,0,2020-10-16,2020-12-01,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1462,OS,Overall survival,1.5,MONTHS,0,2020-10-16,2020-12-02,Death,Placebo
+KLV-7701,KLV-7701-1463,PFS,Progression-free survival,1.4,MONTHS,1,2019-09-23,2019-11-05,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1463,OS,Overall survival,24.7,MONTHS,1,2019-09-23,2021-10-14,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1464,PFS,Progression-free survival,16.5,MONTHS,0,2019-08-17,2020-12-31,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1464,OS,Overall survival,23.5,MONTHS,1,2019-08-17,2021-08-01,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1465,PFS,Progression-free survival,0.5,MONTHS,0,2020-06-02,2020-06-17,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1465,OS,Overall survival,18.1,MONTHS,1,2020-06-02,2021-12-05,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1466,PFS,Progression-free survival,0.5,MONTHS,0,2021-09-19,2021-10-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1466,OS,Overall survival,7.9,MONTHS,1,2021-09-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1467,PFS,Progression-free survival,0.5,MONTHS,0,2020-07-25,2020-08-09,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1467,OS,Overall survival,17.1,MONTHS,1,2020-07-25,2021-12-27,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1468,DOR,Duration of response,15.9,MONTHS,0,2019-11-06,2021-03-04,Response ended,Placebo
+KLV-7701,KLV-7701-1468,PFS,Progression-free survival,0.8,MONTHS,0,2019-11-06,2019-11-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1468,OS,Overall survival,30.3,MONTHS,1,2019-11-06,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1469,PFS,Progression-free survival,4.0,MONTHS,0,2019-11-18,2020-03-19,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1469,OS,Overall survival,28.1,MONTHS,1,2019-11-18,2022-03-22,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1470,PFS,Progression-free survival,4.3,MONTHS,1,2021-03-27,2021-08-05,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1470,OS,Overall survival,13.6,MONTHS,1,2021-03-27,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1471,PFS,Progression-free survival,0.5,MONTHS,1,2021-03-28,2021-04-12,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1471,OS,Overall survival,13.6,MONTHS,1,2021-03-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1472,DOR,Duration of response,4.2,MONTHS,1,2019-09-30,2020-02-05,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1472,PFS,Progression-free survival,1.0,MONTHS,1,2019-09-30,2019-10-30,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1472,OS,Overall survival,21.8,MONTHS,1,2019-09-30,2021-07-25,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1473,PFS,Progression-free survival,1.8,MONTHS,1,2020-11-23,2021-01-17,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1473,OS,Overall survival,17.7,MONTHS,1,2020-11-23,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1474,DOR,Duration of response,5.4,MONTHS,0,2021-10-11,2022-03-24,Response ended,Placebo
+KLV-7701,KLV-7701-1474,PFS,Progression-free survival,4.4,MONTHS,0,2021-10-11,2022-02-22,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1474,OS,Overall survival,7.1,MONTHS,1,2021-10-11,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1475,PFS,Progression-free survival,13.9,MONTHS,0,2020-04-01,2021-05-29,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1475,OS,Overall survival,13.9,MONTHS,0,2020-04-01,2021-05-29,Death,Placebo
+KLV-7701,KLV-7701-1476,PFS,Progression-free survival,4.2,MONTHS,0,2020-06-13,2020-10-19,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1476,OS,Overall survival,12.4,MONTHS,0,2020-06-13,2021-06-25,Death,Placebo
+KLV-7701,KLV-7701-1477,DOR,Duration of response,11.5,MONTHS,1,2021-04-16,2022-04-01,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1477,PFS,Progression-free survival,12.6,MONTHS,0,2021-04-16,2022-05-05,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1477,OS,Overall survival,13.0,MONTHS,1,2021-04-16,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1478,PFS,Progression-free survival,0.5,MONTHS,0,2022-04-17,2022-05-02,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1478,OS,Overall survival,1.0,MONTHS,1,2022-04-17,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1479,PFS,Progression-free survival,4.6,MONTHS,0,2019-12-09,2020-04-27,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1479,OS,Overall survival,21.1,MONTHS,1,2019-12-09,2021-09-11,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1480,DOR,Duration of response,0.4,MONTHS,0,2020-03-17,2020-03-28,Response ended,Placebo
+KLV-7701,KLV-7701-1480,PFS,Progression-free survival,0.4,MONTHS,0,2020-03-17,2020-03-28,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1480,OS,Overall survival,0.4,MONTHS,0,2020-03-17,2020-03-28,Death,Placebo
+KLV-7701,KLV-7701-1481,PFS,Progression-free survival,1.5,MONTHS,0,2020-08-11,2020-09-26,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1481,OS,Overall survival,5.1,MONTHS,0,2020-08-11,2021-01-13,Death,Placebo
+KLV-7701,KLV-7701-1482,PFS,Progression-free survival,4.4,MONTHS,1,2021-05-03,2021-09-14,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1482,OS,Overall survival,12.4,MONTHS,1,2021-05-03,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1483,PFS,Progression-free survival,8.9,MONTHS,0,2021-04-01,2021-12-28,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1483,OS,Overall survival,13.5,MONTHS,1,2021-04-01,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1484,PFS,Progression-free survival,0.5,MONTHS,0,2020-11-03,2020-11-18,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1484,OS,Overall survival,18.4,MONTHS,1,2020-11-03,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1485,PFS,Progression-free survival,12.1,MONTHS,1,2021-05-13,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1485,OS,Overall survival,12.1,MONTHS,1,2021-05-13,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1486,DOR,Duration of response,0.9,MONTHS,1,2021-06-01,2021-06-28,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1486,PFS,Progression-free survival,8.9,MONTHS,0,2021-06-01,2022-02-27,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1486,OS,Overall survival,11.5,MONTHS,1,2021-06-01,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1487,PFS,Progression-free survival,4.8,MONTHS,0,2021-05-11,2021-10-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1487,OS,Overall survival,12.2,MONTHS,1,2021-05-11,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1488,DOR,Duration of response,0.9,MONTHS,0,2020-06-08,2020-07-05,Response ended,Placebo
+KLV-7701,KLV-7701-1488,PFS,Progression-free survival,5.4,MONTHS,0,2020-06-08,2020-11-19,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1488,OS,Overall survival,17.4,MONTHS,1,2020-06-08,2021-11-20,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1489,PFS,Progression-free survival,0.5,MONTHS,1,2021-07-11,2021-07-26,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1489,OS,Overall survival,10.2,MONTHS,1,2021-07-11,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1490,PFS,Progression-free survival,2.8,MONTHS,0,2021-11-06,2022-01-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1490,OS,Overall survival,6.3,MONTHS,1,2021-11-06,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1491,PFS,Progression-free survival,0.5,MONTHS,0,2020-03-15,2020-03-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1491,OS,Overall survival,26.0,MONTHS,1,2020-03-15,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1492,PFS,Progression-free survival,3.1,MONTHS,0,2020-08-06,2020-11-08,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1492,OS,Overall survival,3.1,MONTHS,0,2020-08-06,2020-11-09,Death,Placebo
+KLV-7701,KLV-7701-1493,PFS,Progression-free survival,2.3,MONTHS,0,2021-02-22,2021-05-03,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1493,OS,Overall survival,14.7,MONTHS,1,2021-02-22,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1494,PFS,Progression-free survival,0.5,MONTHS,1,2019-09-19,2019-10-04,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1494,OS,Overall survival,31.9,MONTHS,1,2019-09-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1495,DOR,Duration of response,0.9,MONTHS,0,2020-08-27,2020-09-23,Response ended,Placebo
+KLV-7701,KLV-7701-1495,PFS,Progression-free survival,8.5,MONTHS,0,2020-08-27,2021-05-13,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1495,OS,Overall survival,12.9,MONTHS,1,2020-08-27,2021-09-24,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1496,PFS,Progression-free survival,13.0,MONTHS,1,2021-04-16,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1496,OS,Overall survival,13.0,MONTHS,1,2021-04-16,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1497,PFS,Progression-free survival,5.0,MONTHS,1,2021-12-14,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1497,OS,Overall survival,5.0,MONTHS,1,2021-12-14,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1498,DOR,Duration of response,10.1,MONTHS,1,2020-01-18,2020-11-20,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1498,PFS,Progression-free survival,0.5,MONTHS,0,2020-01-18,2020-02-02,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1498,OS,Overall survival,24.5,MONTHS,1,2020-01-18,2022-02-02,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1499,PFS,Progression-free survival,10.1,MONTHS,1,2019-11-20,2020-09-22,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1499,OS,Overall survival,29.8,MONTHS,1,2019-11-20,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1500,DOR,Duration of response,6.0,MONTHS,1,2021-11-15,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1500,PFS,Progression-free survival,3.2,MONTHS,1,2021-11-15,2022-02-20,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1500,OS,Overall survival,4.5,MONTHS,1,2021-11-15,2022-04-01,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1501,DOR,Duration of response,5.5,MONTHS,1,2019-12-11,2020-05-26,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1501,PFS,Progression-free survival,19.9,MONTHS,0,2019-12-11,2021-08-08,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1501,OS,Overall survival,19.9,MONTHS,0,2019-12-11,2021-08-08,Death,Placebo
+KLV-7701,KLV-7701-1502,PFS,Progression-free survival,7.3,MONTHS,1,2021-04-02,2021-11-10,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1502,OS,Overall survival,7.3,MONTHS,1,2021-04-02,2021-11-10,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1503,PFS,Progression-free survival,0.5,MONTHS,0,2020-12-28,2021-01-12,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1503,OS,Overall survival,0.5,MONTHS,0,2020-12-28,2021-01-12,Death,Placebo
+KLV-7701,KLV-7701-1504,DOR,Duration of response,10.6,MONTHS,1,2021-06-26,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1504,PFS,Progression-free survival,0.5,MONTHS,1,2021-06-26,2021-07-11,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1504,OS,Overall survival,10.6,MONTHS,1,2021-06-26,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1505,PFS,Progression-free survival,19.7,MONTHS,0,2020-06-12,2022-02-02,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1505,OS,Overall survival,23.1,MONTHS,1,2020-06-12,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1506,PFS,Progression-free survival,10.4,MONTHS,0,2020-12-07,2021-10-20,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1506,OS,Overall survival,17.2,MONTHS,1,2020-12-07,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1507,PFS,Progression-free survival,5.1,MONTHS,0,2020-07-22,2020-12-24,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1507,OS,Overall survival,21.8,MONTHS,1,2020-07-22,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1508,PFS,Progression-free survival,1.6,MONTHS,0,2020-02-21,2020-04-10,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1508,OS,Overall survival,15.0,MONTHS,1,2020-02-21,2021-05-23,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1509,PFS,Progression-free survival,3.5,MONTHS,0,2020-08-19,2020-12-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1509,OS,Overall survival,20.8,MONTHS,1,2020-08-19,2022-05-14,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1510,PFS,Progression-free survival,5.1,MONTHS,1,2021-01-20,2021-06-24,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1510,OS,Overall survival,15.8,MONTHS,1,2021-01-20,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1511,PFS,Progression-free survival,3.3,MONTHS,0,2021-11-02,2022-02-09,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1511,OS,Overall survival,3.3,MONTHS,0,2021-11-02,2022-02-09,Death,Placebo
+KLV-7701,KLV-7701-1512,PFS,Progression-free survival,0.5,MONTHS,0,2019-12-06,2019-12-21,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1512,OS,Overall survival,2.0,MONTHS,0,2019-12-06,2020-02-04,Death,Placebo
+KLV-7701,KLV-7701-1513,DOR,Duration of response,11.7,MONTHS,0,2021-05-18,2022-05-09,Response ended,Placebo
+KLV-7701,KLV-7701-1513,PFS,Progression-free survival,11.9,MONTHS,1,2021-05-18,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1513,OS,Overall survival,11.9,MONTHS,1,2021-05-18,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1514,PFS,Progression-free survival,0.5,MONTHS,0,2021-08-17,2021-09-01,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1514,OS,Overall survival,8.9,MONTHS,1,2021-08-17,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1515,PFS,Progression-free survival,11.5,MONTHS,0,2020-03-20,2021-03-05,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1515,OS,Overall survival,25.9,MONTHS,1,2020-03-20,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1516,PFS,Progression-free survival,4.4,MONTHS,0,2019-10-21,2020-03-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1516,OS,Overall survival,4.4,MONTHS,0,2019-10-21,2020-03-04,Death,Placebo
+KLV-7701,KLV-7701-1517,DOR,Duration of response,2.8,MONTHS,1,2020-03-31,2020-06-24,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1517,PFS,Progression-free survival,2.8,MONTHS,0,2020-03-31,2020-06-24,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1517,OS,Overall survival,2.8,MONTHS,0,2020-03-31,2020-06-25,Death,Placebo
+KLV-7701,KLV-7701-1518,PFS,Progression-free survival,0.5,MONTHS,0,2021-09-05,2021-09-20,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1518,OS,Overall survival,8.1,MONTHS,1,2021-09-05,2022-05-10,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1519,DOR,Duration of response,6.1,MONTHS,0,2020-04-17,2020-10-20,Response ended,Placebo
+KLV-7701,KLV-7701-1519,PFS,Progression-free survival,3.3,MONTHS,0,2020-04-17,2020-07-26,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1519,OS,Overall survival,21.9,MONTHS,1,2020-04-17,2022-02-13,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1520,PFS,Progression-free survival,8.0,MONTHS,0,2020-01-23,2020-09-23,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1520,OS,Overall survival,11.5,MONTHS,0,2020-01-23,2021-01-07,Death,Placebo
+KLV-7701,KLV-7701-1521,DOR,Duration of response,13.7,MONTHS,0,2019-11-03,2020-12-24,Response ended,Placebo
+KLV-7701,KLV-7701-1521,PFS,Progression-free survival,1.5,MONTHS,0,2019-11-03,2019-12-19,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1521,OS,Overall survival,24.5,MONTHS,0,2019-11-03,2021-11-18,Death,Placebo
+KLV-7701,KLV-7701-1522,DOR,Duration of response,3.2,MONTHS,1,2019-09-10,2019-12-16,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1522,PFS,Progression-free survival,15.2,MONTHS,0,2019-09-10,2020-12-16,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1522,OS,Overall survival,17.2,MONTHS,1,2019-09-10,2021-02-15,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1523,PFS,Progression-free survival,7.5,MONTHS,0,2021-01-19,2021-09-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1523,OS,Overall survival,15.8,MONTHS,1,2021-01-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1524,DOR,Duration of response,5.9,MONTHS,1,2021-01-29,2021-07-28,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1524,PFS,Progression-free survival,9.0,MONTHS,0,2021-01-29,2021-10-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1524,OS,Overall survival,15.5,MONTHS,1,2021-01-29,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1525,PFS,Progression-free survival,6.7,MONTHS,0,2019-09-02,2020-03-24,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1525,OS,Overall survival,19.6,MONTHS,1,2019-09-02,2021-04-21,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1526,PFS,Progression-free survival,0.5,MONTHS,0,2021-12-13,2021-12-28,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1526,OS,Overall survival,5.1,MONTHS,1,2021-12-13,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1527,DOR,Duration of response,0.9,MONTHS,1,2020-09-08,2020-10-05,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1527,PFS,Progression-free survival,2.7,MONTHS,0,2020-09-08,2020-11-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1527,OS,Overall survival,2.7,MONTHS,0,2020-09-08,2020-11-30,Death,Placebo
+KLV-7701,KLV-7701-1528,PFS,Progression-free survival,12.8,MONTHS,1,2020-08-09,2021-09-03,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1528,OS,Overall survival,12.8,MONTHS,1,2020-08-09,2021-09-03,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1529,DOR,Duration of response,6.8,MONTHS,1,2021-02-28,2021-09-23,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1529,PFS,Progression-free survival,5.5,MONTHS,0,2021-02-28,2021-08-14,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1529,OS,Overall survival,14.5,MONTHS,1,2021-02-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1530,DOR,Duration of response,2.3,MONTHS,1,2021-10-19,2021-12-28,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1530,PFS,Progression-free survival,6.9,MONTHS,1,2021-10-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1530,OS,Overall survival,6.9,MONTHS,1,2021-10-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1531,PFS,Progression-free survival,0.5,MONTHS,1,2021-11-03,2021-11-18,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1531,OS,Overall survival,6.4,MONTHS,1,2021-11-03,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1532,PFS,Progression-free survival,3.6,MONTHS,0,2021-05-05,2021-08-23,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1532,OS,Overall survival,12.4,MONTHS,1,2021-05-05,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1533,DOR,Duration of response,2.5,MONTHS,0,2020-05-03,2020-07-18,Response ended,Placebo
+KLV-7701,KLV-7701-1533,PFS,Progression-free survival,5.4,MONTHS,0,2020-05-03,2020-10-14,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1533,OS,Overall survival,24.4,MONTHS,1,2020-05-03,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1534,DOR,Duration of response,10.6,MONTHS,1,2020-08-14,2021-07-03,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1534,PFS,Progression-free survival,7.1,MONTHS,1,2020-08-14,2021-03-18,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1534,OS,Overall survival,21.0,MONTHS,1,2020-08-14,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1535,PFS,Progression-free survival,7.2,MONTHS,0,2021-05-05,2021-12-10,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1535,OS,Overall survival,12.4,MONTHS,1,2021-05-05,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1536,DOR,Duration of response,0.3,MONTHS,0,2020-02-27,2020-03-06,Response ended,Placebo
+KLV-7701,KLV-7701-1536,PFS,Progression-free survival,0.3,MONTHS,0,2020-02-27,2020-03-06,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1536,OS,Overall survival,0.3,MONTHS,0,2020-02-27,2020-03-06,Death,Placebo
+KLV-7701,KLV-7701-1537,PFS,Progression-free survival,7.8,MONTHS,0,2019-10-10,2020-06-03,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1537,OS,Overall survival,7.8,MONTHS,0,2019-10-10,2020-06-03,Death,Placebo
+KLV-7701,KLV-7701-1538,PFS,Progression-free survival,9.7,MONTHS,0,2021-04-23,2022-02-12,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1538,OS,Overall survival,12.7,MONTHS,1,2021-04-23,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1539,PFS,Progression-free survival,3.7,MONTHS,1,2022-01-24,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1539,OS,Overall survival,3.7,MONTHS,1,2022-01-24,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1540,DOR,Duration of response,4.9,MONTHS,1,2020-02-25,2020-07-23,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1540,PFS,Progression-free survival,4.4,MONTHS,0,2020-02-25,2020-07-08,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1540,OS,Overall survival,23.5,MONTHS,1,2020-02-25,2022-02-09,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1541,PFS,Progression-free survival,0.5,MONTHS,1,2020-05-15,2020-05-30,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1541,OS,Overall survival,9.3,MONTHS,1,2020-05-15,2021-02-22,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1542,DOR,Duration of response,0.9,MONTHS,1,2021-10-16,2021-11-12,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1542,PFS,Progression-free survival,0.5,MONTHS,0,2021-10-16,2021-10-31,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1542,OS,Overall survival,3.7,MONTHS,0,2021-10-16,2022-02-06,Death,Placebo
+KLV-7701,KLV-7701-1543,PFS,Progression-free survival,10.8,MONTHS,0,2020-05-30,2021-04-24,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1543,OS,Overall survival,16.2,MONTHS,0,2020-05-30,2021-10-05,Death,Placebo
+KLV-7701,KLV-7701-1544,PFS,Progression-free survival,5.8,MONTHS,0,2020-09-08,2021-03-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1544,OS,Overall survival,20.2,MONTHS,1,2020-09-08,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1545,DOR,Duration of response,5.3,MONTHS,1,2021-12-05,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1545,PFS,Progression-free survival,5.3,MONTHS,1,2021-12-05,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1545,OS,Overall survival,5.3,MONTHS,1,2021-12-05,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1546,DOR,Duration of response,12.9,MONTHS,0,2019-08-10,2020-09-06,Response ended,Placebo
+KLV-7701,KLV-7701-1546,PFS,Progression-free survival,0.5,MONTHS,0,2019-08-10,2019-08-25,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1546,OS,Overall survival,24.5,MONTHS,1,2019-08-10,2021-08-25,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1547,PFS,Progression-free survival,0.5,MONTHS,1,2021-06-29,2021-07-14,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1547,OS,Overall survival,10.5,MONTHS,1,2021-06-29,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1548,PFS,Progression-free survival,1.3,MONTHS,0,2019-10-20,2019-11-29,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1548,OS,Overall survival,26.7,MONTHS,1,2019-10-20,2022-01-10,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1549,PFS,Progression-free survival,8.5,MONTHS,1,2020-04-18,2021-01-02,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1549,OS,Overall survival,24.9,MONTHS,1,2020-04-18,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1550,PFS,Progression-free survival,8.7,MONTHS,0,2021-03-30,2021-12-20,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1550,OS,Overall survival,13.5,MONTHS,1,2021-03-30,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1551,PFS,Progression-free survival,5.1,MONTHS,0,2020-03-20,2020-08-22,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1551,OS,Overall survival,25.9,MONTHS,1,2020-03-20,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1552,DOR,Duration of response,4.0,MONTHS,1,2020-10-25,2021-02-24,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1552,PFS,Progression-free survival,17.8,MONTHS,1,2020-10-25,2022-04-20,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1552,OS,Overall survival,18.7,MONTHS,1,2020-10-25,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1553,DOR,Duration of response,3.0,MONTHS,0,2021-10-29,2022-01-28,Response ended,Placebo
+KLV-7701,KLV-7701-1553,PFS,Progression-free survival,3.0,MONTHS,0,2021-10-29,2022-01-28,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1553,OS,Overall survival,3.0,MONTHS,0,2021-10-29,2022-01-29,Death,Placebo
+KLV-7701,KLV-7701-1554,DOR,Duration of response,3.3,MONTHS,0,2021-05-02,2021-08-10,Response ended,Placebo
+KLV-7701,KLV-7701-1554,PFS,Progression-free survival,12.5,MONTHS,1,2021-05-02,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1554,OS,Overall survival,12.5,MONTHS,1,2021-05-02,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1555,PFS,Progression-free survival,14.3,MONTHS,0,2020-11-20,2022-01-29,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1555,OS,Overall survival,17.8,MONTHS,1,2020-11-20,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1556,PFS,Progression-free survival,5.7,MONTHS,1,2021-11-24,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1556,OS,Overall survival,5.7,MONTHS,1,2021-11-24,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1557,DOR,Duration of response,0.9,MONTHS,1,2021-05-14,2021-06-10,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1557,PFS,Progression-free survival,2.9,MONTHS,0,2021-05-14,2021-08-10,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1557,OS,Overall survival,12.1,MONTHS,1,2021-05-14,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1558,PFS,Progression-free survival,0.9,MONTHS,0,2019-10-20,2019-11-16,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1558,OS,Overall survival,30.9,MONTHS,1,2019-10-20,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1559,DOR,Duration of response,5.3,MONTHS,0,2020-07-27,2021-01-04,Response ended,Placebo
+KLV-7701,KLV-7701-1559,PFS,Progression-free survival,6.8,MONTHS,0,2020-07-27,2021-02-19,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1559,OS,Overall survival,11.0,MONTHS,0,2020-07-27,2021-06-27,Death,Placebo
+KLV-7701,KLV-7701-1560,DOR,Duration of response,13.7,MONTHS,0,2020-09-22,2021-11-13,Response ended,Placebo
+KLV-7701,KLV-7701-1560,PFS,Progression-free survival,17.9,MONTHS,1,2020-09-22,2022-03-21,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1560,OS,Overall survival,17.9,MONTHS,1,2020-09-22,2022-03-21,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1561,PFS,Progression-free survival,0.5,MONTHS,1,2019-09-25,2019-10-10,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1561,OS,Overall survival,17.6,MONTHS,1,2019-09-25,2021-03-14,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1562,DOR,Duration of response,1.5,MONTHS,1,2022-03-30,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1562,PFS,Progression-free survival,1.5,MONTHS,1,2022-03-30,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1562,OS,Overall survival,1.5,MONTHS,1,2022-03-30,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1563,DOR,Duration of response,6.9,MONTHS,1,2019-09-29,2020-04-26,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1563,PFS,Progression-free survival,3.8,MONTHS,0,2019-09-29,2020-01-23,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1563,OS,Overall survival,29.9,MONTHS,0,2019-09-29,2022-03-27,Death,Placebo
+KLV-7701,KLV-7701-1564,PFS,Progression-free survival,10.5,MONTHS,0,2021-03-30,2022-02-13,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1564,OS,Overall survival,13.5,MONTHS,1,2021-03-30,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1565,DOR,Duration of response,8.6,MONTHS,1,2021-03-27,2021-12-14,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1565,PFS,Progression-free survival,6.8,MONTHS,1,2021-03-27,2021-10-20,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1565,OS,Overall survival,6.8,MONTHS,1,2021-03-27,2021-10-20,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1566,PFS,Progression-free survival,2.1,MONTHS,1,2022-03-13,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1566,OS,Overall survival,2.1,MONTHS,1,2022-03-13,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1567,PFS,Progression-free survival,6.8,MONTHS,1,2021-04-10,2021-11-03,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1567,OS,Overall survival,13.2,MONTHS,1,2021-04-10,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1568,PFS,Progression-free survival,7.6,MONTHS,0,2019-10-21,2020-06-08,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1568,OS,Overall survival,17.8,MONTHS,1,2019-10-21,2021-04-15,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1569,PFS,Progression-free survival,1.1,MONTHS,0,2021-12-21,2022-01-22,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1569,OS,Overall survival,1.1,MONTHS,0,2021-12-21,2022-01-22,Death,Placebo
+KLV-7701,KLV-7701-1570,DOR,Duration of response,6.3,MONTHS,0,2019-08-14,2020-02-22,Response ended,Placebo
+KLV-7701,KLV-7701-1570,PFS,Progression-free survival,7.1,MONTHS,0,2019-08-14,2020-03-17,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1570,OS,Overall survival,12.1,MONTHS,1,2019-08-14,2020-08-16,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1571,DOR,Duration of response,9.9,MONTHS,0,2021-03-13,2022-01-08,Response ended,Placebo
+KLV-7701,KLV-7701-1571,PFS,Progression-free survival,6.5,MONTHS,0,2021-03-13,2021-09-27,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1571,OS,Overall survival,14.1,MONTHS,1,2021-03-13,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1572,PFS,Progression-free survival,6.4,MONTHS,1,2021-01-28,2021-08-11,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1572,OS,Overall survival,15.5,MONTHS,1,2021-01-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1573,PFS,Progression-free survival,6.8,MONTHS,0,2020-09-26,2021-04-21,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1573,OS,Overall survival,19.6,MONTHS,1,2020-09-26,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1574,DOR,Duration of response,6.1,MONTHS,0,2021-05-05,2021-11-07,Response ended,Placebo
+KLV-7701,KLV-7701-1574,PFS,Progression-free survival,0.5,MONTHS,1,2021-05-05,2021-05-20,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1574,OS,Overall survival,12.4,MONTHS,1,2021-05-05,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1575,DOR,Duration of response,2.4,MONTHS,1,2022-03-03,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1575,PFS,Progression-free survival,2.4,MONTHS,1,2022-03-03,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1575,OS,Overall survival,2.4,MONTHS,1,2022-03-03,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1576,DOR,Duration of response,1.9,MONTHS,0,2021-01-29,2021-03-28,Response ended,Placebo
+KLV-7701,KLV-7701-1576,PFS,Progression-free survival,11.7,MONTHS,0,2021-01-29,2022-01-20,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1576,OS,Overall survival,14.0,MONTHS,1,2021-01-29,2022-03-31,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1577,DOR,Duration of response,2.9,MONTHS,1,2020-06-11,2020-09-06,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1577,PFS,Progression-free survival,2.9,MONTHS,0,2020-06-11,2020-09-06,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1577,OS,Overall survival,2.9,MONTHS,0,2020-06-11,2020-09-06,Death,Placebo
+KLV-7701,KLV-7701-1578,DOR,Duration of response,0.6,MONTHS,0,2020-05-29,2020-06-15,Response ended,Placebo
+KLV-7701,KLV-7701-1578,PFS,Progression-free survival,0.5,MONTHS,0,2020-05-29,2020-06-13,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1578,OS,Overall survival,0.6,MONTHS,0,2020-05-29,2020-06-15,Death,Placebo
+KLV-7701,KLV-7701-1579,DOR,Duration of response,11.3,MONTHS,1,2020-08-01,2021-07-11,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1579,PFS,Progression-free survival,6.2,MONTHS,0,2020-08-01,2021-02-06,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1579,OS,Overall survival,21.5,MONTHS,1,2020-08-01,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1580,DOR,Duration of response,6.6,MONTHS,1,2021-10-26,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1580,PFS,Progression-free survival,6.6,MONTHS,1,2021-10-26,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1580,OS,Overall survival,6.6,MONTHS,1,2021-10-26,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1581,PFS,Progression-free survival,10.3,MONTHS,1,2021-07-07,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1581,OS,Overall survival,10.3,MONTHS,1,2021-07-07,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1582,DOR,Duration of response,4.7,MONTHS,0,2021-09-24,2022-02-14,Response ended,Placebo
+KLV-7701,KLV-7701-1582,PFS,Progression-free survival,7.5,MONTHS,1,2021-09-24,2022-05-10,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1582,OS,Overall survival,7.7,MONTHS,1,2021-09-24,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1583,DOR,Duration of response,0.9,MONTHS,0,2021-05-30,2021-06-26,Response ended,Placebo
+KLV-7701,KLV-7701-1583,PFS,Progression-free survival,10.0,MONTHS,1,2021-05-30,2022-03-30,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1583,OS,Overall survival,11.5,MONTHS,1,2021-05-30,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1584,PFS,Progression-free survival,1.9,MONTHS,0,2020-12-12,2021-02-08,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1584,OS,Overall survival,2.4,MONTHS,0,2020-12-12,2021-02-24,Death,Placebo
+KLV-7701,KLV-7701-1585,PFS,Progression-free survival,3.6,MONTHS,1,2021-08-14,2021-12-02,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1585,OS,Overall survival,9.0,MONTHS,1,2021-08-14,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1586,PFS,Progression-free survival,2.2,MONTHS,0,2021-07-02,2021-09-07,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1586,OS,Overall survival,9.6,MONTHS,0,2021-07-02,2022-04-20,Death,Placebo
+KLV-7701,KLV-7701-1587,PFS,Progression-free survival,1.6,MONTHS,0,2021-08-09,2021-09-27,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1587,OS,Overall survival,9.2,MONTHS,1,2021-08-09,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1588,PFS,Progression-free survival,8.0,MONTHS,0,2021-02-14,2021-10-16,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1588,OS,Overall survival,15.0,MONTHS,1,2021-02-14,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1589,PFS,Progression-free survival,0.8,MONTHS,1,2021-05-28,2021-06-21,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1589,OS,Overall survival,11.6,MONTHS,1,2021-05-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1590,PFS,Progression-free survival,0.5,MONTHS,0,2021-09-06,2021-09-21,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1590,OS,Overall survival,0.5,MONTHS,0,2021-09-06,2021-09-21,Death,Placebo
+KLV-7701,KLV-7701-1591,DOR,Duration of response,2.7,MONTHS,0,2021-08-02,2021-10-23,Response ended,Placebo
+KLV-7701,KLV-7701-1591,PFS,Progression-free survival,2.6,MONTHS,0,2021-08-02,2021-10-20,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1591,OS,Overall survival,9.4,MONTHS,1,2021-08-02,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1592,PFS,Progression-free survival,0.5,MONTHS,0,2020-04-19,2020-05-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1592,OS,Overall survival,24.9,MONTHS,1,2020-04-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1593,PFS,Progression-free survival,6.4,MONTHS,0,2021-10-03,2022-04-16,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1593,OS,Overall survival,7.4,MONTHS,1,2021-10-03,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1594,DOR,Duration of response,2.2,MONTHS,0,2019-09-01,2019-11-07,Response ended,Placebo
+KLV-7701,KLV-7701-1594,PFS,Progression-free survival,2.2,MONTHS,0,2019-09-01,2019-11-08,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1594,OS,Overall survival,2.2,MONTHS,0,2019-09-01,2019-11-08,Death,Placebo
+KLV-7701,KLV-7701-1595,PFS,Progression-free survival,0.5,MONTHS,1,2020-07-18,2020-08-02,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1595,OS,Overall survival,20.3,MONTHS,1,2020-07-18,2022-03-28,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1596,DOR,Duration of response,4.2,MONTHS,0,2021-10-27,2022-03-04,Response ended,Placebo
+KLV-7701,KLV-7701-1596,PFS,Progression-free survival,2.0,MONTHS,0,2021-10-27,2021-12-27,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1596,OS,Overall survival,6.6,MONTHS,1,2021-10-27,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1597,DOR,Duration of response,7.3,MONTHS,1,2021-10-06,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1597,PFS,Progression-free survival,1.8,MONTHS,0,2021-10-06,2021-11-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1597,OS,Overall survival,7.3,MONTHS,1,2021-10-06,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1598,PFS,Progression-free survival,2.6,MONTHS,0,2021-12-28,2022-03-17,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1598,OS,Overall survival,4.6,MONTHS,1,2021-12-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1599,PFS,Progression-free survival,10.4,MONTHS,0,2020-11-22,2021-10-05,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1599,OS,Overall survival,17.7,MONTHS,1,2020-11-22,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1600,PFS,Progression-free survival,8.0,MONTHS,0,2019-11-29,2020-07-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1600,OS,Overall survival,22.0,MONTHS,1,2019-11-29,2021-09-29,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1601,PFS,Progression-free survival,0.5,MONTHS,0,2020-12-29,2021-01-13,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1601,OS,Overall survival,16.5,MONTHS,1,2020-12-29,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1602,PFS,Progression-free survival,3.7,MONTHS,0,2019-10-28,2020-02-18,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1602,OS,Overall survival,10.6,MONTHS,1,2019-10-28,2020-09-15,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1603,PFS,Progression-free survival,3.4,MONTHS,0,2021-06-21,2021-10-02,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1603,OS,Overall survival,10.8,MONTHS,1,2021-06-21,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1604,DOR,Duration of response,9.3,MONTHS,0,2019-07-31,2020-05-09,Response ended,Placebo
+KLV-7701,KLV-7701-1604,PFS,Progression-free survival,0.5,MONTHS,0,2019-07-31,2019-08-15,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1604,OS,Overall survival,20.2,MONTHS,1,2019-07-31,2021-04-06,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1605,PFS,Progression-free survival,7.7,MONTHS,0,2019-10-09,2020-05-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1605,OS,Overall survival,10.0,MONTHS,1,2019-10-09,2020-08-08,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1606,DOR,Duration of response,20.4,MONTHS,1,2020-03-06,2021-11-17,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1606,PFS,Progression-free survival,4.8,MONTHS,1,2020-03-06,2020-07-30,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1606,OS,Overall survival,26.3,MONTHS,1,2020-03-06,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1607,DOR,Duration of response,11.4,MONTHS,1,2020-03-29,2021-03-11,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1607,PFS,Progression-free survival,16.2,MONTHS,0,2020-03-29,2021-08-04,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1607,OS,Overall survival,25.6,MONTHS,1,2020-03-29,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1608,PFS,Progression-free survival,12.0,MONTHS,1,2021-03-02,2022-03-02,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1608,OS,Overall survival,12.0,MONTHS,1,2021-03-02,2022-03-02,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1609,DOR,Duration of response,6.8,MONTHS,1,2021-03-19,2021-10-12,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1609,PFS,Progression-free survival,0.6,MONTHS,1,2021-03-19,2021-04-06,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1609,OS,Overall survival,13.9,MONTHS,1,2021-03-19,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1610,DOR,Duration of response,0.9,MONTHS,0,2021-05-09,2021-06-05,Response ended,Placebo
+KLV-7701,KLV-7701-1610,PFS,Progression-free survival,6.7,MONTHS,0,2021-05-09,2021-11-29,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1610,OS,Overall survival,12.2,MONTHS,1,2021-05-09,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1611,PFS,Progression-free survival,0.5,MONTHS,0,2019-09-16,2019-10-01,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1611,OS,Overall survival,17.1,MONTHS,1,2019-09-16,2021-02-17,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1612,PFS,Progression-free survival,7.3,MONTHS,0,2020-06-20,2021-01-28,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1612,OS,Overall survival,20.2,MONTHS,1,2020-06-20,2022-02-25,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1613,DOR,Duration of response,6.9,MONTHS,0,2019-09-05,2020-04-02,Response ended,Placebo
+KLV-7701,KLV-7701-1613,PFS,Progression-free survival,15.6,MONTHS,0,2019-09-05,2020-12-23,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1613,OS,Overall survival,15.6,MONTHS,0,2019-09-05,2020-12-23,Death,Placebo
+KLV-7701,KLV-7701-1614,DOR,Duration of response,2.2,MONTHS,0,2020-09-16,2020-11-22,Response ended,Placebo
+KLV-7701,KLV-7701-1614,PFS,Progression-free survival,8.8,MONTHS,1,2020-09-16,2021-06-11,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1614,OS,Overall survival,8.8,MONTHS,1,2020-09-16,2021-06-11,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1615,PFS,Progression-free survival,0.5,MONTHS,0,2021-10-16,2021-10-31,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1615,OS,Overall survival,7.0,MONTHS,1,2021-10-16,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1616,PFS,Progression-free survival,10.9,MONTHS,1,2020-01-06,2020-12-03,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1616,OS,Overall survival,28.3,MONTHS,1,2020-01-06,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1617,PFS,Progression-free survival,0.5,MONTHS,0,2021-03-28,2021-04-12,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1617,OS,Overall survival,13.6,MONTHS,1,2021-03-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1618,DOR,Duration of response,8.9,MONTHS,0,2019-11-28,2020-08-25,Response ended,Placebo
+KLV-7701,KLV-7701-1618,PFS,Progression-free survival,2.2,MONTHS,0,2019-11-28,2020-02-03,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1618,OS,Overall survival,14.5,MONTHS,1,2019-11-28,2021-02-11,Censored at last contact,Placebo
+KLV-7701,KLV-7701-1619,DOR,Duration of response,11.6,MONTHS,1,2021-01-17,2022-01-05,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1619,PFS,Progression-free survival,12.3,MONTHS,0,2021-01-17,2022-01-26,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1619,OS,Overall survival,15.9,MONTHS,1,2021-01-17,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1620,PFS,Progression-free survival,10.7,MONTHS,1,2021-06-24,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1620,OS,Overall survival,10.7,MONTHS,1,2021-06-24,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1621,DOR,Duration of response,1.5,MONTHS,0,2020-06-25,2020-08-10,Response ended,Placebo
+KLV-7701,KLV-7701-1621,PFS,Progression-free survival,1.5,MONTHS,0,2020-06-25,2020-08-11,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1621,OS,Overall survival,1.5,MONTHS,0,2020-06-25,2020-08-11,Death,Placebo
+KLV-7701,KLV-7701-1622,PFS,Progression-free survival,9.1,MONTHS,0,2020-10-16,2021-07-20,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1622,OS,Overall survival,19.0,MONTHS,1,2020-10-16,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1623,DOR,Duration of response,0.9,MONTHS,1,2019-11-22,2019-12-19,Censored at last assessment,Placebo
+KLV-7701,KLV-7701-1623,PFS,Progression-free survival,18.7,MONTHS,0,2019-11-22,2021-06-13,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1623,OS,Overall survival,18.7,MONTHS,0,2019-11-22,2021-06-13,Death,Placebo
+KLV-7701,KLV-7701-1624,PFS,Progression-free survival,3.1,MONTHS,0,2020-10-17,2021-01-19,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1624,OS,Overall survival,18.9,MONTHS,1,2020-10-17,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1625,DOR,Duration of response,0.9,MONTHS,0,2021-06-28,2021-07-25,Response ended,Placebo
+KLV-7701,KLV-7701-1625,PFS,Progression-free survival,10.6,MONTHS,1,2021-06-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1625,OS,Overall survival,10.6,MONTHS,1,2021-06-28,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1626,PFS,Progression-free survival,0.5,MONTHS,0,2020-11-15,2020-11-30,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1626,OS,Overall survival,18.0,MONTHS,1,2020-11-15,2022-05-16,Censored at data cut-off,Placebo
+KLV-7701,KLV-7701-1627,DOR,Duration of response,10.1,MONTHS,0,2021-07-08,2022-05-11,Response ended,Placebo
+KLV-7701,KLV-7701-1627,PFS,Progression-free survival,0.5,MONTHS,0,2021-07-08,2021-07-23,Progression-free survival,Placebo
+KLV-7701,KLV-7701-1627,OS,Overall survival,10.3,MONTHS,1,2021-07-08,2022-05-16,Censored at data cut-off,Placebo

@@ -1,0 +1,133 @@
+STUDYID,USUBJID,PARAMCD,PARAM,AVAL,AVALU,CNSR,STARTDT,ADT,EVNTDESC,TRT01P
+KLV-7702,KLV-7702-1001,PFS,Progression-free survival,3.1,MONTHS,0,2018-02-25,2018-05-29,Progression-free survival,100 mg
+KLV-7702,KLV-7702-1001,OS,Overall survival,3.1,MONTHS,0,2018-02-25,2018-05-29,Death,100 mg
+KLV-7702,KLV-7702-1002,PFS,Progression-free survival,1.8,MONTHS,0,2018-02-18,2018-04-14,Progression-free survival,100 mg
+KLV-7702,KLV-7702-1002,OS,Overall survival,13.4,MONTHS,1,2018-02-18,2019-04-03,Censored at data cut-off,100 mg
+KLV-7702,KLV-7702-1003,PFS,Progression-free survival,3.3,MONTHS,0,2016-12-29,2017-04-08,Progression-free survival,100 mg
+KLV-7702,KLV-7702-1003,OS,Overall survival,27.1,MONTHS,1,2016-12-29,2019-04-03,Censored at data cut-off,100 mg
+KLV-7702,KLV-7702-1004,PFS,Progression-free survival,7.0,MONTHS,1,2018-05-30,2018-12-29,Censored at last assessment,100 mg
+KLV-7702,KLV-7702-1004,OS,Overall survival,10.1,MONTHS,1,2018-05-30,2019-04-03,Censored at data cut-off,100 mg
+KLV-7702,KLV-7702-1005,PFS,Progression-free survival,2.9,MONTHS,0,2018-06-19,2018-09-15,Progression-free survival,100 mg
+KLV-7702,KLV-7702-1005,OS,Overall survival,9.5,MONTHS,1,2018-06-19,2019-04-03,Censored at data cut-off,100 mg
+KLV-7702,KLV-7702-1006,PFS,Progression-free survival,0.5,MONTHS,1,2018-04-10,2018-04-25,Censored at last assessment,100 mg
+KLV-7702,KLV-7702-1006,OS,Overall survival,11.8,MONTHS,1,2018-04-10,2019-04-03,Censored at data cut-off,100 mg
+KLV-7702,KLV-7702-1007,DOR,Duration of response,8.1,MONTHS,1,2018-07-29,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1007,PFS,Progression-free survival,6.7,MONTHS,0,2018-07-29,2019-02-18,Progression-free survival,200 mg
+KLV-7702,KLV-7702-1007,OS,Overall survival,8.1,MONTHS,1,2018-07-29,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1008,PFS,Progression-free survival,3.6,MONTHS,1,2018-12-14,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1008,OS,Overall survival,3.6,MONTHS,1,2018-12-14,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1009,PFS,Progression-free survival,12.4,MONTHS,0,2017-12-08,2018-12-20,Progression-free survival,200 mg
+KLV-7702,KLV-7702-1009,OS,Overall survival,15.8,MONTHS,1,2017-12-08,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1010,DOR,Duration of response,4.3,MONTHS,1,2018-11-23,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1010,PFS,Progression-free survival,0.5,MONTHS,1,2018-11-23,2018-12-08,Censored at last assessment,200 mg
+KLV-7702,KLV-7702-1010,OS,Overall survival,4.3,MONTHS,1,2018-11-23,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1011,PFS,Progression-free survival,8.6,MONTHS,1,2017-05-26,2018-02-12,Censored at last assessment,200 mg
+KLV-7702,KLV-7702-1011,OS,Overall survival,22.2,MONTHS,1,2017-05-26,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1012,PFS,Progression-free survival,9.7,MONTHS,0,2017-08-16,2018-06-07,Progression-free survival,200 mg
+KLV-7702,KLV-7702-1012,OS,Overall survival,19.5,MONTHS,1,2017-08-16,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1013,PFS,Progression-free survival,4.1,MONTHS,0,2018-02-04,2018-06-09,Progression-free survival,200 mg
+KLV-7702,KLV-7702-1013,OS,Overall survival,13.9,MONTHS,1,2018-02-04,2019-04-03,Censored at data cut-off,200 mg
+KLV-7702,KLV-7702-1014,DOR,Duration of response,5.8,MONTHS,1,2017-06-02,2017-11-26,Censored at last assessment,200 mg
+KLV-7702,KLV-7702-1014,PFS,Progression-free survival,12.7,MONTHS,0,2017-06-02,2018-06-24,Progression-free survival,200 mg
+KLV-7702,KLV-7702-1014,OS,Overall survival,12.7,MONTHS,0,2017-06-02,2018-06-24,Death,200 mg
+KLV-7702,KLV-7702-1015,PFS,Progression-free survival,10.5,MONTHS,1,2017-05-21,2018-04-06,Censored at last assessment,200 mg
+KLV-7702,KLV-7702-1015,OS,Overall survival,11.3,MONTHS,1,2017-05-21,2018-04-30,Censored at last contact,200 mg
+KLV-7702,KLV-7702-1016,DOR,Duration of response,3.6,MONTHS,0,2018-08-17,2018-12-05,Response ended,300 mg
+KLV-7702,KLV-7702-1016,PFS,Progression-free survival,5.8,MONTHS,0,2018-08-17,2019-02-10,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1016,OS,Overall survival,7.5,MONTHS,1,2018-08-17,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1017,PFS,Progression-free survival,12.1,MONTHS,1,2018-03-31,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1017,OS,Overall survival,12.1,MONTHS,1,2018-03-31,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1018,DOR,Duration of response,12.9,MONTHS,1,2018-03-07,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1018,PFS,Progression-free survival,8.5,MONTHS,0,2018-03-07,2018-11-21,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1018,OS,Overall survival,12.9,MONTHS,1,2018-03-07,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1019,PFS,Progression-free survival,6.4,MONTHS,0,2018-09-04,2019-03-18,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1019,OS,Overall survival,6.9,MONTHS,1,2018-09-04,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1020,PFS,Progression-free survival,0.5,MONTHS,0,2018-05-19,2018-06-03,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1020,OS,Overall survival,10.5,MONTHS,1,2018-05-19,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1021,PFS,Progression-free survival,2.9,MONTHS,1,2019-01-05,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1021,OS,Overall survival,2.9,MONTHS,1,2019-01-05,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1022,PFS,Progression-free survival,22.0,MONTHS,1,2016-12-30,2018-10-31,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1022,OS,Overall survival,22.0,MONTHS,1,2016-12-30,2018-10-31,Censored at last contact,300 mg
+KLV-7702,KLV-7702-1023,PFS,Progression-free survival,13.3,MONTHS,1,2017-09-11,2018-10-21,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1023,OS,Overall survival,18.7,MONTHS,1,2017-09-11,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1024,DOR,Duration of response,18.4,MONTHS,1,2017-03-06,2018-09-17,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1024,PFS,Progression-free survival,4.8,MONTHS,0,2017-03-06,2017-07-30,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1024,OS,Overall survival,20.2,MONTHS,1,2017-03-06,2018-11-11,Censored at last contact,300 mg
+KLV-7702,KLV-7702-1025,DOR,Duration of response,9.8,MONTHS,0,2017-06-28,2018-04-22,Response ended,300 mg
+KLV-7702,KLV-7702-1025,PFS,Progression-free survival,11.4,MONTHS,0,2017-06-28,2018-06-10,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1025,OS,Overall survival,14.3,MONTHS,1,2017-06-28,2018-09-06,Censored at last contact,300 mg
+KLV-7702,KLV-7702-1026,PFS,Progression-free survival,3.0,MONTHS,0,2017-11-07,2018-02-06,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1026,OS,Overall survival,3.0,MONTHS,0,2017-11-07,2018-02-06,Death,300 mg
+KLV-7702,KLV-7702-1027,DOR,Duration of response,5.6,MONTHS,1,2017-08-23,2018-02-09,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1027,PFS,Progression-free survival,7.1,MONTHS,0,2017-08-23,2018-03-27,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1027,OS,Overall survival,7.1,MONTHS,1,2017-08-23,2018-03-27,Censored at last contact,300 mg
+KLV-7702,KLV-7702-1028,PFS,Progression-free survival,15.9,MONTHS,0,2017-09-09,2019-01-06,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1028,OS,Overall survival,18.8,MONTHS,1,2017-09-09,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1029,PFS,Progression-free survival,5.3,MONTHS,1,2018-10-25,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1029,OS,Overall survival,5.3,MONTHS,1,2018-10-25,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1030,PFS,Progression-free survival,1.9,MONTHS,0,2017-05-23,2017-07-20,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1030,OS,Overall survival,1.9,MONTHS,0,2017-05-23,2017-07-21,Death,300 mg
+KLV-7702,KLV-7702-1031,PFS,Progression-free survival,5.6,MONTHS,0,2018-09-29,2019-03-18,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1031,OS,Overall survival,6.1,MONTHS,1,2018-09-29,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1032,DOR,Duration of response,2.9,MONTHS,1,2019-01-06,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1032,PFS,Progression-free survival,2.9,MONTHS,1,2019-01-06,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1032,OS,Overall survival,2.9,MONTHS,1,2019-01-06,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1033,PFS,Progression-free survival,7.3,MONTHS,1,2017-02-22,2017-10-02,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1033,OS,Overall survival,18.5,MONTHS,1,2017-02-22,2018-09-08,Censored at last contact,300 mg
+KLV-7702,KLV-7702-1034,PFS,Progression-free survival,10.8,MONTHS,0,2017-08-14,2018-07-09,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1034,OS,Overall survival,16.7,MONTHS,1,2017-08-14,2019-01-04,Censored at last contact,300 mg
+KLV-7702,KLV-7702-1035,PFS,Progression-free survival,3.5,MONTHS,0,2018-02-11,2018-05-28,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1035,OS,Overall survival,3.5,MONTHS,0,2018-02-11,2018-05-28,Death,300 mg
+KLV-7702,KLV-7702-1036,PFS,Progression-free survival,5.4,MONTHS,0,2017-01-27,2017-07-10,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1036,OS,Overall survival,7.9,MONTHS,0,2017-01-27,2017-09-24,Death,300 mg
+KLV-7702,KLV-7702-1037,PFS,Progression-free survival,0.9,MONTHS,0,2018-06-24,2018-07-21,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1037,OS,Overall survival,9.3,MONTHS,1,2018-06-24,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1038,PFS,Progression-free survival,0.8,MONTHS,0,2017-01-22,2017-02-15,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1038,OS,Overall survival,16.7,MONTHS,1,2017-01-22,2018-06-14,Censored at last contact,300 mg
+KLV-7702,KLV-7702-1039,PFS,Progression-free survival,0.5,MONTHS,1,2017-01-11,2017-01-26,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1039,OS,Overall survival,15.8,MONTHS,1,2017-01-11,2018-05-07,Censored at last contact,300 mg
+KLV-7702,KLV-7702-1040,DOR,Duration of response,9.8,MONTHS,0,2018-03-14,2019-01-06,Response ended,300 mg
+KLV-7702,KLV-7702-1040,PFS,Progression-free survival,8.9,MONTHS,0,2018-03-14,2018-12-10,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1040,OS,Overall survival,12.6,MONTHS,1,2018-03-14,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1041,PFS,Progression-free survival,1.8,MONTHS,0,2018-03-21,2018-05-15,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1041,OS,Overall survival,12.4,MONTHS,1,2018-03-21,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1042,PFS,Progression-free survival,9.9,MONTHS,1,2017-05-22,2018-03-19,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1042,OS,Overall survival,22.4,MONTHS,1,2017-05-22,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1043,PFS,Progression-free survival,2.6,MONTHS,0,2018-03-16,2018-06-04,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1043,OS,Overall survival,2.6,MONTHS,0,2018-03-16,2018-06-04,Death,300 mg
+KLV-7702,KLV-7702-1044,DOR,Duration of response,9.0,MONTHS,1,2018-03-02,2018-12-01,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1044,PFS,Progression-free survival,1.0,MONTHS,0,2018-03-02,2018-04-01,Progression-free survival,300 mg
+KLV-7702,KLV-7702-1044,OS,Overall survival,13.0,MONTHS,1,2018-03-02,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1045,PFS,Progression-free survival,11.1,MONTHS,1,2017-09-05,2018-08-09,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1045,OS,Overall survival,18.9,MONTHS,1,2017-09-05,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1046,PFS,Progression-free survival,1.9,MONTHS,1,2017-09-06,2017-11-03,Censored at last assessment,300 mg
+KLV-7702,KLV-7702-1046,OS,Overall survival,18.9,MONTHS,1,2017-09-06,2019-04-03,Censored at data cut-off,300 mg
+KLV-7702,KLV-7702-1047,PFS,Progression-free survival,5.9,MONTHS,0,2016-11-26,2017-05-25,Progression-free survival,400 mg
+KLV-7702,KLV-7702-1047,OS,Overall survival,26.8,MONTHS,1,2016-11-26,2019-02-20,Censored at last contact,400 mg
+KLV-7702,KLV-7702-1048,DOR,Duration of response,7.1,MONTHS,0,2018-03-13,2018-10-15,Response ended,400 mg
+KLV-7702,KLV-7702-1048,PFS,Progression-free survival,8.7,MONTHS,0,2018-03-13,2018-12-03,Progression-free survival,400 mg
+KLV-7702,KLV-7702-1048,OS,Overall survival,12.7,MONTHS,1,2018-03-13,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1049,PFS,Progression-free survival,15.2,MONTHS,1,2017-12-26,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1049,OS,Overall survival,15.2,MONTHS,1,2017-12-26,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1050,PFS,Progression-free survival,2.5,MONTHS,0,2018-02-21,2018-05-08,Progression-free survival,400 mg
+KLV-7702,KLV-7702-1050,OS,Overall survival,2.5,MONTHS,0,2018-02-21,2018-05-09,Death,400 mg
+KLV-7702,KLV-7702-1051,DOR,Duration of response,16.5,MONTHS,1,2017-11-17,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1051,PFS,Progression-free survival,16.5,MONTHS,1,2017-11-17,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1051,OS,Overall survival,16.5,MONTHS,1,2017-11-17,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1052,DOR,Duration of response,21.3,MONTHS,1,2017-06-25,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1052,PFS,Progression-free survival,16.7,MONTHS,1,2017-06-25,2018-11-15,Censored at last assessment,400 mg
+KLV-7702,KLV-7702-1052,OS,Overall survival,21.3,MONTHS,1,2017-06-25,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1053,PFS,Progression-free survival,5.9,MONTHS,0,2017-06-26,2017-12-23,Progression-free survival,400 mg
+KLV-7702,KLV-7702-1053,OS,Overall survival,21.2,MONTHS,1,2017-06-26,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1054,PFS,Progression-free survival,0.5,MONTHS,0,2018-09-23,2018-10-08,Progression-free survival,400 mg
+KLV-7702,KLV-7702-1054,OS,Overall survival,6.3,MONTHS,1,2018-09-23,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1055,DOR,Duration of response,4.5,MONTHS,1,2018-11-17,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1055,PFS,Progression-free survival,0.6,MONTHS,0,2018-11-17,2018-12-05,Progression-free survival,400 mg
+KLV-7702,KLV-7702-1055,OS,Overall survival,4.5,MONTHS,1,2018-11-17,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1056,PFS,Progression-free survival,4.1,MONTHS,0,2017-01-08,2017-05-13,Progression-free survival,400 mg
+KLV-7702,KLV-7702-1056,OS,Overall survival,26.8,MONTHS,1,2017-01-08,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1057,PFS,Progression-free survival,8.9,MONTHS,0,2017-03-06,2017-12-02,Progression-free survival,400 mg
+KLV-7702,KLV-7702-1057,OS,Overall survival,24.9,MONTHS,1,2017-03-06,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1058,DOR,Duration of response,9.0,MONTHS,1,2018-07-04,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1058,PFS,Progression-free survival,9.0,MONTHS,1,2018-07-04,2019-04-03,Censored at data cut-off,400 mg
+KLV-7702,KLV-7702-1058,OS,Overall survival,9.0,MONTHS,1,2018-07-04,2019-04-03,Censored at data cut-off,400 mg

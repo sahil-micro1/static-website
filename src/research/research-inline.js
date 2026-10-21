@@ -345,3 +345,194 @@ window.benchmarks_data["legal-reason-bench"] = {
     },
   ],
 };
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["ivo-micro1-contractbench"] = {
+  lastUpdated: "October 13, 2026",
+  defaultTab: "pass-score",
+  tabs: [
+    {
+      id: "pass-score",
+      label: "Pass score",
+      rows: [
+        { name: "Grok 4.7", score: 58.3, iconStyle: "grok" },
+        { name: "Claude Opus 5.5", score: 58.1, iconStyle: "claude" },
+        { name: "Kimi K3", score: 57.1, iconStyle: "kimi" },
+        { name: "Gemini 3.8 Flash", score: 55, iconStyle: "gemini" },
+        { name: "GLM-5.3", score: 55, iconStyle: "glm" },
+        { name: "DeepSeek V4 Pro", score: 48.4, iconStyle: "deepseek" },
+        { name: "GPT-6 Astra", score: 45.6, iconStyle: "openai" },
+      ],
+    },
+    {
+      id: "completion-rate",
+      label: "Completion rate",
+      rows: [
+        { name: "Kimi K3", score: 100, iconStyle: "kimi" },
+        { name: "GPT-6 Astra", score: 100, iconStyle: "openai" },
+        { name: "Gemini 3.8 Flash", score: 99.8, iconStyle: "gemini" },
+        { name: "Grok 4.7", score: 99.5, iconStyle: "grok" },
+        { name: "DeepSeek V4 Pro", score: 99.5, iconStyle: "deepseek" },
+        { name: "GLM-5.3", score: 95.2, iconStyle: "glm" },
+        { name: "Claude Opus 5.5", score: 80.8, iconStyle: "claude" },
+      ],
+    },
+  ],
+};
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["medical-index"] = {
+  kind: "index",
+  name: "Medical Index",
+  description:
+    "The micro1 Medical Index brings our medical benchmarks together in one place.",
+  tag: "Index",
+  lastUpdated: "Oct 21, 2026",
+  defaultTab: "overall",
+  tabs: [
+    {
+      id: "scores",
+      label: "Scores",
+      overall: { id: "overall", label: "Overall", metric: "Composite" },
+      benchmarks: [
+        { id: "pathologybench", label: "RealmPathology Benchmark", metric: "Mean reward" },
+        { id: "pharmabench", label: "PharmaBench", metric: "Mean score" },
+        { id: "wellnessbench", label: "WellnessBench", metric: "Primary pass" },
+      ],
+      rows: [
+        {
+          name: "GPT-6 Astra",
+          iconStyle: "openai",
+          score: 71.0,
+          benchmarks: { pathologybench: 70.3, wellnessbench: 64, pharmabench: 78.6 },
+        },
+        {
+          name: "Muse Wonder",
+          iconStyle: "muse",
+          score: 70.8,
+          benchmarks: { pathologybench: 76.4, wellnessbench: 55, pharmabench: 80.9 },
+        },
+        {
+          name: "Claude Sonnet 5.5",
+          iconStyle: "claude",
+          score: 70.0,
+          benchmarks: { pathologybench: 77.3, wellnessbench: 57, pharmabench: 75.6 },
+        },
+        {
+          name: "Claude Opus 5.5",
+          iconStyle: "claude",
+          score: 68.4,
+          benchmarks: { pathologybench: 77.0, wellnessbench: 53, pharmabench: 75.1 },
+        },
+        {
+          name: "Claude Fable 5.1",
+          iconStyle: "claude",
+          score: 68.2,
+          benchmarks: { pathologybench: 78.0, wellnessbench: 51, pharmabench: 75.5 },
+        },
+        {
+          name: "Grok 4.6",
+          iconStyle: "grok",
+          score: 64.1,
+          benchmarks: { pathologybench: 72.1, wellnessbench: 43, pharmabench: 77.1 },
+        },
+        {
+          name: "Gemini 3.8 Flash",
+          iconStyle: "gemini",
+          score: 60.0,
+          benchmarks: { pathologybench: 66.3, wellnessbench: 47, pharmabench: 66.6 },
+        },
+      ],
+    },
+  ],
+};
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["pharma-bench"] = {
+  lastUpdated: "October 21, 2026",
+  defaultTab: "pass",
+  tabs: [
+    {
+      id: "pass",
+      label: "Pass rate",
+      rows: [
+        { name: "Muse Wonder", score: 17.2, iconStyle: "muse" },
+        { name: "GPT 6 Astra", score: 16.1, iconStyle: "openai" },
+        { name: "Muse Spark 1.3", score: 13.9, iconStyle: "muse" },
+        { name: "Fable 5.1", score: 12.8, iconStyle: "claude" },
+        { name: "Grok 4.6", score: 12.5, iconStyle: "grok" },
+        { name: "Sonnet 5.5", score: 11.4, iconStyle: "claude" },
+        { name: "Opus 5.5", score: 10.8, iconStyle: "claude" },
+        { name: "Opus 5", score: 9.7, iconStyle: "claude" },
+        { name: "Muse Spark 1.1", score: 9.7, iconStyle: "muse" },
+        { name: "Gemini 3.8 Flash", score: 5.6, iconStyle: "gemini" },
+      ],
+    },
+    {
+      id: "mean",
+      label: "Mean score",
+      rows: [
+        { name: "Muse Wonder", score: 80.9, iconStyle: "muse" },
+        { name: "GPT 6 Astra", score: 78.6, iconStyle: "openai" },
+        { name: "Muse Spark 1.3", score: 77.1, iconStyle: "muse" },
+        { name: "Grok 4.6", score: 77.1, iconStyle: "grok" },
+        { name: "Sonnet 5.5", score: 75.6, iconStyle: "claude" },
+        { name: "Fable 5.1", score: 75.5, iconStyle: "claude" },
+        { name: "Opus 5.5", score: 75.1, iconStyle: "claude" },
+        { name: "Opus 5", score: 73.2, iconStyle: "claude" },
+        { name: "Muse Spark 1.1", score: 70.5, iconStyle: "muse" },
+        { name: "Gemini 3.8 Flash", score: 66.6, iconStyle: "gemini" },
+      ],
+    },
+  ],
+};
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["realm-pathology-benchmark"] = {
+  lastUpdated: "October 21, 2026",
+  defaultTab: "mean",
+  tabs: [
+    {
+      id: "mean",
+      label: "Mean score",
+      rows: [
+        { name: "Claude Fable 5.1", score: 78.0, iconStyle: "claude" },
+        { name: "Claude Sonnet 5.5", score: 77.3, iconStyle: "claude" },
+        { name: "Claude Opus 5.5", score: 77.0, iconStyle: "claude" },
+        { name: "Muse Wonder", score: 76.4, iconStyle: "muse" },
+        { name: "Muse Spark 1.3", score: 75.8, iconStyle: "muse" },
+        { name: "Claude Opus 5", score: 75.2, iconStyle: "claude" },
+        { name: "Muse Spark 1.1", score: 74.9, iconStyle: "muse" },
+        { name: "Grok 4.7", score: 73.1, iconStyle: "grok" },
+        { name: "Grok 4.6", score: 72.1, iconStyle: "grok" },
+        { name: "Claude Sonnet 5", score: 71.7, iconStyle: "claude" },
+        { name: "GPT-6 Astra", score: 70.3, iconStyle: "openai" },
+        { name: "GPT-6 Sol", score: 69.3, iconStyle: "openai" },
+        { name: "Gemini 3.8 Flash", score: 66.3, iconStyle: "gemini" },
+      ],
+    },
+    {
+      id: "best",
+      label: "Best@3 score",
+      rows: [
+        { name: "Claude Fable 5.1", score: 83.6, iconStyle: "claude" },
+        { name: "Claude Sonnet 5.5", score: 83.2, iconStyle: "claude" },
+        { name: "Muse Wonder", score: 82.6, iconStyle: "muse" },
+        { name: "Claude Opus 5.5", score: 82.5, iconStyle: "claude" },
+        { name: "Muse Spark 1.3", score: 81.9, iconStyle: "muse" },
+        { name: "Claude Opus 5", score: 81.0, iconStyle: "claude" },
+        { name: "Muse Spark 1.1", score: 80.9, iconStyle: "muse" },
+        { name: "Grok 4.7", score: 79.3, iconStyle: "grok" },
+        { name: "Grok 4.6", score: 79.2, iconStyle: "grok" },
+        { name: "Claude Sonnet 5", score: 79.0, iconStyle: "claude" },
+        { name: "GPT-6 Astra", score: 75.3, iconStyle: "openai" },
+        { name: "GPT-6 Sol", score: 74.7, iconStyle: "openai" },
+        { name: "Gemini 3.8 Flash", score: 72.6, iconStyle: "gemini" },
+      ],
+    },
+  ],
+};

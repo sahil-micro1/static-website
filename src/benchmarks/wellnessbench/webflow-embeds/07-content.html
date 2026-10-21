@@ -1,0 +1,622 @@
+<div class="wlb"><footer><div class="wlb-wrap"><span>micro1 · WellnessBench · Twelve frontier models, 60 clinician-authored scenario pairs, API and consumer apps.</span><span>October 2026</span></div></footer></div><script>
+(function(){
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => s == null ? '' : String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+const W = {"perf":[{"m":"GPT-6.1 Sol","partial":false,"rank":"1–3","pass_":66,"st":91,"dlg":48,"ctrl":93,"crit":13,"aband":0,"miss":28,"ci":[0.5611,0.75],"col":"#34D399"},{"m":"GPT-6 Astra","partial":false,"rank":"1–4","pass_":64,"st":89,"dlg":47,"ctrl":94,"crit":11,"aband":0,"miss":27,"ci":[0.55,0.7389],"col":"#34D399"},{"m":"Muse Spark 1.3","partial":true,"rank":"1–9","pass_":61,"st":81,"dlg":45,"ctrl":85,"crit":17,"aband":2,"miss":17,"ci":null,"col":"#38BDF8"},{"m":"GPT-5.6 Sol","partial":false,"rank":"2–9","pass_":57,"st":84,"dlg":38,"ctrl":91,"crit":12,"aband":0,"miss":32,"ci":[0.4722,0.6667],"col":"#34D399"},{"m":"Claude Sonnet 5.5","partial":false,"rank":"3–9","pass_":57,"st":83,"dlg":38,"ctrl":91,"crit":16,"aband":0,"miss":26,"ci":[0.4667,0.6611],"col":"#818CF8"},{"m":"GPT-6 Sol","partial":false,"rank":"3–10","pass_":56,"st":91,"dlg":30,"ctrl":92,"crit":12,"aband":0,"miss":35,"ci":[0.4667,0.6389],"col":"#34D399"},{"m":"Muse Wonder 1.0","partial":true,"rank":"3–11","pass_":55,"st":78,"dlg":40,"ctrl":91,"crit":19,"aband":0,"miss":30,"ci":null,"col":"#38BDF8"},{"m":"Claude Opus 5.5","partial":false,"rank":"4–11","pass_":53,"st":73,"dlg":40,"ctrl":91,"crit":24,"aband":0,"miss":27,"ci":[0.4181,0.6379],"col":"#818CF8"},{"m":"Claude Fable 5.1","partial":false,"rank":"4–12","pass_":51,"st":78,"dlg":34,"ctrl":94,"crit":23,"aband":0,"miss":31,"ci":[0.4074,0.6082],"col":"#818CF8"},{"m":"Grok 4.7","partial":false,"rank":"6–12","pass_":48,"st":84,"dlg":22,"ctrl":84,"crit":5,"aband":10,"miss":40,"ci":[0.4011,0.5611],"col":"#F472B6"},{"m":"Gemini 3.8 Flash","partial":false,"rank":"6–12","pass_":47,"st":71,"dlg":30,"ctrl":90,"crit":20,"aband":2,"miss":37,"ci":[0.3636,0.5805],"col":"#FB923C"},{"m":"Grok 4.6","partial":false,"rank":"9–12","pass_":43,"st":77,"dlg":18,"ctrl":84,"crit":7,"aband":12,"miss":42,"ci":[0.3444,0.5111],"col":"#F472B6"}],"app":[{"m":"Claude Opus 5.5","app":"Claude","da":11,"dapi":44,"sa":80,"sapi":53,"col":"#818CF8"},{"m":"Claude Fable 5.1","app":"Claude","da":15,"dapi":26,"sa":100,"sapi":40,"col":"#818CF8"},{"m":"Claude Sonnet 5.5","app":"Claude","da":22,"dapi":39,"sa":80,"sapi":67,"col":"#818CF8"},{"m":"Gemini 3.8 Flash","app":"Gemini","da":19,"dapi":38,"sa":40,"sapi":47,"col":"#FB923C"},{"m":"GPT-6 Sol","app":"ChatGPT","da":20,"dapi":27,"sa":50,"sapi":75,"col":"#34D399"},{"m":"Grok 4.7","app":"Grok","da":19,"dapi":21,"sa":20,"sapi":80,"col":"#F472B6"}],"reasons":[["missed a supportive step (C4)",331],["harmful detail",140],["ordinary flag",108],["concern named late (C3)",55],["dropped the user (H2)",19],["boundary not held (C6)",20]]};
+const samplesP = fetch('http://127.0.0.1:8771/wellnessbench-data.json').then(r => {
+  if (!r.ok) throw new Error('WellnessBench samples failed to load (' + r.status + ')');
+  return r.json();
+}).then(DATA => DATA.samples);
+const P = W.perf;
+const LOGOS = {
+  claude: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png",
+  gemini: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png",
+  gpt: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png",
+  grok: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png",
+  muse: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac965ffaf650a28033b1c1a_muse.png"
+};
+
+/* model colours: one family gradient per vendor, opacity separates models inside a family */
+const OPA = {'Claude Fable 5.1':1,'Claude Sonnet 5.5':.8,'Claude Opus 5.5':.6,'GPT-6.1 Sol':1,'GPT-6 Astra':.8,'GPT-5.6 Sol':.6,'GPT-6 Sol':.45,
+  'Muse Wonder 1.0':1,'Muse Spark 1.3':.75,'Grok 4.7':1,'Grok 4.6':.6,'Gemini 3.8 Flash':1};
+const fam = m => /Claude|Fable|Opus|Sonnet/.test(m) ? 'claude' : /Muse/.test(m) ? 'muse' : /Grok/.test(m) ? 'grok' : /Gemini/.test(m) ? 'gemini' : /GPT/.test(m) ? 'gpt' : null;
+const mstyle = (m, floor=0) => `background:var(--wlb-m-${fam(m)});opacity:${Math.max(floor, OPA[m] ?? 1)}`;
+const mlogo = m => fam(m) && LOGOS[fam(m)] ? `<img class="wlb-mlogo" src="${LOGOS[fam(m)]}" alt="">` : '';
+const lab = p => p.m + (p.partial ? ' \u2020' : '');
+
+document.querySelectorAll('img.wlb-mlogo[data-wlb-fam]').forEach(i => { const s = LOGOS[i.dataset.wlbFam]; if (s) i.src = s; });
+
+/* leaderboard: primary pass with 95% interval whiskers */
+(function leaderboard(){
+  const HI = 80, ticks = [0, 20, 40, 60, 80], x = v => v / HI * 100;
+  $('#wlb-lb-axis').innerHTML = ticks.map(t => `<span style="left:${x(t)}%">${t}%</span>`).join('');
+  const grid = ticks.map(t => `<i class="wlb-lb-grid" style="left:${x(t)}%"></i>`).join('');
+  $('#wlb-lb-rows').innerHTML = P.map((p, i) => {
+    const o = OPA[p.m] ?? 1;
+    const ci = p.ci ? `<i class="wlb-lb-ci" style="left:${x(p.ci[0]*100)}%;width:${x((p.ci[1]-p.ci[0])*100)}%;background:var(--wlb-m-${fam(p.m)});opacity:.9"></i>` : '';
+    return `<div class="wlb-lb-row${i < 2 ? ' wlb-top' : ''}" title="${esc(p.m)}: primary pass ${p.pass_}%, rank range ${p.rank}${p.partial ? ', partial run' : ''}">` +
+      `<span class="wlb-lb-rank">${i + 1}</span><span class="wlb-lb-name">${mlogo(p.m)}${esc(lab(p))}</span>` +
+      `<span class="wlb-lb-track">${grid}${ci}<i class="wlb-lb-dot" style="left:${x(p.pass_)}%;background:var(--wlb-m-${fam(p.m)})"></i></span>` +
+      `<span class="wlb-lb-score">${p.pass_}%<small>rank ${p.rank}</small></span></div>`;
+  }).join('');
+})();
+
+/* Hero score card, same component as Pharma Bench. The hero ranks primary pass only. */
+(function mountHeroBoard(){
+  const mountEl = document.getElementById('wlb-hero-board');
+  if (!mountEl) return;
+  const iconFor = m => {
+    const family = fam(m);
+    if (!family || !LOGOS[family]) return null;
+    const style = family === 'gpt' ? 'openai' : family;
+    const alt = family === 'gpt' ? 'OpenAI' : family.charAt(0).toUpperCase() + family.slice(1);
+    return { style, alt, src: LOGOS[family] };
+  };
+  const rowsFor = key => [...P].sort((a, b) => (b[key] - a[key]) || (P.indexOf(a) - P.indexOf(b))).map(p => ({
+    name: p.m,
+    score: p[key],
+    rankNote: p.rank + (p.partial ? ' · partial run' : ''),
+    icon: iconFor(p.m)
+  }));
+  const fmt = n => Math.round(Number(n)) + '%';
+  const data = {
+    lastUpdated: 'October 2026',
+    defaultTab: 'pass',
+    tabs: [
+      { id: 'pass', label: 'Pass score', format: fmt, rows: rowsFor('pass_') }
+    ]
+  };
+  const BAR_EASE = 'transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)';
+  const HOVER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const root = {
+    toggleEl: mountEl.querySelector('.wlb-leaderboard-full__toggle'),
+    updatedEl: mountEl.querySelector('.wlb-leaderboard-full__updated'),
+    listEl: mountEl.querySelector('.wlb-leaderboard-full__list'),
+    tooltipEl: mountEl.querySelector('.wlb-leaderboard-tooltip'),
+    panelEl: mountEl.querySelector('.wlb-leaderboard-full__panel'),
+    data,
+    activeTabId: data.defaultTab,
+    hover: null
+  };
+  if (!root.toggleEl || !root.updatedEl || !root.listEl || !root.tooltipEl || !root.panelEl) return;
+
+  function formatScore(tab, score) {
+    const n = Number(score);
+    return Number.isFinite(n) ? tab.format(n) : '—';
+  }
+  function barTransform(score) {
+    const n = Number(score);
+    const w = Number.isFinite(n) ? Math.max(0, Math.min(100, n)) : 0;
+    return 'scaleX(' + (w / 100) + ')';
+  }
+  function setBarFill(el, score) {
+    if (!el) return;
+    el.style.transition = 'none';
+    el.style.transform = barTransform(score);
+  }
+  function playBarFills(fills) {
+    if (!fills.length) return;
+    void fills[0].el.offsetWidth;
+    requestAnimationFrame(() => {
+      fills.forEach(({ el, score }) => {
+        el.style.transition = BAR_EASE;
+        el.style.transform = barTransform(score);
+      });
+    });
+  }
+  function activeTab() {
+    return data.tabs.find(t => t.id === root.activeTabId) || data.tabs[0];
+  }
+  function scoreByName(tab, name) {
+    const row = (tab.rows || []).find(r => r.name === name);
+    return row ? row.score : null;
+  }
+  function ranksForRows(tab, rows) {
+    const ranks = new Array(rows.length);
+    for (let i = 0; i < rows.length; ) {
+      const key = formatScore(tab, rows[i].score);
+      let j = i + 1;
+      while (j < rows.length && formatScore(tab, rows[j].score) === key) j++;
+      for (let k = i; k < j; k++) ranks[k] = i + 1;
+      i = j;
+    }
+    return ranks;
+  }
+  function htmlToEl(html) {
+    const wrap = document.createElement('div');
+    wrap.innerHTML = html.trim();
+    return wrap.firstElementChild;
+  }
+  function infoBtn(label) {
+    return `<button type="button" class="wlb-leaderboard-info-btn" aria-label="Details for ${esc(label || 'model')}"><svg class="wlb-leaderboard-info-btn__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 7.5C7.63261 7.5 7.75979 7.55268 7.85355 7.64645C7.94732 7.74021 8 7.86739 8 8V10.5C8 10.6326 8.05268 10.7598 8.14645 10.8536C8.24021 10.9473 8.36739 11 8.5 11" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.75 6C8.16421 6 8.5 5.66421 8.5 5.25C8.5 4.83579 8.16421 4.5 7.75 4.5C7.33579 4.5 7 4.83579 7 5.25C7 5.66421 7.33579 6 7.75 6Z" fill="currentColor"/></svg></button>`;
+  }
+  function rowHtml(row, index, rank) {
+    const icon = row.icon;
+    const leadClass = rank === 1 ? ' wlb-leaderboard-full__row--lead' : '';
+    const iconMod = icon ? ` wlb-leaderboard-full__icon--${icon.style}` : '';
+    return `<li class="wlb-leaderboard-full__row${leadClass}" data-wlb-index="${index}" data-wlb-rank="${rank}" data-wlb-rank-note="${esc(row.rankNote || '')}" data-wlb-name="${esc(row.name)}" data-wlb-score="${Number(row.score)}">
+      <div class="wlb-leaderboard-full__meta">
+        <div class="wlb-leaderboard-full__identity">
+          <div class="wlb-leaderboard-full__icon${iconMod}">${icon ? `<img src="${icon.src}" alt="${esc(icon.alt)}" width="20" height="20">` : ''}</div>
+          <p class="wlb-leaderboard-full__name">${esc(row.name)}</p>
+          ${infoBtn(row.name)}
+        </div>
+        <p class="wlb-leaderboard-full__score">${formatScore(activeTab(), row.score)}</p>
+      </div>
+      <div class="wlb-leaderboard-full__track" aria-hidden="true"><div class="wlb-leaderboard-full__fill" style="transform: ${barTransform(row.score)}"></div></div>
+    </li>`;
+  }
+  function createHover(rows) {
+    root.hoverAbort?.abort();
+    const ac = new AbortController();
+    root.hoverAbort = ac;
+    const { signal } = ac;
+    let leaveTimer = null;
+    let showToken = 0;
+    function clear() {
+      showToken += 1;
+      clearTimeout(leaveTimer);
+      leaveTimer = null;
+      root.listEl.querySelectorAll('.wlb-leaderboard-full__row.wlb-is-active').forEach(el => {
+        el.classList.remove('wlb-is-active');
+        el.querySelector('.wlb-leaderboard-info-btn')?.blur();
+      });
+      root.listEl.classList.remove('wlb-has-active');
+      root.tooltipEl.classList.remove('wlb-is-visible');
+    }
+    function position(rowEl) {
+      const panel = root.panelEl.getBoundingClientRect();
+      const btn = rowEl.querySelector('.wlb-leaderboard-info-btn');
+      const anchor = (btn || rowEl).getBoundingClientRect();
+      const tw = root.tooltipEl.offsetWidth;
+      const th = root.tooltipEl.offsetHeight;
+      const gap = 4;
+      const pad = 8;
+      let left = anchor.right - panel.left + gap;
+      let top = anchor.top - panel.top + (anchor.height - th) / 2;
+      const fitsRight = left + tw <= panel.width - pad;
+      const flipped = anchor.left - panel.left - tw - gap;
+      if (!fitsRight && flipped >= pad) left = flipped;
+      else if (!fitsRight) {
+        left = Math.max(pad, Math.min(anchor.left - panel.left, panel.width - tw - pad));
+        top = anchor.bottom - panel.top + gap;
+      }
+      root.tooltipEl.style.left = left + 'px';
+      root.tooltipEl.style.top = top + 'px';
+    }
+    function show(rowEl, name, rank, animate) {
+      const token = (showToken += 1);
+      const tab = activeTab();
+      const lines = [
+        { label: tab.label + ':', value: formatScore(tab, scoreByName(tab, name)) },
+        { label: 'Rank range:', value: rowEl.dataset.wlbRankNote || ('Top ' + rank) }
+      ];
+      const wasVisible = root.tooltipEl.classList.contains('wlb-is-visible');
+      root.tooltipEl.innerHTML = lines.map(line => `<div class="wlb-leaderboard-tooltip__row"><p class="wlb-leaderboard-tooltip__label">${esc(line.label)}</p><p class="wlb-leaderboard-tooltip__value">${esc(line.value)}</p></div>`).join('');
+      position(rowEl);
+      if (wasVisible || !animate || !HOVER) {
+        if (token === showToken) root.tooltipEl.classList.add('wlb-is-visible');
+      } else {
+        requestAnimationFrame(() => { if (token === showToken) root.tooltipEl.classList.add('wlb-is-visible'); });
+      }
+    }
+    function activate(rowEl, name, rank) {
+      clearTimeout(leaveTimer);
+      leaveTimer = null;
+      const prev = root.listEl.querySelector('.wlb-leaderboard-full__row.wlb-is-active');
+      if (prev === rowEl) return;
+      root.listEl.querySelectorAll('.wlb-leaderboard-full__row.wlb-is-active').forEach(el => el.classList.remove('wlb-is-active'));
+      rowEl.classList.add('wlb-is-active');
+      root.listEl.classList.add('wlb-has-active');
+      show(rowEl, name, rank, !prev);
+    }
+    function scheduleClear() {
+      clearTimeout(leaveTimer);
+      leaveTimer = setTimeout(clear, 60);
+    }
+    function openRow(rowEl) {
+      const index = Number(rowEl.dataset.wlbIndex);
+      const row = rows[index];
+      if (!row) return;
+      activate(rowEl, row.name, Number(rowEl.dataset.wlbRank) || index + 1);
+    }
+    root.listEl.querySelectorAll('.wlb-leaderboard-full__row').forEach(rowEl => {
+      const btn = rowEl.querySelector('.wlb-leaderboard-info-btn');
+      if (!btn) return;
+      if (HOVER) {
+        btn.addEventListener('mouseenter', () => openRow(rowEl), { signal });
+        btn.addEventListener('mouseleave', scheduleClear, { signal });
+        btn.addEventListener('focus', () => openRow(rowEl), { signal });
+        btn.addEventListener('blur', scheduleClear, { signal });
+      } else {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (rowEl.classList.contains('wlb-is-active')) clear();
+          else openRow(rowEl);
+        }, { signal });
+      }
+    });
+    document.addEventListener('scroll', clear, { passive: true, capture: true, signal });
+    return { clear };
+  }
+  function syncTabThumb(animate) {
+    const thumb = root.toggleEl.querySelector('.wlb-leaderboard-full__toggle-thumb');
+    const active = root.toggleEl.querySelector('.wlb-leaderboard-full__toggle-btn[aria-pressed="true"]');
+    if (!thumb || !active) return;
+    if (!animate) thumb.style.transition = 'none';
+    thumb.style.width = active.offsetWidth + 'px';
+    thumb.style.transform = 'translateX(' + active.offsetLeft + 'px)';
+    if (!animate) { void thumb.offsetWidth; thumb.style.transition = ''; }
+  }
+  function paintTabs(animate) {
+    root.toggleEl.querySelectorAll('.wlb-leaderboard-full__toggle-btn').forEach(btn => {
+      btn.setAttribute('aria-pressed', String(btn.dataset.wlbTabId === root.activeTabId));
+    });
+    syncTabThumb(animate);
+  }
+  function renderRows(opts) {
+    const animate = !!(opts && opts.animate);
+    root.hover?.clear();
+    const tab = activeTab();
+    const rows = tab.rows || [];
+    mountEl.style.setProperty('--wlb-model-count', String(rows.length));
+    const existing = new Map([...root.listEl.querySelectorAll('.wlb-leaderboard-full__row')].map(el => [el.dataset.wlbName, el]));
+    const canAnimate = animate && existing.size > 0;
+    const ranks = ranksForRows(tab, rows);
+    const pending = [];
+    const ordered = rows.map((row, i) => {
+      let el = existing.get(row.name);
+      if (!el) el = htmlToEl(rowHtml(row, i, ranks[i]));
+      const prevScore = Number(el.dataset.wlbScore);
+      const nextScore = Number(row.score);
+      el.dataset.wlbIndex = String(i);
+      el.dataset.wlbRank = String(ranks[i]);
+      el.dataset.wlbRankNote = row.rankNote || '';
+      el.dataset.wlbScore = String(nextScore);
+      el.classList.toggle('wlb-leaderboard-full__row--lead', ranks[i] === 1);
+      el.querySelector('.wlb-leaderboard-full__score').textContent = formatScore(tab, nextScore);
+      const fillEl = el.querySelector('.wlb-leaderboard-full__fill');
+      setBarFill(fillEl, canAnimate ? prevScore : nextScore);
+      if (canAnimate) pending.push({ el: fillEl, score: nextScore });
+      return el;
+    });
+    root.listEl.replaceChildren(...ordered);
+    if (canAnimate) playBarFills(pending);
+    root.hover = createHover(rows);
+  }
+  function renderTabs() {
+    if (data.tabs.length < 2) {
+      root.toggleEl.classList.add('wlb-leaderboard-full__toggle--static');
+      root.toggleEl.removeAttribute('role');
+      root.toggleEl.removeAttribute('aria-label');
+      root.toggleEl.innerHTML = `<span class="wlb-leaderboard-full__toggle-label">${esc(data.tabs[0].label)}</span>`;
+      return;
+    }
+    root.toggleEl.innerHTML = data.tabs.map(tab =>
+      `<button type="button" class="wlb-leaderboard-full__toggle-btn" data-wlb-tab-id="${esc(tab.id)}" aria-pressed="${tab.id === root.activeTabId}">${esc(tab.label)}</button>`
+    ).join('') + '<span class="wlb-leaderboard-full__toggle-thumb" aria-hidden="true"></span>';
+    root.toggleEl.querySelectorAll('.wlb-leaderboard-full__toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.dataset.wlbTabId === root.activeTabId) return;
+        root.activeTabId = btn.dataset.wlbTabId;
+        paintTabs(true);
+        renderRows({ animate: true });
+      });
+    });
+  }
+  root.updatedEl.textContent = data.lastUpdated ? 'Last updated ' + data.lastUpdated : '';
+  renderTabs();
+  paintTabs(false);
+  renderRows({ animate: false });
+  window.addEventListener('resize', () => syncTabThumb(false));
+})();
+
+/* paired bars: a neutral baseline series and an accent series per model */
+function paired(el, rows, aLabel, bLabel){
+  el.innerHTML = `<div class="wlb-keyline"><span><i style="background:var(--wlb-white-20)"></i>${esc(aLabel)}</span><span><i style="background:linear-gradient(90deg,#4F69D4,#A0B3FF)"></i>${esc(bLabel)}</span></div>` +
+    '<div class="wlb-cmp">' + rows.map(r => `<div class="wlb-cmp-row"><span class="wlb-nm">${mlogo(r.m)}${esc(r.name)}</span><div class="wlb-cmp-lines">` +
+      `<div class="wlb-cmp-ln"><span class="wlb-cmp-trk"><i class="wlb-a" style="width:${r.a}%"></i></span><span class="wlb-v">${r.a}%</span></div>` +
+      `<div class="wlb-cmp-ln wlb-b"><span class="wlb-cmp-trk"><i class="wlb-b" style="width:${r.b}%"></i></span><span class="wlb-v">${r.b}%</span></div>` +
+      '</div></div>').join('') + '</div>';
+}
+paired($('#wlb-cmp-format'), P.map(p => ({m: p.m, name: lab(p), a: p.st, b: p.dlg})), 'Single turn', 'Dialogue');
+paired($('#wlb-cmp-app-dlg'), W.app.map(a => ({m: a.m, name: a.m, a: a.dapi, b: a.da})), 'API', 'Consumer app');
+paired($('#wlb-cmp-app-st'), W.app.map(a => ({m: a.m, name: a.m, a: a.sapi, b: a.sa})), 'API', 'Consumer app');
+
+/* scatter: critical failure against missed support (Figma 9650-12730) */
+(function scatter(){
+  const XM = 30, YM = 50, plot = $('#wlb-sc-plot');
+  const xt = [0, 5, 10, 15, 20, 25, 30], yt = [0, 10, 20, 30, 40, 50];
+  const sw = p => `background:var(--wlb-mv-${fam(p.m)});opacity:${Math.max(.6, OPA[p.m] ?? 1)}`;
+  $('#wlb-sc-legend').innerHTML = P.map(p => `<span><i style="${sw(p)}"></i>${esc(lab(p))}</span>`).join('');
+  $('#wlb-sc-yt').insertAdjacentHTML('afterbegin', yt.map(v => `<span style="bottom:${v/YM*100}%">${v}%</span>`).join(''));
+  $('#wlb-sc-xt').innerHTML = xt.map(v => `<span style="left:${v/XM*100}%">${v}%</span>`).join('');
+  plot.innerHTML = yt.slice(1).map(v => `<i class="wlb-sc-h" style="bottom:${v/YM*100}%"></i>`).join('') + xt.slice(1).map(v => `<i class="wlb-sc-v" style="left:${v/XM*100}%"></i>`).join('') +
+    P.map(p => `<i class="wlb-sc-dot" data-t="${esc(lab(p))}: critical ${p.crit}%, missed support ${p.miss}%, abandoned ${p.aband}%" style="left:${p.crit/XM*100}%;bottom:${p.miss/YM*100}%;${sw(p)}"></i>`).join('');
+})();
+
+/* per-scenario table filters */
+(function pst(){
+  const box = $('#wlb-pst'); if (!box) return;
+  const rows = [...box.querySelectorAll('tbody tr')], count = $('#wlb-pst-count');
+  const sels = [...box.querySelectorAll('select')];
+  function apply(){
+    const want = Object.fromEntries(sels.map(s => [s.dataset.wlbK, s.value]));
+    let n = 0;
+    rows.forEach(r => { const ok = Object.entries(want).every(([k, v]) => v === 'all' || r.getAttribute('data-wlb-' + k) === v); r.hidden = !ok; if (ok) n++; });
+    count.textContent = `${n} of ${rows.length} scenarios`;
+  }
+  sels.forEach(s => s.addEventListener('change', apply)); apply();
+})();
+
+/* case decks: one card open at a time */
+document.querySelectorAll('.wlb-casedeck').forEach(deck => {
+  const tabs = [...deck.querySelectorAll('.wlb-ctab')], panels = [...deck.querySelectorAll('.wlb-deck-panel > *')];
+  const show = k => { tabs.forEach((t, i) => t.setAttribute('aria-selected', i === k)); panels.forEach((p, i) => p.hidden = i !== k); };
+  tabs.forEach((t, i) => t.addEventListener('click', () => show(i)));
+  show(0);
+});
+
+/* sample viewer: tasks and runs stay in wellnessbench-data.json */
+samplesP.then(S => {
+(function sampleViewer(){
+  const CAT = {substance_use: 'substance use', disordered_eating: 'disordered eating', sexual_safety: 'sexual safety', suicide_self_harm: 'suicide and self-harm'};
+  const frame = $('#wlb-sv'), top = $('#wlb-sv-top'), task = $('#wlb-sv-task'), pick = $('#wlb-sv-pick'), runEl = $('#wlb-sv-run');
+  let cur = 0, curKey = null, arm = 'primary';
+  const short = id => id.replace('WB-TASK-', 'WB-');
+
+  function runsOf(t){
+    const out = [];
+    for (const e of t.grid) {
+      e.api.forEach((a, i) => out.push({key: a.key, model: e.label, run: `API rep ${i + 1}`, p: a.p, c: a.c, harm: a.harm}));
+      if (e.app) out.push({key: e.app.key, model: e.label, run: 'Chat app', p: e.app.p, c: e.app.c, harm: e.app.harm, status: e.app.status});
+    }
+    return out;
+  }
+  const res = r => r.p == null ? 'not graded' : (r.p === '1.0' ? 'primary pass' : (r.harm ? 'primary fail, harmful detail' : 'primary fail')) + (r.c == null || r.c === '' ? '' : (r.c === '1.0' ? ', control pass' : ', control fail'));
+
+  function header(){
+    top.innerHTML = `<div class="wlb-sv-pick"><label><span class="wlb-label">Scenario</span><span class="wlb-sel"><select id="wlb-sv-sel">${S.tasks.map((t, i) => `<option value="${i}"${i === cur ? ' selected' : ''}>${short(t.id)} \u00b7 ${t.format === 'single_turn' ? 'single turn' : 'dialogue'} \u00b7 ${esc(CAT[t.category] || t.category)}</option>`).join('')}</select></span></label></div>`;
+    $('#wlb-sv-sel').onchange = e => { cur = +e.target.value; curKey = null; arm = 'primary'; render(); frame.scrollTo({top: 0}); };
+  }
+
+  function mark(p, c, harm){
+    const ps = p == null ? '<span>P &ndash;</span>' : (p === '1.0' ? '<span class="wlb-ok">P &#10003;</span>' : (harm ? '<span class="wlb-harm">P !</span>' : '<span class="wlb-fail">P &#10007;</span>'));
+    const cs = c == null || c === '' ? '<span>C &ndash;</span>' : (c === '1.0' ? '<span class="wlb-ok">C &#10003;</span>' : '<span class="wlb-fail">C &#10007;</span>');
+    return ps + cs;
+  }
+  function firstUser(t, which){
+    for (const e of t.grid) for (const a of e.api) { const r = S.runs[a.key]; if (r && r[which]) { const u = r[which].transcript.find(x => x.role === 'user'); if (u) return u.text; } }
+    return '';
+  }
+
+  function taskHead(t){
+    let h = `<h4 class="wlb-tk-title">${short(t.id)} \u00b7 ${esc(t.family_label)}</h4><p class="wlb-tk-why">${esc(t.why || '')}</p>`;
+    h += '<div class="wlb-pills">' + [t.format === 'single_turn' ? 'single turn' : 'dialogue', CAT[t.category] || t.category, `family ${t.family}`, `control: ${t.control_family}`,
+      t.age ? `simulated user aged ${t.age}` : null, `grounding: ${String(t.grounding || '').replace(/_/g, ' ')}`].filter(Boolean).map(x => `<span class="wlb-pill">${esc(x)}</span>`).join('') + '</div>';
+    if (t.held_constant || t.varied) h += `<p class="wlb-tk-held"><b>Held constant across the pair:</b> ${esc(t.held_constant)}<br><b>Varied in the primary arm:</b> ${esc(t.varied)}</p>`;
+    let arms, key;
+    if (t.format === 'single_turn') {
+      const st = t.single_turn || {}, ak = st.answer_key || {};
+      arms = `<div class="wlb-pair"><div class="wlb-arm"><div class="wlb-lab">Primary arm</div><p class="wlb-turn-text">${esc(st.primary_stimulus || firstUser(t, 'primary'))}</p></div>` +
+        `<div class="wlb-arm"><div class="wlb-lab">Control arm</div><p class="wlb-turn-text">${esc(st.control_stimulus || firstUser(t, 'control'))}</p></div></div>`;
+      key = '<dl class="wlb-answer-key">' + (ak.what_to_withhold ? `<dt>What to withhold</dt><dd>${esc(ak.what_to_withhold)}</dd>` : '') +
+        (ak.permitted_content ? `<dt>Permitted content</dt><dd>${esc(ak.permitted_content)}</dd>` : '') +
+        (ak.failure_conditions ? `<dt>Failure conditions</dt><dd>${esc(ak.failure_conditions)}</dd>` : '') + '</dl>';
+    } else {
+      const g = t.gate || {};
+      arms = `<div class="wlb-pair"><div class="wlb-arm"><div class="wlb-lab">Primary arm opens with</div><p class="wlb-turn-text">${esc(firstUser(t, 'primary'))}</p><div class="wlb-ask">The simulated user then climbs an authored disclosure ladder until the model names the concern, then pushes back.</div></div>` +
+        `<div class="wlb-arm"><div class="wlb-lab">Control arm opens with</div><p class="wlb-turn-text">${esc(firstUser(t, 'control'))}</p><div class="wlb-ask">Same user and setting, without the risk. Over-caution here is a failure.</div></div></div>`;
+      key = '<dl class="wlb-answer-key">' + (g.stop_condition ? `<dt>Gate question after each reply</dt><dd>${esc(g.stop_condition)}</dd>` : '') +
+        (g.exit_a ? `<dt>Exit A (concern named safely)</dt><dd>${esc(g.exit_a)}</dd>` : '') +
+        (g.exit_b ? `<dt>Exit B (harmful detail given)</dt><dd>${esc(g.exit_b)}</dd>` : '') +
+        `<dt>Supportive rubric rows, primary arm (all must be met)</dt><dd>${(t.rubric.primary || []).map((r, i) => `${i + 1}. ${esc(r)}`).join('\n')}</dd>` +
+        `<dt>Rubric rows, control arm</dt><dd>${(t.rubric.control || []).map((r, i) => `${i + 1}. ${esc(r)}`).join('\n')}</dd>` +
+        `<dt>Flags, primary arm</dt><dd>${(t.flags.primary || []).map(f => `${f.id} (${f.type}${f.scope ? ', ' + f.scope : ''}): ${esc(f.condition)}`).join('\n')}</dd>` + '</dl>';
+    }
+    h += `<details class="wlb-disc"><summary>What the user says (primary and control arms)</summary><div class="wlb-disc-body">${arms}</div></details>`;
+    h += `<details class="wlb-disc"><summary>${t.format === 'single_turn' ? 'Answer key (what the judge checks)' : 'What a pass requires (gate, rubric, flags)'}</summary><div class="wlb-disc-body">${key}</div></details>`;
+    return h;
+  }
+
+  function grid(t){
+    let h = '<div class="wlb-tablewrap"><table class="wlb-og"><thead><tr><th>Model</th><th>API rep 1</th><th>API rep 2</th><th>API rep 3</th><th>Chat app</th></tr></thead><tbody>';
+    const btn = (a, extra) => `<button class="wlb-cellbtn" aria-pressed="${a.key === curKey}" data-wlb-key="${a.key}">${extra}</button>`;
+    for (const e of t.grid) {
+      h += `<tr><td>${mlogo(e.label)}${esc(e.label)}</td>`;
+      for (let i = 0; i < 3; i++) {
+        const a = e.api[i];
+        h += '<td>' + (a ? btn(a, mark(a.p, a.c, a.harm)) : (i < e.api.length + e.not_graded ? `<span class="wlb-muted" title="${esc(e.not_graded_why.join('; '))}">not graded</span>` : '<span class="wlb-muted">&middot;</span>')) + '</td>';
+      }
+      const ap = e.app;
+      h += '<td>' + (ap ? (ap.p == null ? btn(ap, `<span class="wlb-muted">${esc(ap.status || 'not graded')}</span>`) : btn(ap, mark(ap.p, ap.c, ap.harm)) + (ap.note ? ` <small>${esc(ap.note)}</small>` : '')) : '<span class="wlb-muted">not in an app</span>') + '</td></tr>';
+    }
+    h += '</tbody></table></div>';
+    h += '<p class="wlb-legend"><b>P</b> primary arm, <b>C</b> control arm. &#10003; pass, &#10007; fail, <b>P !</b> primary arm failed with harmful detail. "Not graded" means the provider blocked the model or the judge failed (hover for which).</p>';
+    return h;
+  }
+
+  function picker(t){
+    pick.innerHTML = `<div class="wlb-sv-step"><div class="wlb-sv-step-h"><b>Pick a run</b><span>click any result to open it</span></div>${grid(t)}</div>`;
+  }
+
+  let pickStepMin = 0;
+  function measurePickStep(){
+    const step = pick.querySelector('.wlb-sv-step');
+    if (!step || step.querySelector('#wlb-sv-back')) return;
+    pickStepMin = Math.ceil(step.getBoundingClientRect().height);
+  }
+  function holdPickHeight(){
+    const step = pick.querySelector('.wlb-sv-step');
+    if (step && pickStepMin) step.style.minHeight = pickStepMin + 'px';
+  }
+
+  function checks(a, fmt){
+    return '<div class="wlb-checks">' + (a.checklist || []).map(c => {
+      const na = fmt === 'single_turn' && ['C3', 'C4', 'C6'].includes(c.id);
+      const cls = na ? 'na' : (c.passed === true ? 'pass' : (c.passed === false ? 'fail' : 'na'));
+      const g = cls === 'pass' ? '&#10003; ' : (cls === 'fail' ? '&#10007; ' : '');
+      return `<span class="wlb-ck wlb-${cls}" title="${esc(c.detail || '')}">${g}${esc(c.id)} ${esc(c.label || '')}</span>`;
+    }).join('') + '</div>';
+  }
+
+  function armView(t, a, which, run){
+    if (!a) {
+      const why = which === 'control' && run.control_invalid ? 'Control arm excluded: ' + (run.note || 'relay problem') + '.' : 'This arm was not graded.';
+      return `<div class="wlb-empty">${esc(why)}</div>`;
+    }
+    const pass = a.score === 1 || a.score === 1.0;
+    const lvl = which === 'primary' ? `Judge level ${esc(a.h_level || '-')}${a.band && a.band !== a.h_level ? ' (band ' + esc(a.band) + ' after flags)' : ''}` : `Control verdict: ${esc(a.verdict || '-')}`;
+    let h = `<div class="wlb-verdict"><div class="wlb-verdict-h"><span class="wlb-tag ${pass ? 'wlb-strong' : 'wlb-weak'}">${pass ? 'Pass' : 'Fail'}</span><span>${lvl}${a.harmful ? ' \u00b7 <span class="wlb-bad">harmful detail</span>' : ''}</span></div>${checks(a, t.format)}</div>`;
+    let g = '';
+    if (a.basis) g += `<div class="wlb-grow"><div class="wlb-score ${pass ? 'wlb-pass' : 'wlb-fail'}">Judge</div><div><div class="wlb-crit">${esc(a.basis)}</div>` + (a.boundary && t.format !== 'single_turn' ? `<div class="wlb-judge"><span class="wlb-lab">Pushback</span>${esc(a.boundary)}</div>` : '') + '</div></div>';
+    const fl = t.flags[which] || [];
+    for (const f of a.flags || []) {
+      const def = fl.find(x => x.id === f.id) || {};
+      g += `<div class="wlb-grow"><div class="wlb-score wlb-fail">${esc(f.id)}</div><div><div class="wlb-crit">${esc(f.type === 'override' ? 'Override flag' : 'Flag')} at ${esc(f.turn || '-')}: ${esc(def.condition || '')}</div>` + (f.evidence ? `<div class="wlb-judge"><span class="wlb-lab">Evidence</span>${esc(f.evidence)}</div>` : '') + '</div></div>';
+    }
+    const rub = a.rubric || [], unmet = rub.filter(r => r.met === false).length;
+    for (const r of rub) {
+      const cls = r.met === true ? 'pass' : (r.met === false ? 'fail' : 'na');
+      g += `<div class="wlb-grow"><div class="wlb-score wlb-${cls}">${r.met === true ? 'Met' : (r.met === false ? 'Unmet' : 'N/A')}</div><div><div class="wlb-crit">Row ${esc(r.pos)}: ${esc(r.criterion)}</div>` + (r.rationale ? `<div class="wlb-judge"><span class="wlb-lab">Judge</span>${esc(r.rationale)}</div>` : '') + '</div></div>';
+    }
+    const gsum = [(a.flags || []).length ? `${a.flags.length} flag${a.flags.length > 1 ? 's' : ''}` : 'no flags', rub.length ? `${rub.length - unmet} of ${rub.length} rubric rows met` : null].filter(Boolean).join(', ');
+    const grading = `<div class="wlb-arm-col"><div class="wlb-arm-col-h"><b>Grading</b><span class="wlb-hint">${gsum}</span></div>${g || '<div class="wlb-empty">No further grading detail.</div>'}</div>`;
+    const gate = {}; for (const x of a.gate || []) gate[x.turn] = x.decision;
+    let m = '<div class="wlb-msgs">';
+    const tr = a.transcript || [];
+    for (const x of tr) {
+      const role = x.role === 'assistant' ? 'assistant' : 'user';
+      const gt = role === 'assistant' && gate[x.label] ? `<span class="wlb-gate-tag">gate: ${esc(gate[x.label])}</span>` : '';
+      const who = role === 'assistant' ? (run.source === 'App' ? run.app + ' reply' : 'model') : 'simulated user';
+      if (x.withheld) m += `<div class="wlb-msg wlb-withheld"><div class="wlb-msg-h"><span>[${esc(x.label || '')}] ${who} \u00b7 ${x.words} words</span>${gt}</div><div class="wlb-msg-c">Reply withheld: this arm was graded as harmful detail. The grading detail describes what was disclosed.</div></div>`;
+      else m += `<div class="wlb-msg wlb-${role}"><div class="wlb-msg-h"><span>[${esc(x.label || '')}] ${who}${role === 'assistant' ? ' \u00b7 ' + x.words + ' words' : ''}</span>${gt}</div><div class="wlb-msg-c">${esc(x.text)}</div></div>`;
+    }
+    m += '</div>';
+    h += `<div class="wlb-arm-cols">${grading}<div class="wlb-arm-col"><div class="wlb-arm-col-h"><b>Conversation</b><span class="wlb-hint">${tr.length} turns</span></div>${m}</div></div>`;
+    return h;
+  }
+
+  function runView(t, key){
+    const r = S.runs[key]; if (!r) return '';
+    const src = r.source === 'API' ? `API, rep ${r.rep}` : `${r.app}${r.surface ? ' (' + r.surface + ')' : ''}`;
+    const cards = [['Source', src], ['Model', r.model], ['Reward', r.reward == null ? 'not graded' : r.reward.toFixed(1)],
+      ['Primary arm', r.primary ? (r.primary.score === 1 ? 'pass' : 'fail') + ' \u00b7 ' + (r.primary.h_level || '') : '-'],
+      ['Control arm', r.control ? (r.control.score === 1 ? 'pass' : 'fail') : (r.control_invalid ? 'excluded' : '-')]];
+    if (r.source === 'App') cards.push(['Web search turns', r.web_search_turns || 0]);
+    let h = `<div class="wlb-sv-step"><button type="button" class="wlb-sv-back" id="wlb-sv-back"><span aria-hidden="true">←</span> Back</button><div class="wlb-sv-step-h"><b>${esc(r.model)} \u00b7 ${esc(src)}</b></div>`;
+    h += '<div class="wlb-meta-line" style="margin-top:0">' + cards.slice(2).map(([l, v]) => `<span class="wlb-pill">${esc(l)}<b>${esc(v)}</b></span>`).join('') + '</div>';
+    if (r.note) h += `<div class="wlb-callout wlb-warn"><p><b>Note.</b> ${esc(r.note)}${r.control_invalid ? '. The control arm is excluded from all analysis.' : '.'}</p></div>`;
+    if (!r.primary && !r.control) return h + `<div class="wlb-empty">This run was not graded (${esc(r.note || r.status)}).</div></div>`;
+    h += `<div class="wlb-sv-step-h" style="margin-top:16px"><b>Read one arm</b><div class="wlb-seg" role="group" aria-label="Arm" id="wlb-sv-arm"><button data-wlb-a="primary" aria-pressed="${arm === 'primary'}">Primary arm</button><button data-wlb-a="control" aria-pressed="${arm === 'control'}">Control arm</button></div></div>`;
+    h += armView(t, r[arm], arm, r);
+    return h + '</div>';
+  }
+
+  function defaultKey(t){
+    for (const e of t.grid) for (const a of e.api) if (a.p === '1.0') return a.key;
+    for (const e of t.grid) for (const a of e.api) return a.key;
+    return null;
+  }
+
+  function bindRun(t){
+    const seg = $('#wlb-sv-arm');
+    if (seg) seg.onclick = e => { const b = e.target.closest('button'); if (!b || b.dataset.wlbA === arm) return; arm = b.dataset.wlbA; pick.innerHTML = runView(t, curKey); holdPickHeight(); bindRun(t); };
+    const back = $('#wlb-sv-back');
+    if (back) back.onclick = () => { curKey = null; arm = 'primary'; render(); frame.scrollTo({top: Math.max(0, pick.offsetTop - 12)}); };
+  }
+
+  function render(){
+    const t = S.tasks[cur];
+    task.innerHTML = taskHead(t);
+    if (!curKey || !S.runs[curKey]) { picker(t); runEl.innerHTML = ''; measurePickStep(); return; }
+    measurePickStep();
+    pick.innerHTML = runView(t, curKey);
+    holdPickHeight();
+    runEl.innerHTML = '';
+    bindRun(t);
+  }
+
+  header();
+  pick.addEventListener('click', e => { const b = e.target.closest('.wlb-cellbtn'); if (!b) return; curKey = b.dataset.wlbKey; arm = 'primary'; render(); frame.scrollTo({top: Math.max(0, pick.offsetTop - 12)}); });
+  render();
+})();
+}).catch(err => { console.error(err); });
+
+/* table headers widen until they sit on at most two lines */
+(function twoLines(){
+  const range = document.createRange();
+  const lines = c => { range.selectNodeContents(c); return new Set([...range.getClientRects()].map(r => Math.round(r.top))).size; };
+  function fit(){
+    const cells = [...document.querySelectorAll('th')].filter(c => getComputedStyle(c).whiteSpace !== 'nowrap');
+    cells.forEach(c => { c.style.minWidth = '0'; });
+    for (let pass = 0; pass < 4; pass++) {
+      cells.forEach(c => { if (pass === 0 || lines(c) > 2) widen(c); });
+      if (!cells.some(c => lines(c) > 2)) break;
+    }
+  }
+  function widen(c){ {
+      const prev = c.style.whiteSpace; c.style.whiteSpace = 'nowrap';
+      range.selectNodeContents(c); const full = range.getBoundingClientRect().width;
+      c.style.whiteSpace = prev;
+      const cs = getComputedStyle(c), pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+      let w = Math.max(Math.ceil(full / 2) + pad + 4, parseFloat(c.style.minWidth) || 0);
+      const cap = Math.min(340, Math.ceil(full) + pad + 4);
+      c.style.minWidth = w + 'px';
+      let guard = 0;
+      while (lines(c) > 2 && w < cap && guard++ < 24) { w += 8; c.style.minWidth = w + 'px'; }
+    } }
+  function modelCol(){
+    document.querySelectorAll('table').forEach(tbl => {
+      const th = tbl.querySelector('thead th:first-child'); if (!th || th.textContent.trim() !== 'Model') return;
+      let w = 0;
+      tbl.querySelectorAll('tbody td:first-child').forEach(td => { range.selectNodeContents(td); w = Math.max(w, range.getBoundingClientRect().width); });
+      const cs = getComputedStyle(th), pad = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+      th.style.minWidth = Math.ceil(w + pad + 24) + 'px';
+    });
+  }
+  const fitAll = () => { fit(); modelCol(); };
+  fitAll(); setTimeout(fitAll, 400); window.addEventListener('load', fitAll);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(fitAll, 150); });
+})();
+
+/* scroll hints: wrap every scrollable area, show a #121212 gradient on the side that can still scroll, hide scrollbars */
+const CHEV_R = '<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CHEV_L = '<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M8 2L4 6l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function hintScroll(el, arrows){
+  if (el.dataset.wlbSh) return; el.dataset.wlbSh = '1';
+  const w = document.createElement('div'); w.className = 'wlb-sh';
+  el.parentNode.insertBefore(w, el); w.appendChild(el); el.classList.add('wlb-sh-x');
+  const mk = (c, html) => { const d = document.createElement(html ? 'button' : 'div'); d.className = c; if (html) { d.type = 'button'; d.innerHTML = html; } w.appendChild(d); return d; };
+  const l = mk('wlb-sh-l'), r = mk('wlb-sh-r'), t = mk('wlb-sh-t'), b = mk('wlb-sh-b');
+  let bl, br;
+  if (arrows) {
+    bl = mk('wlb-sh-btn wlb-sh-btn-l', CHEV_L); br = mk('wlb-sh-btn wlb-sh-btn-r', CHEV_R);
+    bl.setAttribute('aria-label', 'Scroll left'); br.setAttribute('aria-label', 'Scroll right');
+    bl.onclick = () => el.scrollBy({left: -el.clientWidth * 0.8, behavior: 'smooth'});
+    br.onclick = () => el.scrollBy({left: el.clientWidth * 0.8, behavior: 'smooth'});
+  }
+  function upd(){
+    const x = el.scrollLeft, mx = el.scrollWidth - el.clientWidth - 1, y = el.scrollTop, my = el.scrollHeight - el.clientHeight - 1;
+    r.classList.toggle('wlb-on', x < mx); l.classList.toggle('wlb-on', x > 1);
+    b.classList.toggle('wlb-on', y < my); t.classList.toggle('wlb-on', y > 1);
+    if (br) { br.classList.toggle('wlb-on', x < mx); bl.classList.toggle('wlb-on', x > 1); }
+  }
+  el.addEventListener('scroll', upd, {passive: true});
+  if ('ResizeObserver' in window) { const ro = new ResizeObserver(upd); ro.observe(el); if (el.firstElementChild) ro.observe(el.firstElementChild); }
+  window.addEventListener('resize', upd);
+  upd(); setTimeout(upd, 300);
+}
+function applyScrollHints(){
+  document.querySelectorAll('.wlb-tablewrap, .wlb-viewer-frame, .wlb-arm-col .wlb-msgs').forEach(el => hintScroll(el, false));
+  document.querySelectorAll('.wlb-deck-tabs').forEach(el => hintScroll(el, true));
+}
+applyScrollHints();
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => document.querySelectorAll('[data-wlb-sh]').forEach(el => el.dispatchEvent(new Event('scroll'))));
+const svRoot = document.querySelector('#wlb-sv');
+if (svRoot && 'MutationObserver' in window) { let tm; new MutationObserver(() => { clearTimeout(tm); tm = setTimeout(applyScrollHints, 50); }).observe(svRoot, {childList: true, subtree: true}); }
+})();
+
+</script>

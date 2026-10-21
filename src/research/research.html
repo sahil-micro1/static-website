@@ -21,12 +21,32 @@
 
       .leaderboard-full + .leaderboard-full,
       .leaderboard-full + [data-benchmark-id],
-      [data-benchmark-id] + [data-benchmark-id] {
+      [data-benchmark-id] + [data-benchmark-id],
+      .leaderboard-index + .leaderboard-full {
         margin-top: 48px;
       }
     </style>
   </head>
   <body>
+    <div class="leaderboard-index" data-benchmark-id="medical-index">
+      <div
+        class="leaderboard-index__tabs"
+        role="tablist"
+        aria-label="Index benchmarks"
+        style="min-height: 40px"
+      ></div>
+      <div class="leaderboard-full" style="--model-count: 7">
+        <div class="leaderboard-full__header">
+          <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
+          <p class="leaderboard-full__updated"></p>
+        </div>
+        <div class="leaderboard-full__panel">
+          <ol class="leaderboard-full__list"></ol>
+          <div class="leaderboard-tooltip" role="tooltip"></div>
+        </div>
+      </div>
+    </div>
+
     <div
       class="leaderboard-full"
       data-benchmark-id="tax"
@@ -133,7 +153,20 @@
       </div>
     </div>
 
+    <div
+      class="leaderboard-card"
+      data-benchmark-id="medical"
+      data-benchmark-url="https://www.micro1.ai/research"
+    ></div>
+
     <!-- Preview shells: parent holds data-benchmark-id; widget markup inside -->
+    <div data-benchmark-id="medical-index">
+      <div class="leaderboard-preview" style="--model-count: 3">
+        <p class="leaderboard-preview__label"></p>
+        <ol class="leaderboard-preview__list"></ol>
+      </div>
+    </div>
+
     <div data-benchmark-id="tax">
       <div class="leaderboard-preview" style="--model-count: 3">
         <p class="leaderboard-preview__label"></p>

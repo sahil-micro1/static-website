@@ -76,9 +76,18 @@
       alt: "Hark",
       src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6acba268d423991cbf7b0735_Rectangle%20828901%20(1).png",
     },
+    deepseek: {
+      alt: "DeepSeek",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ad7710aa9649e351fb19897_deepseek.png",
+    },
+    glm: {
+      alt: "GLM",
+      src: "https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ad77482d06d7f0085c7129e_glm.png",
+    },
   };
 
   const PREVIEW_COUNT = 3;
+  const CARD_COUNT = 4;
   const BAR_EASE = "transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)";
   const HOVER = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
@@ -150,6 +159,65 @@
   function getDefaultTab(data) {
     const tabs = data?.tabs || [];
     return tabs.find((t) => t.id === data.defaultTab) || tabs[0] || null;
+  }
+
+  function isIndex(data) {
+    return data?.kind === "index";
+  }
+
+  /** The one tab that carries the index overall score plus its benchmarks. */
+  function indexSourceTab(data) {
+    const tabs = data?.tabs || [];
+    return tabs.find((tab) => tab && (tab.overall || tab.benchmarks)) || tabs[0] || null;
+  }
+
+  function indexViews(tab) {
+    if (!tab) return [];
+    const overall = tab.overall || { id: tab.id, label: tab.label };
+    const benches = Array.isArray(tab.benchmarks) ? tab.benchmarks : [];
+    return [
+      {
+        id: overall.id || tab.id || "overall",
+        label: overall.label || tab.label || "Overall",
+        metric: overall.metric || overall.label || "Composite",
+        overall: true,
+      },
+      ...benches
+        .filter((bench) => bench && bench.id)
+        .map((bench) => ({
+          id: bench.id,
+          label: bench.label || bench.id,
+          metric: bench.metric || bench.label || bench.id,
+          overall: false,
+        })),
+    ];
+  }
+
+  function scoreForView(row, view) {
+    if (!row) return null;
+    if (!view || view.overall) return row.score;
+    const value = row.benchmarks ? row.benchmarks[view.id] : null;
+    return value == null ? null : value;
+  }
+
+  function rowsForView(tab, view) {
+    return (tab?.rows || [])
+      .map((row) => ({ ...row, score: scoreForView(row, view) }))
+      .filter((row) => Number.isFinite(Number(row.score)))
+      .sort((a, b) => Number(b.score) - Number(a.score));
+  }
+
+  function indexTooltipLines(data, name, rank, view) {
+    const source = indexSourceTab(data);
+    const row = (source?.rows || []).find((item) => item.name === name);
+    const active = view || indexViews(source)[0];
+    return [
+      {
+        label: (active?.metric || active?.label || "Score") + ":",
+        value: formatScore(scoreForView(row, active)),
+      },
+      { label: "Rank:", value: "Top " + rank },
+    ];
   }
 
   function scoreByName(tab, name) {
@@ -241,12 +309,15 @@
 
     function show(rowEl, name, rank, animate) {
       const token = (showToken += 1);
-      const lines = (root.data.tabs || [])
-        .map((tab) => ({
-          label: tab.label + ":",
-          value: formatScore(scoreByName(tab, name)),
-        }))
-        .concat([{ label: "Rank:", value: "Top " + rank }]);
+      const lines =
+        typeof root.tooltipLines === "function"
+          ? root.tooltipLines(name, rank)
+          : (root.data.tabs || [])
+              .map((tab) => ({
+                label: tab.label + ":",
+                value: formatScore(scoreByName(tab, name)),
+              }))
+              .concat([{ label: "Rank:", value: "Top " + rank }]);
 
       const wasVisible = root.tooltipEl.classList.contains("is-visible");
       root.tooltipEl.innerHTML = lines
@@ -342,31 +413,63 @@
     return { clear };
   }
 
-  function createLeaderboardFull(mountEl, data) {
+  function createLeaderboardFull(mountEl, data, options) {
+    const cardMode = options?.card === true;
     const root = {
       toggleEl: mountEl.querySelector(".leaderboard-full__toggle"),
       updatedEl: mountEl.querySelector(".leaderboard-full__updated"),
       listEl: mountEl.querySelector(".leaderboard-full__list"),
       tooltipEl: mountEl.querySelector(".leaderboard-tooltip"),
       panelEl: mountEl.querySelector(".leaderboard-full__panel"),
+      tabBarEl: mountEl.parentElement?.classList.contains("leaderboard-index")
+        ? mountEl.parentElement.querySelector(":scope > .leaderboard-index__tabs")
+        : null,
       data,
       activeTabId: null,
       hover: null,
     };
 
-    if (!root.toggleEl || !root.updatedEl || !root.listEl || !root.tooltipEl || !root.panelEl) {
-      return;
-    }
+    if (!root.toggleEl || !root.listEl || !root.tooltipEl || !root.panelEl) return;
+    if (!cardMode && !root.updatedEl) return;
 
-    if (!data?.tabs?.length) {
+    const indexMode = isIndex(data);
+    const sourceTab = indexMode ? indexSourceTab(data) : null;
+    const viewList = indexMode ? indexViews(sourceTab) : null;
+    mountEl.classList.toggle("leaderboard-full--index", indexMode);
+
+    if (!indexMode && !data?.tabs?.length) {
       root.listEl.innerHTML =
         '<li class="leaderboard-full__empty">No leaderboard data available.</li>';
       return;
     }
 
-    root.activeTabId = getDefaultTab(data)?.id || data.tabs[0].id;
+    if (indexMode && !viewList.length) {
+      root.listEl.innerHTML =
+        '<li class="leaderboard-full__empty">No leaderboard data available.</li>';
+      return;
+    }
+
+    if (indexMode) {
+      root.activeTabId =
+        viewList.find((view) => view.id === data.defaultTab)?.id || viewList[0].id;
+      root.tooltipLines = (name, rank) => {
+        const view =
+          viewList.find((item) => item.id === root.activeTabId) || viewList[0];
+        return indexTooltipLines(data, name, rank, view);
+      };
+    } else {
+      root.activeTabId = getDefaultTab(data)?.id || data.tabs[0].id;
+    }
+
+    function tabButtons() {
+      return indexMode ? viewList : data.tabs;
+    }
 
     function activeTab() {
+      if (indexMode) {
+        const view = viewList.find((item) => item.id === root.activeTabId) || viewList[0];
+        return { ...view, rows: rowsForView(sourceTab, view) };
+      }
       return data.tabs.find((t) => t.id === root.activeTabId) || data.tabs[0];
     }
 
@@ -394,9 +497,23 @@
       syncTabThumb(animate);
     }
 
+    function syncCardMore(total) {
+      const moreEl = mountEl.querySelector(".leaderboard-card__more");
+      if (!moreEl) return;
+      const extra = Math.max(0, total - CARD_COUNT);
+      moreEl.hidden = extra === 0;
+      const label = moreEl.querySelector("span");
+      if (label) label.textContent = "+" + extra + " more";
+    }
+
     function renderRows({ animate = false } = {}) {
       root.hover?.clear();
-      const rows = activeTab()?.rows || [];
+      const allRows = activeTab()?.rows || [];
+      const rows = cardMode ? allRows.slice(0, CARD_COUNT) : allRows;
+      if (cardMode) {
+        mountEl.style.setProperty("--model-count", String(rows.length));
+        syncCardMore(allRows.length);
+      }
 
       if (!rows.length) {
         root.listEl.innerHTML =
@@ -411,7 +528,7 @@
         ])
       );
       const canAnimate = animate && existing.size > 0;
-      const ranks = ranksForRows(rows);
+      const ranks = ranksForRows(allRows);
       const pendingFills = [];
 
       const orderedEls = rows.map((row, i) => {
@@ -452,19 +569,53 @@
       });
     }
 
+    function activeView() {
+      return viewList.find((item) => item.id === root.activeTabId) || viewList[0];
+    }
+
+    function renderMetricChip() {
+      const view = activeView();
+      root.toggleEl.classList.add("leaderboard-full__toggle--static");
+      root.toggleEl.innerHTML = `<span class="leaderboard-full__metric">${escapeHtml(view?.metric || "")}</span>`;
+    }
+
+    function renderIndexTabs() {
+      const bar = root.tabBarEl;
+      if (!bar) return;
+      bar.innerHTML = viewList
+        .map(
+          (view) =>
+            `<button type="button" class="leaderboard-index__tab" role="tab" data-tab-id="${escapeHtml(view.id)}" aria-selected="${view.id === root.activeTabId}">${escapeHtml(view.label)}</button>`
+        )
+        .join("");
+      bar.querySelectorAll(".leaderboard-index__tab").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (btn.dataset.tabId === root.activeTabId) return;
+          root.activeTabId = btn.dataset.tabId;
+          bar.querySelectorAll(".leaderboard-index__tab").forEach((tabBtn) => {
+            tabBtn.setAttribute("aria-selected", String(tabBtn.dataset.tabId === root.activeTabId));
+          });
+          renderMetricChip();
+          renderRows({ animate: true });
+        });
+      });
+    }
+
     function renderTabs() {
-      const single = data.tabs.length < 2;
+      if (indexMode && !cardMode) return;
+      const buttons = tabButtons();
+      const single = buttons.length < 2;
       root.toggleEl.classList.toggle("leaderboard-full__toggle--static", single);
 
       if (single) {
         root.toggleEl.innerHTML =
-          `<span class="leaderboard-full__toggle-label">${escapeHtml(data.tabs[0].label)}</span>` +
+          `<span class="leaderboard-full__toggle-label">${escapeHtml(buttons[0].label)}</span>` +
           '<span class="leaderboard-full__toggle-thumb" aria-hidden="true"></span>';
         return;
       }
 
       root.toggleEl.innerHTML =
-        data.tabs
+        buttons
           .map(
             (tab) =>
               `<button type="button" class="leaderboard-full__toggle-btn" data-tab-id="${escapeHtml(tab.id)}" aria-pressed="${tab.id === root.activeTabId}">${escapeHtml(tab.label)}</button>`
@@ -482,19 +633,69 @@
       });
     }
 
-    root.updatedEl.textContent = data.lastUpdated
-      ? "Last updated " + data.lastUpdated
-      : "";
-    renderTabs();
-    paintTabs(false);
+    if (!cardMode) {
+      root.updatedEl.textContent = data.lastUpdated
+        ? "Last updated " + data.lastUpdated
+        : "";
+    }
+    if (indexMode && !cardMode) {
+      renderIndexTabs();
+      renderMetricChip();
+    } else {
+      renderTabs();
+      paintTabs(false);
+      thumbResizers.add(() => syncTabThumb(false));
+    }
     renderRows({ animate: false });
-    thumbResizers.add(() => syncTabThumb(false));
+  }
+
+  function ensureCardShell(el) {
+    el.classList.add("leaderboard-full", "leaderboard-card");
+    if (!el.style.getPropertyValue("--model-count")) {
+      el.style.setProperty("--model-count", String(CARD_COUNT));
+    }
+    if (el.querySelector(".leaderboard-full__list")) return;
+    const url = el.getAttribute("data-benchmark-url") || "";
+    const href = escapeHtml(url || "#");
+    el.innerHTML = `<div class="leaderboard-full__header">
+      <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
+      <a class="leaderboard-card__link" href="${href}"><span>View full benchmark</span></a>
+    </div>
+    <div class="leaderboard-full__panel">
+      <ol class="leaderboard-full__list"></ol>
+      <div class="leaderboard-tooltip" role="tooltip"></div>
+    </div>
+    <a class="leaderboard-card__more" href="${href}"><span></span></a>`;
+  }
+
+  function createLeaderboardCard(mountEl, data) {
+    ensureCardShell(mountEl);
+    const url = mountEl.getAttribute("data-benchmark-url") || "";
+    mountEl.querySelectorAll(".leaderboard-card__link, .leaderboard-card__more").forEach((link) => {
+      if (url) link.setAttribute("href", url);
+      else if (link.classList.contains("leaderboard-card__link")) link.hidden = true;
+    });
+    createLeaderboardFull(mountEl, data, { card: true });
+  }
+
+  function previewSource(data) {
+    if (!isIndex(data)) {
+      const tab = getDefaultTab(data);
+      return { label: tab?.label || "", rows: tab?.rows || [] };
+    }
+    const source = indexSourceTab(data);
+    const views = indexViews(source);
+    const view = views.find((item) => item.id === data.defaultTab) || views[0] || null;
+    return {
+      label: view?.metric || view?.label || "",
+      rows: view ? rowsForView(source, view) : [],
+    };
   }
 
   /** Preview: default-tab label + top 3 rows + "View more". */
   function createLeaderboardPreview(mountEl, data) {
-    const tab = getDefaultTab(data);
-    const rows = tab?.rows || [];
+    const source = previewSource(data);
+    const rows = source.rows;
     const preview = rows.slice(0, PREVIEW_COUNT);
     const more = Math.max(0, rows.length - PREVIEW_COUNT);
     let listEl = mountEl.querySelector(".leaderboard-preview__list");
@@ -519,7 +720,7 @@
     } else if (labelEl.nextElementSibling !== listEl) {
       mountEl.insertBefore(labelEl, listEl);
     }
-    const label = tab?.label || "";
+    const label = source.label || "";
     labelEl.textContent = label;
     labelEl.hidden = !label;
 
@@ -549,7 +750,13 @@
     mountEl.appendChild(tooltipEl);
 
     createHover(
-      { listEl, tooltipEl, data },
+      {
+        listEl,
+        tooltipEl,
+        data: isIndex(data)
+          ? { tabs: [{ id: "preview", label: source.label, rows }] }
+          : data,
+      },
       {
         rowSelector: ".leaderboard-preview__row",
         panelEl: mountEl,
@@ -560,6 +767,7 @@
 
   function mount(selector, create) {
     document.querySelectorAll(selector).forEach((el) => {
+      if (el.classList.contains("leaderboard-card")) return;
       const id = el.getAttribute("data-benchmark-id");
       const data = getBenchmark(id);
       if (!data) {
@@ -593,8 +801,39 @@
     });
   }
 
+  function mountIndexes() {
+    document.querySelectorAll(".leaderboard-index[data-benchmark-id]").forEach((wrap) => {
+      const card = wrap.querySelector(":scope > .leaderboard-full");
+      const id = wrap.getAttribute("data-benchmark-id");
+      const data = getBenchmark(id);
+      if (!card) return;
+      if (!data) {
+        const target = card.querySelector(".leaderboard-full__list") || card;
+        target.innerHTML = `<p class="leaderboard-full__empty">No data found for benchmark id "${escapeHtml(id || "")}".</p>`;
+        return;
+      }
+      createLeaderboardFull(card, data);
+    });
+  }
+
+  function mountCards() {
+    document.querySelectorAll(".leaderboard-card[data-benchmark-id]").forEach((el) => {
+      const id = el.getAttribute("data-benchmark-id");
+      const data = getBenchmark(id);
+      if (!data) {
+        ensureCardShell(el);
+        const target = el.querySelector(".leaderboard-full__list") || el;
+        target.innerHTML = `<p class="leaderboard-full__empty">No data found for benchmark id "${escapeHtml(id || "")}".</p>`;
+        return;
+      }
+      createLeaderboardCard(el, data);
+    });
+  }
+
   function init() {
     mount(".leaderboard-full[data-benchmark-id]", createLeaderboardFull);
+    mountIndexes();
+    mountCards();
     mountPreviews();
 
     const syncThumbs = () => thumbResizers.forEach((fn) => fn());

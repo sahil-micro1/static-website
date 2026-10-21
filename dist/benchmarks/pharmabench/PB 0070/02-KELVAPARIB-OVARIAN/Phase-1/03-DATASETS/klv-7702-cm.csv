@@ -1,0 +1,294 @@
+STUDYID,DOMAIN,USUBJID,CMSEQ,CMTRT,CMDECOD,CMINDC,CMDOSE,CMDOSU,CMROUTE,CMDOSFRQ,CMSTDTC,CMENDTC,CMSTDY,CMENDY
+KLV-7702,CM,KLV-7702-1001,1,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2015-12-31,,-787,
+KLV-7702,CM,KLV-7702-1001,2,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2017-10-29,,-119,
+KLV-7702,CM,KLV-7702-1001,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-03-04,,8,
+KLV-7702,CM,KLV-7702-1001,4,Paracetamol,Paracetamol,Analgesia for back pain,1000,mg,ORAL,QID,2018-05-10,,75,
+KLV-7702,CM,KLV-7702-1002,1,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2018-03-16,2018-03-22,27,33
+KLV-7702,CM,KLV-7702-1002,2,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2018-04-20,2018-05-05,62,77
+KLV-7702,CM,KLV-7702-1003,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2015-06-29,,-549,
+KLV-7702,CM,KLV-7702-1003,2,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2016-05-22,,-221,
+KLV-7702,CM,KLV-7702-1003,3,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2016-08-30,,-121,
+KLV-7702,CM,KLV-7702-1003,4,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2016-12-30,2017-01-11,2,14
+KLV-7702,CM,KLV-7702-1003,5,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2016-12-31,,3,
+KLV-7702,CM,KLV-7702-1003,6,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2017-02-15,2017-02-26,49,60
+KLV-7702,CM,KLV-7702-1003,7,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-03-18,2017-04-01,80,94
+KLV-7702,CM,KLV-7702-1003,8,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-03-23,2017-03-28,85,90
+KLV-7702,CM,KLV-7702-1004,1,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2016-09-06,,-631,
+KLV-7702,CM,KLV-7702-1004,2,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2016-12-08,,-538,
+KLV-7702,CM,KLV-7702-1004,3,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2017-09-04,,-268,
+KLV-7702,CM,KLV-7702-1004,4,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2017-10-20,,-222,
+KLV-7702,CM,KLV-7702-1004,5,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2018-06-20,2018-06-21,22,23
+KLV-7702,CM,KLV-7702-1004,6,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2018-07-14,2018-08-11,46,74
+KLV-7702,CM,KLV-7702-1004,7,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-07-20,2018-08-05,52,68
+KLV-7702,CM,KLV-7702-1005,1,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-06-20,2018-06-24,2,6
+KLV-7702,CM,KLV-7702-1005,2,Cetirizine,Cetirizine,Antihistamine for rash,10,mg,ORAL,QD,2018-09-29,2018-10-19,103,123
+KLV-7702,CM,KLV-7702-1006,1,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2017-07-30,,-254,
+KLV-7702,CM,KLV-7702-1006,2,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2017-10-14,,-178,
+KLV-7702,CM,KLV-7702-1006,3,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2018-04-11,2018-04-13,2,4
+KLV-7702,CM,KLV-7702-1006,4,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2018-04-20,2018-05-07,11,28
+KLV-7702,CM,KLV-7702-1006,5,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2018-06-05,2018-06-06,57,58
+KLV-7702,CM,KLV-7702-1007,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2017-05-10,,-445,
+KLV-7702,CM,KLV-7702-1007,2,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2017-10-06,,-296,
+KLV-7702,CM,KLV-7702-1007,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2018-09-01,,35,
+KLV-7702,CM,KLV-7702-1007,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-09-13,,47,
+KLV-7702,CM,KLV-7702-1007,5,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-09-19,2018-10-03,53,67
+KLV-7702,CM,KLV-7702-1008,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2016-07-08,,-889,
+KLV-7702,CM,KLV-7702-1008,2,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2017-01-24,,-689,
+KLV-7702,CM,KLV-7702-1008,3,Co-amoxiclav,Co-amoxiclav,Antimicrobial therapy for pneumonia,625,mg,ORAL,TID,2019-02-06,2019-02-22,55,71
+KLV-7702,CM,KLV-7702-1008,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2019-02-10,2019-02-18,59,67
+KLV-7702,CM,KLV-7702-1008,5,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2019-02-20,2019-02-21,69,70
+KLV-7702,CM,KLV-7702-1008,6,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2019-03-04,2019-03-10,81,87
+KLV-7702,CM,KLV-7702-1009,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2017-05-12,,-210,
+KLV-7702,CM,KLV-7702-1009,2,Paracetamol,Paracetamol,Analgesia for headache,1000,mg,ORAL,PRN,2017-12-09,,2,
+KLV-7702,CM,KLV-7702-1009,3,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2018-01-03,2018-01-15,27,39
+KLV-7702,CM,KLV-7702-1009,4,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2018-01-06,2018-01-21,30,45
+KLV-7702,CM,KLV-7702-1010,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2017-03-04,,-629,
+KLV-7702,CM,KLV-7702-1010,2,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-11-24,,2,
+KLV-7702,CM,KLV-7702-1010,3,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2019-01-06,2019-01-12,45,51
+KLV-7702,CM,KLV-7702-1010,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2019-01-17,2019-02-05,56,75
+KLV-7702,CM,KLV-7702-1011,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2015-01-07,,-870,
+KLV-7702,CM,KLV-7702-1011,2,Paracetamol,Paracetamol,Analgesia for back pain,1000,mg,ORAL,QID,2017-06-09,2017-07-01,15,37
+KLV-7702,CM,KLV-7702-1011,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-06-18,2017-06-28,24,34
+KLV-7702,CM,KLV-7702-1011,4,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2017-07-08,2017-07-19,44,55
+KLV-7702,CM,KLV-7702-1012,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2015-09-23,,-693,
+KLV-7702,CM,KLV-7702-1012,2,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2016-07-11,,-401,
+KLV-7702,CM,KLV-7702-1012,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-09-23,2017-10-07,39,53
+KLV-7702,CM,KLV-7702-1012,4,Furosemide,Furosemide,Diuretic for oedema peripheral,40,mg,ORAL,QD,2017-09-24,2017-10-18,40,64
+KLV-7702,CM,KLV-7702-1012,5,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-09-25,2017-10-15,41,61
+KLV-7702,CM,KLV-7702-1012,6,Amlodipine,Amlodipine,Antihypertensive for hypertension,5,mg,ORAL,QD,2017-09-25,2017-10-03,41,49
+KLV-7702,CM,KLV-7702-1012,7,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2018-01-05,,143,
+KLV-7702,CM,KLV-7702-1013,1,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2017-04-07,,-303,
+KLV-7702,CM,KLV-7702-1013,2,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-02-05,2018-02-21,2,18
+KLV-7702,CM,KLV-7702-1013,3,Cetirizine,Cetirizine,Antihistamine for rash,10,mg,ORAL,QD,2018-02-25,2018-03-13,22,38
+KLV-7702,CM,KLV-7702-1013,4,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2018-04-25,2018-04-29,81,85
+KLV-7702,CM,KLV-7702-1014,1,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2015-03-06,,-819,
+KLV-7702,CM,KLV-7702-1014,2,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2016-05-23,,-375,
+KLV-7702,CM,KLV-7702-1014,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-06-03,2017-06-08,2,7
+KLV-7702,CM,KLV-7702-1014,4,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2017-06-15,2017-06-16,14,15
+KLV-7702,CM,KLV-7702-1014,5,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2017-07-30,,59,
+KLV-7702,CM,KLV-7702-1015,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2015-04-18,,-764,
+KLV-7702,CM,KLV-7702-1015,2,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2016-01-19,,-488,
+KLV-7702,CM,KLV-7702-1015,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-06-14,2017-07-03,25,44
+KLV-7702,CM,KLV-7702-1015,4,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2017-06-20,2017-07-08,31,49
+KLV-7702,CM,KLV-7702-1015,5,Salbutamol,Salbutamol,Bronchodilator for dyspnoea,100,ug,INHALATION,PRN,2017-06-23,,34,
+KLV-7702,CM,KLV-7702-1015,6,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-08-08,2017-08-24,80,96
+KLV-7702,CM,KLV-7702-1016,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2016-11-14,,-641,
+KLV-7702,CM,KLV-7702-1016,2,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2017-03-23,,-512,
+KLV-7702,CM,KLV-7702-1016,3,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2017-05-25,,-449,
+KLV-7702,CM,KLV-7702-1016,4,Amlodipine,Amlodipine,Antihypertensive for hypertension,5,mg,ORAL,QD,2018-08-18,2018-08-24,2,8
+KLV-7702,CM,KLV-7702-1016,5,Salbutamol,Salbutamol,Bronchodilator for cough,100,ug,INHALATION,PRN,2018-10-03,,48,
+KLV-7702,CM,KLV-7702-1016,6,Furosemide,Furosemide,Diuretic for oedema peripheral,40,mg,ORAL,QD,2018-11-02,,78,
+KLV-7702,CM,KLV-7702-1016,7,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2019-01-03,2019-01-19,140,156
+KLV-7702,CM,KLV-7702-1017,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2015-12-13,,-839,
+KLV-7702,CM,KLV-7702-1017,2,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-04-01,,2,
+KLV-7702,CM,KLV-7702-1017,3,Paracetamol,Paracetamol,Analgesia for back pain,1000,mg,ORAL,QID,2018-04-01,2018-04-03,2,4
+KLV-7702,CM,KLV-7702-1017,4,Salbutamol,Salbutamol,Bronchodilator for dyspnoea,100,ug,INHALATION,PRN,2018-04-03,2018-04-14,4,15
+KLV-7702,CM,KLV-7702-1017,5,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-04-24,2018-04-25,25,26
+KLV-7702,CM,KLV-7702-1017,6,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2018-04-25,,26,
+KLV-7702,CM,KLV-7702-1017,7,Co-amoxiclav,Co-amoxiclav,Antimicrobial therapy for pneumonia,625,mg,ORAL,TID,2018-06-25,2018-06-26,87,88
+KLV-7702,CM,KLV-7702-1018,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2017-09-26,,-162,
+KLV-7702,CM,KLV-7702-1018,2,Amlodipine,Amlodipine,Antihypertensive for hypertension,5,mg,ORAL,QD,2018-03-08,2018-03-22,2,16
+KLV-7702,CM,KLV-7702-1018,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2018-03-19,2018-03-30,13,24
+KLV-7702,CM,KLV-7702-1018,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-04-01,2018-04-22,26,47
+KLV-7702,CM,KLV-7702-1018,5,Paracetamol,Paracetamol,Analgesia for headache,1000,mg,ORAL,PRN,2018-04-25,2018-05-14,50,69
+KLV-7702,CM,KLV-7702-1018,6,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2018-04-27,2018-05-14,52,69
+KLV-7702,CM,KLV-7702-1019,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2016-04-15,,-872,
+KLV-7702,CM,KLV-7702-1019,2,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2016-06-21,,-805,
+KLV-7702,CM,KLV-7702-1019,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-09-05,2018-09-09,2,6
+KLV-7702,CM,KLV-7702-1019,4,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2018-09-05,2018-09-09,2,6
+KLV-7702,CM,KLV-7702-1019,5,Furosemide,Furosemide,Diuretic for oedema peripheral,40,mg,ORAL,QD,2018-09-11,2018-10-02,8,29
+KLV-7702,CM,KLV-7702-1019,6,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-09-23,2018-09-28,20,25
+KLV-7702,CM,KLV-7702-1019,7,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2018-11-15,2018-12-14,73,102
+KLV-7702,CM,KLV-7702-1021,1,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2019-01-06,,2,
+KLV-7702,CM,KLV-7702-1021,2,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2019-01-17,2019-01-18,13,14
+KLV-7702,CM,KLV-7702-1021,3,Amlodipine,Amlodipine,Antihypertensive for hypertension,5,mg,ORAL,QD,2019-02-11,2019-02-21,38,48
+KLV-7702,CM,KLV-7702-1021,4,Salbutamol,Salbutamol,Bronchodilator for dyspnoea,100,ug,INHALATION,PRN,2019-02-17,2019-02-18,44,45
+KLV-7702,CM,KLV-7702-1021,5,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2019-03-10,2019-03-15,65,70
+KLV-7702,CM,KLV-7702-1021,6,Furosemide,Furosemide,Diuretic for oedema peripheral,40,mg,ORAL,QD,2019-03-26,,81,
+KLV-7702,CM,KLV-7702-1022,1,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2016-12-31,2017-01-07,2,9
+KLV-7702,CM,KLV-7702-1022,2,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-02-05,2017-02-19,38,52
+KLV-7702,CM,KLV-7702-1022,3,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2017-02-12,2017-02-22,45,55
+KLV-7702,CM,KLV-7702-1023,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2015-04-20,,-875,
+KLV-7702,CM,KLV-7702-1023,2,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2015-08-15,,-758,
+KLV-7702,CM,KLV-7702-1023,3,Co-amoxiclav,Co-amoxiclav,Antimicrobial therapy for pneumonia,625,mg,ORAL,TID,2017-09-12,2017-09-24,2,14
+KLV-7702,CM,KLV-7702-1023,4,Paracetamol,Paracetamol,Analgesia for back pain,1000,mg,ORAL,QID,2017-09-28,2017-10-02,18,22
+KLV-7702,CM,KLV-7702-1023,5,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-10-01,2017-10-14,21,34
+KLV-7702,CM,KLV-7702-1023,6,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-10-15,2017-10-23,35,43
+KLV-7702,CM,KLV-7702-1023,7,Amlodipine,Amlodipine,Antihypertensive for hypertension,5,mg,ORAL,QD,2017-10-28,2017-11-08,48,59
+KLV-7702,CM,KLV-7702-1024,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2015-04-15,,-691,
+KLV-7702,CM,KLV-7702-1024,2,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2015-09-07,,-546,
+KLV-7702,CM,KLV-7702-1024,3,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-03-16,2017-04-05,11,31
+KLV-7702,CM,KLV-7702-1024,4,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-05-04,2017-05-05,60,61
+KLV-7702,CM,KLV-7702-1025,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2015-02-25,,-854,
+KLV-7702,CM,KLV-7702-1025,2,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2016-06-18,,-375,
+KLV-7702,CM,KLV-7702-1025,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-06-29,2017-07-12,2,15
+KLV-7702,CM,KLV-7702-1025,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-09-10,2017-09-23,75,88
+KLV-7702,CM,KLV-7702-1026,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2017-01-07,,-304,
+KLV-7702,CM,KLV-7702-1026,2,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-11-08,2017-11-17,2,11
+KLV-7702,CM,KLV-7702-1026,3,Salbutamol,Salbutamol,Bronchodilator for cough,100,ug,INHALATION,PRN,2017-11-17,,11,
+KLV-7702,CM,KLV-7702-1027,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2015-10-24,,-669,
+KLV-7702,CM,KLV-7702-1027,2,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2016-03-11,,-530,
+KLV-7702,CM,KLV-7702-1027,3,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2016-08-25,,-363,
+KLV-7702,CM,KLV-7702-1027,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-08-24,2017-08-25,2,3
+KLV-7702,CM,KLV-7702-1027,5,Amlodipine,Amlodipine,Antihypertensive for hypertension,5,mg,ORAL,QD,2017-08-24,2017-08-25,2,3
+KLV-7702,CM,KLV-7702-1027,6,Salbutamol,Salbutamol,Bronchodilator for dyspnoea,100,ug,INHALATION,PRN,2017-10-02,,41,
+KLV-7702,CM,KLV-7702-1027,7,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-10-10,2017-10-11,49,50
+KLV-7702,CM,KLV-7702-1028,1,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2017-04-12,,-150,
+KLV-7702,CM,KLV-7702-1028,2,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-09-10,,2,
+KLV-7702,CM,KLV-7702-1028,3,Paracetamol,Paracetamol,Analgesia for headache,1000,mg,ORAL,PRN,2017-11-20,2017-12-05,73,88
+KLV-7702,CM,KLV-7702-1029,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2016-07-30,,-817,
+KLV-7702,CM,KLV-7702-1029,2,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2018-04-14,,-194,
+KLV-7702,CM,KLV-7702-1029,3,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2018-11-11,,18,
+KLV-7702,CM,KLV-7702-1029,4,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-11-30,,37,
+KLV-7702,CM,KLV-7702-1029,5,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2018-12-21,,58,
+KLV-7702,CM,KLV-7702-1029,6,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2019-01-02,2019-01-09,70,77
+KLV-7702,CM,KLV-7702-1030,1,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2015-07-29,,-664,
+KLV-7702,CM,KLV-7702-1030,2,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2016-11-05,,-199,
+KLV-7702,CM,KLV-7702-1030,3,Paracetamol,Paracetamol,Antipyretic for pyrexia,1000,mg,ORAL,QID,2017-06-14,,23,
+KLV-7702,CM,KLV-7702-1030,4,Salbutamol,Salbutamol,Bronchodilator for cough,100,ug,INHALATION,PRN,2017-06-23,,32,
+KLV-7702,CM,KLV-7702-1030,5,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-07-17,2017-07-21,56,60
+KLV-7702,CM,KLV-7702-1031,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2018-05-01,,-151,
+KLV-7702,CM,KLV-7702-1031,2,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-09-30,2018-10-20,2,22
+KLV-7702,CM,KLV-7702-1031,3,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2018-10-04,2018-10-20,6,22
+KLV-7702,CM,KLV-7702-1031,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-10-13,2018-10-28,15,30
+KLV-7702,CM,KLV-7702-1031,5,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2018-11-10,2018-12-04,43,67
+KLV-7702,CM,KLV-7702-1031,6,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2018-12-23,2018-12-28,86,91
+KLV-7702,CM,KLV-7702-1032,1,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2018-02-11,,-329,
+KLV-7702,CM,KLV-7702-1032,2,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2018-08-31,,-128,
+KLV-7702,CM,KLV-7702-1032,3,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2019-01-07,2019-01-08,2,3
+KLV-7702,CM,KLV-7702-1032,4,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2019-01-12,2019-01-20,7,15
+KLV-7702,CM,KLV-7702-1033,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2015-02-17,,-736,
+KLV-7702,CM,KLV-7702-1033,2,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-02-23,2017-02-25,2,4
+KLV-7702,CM,KLV-7702-1033,3,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-02-23,2017-02-27,2,6
+KLV-7702,CM,KLV-7702-1033,4,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2017-03-13,2017-03-14,20,21
+KLV-7702,CM,KLV-7702-1034,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2015-02-21,,-905,
+KLV-7702,CM,KLV-7702-1034,2,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2015-10-07,,-677,
+KLV-7702,CM,KLV-7702-1034,3,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2017-01-25,,-201,
+KLV-7702,CM,KLV-7702-1034,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-08-15,,2,
+KLV-7702,CM,KLV-7702-1034,5,Paracetamol,Paracetamol,Antipyretic for pyrexia,1000,mg,ORAL,QID,2017-08-20,2017-09-12,7,30
+KLV-7702,CM,KLV-7702-1034,6,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2017-09-11,2017-09-24,29,42
+KLV-7702,CM,KLV-7702-1034,7,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2017-09-19,2017-10-05,37,53
+KLV-7702,CM,KLV-7702-1034,8,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-09-27,2017-10-07,45,55
+KLV-7702,CM,KLV-7702-1035,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2016-01-19,,-754,
+KLV-7702,CM,KLV-7702-1035,2,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2017-10-02,,-132,
+KLV-7702,CM,KLV-7702-1035,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-02-12,2018-02-13,2,3
+KLV-7702,CM,KLV-7702-1035,4,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-03-06,2018-03-20,24,38
+KLV-7702,CM,KLV-7702-1035,5,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2018-03-21,2018-04-02,39,51
+KLV-7702,CM,KLV-7702-1036,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2015-04-03,,-665,
+KLV-7702,CM,KLV-7702-1036,2,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-01-28,,2,
+KLV-7702,CM,KLV-7702-1036,3,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-03-13,,46,
+KLV-7702,CM,KLV-7702-1036,4,Paracetamol,Paracetamol,Analgesia for headache,1000,mg,ORAL,PRN,2017-03-15,2017-03-21,48,54
+KLV-7702,CM,KLV-7702-1036,5,Amlodipine,Amlodipine,Antihypertensive for hypertension,5,mg,ORAL,QD,2017-04-30,2017-05-06,94,100
+KLV-7702,CM,KLV-7702-1037,1,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2015-12-29,,-908,
+KLV-7702,CM,KLV-7702-1037,2,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2018-03-24,,-92,
+KLV-7702,CM,KLV-7702-1037,3,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-06-25,2018-07-21,2,28
+KLV-7702,CM,KLV-7702-1037,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2018-06-25,2018-07-07,2,14
+KLV-7702,CM,KLV-7702-1037,5,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2018-07-18,,25,
+KLV-7702,CM,KLV-7702-1038,1,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-01-23,2017-02-12,2,22
+KLV-7702,CM,KLV-7702-1038,2,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-02-08,2017-02-20,18,30
+KLV-7702,CM,KLV-7702-1038,3,Cetirizine,Cetirizine,Antihistamine for rash,10,mg,ORAL,QD,2017-04-14,2017-05-04,83,103
+KLV-7702,CM,KLV-7702-1038,4,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2017-06-02,2017-06-17,132,147
+KLV-7702,CM,KLV-7702-1039,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2015-01-24,,-718,
+KLV-7702,CM,KLV-7702-1039,2,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2015-05-09,,-613,
+KLV-7702,CM,KLV-7702-1039,3,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2015-05-15,,-607,
+KLV-7702,CM,KLV-7702-1039,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-01-12,2017-02-01,2,22
+KLV-7702,CM,KLV-7702-1039,5,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-01-12,2017-01-13,2,3
+KLV-7702,CM,KLV-7702-1039,6,Amlodipine,Amlodipine,Antihypertensive for hypertension,5,mg,ORAL,QD,2017-01-30,2017-02-07,20,28
+KLV-7702,CM,KLV-7702-1039,7,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-03-11,2017-03-16,60,65
+KLV-7702,CM,KLV-7702-1040,1,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2016-01-26,,-778,
+KLV-7702,CM,KLV-7702-1040,2,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-03-15,2018-03-16,2,3
+KLV-7702,CM,KLV-7702-1040,3,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-03-15,2018-04-04,2,22
+KLV-7702,CM,KLV-7702-1040,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-05-10,,58,
+KLV-7702,CM,KLV-7702-1041,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2016-05-12,,-678,
+KLV-7702,CM,KLV-7702-1041,2,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2017-09-05,,-197,
+KLV-7702,CM,KLV-7702-1041,3,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-04-01,2018-04-14,12,25
+KLV-7702,CM,KLV-7702-1041,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-04-06,2018-04-13,17,24
+KLV-7702,CM,KLV-7702-1041,5,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-05-14,,55,
+KLV-7702,CM,KLV-7702-1042,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2015-06-01,,-721,
+KLV-7702,CM,KLV-7702-1042,2,Salbutamol,Salbutamol,Bronchodilator for cough,100,ug,INHALATION,PRN,2017-05-23,2017-05-24,2,3
+KLV-7702,CM,KLV-7702-1042,3,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-06-30,,40,
+KLV-7702,CM,KLV-7702-1042,4,Paracetamol,Paracetamol,Antipyretic for pyrexia,1000,mg,ORAL,QID,2017-07-03,2017-07-14,43,54
+KLV-7702,CM,KLV-7702-1042,5,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-07-09,2017-07-10,49,50
+KLV-7702,CM,KLV-7702-1042,6,Furosemide,Furosemide,Diuretic for oedema peripheral,40,mg,ORAL,QD,2017-07-09,2017-07-31,49,71
+KLV-7702,CM,KLV-7702-1043,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2017-02-26,,-383,
+KLV-7702,CM,KLV-7702-1043,2,Paracetamol,Paracetamol,Antipyretic for pyrexia,1000,mg,ORAL,QID,2018-03-17,,2,
+KLV-7702,CM,KLV-7702-1043,3,Cetirizine,Cetirizine,Antihistamine for rash,10,mg,ORAL,QD,2018-04-15,2018-04-25,31,41
+KLV-7702,CM,KLV-7702-1043,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-05-08,2018-05-31,54,77
+KLV-7702,CM,KLV-7702-1044,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2017-10-04,,-149,
+KLV-7702,CM,KLV-7702-1044,2,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-03-19,2018-04-16,18,46
+KLV-7702,CM,KLV-7702-1044,3,Salbutamol,Salbutamol,Bronchodilator for cough,100,ug,INHALATION,PRN,2018-03-25,2018-04-01,24,31
+KLV-7702,CM,KLV-7702-1044,4,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2018-04-11,2018-04-12,41,42
+KLV-7702,CM,KLV-7702-1044,5,Paracetamol,Paracetamol,Analgesia for back pain,1000,mg,ORAL,QID,2018-04-18,,48,
+KLV-7702,CM,KLV-7702-1044,6,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-04-19,2018-05-14,49,74
+KLV-7702,CM,KLV-7702-1045,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2016-05-14,,-479,
+KLV-7702,CM,KLV-7702-1045,2,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2017-04-16,,-142,
+KLV-7702,CM,KLV-7702-1045,3,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2017-09-13,2017-09-23,9,19
+KLV-7702,CM,KLV-7702-1045,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-10-10,2017-10-18,36,44
+KLV-7702,CM,KLV-7702-1046,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2015-03-26,,-895,
+KLV-7702,CM,KLV-7702-1046,2,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-09-10,2017-09-15,5,10
+KLV-7702,CM,KLV-7702-1046,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-09-18,2017-09-30,13,25
+KLV-7702,CM,KLV-7702-1046,4,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2017-10-12,2017-10-17,37,42
+KLV-7702,CM,KLV-7702-1046,5,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-12-02,2017-12-22,88,108
+KLV-7702,CM,KLV-7702-1047,1,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2014-06-20,,-890,
+KLV-7702,CM,KLV-7702-1047,2,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2015-07-05,,-510,
+KLV-7702,CM,KLV-7702-1047,3,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2016-01-13,,-318,
+KLV-7702,CM,KLV-7702-1047,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2016-11-27,2016-12-06,2,11
+KLV-7702,CM,KLV-7702-1047,5,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2016-11-27,2016-12-05,2,10
+KLV-7702,CM,KLV-7702-1047,6,Paracetamol,Paracetamol,Analgesia for headache,1000,mg,ORAL,PRN,2016-12-23,2017-01-13,28,49
+KLV-7702,CM,KLV-7702-1048,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2016-05-15,,-667,
+KLV-7702,CM,KLV-7702-1048,2,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2016-12-01,,-467,
+KLV-7702,CM,KLV-7702-1048,3,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-03-14,2018-03-20,2,8
+KLV-7702,CM,KLV-7702-1048,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-05-12,2018-05-13,61,62
+KLV-7702,CM,KLV-7702-1048,5,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2018-06-23,2018-07-19,103,129
+KLV-7702,CM,KLV-7702-1049,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2015-08-06,,-873,
+KLV-7702,CM,KLV-7702-1049,2,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2016-02-07,,-688,
+KLV-7702,CM,KLV-7702-1049,3,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2017-02-10,,-319,
+KLV-7702,CM,KLV-7702-1049,4,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-12-27,2017-12-31,2,6
+KLV-7702,CM,KLV-7702-1049,5,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2017-12-27,2017-12-28,2,3
+KLV-7702,CM,KLV-7702-1049,6,Salbutamol,Salbutamol,Bronchodilator for dyspnoea,100,ug,INHALATION,PRN,2018-01-15,2018-01-26,21,32
+KLV-7702,CM,KLV-7702-1049,7,Paracetamol,Paracetamol,Analgesia for headache,1000,mg,ORAL,PRN,2018-01-31,2018-02-21,37,58
+KLV-7702,CM,KLV-7702-1049,8,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-03-01,2018-03-13,66,78
+KLV-7702,CM,KLV-7702-1050,1,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-02-22,2018-03-14,2,22
+KLV-7702,CM,KLV-7702-1050,2,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2018-04-20,,59,
+KLV-7702,CM,KLV-7702-1051,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2016-01-01,,-686,
+KLV-7702,CM,KLV-7702-1051,2,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2017-01-08,,-313,
+KLV-7702,CM,KLV-7702-1051,3,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2017-02-18,,-272,
+KLV-7702,CM,KLV-7702-1051,4,Paracetamol,Paracetamol,Analgesia for abdominal pain,1000,mg,ORAL,QID,2017-11-18,2017-11-28,2,12
+KLV-7702,CM,KLV-7702-1051,5,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2017-11-27,,11,
+KLV-7702,CM,KLV-7702-1051,6,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-12-24,2018-01-11,38,56
+KLV-7702,CM,KLV-7702-1051,7,Salbutamol,Salbutamol,Bronchodilator for cough,100,ug,INHALATION,PRN,2018-02-03,2018-02-11,79,87
+KLV-7702,CM,KLV-7702-1051,8,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-02-13,2018-02-14,89,90
+KLV-7702,CM,KLV-7702-1052,1,Metformin,Metformin,Glycaemic control,500,mg,ORAL,BID,2015-09-27,,-637,
+KLV-7702,CM,KLV-7702-1052,2,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2017-02-28,,-117,
+KLV-7702,CM,KLV-7702-1052,3,Salbutamol,Salbutamol,Bronchodilator for dyspnoea,100,ug,INHALATION,PRN,2017-06-26,,2,
+KLV-7702,CM,KLV-7702-1052,4,Paracetamol,Paracetamol,Analgesia for headache,1000,mg,ORAL,PRN,2017-06-30,2017-07-05,6,11
+KLV-7702,CM,KLV-7702-1052,5,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-08-06,2017-08-07,43,44
+KLV-7702,CM,KLV-7702-1052,6,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-09-21,2017-09-22,89,90
+KLV-7702,CM,KLV-7702-1053,1,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2016-04-30,,-422,
+KLV-7702,CM,KLV-7702-1053,2,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-06-27,,2,
+KLV-7702,CM,KLV-7702-1053,3,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-07-17,2017-08-11,22,47
+KLV-7702,CM,KLV-7702-1054,1,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2017-03-13,,-559,
+KLV-7702,CM,KLV-7702-1054,2,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-11-02,2018-11-19,41,58
+KLV-7702,CM,KLV-7702-1054,3,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2018-11-13,2018-11-19,52,58
+KLV-7702,CM,KLV-7702-1055,1,Omeprazole,Omeprazole,Gastric protection,20,mg,ORAL,QD,2018-03-19,,-243,
+KLV-7702,CM,KLV-7702-1055,2,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2018-08-27,,-82,
+KLV-7702,CM,KLV-7702-1055,3,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2018-11-18,2018-11-22,2,6
+KLV-7702,CM,KLV-7702-1055,4,Co-amoxiclav,Co-amoxiclav,Antimicrobial therapy for pneumonia,625,mg,ORAL,TID,2018-11-18,2018-12-16,2,30
+KLV-7702,CM,KLV-7702-1055,5,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-12-09,2018-12-26,23,40
+KLV-7702,CM,KLV-7702-1055,6,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2019-01-06,2019-01-11,51,56
+KLV-7702,CM,KLV-7702-1055,7,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2019-02-15,,91,
+KLV-7702,CM,KLV-7702-1056,1,Atorvastatin,Atorvastatin,Lipid-lowering therapy,20,mg,ORAL,QD,2014-09-25,,-836,
+KLV-7702,CM,KLV-7702-1056,2,Levothyroxine,Levothyroxine,Thyroid replacement,75,ug,ORAL,QD,2014-10-21,,-810,
+KLV-7702,CM,KLV-7702-1056,3,Enoxaparin,Enoxaparin,Thromboprophylaxis,40,mg,SUBCUTANEOUS,QD,2016-02-24,,-319,
+KLV-7702,CM,KLV-7702-1056,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2017-01-09,,2,
+KLV-7702,CM,KLV-7702-1056,5,Filgrastim,Filgrastim,Haematopoietic support for neutropenia,300,ug,SUBCUTANEOUS,QD,2017-01-09,,2,
+KLV-7702,CM,KLV-7702-1056,6,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-02-04,2017-02-11,28,35
+KLV-7702,CM,KLV-7702-1056,7,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2017-03-05,2017-03-15,57,67
+KLV-7702,CM,KLV-7702-1056,8,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2017-03-18,2017-04-03,70,86
+KLV-7702,CM,KLV-7702-1057,1,Ondansetron,Ondansetron,Antiemetic prophylaxis for vomiting,8,mg,ORAL,BID,2017-03-11,2017-03-17,6,12
+KLV-7702,CM,KLV-7702-1057,2,Paracetamol,Paracetamol,Analgesia for fatigue,1000,mg,ORAL,PRN,2017-04-20,2017-04-29,46,55
+KLV-7702,CM,KLV-7702-1058,1,Paracetamol,Paracetamol,Antipyretic for pyrexia,1000,mg,ORAL,QID,2018-07-12,2018-07-27,9,24
+KLV-7702,CM,KLV-7702-1058,2,Ferrous sulfate,Ferrous sulfate,Haematinic for anaemia,200,mg,ORAL,QD,2018-08-12,2018-09-04,40,63
+KLV-7702,CM,KLV-7702-1058,3,Ciprofloxacin,Ciprofloxacin,Antimicrobial therapy for urinary tract infection,500,mg,ORAL,BID,2018-08-27,,55,
+KLV-7702,CM,KLV-7702-1058,4,Ondansetron,Ondansetron,Antiemetic prophylaxis for nausea,8,mg,ORAL,BID,2018-09-01,2018-09-02,60,61
+KLV-7702,CM,KLV-7702-1058,5,Loperamide,Loperamide,Symptomatic treatment for diarrhoea,2,mg,ORAL,PRN,2018-09-06,2018-09-14,65,73
