@@ -1,4 +1,4 @@
-<div class="wlb"><div id="wlb-end" hidden></div></div><script>
+<div class="wlb"><div id="wlb-end" hidden></div><div class="wlb-sc-tip" hidden></div></div><script>
 (function(){
 const $ = (s, r=document) => r.querySelector(s);
 const esc = s => s == null ? '' : String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
@@ -334,6 +334,44 @@ paired($('#wlb-cmp-app-st'), W.app.map(a => ({m: a.m, name: a.m, a: a.sapi, b: a
   $('#wlb-sc-xt').innerHTML = xt.map(v => `<span style="left:${v/XM*100}%">${v}%</span>`).join('');
   plot.innerHTML = yt.slice(1).map(v => `<i class="wlb-sc-h" style="bottom:${v/YM*100}%"></i>`).join('') + xt.slice(1).map(v => `<i class="wlb-sc-v" style="left:${v/XM*100}%"></i>`).join('') +
     P.map(p => `<i class="wlb-sc-dot" data-t="${esc(lab(p))}: critical ${p.crit}%, missed support ${p.miss}%, abandoned ${p.aband}%" style="left:${p.crit/XM*100}%;bottom:${p.miss/YM*100}%;${sw(p)}"></i>`).join('');
+  const tip = document.querySelector('.wlb-sc-tip') || document.createElement('div');
+  tip.className = 'wlb-sc-tip';
+  tip.hidden = true;
+  document.body.appendChild(tip);
+  const place = dot => {
+    tip.textContent = dot.getAttribute('data-t');
+    tip.hidden = false;
+    const pad = 8, r = dot.getBoundingClientRect();
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = r.left + r.width / 2 - tw / 2;
+    let top = r.top - th - 8;
+    left = Math.max(pad, Math.min(left, window.innerWidth - tw - pad));
+    if (top < pad) top = Math.min(r.bottom + 8, window.innerHeight - th - pad);
+    tip.style.left = Math.round(left) + 'px';
+    tip.style.top = Math.round(top) + 'px';
+  };
+  let current = null;
+  const hide = () => { current = null; tip.hidden = true; };
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (fine) {
+    plot.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      const dot = e.target.closest('.wlb-sc-dot');
+      if (dot === current) return;
+      current = dot;
+      if (dot) place(dot); else hide();
+    });
+    plot.addEventListener('pointerleave', e => { if (e.pointerType !== 'touch') hide(); });
+  }
+  plot.addEventListener('click', e => {
+    if (fine && e.pointerType !== 'touch') return;
+    const dot = e.target.closest('.wlb-sc-dot');
+    if (!dot || dot === current) { hide(); return; }
+    current = dot;
+    place(dot);
+  });
+  if (!fine) document.addEventListener('click', e => { if (!e.target.closest('.wlb-sc-dot')) hide(); });
+  window.addEventListener('scroll', hide, {passive:true, capture:true});
 })();
 
 /* per-scenario table filters */
@@ -378,7 +416,7 @@ samplesP.then(S => {
 
   function header(){
     top.innerHTML = `<div class="wlb-sv-pick"><label><span class="wlb-label">Scenario</span><span class="wlb-sel"><select id="wlb-sv-sel">${S.tasks.map((t, i) => `<option value="${i}"${i === cur ? ' selected' : ''}>${short(t.id)} \u00b7 ${t.format === 'single_turn' ? 'single turn' : 'dialogue'} \u00b7 ${esc(CAT[t.category] || t.category)}</option>`).join('')}</select></span></label></div>`;
-    $('#wlb-sv-sel').onchange = e => { cur = +e.target.value; curKey = null; arm = 'primary'; render(); frame.scrollTo({top: 0}); };
+    $('#wlb-sv-sel').onchange = e => { cur = +e.target.value; curKey = null; arm = 'primary'; render(); frame.scrollIntoView({block: 'nearest'}); };
   }
 
   function mark(p, c, harm){
@@ -524,7 +562,7 @@ samplesP.then(S => {
     const seg = $('#wlb-sv-arm');
     if (seg) seg.onclick = e => { const b = e.target.closest('button'); if (!b || b.dataset.wlbA === arm) return; arm = b.dataset.wlbA; pick.innerHTML = runView(t, curKey); holdPickHeight(); bindRun(t); };
     const back = $('#wlb-sv-back');
-    if (back) back.onclick = () => { curKey = null; arm = 'primary'; render(); frame.scrollTo({top: Math.max(0, pick.offsetTop - 12)}); };
+    if (back) back.onclick = () => { curKey = null; arm = 'primary'; render(); openFrame(pick); };
   }
 
   function render(){
@@ -539,7 +577,14 @@ samplesP.then(S => {
   }
 
   header();
-  pick.addEventListener('click', e => { const b = e.target.closest('.wlb-cellbtn'); if (!b) return; curKey = b.dataset.wlbKey; arm = 'primary'; render(); frame.scrollTo({top: Math.max(0, pick.offsetTop - 12)}); });
+  function openFrame(el){
+    frame.classList.add('wlb-y-open');
+    const w = frame.parentElement;
+    if (w && w.classList.contains('wlb-sh')) w.classList.add('wlb-y-on');
+    frame.dispatchEvent(new Event('scroll'));
+    if (el) el.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+  }
+  pick.addEventListener('click', e => { const b = e.target.closest('.wlb-cellbtn'); if (!b) return; curKey = b.dataset.wlbKey; arm = 'primary'; render(); openFrame(pick); });
   render();
 })();
 }).catch(err => { console.error(err); });
@@ -598,10 +643,21 @@ function hintScroll(el, arrows){
     bl.onclick = () => el.scrollBy({left: -el.clientWidth * 0.8, behavior: 'smooth'});
     br.onclick = () => el.scrollBy({left: el.clientWidth * 0.8, behavior: 'smooth'});
   }
+  const yLock = el.matches('.wlb-scroll, .wlb-scroll400, .wlb-viewer-frame, .wlb-msgs, .wlb-msg-c');
+  if (yLock) {
+    const down = document.createElement('button');
+    down.type = 'button';
+    down.className = 'wlb-sh-btn wlb-sh-btn-b';
+    down.setAttribute('aria-label', 'Show full height');
+    down.addEventListener('click', () => { el.classList.add('wlb-y-open'); w.classList.add('wlb-y-on'); upd(); });
+    w.appendChild(down);
+  }
   function upd(){
-    const x = el.scrollLeft, mx = el.scrollWidth - el.clientWidth - 1, y = el.scrollTop, my = el.scrollHeight - el.clientHeight - 1;
+    const x = el.scrollLeft, mx = el.scrollWidth - el.clientWidth - 1, y = el.scrollTop;
+    const yOver = el.scrollHeight - el.clientHeight > 2, open = el.classList.contains('wlb-y-open');
     r.classList.toggle('wlb-on', x < mx); l.classList.toggle('wlb-on', x > 1);
-    b.classList.toggle('wlb-on', y < my); t.classList.toggle('wlb-on', y > 1);
+    b.classList.toggle('wlb-on', !open && yOver); t.classList.toggle('wlb-on', y > 1);
+    w.classList.toggle('wlb-y-more', yLock && !open && yOver);
     if (br) { br.classList.toggle('wlb-on', x < mx); bl.classList.toggle('wlb-on', x > 1); }
   }
   el.addEventListener('scroll', upd, {passive: true});
@@ -610,7 +666,7 @@ function hintScroll(el, arrows){
   upd(); setTimeout(upd, 300);
 }
 function applyScrollHints(){
-  document.querySelectorAll('.wlb-tablewrap, .wlb-viewer-frame, .wlb-arm-col .wlb-msgs').forEach(el => hintScroll(el, false));
+  document.querySelectorAll('.wlb-tablewrap, .wlb-viewer-frame, .wlb-arm-col .wlb-msgs, .wlb-msg-c').forEach(el => hintScroll(el, false));
   document.querySelectorAll('.wlb-deck-tabs').forEach(el => hintScroll(el, true));
 }
 applyScrollHints();

@@ -21,7 +21,7 @@
   --phb-warning:#E6B95F; --phb-warning-30:rgba(230,185,95,.3); --phb-warning-10:rgba(230,185,95,.1);
   --phb-error:#EC6D6D; --phb-error-30:rgba(236,109,109,.3); --phb-error-10:rgba(236,109,109,.1);
   --phb-space-1:4px; --phb-space-2:8px; --phb-space-3:12px; --phb-space-4:16px; --phb-space-6:24px; --phb-space-8:32px; --phb-space-12:48px; --phb-space-16:64px;
-  --phb-radius-sm:4px; --phb-radius-md:8px; --phb-radius-lg:12px;
+  --phb-radius-sm:0; --phb-radius-md:0; --phb-radius-lg:0;
   --phb-overlay:rgba(0,0,0,.4);
   --phb-btn-p-bg:#FFFFFF; --phb-btn-p-fg:#121212; --phb-btn-p-bg-h:rgba(255,255,255,.8); --phb-btn-p-fg-h:#121212;
   --phb-btn-s-fg:rgba(255,255,255,1); --phb-btn-s-border-h:var(--phb-accent-80); --phb-btn-s-bg-h:var(--phb-white-6);
@@ -44,7 +44,7 @@ body{margin:0;position:relative;background:var(--phb-surface-1);color:var(--phb-
 header,main,footer{-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
 img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--phb-accent-80);outline-offset:2px;border-radius:var(--phb-radius-sm)}
-.phb-wrap{width:min(824px,calc(100% - clamp(0px,(824px - 100vw)*100,32px)));margin:0 auto;padding-inline:0;container-type:inline-size}
+.phb-wrap{width:100%;margin:0;padding:0;container-type:inline-size}
 h1,h2,h3,h4{font-family:Outfit,system-ui,sans-serif;font-weight:600;letter-spacing:0;text-wrap:balance;margin:0}
 p,li,label{margin:0}
 .phb-label{font:500 12px/1.4 var(--phb-sans);color:var(--phb-white-60)}
@@ -56,7 +56,7 @@ p,li,label{margin:0}
 .phb-hero,main,footer{position:relative;z-index:1}
 
 /* hero */
-.phb-hero{padding:48px 0 0}
+.phb-hero{padding:0}
 .phb-topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .phb-topbar svg{height:24px;width:auto}
 .phb-topbar svg path{fill:var(--phb-white-100)}
@@ -105,7 +105,7 @@ section.phb-band{padding-block:48px;scroll-margin-top:48px}
 .phb-flow{list-style:none;padding:0;margin:32px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--phb-surface-2);border:1px solid var(--phb-white-10);border-radius:var(--phb-radius-md)}
 .phb-flow li{position:relative;padding:20px 24px}
 .phb-flow li+li{border-left:1px solid var(--phb-white-10)}
-.phb-flow li+li:before{content:"";position:absolute;left:-12px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:50%;background:var(--phb-surface-1);border:1px solid var(--phb-white-10)}
+.phb-flow li+li:before{content:"";position:absolute;left:-12px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:0;background:var(--phb-surface-1);border:1px solid var(--phb-white-10)}
 .phb-flow li+li:after{content:"";position:absolute;left:-4px;top:50%;width:6px;height:6px;margin-top:-3px;border-top:2px solid var(--phb-white-60);border-right:2px solid var(--phb-white-60);transform:rotate(45deg)}
 .phb-flow-t{display:block;font:600 16px/1.5 var(--phb-sans)}
 .phb-flow-d{display:block;font-size:14px;line-height:1.5;color:var(--phb-white-60);margin-top:4px}
@@ -160,8 +160,8 @@ section.phb-band{padding-block:48px;scroll-margin-top:48px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 
 /* side drawer (file viewer) */
-.phb-viewer{position:fixed;inset:0;z-index:60;visibility:hidden;pointer-events:none;background:transparent;transition:background-color .25s ease,visibility 0s linear .25s}
-.phb-viewer.phb-open{visibility:visible;pointer-events:auto;background:var(--phb-overlay);transition:background-color .25s ease}
+.phb-viewer{position:fixed;inset:0;z-index:1000;visibility:hidden;pointer-events:none;background:transparent;transition:background-color .25s ease,visibility 0s linear .25s}
+.phb-viewer.phb-open{z-index:1000;visibility:visible;pointer-events:auto;background:var(--phb-overlay);transition:background-color .25s ease}
 .phb-viewer-card{position:fixed;top:0;right:0;height:100%;width:min(640px,100%);background:var(--phb-surface-2);color:var(--phb-white-100);border-left:1px solid var(--phb-white-10);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease}
 .phb-viewer.phb-open .phb-viewer-card{transform:translateX(0)}
 .phb-viewer-head{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--phb-white-10)}
@@ -233,7 +233,7 @@ section.phb-band{padding-block:48px;scroll-margin-top:48px}
 .phb-tag.phb-weak{background:var(--phb-error-10);color:var(--phb-error)}
 .phb-dots{position:relative;height:16px}
 .phb-dots:before{content:"";position:absolute;left:0;right:0;top:6px;height:4px;border-radius:var(--phb-radius-sm);background:var(--phb-white-10)}
-.phb-dots i{position:absolute;top:2px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--phb-success);box-shadow:0 0 0 2px var(--phb-surface-2)}
+.phb-dots i{position:absolute;top:2px;width:12px;height:12px;margin-left:-6px;border-radius:0;background:var(--phb-success);box-shadow:0 0 0 2px var(--phb-surface-2)}
 .phb-dots i.phb-w{background:var(--phb-error)}
 .phb-mrow .phb-sc{font-weight:600;font-size:14px;text-align:right}
 .phb-scale-note{display:flex;justify-content:space-between;font-size:12px;line-height:1.4;color:var(--phb-white-60);padding:0 92px 0 264px;margin-top:4px}
@@ -398,12 +398,10 @@ details.phb-checks-d{border-top:1px solid var(--phb-white-10)}
 details.phb-checks-d summary{padding:16px clamp(16px,3vw,32px);cursor:pointer;font-weight:500;font-size:14px;color:var(--phb-accent-60)}
 details.phb-checks-d ul{margin:0;padding:0 clamp(16px,3vw,32px) 20px 48px;color:var(--phb-white-80);font-size:14px;line-height:1.5;display:grid;gap:8px}
 
-/* method + footer */
+/* method */
 .phb-method{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:24px}
 .phb-method h4{margin:0 0 8px;font-size:16px}
 .phb-method p{font-size:16px;color:var(--phb-white-80);line-height:1.5}
-footer{border-top:1px solid var(--phb-white-10);padding-block:24px 48px;color:var(--phb-white-60);font-size:12px;line-height:1.4}
-footer .phb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media (max-width:980px){
   .phb-finding{grid-template-columns:minmax(0,1fr)}
@@ -479,7 +477,7 @@ section.phb-band .phb-wrap+.phb-wrap{margin-top:20px}
 .phb-tldr .phb-label{font:500 20px/1.6 var(--phb-sans);color:var(--phb-white-80);margin-bottom:11px}
 .phb-hero .phb-q{color:var(--phb-white-60)}
 /* figure frames */
-.phb-lb,.phb-stack,.phb-cmp,.phb-loss,.phb-files123,.phb-xp,.phb-stage,.phb-case,.phb-flow,.phb-trace,.phb-gtable-wrap{background:var(--phb-frame-bg);border:1px solid var(--phb-white-20);border-radius:6px}
+.phb-lb,.phb-stack,.phb-cmp,.phb-loss,.phb-files123,.phb-xp,.phb-stage,.phb-case,.phb-flow,.phb-trace,.phb-gtable-wrap{background:var(--phb-frame-bg);border:1px solid var(--phb-white-10);border-radius:0}
 .phb-lb,.phb-stack,.phb-cmp,.phb-loss{padding:32px}
 .phb-files123{padding:32px;gap:4px}
 .phb-fig{margin-top:19px}
@@ -508,7 +506,7 @@ a{color:inherit}
 .phb-eyebrow{display:none}
 .phb-col,.phb-col-wide{max-width:none}
 section.phb-band .phb-wrap .phb-tablewrap,section.phb-band .phb-wrap .phb-prose+.phb-tablewrap{margin-top:19px}
-.phb-tablewrap{background:var(--phb-frame-bg);border:1px solid var(--phb-white-20);border-radius:6px;overflow-x:auto}
+.phb-tablewrap{background:var(--phb-frame-bg);border:1px solid var(--phb-white-20);border-radius:0;overflow-x:auto}
 .phb-tablewrap table{margin-top:0}
 
 /* hero: stat strip + TL;DR card */
@@ -541,7 +539,7 @@ section.phb-band .phb-wrap .phb-tablewrap,section.phb-band .phb-wrap .phb-prose+
 .phb-takeaways span{font:400 16px/1.5 var(--phb-sans);color:var(--phb-white-60);margin-top:4px}
 
 /* figure frames (extra) */
-.phb-kdots,.phb-taskcard,.phb-wall-shell{background:var(--phb-frame-bg);border:1px solid var(--phb-white-20);border-radius:6px}
+.phb-kdots,.phb-taskcard,.phb-wall-shell{background:var(--phb-frame-bg);border:1px solid var(--phb-white-20);border-radius:0}
 .phb-big2.phb-big3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .phb-big2.phb-acc b{color:var(--phb-accent-60)}
 .phb-sw-dot{display:inline-block;width:8px;height:8px;margin-right:8px;vertical-align:0}
@@ -623,7 +621,7 @@ section.phb-band .phb-wrap .phb-tablewrap,section.phb-band .phb-wrap .phb-prose+
 .phb-play:hover{background:var(--phb-btn-p-bg-h);color:var(--phb-btn-p-fg-h)}
 .phb-btn{white-space:nowrap;appearance:none;height:32px;padding:0 12px;border-radius:var(--phb-radius-sm);font:500 14px/16px var(--phb-sans);cursor:pointer;border:1px solid var(--phb-white-20);background:var(--phb-white-6);color:var(--phb-btn-s-fg);transition:background-color .15s ease,border-color .15s ease}
 .phb-btn:hover{border-color:var(--phb-btn-s-border-h);background:var(--phb-btn-s-bg-h)}
-.phb-term{background:var(--phb-surface-1);color:var(--phb-white-80);border:1px solid var(--phb-white-10);border-radius:6px;padding:4px 0;font:12px/1.5 var(--phb-code);max-height:360px;overflow:auto}
+.phb-term{background:var(--phb-surface-1);color:var(--phb-white-80);border:1px solid var(--phb-white-10);border-radius:0;padding:4px 0;font:12px/1.5 var(--phb-code);max-height:360px;overflow:auto}
 .phb-term .phb-ln{display:grid;grid-template-columns:44px 64px minmax(0,1fr);gap:12px;padding:8px 16px;border-bottom:1px solid var(--phb-white-10);transition:opacity .3s}
 .phb-term .phb-ln.phb-hide{opacity:.1}
 .phb-term .phb-t{color:var(--phb-white-40)}
@@ -735,7 +733,7 @@ section.phb-band .phb-wrap .phb-tablewrap,section.phb-band .phb-wrap .phb-prose+
 .phb-mini.phb-wide th{white-space:nowrap;vertical-align:middle}
 .phb-mini.phb-wide td{white-space:nowrap}
 .phb-hard-t td:first-child,.phb-hard-t th:first-child{white-space:nowrap}
-.phb-tbl-frame{background:var(--phb-frame-bg);border:1px solid var(--phb-white-20);border-radius:6px;overflow:hidden}
+.phb-tbl-frame{background:var(--phb-frame-bg);border:1px solid var(--phb-white-20);border-radius:0;overflow:hidden}
 .phb-tbl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--phb-white-10)}
 .phb-tbl-scroll{overflow-x:auto}
 
@@ -837,7 +835,7 @@ details.phb-rubric .phb-checks-h{margin-top:16px}
 
 /* round 5 */
 :root{--phb-frame-bg:rgba(255,255,255,.01)}
-.phb-lb,.phb-stack,.phb-cmp,.phb-loss,.phb-files123,.phb-stage,.phb-case,.phb-flow,.phb-trace,.phb-kdots,.phb-taskcard,.phb-wall-shell,.phb-tablewrap,.phb-tbl-frame,.phb-atlas-frame{background:var(--phb-frame-bg);border:1px solid var(--phb-white-10);border-radius:6px}
+.phb-lb,.phb-stack,.phb-cmp,.phb-loss,.phb-files123,.phb-stage,.phb-case,.phb-flow,.phb-trace,.phb-kdots,.phb-taskcard,.phb-wall-shell,.phb-tablewrap,.phb-tbl-frame,.phb-atlas-frame{background:var(--phb-frame-bg);border:1px solid var(--phb-white-10);border-radius:0}
 .phb-lb,.phb-stack,.phb-cmp,.phb-loss,.phb-files123,.phb-stage,.phb-kdots,.phb-wall-shell,.phb-atlas-frame{padding:20px}
 .phb-atlas-frame{margin-top:19px}
 .phb-atlas-frame .phb-prog-pick{margin-top:0}
@@ -847,8 +845,8 @@ details.phb-rubric .phb-checks-h{margin-top:16px}
 .phb-tile.phb-dim{display:none}
 .phb-study.phb-empty{display:none}
 .phb-tile.phb-key{animation:none;box-shadow:none;border-color:var(--phb-accent-80)}
-.phb-tile.phb-key:after{content:"";position:absolute;right:2px;top:2px;width:6px;height:6px;border-radius:50%;background:var(--phb-accent-80);box-shadow:0 0 0 1px var(--phb-surface-1)}
-.phb-key-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--phb-accent-80);flex:none}
+.phb-tile.phb-key:after{content:"";position:absolute;right:2px;top:2px;width:6px;height:6px;border-radius:0;background:var(--phb-accent-80);box-shadow:0 0 0 1px var(--phb-surface-1)}
+.phb-key-dot{display:inline-block;width:8px;height:8px;border-radius:0;background:var(--phb-accent-80);flex:none}
 .phb-legend .phb-key-dot{margin-right:8px;vertical-align:1px}
 .phb-study-lab .phb-key-dot{margin-left:4px}
 .phb-study:has(.phb-study-lab.phb-focus){border-color:var(--phb-panel-border)}
@@ -867,7 +865,7 @@ details.phb-rubric .phb-checks-h{margin-top:16px}
 .phb-replay-top{margin-bottom:16px}
 .phb-replay-lab{font:500 12px/1.4 var(--phb-sans);color:var(--phb-accent-60);margin-bottom:4px}
 @media (max-width:640px){.phb-mrow{grid-template-columns:minmax(0,1fr) auto 56px}.phb-mrow .phb-go{display:none}.phb-wall-sticky{margin:-16px -16px 16px;padding:16px 16px 0}}
-.phb-legend i.phb-key-dot{width:8px;height:8px;border-radius:50%;background:var(--phb-accent-80);border:0;box-shadow:none;vertical-align:1px}
+.phb-legend i.phb-key-dot{width:8px;height:8px;border-radius:0;background:var(--phb-accent-80);border:0;box-shadow:none;vertical-align:1px}
 
 /* round 6 */
 .phb-study-lab.phb-focus,.phb-study-lab.phb-focus span:first-child{color:var(--phb-white-60)}
@@ -989,8 +987,15 @@ details.phb-phase[open] .phb-phase-sum>span:first-child:before{transform:rotate(
 /* round 12 */
 .phb-kd-dot{width:14px;height:14px;margin-left:-7px;top:13px;cursor:default;transition:transform .15s ease;z-index:1}
 .phb-kd-dot:hover{transform:scale(1.3);z-index:3}
-.phb-kd-dot::after{content:attr(data-m);position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%) scale(.77);transform-origin:bottom center;white-space:nowrap;padding:4px 8px;background:var(--phb-surface-3);color:var(--phb-white-100);font:500 12px/1.4 var(--phb-sans);border:1px solid var(--phb-white-20);opacity:0;pointer-events:none;transition:opacity .1s ease}
-.phb-kd-dot:hover::after{opacity:1}
+.phb-kd-dot::after{content:attr(data-phb-m);position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%) scale(.77);transform-origin:bottom center;white-space:nowrap;padding:4px 8px;background:var(--phb-surface-3);color:var(--phb-white-100);font:500 12px/1.4 var(--phb-sans);border:1px solid var(--phb-white-20);opacity:0;pointer-events:none;transition:opacity .1s ease}
+.phb-kd-dot:hover::after,.phb-kd-dot.phb-on::after{opacity:1}
+@media (hover:none),(pointer:coarse){
+  .phb-kd-dot{cursor:pointer;touch-action:manipulation;width:28px;height:28px;margin-left:-14px;top:6px}
+  .phb-kd-dot:hover{transform:none}
+  .phb-kd-dot:hover::after{opacity:0}
+  .phb-kd-dot.phb-on,.phb-kd-dot.phb-on:hover{transform:scale(1.3);z-index:3}
+  .phb-kd-dot.phb-on::after,.phb-kd-dot.phb-on:hover::after{opacity:1}
+}
 .phb-kd-track{overflow:visible}
 .phb-prog-sum{background:none;border:0;padding:0;margin-top:24px;justify-content:flex-start}
 .phb-prog-stats.phb-prog-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;margin-left:0;justify-content:stretch}
@@ -1011,6 +1016,9 @@ details.phb-phase[open] .phb-phase-sum>span:first-child:before{transform:rotate(
 
 /* round 13 */
 .phb-kd-dot::before{opacity:1}
+@media (hover:none),(pointer:coarse){
+  .phb-kd-dot::before{width:14px;height:14px;inset:auto;left:50%;top:50%;transform:translate(-50%,-50%)}
+}
 .phb-case-top{grid-template-columns:minmax(0,1fr) minmax(300px,1fr)}
 @media (max-width:760px){.phb-case-top{grid-template-columns:minmax(0,1fr) minmax(300px,1fr)}}
 @media (max-width:640px){.phb-case-top{grid-template-columns:minmax(0,1fr)}}
@@ -1069,7 +1077,7 @@ section.phb-band .phb-wrap+.phb-wrap{margin-top:32px}
 
 /* type scale and section rhythm — these rules sit last so they win */
 section.phb-band,section.phb-band:first-of-type,section.phb-band:last-of-type{padding-block:40px}
-.phb-hero{padding-bottom:40px}
+.phb-hero{padding:0}
 section.phb-band .phb-wrap+.phb-wrap{margin-top:24px}
 .phb-sec-title{font:500 24px/1.4 var(--phb-sans);color:var(--phb-white-80)}
 .phb-prose,.phb-prose+.phb-prose,.phb-sec-title+.phb-prose,.phb-sub-title+.phb-prose,.phb-callout p,.phb-case-top .phb-sum{margin-top:16px}
@@ -1116,7 +1124,7 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
 
 /* case result: compact status chip; the longer sentence is a tooltip */
 .phb-case-right>.phb-result-line{display:inline-flex;align-items:center;align-self:flex-start;gap:6px;margin:0 0 12px;padding:0;background:none;border:0;font:400 13px/1.4 var(--phb-sans);color:var(--phb-white-80)}
-.phb-info-i{appearance:none;flex:none;display:inline-grid;place-items:center;width:16px;height:16px;margin:0;padding:0;border:1px solid var(--phb-white-20);border-radius:50%;background:transparent;color:var(--phb-white-60);cursor:pointer}
+.phb-info-i{appearance:none;flex:none;display:inline-grid;place-items:center;width:16px;height:16px;margin:0;padding:0;border:1px solid var(--phb-white-20);border-radius:0;background:transparent;color:var(--phb-white-60);cursor:pointer}
 .phb-info-i svg{display:block;width:100%;height:100%}
 .phb-info-i:hover,.phb-info-i:focus-visible{color:var(--phb-white-100);border-color:var(--phb-white-40);background:var(--phb-white-6)}
 .phb-result-tip{position:fixed;z-index:50;left:0;top:0;width:max-content;max-width:280px;margin:0;padding:8px 12px;background:var(--phb-surface-3);color:var(--phb-white-80);border:1px solid var(--phb-white-10);border-radius:var(--phb-radius-sm);box-shadow:0 8px 24px var(--phb-overlay);font:400 13px/1.45 var(--phb-sans);pointer-events:none;opacity:0;visibility:hidden}
@@ -1461,7 +1469,7 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
   position: absolute;
   z-index: 20;
   padding: 8px 10px;
-  border-radius: 4px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.23);
   background: rgba(83, 83, 83, 0.23);
   backdrop-filter: blur(17.5px);
@@ -1525,7 +1533,7 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
 }
 
 /* page chrome around that card: back, title, subtitle, overview divider */
-.phb-hero{padding:clamp(56px,8vw,96px) 0 0}
+.phb-hero{padding:0}
 .phb-hero-back{display:inline-flex;align-items:center;margin:0 0 36px;color:rgba(255,255,255,.6);font:400 14px/1.4 var(--phb-sans);text-decoration:none}
 .phb-hero-back:hover{color:rgba(255,255,255,.9)}
 .phb-hero h1{margin:0;font:600 48px/1 var(--phb-sans);color:var(--phb-white-100)}
@@ -1573,7 +1581,7 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
 .phb-flow{list-style:none;padding:0;margin:32px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--phb-surface-2);border:1px solid var(--phb-white-10);border-radius:var(--phb-radius-md)}
 .phb-flow li{position:relative;padding:20px 24px}
 .phb-flow li+li{border-left:1px solid var(--phb-white-10)}
-.phb-flow li+li:before{content:"";position:absolute;left:-12px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:50%;background:var(--phb-surface-1);border:1px solid var(--phb-white-10)}
+.phb-flow li+li:before{content:"";position:absolute;left:-12px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:0;background:var(--phb-surface-1);border:1px solid var(--phb-white-10)}
 .phb-flow li+li:after{content:"";position:absolute;left:-4px;top:50%;width:6px;height:6px;margin-top:-3px;border-top:2px solid var(--phb-white-60);border-right:2px solid var(--phb-white-60);transform:rotate(45deg)}
 .phb-flow-t{display:block;font:600 16px/1.5 var(--phb-sans)}
 .phb-flow-d{display:block;font-size:14px;line-height:1.5;color:var(--phb-white-60);margin-top:4px}
@@ -1625,8 +1633,8 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
 .phb-xp-pb th,.phb-xp-pb td{padding:8px;border-bottom:1px solid var(--phb-white-10);text-align:left;white-space:nowrap;background:var(--phb-td-bg)}
 .phb-xp-pb th{position:sticky;top:-24px;font-weight:500;color:var(--phb-white-80);background:linear-gradient(var(--phb-th-bg),var(--phb-th-bg)),var(--phb-surface-1)}
 /* side drawer (file viewer) */
-.phb-viewer{position:fixed;inset:0;z-index:60;visibility:hidden;pointer-events:none;background:transparent;transition:background-color .25s ease,visibility 0s linear .25s}
-.phb-viewer.phb-open{visibility:visible;pointer-events:auto;background:var(--phb-overlay);transition:background-color .25s ease}
+.phb-viewer{position:fixed;inset:0;z-index:1000;visibility:hidden;pointer-events:none;background:transparent;transition:background-color .25s ease,visibility 0s linear .25s}
+.phb-viewer.phb-open{z-index:1000;visibility:visible;pointer-events:auto;background:var(--phb-overlay);transition:background-color .25s ease}
 .phb-viewer-card{position:fixed;top:0;right:0;height:100%;width:min(640px,100%);background:var(--phb-surface-2);color:var(--phb-white-100);border-left:1px solid var(--phb-white-10);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s ease}
 .phb-viewer.phb-open .phb-viewer-card{transform:translateX(0)}
 .phb-viewer-head{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--phb-white-10)}
@@ -1639,7 +1647,7 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
 .phb-viewer-body th{color:var(--phb-white-80);font-weight:500;position:sticky;top:-20px;background:linear-gradient(var(--phb-th-bg),var(--phb-th-bg)),var(--phb-surface-2)}
 .phb-prose,.phb-finding .phb-ev,.phb-method p,.phb-tldr p,.phb-fails li,.phb-flow-d,.phb-case-top .phb-sum,.phb-pair .phb-what,.phb-diff,blockquote.phb-q,.phb-nopass,.phb-tr-note p,.phb-tr-msg,details.phb-checks-d ul,.phb-docs-needed,.phb-checks li,.phb-phase .phb-studies,.phb-prog-head p,.phb-request,.phb-tldr .phb-tldr-result{font:400 16px/1.5 var(--phb-sans);color:var(--phb-white-60)}
 /* figure frames */
-.phb-lb,.phb-stack,.phb-cmp,.phb-loss,.phb-files123,.phb-xp,.phb-stage,.phb-case,.phb-flow,.phb-trace,.phb-gtable-wrap{background:var(--phb-frame-bg);border:1px solid var(--phb-white-20);border-radius:6px}
+.phb-lb,.phb-stack,.phb-cmp,.phb-loss,.phb-files123,.phb-xp,.phb-stage,.phb-case,.phb-flow,.phb-trace,.phb-gtable-wrap{background:var(--phb-frame-bg);border:1px solid var(--phb-white-10);border-radius:0}
 /* inner panels */
 .phb-phase,.phb-qcard,.phb-big2 div,.phb-ctab,.phb-mrow,.phb-tcard,.phb-xp-item[aria-current="true"],.phb-pill,.phb-tdetail,.phb-step-btn[aria-selected="true"],.phb-nopass{background:var(--phb-panel-bg);border:1px solid var(--phb-panel-border);border-radius:0}
 .phb-flow li+li:before{display:none}
@@ -1651,7 +1659,7 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
   .phb-phases{grid-template-columns:minmax(0,1fr)}
   .phb-case-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-.phb-xp{margin-top:16px;background:var(--phb-frame-bg);border:1px solid var(--phb-white-10);border-radius:6px}
+.phb-xp{margin-top:16px;background:var(--phb-frame-bg);border:1px solid var(--phb-white-10);border-radius:0}
 .phb-xp-key{display:inline-block;margin-right:4px;padding:2px 6px;vertical-align:1px;font:500 11px/1.2 var(--phb-sans);font-style:normal;color:var(--phb-accent-60);background:var(--phb-accent-16);border:1px solid var(--phb-accent-80)}
 .phb-xp-item[aria-current="true"] .phb-xp-key{color:var(--phb-white-100)}
 .phb-xp-pb th,.phb-xp-pb td{white-space:nowrap}
@@ -1714,11 +1722,11 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
 *,*::before,*::after{border-radius:0!important}
 /* no divider above Overview */
 .phb-overview{margin-top:0;border-top:0;padding-top:0}
-/* finding numbers above their headings */
+/* finding numbers sit in the heading */
 .phb-finding{grid-template-columns:minmax(0,1fr)}
-.phb-finding .phb-fnum{grid-column:1;grid-row:1}
-.phb-finding h3{grid-column:1;grid-row:2;margin-top:-4px}
+.phb-finding h3{grid-column:1;grid-row:1;margin-top:0}
 .phb-finding .phb-ev,.phb-finding .phb-fig-slot{grid-column:1}
+.phb-fnum{display:none}
 /* smaller headline numbers */
 .phb-big2 b{font-size:36px;line-height:1.1}
 /* larger file dots */
@@ -1775,7 +1783,7 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
   html{-webkit-text-size-adjust:100%}
   body{overflow-x:hidden}
   img,svg,video{max-width:100%}
-  .phb-wrap{width:calc(100% - 32px)}
+  .phb-wrap{width:100%;margin:0;padding:0}
   /* type scale */
   .phb-hero-text h1,.phb-hero h1{font-size:30px;line-height:1.15}
   .phb-hero .phb-q{font-size:18px;line-height:1.4}
@@ -1854,11 +1862,12 @@ details.phb-rubric[open] .phb-checks2{padding:16px}
   /* takeaways */
   .phb-takeaways li{grid-template-columns:28px minmax(0,1fr);column-gap:12px;padding:16px}
   .phb-takeaways li:before{width:28px;height:28px}
-  /* footer */
-  footer .phb-wrap{flex-direction:column;align-items:flex-start;gap:8px}
+}
+@media (max-width:640px) and (hover:none),(max-width:640px) and (pointer:coarse){
+  .phb-kd-dot{top:-1px}
 }
 @media (max-width:360px){
-  .phb-wrap{width:calc(100% - 24px)}
+  .phb-wrap{width:100%;margin:0;padding:0}
   .phb-hero-text h1,.phb-hero h1{font-size:28px}
   .phb-big2 b{font-size:28px}
   .phb-lb,.phb-stack,.phb-cmp,.phb-loss,.phb-files123,.phb-stage,.phb-kdots,.phb-atlas-frame,.phb-xp,.phb-callout,.phb-case-right,.phb-taskcard{padding:12px}
@@ -1942,7 +1951,10 @@ section.phb-band{padding-block:36px}
   .phb-phase-sum>span:first-child:before{grid-column:1;grid-row:1}
   .phb-phase-sum h4{grid-column:2;grid-row:1}
   .phb-phase-sum .phb-studies{grid-column:2;grid-row:2;display:block}
-  .phb-case-top{max-height:400px;overflow:auto}
+  .phb-case-top:not(.phb-case-lead){max-height:400px;overflow:auto}
+  .phb-case-lead,.phb-sc:has(>.phb-case-lead){max-height:none;overflow:visible}
+  .phb-sc:has(>.phb-case-lead)>.phb-case-lead{min-height:auto;flex:none}
+  .phb-sc:has(>.phb-case-lead)::after{content:none}
   .phb-doc.phb-crop{max-height:120px}
 }
 
@@ -2035,9 +2047,91 @@ section.phb-band{padding:0}
   .phb-viewer .phb-viewer-head{flex-wrap:wrap;gap:8px}
   .phb-viewer .phb-viewer-body{padding:12px}
 }
-.phb-hero{padding-top:32px}
-.phb-hero .phb-section{margin-bottom:32px}
+.phb-hero{margin:0 0 32px;padding:0}
+.phb-hero .phb-section{margin-bottom:0}
 #phb-scoreboard{padding-block:0}
+.phb-eval{margin:0;border:1px solid var(--phb-white-10)}
+.phb-eval img{width:100%;height:auto;display:block;clip-path:inset(0 0 4px 0)}
+.phb-eval-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px;margin-top:-4px;padding:20px;background:#121212}
+.phb-eval-notes div{display:flex;flex-direction:column;gap:8px;min-width:0;padding:15px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(203,203,203,.08)}
+.phb-eval-notes h3{margin:0;font:400 20px/1.3 var(--phb-sans);letter-spacing:-0.6px;color:var(--phb-white-100);opacity:.84}
+.phb-eval-notes h3 span{font-size:16px;letter-spacing:-0.48px;color:#afafaf}
+.phb-eval-notes p{margin:0;font:400 14px/1.6 var(--phb-sans);color:var(--phb-white-60)}
+.phb-eval + .phb-prose{margin-top:24px}
+@media (max-width:640px){
+  .phb-eval-notes{grid-template-columns:minmax(0,1fr);gap:12px;padding:16px}
+  .phb-eval-notes h3{font-size:18px;letter-spacing:-0.36px}
+}
+*,*::before,*::after{border-radius:0!important}
+.phb-stack-row .phb-bars i.phb-s{background:var(--phb-grad-blue)!important;opacity:1!important}
+.phb-stack-row .phb-bars i.phb-p{background:var(--phb-error)!important;opacity:1!important}
+.phb-steps{display:flex;align-items:stretch;gap:3px;width:100%;min-height:40px;margin:0;padding:4px;background:rgba(255,255,255,.07);border:1px solid var(--phb-white-10);box-sizing:border-box}
+.phb-step-btn{flex:1 0 0;min-width:0;min-height:32px;display:flex;align-items:center;justify-content:center;gap:6px;margin:0;padding:4px 12px;border:0;background:transparent;color:#eaeaea;font:400 14px/1.6 var(--phb-sans);text-align:center;white-space:nowrap;cursor:pointer}
+.phb-step-btn b{display:none}
+.phb-step-btn[aria-selected="true"]{background:rgba(255,255,255,.7);border:0;color:#000}
+.phb-step-btn[aria-selected="true"] b{background:transparent;color:inherit}
+@media (hover:hover) and (pointer:fine){
+  .phb-step-btn:hover:not([aria-selected="true"]){background:rgba(255,255,255,.14);color:#fff}
+  .phb-step-btn[aria-selected="true"]:hover{background:rgba(255,255,255,.84)}
+}
+@media (max-width:640px){
+  .phb-steps{display:flex;grid-template-columns:none;overflow-x:auto;gap:3px}
+  .phb-step-btn{flex:0 0 auto;width:auto;white-space:nowrap;text-align:center;min-height:32px}
+}
+.phb-seg{display:inline-flex;align-items:stretch;gap:3px;padding:4px;background:rgba(255,255,255,.07);border:1px solid var(--phb-white-10)}
+.phb-metric-row .phb-seg,.phb-seg-row .phb-seg{display:flex;width:100%}
+.phb-seg button{flex:1 0 0;min-height:32px;height:auto;margin:0;padding:4px 12px;border:0;background:transparent;color:#eaeaea;font:400 14px/1.6 var(--phb-sans);text-align:center;white-space:nowrap}
+.phb-seg button[aria-pressed="true"]{background:rgba(255,255,255,.7);color:#000}
+@media (hover:hover) and (pointer:fine){
+  .phb-seg button:hover:not([aria-pressed="true"]){background:rgba(255,255,255,.14);color:#fff}
+  .phb-seg button[aria-pressed="true"]:hover{background:rgba(255,255,255,.84);color:#000}
+}
+.phb-ctab[aria-selected="true"]{background:rgba(255,255,255,.7);border-color:transparent;color:#000}
+.phb-ctab[aria-selected="true"] .phb-g,.phb-ctab[aria-selected="true"] b{color:#000}
+section.phb-band .phb-wrap+.phb-wrap{margin-top:16px}
+section.phb-band .phb-wrap+.phb-wrap>:is(.phb-fig,.phb-callout,.phb-atlas-frame,.phb-walk,.phb-case-tabs,#phb-findings-list){margin-top:0}
+section.phb-band .phb-wrap .phb-sub-title{margin:40px 0 16px}
+section.phb-band .phb-wrap :is(.phb-fig,.phb-tablewrap,.phb-callout,.phb-taskcard,.phb-loss,.phb-takeaways,.phb-xp,.phb-atlas-frame,.phb-walk,.phb-case-tabs,.phb-case){margin-top:32px}
+section.phb-band .phb-wrap .phb-sub-title+.phb-seg-row,section.phb-band .phb-wrap .phb-seg-row+.phb-tablewrap{margin-top:16px}
+#phb-perf{margin-top:16px!important}
+#phb-findings-list{margin-top:0;gap:40px}
+.phb-finding .phb-fig-slot{margin-top:16px}
+.phb-eval+.phb-prose{margin-top:32px}
+.phb-method{margin-top:16px;gap:32px}
+.phb-method h4{margin:0 0 16px}
+.phb-callout p{margin-top:16px}
+.phb-xp-item,.phb-xp-item:hover,.phb-xp-item:focus,.phb-xp-item:focus-visible,.phb-xp-item[aria-current="true"]{box-sizing:border-box;margin-left:6px;margin-right:6px;width:calc(100% - 12px);padding:6px 10px;border:1px solid transparent;outline:none;box-shadow:none}
+.phb-xp-item:hover{background:var(--phb-white-6)}
+.phb-xp-item[aria-current="true"]{background:var(--phb-white-6);box-shadow:inset 0 0 0 1px var(--phb-white-10)}
+.phb-xp-field:hover,.phb-btn:hover{border-color:rgba(255,255,255,.4);box-shadow:none}
+.phb-xp-field:focus,.phb-xp-field:focus-visible,.phb-xp-field[aria-expanded="true"],.phb-btn:focus,.phb-btn:focus-visible{outline:none;border-color:rgba(255,255,255,.7);box-shadow:none}
+.phb-mrow:not(.phb-mrow-head){padding-top:8px;padding-bottom:8px}
+.phb-tablewrap,.phb-tbl-frame,.phb-gtable-wrap{border-color:var(--phb-white-10)}
+#phb-xp-prev .phb-sc[data-phb-dir="y"]{min-height:160px}
+#phb-xp-prev .phb-sc[data-phb-dir="y"]>.phb-xp-pb{min-height:160px}
+.phb-viewer .phb-viewer-body{padding-top:0}
+.phb-viewer .phb-viewer-body table{border-collapse:separate;border-spacing:0}
+.phb-viewer .phb-viewer-body th{position:sticky;top:0;z-index:2;background:var(--phb-surface-3)!important}
+.phb-doc.phb-crop:has(img[alt="Page 15 of the risk management plan, Part V on risk minimization measures"]),.phb-doc.phb-crop.phb-full{max-height:none;overflow:visible}
+.phb-doc.phb-crop:has(img[alt="Page 15 of the risk management plan, Part V on risk minimization measures"]):before,.phb-doc.phb-crop.phb-full:before{content:none}
+.phb-doc.phb-crop:has(img[alt="Page 15 of the risk management plan, Part V on risk minimization measures"]) .phb-doc-x,.phb-doc.phb-crop.phb-full .phb-doc-x{display:none}
+@media (max-width:760px){
+  #phb-xp-prev,.phb-xp-ph{display:none}
+  .phb-xp{padding:0}
+  .phb-xp-top{padding:16px 16px 12px}
+  .phb-xp-title{height:auto;font-size:16px}
+  .phb-xp-title .phb-n{font-size:14px}
+  .phb-xp-note{font-size:14px;line-height:1.5}
+  .phb-xp-tools{padding:12px 16px 14px;gap:12px}
+  .phb-xp-field{height:40px;font-size:15px}
+  .phb-xp-seg button{height:36px;font-size:14px}
+  .phb-xp-sec>.phb-xp-grp{padding:12px 16px;font-size:13px}
+  .phb-xp-item,.phb-xp-item:hover,.phb-xp-item:focus,.phb-xp-item:focus-visible,.phb-xp-item[aria-current="true"]{margin-left:8px;margin-right:8px;width:calc(100% - 16px);padding:10px 12px}
+  .phb-xp-nm{font-size:15px;line-height:1.4}
+  .phb-xp-mt{font-size:13px;line-height:1.4}
+  .phb-xp-list{max-height:360px}
+}
+#phb-perf th:first-child,#phb-perf td:first-child,#phb-usab th:first-child,#phb-usab td:first-child,#phb-bykind th:first-child,#phb-bykind td:first-child{min-width:148px;padding-right:16px!important}
 </style>
 </head>
 <body>
@@ -2062,6 +2156,7 @@ section.phb-band{padding:0}
     <div class="phb-viewer-body" id="phb-viewer-body"></div>
   </div>
 </div>
+<span class="phb-result-tip" aria-hidden="true"></span>
 
 <main>
 
@@ -2098,12 +2193,12 @@ section.phb-band{padding:0}
     <p class="phb-prose">Six findings shape how these results should be read. Each is stated plainly first, then supported in the sections below.</p>
   </div>
   <div class="phb-wrap phb-col"><div id="phb-findings-list">
-<div class="phb-finding" id="phb-f1"><div class="phb-fnum">1</div><div><h3>Full marks are rare for every model.</h3><p class="phb-ev">The best model, Muse Wonder, earned full marks on 17.2% of its runs, and GPT 6 Astra on 16.1%. Across all ten models, 12.0% of runs earned full marks, and 63 of the 120 tasks were never fully solved.</p><div class="phb-fig-slot" id="phb-fig-full"></div></div></div>
-<div class="phb-finding" id="phb-f2"><div class="phb-fnum">2</div><div><h3>Penalties account for most of the gap between leading models, with one exception.</h3><p class="phb-ev">A penalty in this benchmark is not a missed point. It marks something the answer added that an expert reviewer would have to find and remove before the document could be used: content that is not in the source documents, a claim the evidence does not support, or a conclusion that goes beyond what the study can show. In one task, a model described what a prescriber guide and patient card contain, though neither was in the files it was given. The leading models cover a similar share of what the experts required. What separates them is how often they add content of this kind: GPT 6 Astra triggers at least one penalty in 29% of its runs, Opus 5 in 65%. Muse Wonder is the exception: it leads by covering more of what the experts required, with 0.872 in credit against 0.779 to 0.837 for the other nine models, while triggering a penalty in 47% of its runs.</p><div class="phb-fig-slot" id="phb-fig-stack"></div></div></div>
-<div class="phb-finding" id="phb-f3"><div class="phb-fnum">3</div><div><h3>Regulatory review separates models more than any other group.</h3><p class="phb-ev">It has the lowest mean score and the widest gap between the best and worst model, and only 4.9% of its runs pass. Data analysis is the only group where a fifth of runs pass. Biostatistics is the highest scoring skill, with a mean score of 0.856.</p><div class="phb-fig-slot" id="phb-fig-kind"></div></div></div>
-<div class="phb-finding" id="phb-f4"><div class="phb-fnum">4</div><div><h3>Formatting instructions are often ignored.</h3><p class="phb-ev">Some tasks ask for continuous prose without bullet points, or set a word limit. Most runs do not follow these instructions, including runs from the leading models. 24% of runs wrote continuous prose without bullets when asked to, across 18 tasks, and 48% of runs stayed within a stated word limit, across 12 tasks. Formatting is a small part of the overall result, though. These instructions apply to at most 30 of the 120 tasks, so at least 33 of the 63 tasks that were never fully solved carry no formatting instruction at all, and at least 87% of all lost rubric points fall in categories unrelated to format: numbers missed or misstated, conclusions not drawn, discrepancies not flagged, and claims the evidence does not support.</p><div class="phb-fig-slot" id="phb-fig-fmt"></div></div></div>
-<div class="phb-finding" id="phb-f5"><div class="phb-fnum">5</div><div><h3>Agents find the right documents. Scores depend on what they do with them.</h3><p class="phb-ev">A typical run opens about 9 of the roughly 120 files it receives and reaches most of the documents the task author relied on. Runs that open more files do not score higher (within task rank correlation 0.01).</p><div class="phb-fig-slot" id="phb-fig-files"></div></div></div>
-<div class="phb-finding" id="phb-f6"><div class="phb-fnum">6</div><div><h3>Some tasks are hard for every model.</h3><p class="phb-ev">On 8 of the 120 tasks, no model averages above 0.70. On these tasks, models most often miss a gap or discrepancy the task was built around, or a specific number from the data. Penalties matter less here than elsewhere.</p><div class="phb-fig-slot" id="phb-fig-hard"></div></div></div>
+<div class="phb-finding" id="phb-f1"><div><h3>1. Full marks are rare for every model.</h3><p class="phb-ev">The best model, Muse Wonder, earned full marks on 17.2% of its runs, and GPT 6 Astra on 16.1%. Across all ten models, 12.0% of runs earned full marks, and 63 of the 120 tasks were never fully solved.</p><div class="phb-fig-slot" id="phb-fig-full"></div></div></div>
+<div class="phb-finding" id="phb-f2"><div><h3>2. Penalties account for most of the gap between leading models, with one exception.</h3><p class="phb-ev">A penalty in this benchmark is not a missed point. It marks something the answer added that an expert reviewer would have to find and remove before the document could be used: content that is not in the source documents, a claim the evidence does not support, or a conclusion that goes beyond what the study can show. In one task, a model described what a prescriber guide and patient card contain, though neither was in the files it was given. The leading models cover a similar share of what the experts required. What separates them is how often they add content of this kind: GPT 6 Astra triggers at least one penalty in 29% of its runs, Opus 5 in 65%. Muse Wonder is the exception: it leads by covering more of what the experts required, with 0.872 in credit against 0.779 to 0.837 for the other nine models, while triggering a penalty in 47% of its runs.</p><div class="phb-fig-slot" id="phb-fig-stack"></div></div></div>
+<div class="phb-finding" id="phb-f3"><div><h3>3. Regulatory review separates models more than any other group.</h3><p class="phb-ev">It has the lowest mean score and the widest gap between the best and worst model, and only 4.9% of its runs pass. Data analysis is the only group where a fifth of runs pass. Biostatistics is the highest scoring skill, with a mean score of 0.856.</p><div class="phb-fig-slot" id="phb-fig-kind"></div></div></div>
+<div class="phb-finding" id="phb-f4"><div><h3>4. Formatting instructions are often ignored.</h3><p class="phb-ev">Some tasks ask for continuous prose without bullet points, or set a word limit. Most runs do not follow these instructions, including runs from the leading models. 24% of runs wrote continuous prose without bullets when asked to, across 18 tasks, and 48% of runs stayed within a stated word limit, across 12 tasks. Formatting is a small part of the overall result, though. These instructions apply to at most 30 of the 120 tasks, so at least 33 of the 63 tasks that were never fully solved carry no formatting instruction at all, and at least 87% of all lost rubric points fall in categories unrelated to format: numbers missed or misstated, conclusions not drawn, discrepancies not flagged, and claims the evidence does not support.</p><div class="phb-fig-slot" id="phb-fig-fmt"></div></div></div>
+<div class="phb-finding" id="phb-f5"><div><h3>5. Agents find the right documents. Scores depend on what they do with them.</h3><p class="phb-ev">A typical run opens about 9 of the roughly 120 files it receives and reaches most of the documents the task author relied on. Runs that open more files do not score higher (within task rank correlation 0.01).</p><div class="phb-fig-slot" id="phb-fig-files"></div></div></div>
+<div class="phb-finding" id="phb-f6"><div><h3>6. Some tasks are hard for every model.</h3><p class="phb-ev">On 8 of the 120 tasks, no model averages above 0.70. On these tasks, models most often miss a gap or discrepancy the task was built around, or a specific number from the data. Penalties matter less here than elsewhere.</p><div class="phb-fig-slot" id="phb-fig-hard"></div></div></div>
   </div></div>
 </section>
 
@@ -2112,12 +2207,33 @@ section.phb-band{padding:0}
     <div class="phb-eyebrow phb-label">Environment</div><h2 class="phb-sec-title">Benchmark overview</h2>
     <p class="phb-prose">Every clinical trial produces thousands of pages of required documentation: protocols, statistical analysis plans, case report forms, patient level datasets, a clinical study report, and the safety and regulatory documents that follow. The details have to be right, they have to be traceable, and product approval depends on the accuracy. The people who write and check them also have to say clearly what the evidence does not show.</p>
     <p class="phb-prose">PharmaBench tasks sit inside complete synthetic drug programs inspired by real drug programs, each with a sponsor, a product, and clinical studies from Phase 1 to Phase 3. Biostatisticians, medical writers, safety physicians, regulatory specialists and clinical reviewers wrote the tasks. They cover four kinds of work: data analysis, document structure, medical writing, and regulatory review.</p>
+    <figure class="phb-fig phb-eval">
+      <img src="https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ad8cb79f9238b6763f43fb3_Evaluation%20graphic.png" width="1930" height="1750" alt="Evaluation. Eight programs feed PharmaBench. A Phase 2 task in Program 3 receives 84 files, then one kind of work, here Medical Writing, graded on required criteria, a pass, and penalties.">
+      <div class="phb-eval-notes">
+        <div>
+          <h3>Programs <span>(1-8)</span></h3>
+          <p>PharmaBench is built around eight synthetic drug programs, each with its own sponsor, product and indication, modeled on real development programs</p>
+        </div>
+        <div>
+          <h3>Lifecycle <span>(Phase 1, 2, 3)</span></h3>
+          <p>Each program runs from Phase 1 to Phase 3, and its files build up along the way. Each task receives only what existed at its point in the program</p>
+        </div>
+        <div>
+          <h3>Kinds of work <span>(Data analysis, Document structure etc.)</span></h3>
+          <p>Each program holds 15 tasks written by biostatisticians, medical writers, safety physicians and regulatory specialists, spread across four kinds of work</p>
+        </div>
+        <div>
+          <h3>Checks <span>(Required criteria, Pass, Penalties)</span></h3>
+          <p>Each run is graded against the expert's rubric: weighted criteria the answer must meet, and penalties for content it must not contain</p>
+        </div>
+      </div>
+    </figure>
     <p class="phb-prose">An agent gets a short request, and every document the program has produced up to that point, often more than a hundred PDFs and datasets. It works in a sandbox with a shell and Python, and writes its answer to a file. Below is everything one task gives the agent.</p>
     <div class="phb-taskcard"><dl><dt>Task</dt><dd>PB-0070, regulatory review, Kelvaparib program, study KLV-7701.</dd><dt>Request</dt><dd class="phb-req">&ldquo;Assess whether the proposed risk minimization for the kelvaparib program (informing study KLV-7701) is proportionate to the observed risk, focusing on the balance of routine and additional risk minimization. Consider severity, preventability and practicality, and identify the gaps. Write the summary as text only (no tables) and without point-form.&rdquo;</dd><dt>Files</dt><dd>250 files: 206 PDF documents and 44 CSV datasets from 4 studies in the program.</dd><dt>Needed</dt><dd>Two of those files carry the answer: the risk management plan and the product information. Nothing in the request says which.</dd><dt>Output</dt><dd>A written answer saved to a file in the sandbox.</dd></dl></div>
     <p class="phb-cap">One task as the agent receives it. The request is quoted as written.</p>
   </div>
   <div class="phb-wrap">
-    <h3 class="phb-sub-title" style="margin-top:0">Every file the agent receives</h3>
+    <h3 class="phb-sub-title">Every file the agent receives</h3>
     <p class="phb-prose" id="phb-xp-intro"></p>
     <div class="phb-xp" id="phb-evidence">
       <div class="phb-xp-top">
@@ -2249,7 +2365,6 @@ section.phb-band{padding:0}
 </section>
 </main>
 
-<footer><div class="phb-wrap"><span>micro1 · PharmaBench</span><span>October 2026</span></div></footer>
 <textarea class="phb-scores" id="phb-scores-1" hidden readonly aria-hidden="true">{"task":{"pb":"PB-0070","prompt":"Assess whether the proposed risk minimization for the kelvaparib program (informing study KLV-7701) is proportionate to the observed risk, focusing on the balance of routine and additional risk minimization. Consider severity, preventability and practicality, and identify the gaps. Write the summary as text only (no tables) and without point-form.","files":250,"pdf":206,"csv":44,"studies":4,"program":"Kelvaparib","focus":"KLV-7701","nkey":2},"views":{"Overall":{"GPT 6 Astra":{"s":0.7856,"ci":[0.751,0.817]},"Muse Spark 1.3":{"s":0.7713,"ci":[0.736,0.802]},"Grok 4.6":{"s":0.771,"ci":[0.738,0.804]},"Sonnet 5.5":{"s":0.7565,"ci":[0.724,0.787]},"Fable 5.1":{"s":0.7554,"ci":[0.724,0.784]},"Opus 5.5":{"s":0.7506,"ci":[0.72,0.78]},"Opus 5":{"s":0.7321,"ci":[0.698,0.764]},"Muse Spark 1.1":{"s":0.7051,"ci":[0.669,0.741]},"Gemini 3.8 Flash":{"s":0.6658,"ci":[0.627,0.705]},"Muse Wonder":{"s":0.8091,"ci":[0.779,0.836]}},"Data Analysis":{"GPT 6 Astra":{"s":0.8209,"ci":[0.7751,0.8626]},"Muse Spark 1.3":{"s":0.823,"ci":[0.7769,0.8657]},"Grok 4.6":{"s":0.8237,"ci":[0.7754,0.8672]},"Sonnet 5.5":{"s":0.8077,"ci":[0.7625,0.8503]},"Fable 5.1":{"s":0.8133,"ci":[0.7591,0.8591]},"Opus 5.5":{"s":0.8269,"ci":[0.7842,0.8665]},"Opus 5":{"s":0.7863,"ci":[0.7385,0.8318]},"Muse Spark 1.1":{"s":0.7739,"ci":[0.7247,0.8233]},"Gemini 3.8 Flash":{"s":0.717,"ci":[0.6578,0.7742]},"Muse Wonder":{"s":0.8438,"ci":[0.7989,0.8852]}},"Document Structure":{"GPT 6 Astra":{"s":0.7336,"ci":[0.6478,0.8171]},"Muse Spark 1.3":{"s":0.6818,"ci":[0.5514,0.7891]},"Grok 4.6":{"s":0.7376,"ci":[0.6033,0.8426]},"Sonnet 5.5":{"s":0.7595,"ci":[0.6488,0.8452]},"Fable 5.1":{"s":0.7445,"ci":[0.6599,0.8207]},"Opus 5.5":{"s":0.7114,"ci":[0.6294,0.7908]},"Opus 5":{"s":0.7028,"ci":[0.596,0.7901]},"Muse Spark 1.1":{"s":0.5944,"ci":[0.4742,0.706]},"Gemini 3.8 Flash":{"s":0.6715,"ci":[0.5424,0.7827]},"Muse Wonder":{"s":0.7537,"ci":[0.6408,0.8473]}},"Medical Writing":{"GPT 6 Astra":{"s":0.7797,"ci":[0.7086,0.8421]},"Muse Spark 1.3":{"s":0.7826,"ci":[0.7265,0.8322]},"Grok 4.6":{"s":0.7717,"ci":[0.7129,0.8258]},"Sonnet 5.5":{"s":0.7379,"ci":[0.6801,0.794]},"Fable 5.1":{"s":0.7238,"ci":[0.6742,0.7723]},"Opus 5.5":{"s":0.7263,"ci":[0.6736,0.7786]},"Opus 5":{"s":0.7283,"ci":[0.6728,0.7814]},"Muse Spark 1.1":{"s":0.7231,"ci":[0.6691,0.7725]},"Gemini 3.8 Flash":{"s":0.6778,"ci":[0.6182,0.7321]},"Muse Wonder":{"s":0.8139,"ci":[0.7661,0.8597]}},"Regulatory Review":{"GPT 6 Astra":{"s":0.7574,"ci":[0.6837,0.8271]},"Muse Spark 1.3":{"s":0.7125,"ci":[0.6409,0.7812]},"Grok 4.6":{"s":0.687,"ci":[0.6208,0.7544]},"Sonnet 5.5":{"s":0.6771,"ci":[0.6119,0.7372]},"Fable 5.1":{"s":0.6892,"ci":[0.6306,0.7463]},"Opus 5.5":{"s":0.6566,"ci":[0.5945,0.7206]},"Opus 5":{"s":0.6485,"ci":[0.5833,0.7138]},"Muse Spark 1.1":{"s":0.617,"ci":[0.5393,0.6992]},"Gemini 3.8 Flash":{"s":0.5437,"ci":[0.4591,0.6251]},"Muse Wonder":{"s":0.7704,"ci":[0.7197,0.8204]}}},"order":["Muse Wonder","GPT 6 Astra","Muse Spark 1.3","Grok 4.6","Sonnet 5.5","Fable 5.1","Opus 5.5","Opus 5","Muse Spark 1.1","Gemini 3.8 Flash"],"rank":{"Muse Wonder":1,"GPT 6 Astra":2,"Muse Spark 1.3":3,"Grok 4.6":4,"Sonnet 5.5":5,"Fable 5.1":6,"Opus 5.5":7,"Opus 5":8,"Muse Spark 1.1":9,"Gemini 3.8 Flash":10},"decomp":{"GPT 6 Astra":{"credit":0.8195,"penalty":0.0339,"score":0.7856,"penalised":0.294,"chars":10434.0,"seconds":177},"Muse Spark 1.3":{"credit":0.8289,"penalty":0.0585,"score":0.7713,"penalised":0.456,"chars":18268.5,"seconds":218},"Grok 4.6":{"credit":0.8257,"penalty":0.0547,"score":0.771,"penalised":0.431,"chars":11870.0,"seconds":169},"Sonnet 5.5":{"credit":0.8278,"penalty":0.0713,"score":0.7565,"penalised":0.519,"chars":14443.5,"seconds":202},"Fable 5.1":{"credit":0.8362,"penalty":0.0808,"score":0.7554,"penalised":0.558,"chars":19138.5,"seconds":383},"Opus 5.5":{"credit":0.8272,"penalty":0.0766,"score":0.7506,"penalised":0.553,"chars":16530.0,"seconds":223},"Opus 5":{"credit":0.837,"penalty":0.1049,"score":0.7321,"penalised":0.653,"chars":30269.0,"seconds":434},"Muse Spark 1.1":{"credit":0.7788,"penalty":0.0745,"score":0.7051,"penalised":0.544,"chars":12464.0,"seconds":71},"Gemini 3.8 Flash":{"credit":0.8004,"penalty":0.1353,"score":0.6658,"penalised":0.756,"chars":35768.0,"seconds":332},"Muse Wonder":{"credit":0.8721,"penalty":0.063,"score":0.8091,"penalised":0.472,"chars":30428.0,"seconds":401}},"atlas":[{"id":"01-ZELTRAVI","name":"Zeltravi","indication":"Hepatocellular carcinoma","area":"Oncology","product":"Tavrelimab (ZTV-4180)","sponsor":"Ostrehn Biotherapeutics NV","phases":[{"phase":"Phase 1","studies":["ZTV-1101"],"tasks":[{"pb":"PB-0077","skill":"Biostatistics","group":"Data Analysis","subgroup":"Sensitivity, supplementary and population-variant analyses","role":"Biostatistician","files":15},{"pb":"PB-0079","skill":"Data Consistency","group":"Data Analysis","subgroup":"Narrative against dataset and tabulation (safety)","role":"Safety Physician","files":37},{"pb":"PB-0084","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Efficacy results narration from TFLs","role":"Medical Writer","files":23},{"pb":"PB-0085","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Integrated discussion across efficacy and safety","role":"Medical Writer","files":18},{"pb":"PB-0086","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Individual patient narratives for SAEs and deaths","role":"Safety Physician","files":31}],"files":[15,37]},{"phase":"Phase 2","studies":["ZTV-1104"],"tasks":[{"pb":"PB-0078","skill":"Biostatistics","group":"Data Analysis","subgroup":"Subgroup analysis and graphical displays","role":"Biostatistician","files":55},{"pb":"PB-0080","skill":"Data Consistency","group":"Data Analysis","subgroup":"Planned against performed analysis","role":"Biostatistician","files":68},{"pb":"PB-0083","skill":"Document Structure","group":"Document Structure","subgroup":"Derivative document architecture (repurposing)","role":"Medical Writer","files":68},{"pb":"PB-0087","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Aggregate AE summary applying MedDRA logic","role":"Safety Physician","files":66},{"pb":"PB-0089","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Statistical defensibility review","role":"Biostatistician","files":68}],"files":[55,68]},{"phase":"Phase 3","studies":["ZTV-1102","ZTV-1103"],"tasks":[{"pb":"PB-0076","skill":"Biostatistics","group":"Data Analysis","subgroup":"Multiplicity-controlled testing","role":"Biostatistician","files":114},{"pb":"PB-0081","skill":"Data Consistency","group":"Data Analysis","subgroup":"Cross-document and cross-period consistency","role":"Safety Physician","files":109},{"pb":"PB-0082","skill":"Document Compliance","group":"Document Structure","subgroup":"Region- and agency-specific requirement check","role":"Regulatory Affairs","files":131},{"pb":"PB-0088","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Adequacy of a safety justification or risk classification","role":"Regulatory Affairs","files":162},{"pb":"PB-0090","skill":"Regulatory Response","group":"Regulatory Review","subgroup":"Critique and QC of a drafted sponsor response","role":"Regulatory Affairs","files":148}],"files":[109,162]}]},{"id":"02-KELVAPARIB-OVARIAN","name":"Kelvaparib","indication":"High-grade serous ovarian carcinoma","area":"Oncology","product":"Kelvaparib (KLV-3308)","sponsor":"Marnholt Oncology GmbH","phases":[{"phase":"Phase 1","studies":["KLV-7702"],"tasks":[{"pb":"PB-0059","skill":"Biostatistics","group":"Data Analysis","subgroup":"Time-to-event estimation","role":"Biostatistician","files":73},{"pb":"PB-0062","skill":"Data Consistency","group":"Data Analysis","subgroup":"Internal arithmetic and cross-table reconciliation","role":"Biostatistician","files":285},{"pb":"PB-0064","skill":"Document Compliance","group":"Document Structure","subgroup":"House style, terminology and dictionary version conformance","role":"Medical Writer","files":248},{"pb":"PB-0065","skill":"Document Structure","group":"Document Structure","subgroup":"Source-to-section content mapping","role":"Medical Writer","files":248},{"pb":"PB-0069","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Special population and exposure-adjusted safety narration","role":"Safety Physician","files":29}],"files":[29,285]},{"phase":"Phase 2","studies":["KLV-7704"],"tasks":[{"pb":"PB-0058","skill":"Biostatistics","group":"Data Analysis","subgroup":"Incidence and shift table production","role":"Biostatistician","files":73},{"pb":"PB-0061","skill":"Data Consistency","group":"Data Analysis","subgroup":"Synopsis against body against downstream summary","role":"Medical Writer","files":285},{"pb":"PB-0063","skill":"Data Consistency","group":"Data Analysis","subgroup":"Table body against footnote, title and population label","role":"Biostatistician","files":285},{"pb":"PB-0067","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Investigational plan and design rationale","role":"Medical Writer","files":231},{"pb":"PB-0071","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Benefit-risk exposure assessment","role":"Clinical Reviewer","files":248}],"files":[73,285]},{"phase":"Phase 3","studies":["KLV-7701","KLV-7703"],"tasks":[{"pb":"PB-0060","skill":"Biostatistics","group":"Data Analysis","subgroup":"Model-based inferential analysis","role":"Biostatistician","files":73},{"pb":"PB-0066","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Synopsis and plain-language summarisation","role":"Medical Writer","files":194},{"pb":"PB-0068","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Causality, expectedness and listedness assessment","role":"Safety Physician","files":154},{"pb":"PB-0070","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Risk management and mitigation adequacy","role":"Regulatory Affairs","files":250},{"pb":"PB-0072","skill":"Regulatory Response","group":"Regulatory Review","subgroup":"Response proposing a change to a plan or commitment","role":"Regulatory Affairs","files":283}],"files":[73,283]}]},{"id":"04-SORVANIQ","name":"Sorvaniq","indication":"Metastatic pancreatic adenocarcinoma","area":"Oncology","product":"Verlutumab (SVQ-3081)","sponsor":"Sylvarn Biotherapeutics AS","phases":[{"phase":"Phase 1","studies":["SVQ-3086"],"tasks":[{"pb":"PB-0112","skill":"Biostatistics","group":"Data Analysis","subgroup":"Time-to-event estimation","role":"Biostatistician","files":15},{"pb":"PB-0114","skill":"Biostatistics","group":"Data Analysis","subgroup":"Multiplicity-controlled testing","role":"Biostatistician","files":15},{"pb":"PB-0117","skill":"Data Consistency","group":"Data Analysis","subgroup":"Narrative against dataset and tabulation (safety)","role":"Safety Physician","files":198},{"pb":"PB-0122","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"AESI and risk characterization section","role":"Safety Physician","files":21},{"pb":"PB-0124","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Study conduct, deviation and data integrity review","role":"Regulatory Affairs","files":41}],"files":[15,198]},{"phase":"Phase 2","studies":["SVQ-3082","SVQ-3083","SVQ-3084"],"tasks":[{"pb":"PB-0115","skill":"Data Consistency","group":"Data Analysis","subgroup":"Internal arithmetic and cross-table reconciliation","role":"Biostatistician","files":198},{"pb":"PB-0116","skill":"Data Consistency","group":"Data Analysis","subgroup":"Table body against footnote, title and population label","role":"Biostatistician","files":198},{"pb":"PB-0118","skill":"Document Compliance","group":"Document Structure","subgroup":"Data standards conformance","role":"Biostatistician","files":94},{"pb":"PB-0120","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Limitations and claim calibration","role":"Medical Writer","files":95}],"files":[94,198]},{"phase":"Phase 3","studies":["SVQ-3085"],"tasks":[{"pb":"PB-0113","skill":"Biostatistics","group":"Data Analysis","subgroup":"Model-based inferential analysis","role":"Biostatistician","files":167},{"pb":"PB-0119","skill":"Document Structure","group":"Document Structure","subgroup":"Non-CSR deliverable skeleton","role":"Medical Writer","files":174},{"pb":"PB-0121","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Synopsis and plain-language summarisation","role":"Medical Writer","files":174},{"pb":"PB-0123","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Aggregate periodic safety writing","role":"Safety Physician","files":174},{"pb":"PB-0125","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Risk management and mitigation adequacy","role":"Regulatory Affairs","files":197},{"pb":"PB-0126","skill":"Regulatory Response","group":"Regulatory Review","subgroup":"Meeting package and briefing document Q&A","role":"Regulatory Affairs","files":197}],"files":[167,197]}]},{"id":"09-KAVENTRA","name":"Kaventra","indication":"Waldenström macroglobulinemia","area":"Hematology / oncology","product":"Cevoritinib (KVT-8815)","sponsor":"Veltrisan Therapeutics AG","phases":[{"phase":"Phase 1","studies":["KVT-5101","KVT-5102","KVT-5103"],"tasks":[{"pb":"PB-0026","skill":"Data Consistency","group":"Data Analysis","subgroup":"Narrative against dataset and tabulation (safety)","role":"Safety Physician","files":539},{"pb":"PB-0027","skill":"Data Consistency","group":"Data Analysis","subgroup":"Planned against performed analysis","role":"Biostatistician","files":539},{"pb":"PB-0029","skill":"Document Structure","group":"Document Structure","subgroup":"Cross-reference, numbering and navigation architecture","role":"Medical Writer","files":521},{"pb":"PB-0031","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Overall conclusions with a benefit-risk position","role":"Clinical Reviewer","files":291},{"pb":"PB-0033","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Laboratory, vital sign and ECG safety narration","role":"Safety Physician","files":291}],"files":[291,539]},{"phase":"Phase 2","studies":["KVT-5104","KVT-5105","KVT-5106","KVT-5107"],"tasks":[{"pb":"PB-0025","skill":"Data Consistency","group":"Data Analysis","subgroup":"Table body against footnote, title and population label","role":"Biostatistician","files":290},{"pb":"PB-0028","skill":"Document Compliance","group":"Document Structure","subgroup":"Appendix assembly and completeness","role":"Medical Writer","files":290},{"pb":"PB-0032","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"AESI and risk characterization section","role":"Safety Physician","files":291}],"files":[290,291]},{"phase":"Phase 3","studies":["KVT-5108","KVT-5109","KVT-5110","KVT-5111","KVT-5112","KVT-5113","KVT-5115"],"tasks":[{"pb":"PB-0022","skill":"Biostatistics","group":"Data Analysis","subgroup":"Model-based inferential analysis","role":"Biostatistician","files":261},{"pb":"PB-0023","skill":"Biostatistics","group":"Data Analysis","subgroup":"Multiplicity-controlled testing","role":"Biostatistician","files":261},{"pb":"PB-0024","skill":"Biostatistics","group":"Data Analysis","subgroup":"Sensitivity, supplementary and population-variant analyses","role":"Biostatistician","files":261},{"pb":"PB-0030","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Integrated discussion across efficacy and safety","role":"Medical Writer","files":291},{"pb":"PB-0034","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Statistical defensibility review","role":"Biostatistician","files":539},{"pb":"PB-0035","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Labelling and product-information implication review","role":"Regulatory Affairs","files":633},{"pb":"PB-0036","skill":"Regulatory Response","group":"Regulatory Review","subgroup":"Response requiring a new analysis to be run and reported","role":"Biostatistician","files":539}],"files":[261,633]}]},{"id":"14-HEMARIVA","name":"Hemariva","indication":"Paroxysmal nocturnal hemoglobinuria","area":"Hematology","product":"Velracopan (HMV-6120), oral complement factor B inhibitor","sponsor":"Trentwold Pharma A/S","phases":[{"phase":"Phase 1","studies":["HMV-3101","HMV-3107"],"tasks":[{"pb":"PB-0041","skill":"Biostatistics","group":"Data Analysis","subgroup":"Interpretation of an analysis output","role":"Biostatistician","files":18},{"pb":"PB-0045","skill":"Data Consistency","group":"Data Analysis","subgroup":"In-text value against source TFL","role":"Medical Writer","files":19},{"pb":"PB-0046","skill":"Document Compliance","group":"Document Structure","subgroup":"Document-type guidance conformance (non-CSR)","role":"Medical Writer","files":298},{"pb":"PB-0053","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Study conduct, deviation and data integrity review","role":"Regulatory Affairs","files":46}],"files":[18,298]},{"phase":"Phase 2","studies":["HMV-3102"],"tasks":[{"pb":"PB-0040","skill":"Biostatistics","group":"Data Analysis","subgroup":"Subgroup analysis and graphical displays","role":"Biostatistician","files":102},{"pb":"PB-0042","skill":"Biostatistics","group":"Data Analysis","subgroup":"Descriptive summary table production","role":"Biostatistician","files":102},{"pb":"PB-0044","skill":"Data Consistency","group":"Data Analysis","subgroup":"End-to-end definition traceability chain","role":"Medical Writer","files":107},{"pb":"PB-0047","skill":"Document Structure","group":"Document Structure","subgroup":"TFL shell list and numbering plan","role":"Biostatistician","files":89},{"pb":"PB-0048","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Contextualisation against external and prior evidence","role":"Clinical Reviewer","files":105},{"pb":"PB-0049","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Limitations and claim calibration","role":"Medical Writer","files":106}],"files":[89,107]},{"phase":"Phase 3","studies":["HMV-3103","HMV-3104","HMV-3105"],"tasks":[{"pb":"PB-0043","skill":"Data Consistency","group":"Data Analysis","subgroup":"Cross-document and cross-period consistency","role":"Safety Physician","files":163},{"pb":"PB-0050","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Deaths, discontinuations and dose modifications","role":"Safety Physician","files":161},{"pb":"PB-0051","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Aggregate periodic safety writing","role":"Safety Physician","files":160},{"pb":"PB-0052","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Signal evaluation and closure judgment","role":"Safety Physician","files":298},{"pb":"PB-0054","skill":"Regulatory Response","group":"Regulatory Review","subgroup":"Response on absent data in a special population","role":"Regulatory Affairs","files":139}],"files":[139,298]}]},{"id":"15-MIRQUELLA","name":"Mirquella","indication":"Chronic obstructive pulmonary disease","area":"Respiratory","product":"Cintomilast (MQL-7742), inhaled","sponsor":"Aldermoor Respiratory Ltd","phases":[{"phase":"Phase 1","studies":["MQL-2204"],"tasks":[{"pb":"PB-0131","skill":"Biostatistics","group":"Data Analysis","subgroup":"Subgroup analysis and graphical displays","role":"Biostatistician","files":21},{"pb":"PB-0135","skill":"Data Consistency","group":"Data Analysis","subgroup":"End-to-end definition traceability chain","role":"Biostatistician","files":228},{"pb":"PB-0138","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Investigational plan and design rationale","role":"Medical Writer","files":24},{"pb":"PB-0142","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Benefit-risk exposure assessment","role":"Regulatory Affairs","files":41}],"files":[21,228]},{"phase":"Phase 2","studies":["MQL-2203"],"tasks":[{"pb":"PB-0132","skill":"Biostatistics","group":"Data Analysis","subgroup":"Interpretation of an analysis output","role":"Biostatistician","files":61},{"pb":"PB-0136","skill":"Document Compliance","group":"Document Structure","subgroup":"Checklist audit producing a graded defect list","role":"Medical Writer","files":85},{"pb":"PB-0137","skill":"Document Structure","group":"Document Structure","subgroup":"CSR content plan and section shell build","role":"Medical Writer","files":63},{"pb":"PB-0141","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Special population and exposure-adjusted safety narration","role":"Safety Physician","files":66}],"files":[61,85]},{"phase":"Phase 3","studies":["MQL-2201","MQL-2202"],"tasks":[{"pb":"PB-0130","skill":"Biostatistics","group":"Data Analysis","subgroup":"Sensitivity, supplementary and population-variant analyses","role":"Biostatistician","files":102},{"pb":"PB-0133","skill":"Data Consistency","group":"Data Analysis","subgroup":"Planned against performed analysis","role":"Biostatistician","files":228},{"pb":"PB-0134","skill":"Data Consistency","group":"Data Analysis","subgroup":"Cross-document and cross-period consistency","role":"Safety Physician","files":228},{"pb":"PB-0139","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Efficacy results narration from TFLs","role":"Medical Writer","files":121},{"pb":"PB-0140","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Causality, expectedness and listedness assessment","role":"Safety Physician","files":121},{"pb":"PB-0143","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Adequacy of a safety justification or risk classification","role":"Safety Physician","files":188},{"pb":"PB-0144","skill":"Regulatory Response","group":"Regulatory Review","subgroup":"Labelling and risk-mitigation negotiation","role":"Regulatory Affairs","files":221}],"files":[102,228]}]},{"id":"16-BRDX-5209","name":"BRDX-5209","indication":"Dermatomyositis and polymyositis (idiopathic inflammatory myopathy)","area":"Immunology","product":"Norvacitinib (BRDX 5209)","sponsor":"Bradexis Immunology AB","phases":[{"phase":"Phase 1","studies":["BRDX-5212"],"tasks":[{"pb":"PB-0168","skill":"Biostatistics","group":"Data Analysis","subgroup":"Sensitivity, supplementary and population-variant analyses","role":"Biostatistician","files":18},{"pb":"PB-0170","skill":"Data Consistency","group":"Data Analysis","subgroup":"Narrative against dataset and tabulation (safety)","role":"Safety Physician","files":178},{"pb":"PB-0174","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Contextualisation against external and prior evidence","role":"Clinical Reviewer","files":27},{"pb":"PB-0177","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Laboratory, vital sign and ECG safety narration","role":"Safety Physician","files":26},{"pb":"PB-0179","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Study conduct, deviation and data integrity review","role":"Regulatory Affairs","files":48}],"files":[18,178]},{"phase":"Phase 2","studies":["BRDX-5210"],"tasks":[{"pb":"PB-0169","skill":"Data Consistency","group":"Data Analysis","subgroup":"Table body against footnote, title and population label","role":"Biostatistician","files":178},{"pb":"PB-0172","skill":"Document Compliance","group":"Document Structure","subgroup":"Appendix assembly and completeness","role":"Medical Writer","files":84},{"pb":"PB-0173","skill":"Document Structure","group":"Document Structure","subgroup":"TFL shell list and numbering plan","role":"Biostatistician","files":67},{"pb":"PB-0175","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Limitations and claim calibration","role":"Medical Writer","files":69},{"pb":"PB-0176","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"AESI and risk characterization section","role":"Safety Physician","files":68}],"files":[67,178]},{"phase":"Phase 3","studies":["BRDX-5211","BRDX-5215"],"tasks":[{"pb":"PB-0166","skill":"Biostatistics","group":"Data Analysis","subgroup":"Model-based inferential analysis","role":"Biostatistician","files":122},{"pb":"PB-0167","skill":"Biostatistics","group":"Data Analysis","subgroup":"Multiplicity-controlled testing","role":"Biostatistician","files":123},{"pb":"PB-0171","skill":"Data Consistency","group":"Data Analysis","subgroup":"Planned against performed analysis","role":"Biostatistician","files":178},{"pb":"PB-0178","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Signal evaluation and closure judgment","role":"Safety Physician","files":176},{"pb":"PB-0180","skill":"Regulatory Response","group":"Regulatory Review","subgroup":"Response to a safety or signal characterization request","role":"Safety Physician","files":176}],"files":[122,178]}]},{"id":"18-TERVOLAZINE-HCM","name":"Tervolazine","indication":"Obstructive hypertrophic cardiomyopathy","area":"Cardiology","product":"Tervolazine (VLS-2280)","sponsor":"Velstrand Cardiovascular ApS","phases":[{"phase":"Phase 1","studies":["VLS-4404"],"tasks":[{"pb":"PB-0151","skill":"Data Consistency","group":"Data Analysis","subgroup":"In-text value against source TFL","role":"Medical Writer","files":177},{"pb":"PB-0154","skill":"Document Compliance","group":"Document Structure","subgroup":"ICH E3 structural conformance of a CSR","role":"Medical Writer","files":22}],"files":[22,177]},{"phase":"Phase 2","studies":["VLS-4402"],"tasks":[{"pb":"PB-0148","skill":"Biostatistics","group":"Data Analysis","subgroup":"Descriptive summary table production","role":"Biostatistician","files":53},{"pb":"PB-0149","skill":"Biostatistics","group":"Data Analysis","subgroup":"Incidence and shift table production","role":"Biostatistician","files":53},{"pb":"PB-0150","skill":"Biostatistics","group":"Data Analysis","subgroup":"Time-to-event estimation","role":"Biostatistician","files":53},{"pb":"PB-0156","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"SCI-03 – Integrated discussion across efficacy and safety","role":"Medical Writer","files":61},{"pb":"PB-0158","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Individual patient narratives for SAEs and deaths","role":"Safety Physician","files":27},{"pb":"PB-0159","skill":"Safety Synthesis","group":"Medical Writing","subgroup":"Aggregate AE summary applying MedDRA logic","role":"Safety Physician","files":60},{"pb":"PB-0160","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Statistical defensibility review","role":"Biostatistician","files":83}],"files":[27,83]},{"phase":"Phase 3","studies":["VLS-4401","VLS-4403"],"tasks":[{"pb":"PB-0152","skill":"Data Consistency","group":"Data Analysis","subgroup":"Synopsis against body against downstream summary","role":"Medical Writer","files":177},{"pb":"PB-0153","skill":"Data Consistency","group":"Data Analysis","subgroup":"Internal arithmetic and cross-table reconciliation","role":"Biostatistician","files":177},{"pb":"PB-0155","skill":"Document Structure","group":"Document Structure","subgroup":"Appendix list and architecture build","role":"Medical Writer","files":116},{"pb":"PB-0157","skill":"Scientific Synthesis","group":"Medical Writing","subgroup":"Overall conclusions with a benefit-risk position","role":"Clinical Reviewer","files":26},{"pb":"PB-0161","skill":"Regulatory Review","group":"Regulatory Review","subgroup":"Labelling and product-information implication review","role":"Regulatory Affairs","files":175},{"pb":"PB-0162","skill":"Regulatory Response","group":"Regulatory Review","subgroup":"Response to an efficacy or statistical information request","role":"Regulatory Affairs","files":175}],"files":[26,177]}]}]}</textarea>
 <textarea class="phb-scores" id="phb-scores-2" hidden readonly aria-hidden="true">{"showcase":[{"pb":"PB-0130","short_title":"Sensitivity of a rate ratio result","trial":"15-MIRQUELLA","phase":"Phase 3","group":"Data Analysis","skill":"Biostatistics","subgroup":"BIO-06 - Sensitivity, supplementary and population-variant analyses","expert_role":"Biostatistician","attachments":{"total":102,"pdf":69,"csv":33},"model_means":{"GPT 6 Astra":0.696,"Muse Spark 1.3":0.514,"Grok 4.6":0.268,"Sonnet 5.5":0.58,"Fable 5.1":0.457,"Opus 5.5":0.754,"Opus 5":0.413,"Muse Spark 1.1":0.384,"Gemini 3.8 Flash":0.123,"Muse Wonder":0.406},"model_pass":{"GPT 6 Astra":0.0,"Muse Spark 1.3":0.0,"Grok 4.6":0.0,"Sonnet 5.5":0.0,"Fable 5.1":0.0,"Opus 5.5":0.0,"Opus 5":0.0,"Muse Spark 1.1":0.0,"Gemini 3.8 Flash":0.0,"Muse Wonder":0.0},"study":"MQL-2201 (cintomilast, chronic obstructive pulmonary disease)","summary":"The agent fits the primary model for the yearly exacerbation rate on two analysis sets, compares the result under the alternative censoring conventions the question asks about, and says whether the conclusion depends on those choices. The question assumes such conventions exist, but the current analysis plan withdrew them because the data cannot support them. The per protocol count in the plan also disagrees with the flag in the dataset.","documents_needed":["The statistical analysis plan: analysis set definitions, the estimand, the primary model, and the list of sensitivity analyses kept and withdrawn","The subject-level analysis dataset with exacerbation counts, time at risk and the per-protocol flag","The time-to-event dataset for first exacerbation","The data definition document explaining how counts and time at risk were derived"],"contrast":"Both runs fit the same model to the same data and got nearly the same full analysis set and per protocol results. Opus 5.5 said the plan offers no censoring alternatives and kept its own extra checks separate as post hoc. Grok 4.6 constructed a censoring rule the plan does not contain, fit it on incomplete event data, and used that result to call the conclusion sensitive.","what_experts_check":["Reports the full analysis set rate ratio with its confidence interval and p-value","Reports the per-protocol rate ratio with its confidence interval and p-value","States how many subjects the per-protocol set excludes and that they stopped treatment for a protocol deviation","Describes the small move toward no effect and the slightly wider interval in the per-protocol analysis","Notes that the current plan withdrew three sensitivity analyses from the earlier version","Concludes the result does not depend on the analysis set or the censoring convention","Penalized: introducing a censoring convention the analysis plan does not support, or a result the delivered data cannot support","Penalized: reporting results for other endpoints or for safety, subgroup or interim analyses"],"strong":{"model":"Opus 5.5","reward":0.87,"excerpts":["\"No censoring alternatives exist to report, so I tested the time-at-risk assumption directly. [...] These checks are exploratory and were not prespecified.\"","\"the conclusion is not sensitive to the analysis-set assumption, and is robust (though the size of the effect is sensitive) to how time at risk is handled.\""],"what_it_did":"It reproduced the full analysis set and per protocol results from the datasets, used the dataset flag over the plan's table for the per protocol count, and told the reader the plan contains no censoring alternatives to report. Its extra time at risk checks were labeled post hoc, and it concluded the result holds across analysis sets.","judge_paraphrase":""},"weak":{"model":"Grok 4.6","reward":0.109,"excerpts":["\"SAP §7.3 names treatment policy as a sensitivity, which is only a distinct analysis if events and time after discontinuation are removed.\"","\"Under the while-on-treatment convention that does not count those post-discontinuation events, the CI includes 1 and p = 0.053.\""],"what_it_did":"","judge_paraphrase":"Credited for the main rate ratios, the per protocol exclusions and the withdrawn analyses. Penalized for building a censoring rule the plan does not specify, fitting it on data it said were incomplete, and concluding from it that the result is sensitive."}},{"pb":"PB-0174","short_title":"Dose and exposure in a dose escalation study","trial":"16-BRDX-5209","phase":"Phase 1","group":"Medical Writing","skill":"Scientific Synthesis","subgroup":"SCI-05 - Contextualisation against external and prior evidence","expert_role":"Clinical Reviewer","attachments":{"total":27,"pdf":13,"csv":14},"model_means":{"GPT 6 Astra":0.784,"Muse Spark 1.3":0.725,"Grok 4.6":0.784,"Sonnet 5.5":0.676,"Fable 5.1":0.658,"Opus 5.5":0.775,"Opus 5":0.514,"Muse Spark 1.1":0.518,"Gemini 3.8 Flash":0.099,"Muse Wonder":0.815},"model_pass":{"GPT 6 Astra":0.0,"Muse Spark 1.3":0.0,"Grok 4.6":0.0,"Sonnet 5.5":0.0,"Fable 5.1":0.0,"Opus 5.5":0.0,"Opus 5":0.0,"Muse Spark 1.1":0.0,"Gemini 3.8 Flash":0.0,"Muse Wonder":0.0},"study":"BRDX-5212 (norvacitinib, idiopathic inflammatory myopathy)","summary":"The agent drafts a discussion section for an unfinished Phase 1 study report, relating exposure, response and safety across four dose cohorts. Response and severe adverse events rise with dose, but not evenly. The study reports only cohort averages of exposure, its concentration data cover the first day only, and no exposure response analysis was planned, so a careful answer stays descriptive.","documents_needed":["The incomplete draft clinical study report, the only source of the steady-state pharmacokinetic tables and the recommended dose","The tables and listings with responder, severe adverse event and serious adverse event counts by cohort","The plasma concentration dataset, which holds only first-day profiles","The statistical analysis plan, which specifies descriptive summaries by dose","The program-level safety update and benefit-risk reports, for qualitative infection context"],"contrast":"Both runs reported the same cohort tables from the same sources. GPT 6 Astra treated the rising exposure and response as a descriptive cohort pattern and said the first day concentration data could not support an individual exposure response analysis. Gemini 3.8 Flash read a therapeutic threshold, an efficacy plateau and a safety ceiling into a few small cohorts and presented 30 mg as the proven optimal dose.","what_experts_check":["Names the four once-daily cohorts and reports the dose-limiting toxicity result, including that the maximum tolerated dose was not reached and which dose was recommended","Reports the steady-state exposure values and the responder and severe adverse event counts for each cohort exactly","Describes the exposure increase as a cohort-level pattern and says no individual exposure-response analysis exists for efficacy or safety","Notes that the concentration dataset contains first-day samples only and that no concentration-QTc analysis was presented","Penalized: claiming dose proportionality or inferring an optimal exposure or a safety threshold from cohort averages","Penalized: claiming that exposure drove response, or that responder counts confirm a dose-response relationship","Penalized: using program-wide aggregate results as evidence about this study's cohorts","Penalized: promotional wording about exposure or safety, or writing the discussion as bulleted lists"],"strong":{"model":"GPT 6 Astra","reward":0.892,"excerpts":["\"the delivery lacks the repeated-dose profiles and individual derived steady-state parameters needed to reproduce the reported accumulation, trough and steady-state exposure results.\"","\"BRDX-5212 alone does not establish an exposure threshold, an efficacy plateau or a quantitatively defined therapeutic window.\""],"what_it_did":"It reported the cohort exposure, response and safety numbers correctly, checked the concentration dataset against the reported steady state tables, and said the dataset could not reproduce them. It described the rise in exposure as a cohort level pattern and stated that the study does not establish a threshold or an optimal dose.","judge_paraphrase":""},"weak":{"model":"Gemini 3.8 Flash","reward":0.068,"excerpts":["\"Escalating exposure to 30 mg (AUC0-24 of 1460 ng·h/mL) successfully crossed this critical threshold, delivering robust clinical response (25.0% ORR) where 100% of responders attained major clinical improvement\"","\"Thus, both the prior FIH trial and the current study demonstrate that 30 mg once daily represents the upper boundary of safe, uncompromised continuous dosing.\""],"what_it_did":"","judge_paraphrase":"Credited for the study design, the dose limiting toxicity results and the cohort tables. Penalized for claiming dose proportionality, calling 30 mg the optimal dose, and inferring a therapeutic threshold and a safety ceiling from cohort averages."}},{"pb":"PB-0070","short_title":"Risk minimization review for a PARP inhibitor","trial":"02-KELVAPARIB-OVARIAN","phase":"Phase 3","group":"Regulatory Review","skill":"Regulatory Review","subgroup":"REV-07 - Risk management and mitigation adequacy","expert_role":"Regulatory Affairs","attachments":{"total":250,"pdf":206,"csv":44},"model_means":{"GPT 6 Astra":0.762,"Muse Spark 1.3":0.637,"Grok 4.6":0.74,"Sonnet 5.5":0.431,"Fable 5.1":0.534,"Opus 5.5":0.542,"Opus 5":0.545,"Muse Spark 1.1":0.618,"Gemini 3.8 Flash":0.463,"Muse Wonder":0.626},"model_pass":{"GPT 6 Astra":0.0,"Muse Spark 1.3":0.0,"Grok 4.6":0.0,"Sonnet 5.5":0.0,"Fable 5.1":0.0,"Opus 5.5":0.0,"Opus 5":0.0,"Muse Spark 1.1":0.0,"Gemini 3.8 Flash":0.0,"Muse Wonder":0.0},"study":"KLV-7701 (kelvaparib, high-grade serous ovarian carcinoma)","summary":"Acting as a regulatory reviewer, the agent judges whether the risk minimization plan for kelvaparib fits the observed risks, weighing routine measures in the product information against proposed extra measures. The plan names three important risks and proposes a prescriber guide and a patient card, but neither document is among the 250 files supplied. The plan also says every extra measure needs a way to measure its effectiveness, and none is given.","documents_needed":["Risk management plan, the section on important identified risks","Risk management plan, Part V on routine and additional risk minimization","Product information, section 4.4 on warnings, monitoring and dose rules"],"contrast":"Both runs found the same risks and the same monitoring rules. GPT 6 Astra accepted the routine measures as proportionate and said the extra measures could not be judged from what was supplied. Sonnet 5.5 rejected the plan as a whole and proposed a stronger layer of measures based on documents that were not in the bundle.","what_experts_check":["Concludes that the routine measures are a proportionate foundation for the strategy","States that the adequacy of the additional measures cannot be confirmed from the documents supplied","Reports how often each important identified risk occurred across the program, and how severe the cases were","Describes the monitoring, dose interruption and discontinuation rules in the product information","Notes that the prescriber guide and patient card were not available and have no stated way to measure effectiveness","Penalized: describing what the prescriber guide or patient card contains beyond what the plan says","Penalized: calling the additional measures effective, or the routine measures proven to prevent the risks"],"strong":{"model":"GPT 6 Astra","reward":0.756,"excerpts":["\"The proposed balance of routine and additional risk minimisation for kelvaparib (KLV-3308), informing KLV-7701, is proportionate in principle but not adequately substantiated or operationalised as submitted.\"","\"Overall, the programme supports retaining routine monitoring and management as the principal measures, supplemented by focused education and active long-term surveillance.\""],"what_it_did":"Read the risk management plan and product information, reported the frequency and severity of each risk, and concluded that the routine measures are a sound foundation while the extra measures are not substantiated as submitted.","judge_paraphrase":""},"weak":{"model":"Sonnet 5.5","reward":0.431,"excerpts":["\"The proposed risk minimisation is not yet demonstrably proportionate to the observed risk.\"","\"On the evidence above, a stronger additional layer is warranted because the events are fatal, the checkpoint is a monthly blood count, and the practical failure points are recognition and follow-through rather than the schedule itself.\""],"what_it_did":"","judge_paraphrase":"Credited for the risk frequencies and the monitoring schedule. Missed both main conclusions by calling the plan not proportionate, and was penalized for specifying what the prescriber guide and patient card should contain, beyond what the plan says."}},{"pb":"PB-0173","short_title":"Safety output shell list from a plan","trial":"16-BRDX-5209","phase":"Phase 2","group":"Document Structure","skill":"Document Structure","subgroup":"DST-03 - TFL shell list and numbering plan","expert_role":"Biostatistician","attachments":{"total":67,"pdf":39,"csv":28},"model_means":{"GPT 6 Astra":0.66,"Muse Spark 1.3":0.711,"Grok 4.6":0.39,"Sonnet 5.5":0.717,"Fable 5.1":0.736,"Opus 5.5":0.736,"Opus 5":0.736,"Muse Spark 1.1":0.711,"Gemini 3.8 Flash":0.736,"Muse Wonder":0.799},"model_pass":{"GPT 6 Astra":0.0,"Muse Spark 1.3":0.0,"Grok 4.6":0.0,"Sonnet 5.5":0.0,"Fable 5.1":0.0,"Opus 5.5":0.0,"Opus 5":0.0,"Muse Spark 1.1":0.0,"Gemini 3.8 Flash":0.0,"Muse Wonder":0.0},"study":"BRDX-5210 (norvacitinib, idiopathic inflammatory myopathy)","summary":"The agent builds the list of planned safety tables from a Phase 2 analysis plan, with each table's number, population, footnotes and the order in which to program them. The plan gives the numbers and titles, so the work is deriving the footnotes from rules stated elsewhere and planning a production order the plan never states. Most tables come from adverse event records and one comes from laboratory data, and the list should hold only the fifteen safety tables.","documents_needed":["The Phase 2 statistical analysis plan, including its output index, its table shells and its index of shells","The plan's numbering convention section, which reserves slots for listings and narratives","The plan's sections on analysis sets, adverse event counting rules, subgroups and censoring","The delivered study datasets, to see which tables draw on adverse event records and which on laboratory records"],"contrast":"Both runs read the same shell index and got the table numbers, population and core footnotes right. Sonnet 5.5 separated the laboratory table from the adverse event tables when planning production and kept the reserved slots out of the list. Grok 4.6 produced everything in numeric order, which puts the laboratory table in the middle of the adverse event chain, and added the reserved listing and narrative slots to the shell list.","what_experts_check":["All fifteen safety tables are listed with the plan's numbers and titles","The safety analysis set is named as the population","Footnotes cover the dictionary version, toxicity grading, the once-per-subject highest-grade counting rule and the denominator","The time-to-event table carries the plan's censoring rules","The subgroup table names all of the plan's prespecified subgroups","The production order separates the adverse event tables from the laboratory table and explains it by their different source data","Penalized: listing outputs outside the fifteen safety tables as entries in the shell list","Penalized: replacing the plan's table numbers with the output pack's internal numbering"],"strong":{"model":"Sonnet 5.5","reward":0.887,"excerpts":["\"Programming them first fixes the counting rules (once per subject, highest grade, TEAE window) that every later table inherits.\"","\"These do not depend on the AE chain, so they can run in parallel with Steps 2 to 5.\""],"what_it_did":"It listed exactly the fifteen safety tables, flagged the four that were planned but not produced, and listed the eight subgroups. It then built a production order from data dependencies, with the adverse event tables in one chain and the laboratory shift table as a separate branch that can run in parallel.","judge_paraphrase":""},"weak":{"model":"Grok 4.6","reward":0.34,"excerpts":["\"Outputs are produced in ICH E3 Section 14 number order.\"","\"14.3.2 Listings of deaths and other serious adverse events (reserved; no shell)\""],"what_it_did":"","judge_paraphrase":"It was credited for the fifteen table numbers and titles, the population, the coding and grading footnotes, the counting rule and the denominator. It was penalized for adding the reserved listing and narrative slots as entries in the shell list, and lost credit for ordering production by table number instead of by source data and for not naming the subgroups."}}],"failures":{"Misses or misstates a specific number":0.206,"Misses a planted gap, discrepancy or limitation":0.155,"Wrong population, denominator, cutoff or document version":0.081,"Required structure, numbering or format element missing":0.093,"Misses a required reasoning step, interpretation or conclusion":0.199,"Penalty: adds content not supported by the sources":0.112,"Penalty: breaks a length, format or scope rule":0.037,"Penalty: makes a prohibited or overreaching claim":0.117},"facts":{"fmt":{"n_tasks":18,"compliance_rate_combined":0.244,"per_model_compliance":{"GPT 6 Astra":0.593,"Muse Spark 1.3":0.278,"Grok 4.6":0.352,"Sonnet 5.5":0.056,"Fable 5.1":0.241,"Opus 5.5":0.056,"Opus 5":0.241,"Muse Spark 1.1":0.13,"Gemini 3.8 Flash":0.148,"Muse Wonder":0.352}},"wl":{"n_tasks":12,"compliance_rate_combined":0.478,"per_model_compliance":{"GPT 6 Astra":0.778,"Muse Spark 1.3":0.472,"Grok 4.6":0.556,"Sonnet 5.5":0.5,"Fable 5.1":0.417,"Opus 5.5":0.417,"Opus 5":0.361,"Muse Spark 1.1":0.333,"Gemini 3.8 Flash":0.472,"Muse Wonder":0.472}},"hardest":[{"pb":"PB-0172","skill":"Document Compliance","subgroup":"DCM-02 - Appendix assembly and completeness","mean":0.142,"max":0.3642,"best":"GPT 6 Astra"},{"pb":"PB-0051","skill":"Safety Synthesis","subgroup":"SAF-06 - Aggregate periodic safety writing","mean":0.2873,"max":0.4316,"best":"Gemini 3.8 Flash"},{"pb":"PB-0036","skill":"Regulatory Response","subgroup":"RES-06 - Response requiring a new analysis to be run and reported","mean":0.368,"max":0.5062,"best":"Fable 5.1"},{"pb":"PB-0142","skill":"Regulatory Review","subgroup":"REV-01 - Benefit-risk exposure assessment","mean":0.3961,"max":0.4915,"best":"GPT 6 Astra"},{"pb":"PB-0136","skill":"Document Compliance","subgroup":"DCM-08 - Checklist audit producing a graded defect list","mean":0.4546,"max":0.6471,"best":"GPT 6 Astra"}],"by_group":{"Data Analysis":{"n_tasks":48,"all_models":0.8037,"GPT 6 Astra":0.8209,"Muse Spark 1.3":0.823,"Grok 4.6":0.8237,"Sonnet 5.5":0.8077,"Fable 5.1":0.8133,"Opus 5.5":0.8269,"Opus 5":0.7863,"Muse Spark 1.1":0.7739,"Gemini 3.8 Flash":0.717,"Muse Wonder":0.8438},"Document Structure":{"n_tasks":16,"all_models":0.7091,"GPT 6 Astra":0.7336,"Muse Spark 1.3":0.6818,"Grok 4.6":0.7376,"Sonnet 5.5":0.7595,"Fable 5.1":0.7445,"Opus 5.5":0.7114,"Opus 5":0.7028,"Muse Spark 1.1":0.5944,"Gemini 3.8 Flash":0.6715,"Muse Wonder":0.7537},"Medical Writing":{"n_tasks":32,"all_models":0.7465,"GPT 6 Astra":0.7797,"Muse Spark 1.3":0.7826,"Grok 4.6":0.7717,"Sonnet 5.5":0.7379,"Fable 5.1":0.7238,"Opus 5.5":0.7263,"Opus 5":0.7283,"Muse Spark 1.1":0.7231,"Gemini 3.8 Flash":0.6778,"Muse Wonder":0.8139},"Regulatory Review":{"n_tasks":24,"all_models":0.676,"GPT 6 Astra":0.7574,"Muse Spark 1.3":0.7125,"Grok 4.6":0.687,"Sonnet 5.5":0.6771,"Fable 5.1":0.6892,"Opus 5.5":0.6566,"Opus 5":0.6485,"Muse Spark 1.1":0.617,"Gemini 3.8 Flash":0.5437,"Muse Wonder":0.7704}},"by_skill":{"Biostatistics":0.8558,"Data Consistency":0.7515,"Document Compliance":0.6626,"Document Structure":0.7555,"Regulatory Response":0.6748,"Regulatory Review":0.6765,"Safety Synthesis":0.7531,"Scientific Synthesis":0.7399},"len_pen_rho":0.883,"touched_rho":null},"walk":[{"model":"GPT 6 Astra","mean":0.762,"runs":[0.756,0.789,0.74],"rep":0.756,"strong":true,"pos_met":16,"pos_total":20,"pen_hit":1,"pen_total":5,"minutes":4.0,"answer_chars":15146},{"model":"Grok 4.6","mean":0.74,"runs":[0.683,0.748,0.789],"rep":0.748,"strong":true,"pos_met":16,"pos_total":20,"pen_hit":1,"pen_total":5,"minutes":2.2,"answer_chars":13539},{"model":"Muse Spark 1.3","mean":0.637,"runs":[0.602,0.65,0.659],"rep":0.65,"strong":false,"pos_met":15,"pos_total":20,"pen_hit":2,"pen_total":5,"minutes":3.3,"answer_chars":19955},{"model":"Muse Wonder","mean":0.626,"runs":[0.74,0.585,0.553],"rep":0.585,"strong":false,"pos_met":14,"pos_total":20,"pen_hit":1,"pen_total":5,"minutes":11.3,"answer_chars":29409},{"model":"Muse Spark 1.1","mean":0.618,"runs":[0.65,0.528,0.675],"rep":0.65,"strong":false,"pos_met":14,"pos_total":20,"pen_hit":1,"pen_total":5,"minutes":1.8,"answer_chars":16123},{"model":"Opus 5","mean":0.545,"runs":[0.504,0.537,0.593],"rep":0.537,"strong":false,"pos_met":13,"pos_total":20,"pen_hit":1,"pen_total":5,"minutes":10.5,"answer_chars":25044},{"model":"Opus 5.5","mean":0.542,"runs":[0.455,0.52,0.65],"rep":0.52,"strong":false,"pos_met":12,"pos_total":20,"pen_hit":1,"pen_total":5,"minutes":7.9,"answer_chars":23970},{"model":"Fable 5.1","mean":0.534,"runs":[0.545,0.512,0.545],"rep":0.545,"strong":false,"pos_met":12,"pos_total":20,"pen_hit":0,"pen_total":5,"minutes":8.2,"answer_chars":18600},{"model":"Gemini 3.8 Flash","mean":0.463,"runs":[0.455,0.374,0.561],"rep":0.455,"strong":false,"pos_met":11,"pos_total":20,"pen_hit":1,"pen_total":5,"minutes":5.6,"answer_chars":36192},{"model":"Sonnet 5.5","mean":0.431,"runs":[0.512,0.431,0.35],"rep":0.431,"strong":false,"pos_met":10,"pos_total":20,"pen_hit":1,"pen_total":5,"minutes":5.4,"answer_chars":15069}],"ceiling":{"n":8,"threshold":0.7,"skills":{"Regulatory Response":2,"Safety Synthesis":2,"Data Consistency":1,"Document Compliance":2,"Regulatory Review":1},"cats":[{"label":"Misses a planted gap, discrepancy or limitation","hard":0.26,"all":0.155,"pen":false},{"label":"Misses or misstates a specific number","hard":0.237,"all":0.206,"pen":false},{"label":"Misses a required reasoning step or conclusion","hard":0.231,"all":0.199,"pen":false},{"label":"Penalty: overreaching or wrong claim","hard":0.1,"all":0.117,"pen":true},{"label":"Required structure or numbering missing","hard":0.067,"all":0.093,"pen":false},{"label":"Penalty: content the sources do not support","hard":0.048,"all":0.112,"pen":true},{"label":"Wrong population, cutoff or document version","hard":0.035,"all":0.081,"pen":false},{"label":"Penalty: breaks a length, format or scope rule","hard":0.021,"all":0.037,"pen":true}],"missed_by_n":34,"miss_threshold":27,"runs_per_task":30,"category_method":"blended"},"pass":{"views":{"Overall":{"GPT 6 Astra":{"s":0.1611,"ci":[0.10300000000000001,0.21899999999999997]},"Muse Spark 1.3":{"s":0.1389,"ci":[0.08900000000000001,0.19399999999999998]},"Grok 4.6":{"s":0.125,"ci":[0.078,0.18100000000000002]},"Sonnet 5.5":{"s":0.1139,"ci":[0.069,0.16399999999999998]},"Fable 5.1":{"s":0.1278,"ci":[0.078,0.18100000000000002]},"Opus 5.5":{"s":0.1083,"ci":[0.061,0.158]},"Opus 5":{"s":0.0972,"ci":[0.057999999999999996,0.139]},"Muse Spark 1.1":{"s":0.0972,"ci":[0.055999999999999994,0.147]},"Gemini 3.8 Flash":{"s":0.0556,"ci":[0.022000000000000002,0.09699999999999999]},"Muse Wonder":{"s":0.1722,"ci":[0.11900000000000001,0.231]}},"Data Analysis":{"GPT 6 Astra":{"s":0.2292,"ci":[0.1319,0.3333]},"Muse Spark 1.3":{"s":0.2361,"ci":[0.1458,0.3264]},"Grok 4.6":{"s":0.2431,"ci":[0.1458,0.3472]},"Sonnet 5.5":{"s":0.2083,"ci":[0.125,0.2986]},"Fable 5.1":{"s":0.2569,"ci":[0.1597,0.3611]},"Opus 5.5":{"s":0.2222,"ci":[0.125,0.3264]},"Opus 5":{"s":0.1875,"ci":[0.1042,0.2708]},"Muse Spark 1.1":{"s":0.1875,"ci":[0.0972,0.2847]},"Gemini 3.8 Flash":{"s":0.0903,"ci":[0.0278,0.1597]},"Muse Wonder":{"s":0.2986,"ci":[0.2014,0.4028]}},"Document Structure":{"GPT 6 Astra":{"s":0.1458,"ci":[0.0208,0.2917]},"Muse Spark 1.3":{"s":0.125,"ci":[0.0,0.2708]},"Grok 4.6":{"s":0.0625,"ci":[0.0,0.1667]},"Sonnet 5.5":{"s":0.0833,"ci":[0.0,0.1875]},"Fable 5.1":{"s":0.1458,"ci":[0.0208,0.3125]},"Opus 5.5":{"s":0.0833,"ci":[0.0,0.2292]},"Opus 5":{"s":0.0625,"ci":[0.0,0.125]},"Muse Spark 1.1":{"s":0.0625,"ci":[0.0,0.1875]},"Gemini 3.8 Flash":{"s":0.1458,"ci":[0.0,0.3333]},"Muse Wonder":{"s":0.1458,"ci":[0.0208,0.2917]}},"Medical Writing":{"GPT 6 Astra":{"s":0.0833,"ci":[0.0208,0.1667]},"Muse Spark 1.3":{"s":0.0417,"ci":[0.0,0.1146]},"Grok 4.6":{"s":0.0312,"ci":[0.0,0.0833]},"Sonnet 5.5":{"s":0.0521,"ci":[0.0,0.1354]},"Fable 5.1":{"s":0.0104,"ci":[0.0,0.0312]},"Opus 5.5":{"s":0.0104,"ci":[0.0,0.0312]},"Opus 5":{"s":0.0521,"ci":[0.0,0.1146]},"Muse Spark 1.1":{"s":0.0104,"ci":[0.0,0.0312]},"Gemini 3.8 Flash":{"s":0.0,"ci":[0.0,0.0]},"Muse Wonder":{"s":0.06249,"ci":[0.0,0.1354]}},"Regulatory Review":{"GPT 6 Astra":{"s":0.1389,"ci":[0.0278,0.2917]},"Muse Spark 1.3":{"s":0.0833,"ci":[0.0,0.2083]},"Grok 4.6":{"s":0.0556,"ci":[0.0,0.1389]},"Sonnet 5.5":{"s":0.0278,"ci":[0.0,0.0833]},"Fable 5.1":{"s":0.0139,"ci":[0.0,0.0417]},"Opus 5.5":{"s":0.0278,"ci":[0.0,0.0833]},"Opus 5":{"s":0.0,"ci":[0.0,0.0]},"Muse Spark 1.1":{"s":0.0556,"ci":[0.0,0.1389]},"Gemini 3.8 Flash":{"s":0.0,"ci":[0.0,0.0]},"Muse Wonder":{"s":0.0833,"ci":[0.0139,0.1944]}}},"order":["Muse Wonder","GPT 6 Astra","Muse Spark 1.3","Fable 5.1","Grok 4.6","Sonnet 5.5","Opus 5.5","Opus 5","Muse Spark 1.1","Gemini 3.8 Flash"],"rank":{"Muse Wonder":1,"GPT 6 Astra":2,"Muse Spark 1.3":3,"Fable 5.1":4,"Grok 4.6":5,"Sonnet 5.5":6,"Opus 5.5":7,"Opus 5":8,"Muse Spark 1.1":9,"Gemini 3.8 Flash":10},"stats":{"GPT 6 Astra":{"tasks_any":30,"tasks_all3":10},"Muse Spark 1.3":{"tasks_any":28,"tasks_all3":7},"Grok 4.6":{"tasks_any":24,"tasks_all3":6},"Sonnet 5.5":{"tasks_any":22,"tasks_all3":3},"Fable 5.1":{"tasks_any":26,"tasks_all3":8},"Opus 5.5":{"tasks_any":19,"tasks_all3":7},"Opus 5":{"tasks_any":23,"tasks_all3":3},"Muse Spark 1.1":{"tasks_any":19,"tasks_all3":6},"Gemini 3.8 Flash":{"tasks_any":10,"tasks_all3":4},"Muse Wonder":{"tasks_any":34,"tasks_all3":9}},"overall":0.1197,"never":63,"by_group_all":{"Data Analysis":0.216,"Document Structure":0.1062,"Medical Writing":0.0354,"Regulatory Review":0.0486},"level":["Muse Wonder","GPT 6 Astra"]},"walkpick":{"strong":{"model":"GPT 6 Astra","reward":0.756,"quote":"The proposed balance of routine and additional risk minimisation for kelvaparib (KLV-3308), informing KLV-7701, is proportionate in principle but not adequately substantiated or operationalised as submitted."},"weak":{"model":"Sonnet 5.5","reward":0.431,"quote":"The proposed risk minimisation is not yet demonstrably proportionate to the observed risk. [...] Early cytopenia is preventable by timely detection and dose action."},"checks":["Concludes that the routine measures are a proportionate foundation for the strategy","States that the adequacy of the additional measures cannot be confirmed from the documents supplied","Reports how often each important identified risk occurred across the program, and how severe the cases were","Describes the monitoring, dose interruption and discontinuation rules in the product information","Says the routine measures support early detection and management but do not show the risks can be prevented","Notes that the prescriber guide and patient card were not available, are not tied to named risks, and have no way to measure effectiveness","Notes that the product information gives the MDS/AML case count without its denominator","Penalized: describing what the prescriber guide or patient card contains beyond what the plan says","Penalized: calling the additional measures effective, or the routine measures proven to prevent the risks","Penalized: using tables or bullet points"],"guide_n":24,"n_runs":30},"why":[{"group":"Data Analysis","text":"A model invented a censoring rule the analysis plan does not contain, fit it on data it said were incomplete, and used the result to call a robust finding sensitive."},{"group":"Medical Writing","text":"A model read a therapeutic threshold and a safety ceiling into the averages of four small dose groups and called one dose the proven optimum, though the study had no exposure-response analysis."},{"group":"Regulatory Review","text":"A model reviewing a risk management plan described what a prescriber guide and patient card contain, though neither document was in the files it was given."},{"group":"Document Structure","text":"A model building a list of planned safety tables added reserved listing slots to it and scheduled production by table number, which put the laboratory table in the middle of the adverse event tables."}],"meta":{"n_models":10,"n_runs":3600,"added":{"Muse Wonder":"2026-10-15"},"top_credit":"Muse Wonder","rest_credit":[0.7788,0.837]}}</textarea>
 </div>
@@ -2260,7 +2375,92 @@ section.phb-band{padding:0}
   if (viewer && viewer.parentElement !== document.body) document.body.appendChild(viewer);
   document.addEventListener('scroll', function(){
     document.querySelectorAll('.phb-result-tip.phb-on').forEach(function(tip){ tip.classList.remove('phb-on'); });
+    document.querySelectorAll('.phb-kd-dot.phb-on').forEach(function(dot){
+      dot.classList.remove('phb-on');
+      dot.setAttribute('aria-expanded', 'false');
+    });
   }, {passive:true, capture:true});
+  var kdTouch = window.matchMedia('(hover: none), (pointer: coarse)');
+  function kdClose(except){
+    document.querySelectorAll('.phb-kd-dot.phb-on').forEach(function(dot){
+      if (dot === except) return;
+      dot.classList.remove('phb-on');
+      dot.setAttribute('aria-expanded', 'false');
+    });
+  }
+  function kdArm(root){
+    if (!kdTouch.matches) return;
+    (root || document).querySelectorAll('.phb-kd-dot').forEach(function(dot){
+      if (dot.getAttribute('role') === 'button') return;
+      dot.setAttribute('role', 'button');
+      dot.setAttribute('aria-expanded', 'false');
+      var label = dot.getAttribute('data-phb-m');
+      if (label) dot.setAttribute('aria-label', label);
+    });
+    var cap = document.querySelector('#phb-fig-kind .phb-cap');
+    if (cap && cap.textContent.indexOf('Hover a dot') !== -1) cap.innerHTML = cap.innerHTML.replace('Hover a dot', 'Tap a dot');
+  }
+  document.addEventListener('click', function(e){
+    if (!kdTouch.matches) return;
+    var track = e.target.closest && e.target.closest('.phb-kd-track');
+    if (!track) { kdClose(null); return; }
+    var best = null, bestD = 22;
+    track.querySelectorAll('.phb-kd-dot').forEach(function(dot){
+      var r = dot.getBoundingClientRect();
+      var dist = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+      if (dist < bestD) { bestD = dist; best = dot; }
+    });
+    if (!best) { kdClose(null); return; }
+    var open = best.classList.contains('phb-on');
+    kdClose(best);
+    best.classList.toggle('phb-on', !open);
+    best.setAttribute('aria-expanded', open ? 'false' : 'true');
+  });
+  kdArm(document);
+  var kdFig = document.getElementById('phb-fig-kind');
+  if (kdFig) new MutationObserver(function(){ kdArm(kdFig); }).observe(kdFig, {childList:true, subtree:true});
+  var prevScroll = Element.prototype.scrollIntoView;
+  Element.prototype.scrollIntoView = function(opts){
+    if (window.matchMedia('(max-width:760px)').matches && this.id === 'phb-xp-prev') return;
+    return prevScroll.apply(this, arguments);
+  };
+  var xpListEl = document.getElementById('phb-xp-list');
+  document.addEventListener('click', function(e){
+    if (!window.matchMedia('(max-width:760px)').matches) return;
+    var item = e.target.closest && e.target.closest('#phb-xp-list .phb-xp-item');
+    if (item && xpListEl) xpListEl.setAttribute('data-phb-user-sel', '1');
+  }, true);
+  document.addEventListener('click', function(e){
+    if (!window.matchMedia('(max-width:760px)').matches) return;
+    var item = e.target.closest && e.target.closest('#phb-xp-list .phb-xp-item');
+    if (!item) return;
+    var expand = document.getElementById('phb-xp-expand');
+    if (expand) expand.click();
+  });
+  document.addEventListener('click', function(e){
+    if (window.matchMedia('(max-width:760px)').matches) return;
+    var tab = e.target.closest && e.target.closest('#phb-xp-type button[data-phb-t="key"]');
+    if (!tab || !xpListEl) return;
+    var prog = xpListEl.querySelector('details.phb-xp-sec[data-phb-g="Program"]');
+    if (prog) prog.open = true;
+  });
+  if (xpListEl && window.matchMedia('(max-width:760px)').matches) {
+    var xpClosedOnce = false;
+    var xpMo = new MutationObserver(function(){
+      if (!xpClosedOnce) {
+        var open = xpListEl.querySelectorAll('details.phb-xp-sec[open]');
+        if (open.length) {
+          xpClosedOnce = true;
+          open.forEach(function(d){ d.open = false; });
+        }
+      }
+      if (!xpListEl.hasAttribute('data-phb-user-sel')) {
+        xpListEl.querySelectorAll('.phb-xp-sec.phb-has-sel').forEach(function(d){ d.classList.remove('phb-has-sel'); });
+        xpListEl.querySelectorAll('.phb-xp-item[aria-current="true"]').forEach(function(b){ b.removeAttribute('aria-current'); });
+      }
+    });
+    xpMo.observe(xpListEl, {childList:true, subtree:true, attributes:true, attributeFilter:['open','class','aria-current']});
+  }
 })();
 </script>
 </body>

@@ -489,7 +489,7 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
     const grpOf = t => t.study;
     let last = null, html = '';
     if (filtered && idx.length && (xpQ.trim() || xpStudy !== 'all')) html += `<div class="phb-xp-res">${idx.length} of ${tiles.length} files <button class="phb-xp-clear" id="phb-xp-clear">Clear</button></div>`;
-    if (grouped && !xpOpen.size && idx.length && !xpNarrow()) xpOpen.add(grpOf(tiles[idx.includes(xpSel) ? xpSel : idx[0]]));
+    if (grouped && idx.length && !xpNarrow() && !idx.some(k => xpOpen.has(grpOf(tiles[k])))) xpOpen.add(grpOf(tiles[idx.includes(xpSel) ? xpSel : idx[0]]));
     idx.forEach(i => {
       const t = tiles[i];
       if (grouped) { const g = grpOf(t); if (g !== last) { const n = idx.filter(k => grpOf(tiles[k]) === g).length; html += `${last!==null?'</details>':''}<details class="phb-xp-sec" data-phb-g="${esc(g)}"${xpOpen.has(g)?' open':''}><summary class="phb-xp-grp">${esc(g)}<span>${n}</span></summary>`; last = g; } }
@@ -553,7 +553,7 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
     renderList();
   });
   renderList();
-  xpSelect(xpIndices()[0] ?? 0);
+  if (!xpNarrow()) xpSelect(xpIndices()[0] ?? 0);
   const viewer = $('#phb-viewer'); let lastFocus = null;
   function closeViewer(){ if (!viewer.classList.contains('phb-open')) return; viewer.classList.remove('phb-open'); viewer.setAttribute('aria-hidden','true'); viewer.inert = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   function openViewer(i){

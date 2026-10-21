@@ -466,7 +466,8 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
   $('#phb-xp-intro').textContent = `Task ${T.pb}: ${T.pdf} PDF documents and ${T.csv} CSV datasets from ${T.studies} studies in the ${T.program} program. Nothing in the request says which of them matter; ${NUM[T.nkey] || T.nkey} carry the answer. The two that carry the answer are marked Key. Pick a file to preview it, or search the whole set.`;
   const studies = [...new Set(tiles.map(t => t.study))];
   let xpMode = 'all', xpType = 'all', xpStudy = 'all', xpQ = '', xpSel = -1; const xpOpen = new Set();
-  xpOpen.add(tiles[0].study);
+  const xpNarrow = () => window.matchMedia('(max-width:760px)').matches;
+  if (!xpNarrow()) xpOpen.add(tiles[0].study);
   const xpList = $('#phb-xp-list'), xpPrev = $('#phb-xp-prev'), xpTools = $('#phb-xp-tools'), xpNote = $('#phb-xp-note');
   $('#phb-xp-n-all').textContent = tiles.length;
   $('#phb-xp-study').innerHTML = '<option value="all">All studies</option>' + studies.map(st => `<option value="${esc(st)}">${esc(st)} (${tiles.filter(t => t.study===st).length})</option>`).join('');
@@ -488,7 +489,7 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
     const grpOf = t => t.study;
     let last = null, html = '';
     if (filtered && idx.length && (xpQ.trim() || xpStudy !== 'all')) html += `<div class="phb-xp-res">${idx.length} of ${tiles.length} files <button class="phb-xp-clear" id="phb-xp-clear">Clear</button></div>`;
-    if (grouped && !xpOpen.size && idx.length) xpOpen.add(grpOf(tiles[idx.includes(xpSel) ? xpSel : idx[0]]));
+    if (grouped && idx.length && !xpNarrow() && !idx.some(k => xpOpen.has(grpOf(tiles[k])))) xpOpen.add(grpOf(tiles[idx.includes(xpSel) ? xpSel : idx[0]]));
     idx.forEach(i => {
       const t = tiles[i];
       if (grouped) { const g = grpOf(t); if (g !== last) { const n = idx.filter(k => grpOf(tiles[k]) === g).length; html += `${last!==null?'</details>':''}<details class="phb-xp-sec" data-phb-g="${esc(g)}"${xpOpen.has(g)?' open':''}><summary class="phb-xp-grp">${esc(g)}<span>${n}</span></summary>`; last = g; } }
@@ -516,7 +517,7 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
   function xpSelect(i, byUser){
     xpSel = i;
     xpList.querySelectorAll('.phb-xp-item').forEach(b => { if (+b.dataset.phbI === i) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current'); });
-    const cur = xpList.querySelector('[aria-current="true"]'); const sec = cur?.closest('.phb-xp-sec'); if (sec && !sec.open) sec.open = true;
+    const cur = xpList.querySelector('[aria-current="true"]'); const sec = cur?.closest('.phb-xp-sec'); if (sec && !sec.open && (byUser || !xpNarrow())) sec.open = true;
     xpList.querySelectorAll('.phb-xp-sec').forEach(d => d.classList.toggle('phb-has-sel', d === sec));
     if (byUser) cur?.scrollIntoView({block:'nearest'});
     xpPreview(i);
@@ -533,7 +534,7 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
     if (e.target.closest('#phb-xp-clear')) { xpType = 'all'; xpStudy = 'all'; xpQ = ''; $('#phb-xp-q').value = ''; $('#phb-xp-study').value = 'all'; $('#phb-xp-type').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x.dataset.phbT==='all')); renderList(); return; }
     const b = e.target.closest('.phb-xp-item'); if (!b) return;
     xpSelect(+b.dataset.phbI, true);
-    if (window.matchMedia('(max-width:980px)').matches) xpPrev.scrollIntoView({behavior:'smooth', block:'nearest'});
+    if (window.matchMedia('(max-width:760px)').matches) { e.preventDefault(); openViewer(+b.dataset.phbI); }
   });
   xpList.addEventListener('keydown', e => {
     if (!['ArrowDown','ArrowUp','Home','End'].includes(e.key)) return;
@@ -552,7 +553,7 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
     renderList();
   });
   renderList();
-  xpSelect(xpIndices()[0] ?? 0);
+  if (!xpNarrow()) xpSelect(xpIndices()[0] ?? 0);
   const viewer = $('#phb-viewer'); let lastFocus = null;
   function closeViewer(){ if (!viewer.classList.contains('phb-open')) return; viewer.classList.remove('phb-open'); viewer.setAttribute('aria-hidden','true'); viewer.inert = true; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   function openViewer(i){
@@ -627,7 +628,7 @@ const lead = PASS.order[0];
 $('#phb-fig-full').innerHTML = `<div class="phb-big2 phb-big3 phb-acc"><div><b>${pct(PASS.views.Overall[lead].s)}</b><span>of ${esc(lead)}'s runs earned full marks, the most of any model</span></div><div><b>${pct(PASS.overall)}</b><span>of all ${D.meta.n_runs.toLocaleString()} runs earned full marks, across all ${NW(D.meta.n_models)} models</span></div><div><b>${PASS.never}</b><span>of the 120 tasks were never fully solved by any run</span></div></div>`;
 const top7 = ORDER.filter(m => m !== D.meta.top_credit).slice(0,7);
 const bySc = [...ORDER].sort((a,b)=>dec[b].score-dec[a].score);
-$('#phb-fig-stack').innerHTML = `<div class="phb-stack">${bySc.map(m => { const d = dec[m]; const x = v => (v-0.55)/(0.9-0.55)*100; return `<div class="phb-stack-row"><span>${mlogo(m)}${esc(m)}</span><div class="phb-bars" title="${esc(m)}: required criteria ${f3(d.credit)}, penalties ${f3(d.penalty)}, score ${f3(d.score)}"><i class="phb-s" style="width:${x(d.score)}%;${mstyle(m)}"></i><i class="phb-p" style="left:${x(d.score)}%;width:${x(d.credit)-x(d.score)}%"></i></div><span class="phb-v">${f3(d.score)} <b>−${f3(d.penalty)}</b></span></div>`;}).join('')}<p class="phb-cap"><b>Figure 2.</b> The model-coloured bar is the final score. Red is the amount lost to penalties. Together they are the credit for required criteria met, which is highest for ${esc(D.meta.top_credit)} (${f3(dec[D.meta.top_credit].credit)}) and ranges only from ${f3(Math.min(...top7.map(m=>dec[m].credit)))} to ${f3(Math.max(...top7.map(m=>dec[m].credit)))} across the next seven models. The axis starts at 0.55.</p></div>`;
+$('#phb-fig-stack').innerHTML = `<div class="phb-stack">${bySc.map(m => { const d = dec[m]; const x = v => (v-0.55)/(0.9-0.55)*100; return `<div class="phb-stack-row"><span>${mlogo(m)}${esc(m)}</span><div class="phb-bars" title="${esc(m)}: required criteria ${f3(d.credit)}, penalties ${f3(d.penalty)}, score ${f3(d.score)}"><i class="phb-s" style="width:${x(d.score)}%;${mstyle(m)}"></i><i class="phb-p" style="left:${x(d.score)}%;width:${x(d.credit)-x(d.score)}%"></i></div><span class="phb-v">${f3(d.score)} <b>−${f3(d.penalty)}</b></span></div>`;}).join('')}<p class="phb-cap"><b>Figure 2.</b> The bar is the final score. Red is the amount lost to penalties. Together they are the credit for required criteria met, which is highest for ${esc(D.meta.top_credit)} (${f3(dec[D.meta.top_credit].credit)}) and ranges only from ${f3(Math.min(...top7.map(m=>dec[m].credit)))} to ${f3(Math.max(...top7.map(m=>dec[m].credit)))} across the next seven models. The axis starts at 0.55.</p></div>`;
 const kRows = KINDS.map(g => { const v = F.by_group[g]; const vals = ORDER.map(m => [m, v[m]]).sort((a,b)=>b[1]-a[1]); return {g, all:v.all_models, vals, gap: vals[0][1]-vals[vals.length-1][1]}; }).sort((a,b)=>b.all-a.all);
 const kx = v => (v-0.5)/(0.9-0.5)*100;
 $('#phb-fig-kind').innerHTML = `<div class="phb-kdots">${kRows.map(r => `<div class="phb-kd-row"><span>${sw(r.g)}${esc(sentence(r.g))}<small>${pct(PASS.by_group_all[r.g])} of runs pass</small></span>
@@ -717,7 +718,7 @@ Promise.all([
     ['01','The request', () => `<p class="phb-request">${esc(T.prompt)}</p><p class="phb-prose" style="font-size:17px">Quoted as written. ${T.files} files come with it, and nothing in the request says which of them carry the answer.</p>`],
     ['02','The evidence', () => `<p class="phb-prose" style="margin:0 0 20px;font-size:16.5px">These are the ${T.nkey} files marked Key in the explorer above, out of the ${T.files} the agent receives. The prescriber guide and patient card are not among them.</p>
       <div class="phb-ev-grid"><div><div class="phb-doc phb-crop"><img alt="Page 12 of the kelvaparib risk management plan, listing the important identified risks" src="${K.rmp_risks}"></div><div class="phb-doc-cap"><code>risk-management-plan-kelvaparib.pdf</code>, page 12 of ${K.rmp_pages}. The three important identified risks, with how often each occurred across the program and how severe the cases were.</div></div>
-      <div><div class="phb-doc phb-crop"><img alt="Page 15 of the risk management plan, Part V on risk minimization measures" src="${K.rmp_part5}"></div><div class="phb-doc-cap">Page 15 of the same plan. Extra measures are proposed only where routine measures would be insufficient, and each must come with a way to measure whether it works.</div>
+      <div><div class="phb-doc phb-crop phb-full"><img alt="Page 15 of the risk management plan, Part V on risk minimization measures" src="${K.rmp_part5}"></div><div class="phb-doc-cap">Page 15 of the same plan. Extra measures are proposed only where routine measures would be insufficient, and each must come with a way to measure whether it works.</div>
       <div class="phb-doc phb-crop" style="margin-top:18px"><img alt="Section 4.4 of the kelvaparib product information" src="${K.pi_warn}"></div><div class="phb-doc-cap"><code>product-information-kelvaparib.pdf</code>, page 3 of ${K.pi_pages}. The routine measures: blood count monitoring, dose rules and when to stop treatment. The MDS/AML count is given as a percentage with no denominator.</div></div></div>`],
     ['03','The runs', () => `<p class="phb-prose" style="margin:0 0 18px;font-size:16.5px">Each model ran the task 3 times. ${nStrong} of ${W.length} models average 0.70 or higher, which we mark strong; ${W.length-nStrong} fall below and are marked weak. ${(n => n ? `${n} of the ${W.length*3} runs earn full marks and pass.` : `None of the ${W.length*3} runs earns full marks.`)(W.reduce((a,w)=>a+w.runs.filter(r=>r>=0.999).length,0))} Pick a model to see its run closest to its average. Click any step to see the full tool call and what it returned.</p>
       <div class="phb-mrow phb-mrow-head" aria-hidden="true"><span class="phb-nm">Model</span><span>Result</span><span class="phb-dots-h"><span>0</span><span class="phb-th">0.70 = strong</span><span>1.0</span></span><span class="phb-sc">Average</span><span></span></div>
@@ -763,10 +764,10 @@ Promise.all([
     stepsEl.querySelectorAll('.phb-step-btn').forEach((b,j)=>b.setAttribute('aria-selected', i===j));
     if (i===2) showRuns();
     else stage.innerHTML = STEPS[i][2]();
-    stage.querySelectorAll('.phb-doc.phb-crop').forEach(d => { const b = document.createElement('button'); b.type = 'button'; b.className = 'phb-doc-x'; b.textContent = 'Expand document'; b.onclick = () => { const o = d.classList.toggle('phb-open'); b.textContent = o ? 'Collapse document' : 'Expand document'; }; d.append(b); });
+    stage.querySelectorAll('.phb-doc.phb-crop:not(.phb-full)').forEach(d => { const b = document.createElement('button'); b.type = 'button'; b.className = 'phb-doc-x'; b.textContent = 'Expand document'; b.onclick = () => { const o = d.classList.toggle('phb-open'); b.textContent = o ? 'Collapse document' : 'Expand document'; }; d.append(b); });
     stage.querySelectorAll('.phb-datatable,.phb-term,.phb-tablewrap').forEach(e => scrollHint(e, 'x'));
   }
-  STEPS.forEach((s,i) => { const b = el('button', {class:'phb-step-btn', role:'tab', 'aria-selected': i===0}, `<b>${s[0]}</b>${s[1]}`); b.onclick = () => showStep(i); stepsEl.append(b); });
+  STEPS.forEach((s,i) => { const b = el('button', {class:'phb-step-btn', role:'tab', 'aria-selected': i===0}, s[1]); b.onclick = () => showStep(i); stepsEl.append(b); });
   showStep(0);
   const panel = document.getElementById('phb-stage');
   if (panel) panel.removeAttribute('aria-busy');
@@ -859,5 +860,5 @@ $('#phb-usab').innerHTML = `<table class="phb-mini"><tr><th>Model</th><th>Median
 document.querySelectorAll('.phb-tablewrap,.phb-tbl-scroll').forEach(e => scrollHint(e, 'x'));
 document.querySelectorAll('.phb-tabs,.phb-steps').forEach(e => scrollHint(e, 'x', true));
 document.querySelectorAll('#phb-xp-list,.phb-stage,.phb-case').forEach(e => scrollHint(e, 'y'));
-if (window.matchMedia('(max-width:640px)').matches) document.querySelectorAll('.phb-case-top').forEach(e => scrollHint(e, 'y'));
+if (window.matchMedia('(max-width:640px)').matches) document.querySelectorAll('.phb-case-top:not(.phb-case-lead)').forEach(e => scrollHint(e, 'y'));
 })();

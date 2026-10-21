@@ -40,6 +40,7 @@
   min-height: 32px;
 }
 
+
 .leaderboard-full__toggle {
   position: relative;
   display: flex;
@@ -114,19 +115,6 @@
   outline-offset: 2px;
 }
 
-.leaderboard-full__metric {
-  display: inline-block;
-  margin: 0;
-  padding: 4px 12px;
-  background: rgba(255, 255, 255, 0.07);
-  color: rgba(255, 255, 255, 0.77) !important;
-  font-family: inherit;
-  font-size: 14px !important;
-  font-weight: 400 !important;
-  line-height: 1.6 !important;
-  white-space: nowrap;
-}
-
 @media (max-width: 560px) {
   .leaderboard-index__tabs {
     overflow-x: auto;
@@ -197,12 +185,16 @@
 }
 
 .leaderboard-card__link {
-  display: inline-flex;
+  box-sizing: border-box;
+  display: flex;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  align-self: stretch;
+  width: 100%;
+  max-width: 100%;
   overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 6px;
   text-decoration: none;
   transition: opacity 0.2s ease;
@@ -215,88 +207,23 @@
 .leaderboard-card__link span {
   display: flex;
   align-items: center;
-  padding: 7px 9px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(0, 0, 0, 0.9) !important;
+  padding: 12px 9px 12px 12px;
+  color: #121212 !important;
+  opacity: 0.8;
   font-size: 14px !important;
   font-weight: 500 !important;
   line-height: 1.2 !important;
   white-space: nowrap;
 }
 
-.leaderboard-card__link:focus-visible,
-.leaderboard-card__more:focus-visible {
+.leaderboard-card__link:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
-}
-
-.leaderboard-card__more {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  margin: 0;
-  padding: 12px 9px 12px 12px;
-  border: 0;
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.9);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.2;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.leaderboard-card__more span {
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
-}
-
-.leaderboard-card__more[hidden] {
-  display: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .leaderboard-card__link:hover {
     opacity: 0.8;
-  }
-
-  .leaderboard-card__more:hover {
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  .leaderboard-card__more:hover span {
-    opacity: 1;
-  }
-}
-
-@media (max-width: 720px) {
-  .leaderboard-card .leaderboard-full__header {
-    display: contents;
-  }
-
-  .leaderboard-card .leaderboard-full__toggle {
-    order: 1;
-  }
-
-  .leaderboard-card .leaderboard-full__panel {
-    order: 2;
-  }
-
-  .leaderboard-card .leaderboard-card__more {
-    order: 3;
-  }
-
-  .leaderboard-card .leaderboard-card__link {
-    order: 4;
-    align-self: stretch;
-    justify-content: center;
-    margin-top: -18px;
   }
 }
 

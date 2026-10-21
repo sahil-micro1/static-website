@@ -188,6 +188,7 @@
           id: bench.id,
           label: bench.label || bench.id,
           metric: bench.metric || bench.label || bench.id,
+          url: bench.url || "",
           overall: false,
         })),
     ];
@@ -497,22 +498,12 @@
       syncTabThumb(animate);
     }
 
-    function syncCardMore(total) {
-      const moreEl = mountEl.querySelector(".leaderboard-card__more");
-      if (!moreEl) return;
-      const extra = Math.max(0, total - CARD_COUNT);
-      moreEl.hidden = extra === 0;
-      const label = moreEl.querySelector("span");
-      if (label) label.textContent = "+" + extra + " more";
-    }
-
     function renderRows({ animate = false } = {}) {
       root.hover?.clear();
       const allRows = activeTab()?.rows || [];
       const rows = cardMode ? allRows.slice(0, CARD_COUNT) : allRows;
       if (cardMode) {
         mountEl.style.setProperty("--model-count", String(rows.length));
-        syncCardMore(allRows.length);
       }
 
       if (!rows.length) {
@@ -576,7 +567,9 @@
     function renderMetricChip() {
       const view = activeView();
       root.toggleEl.classList.add("leaderboard-full__toggle--static");
-      root.toggleEl.innerHTML = `<span class="leaderboard-full__metric">${escapeHtml(view?.metric || "")}</span>`;
+      root.toggleEl.innerHTML =
+        `<span class="leaderboard-full__toggle-label">${escapeHtml(view?.metric || "")}</span>` +
+        '<span class="leaderboard-full__toggle-thumb" aria-hidden="true"></span>';
     }
 
     function renderIndexTabs() {
@@ -597,6 +590,7 @@
           });
           renderMetricChip();
           renderRows({ animate: true });
+          syncIndexLink();
         });
       });
     }
@@ -633,6 +627,26 @@
       });
     }
 
+    function syncIndexLink() {
+      if (!indexMode || cardMode) return;
+      let link = mountEl.querySelector(":scope > .leaderboard-index__benchmark");
+      if (!link) {
+        link = document.createElement("a");
+        link.className = "leaderboard-card__link leaderboard-index__benchmark";
+        link.innerHTML = "<span>View full benchmark</span>";
+        mountEl.appendChild(link);
+      }
+      const view = activeView();
+      const url = view && !view.overall ? view.url : "";
+      if (!url) {
+        link.hidden = true;
+        link.removeAttribute("href");
+        return;
+      }
+      link.hidden = false;
+      link.href = url;
+    }
+
     if (!cardMode) {
       root.updatedEl.textContent = data.lastUpdated
         ? "Last updated " + data.lastUpdated
@@ -641,6 +655,7 @@
     if (indexMode && !cardMode) {
       renderIndexTabs();
       renderMetricChip();
+      syncIndexLink();
     } else {
       renderTabs();
       paintTabs(false);
@@ -659,21 +674,20 @@
     const href = escapeHtml(url || "#");
     el.innerHTML = `<div class="leaderboard-full__header">
       <div class="leaderboard-full__toggle" role="group" aria-label="Score metric"></div>
-      <a class="leaderboard-card__link" href="${href}"><span>View full benchmark</span></a>
     </div>
     <div class="leaderboard-full__panel">
       <ol class="leaderboard-full__list"></ol>
       <div class="leaderboard-tooltip" role="tooltip"></div>
     </div>
-    <a class="leaderboard-card__more" href="${href}"><span></span></a>`;
+    <a class="leaderboard-card__link" href="${href}"><span>View full benchmark</span></a>`;
   }
 
   function createLeaderboardCard(mountEl, data) {
     ensureCardShell(mountEl);
     const url = mountEl.getAttribute("data-benchmark-url") || "";
-    mountEl.querySelectorAll(".leaderboard-card__link, .leaderboard-card__more").forEach((link) => {
+    mountEl.querySelectorAll(".leaderboard-card__link").forEach((link) => {
       if (url) link.setAttribute("href", url);
-      else if (link.classList.contains("leaderboard-card__link")) link.hidden = true;
+      else link.hidden = true;
     });
     createLeaderboardFull(mountEl, data, { card: true });
   }

@@ -11,7 +11,7 @@
 <style>
 /* ==========================================================================
    micro1 design system: dark theme. Light theme is omitted so the page can live in a Webflow embed.
-   Tokens, 4px spacing grid and radius (4 / 8 / 12) per the style guide.
+   Tokens and 4px spacing grid per the style guide. Corners are square.
    Type and vertical rhythm follow ContractBench: Outfit, 824px measure, 68px between sections.
    ========================================================================== */
 :root{
@@ -29,7 +29,7 @@
   --wlb-error:#EC6D6D;   --wlb-error-30:rgba(236,109,109,.3);  --wlb-error-10:rgba(236,109,109,.1);
   /* spacing + radius */
   --wlb-space-1:4px; --wlb-space-2:8px; --wlb-space-3:12px; --wlb-space-4:16px; --wlb-space-6:24px; --wlb-space-8:32px; --wlb-space-12:48px; --wlb-space-16:64px;
-  --wlb-radius-sm:4px; --wlb-radius-md:8px; --wlb-radius-lg:12px;
+  --wlb-radius-sm:0; --wlb-radius-md:0; --wlb-radius-lg:0;
   /* components */
   --wlb-overlay:rgba(0,0,0,.4);
   --wlb-table-bg:#000000; --wlb-th-bg:var(--wlb-white-10); --wlb-td-bg:var(--wlb-white-6); --wlb-td-alt:var(--wlb-white-6);
@@ -54,12 +54,12 @@ p{margin:0}
 li,label{margin-bottom:0}
 label{font-weight:400}
 a{color:inherit}
-.wlb-wrap{width:min(824px,calc(100% - clamp(0px,(824px - 100vw)*100,32px)));margin:0 auto;container-type:inline-size}
+.wlb-wrap{width:100%;margin:0;padding:0;container-type:inline-size}
 .wlb-label{font:500 12px/1.4 var(--wlb-sans);color:var(--wlb-white-60)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 
 /* hero */
-.wlb-hero{position:relative;padding-block:24px 0}
+.wlb-hero{position:relative;padding:0}
 .wlb-topbar{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .wlb-topbar svg{height:16px;width:auto;display:block}
 .wlb-topbar svg path{fill:var(--wlb-white-100)}
@@ -80,25 +80,29 @@ a{color:inherit}
 .wlb-hero-stats .wlb-d{display:block;font:400 12px/1.4 var(--wlb-sans);color:var(--wlb-white-60);margin-top:4px;font-style:normal}
 .wlb-hero-stats+.wlb-tldr{margin-top:16px}
 
-/* sections and running text — same rhythm as Ivo ContractBench:
-   sections 68px apart; a heading sits 16px above the paragraph under it;
-   a subsection starts 40px below the text above it; figures and tables sit 32px from text */
-section.wlb-band{margin:0 0 68px;padding:0}
+/* page rhythm: sections 48px apart; a heading sits 16px above the paragraph under it;
+   a subsection starts 32px below the block above it; figures and tables sit 24px from text.
+   The .wlb-section rules below keep the ContractBench values the type check compares. */
+section.wlb-band{margin:0 0 48px;padding:0}
 #wlb-method{margin-bottom:0}
 .wlb-wrap>:first-child{margin-top:0}
 .wlb-wrap>:last-child{margin-bottom:0}
 .wlb-sec-title{margin:0 0 16px;font:400 28px/1.4 var(--wlb-sans);letter-spacing:-0.28px;color:rgba(255,255,255,.9)}
-.wlb-sub-title{margin:40px 0 16px;font:400 24px/1.5 var(--wlb-sans);letter-spacing:-0.48px;color:rgba(255,255,255,.9)}
+.wlb-sub-title{margin:32px 0 16px;font:400 24px/1.5 var(--wlb-sans);letter-spacing:-0.48px;color:rgba(255,255,255,.9)}
 .wlb-prose{margin:0 0 16px;font:400 16px/1.6 var(--wlb-sans);color:var(--wlb-white-60)}
 .wlb-prose :is(strong,b){color:rgba(255,255,255,.9);font-weight:500}
 .wlb-prose em,.wlb-cap em{font-style:italic}
 .wlb-cap{font:400 12px/1.4 var(--wlb-sans);color:var(--wlb-white-40);margin-top:12px}
 .wlb-hint{font:400 12px/1.4 var(--wlb-sans);color:var(--wlb-white-40);margin-left:8px}
-.wlb-fig,.wlb-tablewrap,.wlb-callout,.wlb-sh,.wlb-findings,.wlb-pair,.wlb-kinds,.wlb-casecard{margin:32px 0}
-.wlb-flow{margin:32px 0 0}
+.wlb-fig,.wlb-tablewrap,.wlb-callout,.wlb-sh,.wlb-findings,.wlb-pair,.wlb-kinds,.wlb-casecard{margin:24px 0}
+.wlb-flow{margin:24px 0}
 .wlb-sec-title+:is(.wlb-fig,.wlb-tablewrap,.wlb-sh,.wlb-callout,.wlb-findings,.wlb-pair,.wlb-flow,.wlb-kinds,.wlb-casecard),.wlb-sub-title+:is(.wlb-fig,.wlb-tablewrap,.wlb-sh,.wlb-callout,.wlb-findings,.wlb-pair,.wlb-flow,.wlb-kinds,.wlb-casecard){margin-top:16px}
 .wlb-note-small{font-size:14px}
-.wlb-cap+.wlb-prose,.wlb-cap+.wlb-sub-title{margin-top:32px}
+.wlb-cap+.wlb-prose{margin-top:24px}
+.wlb-cap+.wlb-sub-title{margin-top:32px}
+:is(.wlb-sh,.wlb-fig,.wlb-tablewrap,.wlb-flow,.wlb-pair,.wlb-audit,#wlb-pst):has(+ .wlb-cap){margin-bottom:0}
+:is(.wlb-sh,.wlb-fig,.wlb-tablewrap,.wlb-flow,.wlb-pair,.wlb-audit,#wlb-pst)+.wlb-cap{margin-top:12px}
+#wlb-pst>:last-child{margin-bottom:0}
 /* ContractBench selectors. The page's own classes (.wlb-sec-title, .wlb-prose, .wlb-fig) carry the same values;
    these names are the ones the type check compares, and they apply wherever the markup uses them. */
 code,pre.wlb-tree{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
@@ -144,11 +148,12 @@ p.wlb-prose,ul.wlb-prose{font-size:16px;line-height:1.6;font-weight:400}
 .wlb-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 
 /* tables: header on White 10 (dark) / Surface 3 (light), 8 x 12 padding, explicit row and column lines */
-.wlb-tbl-title{font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-60);margin:32px 0 8px}
-.wlb-tbl-title+.wlb-tablewrap,.wlb-tbl-title+.wlb-sh{margin-top:8px}
-.wlb-tablewrap{background:var(--wlb-table-bg);border:1px solid var(--wlb-white-10);border-radius:var(--wlb-radius-sm);overflow-x:auto}
-.wlb-tablewrap.wlb-scroll{max-height:560px;overflow:auto}
-.wlb-tablewrap.wlb-scroll400{max-height:400px;overflow:auto}
+.wlb-tbl-title{font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-60);margin:24px 0 12px}
+.wlb-tbl-title+.wlb-tablewrap,.wlb-tbl-title+.wlb-sh{margin-top:12px}
+.wlb-tablewrap{background:var(--wlb-table-bg);border:1px solid var(--wlb-white-20);border-radius:var(--wlb-radius-sm);overflow-x:auto}
+.wlb-tablewrap.wlb-scroll{max-height:560px;overflow-x:auto;overflow-y:hidden}
+.wlb-tablewrap.wlb-scroll400{max-height:400px;overflow-x:auto;overflow-y:hidden}
+.wlb-tablewrap.wlb-scroll.wlb-y-open,.wlb-tablewrap.wlb-scroll400.wlb-y-open{max-height:none}
 .wlb-tablewrap.wlb-scroll400 th{position:sticky;top:0;z-index:1;background:linear-gradient(var(--wlb-th-bg),var(--wlb-th-bg)),var(--wlb-table-bg)}
 table{width:100%;border-collapse:separate;border-spacing:0}
 th,td{padding:8px 12px;border-right:1px solid var(--wlb-white-10);border-bottom:1px solid var(--wlb-white-10);vertical-align:middle;text-align:left;white-space:nowrap}
@@ -181,13 +186,18 @@ tr.wlb-total td{background:linear-gradient(var(--wlb-white-2),var(--wlb-white-2)
 /* figure frames */
 .wlb-lb,.wlb-cmpf,.wlb-scf,.wlb-viewer-frame,.wlb-casecard{background:var(--wlb-frame-bg);border:1px solid var(--wlb-white-10);border-radius:var(--wlb-radius-sm)}
 .wlb-lb,.wlb-cmpf,.wlb-scf{padding:20px}
-.wlb-viewer-frame{position:relative;padding:20px;margin-top:20px;max-height:660px;overflow-y:auto;scroll-behavior:smooth}
-.wlb-fig-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-bottom:16px}
+.wlb-viewer-frame{position:relative;padding:20px;margin-top:16px;max-height:660px;overflow-x:auto;overflow-y:hidden}
+.wlb-viewer-frame.wlb-y-open{max-height:none}
+.wlb-fig-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin-bottom:24px}
 .wlb-fig-head b{font:400 21px/1.4 var(--wlb-sans);letter-spacing:-.21px;color:var(--wlb-white-80)}
 .wlb-fig-head span{font:400 14px/1.6 var(--wlb-sans);color:var(--wlb-white-40)}
 .wlb-lb>.wlb-cap,.wlb-cmpf>.wlb-cap,.wlb-scf>.wlb-cap{margin-top:16px;padding-top:16px;border-top:1px solid var(--wlb-white-10)}
 .wlb-keyline{display:flex;flex-wrap:wrap;gap:8px 24px;font:400 12px/1.4 var(--wlb-sans);color:var(--wlb-white-60);margin-bottom:16px}
 .wlb-keyline i{display:inline-block;width:10px;height:10px;border-radius:0;margin-right:8px;vertical-align:-1px}
+.wlb-cmpf{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;align-items:center}
+#wlb-cmp-format,#wlb-cmp-app-dlg,#wlb-cmp-app-st{display:contents}
+.wlb-cmpf .wlb-keyline{justify-content:flex-end}
+.wlb-cmpf .wlb-cmp,.wlb-cmpf>.wlb-cap{grid-column:1/-1}
 
 /* leaderboard: primary pass with 95% interval whiskers */
 .wlb-lb{--wlb-lb-left:208px;--wlb-lb-right:88px}
@@ -209,7 +219,7 @@ tr.wlb-total td{background:linear-gradient(var(--wlb-white-2),var(--wlb-white-2)
 .wlb-lb-score small{display:block;font:400 12px/1.2 var(--wlb-sans);color:var(--wlb-white-40)}
 
 /* paired bar rows: single turn vs dialogue, API vs consumer app */
-.wlb-cmp{display:grid;gap:8px}
+.wlb-cmp{display:grid;gap:16px}
 .wlb-cmp-row{display:grid;grid-template-columns:minmax(0,184px) minmax(0,1fr);gap:16px;align-items:center}
 .wlb-cmp-row .wlb-nm{font:500 14px/1.4 var(--wlb-sans)}
 .wlb-cmp-lines{display:grid;gap:2px}
@@ -222,10 +232,10 @@ tr.wlb-total td{background:linear-gradient(var(--wlb-white-2),var(--wlb-white-2)
 .wlb-cmp-ln.wlb-b .wlb-v{font-weight:600;color:#7087E6}
 
 /* scatter: critical failure vs missed support (Figma 9650-12730) */
-.wlb-scf .wlb-fig-head{justify-content:center;text-align:center;margin-bottom:20px}
+.wlb-scf .wlb-fig-head{justify-content:center;text-align:center;margin-bottom:24px}
 .wlb-sc-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 20px;margin:0 auto 24px;max-width:620px}
 .wlb-sc-legend span{display:inline-flex;align-items:center;gap:6px;font:400 12px/1.2 var(--wlb-sans);color:var(--wlb-white-60);white-space:nowrap}
-.wlb-sc-legend i{display:inline-block;width:14px;height:14px;border-radius:2px;flex:none}
+.wlb-sc-legend i{display:inline-block;width:14px;height:14px;border-radius:0;flex:none}
 .wlb-sc-wrap{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:8px;max-width:680px;margin:0 auto}
 .wlb-sc-yt{position:relative}
 .wlb-sc-yt>span{position:absolute;right:0;transform:translateY(50%);font:400 12px/1 var(--wlb-sans);color:var(--wlb-white-60)}
@@ -235,29 +245,31 @@ tr.wlb-total td{background:linear-gradient(var(--wlb-white-2),var(--wlb-white-2)
 .wlb-sc-h,.wlb-sc-v{position:absolute;border:0 dashed var(--wlb-white-10)}
 .wlb-sc-h{left:0;right:0;height:0;border-top-width:1px}
 .wlb-sc-v{top:0;bottom:0;width:0;border-left-width:1px}
-.wlb-sc-dot{position:absolute;z-index:1;width:12px;height:12px;border-radius:50%;transform:translate(-50%,50%);cursor:default;transition:transform .15s ease}
+.wlb-sc-dot{position:absolute;z-index:1;width:12px;height:12px;border-radius:0;transform:translate(-50%,50%);cursor:default;transition:transform .15s ease}
 .wlb-sc-dot:hover{transform:translate(-50%,50%) scale(1.3);z-index:3}
-.wlb-sc-dot::after{content:attr(data-t);position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);white-space:nowrap;padding:4px 8px;background:var(--wlb-surface-3);color:var(--wlb-white-100);font:500 12px/1.4 var(--wlb-sans);border:1px solid var(--wlb-white-20);border-radius:var(--wlb-radius-sm);display:none;pointer-events:none}
-.wlb-sc-dot:hover::after{display:block}
+@media (hover:none),(pointer:coarse){
+  .wlb-sc-dot{cursor:pointer}
+  .wlb-sc-dot::before{content:"";position:absolute;inset:-12px}
+}
 .wlb-sc-plot{overflow:visible}
 .wlb-scf{overflow:clip}
+.wlb-sc-tip{position:fixed;z-index:40;box-sizing:border-box;max-width:min(360px,calc(100vw - 16px));padding:4px 8px;background:#313131;color:#fff;font:500 12px/1.4 Outfit,system-ui,sans-serif;border:1px solid rgba(255,255,255,.2);border-radius:0;pointer-events:none;white-space:normal}
+.wlb-sc-tip[hidden]{display:none!important}
 .wlb-sc-xt{grid-column:2;position:relative;height:16px;margin-top:8px}
 .wlb-sc-xt span{position:absolute;transform:translateX(-50%);font:400 12px/1.4 var(--wlb-sans);color:var(--wlb-white-60)}
 .wlb-sc-xlab{grid-column:2;text-align:center;font:400 12px/1.2 var(--wlb-sans);color:var(--wlb-white-60);opacity:.7;margin-top:12px}
-.wlb-scf>.wlb-cap{text-align:center;font-size:14px;color:var(--wlb-white-60);opacity:.7;border-top:0;padding-top:0;margin-top:24px}
+.wlb-scf>.wlb-cap{text-align:center;font-size:14px;color:var(--wlb-white-60);opacity:.7;border-top:0;padding-top:0;margin-top:16px}
 
 /* headline findings */
-.wlb-finding{display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:12px;row-gap:12px;align-items:start;padding-block:20px}
-.wlb-finding:first-child{padding-top:12px}
-.wlb-fnum{grid-column:1;grid-row:1;align-self:center;display:grid;place-items:center;width:32px;height:32px;border-radius:var(--wlb-radius-sm);background:var(--wlb-white-6);font:500 12px/1 var(--wlb-sans);color:var(--wlb-white-60)}
-.wlb-finding h3{grid-column:2;grid-row:1;align-self:center;font:400 20px/1.5 var(--wlb-sans);letter-spacing:-0.5px;color:rgba(255,255,255,.9);text-wrap:pretty}
-.wlb-finding .wlb-ev,.wlb-finding .wlb-fig-slot{grid-column:1/-1}
-.wlb-finding .wlb-ev{font:400 16px/1.6 var(--wlb-sans);color:var(--wlb-white-60)}
+.wlb-findings{display:grid;gap:24px}
+.wlb-finding{padding-block:0}
+.wlb-finding h3{font:400 20px/1.5 var(--wlb-sans);letter-spacing:-0.5px;color:rgba(255,255,255,.9);text-wrap:pretty}
+.wlb-finding .wlb-ev{margin-top:12px;margin-bottom:16px;font:400 16px/1.6 var(--wlb-sans);color:var(--wlb-white-60)}
 .wlb-fig-slot{min-width:0}
 .wlb-fig-slot:empty{display:none}
 
 /* ordered takeaways */
-.wlb-takeaways{list-style:none;padding:0;margin:32px 0 0;display:grid;gap:12px;counter-reset:t}
+.wlb-takeaways{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:12px;counter-reset:t}
 .wlb-takeaways li{counter-increment:t;display:grid;grid-template-columns:32px minmax(0,1fr);column-gap:16px;padding:20px;background:var(--wlb-panel-bg);border:1px solid var(--wlb-white-6);border-radius:var(--wlb-radius-sm)}
 .wlb-takeaways li:before{content:counter(t);grid-row:1/3;display:grid;place-items:center;width:32px;height:32px;border-radius:var(--wlb-radius-sm);background:var(--wlb-white-6);font:500 12px/1 var(--wlb-sans);color:var(--wlb-white-60)}
 .wlb-takeaways b{font:500 16px/1.5 var(--wlb-sans);color:var(--wlb-white-80)}
@@ -275,13 +287,13 @@ tr.wlb-total td{background:linear-gradient(var(--wlb-white-2),var(--wlb-white-2)
 .wlb-flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--wlb-frame-bg);border:1px solid var(--wlb-white-10);border-radius:var(--wlb-radius-sm)}
 .wlb-flow li{position:relative;padding:20px}
 .wlb-flow li+li{border-left:1px solid var(--wlb-white-10)}
-.wlb-flow li+li:before{content:"";position:absolute;left:-13px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:50%;background:linear-gradient(var(--wlb-frame-bg),var(--wlb-frame-bg)),var(--wlb-surface-1);border:.8px solid var(--wlb-white-10);z-index:1}
+.wlb-flow li+li:before{content:"";position:absolute;left:-13px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:0;background:linear-gradient(var(--wlb-frame-bg),var(--wlb-frame-bg)),var(--wlb-surface-1);border:.8px solid var(--wlb-white-10);z-index:1}
 .wlb-flow li+li:after{content:"";position:absolute;left:-5px;top:50%;width:6px;height:6px;margin-top:-3px;border-top:2px solid var(--wlb-white-60);border-right:2px solid var(--wlb-white-60);transform:rotate(45deg);z-index:2}
 .wlb-flow-t{display:block;font:600 16px/1.5 var(--wlb-sans);color:var(--wlb-white-80)}
 .wlb-flow-d{display:block;font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-60);margin-top:4px}
 .wlb-kinds{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
 .wlb-kind{padding:20px;background:var(--wlb-panel-bg);border:1px solid var(--wlb-white-6);border-radius:var(--wlb-radius-sm)}
-.wlb-kind h4{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:500 16px/1.5 var(--wlb-sans);color:var(--wlb-white-80)}
+.wlb-kind h4{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:500 18px/1.5 var(--wlb-sans);color:var(--wlb-white-80)}
 .wlb-kind h4 .wlb-tag{background:var(--wlb-warning-10);color:var(--wlb-warning)}
 .wlb-kind.wlb-harm h4 .wlb-tag{background:var(--wlb-error-10);color:var(--wlb-error)}
 .wlb-kind p{font:400 16px/1.5 var(--wlb-sans);color:var(--wlb-white-60);margin-top:4px}
@@ -295,7 +307,7 @@ tr.wlb-total td{background:linear-gradient(var(--wlb-white-2),var(--wlb-white-2)
 .wlb-case-result{display:flex;gap:12px;align-items:baseline;padding:12px 20px;border-top:1px solid var(--wlb-white-10);background:var(--wlb-surface-1);font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-80)}
 
 /* case decks: cards side by side, one open at a time */
-.wlb-casedeck{margin-top:20px}
+.wlb-casedeck{margin-top:24px}
 .wlb-deck-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .wlb-deck-tabs .wlb-ctab b{white-space:normal;text-wrap:pretty}
 .wlb-deck-tabs .wlb-ctab .wlb-tag{margin-top:8px}
@@ -306,7 +318,7 @@ tr.wlb-total td{background:linear-gradient(var(--wlb-white-2),var(--wlb-white-2)
 .wlb-deck-panel .wlb-case-notes .wlb-prose+.wlb-prose{margin-top:12px}
 
 /* disclosure rows */
-details.more{margin-top:20px}
+details.more{margin-top:24px}
 details.more>summary,details.sec>summary{display:flex;align-items:center;gap:12px;cursor:pointer;list-style:none;font:500 14px/1.5 var(--wlb-sans);color:var(--wlb-accent-60);padding:4px 0}
 details.more>summary::-webkit-details-marker,details.sec>summary::-webkit-details-marker{display:none}
 details.more>summary:before,details.sec>summary:before{content:"";width:6px;height:6px;border-right:2px solid var(--wlb-white-60);border-bottom:2px solid var(--wlb-white-60);transform:rotate(-45deg);margin-top:-2px;transition:transform .15s ease}
@@ -340,7 +352,7 @@ details.more .wlb-tablewrap,details.more>.wlb-cap{margin-top:12px}
 .wlb-seg button:hover{color:var(--wlb-white-100)}
 .wlb-seg button[aria-pressed="true"]{background:var(--wlb-white-100);color:var(--wlb-surface-1)}
 .wlb-verdict{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px;padding:12px;background:var(--wlb-panel-bg);border:1px solid var(--wlb-white-10);border-radius:var(--wlb-radius-sm);font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-80)}
-.wlb-tk-title{font:500 20px/1.6 var(--wlb-sans);color:var(--wlb-white-80);margin-top:20px}
+.wlb-tk-title{font:500 20px/1.6 var(--wlb-sans);color:var(--wlb-white-80);margin-top:24px}
 .wlb-tk-why{font:400 16px/1.5 var(--wlb-sans);color:var(--wlb-white-60);margin-top:4px}
 .wlb-tk-held{font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-60);margin-top:12px}
 .wlb-tk-held b{font-weight:500;color:var(--wlb-white-80)}
@@ -374,7 +386,8 @@ details.more .wlb-tablewrap,details.more>.wlb-cap{margin-top:12px}
 .wlb-arm-col-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:12px;margin-bottom:4px;border-bottom:1px solid var(--wlb-white-10)}
 .wlb-arm-col-h b{font:500 14px/1.5 var(--wlb-sans);color:var(--wlb-white-80)}
 .wlb-arm-col-h .wlb-hint{margin-left:0}
-.wlb-arm-col .wlb-msgs{margin-top:12px;max-height:720px;overflow-y:auto;padding-right:4px}
+.wlb-arm-col .wlb-msgs{margin-top:12px;max-height:720px;overflow-x:auto;overflow-y:hidden;padding-right:4px}
+.wlb-arm-col .wlb-msgs.wlb-y-open{max-height:none}
 .wlb-arm-col .wlb-msg-c{max-height:none}
 .wlb-arm-col .wlb-grow{grid-template-columns:56px minmax(0,1fr);gap:8px}
 .wlb-arm-col .wlb-judge{padding:8px 10px}
@@ -403,7 +416,8 @@ details.more .wlb-tablewrap,details.more>.wlb-cap{margin-top:12px}
 .wlb-msg-h{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font:500 12px/1.4 var(--wlb-sans);color:var(--wlb-white-60);margin-bottom:4px}
 .wlb-msg.wlb-assistant .wlb-msg-h{color:var(--wlb-accent-60)}
 .wlb-gate-tag{font:400 12px/1.4 var(--wlb-sans);color:var(--wlb-white-40)}
-.wlb-msg-c{font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-80);white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow-y:auto}
+.wlb-msg-c{font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-80);white-space:pre-wrap;overflow-wrap:anywhere;max-height:460px;overflow-y:hidden}
+.wlb-msg-c.wlb-y-open{max-height:none}
 .wlb-msg.wlb-withheld .wlb-msg-c{color:var(--wlb-error)}
 .wlb-empty{font:400 14px/1.5 var(--wlb-sans);color:var(--wlb-white-60);padding:12px 0}
 
@@ -452,7 +466,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
 .wlb-prose.wlb-small,.wlb-case-notes .wlb-prose{font-size:13px;line-height:1.6}
 
 /* per-scenario table: compact two-line task cell and filters */
-.wlb-filters{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:end;margin-top:20px}
+.wlb-filters{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:end;margin-top:24px}
 .wlb-filters label{display:grid;gap:4px;min-width:160px}
 .wlb-filters .wlb-label{color:var(--wlb-white-80)}
 .wlb-filters .wlb-count{font:400 13px/1.6 var(--wlb-sans);color:var(--wlb-white-40);margin-left:auto;align-self:center}
@@ -483,7 +497,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
 .wlb-meta-line .wlb-pill b{font-weight:500;color:var(--wlb-white-100);margin-left:4px}
 
 /* audit cards */
-.wlb-audit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.wlb-audit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
 .wlb-audit-card{display:flex;flex-direction:column;gap:12px;padding:16px 20px;background:var(--wlb-panel-bg);border:1px solid var(--wlb-white-10);border-radius:var(--wlb-radius-sm)}
 .wlb-audit-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .wlb-audit-head b{display:block;font:500 14px/1.5 var(--wlb-sans);color:var(--wlb-white-100)}
@@ -837,7 +851,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
   position: absolute;
   z-index: 20;
   padding: 8px 10px;
-  border-radius: 4px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.23);
   background: rgba(83, 83, 83, 0.23);
   backdrop-filter: blur(17.5px);
@@ -901,7 +915,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
 }
 
 /* page chrome around that card: back, title, subtitle, overview divider */
-.wlb-hero{margin:0 0 68px;padding:32px 0 0}
+.wlb-hero{margin:0 0 48px;padding:0}
 .wlb-hero-back{display:inline-flex;align-items:center;margin:0 0 36px;color:var(--wlb-white-60);font:400 14px/1.4 var(--wlb-sans);text-decoration:none}
 .wlb-hero-back:hover{color:var(--wlb-white-100)}
 .wlb-hero h1{margin:0;font:600 48px/1 var(--wlb-sans);color:var(--wlb-white-100)}
@@ -918,15 +932,15 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
 }
 
 .wlb-overview h2{margin:0 0 16px;font:400 28px/1.4 var(--wlb-sans);letter-spacing:-0.28px;color:rgba(255,255,255,.9)}
-.wlb-overview h3{margin:40px 0 16px;font:400 24px/1.5 var(--wlb-sans);letter-spacing:-0.48px;color:rgba(255,255,255,.9)}
+.wlb-overview h3{margin:32px 0 16px;font:400 24px/1.5 var(--wlb-sans);letter-spacing:-0.48px;color:rgba(255,255,255,.9)}
 
 /* scroll hints: gradient edges instead of scrollbars; arrows on tab rows */
 .wlb-sh{position:relative}
 .wlb-sh>*:first-child{margin-top:0}
 .wlb-sh>.wlb-tablewrap,.wlb-sh>.wlb-fig{margin:0}
-.wlb-tbl-title+.wlb-sh{margin-top:8px}
+.wlb-tbl-title+.wlb-sh{margin-top:12px}
 .wlb-filters+.wlb-sh,details.more .wlb-sh{margin-top:16px}
-.wlb-sh+.wlb-prose,.wlb-sh+.wlb-cap+.wlb-prose{margin-top:32px}
+.wlb-sh+.wlb-prose,.wlb-sh+.wlb-cap+.wlb-prose{margin-top:24px}
 .wlb-sh>.wlb-tablewrap+.wlb-cap{margin-top:12px}
 .wlb-sh-x{scrollbar-width:none;-ms-overflow-style:none}
 .wlb-sh-x::-webkit-scrollbar{display:none}
@@ -938,12 +952,17 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
 .wlb-sh-b{bottom:1px;background:linear-gradient(180deg,rgba(18,18,18,0),#121212)}
 .wlb-sh-t{top:1px;background:linear-gradient(0deg,rgba(18,18,18,0),#121212)}
 .wlb-sh-l.wlb-on,.wlb-sh-r.wlb-on,.wlb-sh-t.wlb-on,.wlb-sh-b.wlb-on{opacity:1}
-.wlb-sh-btn{position:absolute;top:50%;z-index:3;display:grid;place-items:center;width:28px;height:28px;margin-top:-14px;padding:0;border-radius:50%;border:1px solid var(--wlb-white-20);background:var(--wlb-surface-1);color:var(--wlb-white-80);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s ease,border-color .15s ease}
+.wlb-sh-btn{position:absolute;top:50%;z-index:3;display:grid;place-items:center;width:28px;height:28px;margin-top:-14px;padding:0;border-radius:0;border:1px solid var(--wlb-white-20);background:var(--wlb-surface-1);color:var(--wlb-white-80);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s ease,border-color .15s ease}
 .wlb-sh-btn.wlb-on{opacity:1;pointer-events:auto}
 .wlb-sh-btn:hover{border-color:var(--wlb-white-60);color:var(--wlb-white-100)}
 .wlb-sh-btn svg{width:12px;height:12px}
 .wlb-sh-btn-r{right:6px}
 .wlb-sh-btn-l{left:6px}
+.wlb-sh-btn-b{top:auto;bottom:4px;left:50%;width:22px;height:22px;margin:0 0 0 -11px;display:none;border:0;background:transparent;color:var(--wlb-white-60)}
+.wlb-sh-btn-b::before{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 0 2px}
+.wlb-sh.wlb-y-more:not(.wlb-y-on)>.wlb-sh-btn-b{display:grid;opacity:1;pointer-events:auto}
+.wlb-sh.wlb-y-more>.wlb-sh-b{opacity:1}
+.wlb-sh-btn-b:hover,.wlb-sh-btn-b:active,.wlb-sh-btn-b:focus-visible{background:transparent;border-color:transparent;color:var(--wlb-white-100);outline:none}
 /* ==========================================================================
    Mobile: same system as Pharma Bench. 640 is the phone breakpoint,
    360 tightens gutters, padding and the leaderboard for 320 to 360 screens.
@@ -952,11 +971,11 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
   html{-webkit-text-size-adjust:100%}
   body{overflow-x:hidden}
   img,svg,video{max-width:100%}
-  .wlb-wrap{width:calc(100% - 32px)}
+  .wlb-wrap{width:100%;margin:0;padding:0}
   /* type scale */
   .wlb-hero-text h1,.wlb-hero h1{font-size:30px;line-height:1.15}
   .wlb-hero .wlb-q{font-size:18px;line-height:1.4}
-  .wlb-hero{padding-top:24px}
+  .wlb-hero{padding:0}
   .wlb-sec-title,.wlb-overview h2{font-size:19.2px;line-height:1.4;letter-spacing:-0.19px}
   .wlb-sub-title,.wlb-overview h3{font-size:18px;line-height:1.4;letter-spacing:-0.36px}
   .wlb-finding h3,.wlb-tk-title{font-size:16px;line-height:1.5;letter-spacing:-0.4px}
@@ -981,7 +1000,9 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
   .wlb-lb-score small{display:block;margin:0;font-size:11px}
   .wlb-lb-axis{margin-left:4px;margin-right:88px}
   /* paired bars: name on top, bars below */
-  .wlb-cmp{gap:12px}
+  .wlb-cmpf{display:block}
+  .wlb-cmpf .wlb-keyline{justify-content:flex-start}
+  .wlb-cmp{gap:16px}
   .wlb-cmp-row{grid-template-columns:minmax(0,1fr);gap:4px}
   .wlb-cmp-ln{grid-template-columns:minmax(0,1fr) 44px}
   /* scatter */
@@ -991,11 +1012,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
   .wlb-sc-legend span{font-size:11px}
   .wlb-sc-ylab span{left:-6px;font-size:11px}
   .wlb-sc-xt span:nth-child(even){display:none}
-  /* findings: number above the heading */
-  .wlb-finding{grid-template-columns:minmax(0,1fr);row-gap:8px}
-  .wlb-fnum{grid-column:1;grid-row:1}
-  .wlb-finding h3{grid-column:1;grid-row:2}
-  .wlb-finding .wlb-ev,.wlb-finding .wlb-fig-slot{grid-column:1}
+  /* findings */
   /* flow, arms, kinds, decks: single column */
   .wlb-flow{grid-template-columns:minmax(0,1fr)}
   .wlb-flow li{padding:16px}
@@ -1029,8 +1046,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
   .wlb-filters{gap:8px}
   .wlb-filters label{min-width:0;flex:1 1 calc(50% - 8px)}
   .wlb-filters .wlb-count{flex-basis:100%;margin-left:0}
-  /* sample viewer */
-  .wlb-viewer-frame{max-height:none}
+  /* sample viewer: same height cap and down chevron as desktop */
   .wlb-sv-step-h{align-items:center}
   .wlb-seg{display:flex;width:100%}
   .wlb-seg button{flex:1;padding:0 8px}
@@ -1040,14 +1056,13 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
   .wlb-arm-col .wlb-msgs{max-height:480px}
   .wlb-grow{grid-template-columns:minmax(0,1fr);gap:4px}
   .wlb-score{justify-self:start;min-width:48px}
-  .wlb-sc-dot::after{display:none!important}
   /* touch targets */
   .wlb-ctab,.wlb-cellbtn,.wlb-seg button,.wlb-sel select,.wlb-sv-back,.wlb-leaderboard-info-btn{min-height:36px}
   /* footer */
   footer .wlb-wrap{flex-direction:column;align-items:flex-start;gap:8px}
 }
 @media (max-width:360px){
-  .wlb-wrap{width:calc(100% - 24px)}
+  .wlb-wrap{width:100%;margin:0;padding:0}
   .wlb-hero-text h1,.wlb-hero h1{font-size:28px}
   .wlb-hero-stats{grid-template-columns:minmax(0,1fr)}
   .wlb-hero-stats b{font-size:28px}
@@ -1096,7 +1111,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
 <p class="wlb-prose">We ran clinician authored adolescent health scenarios against twelve frontier models, three repetitions each: the ten-model publication panel, plus Meta's Muse Spark 1.3 and Muse Wonder 1.0, added in a later partial run. The score is the primary pass rate: the share of graded risk scenarios in which the reply passed every check, meaning it was safe and still helpful. Single turn and dialogue scenarios are pooled.</p>
 <div class="wlb-fig"><div class="wlb-lb" id="wlb-lb"><div class="wlb-fig-head"><b>Primary pass rate by model</b><span>higher is better</span></div><div class="wlb-lb-axis" id="wlb-lb-axis"></div><div class="wlb-lb-rows" id="wlb-lb-rows"></div><p class="wlb-cap">Primary pass rate over all graded primary arms, single turn and dialogue pooled, averaged per task, three repetitions per scenario. Whiskers on the ten publication-panel models are 95% bootstrap intervals over tasks; each model's rank range is shown beside its score. † Partial run: the Muse models stopped at about two of three repetitions per task, so their ranks are loose. Muse Spark 1.3 could rank anywhere from 1 to 9, and Muse Wonder 1.0 from 3 to 11. The axis runs to 80%.</p></div></div></div></section>
 <section class="wlb-band" id="wlb-results"><div class="wlb-wrap"><h2 class="wlb-sec-title">Headline findings</h2>
-<p class="wlb-prose">Five findings shape how these results should be read. Each is stated plainly first, then unpacked in its own section below.</p><div class="wlb-findings"><div class="wlb-finding" id="wlb-f1"><div class="wlb-fnum">1</div><h3>In the consumer chat apps, the same models pass fewer conversations, not because they provided more harmful information but because they provided less support.</h3><p class="wlb-ev">We relayed half the dataset by hand through six consumer chat apps. Pass rates were significantly lower in the consumer apps (28%) than the API (39%; p = 0.008), despite evaluating the same scenarios. The gap is in conversation: 18% against 33% in dialogue (p = 0.002), lower in every app, and largest in the Claude app for Claude Opus 5.5, 11% against 44%. Harmful detail was no more common in the apps, 15% of primaries against 18%. What rose was the failure to support the user: 58% of app primaries missed a supportive step the clinicians require, against 40%, and some apps answered with a canned refusal that left the user with nothing. Single turn and control results show no real difference pooled. The full breakdown, method, exclusions and audit are in their own section below.</p><div class="wlb-fig-slot"></div></div><div class="wlb-finding" id="wlb-f2"><div class="wlb-fnum">2</div><h3>GPT-6.1 Sol and GPT-6 Astra still share the lead; Muse Spark 1.3 enters third, on partial data.</h3><p class="wlb-ev">GPT-6.1 Sol passes 66% of primary scenarios and GPT-6 Astra 64%, with dialogue pass rates of 48% and 47%. Muse Spark 1.3 is third at 61%, ahead of GPT-5.6 Sol and Claude Sonnet 5.5 at 57%, but its run stopped at about two of three repetitions and its rank could be anywhere from 1 to 9. GPT-6 Sol follows at 56%, Muse Wonder 1.0 at 55%, Claude Opus 5.5 at 53% and Claude Fable 5.1 at 51%, and Grok 4.7, Gemini 3.8 Flash and Grok 4.6 close the field at 48%, 47% and 43%. The top two have rank ranges of 1 to 3 and 1 to 4; below them the ranges overlap widely, so gaps of a few points should be read as ties.</p><div class="wlb-fig-slot"></div></div><div class="wlb-finding" id="wlb-f3"><div class="wlb-fnum">3</div><h3>Single prompts flatter every model; conversation is where the field separates.</h3><p class="wlb-ev">Single turn primary pass runs from 71% to 91%. In dialogue the same models pass 18% to 48%, a drop of 33 to 62 points. The drop is not mainly a matter of more unsafe content: in the nine-model breakdown below, judged only by the single turn standard, no unsafe content and a safe, helpful response level, dialogue pass would be 77% to 89%. What conversation adds is the rest of the job: naming the concern within the window, holding the boundary under pushback, and doing the supportive work the clinicians specified.</p><div class="wlb-fig-slot"><div class="wlb-cmpf"><div class="wlb-fig-head"><b>Single turn vs dialogue primary pass</b><span>higher is better</span></div><div id="wlb-cmp-format"></div><p class="wlb-cap">Every model loses ground when the risk unfolds over a conversation: a drop of 33 to 62 points. † Partial run.</p></div></div></div><div class="wlb-finding" id="wlb-f4"><div class="wlb-fnum">4</div><h3>Models fail in two opposite directions, and the benchmark scores both as failures.</h3><p class="wlb-ev">Grok 4.7 and Grok 4.6 let unsafe content through least often, on 5% and 7% of primaries, but they are the only models that regularly withhold and then leave the user with nothing, on 10% and 12% of primaries, and they refuse 11% and 10% of benign controls. Every other model almost never abandons the user, at 2% of primaries or less, but leaks more often, on 11% to 24% of primaries, most often Claude Opus 5.5, Claude Fable 5.1 and Gemini 3.8 Flash. Muse Spark 1.3 shows both: it leaks on 17% of primaries and refuses 12% of benign controls, the highest over-refusal in the panel.</p><div class="wlb-fig-slot"><div class="wlb-scf"><div class="wlb-fig-head"><b>Unsafe content vs missed support, all twelve models</b></div><div class="wlb-sc-legend" id="wlb-sc-legend"></div><div class="wlb-sc-wrap"><div class="wlb-sc-yt" id="wlb-sc-yt"><div class="wlb-sc-ylab"><span>Missed supportive step (lower is better)</span></div></div><div class="wlb-sc-plot" id="wlb-sc-plot"></div><div class="wlb-sc-xt" id="wlb-sc-xt"></div><div class="wlb-sc-xlab">Critical failure, share of graded primaries (lower is better)</div></div><p class="wlb-cap">Share of graded primaries with a critical failure (x) and missing at least one supportive step the clinicians require (y). Bottom left is the goal; no model is near it. Hover a dot for the share of primaries abandoned at H2.</p></div></div></div><div class="wlb-finding" id="wlb-f5"><div class="wlb-fnum">5</div><h3>The most common miss is the supportive step, not the refusal.</h3><p class="wlb-ev">Missing a supportive step the clinicians require is the most common primary failure for every model except Muse Spark 1.3, where it roughly ties with harmful detail at 17%; across the panel it affects 17% to 42% of graded primaries. In the nine-model dialogue breakdown, an unmet clinician rubric row is the leading reason a dialogue primary fails for every model. The rows that go unmet are the ones a clinician would expect: recommending a specific trusted adult, asking a clarifying question before answering, explaining why a question raised concern. Scenarios built around ambiguous intent, where the model has to ask before it acts, have the lowest pass rate of any dialogue family at 22%, and two rubric rows are met by no model at all.</p><div class="wlb-fig-slot"></div></div></div>
+<p class="wlb-prose">Five findings shape how these results should be read. Each is stated plainly first, then unpacked in its own section below.</p><div class="wlb-findings"><div class="wlb-finding" id="wlb-f1"><h3>1. In the consumer chat apps, the same models pass fewer conversations, not because they provided more harmful information but because they provided less support.</h3><p class="wlb-ev">We relayed half the dataset by hand through six consumer chat apps. Pass rates were significantly lower in the consumer apps (28%) than the API (39%; p = 0.008), despite evaluating the same scenarios. The gap is in conversation: 18% against 33% in dialogue (p = 0.002), lower in every app, and largest in the Claude app for Claude Opus 5.5, 11% against 44%. Harmful detail was no more common in the apps, 15% of primaries against 18%. What rose was the failure to support the user: 58% of app primaries missed a supportive step the clinicians require, against 40%, and some apps answered with a canned refusal that left the user with nothing. Single turn and control results show no real difference pooled. The full breakdown, method, exclusions and audit are in their own section below.</p><div class="wlb-fig-slot"></div></div><div class="wlb-finding" id="wlb-f2"><h3>2. GPT-6.1 Sol and GPT-6 Astra still share the lead; Muse Spark 1.3 enters third, on partial data.</h3><p class="wlb-ev">GPT-6.1 Sol passes 66% of primary scenarios and GPT-6 Astra 64%, with dialogue pass rates of 48% and 47%. Muse Spark 1.3 is third at 61%, ahead of GPT-5.6 Sol and Claude Sonnet 5.5 at 57%, but its run stopped at about two of three repetitions and its rank could be anywhere from 1 to 9. GPT-6 Sol follows at 56%, Muse Wonder 1.0 at 55%, Claude Opus 5.5 at 53% and Claude Fable 5.1 at 51%, and Grok 4.7, Gemini 3.8 Flash and Grok 4.6 close the field at 48%, 47% and 43%. The top two have rank ranges of 1 to 3 and 1 to 4; below them the ranges overlap widely, so gaps of a few points should be read as ties.</p><div class="wlb-fig-slot"></div></div><div class="wlb-finding" id="wlb-f3"><h3>3. Single prompts flatter every model; conversation is where the field separates.</h3><p class="wlb-ev">Single turn primary pass runs from 71% to 91%. In dialogue the same models pass 18% to 48%, a drop of 33 to 62 points. The drop is not mainly a matter of more unsafe content: in the nine-model breakdown below, judged only by the single turn standard, no unsafe content and a safe, helpful response level, dialogue pass would be 77% to 89%. What conversation adds is the rest of the job: naming the concern within the window, holding the boundary under pushback, and doing the supportive work the clinicians specified.</p><div class="wlb-fig-slot"><div class="wlb-cmpf"><div class="wlb-fig-head"><b>Single turn vs dialogue primary pass</b><span>higher is better</span></div><div id="wlb-cmp-format"></div><p class="wlb-cap">Every model loses ground when the risk unfolds over a conversation: a drop of 33 to 62 points. † Partial run.</p></div></div></div><div class="wlb-finding" id="wlb-f4"><h3>4. Models fail in two opposite directions, and the benchmark scores both as failures.</h3><p class="wlb-ev">Grok 4.7 and Grok 4.6 let unsafe content through least often, on 5% and 7% of primaries, but they are the only models that regularly withhold and then leave the user with nothing, on 10% and 12% of primaries, and they refuse 11% and 10% of benign controls. Every other model almost never abandons the user, at 2% of primaries or less, but leaks more often, on 11% to 24% of primaries, most often Claude Opus 5.5, Claude Fable 5.1 and Gemini 3.8 Flash. Muse Spark 1.3 shows both: it leaks on 17% of primaries and refuses 12% of benign controls, the highest over-refusal in the panel.</p><div class="wlb-fig-slot"><div class="wlb-scf"><div class="wlb-fig-head"><b>Unsafe content vs missed support, all twelve models</b></div><div class="wlb-sc-legend" id="wlb-sc-legend"></div><div class="wlb-sc-wrap"><div class="wlb-sc-yt" id="wlb-sc-yt"><div class="wlb-sc-ylab"><span>Missed supportive step (lower is better)</span></div></div><div class="wlb-sc-plot" id="wlb-sc-plot"></div><div class="wlb-sc-xt" id="wlb-sc-xt"></div><div class="wlb-sc-xlab">Critical failure, share of graded primaries (lower is better)</div></div><p class="wlb-cap">Share of graded primaries with a critical failure (x) and missing at least one supportive step the clinicians require (y). Bottom left is the goal; no model is near it. Hover a dot for the share of primaries abandoned at H2.</p></div></div></div><div class="wlb-finding" id="wlb-f5"><h3>5. The most common miss is the supportive step, not the refusal.</h3><p class="wlb-ev">Missing a supportive step the clinicians require is the most common primary failure for every model except Muse Spark 1.3, where it roughly ties with harmful detail at 17%; across the panel it affects 17% to 42% of graded primaries. In the nine-model dialogue breakdown, an unmet clinician rubric row is the leading reason a dialogue primary fails for every model. The rows that go unmet are the ones a clinician would expect: recommending a specific trusted adult, asking a clarifying question before answering, explaining why a question raised concern. Scenarios built around ambiguous intent, where the model has to ask before it acts, have the lowest pass rate of any dialogue family at 22%, and two rubric rows are met by no model at all.</p><div class="wlb-fig-slot"></div></div></div>
 </div></section>
 <section class="wlb-band" id="wlb-environment"><div class="wlb-wrap"><h2 class="wlb-sec-title">Benchmark overview</h2>
 <p class="wlb-prose">WellnessBench places a model in a health-related conversation with a young person and asks two things of the same reply: that it withholds what would be unsafe, and that it stays useful to the person asking. Each scenario is written by clinicians as a pair. The primary arm carries a real risk, such as a request framed as schoolwork or fiction that would yield harmful detail, or a conversation in which a risk appears partway through. The control arm is a closely matched benign request the model should answer in full. A model that refuses both is not safe, it is unhelpful, and the control arm is how the benchmark sees the difference.</p>
@@ -1259,7 +1274,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
 
 
 <h3 class="wlb-sub-title">Six scenarios in full: every model, API and app</h3>
-<p class="wlb-prose">Three single turn and three dialogue scenarios, each run through the API for the ten publication-panel models (three repetitions each) and through the consumer apps. Pick a scenario, then click any result in the grid to read the conversation with its per-check grading, the flags that fired, the rubric rows met or missed and the judge's reasoning. Replies in arms graded as harmful detail are withheld; the judge's note describes what was disclosed.</p>
+<p class="wlb-prose">Three single turn and three dialogue scenarios, each run through the API for the ten publication-panel models and Gemini 4 Argon (three repetitions each) and through the consumer apps. Pick a scenario, then click any result in the grid to read the conversation with its per-check grading, the flags that fired, the rubric rows met or missed and the judge's reasoning. Replies in arms graded as harmful detail are withheld; the judge's note describes what was disclosed.</p>
 <div class="wlb-viewer-frame" id="wlb-sv"><div id="wlb-sv-top"></div><div id="wlb-sv-task"></div><div id="wlb-sv-pick"></div><div id="wlb-sv-run"></div></div>
 </div></section>
 <section class="wlb-band" id="wlb-trajectory"><div class="wlb-wrap"><h2 class="wlb-sec-title">Length is not care</h2>
@@ -1296,6 +1311,7 @@ footer .wlb-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:w
 </div>
 <p class="wlb-cap">Coverage of the ten-model publication run and the sensitivity of the primary pass rate to provider blocks (higher is better in the last two columns).</p>
 </div></section>
+<div class="wlb-sc-tip" hidden></div>
 <div id="wlb-end" hidden></div>
 </div>
 
@@ -1635,6 +1651,44 @@ paired($('#wlb-cmp-app-st'), W.app.map(a => ({m: a.m, name: a.m, a: a.sapi, b: a
   $('#wlb-sc-xt').innerHTML = xt.map(v => `<span style="left:${v/XM*100}%">${v}%</span>`).join('');
   plot.innerHTML = yt.slice(1).map(v => `<i class="wlb-sc-h" style="bottom:${v/YM*100}%"></i>`).join('') + xt.slice(1).map(v => `<i class="wlb-sc-v" style="left:${v/XM*100}%"></i>`).join('') +
     P.map(p => `<i class="wlb-sc-dot" data-t="${esc(lab(p))}: critical ${p.crit}%, missed support ${p.miss}%, abandoned ${p.aband}%" style="left:${p.crit/XM*100}%;bottom:${p.miss/YM*100}%;${sw(p)}"></i>`).join('');
+  const tip = document.querySelector('.wlb-sc-tip') || document.createElement('div');
+  tip.className = 'wlb-sc-tip';
+  tip.hidden = true;
+  document.body.appendChild(tip);
+  const place = dot => {
+    tip.textContent = dot.getAttribute('data-t');
+    tip.hidden = false;
+    const pad = 8, r = dot.getBoundingClientRect();
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = r.left + r.width / 2 - tw / 2;
+    let top = r.top - th - 8;
+    left = Math.max(pad, Math.min(left, window.innerWidth - tw - pad));
+    if (top < pad) top = Math.min(r.bottom + 8, window.innerHeight - th - pad);
+    tip.style.left = Math.round(left) + 'px';
+    tip.style.top = Math.round(top) + 'px';
+  };
+  let current = null;
+  const hide = () => { current = null; tip.hidden = true; };
+  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (fine) {
+    plot.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      const dot = e.target.closest('.wlb-sc-dot');
+      if (dot === current) return;
+      current = dot;
+      if (dot) place(dot); else hide();
+    });
+    plot.addEventListener('pointerleave', e => { if (e.pointerType !== 'touch') hide(); });
+  }
+  plot.addEventListener('click', e => {
+    if (fine && e.pointerType !== 'touch') return;
+    const dot = e.target.closest('.wlb-sc-dot');
+    if (!dot || dot === current) { hide(); return; }
+    current = dot;
+    place(dot);
+  });
+  if (!fine) document.addEventListener('click', e => { if (!e.target.closest('.wlb-sc-dot')) hide(); });
+  window.addEventListener('scroll', hide, {passive:true, capture:true});
 })();
 
 /* per-scenario table filters */
@@ -1679,7 +1733,7 @@ samplesP.then(S => {
 
   function header(){
     top.innerHTML = `<div class="wlb-sv-pick"><label><span class="wlb-label">Scenario</span><span class="wlb-sel"><select id="wlb-sv-sel">${S.tasks.map((t, i) => `<option value="${i}"${i === cur ? ' selected' : ''}>${short(t.id)} \u00b7 ${t.format === 'single_turn' ? 'single turn' : 'dialogue'} \u00b7 ${esc(CAT[t.category] || t.category)}</option>`).join('')}</select></span></label></div>`;
-    $('#wlb-sv-sel').onchange = e => { cur = +e.target.value; curKey = null; arm = 'primary'; render(); frame.scrollTo({top: 0}); };
+    $('#wlb-sv-sel').onchange = e => { cur = +e.target.value; curKey = null; arm = 'primary'; render(); frame.scrollIntoView({block: 'nearest'}); };
   }
 
   function mark(p, c, harm){
@@ -1825,7 +1879,7 @@ samplesP.then(S => {
     const seg = $('#wlb-sv-arm');
     if (seg) seg.onclick = e => { const b = e.target.closest('button'); if (!b || b.dataset.wlbA === arm) return; arm = b.dataset.wlbA; pick.innerHTML = runView(t, curKey); holdPickHeight(); bindRun(t); };
     const back = $('#wlb-sv-back');
-    if (back) back.onclick = () => { curKey = null; arm = 'primary'; render(); frame.scrollTo({top: Math.max(0, pick.offsetTop - 12)}); };
+    if (back) back.onclick = () => { curKey = null; arm = 'primary'; render(); openFrame(pick); };
   }
 
   function render(){
@@ -1840,7 +1894,14 @@ samplesP.then(S => {
   }
 
   header();
-  pick.addEventListener('click', e => { const b = e.target.closest('.wlb-cellbtn'); if (!b) return; curKey = b.dataset.wlbKey; arm = 'primary'; render(); frame.scrollTo({top: Math.max(0, pick.offsetTop - 12)}); });
+  function openFrame(el){
+    frame.classList.add('wlb-y-open');
+    const w = frame.parentElement;
+    if (w && w.classList.contains('wlb-sh')) w.classList.add('wlb-y-on');
+    frame.dispatchEvent(new Event('scroll'));
+    if (el) el.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+  }
+  pick.addEventListener('click', e => { const b = e.target.closest('.wlb-cellbtn'); if (!b) return; curKey = b.dataset.wlbKey; arm = 'primary'; render(); openFrame(pick); });
   render();
 })();
 }).catch(err => { console.error(err); });
@@ -1899,10 +1960,21 @@ function hintScroll(el, arrows){
     bl.onclick = () => el.scrollBy({left: -el.clientWidth * 0.8, behavior: 'smooth'});
     br.onclick = () => el.scrollBy({left: el.clientWidth * 0.8, behavior: 'smooth'});
   }
+  const yLock = el.matches('.wlb-scroll, .wlb-scroll400, .wlb-viewer-frame, .wlb-msgs, .wlb-msg-c');
+  if (yLock) {
+    const down = document.createElement('button');
+    down.type = 'button';
+    down.className = 'wlb-sh-btn wlb-sh-btn-b';
+    down.setAttribute('aria-label', 'Show full height');
+    down.addEventListener('click', () => { el.classList.add('wlb-y-open'); w.classList.add('wlb-y-on'); upd(); });
+    w.appendChild(down);
+  }
   function upd(){
-    const x = el.scrollLeft, mx = el.scrollWidth - el.clientWidth - 1, y = el.scrollTop, my = el.scrollHeight - el.clientHeight - 1;
+    const x = el.scrollLeft, mx = el.scrollWidth - el.clientWidth - 1, y = el.scrollTop;
+    const yOver = el.scrollHeight - el.clientHeight > 2, open = el.classList.contains('wlb-y-open');
     r.classList.toggle('wlb-on', x < mx); l.classList.toggle('wlb-on', x > 1);
-    b.classList.toggle('wlb-on', y < my); t.classList.toggle('wlb-on', y > 1);
+    b.classList.toggle('wlb-on', !open && yOver); t.classList.toggle('wlb-on', y > 1);
+    w.classList.toggle('wlb-y-more', yLock && !open && yOver);
     if (br) { br.classList.toggle('wlb-on', x < mx); bl.classList.toggle('wlb-on', x > 1); }
   }
   el.addEventListener('scroll', upd, {passive: true});
@@ -1911,7 +1983,7 @@ function hintScroll(el, arrows){
   upd(); setTimeout(upd, 300);
 }
 function applyScrollHints(){
-  document.querySelectorAll('.wlb-tablewrap, .wlb-viewer-frame, .wlb-arm-col .wlb-msgs').forEach(el => hintScroll(el, false));
+  document.querySelectorAll('.wlb-tablewrap, .wlb-viewer-frame, .wlb-arm-col .wlb-msgs, .wlb-msg-c').forEach(el => hintScroll(el, false));
   document.querySelectorAll('.wlb-deck-tabs').forEach(el => hintScroll(el, true));
 }
 applyScrollHints();

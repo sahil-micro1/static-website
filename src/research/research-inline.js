@@ -395,11 +395,11 @@ window.benchmarks_data["medical-index"] = {
     {
       id: "scores",
       label: "Scores",
-      overall: { id: "overall", label: "Overall", metric: "Composite" },
+      overall: { id: "overall", label: "micro1 Medical Index", metric: "Composite" },
       benchmarks: [
-        { id: "pathologybench", label: "RealmPathology Benchmark", metric: "Mean reward" },
-        { id: "pharmabench", label: "PharmaBench", metric: "Mean score" },
-        { id: "wellnessbench", label: "WellnessBench", metric: "Primary pass" },
+        { id: "pathologybench", label: "RealmPathology Benchmark", metric: "Mean reward", url: "/benchmark/realm-pathology" },
+        { id: "pharmabench", label: "PharmaBench", metric: "Mean score", url: "/benchmark/pharma-bench" },
+        { id: "wellnessbench", label: "WellnessBench", metric: "Primary pass", url: "/benchmark/wellness-bench" },
       ],
       rows: [
         {

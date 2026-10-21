@@ -22,7 +22,7 @@ const OP = {'Claude Fable 5.1':1,'Claude Sonnet 5.5':.8,'Claude Opus 5.5':.6,'Cl
   'Muse Wonder':1,'Muse Spark 1.3':.75,'Muse Spark 1.1':.5,'Grok 4.7':1,'Grok 4.6':.6,'GPT-6 Astra':1,'GPT-6 Sol':.6,'Gemini 3.8 Flash':1};
 const fam = m => /Claude/.test(m) ? 'claude' : /Muse/.test(m) ? 'muse' : /Grok/.test(m) ? 'grok' : /Gemini/.test(m) ? 'gemini' : 'gpt';
 const mv = m => `--rpb-mbg:var(--rpb-m-${fam(m)});--mo:${OP[m] ?? 1}`;
-const logo = m => `<span class="rpb-mlogo ${fam(m)}" aria-hidden="true"></span>`;
+const logo = m => `<span class="rpb-mlogo rpb-${fam(m)}" aria-hidden="true"></span>`;
 const nameHtml = m => `${logo(m)}<span class="rpb-nm-l">${esc(m)}</span><span class="rpb-nm-s">${esc(SH[M.indexOf(m)])}</span>`;
 const TK = {Extraction:'ext', Classification:'cls', Interpretation:'int', Management:'mgmt', Communication:'comm'};
 
@@ -142,7 +142,7 @@ $('#rpb-sb-seg').addEventListener('click', e => {
   const lo = .5, hi = .95, x = v => (v - lo) / (hi - lo) * 100;
   $('#rpb-decomp-rows').innerHTML = M.map((m, i) => {
     const score = X.mean[i], cov = X.cov[i], pen = -X.pdd[i];
-    return `<div class="rpb-stack-row" data-rpb-model="${esc(m)}"><span class="rpb-nm">${nameHtml(m)}</span><div class="rpb-bars" title="${esc(m)}: coverage ${f3(cov)}, penalties ${f3(pen)}, score ${f3(score)}"><i class="rpb-s rpb-mk" style="width:${x(score)}%;${mv(m)}"></i><i class="rpb-p" style="left:${x(score)}%;width:${x(cov) - x(score)}%"></i></div><span class="rpb-v">${f3(score)} <b>−${f3(pen)}</b></span></div>`;
+    return `<div class="rpb-stack-row" data-rpb-model="${esc(m)}"><span class="rpb-nm">${nameHtml(m)}</span><div class="rpb-bars" title="${esc(m)}: coverage ${f3(cov)}, penalties ${f3(pen)}, score ${f3(score)}"><i class="rpb-s rpb-mk" style="width:${x(score)}%"></i><i class="rpb-p" style="left:calc(${x(score)}% + 2px);width:max(0px,calc(${x(cov) - x(score)}% - 2px))"></i></div><span class="rpb-v">${f3(score)} <b>−${f3(pen)}</b></span></div>`;
   }).join('');
   $('#rpb-decomp-axis').innerHTML = `<div>${[.5,.6,.7,.8,.9].map(t => `<span style="left:${x(t)}%">${t.toFixed(1)}</span>`).join('')}</div>`;
 })();
@@ -185,7 +185,8 @@ function renderMiss(){
   const t = TYPES.find(x => x.name === curType), k = TK[t.name];
   const items = MISS.filter(m => m.type === curType);
   $('.rpb-mx-tabs', mxw).innerHTML = TYPES.map(tp => `<button class="rpb-mx-tab" role="tab" aria-selected="${tp.name === curType}" data-rpb-t="${esc(tp.name)}" style="--rpb-c:var(--rpb-t-${TK[tp.name]})"><span class="rpb-mx-name">${esc(tp.name)}</span><span class="rpb-mx-meter"><i style="width:${tp.pass}%"></i></span><span class="rpb-mx-num">${tp.pass}% met</span></button>`).join('');
-  $('.rpb-mx-head', mxw).innerHTML = `<div class="rpb-mx-def" style="--rpb-cs:var(--rpb-ts-${k})"><b>${esc(t.name)}</b> ${esc(t.def)}</div><div class="rpb-mx-facts"><span class="rpb-pill"><b>${t.n}</b> criteria</span><span class="rpb-pill"><b>${t.weight}%</b> of positive weight</span><span class="rpb-pill"><b>${t.pass}%</b> met, average across models</span></div>`;
+  const def = t.def.charAt(0).toUpperCase() + t.def.slice(1);
+  $('.rpb-mx-head', mxw).innerHTML = `<div class="rpb-mx-def" style="--rpb-cs:var(--rpb-ts-${k})">${esc(def)}</div><div class="rpb-mx-facts"><span class="rpb-pill"><b>${t.n}</b> criteria</span><span class="rpb-pill"><b>${t.weight}%</b> of positive weight</span><span class="rpb-pill"><b>${t.pass}%</b> met, average across models</span></div>`;
   $('.rpb-mx-grid', mxw).innerHTML = items.map(m => {
     const i = M.indexOf(m.model);
     return `<article class="rpb-xrow${focus === m.model ? ' rpb-hl' : ''}${focus && focus !== m.model ? ' rpb-dim' : ''}" data-rpb-model="${esc(m.model)}">
@@ -200,7 +201,6 @@ function renderMiss(){
   }).join('');
 }
 mxw.addEventListener('click', e => { const b = e.target.closest('.rpb-mx-tab'); if (b) { curType = b.dataset.rpbT; renderMiss(); } });
-mxw.prepend($('.rpb-mx-head', mxw));
 renderMiss();
 
 /* ---------- 6. penalties that fired most ---------- */
@@ -358,14 +358,14 @@ if (dd) (async function(){
     results(t, panel, mName){
       const rk = M.map((m, i) => { const id = IDS[i], reps = (metaOf(t.panels[id])['all 3 reps'] || '').split(',').map(num).filter(isFinite);
         return {id, m, reps, avg: reps.reduce((a, b) => a + b, 0) / (reps.length || 1), best: Math.max(...reps), worst: Math.min(...reps), med: t.rewards[id]}; }).sort((a, b) => b.avg - a.avg);
-      const table = `<div class="rpb-tablewrap rpb-rt"><table class="rpb-mini"><thead><tr><th>Rank</th><th>Model</th><th>Average</th><th>Best</th><th>Worst</th><th>Runs</th></tr></thead><tbody>${rk.map((r, i) => `<tr data-rpb-id="${esc(r.id)}"${r.id === st.model ? ' class="rpb-is-sel"' : ''}><td>${i + 1}.</td><td><span class="rpb-mlogo ${fam(r.m)}" aria-hidden="true"></span>${esc(r.m)}</td><td>${r.avg.toFixed(3)}<small>median run ${r.med.toFixed(3)}</small></td><td>${r.best.toFixed(2)}</td><td>${r.worst.toFixed(2)}</td><td>${r.reps.length}</td></tr>`).join('')}</tbody></table></div>
+      const table = `<div class="rpb-tablewrap rpb-rt"><table class="rpb-mini"><thead><tr><th>Rank</th><th>Model</th><th>Average</th><th>Best</th><th>Worst</th><th>Runs</th></tr></thead><tbody>${rk.map((r, i) => `<tr data-rpb-id="${esc(r.id)}"${r.id === st.model ? ' class="rpb-is-sel"' : ''}><td>${i + 1}.</td><td><span class="rpb-mlogo rpb-${fam(r.m)}" aria-hidden="true"></span>${esc(r.m)}</td><td>${r.avg.toFixed(3)}<small>median run ${r.med.toFixed(3)}</small></td><td>${r.best.toFixed(2)}</td><td>${r.worst.toFixed(2)}</td><td>${r.reps.length}</td></tr>`).join('')}</tbody></table></div>
         <p class="rpb-cap">Average, best and worst are over the three rollouts.</p>`;
       return table;
     },
     criteria(t, panel, mName){
       if (st.model !== 'all') return `<p class="rpb-dd-lead">Graded criteria for <b>${esc(mName)}</b> on ${esc(X.deep[st.task].id)}. A penalty counts as failed when the model tripped it.</p><h4 class="rpb-dd-h">${esc(mName)}, graded criteria</h4>` + critSection(rowsOf(st.task, st.model));
       const per = M.map((m, i) => rowsOf(st.task, IDS[i])), base = per[0];
-      const head = M.map(m => `<th><span class="rpb-mhead" data-rpb-name="${esc(m)}" tabindex="0"><span class="rpb-mlogo ${fam(m)}" aria-hidden="true"></span><span class="rpb-sr">${esc(m)}</span></span></th>`).join('');
+      const head = M.map(m => `<th><span class="rpb-mhead" data-rpb-name="${esc(m)}" tabindex="0"><span class="rpb-mlogo rpb-${fam(m)}" aria-hidden="true"></span><span class="rpb-sr">${esc(m)}</span></span></th>`).join('');
       const rowsH = base.map((r, idx) => `<tr><td class="rpb-mx2-c"><b>C${idx + 1}</b><span>${esc(r.crit)}</span>${r.neg ? '<em class="rpb-crit-kind-neg">Penalty</em>' : ''}</td><td class="rpb-mx2-w${r.neg ? ' rpb-neg' : ''}">${esc(r.weight)}</td>${per.map((rows, i) => { const x = rows.find(y => y.crit === r.crit); return `<td title="${esc(M[i])}: ${x ? x.label : 'n/a'}">${x ? statusDot(x) : ''}</td>`; }).join('')}</tr>`).join('');
       const cards = base.map((r, idx) => {
         const st2 = per.map((rows, i) => { const x = rows.find(y => y.crit === r.crit); return {m: M[i], x}; }).filter(o => o.x);
@@ -416,6 +416,7 @@ if (dd) (async function(){
 (function(){
   var SEL = '.rpb-rows,.rpb-lb-rows,.rpb-pm-scroll,.rpb-tablewrap,.rpb-px-list,.rpb-xgrid,.rpb-cr2-list,.rpb-mxc-list,.rpb-runlist,.rpb-fm2-grid,.rpb-dd-inner,.rpb-seg,.rpb-dd-tabs,.rpb-mx-tabs,.rpb-px-filter,.rpb-traj-meta';
   var NAV = ['rpb-seg','rpb-dd-tabs','rpb-mx-tabs','rpb-px-filter'];
+  var YLOCK = ['rpb-rows','rpb-lb-rows','rpb-pm-scroll','rpb-tablewrap','rpb-px-list','rpb-xgrid','rpb-cr2-list','rpb-mxc-list','rpb-runlist','rpb-fm2-grid','rpb-dd-inner'];
   function wrap(el){
     if (el.dataset.rpbSw) return;
     el.dataset.rpbSw = '1'; el.classList.add('rpb-sw-el');
@@ -426,13 +427,19 @@ if (dd) (async function(){
       ['l','r'].forEach(function(k){ var b = document.createElement('button'); b.type = 'button'; b.className = 'rpb-sw-btn rpb-' + k; b.setAttribute('aria-label', k === 'r' ? 'Scroll right' : 'Scroll left');
         b.addEventListener('click', function(){ el.scrollBy({left: (k === 'r' ? 1 : -1) * Math.max(120, el.clientWidth * .6), behavior: 'smooth'}); }); w.appendChild(b); });
     }
+    if (YLOCK.some(function(c){ return el.classList.contains(c); })) {
+      var down = document.createElement('button'); down.type = 'button'; down.className = 'rpb-sw-btn rpb-b'; down.setAttribute('aria-label', 'Show full height');
+      down.addEventListener('click', function(){ el.classList.add('rpb-y-open'); w.classList.add('rpb-y-on'); upd(); });
+      w.appendChild(down);
+    }
     var upd = function(){
       var cs = getComputedStyle(el), sx = /auto|scroll/.test(cs.overflowX), sy = /auto|scroll/.test(cs.overflowY);
-      var x = sx && el.scrollWidth - el.clientWidth > 2, y = sy && el.scrollHeight - el.clientHeight > 2;
+      var x = sx && el.scrollWidth - el.clientWidth > 2, yOver = el.scrollHeight - el.clientHeight > 2, y = sy && yOver;
       w.classList.toggle('rpb-can-r', x && el.scrollLeft < el.scrollWidth - el.clientWidth - 2);
       w.classList.toggle('rpb-can-l', x && el.scrollLeft > 2);
       w.classList.toggle('rpb-can-b', y && el.scrollTop < el.scrollHeight - el.clientHeight - 2);
       w.classList.toggle('rpb-can-t', y && el.scrollTop > 2);
+      w.classList.toggle('rpb-y-more', !el.classList.contains('rpb-y-open') && yOver);
     };
     el.addEventListener('scroll', upd, {passive:true}); el.__swUpd = upd; upd();
     if ('ResizeObserver' in window) new ResizeObserver(upd).observe(el);
