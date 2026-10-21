@@ -1329,9 +1329,15 @@ if (dd) (async function(){
     dd.insertAdjacentHTML('beforeend', '<p class="rpb-prose">Sample tasks could not be loaded.</p>');
     return;
   }
+  const tasks = $$('.rpb-dd-task', dd);
+  /* this section can carry models that are not in data.json yet, so its model list comes from the fragment */
+  const tabs0 = $$('.rpb-traj-tab', tasks[0]);
+  const IDS = tabs0.map(b => b.dataset.rpbModel);
+  const M = IDS.map((id, i) => X.ids.includes(id) ? X.models[X.ids.indexOf(id)] : tabs0[i].firstChild.textContent.trim());
+  const SH = IDS.map((id, i) => X.ids.includes(id) ? X.shorts[X.ids.indexOf(id)] : M[i].split(' ').pop());
+  const nameHtml = m => `${logo(m)}<span class="rpb-nm-l">${esc(m)}</span><span class="rpb-nm-s">${esc(SH[M.indexOf(m)])}</span>`;
   const idOf = m => IDS[M.indexOf(m)];
   const modelOf = id => M[IDS.indexOf(id)];
-  const tasks = $$('.rpb-dd-task', dd);
   const sect = (panel, starts) => $$('details.rpb-traj-section', panel).find(d => $('summary', d).textContent.startsWith(starts));
   const metaOf = panel => { const o = {}; $$('.rpb-traj-meta-card', panel).forEach(c => o[$('.rpb-label', c).textContent.trim()] = $('.rpb-value', c).textContent.trim()); return o; };
   const num = s => parseFloat(String(s).replace('−', '-').replace(/,/g, ''));
@@ -1511,7 +1517,7 @@ if (dd) (async function(){
   var NAV = ['rpb-seg','rpb-dd-tabs','rpb-mx-tabs','rpb-px-filter'];
   var YLOCK = ['rpb-rows','rpb-lb-rows','rpb-pm-scroll','rpb-tablewrap','rpb-px-list','rpb-xgrid','rpb-cr2-list','rpb-mxc-list','rpb-runlist','rpb-fm2-grid','rpb-dd-inner'];
   function wrap(el){
-    if (el.dataset.rpbSw) return;
+    if (el.dataset.rpbSw || !el.parentNode) return;
     el.dataset.rpbSw = '1'; el.classList.add('rpb-sw-el');
     var w = document.createElement('div'); w.className = 'rpb-sw';
     el.parentNode.insertBefore(w, el); w.appendChild(el);
