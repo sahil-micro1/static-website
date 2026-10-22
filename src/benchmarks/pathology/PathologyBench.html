@@ -1093,7 +1093,7 @@ const LOGOS = {claude:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac12
 const EXT = 'https://static-website.sahil-773.workers.dev/benchmarks/pathology/ext/';
 let X;
 try {
-  const res = await fetch(new URL('data.json', EXT));
+  const res = await fetch(new URL('data.json?v=1', EXT));
   if (!res.ok) throw new Error(String(res.status));
   X = await res.json();
 } catch (e) {
@@ -1322,7 +1322,7 @@ renderPen();
 const dd = document.getElementById('rpb-deep');
 if (dd) (async function(){
   try {
-    const res = await fetch(new URL('tasks.html', EXT));
+    const res = await fetch(new URL('tasks.html?v=1', EXT));
     if (!res.ok) throw new Error(String(res.status));
     dd.insertAdjacentHTML('beforeend', await res.text());
   } catch (e) {

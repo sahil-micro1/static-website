@@ -471,7 +471,7 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
   const xpList = $('#phb-xp-list'), xpPrev = $('#phb-xp-prev'), xpTools = $('#phb-xp-tools'), xpNote = $('#phb-xp-note');
   $('#phb-xp-n-all').textContent = tiles.length;
   $('#phb-xp-study').innerHTML = '<option value="all">All studies</option>' + studies.map(st => `<option value="${esc(st)}">${esc(st)} (${tiles.filter(t => t.study===st).length})</option>`).join('');
-  const sizeOf = t => t.kind==='pdf' ? `${t.pages} pages` : `${t.rows.toLocaleString()} rows`;
+  const sizeOf = t => t.kind==='pdf' ? `${t.pages} page${t.pages === 1 ? '' : 's'}` : `${t.rows.toLocaleString()} rows`;
   function xpIndices(){
     const q = xpQ.trim().toLowerCase();
     return tiles.map((t,i) => i).filter(i => {
@@ -504,7 +504,7 @@ fetch(EXT + 'pharma-bench-wall.json').then(r => {
   }
   function xpPreview(i){
     const t = tiles[i];
-    const meta = t.kind==='pdf' ? `${esc(t.study)} · ${esc(t.label)} · ${t.pages} pages · ${t.kb.toLocaleString()} KB` : `${esc(t.study)} · ${t.rows.toLocaleString()} rows × ${t.cols} columns`;
+    const meta = t.kind==='pdf' ? `${esc(t.study)} · ${esc(t.label)} · ${t.pages} page${t.pages === 1 ? '' : 's'} · ${t.kb.toLocaleString()} KB` : `${esc(t.study)} · ${t.rows.toLocaleString()} rows × ${t.cols} columns`;
     const body = t.kind==='pdf' ? '' : `<div class="phb-xp-tbl">${csvTable(t.view.head, t.view.rows)}</div>`;
     xpPrev.innerHTML = `<div class="phb-xp-ph"><div class="phb-xp-pt"><b>${esc(t.name)}</b><span>${t.key?'<i class="phb-xp-key">Key file</i> ':''}${meta}</span></div><div class="phb-xp-nav"><button class="phb-btn phb-xp-step" data-phb-d="-1" aria-label="Previous file" title="Previous file (↑)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg></button><button class="phb-btn phb-xp-step" data-phb-d="1" aria-label="Next file" title="Next file (↓)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg></button><button class="phb-btn" id="phb-xp-expand">${t.kind==='pdf'?'Open document':'Open dataset'}</button></div></div><div class="phb-xp-pb">${body}</div>`;
     if (t.kind==='pdf') mountPdf(xpPrev.querySelector('.phb-xp-pb'), t, { slot: 'preview', maxWidth: 560 });
