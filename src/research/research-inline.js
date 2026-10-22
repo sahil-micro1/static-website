@@ -536,3 +536,42 @@ window.benchmarks_data["realm-pathology-benchmark"] = {
     },
   ],
 };
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["mission-report-bench"] = {
+  lastUpdated: "October 21, 2026",
+  defaultTab: "mean",
+  tabs: [
+    {
+      id: "mean",
+      label: "Mean score",
+      rows: [
+        { name: "Gemini 4 Argon", score: 64.1, iconStyle: "gemini" },
+        { name: "Claude Sonnet 5.5", score: 63.8, iconStyle: "claude" },
+        { name: "Claude Opus 5.5", score: 63.5, iconStyle: "claude" },
+        { name: "Claude Fable 5.1", score: 63.3, iconStyle: "claude" },
+        { name: "Muse Wonder", score: 62.1, iconStyle: "muse" },
+        { name: "GPT-6 Astra", score: 61.8, iconStyle: "openai" },
+        { name: "GPT-6.1 Sol", score: 61.0, iconStyle: "openai" },
+        { name: "Grok 4.7", score: 59.5, iconStyle: "grok" },
+        { name: "Gemini 3.8 Flash", score: 54.3, iconStyle: "gemini" },
+      ],
+    },
+    {
+      id: "best",
+      label: "Best @3 score",
+      rows: [
+        { name: "Claude Sonnet 5.5", score: 72.8, iconStyle: "claude" },
+        { name: "Gemini 4 Argon", score: 70.8, iconStyle: "gemini" },
+        { name: "Muse Wonder", score: 70.6, iconStyle: "muse" },
+        { name: "Claude Opus 5.5", score: 70.5, iconStyle: "claude" },
+        { name: "Claude Fable 5.1", score: 69.9, iconStyle: "claude" },
+        { name: "GPT-6.1 Sol", score: 67.6, iconStyle: "openai" },
+        { name: "GPT-6 Astra", score: 67.0, iconStyle: "openai" },
+        { name: "Grok 4.7", score: 65.0, iconStyle: "grok" },
+        { name: "Gemini 3.8 Flash", score: 62.6, iconStyle: "gemini" },
+      ],
+    },
+  ],
+};

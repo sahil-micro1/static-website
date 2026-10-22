@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MissionReportBench</title>
+<meta name="description" content="MissionReportBench: 20 expert-written government status-reporting tasks, nine frontier models, 540 graded Word documents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap">
+<style>
+/* ==========================================================================
+   micro1 design system — dark theme default, light via [data-theme="light"]
+   Tokens, 4px spacing grid, type scale per spec. Sharp corners, as in the
+   PharmaBench reference (radius tokens resolved to 0).
+   ========================================================================== */
+:root{
+  --surface-1:#121212; --surface-2:#191919; --surface-3:#313131;
+  --white-100:rgba(255,255,255,1); --white-80:rgba(255,255,255,.8); --white-60:rgba(255,255,255,.6); --white-40:rgba(255,255,255,.4);
+  --white-20:rgba(255,255,255,.2); --white-10:rgba(255,255,255,.1); --white-6:rgba(255,255,255,.06); --white-2:rgba(255,255,255,.02); --white-1:rgba(255,255,255,.01);
+  --accent-100:#4347AE; --accent-80:#6A60E3; --accent-60:#969AEE; --accent-40:#BFC1EF;
+  --accent-30:rgba(112,101,240,.3); --accent-16:rgba(112,101,240,.16);
+  --success:#43AE5A; --success-30:rgba(71,184,95,.3); --success-10:rgba(71,184,95,.1);
+  --warning:#D9AE5A; --warning-30:rgba(230,185,95,.3); --warning-10:rgba(230,185,95,.1);
+  --error:#DF6767;   --error-30:rgba(236,109,109,.3);  --error-10:rgba(236,109,109,.1);
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px; --space-8:32px; --space-12:48px; --space-16:64px;
+  --radius-sm:0; --radius-md:0; --radius-lg:0;
+  --overlay:rgba(0,0,0,.4);
+  --frame-bg:rgba(255,255,255,.01); --panel-bg:rgba(255,255,255,.03); --panel-border:rgba(255,255,255,.06);
+  --table-bg:#000000;
+  --btn-p-bg:#FFFFFF; --btn-p-fg:#121212; --btn-p-bg-h:rgba(255,255,255,.8);
+  --btn-s-fg:rgba(255,255,255,1); --btn-s-border-h:var(--accent-80); --btn-s-bg-h:var(--white-6);
+  --th-bg:var(--white-10); --td-bg:var(--white-6);
+  /* model families (Figma chart palette, darkened ~10%) */
+  --m-claude:linear-gradient(90deg,#B9674C,#77402E); --m-muse:linear-gradient(90deg,#0076EF,#004488); --m-grok:linear-gradient(90deg,#636363,#1B1B1B);
+  --m-gemini:linear-gradient(90deg,#609FE3,#316078); --m-gpt:linear-gradient(90deg,#F2F2F2,#666666);
+  --mv-claude:linear-gradient(180deg,#C46D50,#7E4431); --mv-muse:linear-gradient(180deg,#007DFD,#004891); --mv-grok:linear-gradient(180deg,#696969,#1D1D1D); --mv-gemini:linear-gradient(180deg,#65A8F0,#34657F); --mv-gpt:linear-gradient(180deg,#FFFFFF,#6C6C6C);
+  /* category / family fills */
+  --grad-blue:linear-gradient(90deg,#4B63C9,#97A9F2); --grad-blue-light:linear-gradient(90deg,#969AEE,#6871D4);
+  --grad-green:linear-gradient(90deg,#60E38B,#317848); --grad-red:linear-gradient(90deg,#9B4447,#C66C6F);
+  --grad-warn:linear-gradient(90deg,#D9AE5A,#A9863C); --grad-grey:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,.3));
+  --grad-track:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.05));
+  --grad-purple:linear-gradient(90deg,#6A60E3,#A9A4F3);
+  --c-judgment:var(--grad-blue); --c-synthesis:var(--grad-warn); --c-accuracy:var(--grad-green); --c-instruction:var(--grad-purple); --c-format:var(--grad-grey);
+  --f-war:var(--grad-blue); --f-aar:var(--grad-purple); --f-psr:var(--grad-warn); --f-par:var(--grad-green);
+  --ft-word:#3987e5; --ft-pdf:#d95926; --ft-xls:#199e70; --ft-ppt:#c98500;
+  --l-words:var(--grad-blue); --l-pages:var(--grad-purple); --l-form:var(--grad-warn); --l-none:var(--grad-grey);
+  --sans:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --code:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --edge:#121212; --fade:#121212; --fade-box:#0B0B0B; --th-solid:#2a2a2a; --tab-on-bg:rgba(255,255,255,.07); --tab-on-fg:rgba(255,255,255,.77); --figbox-bg:rgba(0,0,0,.4); --chart-bg:#151515; --grid-c:#252525; --grad-purple-v:linear-gradient(180deg,#7065F0,#5149AB);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+*,*::before,*::after{border-radius:0!important}
+*{scrollbar-width:none}
+*::-webkit-scrollbar{display:none}
+[hidden]{display:none!important}
+button{font-family:inherit}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;position:relative;overflow-x:clip;background:var(--surface-1);color:var(--white-100);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent-80);outline-offset:2px}
+.wrap{width:min(843px,100%);margin:0 auto}
+h1,h2,h3,h4{font-family:var(--sans);font-weight:600;text-wrap:balance;margin:0}
+p{margin:0}
+.hero,main{position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+
+/* hero */
+.hero{padding:0}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:36px}
+.hero-back{display:inline-flex;align-items:center;color:var(--white-60);font:400 14px/1.4 var(--sans);text-decoration:none}
+.hero-back:hover{color:var(--white-100)}
+.hero h1{font:600 48px/1 var(--sans);color:var(--white-100)}
+.hero .q{margin:12px 0 0;font:400 16px/1.5 var(--sans);color:var(--white-60)}
+.overview{margin-top:0}
+.overview p{margin:16px 0 0;font:400 16px/1.5 var(--sans);color:var(--white-60)}
+
+/* buttons: secondary, small basic */
+.btn{white-space:nowrap;appearance:none;height:32px;padding:0 12px;font:500 14px/16px var(--sans);cursor:pointer;border:1px solid var(--white-20);background:var(--white-6);color:var(--btn-s-fg);transition:background-color .15s ease,border-color .15s ease}
+.btn:hover{border-color:var(--btn-s-border-h);background:var(--btn-s-bg-h)}
+
+/* hero scoreboard card */
+.board{box-sizing:border-box;width:100%;margin:28px auto 0;color:var(--white-100);display:flex;flex-direction:column;gap:34px;background:var(--surface-1);border:1px solid var(--white-10);padding:24px}
+.board-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;min-height:32px}
+.board-head .seg{display:flex;gap:3px}
+.board-head .seg button{appearance:none;border:0;background:transparent;margin:0;padding:4px 12px;font:400 14px/1.6 var(--sans);color:var(--white-40);cursor:pointer;white-space:nowrap;transition:color .2s ease,background .2s ease}
+.board-head .seg button:hover{color:var(--white-100)}
+.board-head .seg button[aria-pressed="true"]{background:var(--white-6);color:var(--white-80)}
+.board-upd{font:400 14px/1.6 var(--sans);color:var(--white-60);white-space:nowrap}
+.board-panel{position:relative}
+.board-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px}
+.board-row{position:relative;z-index:0;display:flex;flex-direction:column;gap:8px;transition:opacity .25s ease}
+.board-row::before{content:"";position:absolute;inset:-8px;z-index:-1;background:var(--white-6);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.board-row.is-active{z-index:1}
+.board-list.has-active .board-row:not(.is-active){opacity:.4}
+@media (hover:hover) and (pointer:fine){.board-row:hover{z-index:1}.board-row:hover::before{opacity:1}}
+.board-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:17px}
+.board-id{display:flex;align-items:center;gap:6px;min-width:0}
+.board-name{font:400 14px/1.6 var(--sans);color:var(--white-80);white-space:nowrap}
+.board-score{flex-shrink:0;font:400 14px/1.6 var(--sans);color:var(--white-80);white-space:nowrap}
+.board-row.lead .board-score{color:var(--white-100)}
+.board-track{width:100%;height:8px;overflow:hidden;background:var(--white-10)}
+.board-row.lead .board-track{background:rgba(255,255,255,.16)}
+.board-fill{height:100%;width:100%;transform:scaleX(0);transform-origin:left center;background:rgba(184,184,184,.3);transition:transform .28s cubic-bezier(.22,1,.36,1),background .5s ease}
+.board-row.lead .board-fill{background:linear-gradient(90deg,#4f69d4 0%,#a0b3ff 100%)}
+.mlogo{display:inline-block;width:20px;height:20px;object-fit:cover;flex:none}
+.mlogo.claude{opacity:.9;background:#d87756}
+.mlogo.gpt{opacity:.9;background:#fff}
+.mlogo.grok{border:.5px solid #fff;background:#000}
+.mlogo.gemini{background:#fff}
+.mlogo.muse{opacity:.9;background:#fff}
+.info-btn{appearance:none;border:0;margin:0 0 0 2px;padding:0;flex-shrink:0;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;background:transparent;cursor:pointer;color:var(--white-20);position:relative}
+.info-btn svg{display:block;width:16px;height:16px;pointer-events:none;transition:color .2s ease}
+.info-btn:hover,.info-btn:focus-visible,.board-row.is-active .info-btn{color:var(--white-100)}
+.info-btn:focus-visible{outline:none}
+.tip{position:absolute;z-index:20;padding:8px 10px;border:1px solid rgba(255,255,255,.23);background:rgba(83,83,83,.23);backdrop-filter:blur(17.5px);-webkit-backdrop-filter:blur(17.5px);pointer-events:none;width:fit-content;display:grid;grid-template-columns:max-content max-content;column-gap:8px;row-gap:2px;white-space:nowrap;opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease}
+.tip.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
+.tip p{margin:0;font:400 12px/1.4 var(--sans)}
+.tip .k{color:rgba(255,255,255,.7)}
+.tip .v{color:#fff}
+
+/* hover tooltip (blurred, shared) */
+.ftip{position:fixed;z-index:80;padding:8px 10px;border:1px solid rgba(255,255,255,.23);background:rgba(83,83,83,.23);backdrop-filter:blur(17.5px);-webkit-backdrop-filter:blur(17.5px);pointer-events:none;display:grid;grid-template-columns:max-content max-content;column-gap:10px;row-gap:2px;white-space:nowrap;opacity:0;visibility:hidden;transform:translate(-50%,-100%) translateY(-8px);transition:opacity .15s ease,visibility .15s ease}
+.ftip.on{opacity:1;visibility:visible}
+.ftip p{margin:0;font:400 12px/1.4 var(--sans)}
+.ftip .k{color:rgba(255,255,255,.7)}
+.ftip .v{color:#fff}
+.ftip .t{grid-column:1/-1;font:500 12px/1.4 var(--sans);color:#fff;margin-bottom:2px}
+[data-tip]{cursor:default}
+.track .pt{transition:transform .15s ease}
+.track .pt:hover,.cf-plot .dot:hover{transform:scale(1.3);z-index:3}
+
+/* sections */
+section.band{padding-block:36px;scroll-margin-top:16px}
+#appendix-b{padding-bottom:0}
+section.band .wrap+.wrap{margin-top:24px}
+.sec-title{font:500 24px/1.4 var(--sans);color:var(--white-80)}
+.sub-title{font:500 20px/1.6 var(--sans);color:var(--white-80);margin-top:40px}
+.sec-title+.sub-title{margin-top:12px}
+.prose{font:400 16px/1.5 var(--sans);color:var(--white-60);margin-top:16px}
+.prose strong{color:var(--white-80);font-weight:500}
+.prose code{font-family:var(--sans);font-size:14px;color:var(--white-80);padding:0 4px;background:var(--white-6)}
+.wrap>.prose:first-child,.wrap>.fig:first-child,.wrap>.callout:first-child{margin-top:0}
+.cap{font:400 13px/1.6 var(--sans);color:var(--white-40);margin-top:12px}
+.cap b{color:var(--white-80);font-weight:400}
+
+/* numbered findings */
+#findings-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.finding{display:flex;flex-direction:column;gap:6px;padding:20px;background:var(--frame-bg);border:1px solid var(--white-10);min-width:0}
+.finding h3{font:600 18px/1.35 var(--sans);color:var(--white-100);opacity:.9;text-wrap:pretty}
+.finding .ev{font:400 14px/1.6 var(--sans);color:var(--white-60);overflow-wrap:break-word}
+
+/* callout + model notes */
+.callout{margin-top:16px;background:var(--panel-bg);border:1px solid var(--panel-border);padding:20px}
+.callout h3{font:500 20px/1.6 var(--sans);color:var(--white-80)}
+.callout p{font:400 16px/1.5 var(--sans);color:var(--white-60);margin-top:12px}
+.notes{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.notes li{display:flex;flex-direction:column;gap:6px;padding:20px;background:var(--frame-bg);border:1px solid var(--white-10);min-width:0}
+.notes .who{display:flex;align-items:center;gap:8px;font:500 16px/1.5 var(--sans);color:var(--white-80)}
+.notes .who small{font:400 14px/1.5 var(--sans);color:var(--white-60);margin-left:auto}
+.notes p{font:400 14px/1.5 var(--sans);color:var(--white-60)}
+
+/* figure frame: caption lives inside */
+.fig{margin-top:16px}
+.frame,.cf{--fade:var(--fade-box);background:var(--figbox-bg);border:1px solid var(--white-20);border-radius:6px!important;padding:28px 24px 24px;overflow:hidden}
+.frame-h{text-align:left;margin-bottom:16px}
+.frame-h h3{font:400 21px/1.4 var(--sans);color:var(--white-80);text-wrap:balance}
+.frame-h span{display:none}
+.frame>.cap{font:400 14px/1.6 var(--sans);color:var(--white-60);opacity:.7;text-align:left;margin:20px 0 0;padding:0;border:0}
+.frame>.cap b{font-weight:400;color:var(--white-80)}
+.keyline{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:8px 20px;font:400 12px/1.4 var(--sans);color:var(--white-60);margin:0 0 20px}
+.keyline i{display:inline-block;width:12px;height:8px;margin-right:8px;vertical-align:0;background:var(--grad-grey)}
+.keyline i.dot{width:8px;height:8px;border-radius:50%!important}
+.keyline i.diamond{width:8px;height:8px;transform:rotate(45deg);background:var(--white-80)}
+.keyline i.line{width:12px;height:2px;background:var(--white-80);vertical-align:3px}
+
+/* row charts (one row per model or task) */
+.rows{display:grid;gap:8px}
+.rows.tight{gap:4px}
+.row{display:grid;grid-template-columns:var(--lab,164px) minmax(0,1fr) var(--val,64px);gap:16px;align-items:center;font:400 14px/1.5 var(--sans);color:var(--white-80)}
+.row .lab{display:flex;align-items:center;gap:8px;min-width:0}
+.row .lab>span{flex:none;white-space:nowrap}
+.row .lab small{display:block;font-size:12px;line-height:1.4;color:var(--white-60);white-space:normal}
+.row .lab .mlogo{width:16px;height:16px}
+.row .v{text-align:right;justify-self:end;white-space:nowrap;font-weight:600;color:var(--white-100)}
+.row .v small{display:block;font:400 12px/1.4 var(--sans);color:var(--white-60);white-space:normal}
+.row .v b{font-weight:500;color:var(--error)}
+.track{position:relative;height:12px;background:var(--grad-track)}
+.track.tall{height:16px}
+.track .bar{position:absolute;top:0;bottom:0;left:0;box-shadow:inset 0 0 0 1px var(--white-10)}
+.track .seg{position:absolute;top:0;bottom:0;box-shadow:inset 0 0 0 1px var(--white-10)}
+.track .seg span{position:absolute;inset:0;display:grid;place-items:center;font:500 11px/1 var(--sans);color:#fff;text-shadow:0 0 2px rgba(0,0,0,.6);overflow:hidden;white-space:nowrap}
+.track .seg.narrow span{display:none}
+.track .seg.pen{opacity:.85}
+.track .ci{position:absolute;top:50%;height:2px;margin-top:-1px;background:var(--white-80)}
+.track .ci::before,.track .ci::after{content:"";position:absolute;top:-4px;width:2px;height:10px;background:var(--white-80)}
+.track .ci::before{left:0}.track .ci::after{right:0}
+.track .mk{position:absolute;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--white-80);transform:rotate(45deg);box-shadow:0 0 0 2px var(--surface-1)}
+.track .pt{position:absolute;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;box-shadow:0 0 0 2px var(--surface-1)}
+.track .pt.lo{background:var(--white-40)}
+.track .pt.mid{background:var(--grad-blue)}
+.track .pt.hi{background:var(--white-100)}
+.track .rng{position:absolute;top:50%;height:2px;margin-top:-1px;background:var(--white-20)}
+.track .zero{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--white-40)}
+.axis{position:relative;height:16px;margin:0 calc(var(--val,64px) + 16px) 8px calc(var(--lab,164px) + 16px)}
+.axis span{position:absolute;transform:translateX(-50%);font:400 12px/1.4 var(--sans);color:var(--white-60);white-space:nowrap}
+.axis span:first-child{transform:none}
+.axis span:last-child{transform:translateX(-100%)}
+.axis-t{font:400 12px/1.4 var(--sans);color:var(--white-40);text-align:right;margin-top:8px}
+.grid{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed var(--white-10);pointer-events:none}
+
+.tabs{display:flex;flex-wrap:nowrap;gap:3px;margin-bottom:16px;overflow-x:auto;scrollbar-width:none}
+.tab{appearance:none;background:transparent;border:0;padding:4px 10px;font:400 14px/1.6 var(--sans);color:var(--white-40);cursor:pointer;flex:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:color .15s ease,background-color .15s ease}
+.tab:hover{color:var(--white-80)}
+.tab:not([aria-selected="true"]) .mlogo{opacity:.4}
+.tab[aria-selected="true"]{background:var(--tab-on-bg);color:var(--tab-on-fg)}
+.tab .mlogo{width:16px;height:16px}
+.tab-note{font:400 13px/1.5 var(--sans);color:var(--white-60);margin:-4px 0 16px}
+.tabpanel[hidden]{display:none}
+
+/* Figma-style chart frame (9650 / 9653): centred title, legend, dashed grid, solid axes */
+
+.cf-t{font:400 21px/1.4 var(--sans);color:var(--white-80);text-align:left;text-wrap:balance}
+.cf-k{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:12px 20px;margin:12px 0 0}
+.cf-k span{display:inline-flex;align-items:center;gap:6px;font:400 12px/1.2 var(--sans);color:var(--white-60)}
+.cf-k i{display:inline-block;width:14px;height:14px;flex:none}
+.cf-cap{font:400 14px/1.6 var(--sans);color:var(--white-60);opacity:.7;text-align:left;margin:20px 0 0}
+.cf-cap b{font-weight:400;color:var(--white-80)}
+.cf-plot{position:relative;margin:28px 24px 0 56px;height:260px}
+.cf-plot .gy,.cf-plot .gx{position:absolute;pointer-events:none;border-color:var(--grid-c)}
+.cf-plot .gy{left:0;right:0;border-top:1px dashed var(--grid-c)}
+.cf-plot .gx{top:0;bottom:0;border-left:1px dashed var(--grid-c)}
+.cf-plot .axl{position:absolute;left:0;top:0;bottom:0;border-left:1px solid var(--white-20)}
+.cf-plot .axb{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--white-20)}
+.cf-plot .ty{position:absolute;right:calc(100% + 8px);transform:translateY(-50%);font:400 11px/1 var(--sans);color:var(--white-60);white-space:nowrap}
+.cf-plot .tx{position:absolute;top:calc(100% + 8px);transform:translateX(-50%);font:400 11px/1.2 var(--sans);color:var(--white-60);white-space:nowrap}
+.cf-plot .tx.rot{transform:translateX(-100%) rotate(-40deg);transform-origin:right top;top:calc(100% + 6px)}
+.cf-plot .dot{position:absolute;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%!important;z-index:1}
+.cf-plot .fit{position:absolute;height:0;border-top:1.5px dashed var(--white-40);transform-origin:left center}
+.cf-ax{font:400 12px/1.2 var(--sans);color:var(--white-60);opacity:.7;text-align:center}
+.cf-ax.x{margin:56px 0 0 56px}
+.cf-ax.y{position:absolute;left:-8px;top:50%;transform:translate(-100%,-50%) rotate(-90deg);transform-origin:right center;white-space:nowrap}
+.cf-ax.y{left:-44px}
+/* columns */
+.cf-cols{position:absolute;inset:0;display:flex;justify-content:space-around;align-items:stretch}
+.cf-col{position:relative;flex:1 1 0;min-width:0;height:100%}
+.cf-col .trk{position:absolute;left:50%;top:0;bottom:0;width:24px;margin-left:-12px;background:var(--grad-purple-v);opacity:.1}
+.cf-col .bar{position:absolute;left:50%;width:24px;margin-left:-12px;background:var(--grad-purple-v)}
+.cf-col .cv{position:absolute;left:50%;transform:translateX(-50%);font:500 11px/1 var(--sans);color:var(--white-80);white-space:nowrap}
+.dense .cf-col .cv{font-size:9.5px}
+.dense .cf-col .trk,.dense .cf-col .bar{width:14px;margin-left:-7px}
+.dense .cf-col .cl{width:auto;white-space:nowrap;transform:translateX(-100%) rotate(-45deg);transform-origin:right top;left:calc(50% + 4px);top:calc(100% + 6px)}
+.dense-wrap .cf-ax.x{margin-top:60px}
+.cf-col .cl{position:absolute;left:50%;top:calc(100% + 8px);transform:translateX(-50%);width:calc(100% + 8px);font:400 11px/1.2 var(--sans);color:var(--white-60);text-align:center;white-space:normal;text-wrap:balance}
+.cf-col .cl small{white-space:nowrap}
+.cf-col .cl small{display:block;font-size:10px;color:var(--white-40)}
+.cf-plot .zero{position:absolute;left:0;right:0;border-top:1px solid var(--white-40);z-index:1}
+.cf-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cf-scroll>.cf-inner{min-width:640px}
+/* family / setting matrix */
+.matrix{display:grid;gap:2px;margin-top:24px;font:400 12px/1.4 var(--sans);color:var(--white-60)}
+.matrix .cell{padding:8px;background:var(--white-2);text-align:center;position:relative}
+.matrix .cell{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--white-2);border:1px solid var(--white-6)}
+.matrix .pips{display:inline-flex;gap:3px}
+.matrix .pips i{display:block;width:6px;height:12px;background:var(--grad-purple-v)}
+.matrix .cell span{color:var(--white-80)}
+.matrix .cell.z span{color:var(--white-40)}
+.matrix .hd{padding:8px;text-align:center;color:var(--white-60)}
+.matrix .rh{padding:8px 8px 8px 0;text-align:left;color:var(--white-80)}
+
+/* penalty chart (replaces table 3) */
+.pen-rows .row{grid-template-columns:minmax(0,1fr) var(--val,64px);grid-template-rows:auto auto;gap:6px 12px}
+.pen-rows .row .lab{grid-column:1/-1;grid-row:1;display:grid;gap:2px}
+.pen-rows .row .lab>span{flex:auto;white-space:normal}
+.pen-rows .row .track{grid-column:1;grid-row:2}
+.pen-rows .row .v{grid-column:2;grid-row:2;font-size:13px;line-height:1.2}
+.pen-rows .row .v small{display:inline;margin-left:4px}
+.pen-rows .rows{gap:16px}
+.pen-rows .axis{margin-left:0}
+.pen-lab .pt{font:400 14px/1.4 var(--sans);color:var(--white-80)}
+.pen-lab .pm{font:400 12px/1.4 var(--sans);color:var(--white-60)}
+.pen-lab .pm b{font-weight:500;color:var(--white-80);margin-right:6px}
+/* penalty summary (table 3) */
+.pen-list{display:grid}
+.pen-item{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:8px 32px;padding:16px 0;border-top:1px solid var(--white-10)}
+.pen-item:first-child{border-top:0;padding-top:0}
+.pen-item .pt{font:400 15px/1.4 var(--sans);color:var(--white-80)}
+.pen-item .pm{font:400 12px/1.4 var(--sans);color:var(--white-60);margin-top:4px}
+.pen-item .pm b{font-weight:500;color:var(--white-80);margin-right:8px}
+.pen-item .pr{display:grid;gap:8px;align-self:center}
+.pen-item .bv{display:grid;grid-template-columns:minmax(0,1fr) 56px;gap:12px;align-items:center}
+.pen-item .bv .track{height:8px}
+.pen-item .bv .v{font:600 14px/1.2 var(--sans);color:var(--white-100);text-align:right;white-space:nowrap}
+.pen-item .bv .v small{font:400 12px/1.2 var(--sans);color:var(--white-60);margin-left:4px}
+.pen-item .ex{font:400 12px/1.5 var(--sans);color:var(--white-60)}
+.pen-item .ex b{font-weight:500;color:var(--white-80)}
+/* task cards (replaces table 5) */
+.tcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:1fr;gap:12px;align-items:stretch}
+.tcard{display:flex;flex-direction:column;gap:6px;padding:16px;background:var(--panel-bg);border:1px solid var(--panel-border);min-width:0}
+.tcard .th{display:flex;justify-content:space-between;align-items:center;gap:12px;line-height:1}
+.tcard .id{font:500 12px/1.4 var(--sans);color:var(--white-80);padding:2px 6px;background:var(--white-6)}
+.tcard .tsc{font:600 16px/1.2 var(--sans);color:var(--white-100)}
+.tcard .nm{font:500 15px/1.4 var(--sans);color:var(--white-100)}
+.tcard dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font:400 13px/1.5 var(--sans)}
+.tcard dt{color:var(--white-40)}
+.tcard dd{margin:0;color:var(--white-60)}
+.tcard .track{margin-top:auto;height:6px}
+.tcard dl{margin-bottom:6px}
+/* metric rows (replaces table 2): stats chips */
+.stat-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.stat{padding:8px 12px;background:var(--panel-bg);border:1px solid var(--panel-border);font:400 13px/1.4 var(--sans);color:var(--white-60)}
+.stat b{color:var(--white-100);font-weight:500}
+
+/* grouped rows: one label, several thin bars */
+.grp{display:grid;grid-template-columns:var(--lab,164px) minmax(0,1fr);gap:16px;align-items:start;font:400 14px/1.5 var(--sans);color:var(--white-80)}
+.grp .lab{padding-top:2px}
+.grp .lab small{display:block;font-size:12px;line-height:1.4;color:var(--white-60)}
+.grp .bars{display:grid;gap:3px}
+.grp .b{display:grid;grid-template-columns:72px minmax(0,1fr) 44px;gap:8px;align-items:center}
+.grp .b .bn{font:400 12px/1.4 var(--sans);color:var(--white-60);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grp .b .track{height:8px}
+.grp .b .v{font:400 12px/1.4 var(--sans);color:var(--white-60);text-align:right;white-space:nowrap}
+.grp+.grp{margin-top:16px;padding-top:16px;border-top:1px solid var(--white-10)}
+
+/* scatter */
+.scatter{position:relative;height:360px;margin:8px 0 0 64px}
+.scatter .gx,.scatter .gy{position:absolute;pointer-events:none}
+.scatter .gx{top:0;bottom:28px;width:0;border-left:1px dashed var(--white-10)}
+.scatter .gy{left:0;right:0;height:0;border-top:1px dashed var(--white-10)}
+.scatter .tx{position:absolute;bottom:0;transform:translateX(-50%);font:400 12px/1.4 var(--sans);color:var(--white-60)}
+.scatter .ty{position:absolute;left:-12px;transform:translate(-100%,-50%);font:400 12px/1.4 var(--sans);color:var(--white-60)}
+.scatter .fit{position:absolute;height:0;border-top:2px dashed var(--white-40);transform-origin:left center}
+.scatter .dot{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;box-shadow:0 0 0 2px var(--surface-1);z-index:1}
+.scatter .dl{position:absolute;font:400 12px/1.4 var(--sans);color:var(--white-80);white-space:nowrap;transform:translateY(-50%);z-index:1}
+.scatter .dl.l{transform:translate(-100%,-50%)}
+.scatter .ax{position:absolute;font:400 12px/1.4 var(--sans);color:var(--white-40)}
+.scatter .ax.x{left:50%;bottom:-24px;transform:translateX(-50%)}
+.scatter .ax.y{left:-52px;top:50%;transform:translate(-100%,-50%) rotate(-90deg);transform-origin:right center;white-space:nowrap}
+.scatter-wrap{padding-bottom:28px;overflow:hidden}
+.scatter .dl::after{content:attr(data-full)}
+
+/* file tree: the only place a monospace face is used */
+.term{background:var(--surface-1);color:var(--white-80);border:1px solid var(--white-10);padding:16px;font:12px/1.6 var(--code);overflow-x:auto;white-space:pre}
+.term b{color:var(--white-100);font-weight:600}
+.term .c{color:var(--white-40)}
+
+/* tables: header on White 10 (dark) / Surface 3 (light), 8px padding, no vertical rules */
+.tablewrap{margin-top:16px;background:transparent;border:0;overflow:visible}
+.tablewrap table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.5;table-layout:fixed}
+.tablewrap th,.tablewrap td{padding:8px 12px;border:1px solid var(--white-6);text-align:left;vertical-align:middle}
+.tablewrap th{background:var(--white-10);font:400 14px/1.6 var(--sans);color:var(--white-80);white-space:normal;vertical-align:middle}
+.tablewrap td{background:var(--white-1);font:400 14px/1.4 var(--sans);letter-spacing:-.14px;color:var(--white-60)}
+.tablewrap td:first-child{color:var(--white-60);font-weight:400;white-space:normal}
+.tablewrap td.wrap{white-space:normal}
+.tablewrap td.n,.tablewrap th.n,.tablewrap td.c,.tablewrap th.c{text-align:left;white-space:normal}
+.tablewrap td.nw{white-space:nowrap}
+.tablewrap td b{color:var(--white-80);font-weight:500}
+.tablewrap .mlogo{width:16px;height:16px;vertical-align:-3px;margin-right:4px}
+.tablewrap td small{font-size:12px;color:var(--white-40)}
+.tablewrap .cap{padding:12px 0 0;margin:0}
+.sw{display:inline-block;width:8px;height:8px;margin-right:8px;vertical-align:0;background:var(--grad-grey)}
+.tbl-frame{margin-top:18px;background:transparent;border:0}
+.tbl-frame .tablewrap{margin:0;border:0}
+.tbl-frame .tbl-cap{margin-top:12px}
+.tbl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:0 0 10px}
+.tbl-bar span{display:none}
+.tbl-bar h3{font:500 16px/1.5 var(--sans);color:var(--white-80)}
+.tbl-bar span{font:400 12px/1.4 var(--sans);color:var(--white-40)}
+.heat td.wrap{min-width:200px}
+.heat td.c{min-width:0}
+.heat th.c,.heat th.n{white-space:normal}
+.tablewrap th.n,.tablewrap td.n{white-space:normal}
+.heat td.h3{color:var(--error);font-weight:500}
+.heat td.t{text-align:left}
+.tablewrap td.tb{min-width:0}
+.tablewrap .tbar{display:grid;grid-template-columns:minmax(0,1fr) 28px;gap:8px;align-items:center}
+.tablewrap .tbar i{display:block;height:8px;background:var(--white-10);position:relative}
+.tablewrap .tbar i b{position:absolute;left:0;top:0;bottom:0;background:var(--grad-blue)}
+.tablewrap .tbar span{color:var(--white-80);text-align:right}
+
+/* exhibits: expert page beside the model page */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.pair>div{min-width:0}
+.pair .who{font:500 14px/1.5 var(--sans);color:var(--white-80);margin-bottom:8px}
+.pair .who small{display:block;font:400 12px/1.4 var(--sans);color:var(--white-60)}
+.doc{position:relative;border:1px solid var(--white-10);overflow:hidden;background:#FFFFFF;max-height:420px;transition:max-height .25s ease}
+.doc img{width:100%}
+.doc::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.2);pointer-events:none;z-index:1;transition:background-color .2s ease}
+.doc:hover::before{background:rgba(0,0,0,0)}
+.doc-x{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:2;appearance:none;height:32px;padding:0 12px;border:1px solid var(--white-20);background:var(--surface-2);color:var(--white-100);font:500 13px/1 var(--sans);cursor:pointer;white-space:nowrap;z-index:1}
+.doc-x:hover{border-color:var(--white-40)}
+.doc .missing{display:none;padding:32px 16px;text-align:center;font:400 13px/1.5 var(--sans);color:rgba(0,0,0,.5)}
+.doc.nf{background:var(--panel-bg)}
+.doc.nf img{display:none}
+.doc.nf .missing{display:block;color:var(--white-40)}
+.doc.nf::before,.doc.nf .doc-x{display:none}
+
+#fig-4 .term{margin-top:4px}
+#fig-7 .row .lab{display:grid;gap:2px}
+#fig-7 .row .v small{white-space:nowrap}
+
+/* scroll hints for wide content: gradient edge, arrows */
+.sc{position:relative;min-width:0;min-height:0;margin-top:16px}
+.frame .sc,.cf .sc,.sc.sc-tabs{margin-top:0}
+.sc .sc-btn{display:none}
+.hs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.sc.sc-tabs .tabs{margin-bottom:0}
+.sc.sc-tabs{margin-bottom:16px}
+.sc.sc-tabs .sc-btn{top:50%}
+.sc.sc-tabs::before,.sc.sc-tabs::after{width:56px}
+.sc>.tablewrap,.sc>.frame{margin-top:0}
+.sc::before,.sc::after{content:"";position:absolute;top:0;bottom:0;width:72px;pointer-events:none;z-index:4;transition:opacity .2s ease}
+.sc::before{left:0;background:linear-gradient(90deg,var(--fade) 0%,var(--fade) 25%,transparent 100%)}
+.sc::after{right:0;background:linear-gradient(270deg,var(--fade) 0%,var(--fade) 25%,transparent 100%)}
+.sc.sc-start::before,.sc.sc-end::after{opacity:0}
+.sc-btn{position:absolute;top:clamp(14px,50%,140px);transform:translateY(-50%);z-index:5;width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid var(--white-20);background:var(--surface-2);color:var(--white-100);cursor:pointer;transition:opacity .2s ease}
+.sc-btn:hover{border-color:var(--white-40)}
+.sc-next{right:6px}.sc-prev{left:6px}
+.sc.sc-end .sc-next,.sc.sc-start .sc-prev{opacity:0;pointer-events:none}
+
+/* Figure 2: source text and source files per task, one shared row per task */
+.src{display:grid;grid-template-columns:56px minmax(0,1.3fr) 64px minmax(0,1fr);column-gap:16px;row-gap:6px;align-items:center;font:400 14px/1.5 var(--sans);color:var(--white-80)}
+.src .ph{align-self:start;font:500 14px/1.4 var(--sans);color:var(--white-80)}
+.src .lab{white-space:nowrap}
+.src .ph small{display:block;font:400 12px/1.4 var(--sans);color:var(--white-60)}
+.src .ph .keyline{margin:6px 0 0;gap:4px 12px}
+.src .ph .keyline i{width:10px;height:10px;vertical-align:-1px;margin-right:6px}
+.src .ph .keyline span{white-space:nowrap}
+.src .ax{position:relative;height:18px;align-self:end}
+.src .ax span{position:absolute;transform:translateX(-50%);font:400 12px/1.4 var(--sans);color:var(--white-60);white-space:nowrap}
+.src .ax span:first-child{transform:none}
+.src .ax span:last-child{transform:translateX(-100%)}
+.src .v{text-align:right;font-weight:600;color:var(--white-100);white-space:nowrap}
+.src .track{height:16px}
+.src .seg span{font-size:11px}
+
+/* vertical scroll regions with a bottom fade */
+.sv{position:relative}
+.sv>.vs{max-height:450px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.sv::after{content:"";position:absolute;left:0;right:0;bottom:0;height:80px;pointer-events:none;z-index:4;background:linear-gradient(0deg,var(--fade) 0%,var(--fade) 25%,transparent 100%);transition:opacity .2s ease}
+.sv.sv-end::after{opacity:0}
+.vs .tablewrap{margin-top:0}
+.vs .tablewrap th{position:sticky;top:0;z-index:2;background:var(--th-solid)}
+.vs .pen-item:last-child{padding-bottom:0}
+#tbl-3 .frame>.cap{margin-top:8px}
+.sv.sv-mobile>.vs{max-height:none}
+
+/* full page modal for exhibit pages */
+.modal{position:fixed;inset:0;z-index:100;background:var(--overlay);display:none;align-items:stretch;justify-content:center}
+.modal.open{display:flex}
+.modal-card{position:relative;width:100%;height:100%;background:var(--surface-2);display:flex;flex-direction:column}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid var(--white-10)}
+.modal-head b{font:500 16px/1.5 var(--sans);color:var(--white-100)}
+.modal-head span{display:block;font:400 12px/1.4 var(--sans);color:var(--white-60)}
+.modal-close{appearance:none;flex:none;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--white-20);background:var(--white-6);color:var(--white-100);cursor:pointer;font:400 22px/1 var(--sans);transition:border-color .15s ease}
+.modal-close:hover{border-color:var(--accent-80)}
+.modal-body{flex:1;overflow-y:auto;padding:24px}
+.modal-body img{display:block;width:100%;max-width:900px;margin:0 auto;background:#FFFFFF;border:1px solid var(--white-10)}
+body.modal-lock{overflow:hidden}
+
+/* takeaways (conclusion) */
+.takeaways{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.takeaways li{display:flex;flex-direction:column;gap:6px;padding:20px;background:var(--frame-bg);border:1px solid var(--white-10);min-width:0}
+.takeaways b{font:600 18px/1.35 var(--sans);color:var(--white-100);opacity:.9}
+.takeaways span{font:400 14px/1.6 var(--sans);color:var(--white-60)}
+
+/* ===== tablet ===== */
+@media (max-width:980px){
+  #findings-list,.takeaways,.notes{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* ===== mobile: 320–640px ===== */
+@media (max-width:640px){
+  body{overflow-x:hidden}
+  .wrap{width:100%}
+  .hero{padding:0}
+  .hero-top{margin-bottom:24px}
+  .hero h1{font-size:28px;line-height:1.15}
+  .hero .q{font-size:16px;line-height:1.5}
+  .overview{margin-top:0}
+  .sec-title{font-size:22px;line-height:1.3}
+  .finding h3,.sub-title,.callout h3{font-size:18px;line-height:1.4}
+  .prose,.finding .ev,.overview p,.callout p{font-size:15px;line-height:1.55}
+  .board{padding:24px 16px;gap:24px}
+  .board-head{flex-wrap:wrap;gap:8px}
+  .board-name{font-size:13px;white-space:normal}
+  .frame,.cf{padding:20px 12px 16px}
+  .frame-h h3,.cf-t{font-size:19px;line-height:1.4}
+  .callout{padding:16px}
+  #findings-list,.takeaways,.notes{grid-template-columns:minmax(0,1fr)}
+  .finding,.takeaways li,.notes li{padding:16px}
+
+  .hs-in:not(.full) .cf-plot{margin:24px 12px 0 56px;height:220px}
+  .hs-in:not(.full) .cf-ax.x{margin-left:56px}
+  .pen-head{display:none}
+  .pen{grid-template-columns:minmax(0,1fr)}
+  .pen-list .pc small.mob{display:block;font:400 10px/1.2 var(--sans);color:var(--white-60)}
+  .pen .pm,.pen-head .pm{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .pen .tot{grid-column:1/-1;text-align:left}
+  .pen .tot small{display:inline;margin-left:6px}
+  .tcards{grid-template-columns:minmax(0,1fr)}
+  .pen-item{grid-template-columns:minmax(0,1fr);gap:8px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tab{flex:none}
+  .notes .who{flex-wrap:wrap}
+  .notes .who small{margin-left:0;flex-basis:100%}
+  /* row charts: label on top, track below with value at right */
+  .row{grid-template-columns:minmax(0,1fr) var(--val,64px);grid-template-rows:auto auto;gap:4px 12px}
+  .row .lab{grid-column:1/-1;grid-row:1}
+  .row .lab span{white-space:normal}
+  .row .track{grid-column:1;grid-row:2}
+  .row .v{grid-column:2;grid-row:2;font-size:13px;line-height:1.2}
+  .row .v small{display:block;font-size:11px}
+  .src{grid-template-columns:50px minmax(0,1fr) 50px minmax(0,1fr);column-gap:8px;row-gap:8px;font-size:12px}
+  .src .ph{font-size:13px}
+  .src .ph small,.src .ax span{font-size:11px}
+  .src .ax span:nth-child(even):not(:last-child){display:none}
+  .src .ph .keyline{font-size:11px}
+  .src .ph .keyline i{margin-right:4px}
+  .rows{gap:12px}
+  .rows.tight{gap:10px}
+  .axis{margin-left:0;margin-right:calc(var(--val,64px) + 12px)}
+  .axis span:nth-child(even):not(:last-child){display:none}
+  .axis.full{margin-right:0}
+  .grp{grid-template-columns:minmax(0,1fr);gap:8px}
+  .grp .b{grid-template-columns:72px minmax(0,1fr) 44px}
+  .grp .lab small{display:inline;margin-left:6px}
+  .pair{grid-template-columns:minmax(0,1fr)}
+  .doc{max-height:240px}
+  .tablewrap th,.tablewrap td{padding:8px 10px}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tablewrap table{table-layout:auto;min-width:560px}
+  .tablewrap td,.tablewrap th{white-space:nowrap}
+  .sc .sc-btn{display:inline-flex}
+  .hs>.hs-in{min-width:520px}
+  .hs>.hs-in.wide{min-width:640px}
+  .hs>.hs-in.full{min-width:600px}
+  .sv.sv-mobile>.vs{max-height:450px}
+  .takeaways li{grid-template-columns:minmax(0,1fr);row-gap:8px;padding:12px}
+  .takeaways li:before{grid-row:1;grid-column:1}
+  .takeaways b{grid-row:2}
+  .takeaways span{grid-row:3;margin-top:0}
+  .btn,.info-btn{min-height:32px}
+}
+@media (max-width:360px){
+  .wrap{width:100%}
+  .hero h1{font-size:26px;overflow-wrap:anywhere}
+  .frame,.callout{padding:12px}
+  .board{padding:20px 12px}
+  .tablewrap th,.tablewrap td{padding:6px 8px;font-size:13px}
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="hero">
+  <div class="wrap">
+    <section class="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title" class="sec-title">Overview</h2>
+      <p>Government runs on status reporting. Every week, staff across the Department of Defense write weekly activity reports for their commanders, program status reports for senior leaders, after-action reports after exercises and operations, and performance assessments for promotion boards. Each report carries information up the chain to a reader who has none of the writer’s context and little time to read. Staff increasingly draft these reports with AI assistants.</p>
+      <p>MissionReportBench measures the judgment those reports take. Each of its 20 tasks is an assignment written by an expert who has done the job: a role, a reader, the working files and the organization’s template. The model must produce a finished Word document, and the expert’s rubric scores each decision the report makes. Nine frontier models ran every task three times, for 540 graded reports.</p>
+    </section>
+  </div>
+</header>
+
+<main>
+
+<section class="band" id="key-findings">
+  <div class="wrap">
+    <h2 class="sec-title">Key findings</h2>
+    <p class="prose">Six findings shape how these results should be read. Each is stated first, then supported in the sections below.</p>
+    <div id="findings-list">
+      <div class="finding"><h3>Frontier models struggle with government status reporting, scoring about 60% on average and almost never producing a perfect report.</h3><p class="ev">Nine models score between 54.3% (Gemini 3.8 Flash) and 64.1% (Gemini 4 Argon) on 20 expert-written tasks. Only 3 of the 540 reports meet every criterion in their rubric.</p></div>
+      <div class="finding"><h3>Models have trouble deciding what information to include and how to summarize it.</h3><p class="ev">A short report has to pick the few items its reader needs and say what they mean together. These two skills, judgment and synthesis, account for 67 to 77% of every model’s lost points, while models earn 80 to 91% of the points for format.</p></div>
+      <div class="finding"><h3>Models have a hard time reporting incomplete information.</h3><p class="ev">Government reports often describe things that are not yet settled: a cause still under investigation, an impact not yet assessed, a record that cannot be found. On two tasks where the sources say a cause is still under review or an effect is not yet known, 26 of 27 reports leave that out. Some models go further and state an outcome the sources do not support, such as a program rating that no source gives.</p></div>
+      <div class="finding"><h3>The highest-scoring models also include the most material the reader does not need.</h3><p class="ev">Gemini 4 Argon and Claude Fable 5.1 earn the most points, but they also write longer reports and trigger the most penalties for unneeded content: 72 and 68, against 32 for GPT-6 Astra.</p></div>
+      <div class="finding"><h3>Models follow basic formatting when instructed, but struggle to follow the unstated structure of official forms.</h3><p class="ev">With a word limit in the prompt, reports come within 0.96 to 1.27 times the expert’s length. When the limit comes from the form itself, such as a performance brief or an award citation, reports run five to six times the expert’s length. On tasks that supply the office’s Word template, 27% of reports were rebuilt from a blank document instead.</p></div>
+      <div class="finding"><h3>Models with similar scores show different failure modes.</h3><p class="ev">A model’s results on individual criteria agree more with its own repeat attempts (r = 0.71) than with any other model’s (r = 0.54), so the same overall score hides different strengths and weaknesses.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="introduction">
+  <div class="wrap">
+    <h2 class="sec-title">1. Why we built MissionReportBench</h2>
+    <p class="prose">Writing a status report well is hard, and the difficulty is not in the prose. A battalion commander reviews reports from six companies and passes a few items to brigade, so a company’s report has to lead with the one item that needs the commander’s help, even when another item looks more urgent. A program status report has to separate what is known from what is not: a test result still under review is not a finding, and an overall rating that no input provides is not the writer’s to assign. An award citation follows a format set by the awards manual, down to its opening and closing lines, and a promotion brief has to fit the boxes on its form. A detail can be accurate and still not belong in the report, and dropping one qualifier can turn a tentative finding into a settled one.</p>
+    <p class="prose">These judgments come from years of government experience. Experienced staff officers know which facts their reader needs, what their commander already knows, how their organization’s report should look, and which acronyms to spell out. Some of that knowledge is written down in regulations, local guidance and prior reports kept on internal drives. Much of it is not written down at all. Models have had little chance to learn it from the open web.</p>
+    <p class="prose">MissionReportBench measures that judgment directly. Each task is an assignment written by an expert who has done the job: a role, a reader, the working files and the organization’s template. The model must produce a finished Word document, the format government offices work in. The expert’s rubric then scores each decision the report makes, with partial credit, so the results show which decisions models get right and which they miss.</p>
+  </div>
+</section>
+
+<section class="band" id="methodology">
+  <div class="wrap">
+    <h2 class="sec-title">2. Methodology</h2>
+    <h3 class="sub-title" id="task-construction">2.1 Task construction</h3>
+    <p class="prose">The 20 tasks cover four report families and five settings: Army, Air Force, Navy, Marine Corps, and Department of Defense offices and agencies. Readers range from a battalion commander to an Under Secretary and a promotion board. Each task was written by an expert with reporting experience in that organization, who assembled the source files and wrote the prompt, a golden report and a weighted rubric. Every task passed micro1’s quality review before sign-off.</p>
+    <div class="fig" id="fig-1"></div>
+    <p class="prose">Tasks carry 1 to 15 source files, 163 in total, and most include the organization’s template, prior reports or the governing regulation. Source text runs from under a thousand words to over a hundred thousand. Nineteen tasks set a length rule: fourteen prompts give a word limit, three a page limit, and in two the limit comes from the form the report must use.</p>
+    <div class="fig" id="fig-2"></div>
+
+    <h3 class="sub-title" id="agents-environment">2.2 Agent’s environment</h3>
+    <p class="prose">Each attempt runs in a fresh Linux sandbox with the source files under <code>/app/attachments/</code>. The model must save a Word document under <code>/app/outputs/</code>, the only file the grader reads. The expert’s report and the rubric are never in the sandbox. The model works through a shell and file tools in the OpenCode harness, with pandoc, pdftotext, LibreOffice and Python document libraries available.</p>
+    <div class="fig" id="fig-4">
+      <div class="frame">
+        <div class="frame-h"><h3>The agent’s workspace</h3><span>Figure 3</span></div>
+        <div class="term"><b>/app/</b>
+├── <b>instruction.md</b>          <span class="c">the assignment: role, reader, report type, limits, file-reading guidance</span>
+├── <b>attachments/</b>            <span class="c">source files: e-mails, meeting notes, logs, trackers, slides, spreadsheets,</span>
+│   │                       <span class="c">regulations, prior reports and the organization's template</span>
+│   ├── TOC Log.docx
+│   ├── S3 Monday Sync.docx
+│   ├── WAR Guidance.docx
+│   └── UNCSB-JSA WAR Template.docx  ...
+└── <b>outputs/</b>
+    └── <b>report.docx</b>          <span class="c">the deliverable: one Word document, the only file the grader reads</span></div>
+        <p class="cap"><b>Figure 3.</b> File names from the joint security battalion weekly report (WAR-07). The expert reference and the rubric are never in the sandbox.</p>
+      </div>
+    </div>
+
+    <h3 class="sub-title" id="evaluation-protocol">2.3 Evaluation protocol</h3>
+    <p class="prose"><strong>Run settings.</strong> Every model ran every task three times using default reasoning effort, with a 60-minute limit and no feedback between attempts. All models ran using the same harness (OpenCode 1.18.31), sandbox image and grader.</p>
+    <p class="prose"><strong>Scoring.</strong> A report’s score is the positive points it earns minus the penalty points it triggers, divided by the task’s positive points, bounded to 0 to 100%. The 20 rubrics hold 302 positive criteria worth 535 points and 63 penalties worth 88 points. A model’s score is the mean over tasks of its three-report mean, and intervals resample tasks. Each criterion carries one of five category labels (Table 1).</p>
+    <div class="fig" id="tbl-1"></div>
+    <p class="prose"><strong>Judge.</strong> An agentic judge, Claude Opus 5.5 in OpenCode, reads each report, can render its pages, and compares it with the expert’s report. It decides each criterion true or false with a written reason and never sees the weights, the grading notes or the source files. As a check, we graded each expert’s golden report against its own rubric to ensure it scores 100%.</p>
+  </div>
+</section>
+
+<section class="band" id="overall-performance">
+  <div class="wrap">
+    <h2 class="sec-title">3. Overall performance</h2>
+    <p class="prose">Gemini 4 Argon leads at 64.1%, followed by Claude Sonnet 5.5 (63.8%), Claude Opus 5.5 (63.5%) and Claude Fable 5.1 (63.3%). Muse Wonder, GPT-6 Astra and GPT-6.1 Sol follow within three points, then Grok 4.7 at 59.5% and Gemini 3.8 Flash at 54.3%. The intervals of the top seven overlap.</p>
+    <div class="fig" id="fig-5"></div>
+    <p class="prose">Full credit is rare. Three of the 540 reports meet every criterion and trigger no penalty, one each from Opus 5.5, Sonnet 5.5 and Gemini 3.8 Flash.</p>
+    <div class="fig" id="tbl-2"></div>
+    <p class="prose">A second attempt changes the score more than it changes what is missed. Taking the best of three with hindsight adds 5.2 to 9.0 points, and criteria missed in all three attempts hold 62 to 82% of each model’s missed points.</p>
+    <div class="fig" id="fig-6"></div>
+    <p class="prose">Models with similar scores fail on different criteria. A model’s result on a single criterion agrees with its own repeat attempt at a median r of 0.71 and with another model at 0.54. On 105 of 365 criteria, one model succeeds in all three attempts where another fails in all three. Some difficulty is shared: 29 to 43% of each model’s missed points are criteria that every other model also misses.</p>
+  </div>
+</section>
+
+<section class="band" id="where-models-lose-points">
+  <div class="wrap">
+    <h2 class="sec-title">4. Where models lose points</h2>
+    <p class="prose">Scored the same way as a full report, earned points minus penalty points, format is the easiest category at 71.1% and synthesis, stating what several facts mean together, is the hardest at 50.0%. Judgment, deciding what goes in and what leads, is the largest category with 42% of positive points and nets 63.3%: models earn 70.7% of its points and lose 7.4% to penalties for material the reader does not need. Format loses the most to penalties, 10.4%.</p>
+    <div class="fig" id="fig-7"></div>
+    <p class="prose">Basic formatting is close to solved: 32 of the 48 format criteria, such as word limits, reporting periods, unit names and classification markings, are met in at least 90% of reports. Most of the remaining format points are lost on a few form conventions, such as an award citation’s closing line, a performance brief’s extra sections and a manual’s cover page, which section 6.4 covers.</p>
+    <p class="prose">Judgment and synthesis together account for 67 to 77% of every model’s lost points. That is the difficulty the benchmark was built to measure: a short report has to choose what goes in and state it at the level a senior reader needs.</p>
+    <div class="fig" id="fig-8"></div>
+  </div>
+</section>
+
+<section class="band" id="writing-more">
+  <div class="wrap">
+    <h2 class="sec-title">5. Writing more adds penalties, not points</h2>
+    <p class="prose">A rubric that credits each item a report covers invites a simple strategy: write more and cover more. On MissionReportBench that strategy does not pay. Within a task, longer reports trigger more penalties (r = +0.27) and earn no more positive points (r = +0.03). The extra length adds unnecessary details to the reports and includes material the reader does not need.</p>
+    <p class="prose">The same pattern exists across models. Models that write longer reports trigger far more penalties than models that write shorter reports (r = +0.84 between median words per report and penalties triggered). Claude Fable 5.1 writes the longest reports and, with Gemini 4 Argon, triggers the most penalties: 29.1% more than the nine-model average. Conversely, GPT-6.1 Sol and GPT-6 Astra write the shortest reports and trigger 35.5% fewer penalties than the average. Most of these penalties catch material from the sources that the expert left out because the reader does not need it.</p>
+    <div class="fig" id="fig-9"></div>
+    <div class="fig" id="fig-10"></div>
+  </div>
+</section>
+
+<section class="band" id="failure-modes">
+  <div class="wrap">
+    <h2 class="sec-title">6. Failure modes</h2>
+    <p class="prose">We audited failed criteria drawn evenly across models, reading each model’s report and the full record of its work. In nearly every case the model had read the facts it needed, usually within its first few steps. The failures happen when the model decides what to write.</p>
+
+    <h3 class="sub-title" id="choosing-what-leads">6.1 Choosing what leads the report</h3>
+    <p class="prose">An Army airborne infantry company’s weekly report has to flag that its only certified range safety officer leaves on 1 March, before the company’s 9 March rifle range, and the next certification class is not until 16 March. The expert leads with that gap and asks the battalion for help. All 27 reports miss the criterion for leading with it, though most mention the gap somewhere. Every model opens with a cold-weather injury, the first item in the battalion commander’s priority memo. GPT-6 Astra listed the gap among “three priority items” at step 4 and then put it last: “Need certified RSO support to protect 31 March qualification deadline; range packet due 20 Feb.”</p>
+    <p class="prose">A prompt can pull models the same way. A Pentagon executive office’s weekly report must summarize senior executive issues that could draw negative press. The sources contain none, and all 27 reports fill the section with an item about a different workforce. Grok 4.7 noted at step 2 that the item “does not meet the requirement for SES-specific negative press items” and included it anyway.</p>
+
+    <h3 class="sub-title" id="summarizing">6.2 Summarizing: listing the facts without saying what they mean</h3>
+    <p class="prose">A UN Command security battalion’s 115-word weekly report has to present a North Korean guard’s ten-second line crossing as part of a week of unusual guard activity at the same two buildings, which the operations log records on five days. Every model reports the crossing alone, and 26 of 27 reports miss the pattern. Claude Sonnet 5.5 had the whole log in its first tool output and wrote “13 Nov, 1352: KPA guard crossed MDL approximately one meter near T2/T3, returning after ten seconds.” The one report that earns the criterion, by Fable 5.1, adds four words: “Atypical KPA guard activity all week.”</p>
+    <p class="prose">Sometimes the model tells the user what it should have told the reader. An Army battalion’s readiness report has to explain that 55 Soldiers with passing fitness records do not count as ready because they are on temporary medical profile. Fable 5.1 computed the 55, put it in its first draft, and cut it at step 13 to meet the 400-word limit. Its closing message to the user still made the point; the commander’s report did not.</p>
+
+    <h3 class="sub-title" id="reporting-incomplete-information">6.3 Reporting incomplete information</h3>
+    <p class="prose">Government reports often have to describe things that are not fully known: a cause still under investigation, a test not yet run, a record that cannot be found. A good report says what is known, what is not, and what will settle it. Models have trouble with this in two ways.</p>
+    <p class="prose">First, they leave out what is not yet known. Outright errors are rare: several penalties for misstating a fact, such as presenting a conditional ship date as firm, never fire in any report. But a Navy program office’s status report keeps two test results and drops the fact that the cause of the gap between them is still under review. An Army acquisition report gives a milestone slip without saying that its effect on later milestones has not been assessed. Each is missed in 26 of 27 reports.</p>
+    <p class="prose">Second, some models fill the gap with a conclusion of their own. The Navy program office’s sources never give an overall program rating. The three Claude models and Gemini 3.8 Flash assign one in every attempt, and Opus 5.5 said so itself: “none of the source documents gives one. I chose AMBER because four risks are AMBER and two items are open ahead of DT-1.” An Air Force wing’s inspection report prompt tells the model not to treat missing records as proof that something did not happen, and the evaluator “could not establish that the outstanding location had been surveyed.” Fable 5.1, Gemini 3.8 Flash and Gemini 4 Argon write in every attempt that the area was never surveyed. GPT-6 Astra, GPT-6.1 Sol and Grok 4.7 never state an unsettled matter as settled in any of the audited cases.</p>
+
+    <h3 class="sub-title" id="the-word-document">6.4 The Word document: forms and templates</h3>
+    <p class="prose">Where the prompt states a word limit, median length lands within 0.96 to 1.27 times the expert’s, and the rubric’s length checks pass 89 to 100% of the time. Where the form sets the limit, models run long: the performance brief and the award citation come in at 5.0 and 6.2 times the expert’s length.</p>
+    <div class="fig" id="fig-11"></div>
+    <p class="prose">The performance brief comes with a blank form of five boxes. In 25 of 27 reports, models add a section the form does not have; Gemini 3.8 Flash’s report runs to 20 pages, and its closing message claims “Exact visual alignment” with the blank form. On the award citation, GPT-6 Astra, GPT-6.1 Sol, Grok 4.7 and Gemini 3.8 Flash write a median of 127 to 162 words against the expert’s 125, while the Claude models and Gemini 4 Argon write 775 to 1,988 and Muse Wonder 5,339. An Army after-action report that names the Army’s FM 6-0 manual as its reference leaves out the manual’s cover page in 26 of 27 reports, and most closing messages say the report follows the manual.</p>
+    <p class="prose">Templates fare the same way. On the 11 tasks that supply one, 27% of reports were rebuilt from a blank python-docx document instead, from 15 of 33 for Grok 4.7 to none for Gemini 4 Argon. A rebuilt document keeps the template’s words and loses its numbering, page numbers, header and footer markings and margins. Opus 5.5 rebuilt the security battalion’s report from blank and closed with “It follows the battalion commander’s template.”</p>
+    <div class="fig" id="tbl-3"></div>
+  </div>
+</section>
+
+<section class="band" id="how-models-approach">
+  <div class="wrap">
+    <h2 class="sec-title">7. How models approach the problem</h2>
+    <p class="prose">The nine models work very differently on the same tasks. Gemini 3.8 Flash makes a median of 61 tool calls per report and Claude Sonnet 5.5 makes 9. Across models, more tool calls go with lower scores (r = −0.81), but that rests mostly on Gemini 3.8 Flash, which makes the most calls and scores lowest; without it, r = −0.31. Within each model, the number of tool calls on an attempt barely relates to its score (r between −0.26 and +0.24).</p>
+    <div class="fig" id="fig-12"></div>
+    <div class="fig" id="fig-13"></div>
+  </div>
+</section>
+
+<section class="band" id="report-families">
+  <div class="wrap">
+    <h2 class="sec-title">8. Report families</h2>
+    <p class="prose">Weekly activity reports are the easiest family, at 64.2% averaged over all models; the other three sit together at 58.7% to 59.9%.</p>
+    <div class="fig" id="fig-14"></div>
+    <p class="prose">The model order changes by family. The Claude models score 68 to 70% on weekly activity reports against 59% for the GPT-6 models, and the order reverses on program status reports, where GPT-6 Astra scores 66.5% and Opus 5.5 53.7%. Families hold three to nine tasks, so these describe this task set rather than general rankings.</p>
+    <div class="fig" id="fig-15"></div>
+  </div>
+</section>
+
+<section class="band" id="conclusion">
+  <div class="wrap">
+    <h2 class="sec-title">9. Conclusion</h2>
+    <p class="prose">MissionReportBench measures a task government staff do every week: turn a pile of working files into a short report, in the office’s form, for a reader who will act on it. Frontier models produce readable Word documents and carry over what the sources state. They average about 60%, and 3 of 540 reports meet every criterion.</p>
+    <ol class="takeaways">
+      <li><b>The losses sit in the decisions experienced staff make without thinking.</b><span>Which item leads, what the details mean, how to report what is not yet known, and what to leave out.</span></li>
+      <li><b>The highest scorers get there by including more.</b><span>Longer reports trigger more penalties and earn no more points; the extra material is what a stricter reader would penalize.</span></li>
+      <li><b>The headroom is in knowing what a senior reader needs.</b><span>Putting only that on the page, in the form the office uses.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="appendix-a">
+  <div class="wrap">
+    <h2 class="sec-title">Appendix A. Example reports side by side</h2>
+    <p class="prose">Each exhibit shows an expert page beside page 1 of a model’s report on the same task, rendered with Word’s fonts. The model report is that model’s middle-scoring attempt unless noted.</p>
+    <div id="exhibits"></div>
+  </div>
+</section>
+
+<section class="band" id="appendix-b">
+  <div class="wrap">
+    <h2 class="sec-title">Appendix B. Tasks and per-task results</h2>
+    <div class="fig" id="tbl-4"></div>
+  </div>
+</section>
+
+</main>
+
+<div class="ftip" role="tooltip" hidden></div>
+<div class="modal" id="doc-modal" role="dialog" aria-modal="true" aria-labelledby="doc-modal-title" hidden><div class="modal-card"><div class="modal-head"><div><b id="doc-modal-title"></b><span id="doc-modal-meta"></span></div><button type="button" class="modal-close" id="doc-modal-close" aria-label="Close">×</button></div><div class="modal-body"><img id="doc-modal-img" src="" alt=""></div></div></div>
+<script>
+const LOGOS={
+  claude:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png",
+  gpt:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png",
+  grok:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png",
+  gemini:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png",
+  muse:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6ac965ffaf650a28033b1c1a_muse.png"
+};
+const EXIMG=[
+  "ext/par-02-expert.png",
+  "ext/par-02-gemini.png",
+  "ext/par-01-expert.png",
+  "ext/par-01-fable.png",
+  "ext/aar-04-expert.png",
+  "ext/aar-04-gpt.png",
+  "ext/war-06-expert.png",
+  "ext/war-06-gpt.png",
+  "ext/war-07-expert.png",
+  "ext/war-07-sonnet.png"
+];
+(function(){
+'use strict';
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const HOVER = matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* ---------- data ---------- */
+const MODELS = [
+  {n:'Gemini 4 Argon',   s:'Argon',      fam:'gemini', o:1,   mean:64.1, lo:58.0, hi:70.5, best:70.8, worst:57.3, med:62.1, full:0, won:'5.5', min:14.3, calls:36, gain:6.6},
+  {n:'Claude Sonnet 5.5',s:'Sonnet 5.5', fam:'claude', o:.8,  mean:63.8, lo:58.4, hi:68.7, best:72.8, worst:56.8, med:65.6, full:1, won:'2',   min:1.6,  calls:9,  gain:9.0},
+  {n:'Claude Opus 5.5',  s:'Opus 5.5',   fam:'claude', o:.6,  mean:63.5, lo:57.8, hi:69.1, best:70.5, worst:57.2, med:63.0, full:1, won:'3.5', min:2.3,  calls:10, gain:7.0},
+  {n:'Claude Fable 5.1', s:'Fable 5.1',  fam:'claude', o:1,   mean:63.3, lo:58.8, hi:67.8, best:69.9, worst:56.6, med:62.1, full:0, won:'1',   min:4.6,  calls:18, gain:6.6},
+  {n:'Muse Wonder',      s:'Wonder',     fam:'muse',   o:1,   mean:62.1, lo:56.9, hi:67.1, best:70.6, worst:53.0, med:63.5, full:0, won:'1',   min:3.9,  calls:29, gain:8.5},
+  {n:'GPT-6 Astra',      s:'Astra',      fam:'gpt',    o:1,   mean:61.8, lo:57.5, hi:66.2, best:67.0, worst:56.0, med:61.5, full:0, won:'1.3', min:2.1,  calls:24, gain:5.2},
+  {n:'GPT-6.1 Sol',      s:'Sol',        fam:'gpt',    o:.7,  mean:61.0, lo:56.8, hi:65.5, best:67.6, worst:54.7, med:60.7, full:0, won:'1.8', min:2.1,  calls:23, gain:6.6},
+  {n:'Grok 4.7',         s:'Grok 4.7',   fam:'grok',   o:1,   mean:59.5, lo:54.7, hi:64.1, best:65.0, worst:53.2, med:59.1, full:0, won:'1.8', min:10.6, calls:28, gain:5.5},
+  {n:'Gemini 3.8 Flash', s:'3.8 Flash',  fam:'gemini', o:.7,  mean:54.3, lo:48.3, hi:60.2, best:62.6, worst:47.0, med:52.9, full:1, won:'2',   min:11.9, calls:61, gain:8.3},
+];
+const M = Object.fromEntries(MODELS.map(m=>[m.n,m]));
+const CATS = [
+  {k:'judgment',   n:'Judgment',    share:42, w:'Selecting and prioritizing: what belongs in the report, what leads, and what stays out.', pos:112, pen:26, tasks:19, pts:'42.3%'},
+  {k:'synthesis',  n:'Synthesis',   share:22, w:'Combining facts into a higher-level point: a trend, a risk, a consequence, a forecast.', pos:58,  pen:0,  tasks:15, pts:'22.2%'},
+  {k:'accuracy',   n:'Accuracy',    share:9,  w:'Keeping facts, scope and certainty as the sources state them, including what remains open.', pos:30, pen:19, tasks:9, pts:'8.6%'},
+  {k:'instruction',n:'Instruction', share:13, w:'Explicit content requirements in the prompt, template or a supplied reference.', pos:54, pen:3, tasks:10, pts:'13.4%'},
+  {k:'format',     n:'Format',      share:14, w:'Presentation and structure: length, markings, layout, required elements of the form.', pos:48, pen:15, tasks:16, pts:'13.5%'},
+];
+const EARNED = { // by category, per model in MODELS order
+  judgment:[74.7,75.3,76.5,81.3,74.7,68.8,67.0,72.3,63.9],
+  synthesis:[47.4,49.3,50.7,53.0,51.2,51.9,54.0,40.0,38.1],
+  accuracy:[76.2,80.7,74.2,73.1,80.9,83.0,81.0,70.2,57.3],
+  instruction:[74.2,72.5,66.0,71.5,77.6,75.6,77.1,72.2,74.1],
+  format:[86.2,91.3,85.0,85.9,87.1,84.8,85.8,80.4,88.6],
+};
+const LOST = [[41.8,27.0,9.4,10.9,10.9],[40.8,31.5,7.0,11.1,9.6],[35.2,31.9,8.6,12.2,12.1],[35.7,31.6,10.0,11.5,11.2],[39.9,32.5,5.7,9.4,12.5],[47.6,29.6,4.1,10.4,8.4],[47.6,28.3,5.0,9.9,9.2],[37.6,35.1,5.3,10.7,11.4],[42.5,30.1,11.5,9.0,6.9]];
+const SCATTER = [[71.7,7.6],[69.0,5.2],[69.7,6.2],[70.6,7.3],[68.5,6.4],[66.1,4.2],[65.7,4.7],[65.4,5.9],[60.0,5.7]];
+const NET = [['judgment',63.3,70.7,7.4],['synthesis',50.0,50.0,0.0],['accuracy',64.0,68.2,4.2],['instruction',68.8,69.2,0.4],['format',71.1,81.5,10.4]];
+const WORDS_MED = [358,336,368,392,376,302,300,366,312]; // median body words per report, MODELS order
+const PEN_N = [72,50,59,68,60,32,38,56,53]; // penalties triggered, MODELS order
+const PEN = [['Gemini 4 Argon',72],['Claude Fable 5.1',68],['Muse Wonder',60],['Claude Opus 5.5',59],['Grok 4.7',56],['Gemini 3.8 Flash',53],['Claude Sonnet 5.5',50],['GPT-6.1 Sol',38],['GPT-6 Astra',32]];
+const FAMS = [
+  {k:'war', n:'Weekly activity', full:'Weekly activity report', tasks:9, mean:64.2},
+  {k:'aar', n:'After-action', full:'After-action report', tasks:4, mean:59.4},
+  {k:'psr', n:'Program status', full:'Program status report', tasks:4, mean:58.7},
+  {k:'par', n:'Performance and accomplishment', short:'Performance', full:'Performance and accomplishment report', tasks:3, mean:59.9},
+];
+const FAM_MODEL = [[66.4,60.6,65.6,60.1],[69.5,57.3,57.0,64.5],[69.2,60.6,53.7,63.3],[67.8,64.4,54.4,60.2],[65.3,60.7,59.9,57.4],[59.1,61.7,66.5,63.7],[58.8,63.5,63.4,60.9],[62.3,54.8,54.8,63.9],[59.1,51.3,53.3,45.1]];
+const SETTINGS = [['Army','grad-blue'],['Air Force','grad-blue-light'],['Navy','grad-green'],['Marine Corps','grad-warn'],['DoD offices and agencies','grad-grey']];
+const FAM_SET = [ // family -> [[setting, pct, count]]
+  ['Weekly activity report',[[0,20,4],[1,10,2],[3,5,1],[4,10,2]]],
+  ['After-action report',[[0,5,1],[1,5,1],[2,5,1],[3,5,1]]],
+  ['Program status report',[[0,5,1],[2,10,2],[4,5,1]]],
+  ['Performance and accomplishment report',[[1,10,2],[3,5,1]]],
+];
+const FTYPES = [['Word','ft-word'],['PDF','ft-pdf'],['Excel','ft-xls'],['PowerPoint','ft-ppt']];
+const FILES = [['AAR-01',[14,0,1,0]],['AAR-03',[12,0,0,0]],['PSR-02',[8,4,0,0]],['AAR-02',[7,4,0,0]],['WAR-07',[10,0,0,0]],['WAR-08',[0,7,3,0]],['PSR-04',[1,9,0,0]],['WAR-03',[7,2,0,0]],['WAR-09',[2,0,3,4]],['AAR-04',[0,9,0,0]],['PAR-02',[1,7,0,0]],['WAR-01',[6,0,1,0]],['WAR-05',[6,1,0,0]],['PSR-01',[6,0,1,0]],['WAR-04',[6,0,0,0]],['PSR-03',[6,0,0,0]],['PAR-03',[6,0,0,0]],['WAR-06',[4,1,0,0]],['PAR-01',[1,2,0,0]],['WAR-02',[1,0,0,0]]];
+const WORDS = [['AAR-04',108954],['PAR-01',74376],['WAR-03',57702],['AAR-02',45366],['PSR-02',19137],['PAR-03',12342],['WAR-02',8439],['PAR-02',6043],['AAR-03',6034],['PSR-04',5234],['PSR-01',4506],['WAR-07',3937],['WAR-09',3211],['WAR-05',2618],['AAR-01',2292],['WAR-06',1910],['PSR-03',1706],['WAR-08',1235],['WAR-01',924],['WAR-04',885]];
+const LTYPES = {words:['Word limit in the prompt','grad-blue'],pages:['Page limit in the prompt','grad-blue-light'],form:['Limit set by the form','grad-warn'],none:['No limit stated','grad-grey']};
+const LENGTH = [['PAR-01','form',6.20,'set by the citation format'],['PAR-02','form',5.00,'set by the performance brief form'],['PAR-03','pages',2.52,'six pages, one-page decision brief'],['PSR-02','none',1.80,'none stated (concise, executive-level)'],['AAR-03','pages',1.31,'three pages'],['WAR-02','words',1.27,'200 words'],['WAR-01','words',1.24,'250 words'],['PSR-03','words',1.10,'350 words'],['AAR-01','pages',1.07,'one full page'],['WAR-09','words',1.05,'400 words, one page'],['PSR-01','words',1.05,'two pages, 350 words'],['WAR-06','words',1.05,'160 words'],['WAR-04','words',1.05,'185 words'],['PSR-04','words',1.03,'800 words'],['WAR-07','words',1.01,'115 words'],['WAR-05','words',0.98,'350 words'],['AAR-02','words',0.97,'one page, 350 words'],['AAR-04','words',0.97,'1,500 words'],['WAR-03','words',0.97,'250 words'],['WAR-08','words',0.96,'150 words']];
+const TOOLS = [['Gemini 3.8 Flash',61,11.9],['Gemini 4 Argon',36,14.3],['Muse Wonder',29,3.9],['Grok 4.7',28,10.6],['GPT-6 Astra',24,2.1],['GPT-6.1 Sol',23,2.1],['Claude Fable 5.1',18,4.6],['Claude Opus 5.5',10,2.3],['Claude Sonnet 5.5',9,1.6]];
+const BUILD = [['Gemini 4 Argon','96.8%','33 / 0 / 0','10 of 60','13 of 15'],['Claude Sonnet 5.5','98.4%','24 / 9 / 0','8 of 60','15 of 15'],['Claude Opus 5.5','88.9%','22 / 11 / 0','16 of 60','12 of 15'],['Claude Fable 5.1','93.7%','21 / 12 / 0','12 of 60','13 of 15'],['Muse Wonder','100.0%','23 / 9 / 1','8 of 60','14 of 15'],['GPT-6 Astra','100.0%','20 / 9 / 4','0 of 60','11 of 15'],['GPT-6.1 Sol','100.0%','23 / 9 / 1','0 of 60','9 of 15'],['Grok 4.7','90.5%','11 / 15 / 7','8 of 60','15 of 15'],['Gemini 3.8 Flash','100.0%','26 / 7 / 0','4 of 60','14 of 15']];
+const TASKS = [
+  ['WAR-01','Research branch weekly activity report','Air Force','GS-15 and above','250 words',7,'15 (4)','58.4%'],
+  ['WAR-02','Staff trip entry for a mobility command','Air Force','the directorate head and the command\'s commander','200 words',1,'23 (4)','60.9%'],
+  ['WAR-03','Analysis division weekly activity report','DoD offices and agencies','a one-star equivalent office chief','250 words',9,'13 (2)','60.1%'],
+  ['WAR-04','Senior executive management weekly activity report','DoD offices and agencies','an Under Secretary','185 words',6,'16 (4)','73.6%'],
+  ['WAR-05','Installation battalion weekly activity report e-mail','Marine Corps','a commanding general','350 words',7,'14 (2)','63.4%'],
+  ['WAR-06','Airborne infantry company weekly activity report','Army','a battalion commander','160 words',5,'15 (2)','72.5%'],
+  ['WAR-07','Joint security battalion weekly activity report','Army','a brigade commander and theater leaders','115 words',10,'17 (2)','70.4%'],
+  ['WAR-08','Division gunnery qualification weekly activity report','Army','a deputy commanding general','150 words',10,'18 (2)','54.3%'],
+  ['WAR-09','Battalion readiness weekly activities report','Army','a battalion commander','400 words, one page',9,'30 (3)','64.0%'],
+  ['AAR-01','Wing emergency operations exercise after-action report','Air Force','a wing commander','one full page',15,'16 (3)','60.4%'],
+  ['AAR-02','Expeditionary brigade exercise after-action report','Marine Corps','a three-star general','one page, 350 words',11,'15 (4)','61.8%'],
+  ['AAR-03','Officer candidate accession after-action report','Navy','a director of operations','three pages',12,'15 (4)','63.2%'],
+  ['AAR-04','Armor company training rotation after-action report','Army','the training center chain of command','1,500 words',9,'27 (3)','52.3%'],
+  ['PSR-01','Career field hiring read-ahead memo','DoD offices and agencies','a senior executive director','two pages, 350 words',7,'13 (2)','40.5%'],
+  ['PSR-02','Recruit training shipping status update','Navy','the front office','none stated (concise, executive-level)',12,'16 (3)','68.7%'],
+  ['PSR-03','Program office monthly status report','Navy','GS-15, SES and flag officers','350 words',6,'18 (2)','60.4%'],
+  ['PSR-04','Acquisition product weekly status report','Army','a program executive officer\'s staff meeting','800 words',10,'27 (5)','65.4%'],
+  ['PAR-01','Achievement medal citation','Marine Corps','the awarding authority','set by the citation format',3,'19 (3)','52.3%'],
+  ['PAR-02','Senior NCO performance brief','Air Force','a stratification and promotion board','set by the performance brief form',8,'15 (5)','57.0%'],
+  ['PAR-03','Wing readiness inspection performance report','Air Force','a major command commander','six pages, one-page decision brief',6,'23 (4)','70.4%'],
+];
+const EXHIBITS = [
+  ['PAR-02 · A performance brief that grows past its form',['Expert reference','page 1 of 1',EXIMG[0]],['Gemini 3.8 Flash','page 1 of 20 · 33.3%, its middle-scoring of three',EXIMG[1]],'The expert fills the five boxes of the blank preparation form and stops. The model fills the same boxes, then wraps them in seven numbered sections of career data, competency tables and a master workbench, 20 pages in all. Its closing message claims exact visual alignment with the blank form. 25 of 27 reports on this task add a section the form does not have.'],
+  ['PAR-01 · An award citation delivered as a package',['Expert reference','page 1 of 1',EXIMG[2]],['Claude Fable 5.1','page 1 of 5 · 58.3%, its middle-scoring of three',EXIMG[3]],'The expert\'s deliverable is the citation: one page, all capitals, in the awards manual\'s format. Fable 5.1 opens with a forwarding memorandum and places the citation in an enclosure, with a traceability enclosure after it. GPT-6 Astra, GPT-6.1 Sol, Grok 4.7 and Gemini 3.8 Flash write the citation in a median of 127 to 162 words, close to the expert\'s 125; the Claude models, Gemini 4 Argon and Muse Wonder write 775 to 5,339.'],
+  ['AAR-04 · An after-action report without the doctrinal cover page',['Expert reference','page 4 of 7',EXIMG[4]],['GPT-6 Astra','page 1 of 3 · 50.0%, its middle-scoring of three',EXIMG[5]],'The prompt makes the Army\'s FM 6-0 the governing reference, and its sample format opens with a cover page. The expert\'s report follows it: a cover page, a preface and a table of contents, then the body that begins on the page shown here. Every model read that appendix. 26 of 27 reports put the cover items in a block at the top of page 1 instead, and seven of nine audited closing messages say the report follows the appendix.'],
+  ['WAR-06 · The item that needs the commander\'s help, placed last',['Expert reference','page 1 of 1',EXIMG[6]],['GPT-6 Astra','page 1 of 1 · 70.6%, its middle-scoring of three',EXIMG[7]],'The expert leads with the range safety officer gap and asks the battalion for help before the range packet is due. The model has the same facts and puts them in its last line. All 27 reports on this task open with the cold-weather injury, the first item in the battalion commander\'s priority memo.'],
+  ['WAR-07 · A week of unusual activity reported as one event',['Expert reference','page 1 of 1',EXIMG[8]],['Claude Sonnet 5.5','page 1 of 1 · 80.8%, its highest-scoring of three',EXIMG[9]],'The two reports are nearly the same length and cover the same four events. The difference is one clause: the expert places the line crossing in a week of unusual guard activity at the same buildings, which tells senior leaders it was not isolated. 26 of 27 reports report the crossing alone.'],
+];
+
+/* ---------- helpers ---------- */
+const mfill = m => `background:var(--m-${m.fam});opacity:${m.o}`;
+const logo = m => LOGOS[m.fam] ? `<img class="mlogo ${m.fam}" src="${LOGOS[m.fam]}" alt="">` : '';
+const pct = (v,min,max) => Math.max(0,Math.min(100,(v-min)/(max-min)*100));
+const lg = v => Math.log2(v);
+const fmt = n => n.toLocaleString('en-US');
+const frame = (title, num, body, cap, opts={}) =>
+  `<div class="frame" style="${opts.style||''}"><div class="frame-h"><h3>${title}</h3><span>${num}</span></div>${opts.key||''}${body}<p class="cap"><b>${num}.</b> ${cap}</p></div>`;
+const keyline = items => `<div class="keyline">${items.map(([n,c,cls])=>`<span><i class="${cls||''}" style="${c?`background:var(--${c})`:''}"></i>${n}</span>`).join('')}</div>`;
+const axis = (ticks, min, max, extra='') => `<div class="axis ${extra}">${ticks.map(t=>`<span style="left:${pct(t[0],min,max)}%">${t[1]}</span>`).join('')}</div>`;
+const grids = (ticks, min, max) => ticks.map(t=>`<i class="grid" style="left:${pct(t[0],min,max)}%"></i>`).join('');
+const row = (lab, track, v, lw) => `<div class="row" ${lw?`style="--lab:${lw}"`:''}><div class="lab">${lab}</div><div class="track">${track}</div><div class="v">${v}</div></div>`;
+const mlab = m => `${logo(m)}<span>${esc(m.n)}</span>`;
+const seg = (left,w,cls,label,title) => `<span class="seg${w<6?' narrow':''}" style="left:${left}%;width:${w}%;background:var(--${cls})" title="${esc(title)}"><span>${label}</span></span>`;
+
+
+/* Figma-style frame (nodes 9650-12925 / 9653-14638) */
+const cframe = (title, num, body, cap, key='') => `<div class="cf"><div class="cf-t">${title}</div>${key}${body}<p class="cf-cap"><b>${num}.</b> ${cap}</p></div>`;
+const ckey = items => `<div class="cf-k">${items.map(([n,bg,o])=>`<span><i style="background:${bg};opacity:${o??1}"></i>${n}</span>`).join('')}</div>`;
+const mvfill = m => `background:var(--mv-${m.fam});opacity:${m.o}`;
+/* vertical column chart: items [{l, sub, v, fill, title}], scale [min,max], ticks [[v,label]], zero (baseline value) */
+function colChart({items, min, max, ticks, zero=min, h=260, fmt=v=>v, ylab='', xlab='', scroll=false, valueLabels=true, dense=false}){
+  const Y = v => 100 - pct(v,min,max);
+  const gy = ticks.map(t=>`<i class="gy" style="top:${Y(t[0])}%"></i><span class="ty" style="top:${Y(t[0])}%">${t[1]}</span>`).join('');
+  const cols = items.map(it=>{ const top=Math.min(Y(it.v),Y(zero)), hgt=Math.abs(Y(it.v)-Y(zero)); const up=it.v>=zero;
+    return `<div class="cf-col" title="${esc(it.title||'')}"><span class="trk" style="${it.fill?`background:${it.fill}`:''}"></span><span class="bar" style="top:${top}%;height:${hgt}%;${it.fill?`background:${it.fill};opacity:${it.o??1}`:''}"></span>${valueLabels?`<span class="cv" style="${up?`bottom:calc(${100-top}% + 6px)`:`top:calc(${top+hgt}% + 6px)`}">${fmt(it.v)}</span>`:''}<span class="cl">${it.l}${it.sub?`<small>${it.sub}</small>`:''}</span></div>`; }).join('');
+  const plot = `<div class="cf-plot${dense?' dense':''}" style="height:${h}px">${gy}<span class="axl"></span><span class="axb"></span>${zero>min?`<span class="zero" style="top:${Y(zero)}%"></span>`:''}<div class="cf-cols">${cols}</div>${ylab?`<span class="cf-ax y">${ylab}</span>`:''}</div>${xlab?`<div class="cf-ax x">${xlab}</div>`:'<div style="height:56px"></div>'}`;
+  const out = `<div class="hs"><div class="hs-in${scroll?' full':''}">${plot}</div></div>`; return dense ? `<div class="dense-wrap">${out}</div>` : out;
+}
+
+/* ---------- hero scoreboard ---------- */
+function board(){
+  const list = $('#board-list'), tip = $('#board-tip');
+  if (!list || !tip) return;
+  let metric = 'mean';
+  const ICON = `<svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true" focusable="false"><path d="M14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2C11.3137 2 14 4.68629 14 8Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 7.5V11" stroke="currentColor" stroke-linecap="round"/><circle cx="8" cy="5.25" r=".75" fill="currentColor"/></svg>`;
+  const render = () => {
+    const order = [...MODELS].sort((a,b)=>b[metric]-a[metric]);
+    list.innerHTML = order.map((m,i)=>`<li class="board-row${i===0?' lead':''}" data-n="${esc(m.n)}"><div class="board-meta"><div class="board-id">${logo(m)}<span class="board-name">${esc(m.n)}</span><button type="button" class="info-btn" aria-label="Details for ${esc(m.n)}">${ICON}</button></div><span class="board-score">${m[metric].toFixed(1)}%</span></div><div class="board-track"><div class="board-fill" style="transform:scaleX(0)"></div></div></li>`).join('');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ list.querySelectorAll('.board-row').forEach(r=>{ const m=M[r.dataset.n]; r.querySelector('.board-fill').style.transform=`scaleX(${m[metric]/100})`; }); }));
+  };
+  const hide = () => { tip.classList.remove('is-visible'); list.classList.remove('has-active'); list.querySelectorAll('.is-active').forEach(r=>r.classList.remove('is-active')); };
+  const show = r => {
+    const m = M[r.dataset.n]; const rank = [...list.children].indexOf(r)+1;
+    const lines = [['Mean score:',m.mean.toFixed(1)+'%'],['95% interval:',`${m.lo.toFixed(1)}% to ${m.hi.toFixed(1)}%`],['Best @3 score:',m.best.toFixed(1)+'%'],['Worst of three:',m.worst.toFixed(1)+'%'],['Reports at 100%:',String(m.full)],['Rank:','Top '+rank]];
+    tip.innerHTML = lines.map(l=>`<p class="k">${l[0]}</p><p class="v">${l[1]}</p>`).join('');
+    list.querySelectorAll('.is-active').forEach(x=>x.classList.remove('is-active')); r.classList.add('is-active'); list.classList.add('has-active');
+    const b = r.querySelector('.info-btn'), pr = $('.board-panel').getBoundingClientRect(), br = b.getBoundingClientRect();
+    tip.style.left = Math.min(br.left - pr.left, pr.width - 220) + 'px'; tip.style.top = (br.bottom - pr.top + 8) + 'px';
+    tip.classList.add('is-visible');
+  };
+  list.addEventListener('click', e => { const b = e.target.closest('.info-btn'); if(!b) return; const r = b.closest('.board-row'); if(r.classList.contains('is-active')) hide(); else show(r); });
+  if (HOVER) { list.addEventListener('mouseover', e => { const r = e.target.closest('.board-row'); if(r) show(r); }); list.addEventListener('mouseleave', hide); }
+  document.addEventListener('click', e => { if(!e.target.closest('.board')) hide(); });
+  $('.board-head .seg').addEventListener('click', e => { const b = e.target.closest('button'); if(!b) return; metric = b.dataset.m; $('.board-head .seg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', x===b)); hide(); render(); });
+  render();
+}
+
+/* ---------- figures ---------- */
+function tabs(host, list, render, note){
+  // list: [{id,label,html?}] ; render(i) -> panel html
+  const id = host.id || 'tabs';
+  const t = `<div class="tabs" role="tablist">${list.map((x,i)=>`<button type="button" class="tab" role="tab" aria-selected="${i===0}" aria-controls="${id}-p${i}" data-i="${i}">${x.label}</button>`).join('')}</div>${note?`<p class="tab-note" id="${id}-note"></p>`:''}${list.map((x,i)=>`<div class="tabpanel" role="tabpanel" id="${id}-p${i}" ${i?'hidden':''}>${render(i)}</div>`).join('')}`;
+  return {html:t, bind(){ const h=$('#'+id); if(!h) return; const n=h.querySelector('#'+id+'-note'); const setN=i=>{ if(n&&note) n.textContent=note(i); }; setN(0);
+    h.querySelector('.tabs').addEventListener('click',e=>{ const b=e.target.closest('.tab'); if(!b) return; const i=+b.dataset.i; h.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b)); h.querySelectorAll('.tabpanel').forEach((p,k)=>{ p.hidden = k!==i; }); setN(i); }); }};
+}
+
+function fig1(){
+  const items = FAM_SET.map(([f,ss],i)=>{ const n=ss.reduce((a,s)=>a+s[2],0); return {l:FAMS[i].short||FAMS[i].n, sub:`${n*5}% of tasks`, v:n, title:`${f}: ${n} tasks (${n*5}%)`}; });
+  const chart = colChart({items, min:0, max:10, zero:0, ticks:[[0,'0'],[2,'2'],[4,'4'],[6,'6'],[8,'8'],[10,'10']], fmt:v=>v, ylab:'Tasks'});
+  const cols = SETTINGS.length+1;
+  const mx = Math.max(...FAM_SET.flatMap(([f,ss])=>ss.map(s=>s[2])));
+  let grid = `<div class="matrix" style="grid-template-columns:minmax(72px,1.6fr) repeat(${cols-1},minmax(0,1fr))"><div class="hd" style="text-align:left"></div>${SETTINGS.map(s=>`<div class="hd">${s[0]}</div>`).join('')}`;
+  FAM_SET.forEach(([f,ss],i)=>{ grid += `<div class="rh">${FAMS[i].n}</div>`; SETTINGS.forEach((s,k)=>{ const e=ss.find(x=>x[0]===k); const c=e?e[2]:0; grid += `<div class="cell${c?'':' z'}" title="${f} · ${s[0]}: ${c} task${c===1?'':'s'}">${c?`<span class="pips">${'<i></i>'.repeat(c)}</span>`:''}<span>${c||'–'}</span></div>`; }); });
+  grid += '</div>';
+  $('#fig-1').innerHTML = cframe('Tasks by report family and setting','Figure 1', `<div class="hs"><div class="hs-in full">${chart}${grid}</div></div>`, 'The 20 tasks by report family (columns) and by the organization the report is written for (grid, one mark per task); each task is 5%. Marine Corps tasks include one joint combatant command assignment.');
+}
+function fig2(){
+  const files = Object.fromEntries(FILES), fmax = 15;
+  const mn=lg(500), mx=lg(128000), ticks=[[lg(500),'0.5k'],[lg(2000),'2k'],[lg(8000),'8k'],[lg(32000),'32k'],[lg(128000),'128k']];
+  const fticks = [[0,'0'],[5,'5'],[10,'10'],[15,'15']];
+  const ax = (tk,a,b) => `<div class="ax">${tk.map(t=>`<span style="left:${pct(t[0],a,b)}%">${t[1]}</span>`).join('')}</div>`;
+  const stack = (t,c) => { let x=0; return c.map((n,i)=>{ if(!n) return ''; const s=`<span class="seg" style="left:${x/fmax*100}%;width:calc(${n/fmax*100}% - 2px);background:var(--${FTYPES[i][1]})" title="${t} · ${FTYPES[i][0]}: ${n} file${n===1?'':'s'}"><span>${n}</span></span>`; x+=n; return s; }).join(''); };
+  const rows = WORDS.map(([t,w])=>`<div class="lab">${t}</div><div class="track">${grids(ticks,mn,mx)}<span class="bar" style="width:${pct(lg(w),mn,mx)}%;background:var(--grad-purple)" title="${t}: ${fmt(w)} words"></span></div><div class="v">${fmt(w)}</div><div class="track">${grids(fticks,0,fmax)}${stack(t,files[t])}</div>`).join('');
+  const head = `<div></div><div class="ph">Source text<small>Words, log scale</small></div><div></div><div class="ph">Source files<small>Files by type</small>${keyline(FTYPES.map(([n,c])=>[n,c]))}</div>`;
+  const axes = `<div></div>${ax(ticks,mn,mx)}<div></div>${ax(fticks,0,fmax)}`;
+  $('#fig-2').innerHTML = frame('Source text and files per task','Figure 2', `<div class="src">${head}${axes}${rows}</div>`, 'Left, words of extractable text in each task’s source files (Word, PDF and PowerPoint), excluding spreadsheets and the expert reference. Right, the files under /app/attachments/ by type, including supplied templates, prior examples, guides and regulations.');
+}
+function tbl1(){
+  const tr = CATS.map(c=>`<tr><td>${c.n}</td><td class="wrap">${c.w}</td><td class="n">${c.pos}</td><td class="n">${c.pen}</td><td class="n">${c.tasks}</td><td class="n">${c.pts}</td></tr>`).join('');
+  $('#tbl-1').innerHTML = `<div class="tbl-frame"><div class="tbl-bar"><h3>Rubric categories</h3><span>Table 1</span></div><div class="tablewrap" data-scroll><table><colgroup><col style="width:14%"><col style="width:38%"><col style="width:12%"><col style="width:12%"><col style="width:10%"><col style="width:14%"></colgroup><thead><tr><th>Category</th><th>What it checks</th><th class="n">Positive criteria</th><th class="n">Penalties</th><th class="n">Tasks</th><th class="n">Share of positive points</th></tr></thead><tbody>${tr}</tbody></table></div><p class="cap tbl-cap">Share of positive points weights each task equally. Each criterion carries one label; where more than one could apply, the first match in the order format, instruction, synthesis, accuracy, judgment is used.</p></div>`;
+}
+function fig5(){
+  const ticks=[[0,'0%'],[20,'20%'],[40,'40%'],[60,'60%'],[80,'80%'],[100,'100%']];
+  const rows = MODELS.map(m=>row(mlab(m), grids(ticks,0,100)+`<span class="bar" style="width:${m.mean}%;${mfill(m)}" title="${esc(m.n)}: ${m.mean}%, 95% CI ${m.lo}% to ${m.hi}%"></span><span class="ci" style="left:${m.lo}%;width:${m.hi-m.lo}%"></span><span class="mk" style="left:${m.best}%" title="Best of three: ${m.best}%"></span>`, `${m.mean.toFixed(1)}%<small>best ${m.best.toFixed(1)}%</small>`)).join('');
+  $('#fig-5').innerHTML = frame('Mean score per model','Figure 4', `<div style="--val:88px">${axis(ticks,0,100)}<div class="rows">${rows}</div></div>`, 'Mean of 20 task means, three reports per task. Whiskers: 95% interval from resampling tasks (10,000 draws). Diamond: best of three, the mean of each task’s highest-scoring report, which requires hindsight.', {key:keyline([['Mean score, coloured by model family','grad-grey'],['95% interval',null,'line'],['Best of three',null,'diamond']])});
+}
+function tbl2(){
+  const metrics = [
+    {k:'mean', l:'Mean score', min:0, max:100, f:v=>v.toFixed(1)+'%', ci:true, note:'Mean of 20 task means, three reports per task. Whisker: 95% interval from resampling tasks.'},
+    {k:'best', l:'Best of three', min:0, max:100, f:v=>v.toFixed(1)+'%', note:'Mean of each task’s highest-scoring report, which requires hindsight.'},
+    {k:'worst', l:'Worst of three', min:0, max:100, f:v=>v.toFixed(1)+'%', note:'Mean of each task’s lowest-scoring report.'},
+    {k:'med', l:'Median report', min:0, max:100, f:v=>v.toFixed(1)+'%', note:'Median score over the model’s 60 reports.'},
+    {k:'won', l:'Tasks won', min:0, max:6, f:v=>String(v), note:'Tasks on which the model has the highest mean; ties split.'},
+    {k:'min', l:'Median minutes', min:0, max:16, f:v=>v.toFixed(1)+' min', note:'The agent’s median working time per report.'},
+  ];
+  const panel = i => { const mt=metrics[i]; const ticks = mt.max===100?[[0,'0%'],[25,'25%'],[50,'50%'],[75,'75%'],[100,'100%']]:[[0,'0'],[mt.max/4,String(mt.max/4)],[mt.max/2,String(mt.max/2)],[mt.max*3/4,String(mt.max*3/4)],[mt.max,String(mt.max)]];
+    const order=[...MODELS].sort((a,b)=>(+b[mt.k])-(+a[mt.k]));
+    const rows=order.map(m=>{ const v=+m[mt.k]; return row(mlab(m), grids(ticks,mt.min,mt.max)+`<span class="bar" style="width:${pct(v,mt.min,mt.max)}%;${mfill(m)}" title="${esc(m.n)}: ${mt.f(v)}"></span>${mt.ci?`<span class="ci" style="left:${m.lo}%;width:${m.hi-m.lo}%" title="95% interval ${m.lo}% to ${m.hi}%"></span>`:''}`, mt.f(v)); }).join('');
+    return `<div style="--val:72px">${axis(ticks,mt.min,mt.max)}<div class="rows">${rows}</div></div>`; };
+  const T = tabs($('#tbl-2'), metrics.map(m=>({label:m.l})), panel, i=>metrics[i].note);
+  $('#tbl-2').innerHTML = frame('Per-model summary','Table 2', T.html, 'Every model has 60 graded reports. Three reports in the whole run earn every positive criterion and trigger no penalty: one each from Opus 5.5, Sonnet 5.5 and Gemini 3.8 Flash. Select a metric to re-rank the models.');
+  T.bind();
+}
+function fig6(){
+  const mn=40,mx=80, ticks=[[40,'40%'],[50,'50%'],[60,'60%'],[70,'70%'],[80,'80%']];
+  const rows = MODELS.map(m=>row(mlab(m), grids(ticks,mn,mx)+`<span class="rng" style="left:${pct(m.worst,mn,mx)}%;width:${pct(m.best,mn,mx)-pct(m.worst,mn,mx)}%"></span><span class="pt lo" style="left:${pct(m.worst,mn,mx)}%" tabindex="0" data-tip="${tipHtml(m.n,[['Worst of three',m.worst.toFixed(1)+'%'],['Mean',m.mean.toFixed(1)+'%'],['Best of three',m.best.toFixed(1)+'%']])}"></span><span class="pt mid" style="left:${pct(m.mean,mn,mx)}%" tabindex="0" data-tip="${tipHtml(m.n,[['Mean',m.mean.toFixed(1)+'%'],['95% interval',m.lo.toFixed(1)+'% to '+m.hi.toFixed(1)+'%'],['Gain to best of three','+'+m.gain.toFixed(1)+' points']])}"></span><span class="pt hi" style="left:${pct(m.best,mn,mx)}%" tabindex="0" data-tip="${tipHtml(m.n,[['Best of three',m.best.toFixed(1)+'%'],['Mean',m.mean.toFixed(1)+'%'],['Worst of three',m.worst.toFixed(1)+'%']])}"></span>`, `+${m.gain.toFixed(1)}`)).join('');
+  $('#fig-6').innerHTML = frame('Mean and best of three attempts','Figure 5', `<div style="--val:48px">${axis(ticks,mn,mx)}<div class="rows">${rows}</div></div>`, 'Left dot: worst of three; blue dot: mean; right dot: best of three; each averaged over tasks. The label gives the gain from mean to best of three, in points.', {key:keyline([['Worst of three',null,'dot lo'],['Mean','grad-blue','dot'],['Best of three','white-100','dot']])});
+}
+function fig7(){
+  const mn=25,mx=85, ticks=[[25,'25%'],[40,'40%'],[55,'55%'],[70,'70%'],[85,'85%']];
+  const rows = NET.map(([k,net,earned,pen])=>{ const c=CATS.find(c=>c.k===k); return row(`<span>${c.n}</span><small>${c.share}% of points</small>`, grids(ticks,mn,mx)+`<span class="bar" style="width:${pct(net,mn,mx)}%;background:var(--grad-blue)" title="${c.n}: net ${net}%"></span><span class="seg pen" style="left:${pct(net,mn,mx)}%;width:${pct(earned,mn,mx)-pct(net,mn,mx)}%;background:var(--grad-red)" title="${c.n}: ${pen}% lost to penalties"><span></span></span>`, `${net.toFixed(1)}%<small>${earned.toFixed(1)}% earned − ${pen.toFixed(1)}% penalties</small>`); }).join('');
+  $('#fig-7').innerHTML = frame('Net score by category','Figure 6', `<div style="--lab:150px;--val:208px">${axis(ticks,mn,mx)}<div class="rows">${rows}</div></div>`, 'Positive points earned minus penalty points triggered, as a share of the category’s available positive points, pooled over each model’s 60 reports and averaged over the nine models; the same formula as the overall score, applied per category. The axis starts at 25%. The label gives the category’s share of all positive points. Synthesis has no penalty criteria.', {key:keyline([['Net score','grad-blue'],['Lost to penalties','grad-red']])});
+}
+function fig8(){
+  const ticks=[[0,'0%'],[10,'10%'],[20,'20%'],[30,'30%'],[40,'40%'],[50,'50%']];
+  const panel = i => { const c=CATS[i]; const rows = MODELS.map((m,k)=>row(mlab(m), grids(ticks,0,50)+`<span class="bar" style="width:${pct(LOST[k][i],0,50)}%;${mfill(m)}" title="${esc(m.n)} · ${c.n}: ${LOST[k][i]}% of lost points"></span>`, `${LOST[k][i].toFixed(1)}%`)).join(''); return `<div style="--val:56px">${axis(ticks,0,50)}<div class="rows">${rows}</div></div>`; };
+  const T = tabs($('#fig-8'), CATS.map(c=>({label:c.n})), panel, i=>`Share of each model’s lost points that fall in the ${CATS[i].n.toLowerCase()} category.`);
+  $('#fig-8').innerHTML = frame('Share of lost points, by category','Figure 7', T.html, 'Lost points are missed positive points plus triggered penalty points, as a share of each task’s positive points, averaged over reports. Shares across the five categories sum to 100% for each model.');
+  T.bind();
+}
+function fig9(){
+  const xmin=280,xmax=420,ymin=30,ymax=80;
+  const X=v=>pct(v,xmin,xmax), Y=v=>100-pct(v,ymin,ymax);
+  const gx=[280,300,320,340,360,380,400,420].map(v=>`<i class="gx" style="left:${X(v)}%"></i><span class="tx" style="left:${X(v)}%">${v}</span>`).join('');
+  const gy=[30,40,50,60,70,80].map(v=>`<i class="gy" style="top:${Y(v)}%"></i><span class="ty" style="top:${Y(v)}%">${v}</span>`).join('');
+  const dots = MODELS.map((m,i)=>{ const x=WORDS_MED[i], y=PEN_N[i]; return `<span class="dot" style="left:${X(x)}%;top:${Y(y)}%;${mvfill(m)}" tabindex="0" data-tip="${tipHtml(m.n,[['Median words per report',String(x)],['Penalties triggered',y+' of 189'],['Mean score',m.mean.toFixed(1)+'%']])}"></span>`; }).join('');
+  const body = `<div class="hs"><div class="hs-in full"><div class="cf-plot" id="sc9" style="height:280px">${gy}${gx}<span class="axl"></span><span class="axb"></span><span class="fit"></span>${dots}<span class="cf-ax y">Penalties triggered (of 189)</span></div><div class="cf-ax x">Median words per report</div></div></div>`;
+  $('#fig-9').innerHTML = cframe('Penalties triggered against report length','Figure 8', body, 'Median body word count over each model’s 60 reports against the penalty criteria it triggered. Dashed line: least-squares fit across the nine models (r = +0.84). The median is used because a few very long reports (up to 10,128 words) pull the mean. Hover a dot for its values.', ckey(MODELS.map(m=>[m.n,`var(--mv-${m.fam})`,m.o])));
+  const sc=$('#sc9'), fit=sc.querySelector('.fit');
+  const lay=()=>{ const W=sc.clientWidth,H=sc.clientHeight; const x1=W*X(300)/100,y1=H*Y(39.7)/100,x2=W*X(392.5)/100,y2=H*Y(69.1)/100; fit.style.left=x1+'px'; fit.style.top=y1+'px'; fit.style.width=Math.hypot(x2-x1,y2-y1)+'px'; fit.style.transform=`rotate(${Math.atan2(y2-y1,x2-x1)}rad)`; };
+  lay(); new ResizeObserver(lay).observe(sc);
+}
+function fig10(){
+  const ticks=[[0,'0'],[20,'20'],[40,'40'],[60,'60'],[80,'80']];
+  const rows = PEN.map(([n,v])=>{ const m=M[n]; return row(mlab(m), grids(ticks,0,80)+`<span class="bar" style="width:${pct(v,0,80)}%;${mfill(m)}" title="${esc(n)}: ${v} of 189 penalty checks triggered"></span>`, `${v}<small>of 189</small>`); }).join('');
+  $('#fig-10').innerHTML = frame('Penalties triggered per model','Figure 9', `<div style="--val:56px">${axis(ticks,0,80)}<div class="rows">${rows}</div></div>`, 'Penalty criteria triggered across each model’s 60 reports. Each model faces 189 penalty checks: 63 penalties, three reports each.');
+}
+function fig11(){
+  const LC = {words:['var(--grad-purple-v)',1],pages:['var(--grad-purple-v)',.55],form:['linear-gradient(180deg,#D9AE5A,#A9863C)',1],none:['linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.3))',1]};
+  const items = LENGTH.map(([t,k,r,d])=>({l:t, v:lg(r), fill:LC[k][0], o:LC[k][1], title:`${t} (${d}): median ${r.toFixed(2)}× the expert`}));
+  const chart = colChart({items, min:lg(0.5), max:lg(8), zero:0, ticks:[[lg(0.5),'0.5×'],[lg(0.75),'0.75×'],[0,'1×'],[lg(1.5),'1.5×'],[1,'2×'],[2,'4×'],[3,'8×']], fmt:v=>Math.pow(2,v).toFixed(2)+'×', ylab:'Words ÷ expert’s (log)', xlab:'Task, ordered from longest to shortest relative length', scroll:true, dense:true});
+  $('#fig-11').innerHTML = cframe('Report length relative to the expert’s, by where the limit is stated','Figure 10', chart, 'Median over all 27 reports per task of the report’s body word count (headings and tables included, headers and footers excluded) divided by the expert reference’s. Bars rise above 1× when reports run longer than the expert’s and fall below it when they run shorter.', ckey(Object.entries(LTYPES).map(([k,v])=>[v[0],LC[k][0],LC[k][1]])));
+}
+function tbl3(){
+  const tr = BUILD.map(r=>{ const m=M[r[0]]; return `<tr><td>${esc(r[0])}</td><td class="n">${r[1]}</td><td class="c">${r[2]}</td><td class="n">${r[3]}</td><td class="n">${r[4]}</td></tr>`; }).join('');
+  $('#tbl-3').innerHTML = `<div class="tbl-frame"><div class="tbl-bar"><h3>How each model built its Word document</h3><span>Table 4</span></div><div class="tablewrap" data-scroll><table><thead><tr><th>Model</th><th class="n">Length rules met</th><th class="c">Template / blank / other</th><th class="n">More pages than expert</th><th class="n">Banner kept</th></tr></thead><tbody>${tr}</tbody></table></div><p class="cap tbl-cap">Length rules met: the rubric’s own length criteria (word, character and page limits), 63 checks per model. Template / blank / other: on the 11 tasks that supply a Word template or example (33 reports per model), whether the report’s file descends from the supplied template, from the blank python-docx default document, or from another file. Pages are counted in the grader’s renderer for both the report and the expert reference. Banner kept: the expert’s report carries an UNCLASSIFIED header or footer and the model’s report does too.</p></div>`;
+}
+function fig12(){
+  const ticks=[[0,'0'],[10,'10'],[20,'20'],[30,'30'],[40,'40'],[50,'50'],[60,'60'],[70,'70']];
+  const rows = TOOLS.map(([n,v,t])=>{ const m=M[n]; return row(mlab(m), grids(ticks,0,70)+`<span class="bar" style="width:${pct(v,0,70)}%;${mfill(m)}" title="${esc(n)}: median ${v} tool calls, ${t} minutes"></span>`, `${v}<small>${t} min</small>`); }).join('');
+  $('#fig-12').innerHTML = frame('Tool calls per report','Figure 11', `<div style="--val:64px">${axis(ticks,0,70)}<div class="rows">${rows}</div></div>`, 'Median tool calls per report (shell commands, file reads and writes), with the median working time.');
+}
+function fig13(){
+  const xmin=0,xmax=70,ymin=52,ymax=68;
+  const X=v=>pct(v,xmin,xmax), Y=v=>100-pct(v,ymin,ymax);
+  const gx=[0,10,20,30,40,50,60,70].map(v=>`<i class="gx" style="left:${X(v)}%"></i><span class="tx" style="left:${X(v)}%">${v}</span>`).join('');
+  const gy=[52,56,60,64,68].map(v=>`<i class="gy" style="top:${Y(v)}%"></i><span class="ty" style="top:${Y(v)}%">${v}%</span>`).join('');
+  const dots = MODELS.map(m=>`<span class="dot" style="left:${X(m.calls)}%;top:${Y(m.mean)}%;${mvfill(m)}" tabindex="0" data-tip="${tipHtml(m.n,[['Median tool calls',String(m.calls)],['Mean score',m.mean.toFixed(1)+'%'],['Median minutes',m.min.toFixed(1)]])}"></span>`).join('');
+  const body = `<div class="hs"><div class="hs-in full"><div class="cf-plot" id="sc13" style="height:280px">${gy}${gx}<span class="axl"></span><span class="axb"></span><span class="fit"></span>${dots}<span class="cf-ax y">Mean score</span></div><div class="cf-ax x">Median tool calls per report</div></div></div>`;
+  $('#fig-13').innerHTML = cframe('Score against tool calls per report','Figure 12', body, 'Each model’s median tool calls per report against its mean score. Dashed line: least-squares fit across the nine models (r = −0.81; −0.31 without Gemini 3.8 Flash). Hover a dot for its values.', ckey(MODELS.map(m=>[m.n,`var(--mv-${m.fam})`,m.o])));
+  const sc=$('#sc13'), fit=sc.querySelector('.fit');
+  const lay=()=>{ const W=sc.clientWidth,H=sc.clientHeight; const x1=W*X(9)/100,y1=H*Y(64.3)/100,x2=W*X(61)/100,y2=H*Y(56.0)/100; fit.style.left=x1+'px'; fit.style.top=y1+'px'; fit.style.width=Math.hypot(x2-x1,y2-y1)+'px'; fit.style.transform=`rotate(${Math.atan2(y2-y1,x2-x1)}rad)`; };
+  lay(); new ResizeObserver(lay).observe(sc);
+}
+function fig14(){
+  const items = FAMS.map(f=>({l:f.short||f.n, sub:`${f.tasks} tasks`, v:f.mean, title:`${f.full}: ${f.mean}% mean of the nine models`}));
+  const chart = colChart({items, min:0, max:100, zero:0, ticks:[[0,'0%'],[25,'25%'],[50,'50%'],[75,'75%'],[100,'100%']], fmt:v=>v.toFixed(1)+'%', ylab:'Mean score'});
+  $('#fig-14').innerHTML = cframe('Score by report family, all models','Figure 13', chart, 'Mean over the nine models of each model’s mean of task means within the family; the number of tasks is under each family.');
+}
+function fig15(){
+  const panel = i => { const m=MODELS[i]; const items = FAMS.map((f,k)=>({l:f.short||f.n, sub:`${f.tasks} tasks`, v:FAM_MODEL[i][k], fill:`var(--mv-${m.fam})`, o:m.o, title:`${m.n} · ${f.full}: ${FAM_MODEL[i][k]}%`})); return colChart({items, min:0, max:100, zero:0, ticks:[[0,'0%'],[25,'25%'],[50,'50%'],[75,'75%'],[100,'100%']], fmt:v=>v.toFixed(1)+'%', ylab:'Mean score', h:220}); };
+  const T = tabs($('#fig-15'), MODELS.map(m=>({label:esc(m.s)})), panel, i=>`${MODELS[i].n}: ${MODELS[i].mean.toFixed(1)}% overall.`);
+  $('#fig-15').innerHTML = frame('Score by report family, per model','Figure 14', T.html, 'Each model’s mean of task means within each family. Families hold three to nine tasks, so differences of a few points are within noise. Select a model to see its four family scores.');
+  T.bind();
+}
+function exhibits(){
+  const doc = (who, meta, src, alt) => `<div><div class="who">${esc(who)}<small>${esc(meta)}</small></div><div class="doc"><img src="${src}" alt="${esc(alt)}" loading="lazy" onerror="this.closest('.doc').classList.add('nf')"><div class="missing">Page image unavailable</div><button type="button" class="doc-x" data-who="${esc(who)}" data-meta="${esc(meta)}">Show full page</button></div></div>`;
+  $('#exhibits').innerHTML = EXHIBITS.map((e,i)=>`<div class="fig"><div class="frame"><div class="frame-h"><h3>${esc(e[0])}</h3><span>Exhibit ${i+1}</span></div><div class="pair" style="margin-top:0">${doc(e[1][0],e[1][1],e[1][2],'Expert reference report')}${doc(e[2][0],e[2][1],e[2][2],e[2][0]+' report')}</div><p class="cap"><b>Exhibit ${i+1}.</b> ${esc(e[3])}</p></div></div>`).join('');
+  const modal=$('#doc-modal'), mimg=$('#doc-modal-img');
+  document.body.appendChild(modal);
+  const open=b=>{ const img=b.closest('.doc').querySelector('img'); mimg.src=img.src; mimg.alt=img.alt; $('#doc-modal-title').textContent=b.dataset.who; $('#doc-modal-meta').textContent=b.dataset.meta; modal.hidden=false; modal.classList.add('open'); document.body.classList.add('modal-lock'); $('#doc-modal-close').focus(); };
+  const close=()=>{ modal.classList.remove('open'); modal.hidden=true; document.body.classList.remove('modal-lock'); mimg.src=''; };
+  $('#exhibits').addEventListener('click', e => { const b=e.target.closest('.doc-x'); if(b) open(b); });
+  $('#doc-modal-close').addEventListener('click', close);
+  modal.addEventListener('click', e => { if(e.target===modal) close(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && modal.classList.contains('open')) close(); });
+}
+function tbl4(){
+  const fams = [['WAR','Weekly activity'],['AAR','After-action'],['PSR','Program status'],['PAR','Performance and accomplishment']];
+  const panel = i => `<div class="tcards">${TASKS.filter(t=>t[0].startsWith(fams[i][0])).map(t=>`<div class="tcard"><div class="th"><span class="id">${t[0]}</span><span class="tsc">${t[7]}</span></div><div class="nm">${esc(t[1])}</div><dl><dt>Setting</dt><dd>${esc(t[2])}</dd><dt>Reader</dt><dd>${esc(t[3])}</dd><dt>Length rule</dt><dd>${esc(t[4])}</dd><dt>Files</dt><dd>${t[5]}</dd><dt>Criteria</dt><dd>${esc(t[6].replace(' (',' positive, ').replace(')',' penalties'))}</dd></dl><div class="track" title="Mean score ${t[7]}"><span class="bar" style="width:${parseFloat(t[7])}%;background:var(--grad-blue)"></span></div></div>`).join('')}</div>`;
+  const T = tabs($('#tbl-4'), fams.map(f=>({label:f[1]})), panel, i=>`${TASKS.filter(t=>t[0].startsWith(fams[i][0])).length} tasks. Mean score is the mean over all nine models of their task means.`);
+  $('#tbl-4').innerHTML = frame('The 20 tasks','Table 4', T.html, 'Each card gives the report, who it is written for, the length rule, the number of source files, the rubric size and the mean score over the nine models, shown as a bar.');
+  T.bind();
+}
+
+/* ---------- scroll hints for wide tables ---------- */
+function scrollHint(el, arrows=false, cls=''){
+  if (!el || el.closest('.sc')) return;
+  const w = document.createElement('div'); w.className = 'sc '+cls;
+  el.parentNode.insertBefore(w, el); w.appendChild(el);
+  const arrow = (cls, d, label) => { const b=document.createElement('button'); b.type='button'; b.className='sc-btn '+cls; b.setAttribute('aria-label',label); b.innerHTML = d<0 ? '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5L4 6l3.5 3.5"/></svg>' : '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 2.5L8 6l-3.5 3.5"/></svg>'; b.addEventListener('click',()=>el.scrollBy({left:d*Math.max(120,el.clientWidth*.6),behavior:'smooth'})); w.appendChild(b); };
+  if (arrows) { arrow('sc-prev',-1,'Scroll left'); arrow('sc-next',1,'Scroll right'); }
+  const upd = () => { const can = el.scrollWidth > el.clientWidth+2; const end = el.scrollLeft+el.clientWidth >= el.scrollWidth-2; w.classList.toggle('sc-end',!can||end); w.classList.toggle('sc-start',!can||el.scrollLeft<=2); };
+  el.addEventListener('scroll',upd,{passive:true}); new ResizeObserver(upd).observe(el); upd();
+}
+
+function scrollHintY(el){
+  if (!el || el.parentElement.classList.contains('sv')) return;
+  const w=document.createElement('div'); w.className='sv'+(el.dataset.vs==='mobile'?' sv-mobile':''); el.parentNode.insertBefore(w,el); w.appendChild(el);
+  const upd=()=>{ const can=el.scrollHeight>el.clientHeight+2; const end=el.scrollTop+el.clientHeight>=el.scrollHeight-2; w.classList.toggle('sv-end',!can||end); };
+  el.addEventListener('scroll',upd,{passive:true}); new ResizeObserver(upd).observe(el); upd();
+}
+/* ---------- hover tooltips ---------- */
+function tooltips(){
+  const t=document.querySelector('.ftip')||document.createElement('div');
+  t.classList.add('ftip'); t.setAttribute('role','tooltip'); document.body.appendChild(t);
+  let cur=null;
+  const show=el=>{ cur=el; t.innerHTML=el.dataset.tip; const r=el.getBoundingClientRect(); let x=r.left+r.width/2; const w=t.offsetWidth||160; x=Math.max(w/2+8,Math.min(window.innerWidth-w/2-8,x)); t.style.left=x+'px'; t.style.top=r.top+'px'; t.classList.add('on'); };
+  const hide=()=>{ cur=null; t.classList.remove('on'); };
+  document.addEventListener('mouseover',e=>{ const el=e.target.closest('[data-tip]'); if(el) show(el); else if(cur) hide(); });
+  document.addEventListener('mouseout',e=>{ const el=e.target.closest('[data-tip]'); if(el && !el.contains(e.relatedTarget)) hide(); });
+  document.addEventListener('click',e=>{ const el=e.target.closest('[data-tip]'); if(el){ if(cur===el) hide(); else show(el); } else hide(); });
+  document.addEventListener('scroll',()=>{ if(cur) hide(); },{passive:true,capture:true});
+}
+const tipHtml=(title,rows)=>esc(`<p class="t">${title}</p>`+rows.map(([k,v])=>`<p class="k">${k}</p><p class="v">${v}</p>`).join(''));
+board(); fig1(); fig2(); tbl1(); fig5(); tbl2(); fig6(); fig7(); fig8(); fig9(); fig10(); fig11(); tbl3(); fig12(); fig13(); fig14(); fig15(); exhibits(); tbl4();
+document.querySelectorAll('[data-scroll]').forEach(el=>scrollHint(el,false));
+document.querySelectorAll('.hs').forEach(el=>scrollHint(el,false));
+document.querySelectorAll('.tabs').forEach(el=>scrollHint(el,true,'sc-tabs'));
+document.querySelectorAll('.vs').forEach(scrollHintY);
+tooltips();
+})();
+
+</script>
+</div>
+</html>
