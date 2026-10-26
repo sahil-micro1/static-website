@@ -433,6 +433,12 @@ window.benchmarks_data["medical-index"] = {
           benchmarks: { pathologybench: 78.0, wellnessbench: 51, pharmabench: 75.5 },
         },
         {
+          name: "Gemini 4 Argon",
+          iconStyle: "gemini",
+          score: 65.2,
+          benchmarks: { pathologybench: 72.0, wellnessbench: 50, pharmabench: 73.6 },
+        },
+        {
           name: "Grok 4.6",
           iconStyle: "grok",
           score: 64.1,
