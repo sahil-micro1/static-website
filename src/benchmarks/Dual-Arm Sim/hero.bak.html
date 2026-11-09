@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dual-Arm Sim — episode reel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Standalone full-width reel. Its styles are not the article page's. Drop this embed in a full-bleed section. */
+:root{
+  --surface-1:#121212;
+  --surface-3:#313131;
+  --white-100:#fff;
+  --white-60:rgba(255,255,255,.6);
+}
+*{box-sizing:border-box}
+button{font-size:16px;line-height:1.5}
+html{background:var(--surface-1)}
+body{margin:0;background:var(--surface-1);color:var(--white-100);font:400 16px/1.5 Outfit,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.reel-host{width:100%;max-width:none}
+.reel{position:relative;width:100%;max-width:none;margin:0;overflow:hidden;padding:8px 0}
+.reel::before,.reel::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.reel::before{left:0;background:linear-gradient(90deg,var(--surface-1),transparent)}
+.reel::after{right:0;background:linear-gradient(270deg,var(--surface-1),transparent)}
+.reel-track{display:flex;gap:12px;width:max-content;animation:reel 70s linear infinite;will-change:transform}
+.reel:hover .reel-track,.reel:focus-within .reel-track{animation-play-state:paused}
+@keyframes reel{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.reel-card{position:relative;flex:0 0 auto;width:420px;background:transparent;border:0;padding:0;text-align:left;color:inherit;font:inherit}
+.reel-card:not(.is-ready) .media,.reel-card:not(.is-ready) .cap{visibility:hidden}
+.reel-skel{position:absolute;inset:0;z-index:1;pointer-events:none}
+.reel-card.is-ready .reel-skel{display:none}
+.reel-skel .tile{aspect-ratio:16/9;border-radius:2px}
+.reel-skel .title{width:24.3%;height:13px;margin:12px 0 0;border-radius:2px}
+.reel-skel .meta{display:flex;align-items:center;height:16px;margin-top:8px}
+.reel-skel .dot{width:8px;height:8px;border-radius:50%}
+.reel-skel .status{width:50px;height:10px;margin-left:8px;border-radius:2px}
+.reel-skel .icon{width:14px;height:14px;margin-left:10px;border-radius:3px}
+.reel-skel .model{width:72px;height:10px;margin-left:8px;border-radius:2px}
+.reel-skel .bone{background-color:rgba(255,255,255,.13);background-image:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);background-size:200% 100%;background-repeat:no-repeat;animation:skel 1.8s infinite}
+@keyframes skel{0%{background-position:120% 0;animation-timing-function:cubic-bezier(.37,0,.63,1)}70%,100%{background-position:-20% 0}}
+@media (prefers-reduced-motion:reduce){.reel-skel .bone{background-image:none;animation:skel-breathe 2.5s cubic-bezier(.37,0,.63,1) infinite alternate}}
+@keyframes skel-breathe{to{opacity:.55}}
+.reel-card .media{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--surface-3)}
+.reel-card .media img,.reel-card .media video{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;transition:transform 400ms ease-in-out}
+.reel-card:hover .media img,.reel-card:hover .media video{transform:scale(1.03)}
+.reel-card .cap{padding:10px 2px 0;display:flex;flex-direction:column;gap:2px}
+.reel-card .cap b{font-size:14px;line-height:1.4;font-weight:500;color:var(--white-100)}
+.reel-card .cap span{display:flex;align-items:center;gap:6px;font-size:12px;line-height:1.4;color:var(--white-60)}
+.reel-card .cap i{width:6px;height:6px;border-radius:50%;display:inline-block}
+.reel-card .cap img{width:12px;height:12px;max-width:none}
+@media (max-width:900px){
+  .reel-card{width:280px}
+  .reel::before,.reel::after{width:48px}
+}
+@media (prefers-reduced-motion:reduce){.reel-track{animation:none}.reel{overflow-x:auto}}
+</style>
+</head>
+<body>
+<div class="reel-host">
+<section class="reel" aria-label="Recorded simulation episodes">
+  <div class="reel-track" id="reelTrack"></div>
+</section>
+</div>
+<script>
+(function(){
+  const track=document.getElementById("reelTrack"); if(!track) return;
+  const CLIP_START=1;
+  const VID_BASE="https://micro1-static-assets.s3.us-west-1.amazonaws.com/slimbench/bmk_vids/";
+  const LOGOS={
+    Anthropic:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819fac77315251cefb0_claude.png",
+    OpenAI:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a7819c48f94fa5d90c96f_openai.png",
+    Google:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a781990ac587600afee57_gemini.png",
+    xAI:"https://cdn.prod.website-files.com/6a04bd23eb9d40f76dac1249/6a5a78198dc59e6cbd29fdd1_grok.png"
+  };
+  const MODELS={
+    "claude-fable-5.1":{name:"Claude Fable 5.1",org:"Anthropic"},
+    "claude-sonnet-5.5":{name:"Claude Sonnet 5.5",org:"Anthropic"},
+    "gemini-3.8-flash":{name:"Gemini 3.8 Flash",org:"Google"},
+    "gemini-4-argon":{name:"Gemini 4 Argon",org:"Google"},
+    "gpt-6-astra":{name:"GPT-6 Astra",org:"OpenAI"},
+    "gpt-6.1-sol":{name:"GPT-6.1 Sol",org:"OpenAI"},
+    "grok-4.7":{name:"Grok 4.7",org:"xAI"}
+  };
+  const CLIP_STEM={
+    instrument_swap:{"gpt-6.1-sol":"seed12_moved"},
+    cartridge_swap:{"gemini-4-argon":"seed17_SUCCESS","gpt-6-astra":"seed18_SUCCESS","claude-sonnet-5.5":"seed12_moved"},
+    parts_kitting:{"gemini-4-argon":"seed18_SUCCESS","grok-4.7":"seed10_approached"},
+    sample_transfer:{"claude-fable-5.1":"seed18_moved","gemini-3.8-flash":"seed4_moved"}
+  };
+  const clipUrl=(task,model,view)=>{const stem=CLIP_STEM[task]&&CLIP_STEM[task][model];return stem?VID_BASE+task+"/"+model+"/"+stem+"_"+view+".mp4#t="+CLIP_START:"";};
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const TN={instrument_swap:"Instrument swap",cartridge_swap:"Cartridge swap",sample_transfer:"Sample transfer",parts_kitting:"Parts kitting"};
+  const REEL=[
+    {task:"cartridge_swap",model:"gemini-4-argon",ok:true},
+    {task:"instrument_swap",model:"gpt-6.1-sol",ok:false},
+    {task:"parts_kitting",model:"gemini-4-argon",ok:true},
+    {task:"sample_transfer",model:"claude-fable-5.1",ok:false},
+    {task:"cartridge_swap",model:"gpt-6-astra",ok:true},
+    {task:"parts_kitting",model:"grok-4.7",ok:false},
+    {task:"cartridge_swap",model:"claude-sonnet-5.5",ok:false},
+    {task:"sample_transfer",model:"gemini-3.8-flash",ok:false}
+  ];
+  const card=r=>{const m=MODELS[r.model]; if(!m) return "";
+    return `<div class="reel-card" aria-busy="true"><div class="reel-skel" aria-hidden="true"><div class="bone tile"></div><div class="bone title"></div><div class="meta"><i class="bone dot"></i><i class="bone status"></i><i class="bone icon"></i><i class="bone model"></i></div></div><div class="media"><video muted playsinline preload="metadata" tabindex="-1"></video></div><div class="cap"><b>${TN[r.task]}</b><span><i style="background:${r.ok?"#578265":"#A38543"}"></i>${r.ok?"Success":"Failure"} · <img src="${LOGOS[m.org]}" alt="">${esc(m.name)}</span></div></div>`;};
+  const html=REEL.map(card).join("");
+  track.innerHTML=html+html;
+  track.querySelectorAll(".reel-card").forEach((c,i)=>{const r=REEL[i%REEL.length]; const v=c.querySelector("video"); if(v) v.setAttribute("data-src", clipUrl(r.task,r.model,"front"));});
+  track.querySelectorAll('.reel-card:nth-child(n+'+(REEL.length+1)+')').forEach(c=>c.setAttribute("aria-hidden","true"));
+  const atStart=v=>(v.currentTime||0)>=CLIP_START-0.05;
+  const rate=v=>{v.defaultPlaybackRate=5;v.playbackRate=5;};
+  const ensure=v=>{if(!v.getAttribute("src"))v.src=v.getAttribute("data-src");rate(v);};
+  const paintCard=v=>{if(v.readyState<2||!atStart(v))return;const c=v.closest(".reel-card");if(!c)return;c.classList.add("is-ready");c.setAttribute("aria-busy","false");};
+  const clearCard=v=>{const c=v.closest(".reel-card");if(!c)return;c.classList.remove("is-ready");c.setAttribute("aria-busy","true");};
+  const showStill=v=>{if(v.getAttribute("src"))return;ensure(v);const pin=()=>{if(v.dataset.hot==="1"||atStart(v)){paintCard(v);return;}try{v.currentTime=CLIP_START;}catch(err){}};if(v.readyState>=1)pin();else v.addEventListener("loadedmetadata",pin,{once:true});};
+  const playCard=v=>{v.dataset.hot="1";ensure(v);const go=()=>{rate(v);if(!atStart(v)){v.addEventListener("seeked",()=>{if(v.dataset.hot==="1"){rate(v);v.play().catch(()=>{});}},{once:true});try{v.currentTime=CLIP_START;}catch(err){}return;}v.play().catch(()=>{});};if(v.readyState>=1)go();else v.addEventListener("loadedmetadata",go,{once:true});};
+  track.querySelectorAll(".reel-card").forEach(c=>{const v=c.querySelector("video");if(!v)return;["loadeddata","seeked","canplay"].forEach(ev=>v.addEventListener(ev,()=>paintCard(v)));v.addEventListener("ended",()=>{v.currentTime=CLIP_START;if(c.matches(":hover")){rate(v);v.play().catch(()=>{});}});c.addEventListener("mouseenter",()=>playCard(v));c.addEventListener("mouseleave",()=>{delete v.dataset.hot;v.pause();});});
+  if("IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.forEach(x=>{const v=x.target.querySelector("video");if(!v)return;if(x.isIntersecting){showStill(v);return;}if(x.target.matches(":hover"))return;delete v.dataset.hot;v.pause();if(v.getAttribute("src")){clearCard(v);v.removeAttribute("src");v.load();}}),{rootMargin:"200px 15% 200px 15%",threshold:0});track.querySelectorAll(".reel-card").forEach(c=>io.observe(c));}
+  else track.querySelectorAll(".reel-card video").forEach(showStill);
+})();
+</script>
+</body>
+</html>
