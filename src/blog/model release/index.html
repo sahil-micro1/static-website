@@ -17,6 +17,7 @@
     --mr-ink-50: rgba(255, 255, 255, 0.5);
     --mr-cite: #9fa3fc;
     --mr-sans: Outfit, system-ui, sans-serif;
+    container-type: inline-size;
   }
 
   * { box-sizing: border-box; }
@@ -49,7 +50,13 @@
   #mr-results-detail,
   #mr-case-studies,
   #mr-discussion,
-  .mr-src { margin-top: 40px; }
+  .mr-src { margin-top: 56px; }
+
+  #mr-abstract .mr-title { margin-top: 24px; }
+
+  .mr h3.mr-h { margin-top: 16px; }
+
+  #mr-results-detail > .mr-sec > .mr-block:first-child > .mr-h { margin-top: 0; }
 
   .mr h2,
   .mr h3,
@@ -80,6 +87,7 @@
 
   .mr-title {
     font: 400 24px/1.4 var(--mr-sans);
+    letter-spacing: normal;
     color: var(--mr-ink-90);
     white-space: pre-wrap;
   }
@@ -108,6 +116,7 @@
 
   .mr-h {
     font: 600 18px/1.6 var(--mr-sans);
+    letter-spacing: normal;
     color: var(--mr-ink-80);
     white-space: pre-wrap;
   }
@@ -117,6 +126,12 @@
     color: var(--mr-ink-60);
   }
 
+  .mr-prose p {
+    font: inherit;
+    letter-spacing: normal;
+    color: inherit;
+  }
+
   .mr-prose p + p { margin-top: 12px; }
 
   .mr-em { color: var(--mr-ink-90); }
@@ -124,7 +139,10 @@
   .mr-cite { color: var(--mr-cite); }
 
   .mr-cap {
+    margin-top: 0;
     font: 400 13px/1.5 var(--mr-sans);
+    letter-spacing: normal;
+    text-align: left;
     color: var(--mr-ink-60);
   }
 
@@ -245,7 +263,7 @@
     border-radius: 100px;
     backdrop-filter: blur(2px);
     font: 400 14px/1.6 var(--mr-sans);
-    color: #fff;
+    color: var(--mr-ink-90);
     white-space: pre;
   }
 
@@ -294,6 +312,7 @@
   .mr-seg-f { flex: 70 1 0; }
 
   .mr-fill {
+    width: 100%;
     height: 16px;
     background: rgba(255, 255, 255, 0.18);
     border: 1px solid rgba(255, 255, 255, 0.13);
@@ -594,12 +613,12 @@
 
   .mr-s4-table tbody th {
     background: none;
-    color: #fff;
+    color: var(--mr-ink-90);
   }
 
   .mr-s4-table td { color: rgba(255, 255, 255, 0.7); }
 
-  .mr-s4-cap { color: #fff; }
+  .mr-s4-cap { color: var(--mr-ink-90); }
 
   @container (max-width: 760px) {
     .mr-s4-table { min-width: 680px; }
@@ -686,6 +705,8 @@
   .mr-f2-l {
     flex: 0 1 190px;
     min-width: 0;
+    font: 400 13px/1.6 var(--mr-sans);
+    letter-spacing: normal;
     color: var(--mr-ink-80);
     white-space: nowrap;
   }
@@ -731,6 +752,8 @@
   }
 
   .mr-f2-v {
+    font: 400 13px/1.6 var(--mr-sans);
+    letter-spacing: normal;
     color: var(--mr-ink-90);
     text-align: right;
     white-space: nowrap;
@@ -771,6 +794,12 @@
     gap: 8px;
     color: var(--mr-ink-80);
     white-space: nowrap;
+  }
+
+  .mr-f2-lr > p {
+    font: 400 13px/1.6 var(--mr-sans);
+    letter-spacing: normal;
+    color: inherit;
   }
 
   .mr-f2-lr .mr-f2-v { color: var(--mr-ink-90); }
@@ -910,7 +939,7 @@
   .mr-chem .mr-chem-k {
     margin: 0;
     font: 400 14px/1.6 var(--mr-sans);
-    color: #fff;
+    color: var(--mr-ink-90);
   }
 
   .mr-chem-card {
@@ -962,6 +991,11 @@
     vertical-align: -0.25em;
   }
 
+  .mr b,
+  .mr-chem-b {
+    font-weight: 600;
+  }
+
   .mr-chem-fig {
     display: grid;
     grid-template-columns: 59px minmax(0, 1fr) 38px;
@@ -979,7 +1013,7 @@
   .mr-chem .mr-chem-c {
     margin: 0;
     font: 400 13px/20px var(--mr-sans);
-    color: #fff;
+    color: var(--mr-ink-90);
   }
 
   .mr-chem .mr-chem-n { text-align: right; }
@@ -1197,7 +1231,7 @@
   .mr-lcr .mr-lcr-label {
     margin: 0;
     font: 400 14px/1.6 var(--mr-sans);
-    color: #fff;
+    color: var(--mr-ink-90);
   }
 
   .mr-lcr-box {
@@ -1250,25 +1284,183 @@
   .mr-src {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
+    text-align: left;
   }
 
   .mr-src-list {
     margin: 0;
     padding: 0;
+    width: 100%;
     list-style: none;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
+    text-align: left;
   }
 
   .mr-src-list li {
     font: 400 14px/1.5 var(--mr-sans);
     color: var(--mr-ink-60);
-    text-indent: -0.45em;
+    text-align: left;
+    text-indent: 0;
   }
 
   .mr-f1.mr-is-top { gap: 29px; }
+
+  /* Entrance animation: the figure wrapper (card/background/border) stays put;
+     only the content inside — bars, rows, points, lines — fades/grows in on scroll.
+     .mr-in is added to the wrapper by the script below and used only to flag
+     descendants, never to move the wrapper itself. Disabled entirely for
+     prefers-reduced-motion so nothing moves for users who opt out. */
+  @media (prefers-reduced-motion: no-preference) {
+    .mr-f1-fill,
+    .mr-f2-bar,
+    .mr-fill {
+      transition: width 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mr-f1:not(.mr-in) .mr-f1-fill,
+    .mr-f2:not(.mr-in) .mr-f2-bar,
+    .mr-alloc-block:not(.mr-in) .mr-fill {
+      width: 0 !important;
+    }
+
+    .mr-f1-row,
+    .mr-f2-row,
+    .mr-f2-item {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .mr-f1.mr-in .mr-f1-row,
+    .mr-f2.mr-in .mr-f2-row,
+    .mr-f2.mr-in .mr-f2-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mr-f1-row:nth-child(1) { transition-delay: 0.05s; }
+    .mr-f1-row:nth-child(2) { transition-delay: 0.1s; }
+    .mr-f1-row:nth-child(3) { transition-delay: 0.15s; }
+    .mr-f1-row:nth-child(4) { transition-delay: 0.2s; }
+    .mr-f1-row:nth-child(5) { transition-delay: 0.25s; }
+
+    .mr-f2-row:nth-child(1) { transition-delay: 0.05s; }
+    .mr-f2-row:nth-child(2) { transition-delay: 0.1s; }
+    .mr-f2-row:nth-child(3) { transition-delay: 0.15s; }
+    .mr-f2-row:nth-child(4) { transition-delay: 0.2s; }
+    .mr-f2-row:nth-child(5) { transition-delay: 0.25s; }
+    .mr-f2-row:nth-child(6) { transition-delay: 0.3s; }
+    .mr-f2-row:nth-child(7) { transition-delay: 0.35s; }
+    .mr-f2-row:nth-child(8) { transition-delay: 0.4s; }
+
+    .mr-f2-item:nth-child(1) { transition-delay: 0.05s; }
+    .mr-f2-item:nth-child(2) { transition-delay: 0.1s; }
+    .mr-f2-item:nth-child(3) { transition-delay: 0.15s; }
+    .mr-f2-item:nth-child(4) { transition-delay: 0.2s; }
+
+    .mr-step {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .mr-flow-block.mr-in .mr-step {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mr-step:nth-child(1) { transition-delay: 0.05s; }
+    .mr-step:nth-child(3) { transition-delay: 0.15s; }
+    .mr-step:nth-child(5) { transition-delay: 0.25s; }
+    .mr-step:nth-child(7) { transition-delay: 0.35s; }
+
+    /* Chevrons sit between the steps. Opacity only, so the mobile 90° rotate stays. */
+    .mr-chev {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .mr-flow-block.mr-in .mr-chev { opacity: 1; }
+
+    .mr-chev:nth-child(2) { transition-delay: 0.12s; }
+    .mr-chev:nth-child(4) { transition-delay: 0.22s; }
+    .mr-chev:nth-child(6) { transition-delay: 0.32s; }
+
+    .mr-curve,
+    .mr-return {
+      opacity: 0;
+      transition: opacity 0.5s ease 0.45s;
+    }
+
+    .mr-flow-block.mr-in .mr-curve,
+    .mr-flow-block.mr-in .mr-return { opacity: 1; }
+
+    /* The Base/Trained answer-summary cards above stay static; only the
+       accepted (green) result squares change color in from the neutral
+       look, row by row. Squares that stay unaccepted never move. */
+    .mr-chem-sq .mr-is-ok {
+      transition: background-color 0.4s ease, border-color 0.4s ease;
+    }
+
+    .mr-chem:not(.mr-in) .mr-chem-sq .mr-is-ok {
+      background: rgba(180, 175, 232, 0.14);
+      border-color: #302f38;
+      backdrop-filter: none;
+    }
+
+    .mr-chem-sq .mr-is-ok:nth-child(1) { transition-delay: 0.05s; }
+    .mr-chem-sq .mr-is-ok:nth-child(2) { transition-delay: 0.1s; }
+    .mr-chem-sq .mr-is-ok:nth-child(3) { transition-delay: 0.15s; }
+    .mr-chem-sq .mr-is-ok:nth-child(4) { transition-delay: 0.2s; }
+    .mr-chem-sq .mr-is-ok:nth-child(5) { transition-delay: 0.25s; }
+    .mr-chem-sq .mr-is-ok:nth-child(6) { transition-delay: 0.3s; }
+    .mr-chem-sq .mr-is-ok:nth-child(7) { transition-delay: 0.35s; }
+
+    .mr-seg-text {
+      opacity: 0;
+      transition: opacity 0.5s ease 0.45s;
+    }
+
+    .mr-alloc-block.mr-in .mr-seg-text { opacity: 1; }
+
+    .mr-f4-pt,
+    .mr-f4-band,
+    .mr-f4-ref {
+      opacity: 0;
+      transition: opacity 0.5s ease 0.3s;
+    }
+
+    .mr-f4.mr-in .mr-f4-pt,
+    .mr-f4.mr-in .mr-f4-band,
+    .mr-f4.mr-in .mr-f4-ref {
+      opacity: 1;
+    }
+
+    .mr-f3-legend,
+    .mr-f3-series,
+    .mr-f3-dots,
+    .mr-f3-callout {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .mr-f3.mr-in .mr-f3-legend,
+    .mr-f3.mr-in .mr-f3-series,
+    .mr-f3.mr-in .mr-f3-dots,
+    .mr-f3.mr-in .mr-f3-callout {
+      opacity: 1;
+    }
+
+    .mr-f3-series { transition-delay: 0.05s; }
+    .mr-f3-dots.mr-is-a { transition-delay: 0.35s; }
+    .mr-f3-dots.mr-is-b { transition-delay: 0.45s; }
+    .mr-f3-callout { transition-delay: 0.6s; }
+  }
 </style>
 </head>
 <body>
@@ -1333,7 +1525,7 @@
       <div class="mr-lead mr-is-13">
         <h2 class="mr-title">Abstract</h2>
         <div class="mr-prose">
-          <p>As reasoning models become more capable, a central challenge in reinforcement-learning post-training is designing tasks that remain challenging while providing reliable feedback under finite sampling compute budgets. We investigate this data-efficiency challenge using <span class="mr-hl">1,600</span> distinct expert-written STEM problems to post-train DeepSeek-V4.1-Flash. Our recipe combines correctness-based feedback, reward shaping, and an adaptive curriculum that allocates sampling tokens according to observed success and response length. After 25 RL training steps, our model’s correctness increases from <span class="mr-hl">36.40% to 39.84%</span> on Humanity’s Last Exam, from <span class="mr-hl">75.40% to 77.35%</span> on FrontierScience Olympiad, and from <span class="mr-hl">16.83% to 19.11%</span> on FrontierScience Research. Improvements also extend to long-document reasoning in business and government domains: AA-LCR v1.1 accuracy rises from <span class="mr-hl">80.00% to 85.00%</span> following post-training on the expert STEM dataset. Among 44 held-out STEM questions with no accepted answer in eight baseline attempts, 11 received at least one accepted answer in eight post-training attempts. To examine what makes these problems useful for training, we define learnability: a task’s potential to support improvement for a particular model at a given training stage. We distinguish this potential from observed correctness and within-group reward contrast. The results suggest that expert-data training utility depends on task design, grading consistency, and matching tasks to the model’s current learning needs. Together, these components support more reliable performance while preserving opportunities for progress on harder problems.</p>
+          <p>As reasoning models become more capable, a central challenge in reinforcement-learning post-training is designing tasks that remain challenging while providing reliable feedback under finite sampling compute budgets. We investigate this data-efficiency challenge using <span class="mr-hl">1,600</span> distinct expert-written STEM problems to post-train DeepSeek-V4.1-Flash. Our recipe combines correctness-based feedback, reward shaping, and an adaptive curriculum that allocates sampling tokens according to observed success and response length. After 25 RL training steps, our model’s correctness increases from <span class="mr-hl">36.40% to 39.84%</span> on Humanity’s Last Exam, from <span class="mr-hl">75.40% to 77.35%</span> on FrontierScience Olympiad, and from <span class="mr-hl">16.83% to 19.11%</span> on FrontierScience Research. Improvements also extend to long-document reasoning in business and government domains: AA-LCR v1.1 accuracy rises from <span class="mr-hl">80.00% to 85.00%</span> following post-training on the expert STEM dataset. Among 44 held-out STEM questions with no accepted answer in eight baseline attempts, 11 received at least one accepted answer in eight post-training attempts. To examine what makes these problems useful for training, we define <span class="mr-hl">learnability</span>: a task’s potential to support improvement for a particular model at a given training stage. We distinguish this potential from observed correctness and within-group reward contrast. The results suggest that expert-data training utility depends on task design, grading consistency, and matching tasks to the model’s current learning needs. Together, these components support more reliable performance while preserving opportunities for progress on harder problems.</p>
         </div>
       </div>
     </section>
@@ -1353,7 +1545,7 @@
       <div class="mr-lead mr-is-16">
         <h2 class="mr-title">2  Background</h2>
         <div class="mr-prose">
-          <p>Prior work motivates reasoning as a foundation for broader post-training: outcome-based RL in DeepSeek-R1 [<a class="mr-cite" href="#mr-ref-1">1</a>], reasoning with interaction in ReAct [<a class="mr-cite" href="#mr-ref-9">9</a>], and mixed STEM and agentic training in MAI-Thinking-1 [<a class="mr-cite" href="#mr-ref-2">2</a>] makes the training more stable. Expert benchmarks highlight frontier-level challenge [<a class="mr-cite" href="#mr-ref-5">5</a>], while long reasoning trajectories make informative feedback costly to obtain; process supervision studies step-level feedback [<a class="mr-cite" href="#mr-ref-10">10</a>], and DAPO addresses groups without reward contrast [<a class="mr-cite" href="#mr-ref-6">6</a>]. Evidence of distribution sharpening [<a class="mr-cite" href="#mr-ref-11">11</a>, <a class="mr-cite" href="#mr-ref-12">12</a>] sits alongside broader observed coverage after prolonged RL [<a class="mr-cite" href="#mr-ref-13">13</a>] and reduced sharpening from rewarding unlikely successes in theorem proving [<a class="mr-cite" href="#mr-ref-14">14</a>]. Curriculum learning studies example selection and ordering [15], while automated curricula adapt practice to learning progress and cost [<a class="mr-cite" href="#mr-ref-16">16</a>]. These themes motivate our focus on learnability, a task’s potential to improve a particular model at a given stage, and on expert STEM data with aligned references and grading. Our adaptive curriculum uses observed success and response length to allocate generation tokens across mastery, frontier practice, and exploration.</p>
+          <p>Prior work motivates reasoning as a foundation for broader post-training: outcome-based RL in DeepSeek-R1 [<a class="mr-cite" href="#mr-ref-1">1</a>], reasoning with interaction in ReAct [<a class="mr-cite" href="#mr-ref-9">9</a>], and mixed STEM and agentic training in MAI-Thinking-1 [<a class="mr-cite" href="#mr-ref-2">2</a>] make the training more stable. Expert benchmarks highlight frontier-level challenge [<a class="mr-cite" href="#mr-ref-5">5</a>], while long reasoning trajectories make informative feedback costly to obtain; process supervision studies step-level feedback [<a class="mr-cite" href="#mr-ref-10">10</a>], and DAPO addresses groups without reward contrast [<a class="mr-cite" href="#mr-ref-6">6</a>]. Evidence of distribution sharpening [<a class="mr-cite" href="#mr-ref-11">11</a>, <a class="mr-cite" href="#mr-ref-12">12</a>] sits alongside broader observed coverage after prolonged RL [<a class="mr-cite" href="#mr-ref-13">13</a>] and reduced sharpening from rewarding unlikely successes in theorem proving [<a class="mr-cite" href="#mr-ref-14">14</a>]. Curriculum learning studies example selection and ordering [15], while automated curricula adapt practice to learning progress and cost [<a class="mr-cite" href="#mr-ref-16">16</a>]. These themes motivate our focus on learnability, a task’s potential to improve a particular model at a given stage, and on expert STEM data with aligned references and grading. Our adaptive curriculum uses observed success and response length to allocate generation tokens across mastery, frontier practice, and exploration.</p>
         </div>
       </div>
     </section>
@@ -1709,13 +1901,13 @@
       <defs>
         <clipPath id="mr-f3-plot"><rect x="70" y="10" width="666" height="260"/></clipPath>
       </defs>
-      <g clip-path="url(#mr-f3-plot)" fill="none" stroke-linejoin="round" stroke-linecap="round">
-        <polyline points="83.1,248.7 96.1,297.8 109.2,204.7 122.2,257.1 135.3,186 148.4,170.8 161.4,228.4 174.5,181 187.5,211.4 200.6,230.1 213.6,323.2 226.7,302.8 239.8,167.4 252.8,179.3 265.9,236.8 278.9,225 292,179.3 305.1,145.4 318.1,181 331.2,240.2 344.2,240.2 357.3,260.5 370.3,216.5 383.4,201.3 396.5,219.9 409.5,189.4 422.6,167.4 435.6,145.4 448.7,258.8 461.8,258.8 474.8,155.6 487.9,274.1 500.9,206.4 514,192.8 527.1,197.9 540.1,203 553.2,150.5 566.2,153.9 579.3,241.9 592.4,196.2 605.4,186 618.5,179.3 631.5,275.8 644.6,121.7 657.6,133.6 670.7,131.9 683.8,245.3 696.8,204.7 709.9,162.3 722.9,157.3" stroke="rgba(255,255,255,0.35)" stroke-width="1.15"/>
-        <polyline points="83.1,100.8 96.1,263.4 109.2,195.6 122.2,171.5 135.3,174.9 148.4,211.8 161.4,248.9 174.5,253.5 187.5,254.9 200.6,209.1 213.6,168.1 226.7,201.1 239.8,171.5 252.8,270.7 265.9,147.9 278.9,204.8 292,253.1 305.1,183.5 318.1,109.6 331.2,140.2 344.2,108.2 357.3,147.5 370.3,85.2 383.4,96.5 396.5,172" stroke="rgba(97,126,227,0.45)" stroke-width="1.15"/>
+      <g class="mr-f3-series" clip-path="url(#mr-f3-plot)" fill="none" stroke-linejoin="round" stroke-linecap="round">
+        <polyline points="83.1,248.7 96.1,297.8 109.2,204.7 122.2,257.1 135.3,186 148.4,170.8 161.4,228.4 174.5,181 187.5,211.4 200.6,230.1 213.6,323.2 226.7,302.8 239.8,167.4 252.8,179.3 265.9,236.8 278.9,225 292,179.3 305.1,145.4 318.1,181 331.2,240.2 344.2,240.2 357.3,260.5 370.3,216.5 383.4,201.3 396.5,219.9 409.5,189.4 422.6,167.4 435.6,145.4 448.7,258.8 461.8,258.8 474.8,155.6 487.9,274.1 500.9,206.4 514,192.8 527.1,197.9 540.1,203 553.2,150.5 566.2,153.9 579.3,241.9 592.4,196.2 605.4,186 618.5,179.3 631.5,275.8 644.6,121.7 657.6,133.6 670.7,131.9 683.8,245.3 696.8,204.7 709.9,162.3 722.9,157.3" stroke="rgba(255,255,255,0.2)" stroke-width="1.15"/>
+        <polyline points="83.1,100.8 96.1,263.4 109.2,195.6 122.2,171.5 135.3,174.9 148.4,211.8 161.4,248.9 174.5,253.5 187.5,254.9 200.6,209.1 213.6,168.1 226.7,201.1 239.8,171.5 252.8,270.7 265.9,147.9 278.9,204.8 292,253.1 305.1,183.5 318.1,109.6 331.2,140.2 344.2,108.2 357.3,147.5 370.3,85.2 383.4,96.5 396.5,172" stroke="rgba(97,126,227,0.28)" stroke-width="1.15"/>
         <polyline points="109.2,238.9 174.5,204.3 239.8,241.9 305.1,194.2 370.3,227.7 435.6,204 500.9,205.3 566.2,189.1 631.5,179.3 696.8,180.3" stroke="#fff" stroke-width="2.2"/>
         <polyline points="109.2,184.1 174.5,236.1 239.8,192.9 305.1,179.4 370.3,123" stroke="#617EE3" stroke-width="2.2"/>
       </g>
-      <g fill="#fff">
+      <g class="mr-f3-dots mr-is-a" fill="#fff">
         <circle cx="109.2" cy="238.9" r="4.5"/>
         <circle cx="174.5" cy="204.3" r="4.5"/>
         <circle cx="239.8" cy="241.9" r="4.5"/>
@@ -1727,17 +1919,19 @@
         <circle cx="631.5" cy="179.3" r="4.5"/>
         <circle cx="696.8" cy="180.3" r="4.5"/>
       </g>
-      <g fill="#617EE3">
+      <g class="mr-f3-dots mr-is-b" fill="#617EE3">
         <circle cx="109.2" cy="184.1" r="4.5"/>
         <circle cx="174.5" cy="236.1" r="4.5"/>
         <circle cx="239.8" cy="192.9" r="4.5"/>
         <circle cx="305.1" cy="179.4" r="4.5"/>
         <circle cx="370.3" cy="123" r="4.5"/>
       </g>
-      <path d="M342.6 55C351.4 76.5 360.2 98.1 369 119.6" fill="none" stroke="#617EE3" stroke-width="1.2"/>
-      <path d="M620.8 72.1C645.4 107.1 670 142.1 694.6 177.2" fill="none" stroke="#fff" stroke-width="1.2"/>
-      <text x="336" y="50" text-anchor="end">62.0%</text>
-      <text x="612" y="68" text-anchor="end">55.4%</text>
+      <g class="mr-f3-callout">
+        <path d="M342.6 55C351.4 76.5 360.2 98.1 369 119.6" fill="none" stroke="#617EE3" stroke-width="1.2"/>
+        <path d="M620.8 72.1C645.4 107.1 670 142.1 694.6 177.2" fill="none" stroke="#fff" stroke-width="1.2"/>
+        <text x="336" y="50" text-anchor="end">62.0%</text>
+        <text x="612" y="68" text-anchor="end">55.4%</text>
+      </g>
     </svg>
   </div>
   <figcaption class="mr-cap"><span class="mr-em">Figure 3.</span> Observed training correctness on the questions sampled by each recipe. At steps 21–25, averages are 49.9% for uniform training and 62.0% for the curriculum recipe. The curves describe different sample mixes and are not held-out evaluation scores.</figcaption>
@@ -1781,7 +1975,7 @@
         <p class="mr-chem-t">Boron retained</p>
         <dl class="mr-chem-d">
           <dt class="mr-chem-sr">Formula</dt>
-          <dd>C<sub>20</sub>H<sub>12</sub>BBr<sub>2</sub>NO<sub>3</sub></dd>
+          <dd>C<sub>20</sub>H<sub>12</sub><b class="mr-chem-b">B</b>Br<sub>2</sub>NO<sub>3</sub></dd>
           <dt class="mr-chem-sr">Molar mass</dt>
           <dd>484.94 g/mol</dd>
         </dl>
@@ -1804,14 +1998,6 @@
 </div>
 
       <p class="mr-prose">A primary synthesis report supports the elemental formula of this boron-containing product class [<a class="mr-cite" href="#mr-ref-4">4</a>]. An independent calculation based on that formula gives <span class="mr-em">484.938 g/mol</span>, which rounds to 484.94 g/mol. The selected answers differ in which reaction product they identify, as well as in the mass they report.</p>
-
-      <div class="mr-block">
-        <h3 class="mr-h">What this teaches us about the data</h3>
-        <div class="mr-prose">
-          <p>For expert authors, the reference should include the product's structure and molecular formula alongside its molar mass. This helps reviewers distinguish an error in identifying the compound from an error in calculating its mass.</p>
-          <p>For graders, the lesson is to check every part of the answer the question requests. When a task asks for both a product and its mass, both must be verified. A matching number alone does not establish that the model identified the correct compound.</p>
-        </div>
-      </div>
 
       <div class="mr-sec">
         <div class="mr-block">
@@ -1916,7 +2102,7 @@
         <div class="mr-prose">
           <p>The 3.44-point HLE gain and improvements on both FrontierScience splits and AA-LCR show higher measured performance after the combined post-training recipe. The practical contribution is to connect expert task design, complete reference solutions, precise grading, and adaptive practice. The selected cases illustrate why feedback must preserve the requested object and verify every required component; observed success and response length guide where to collect further feedback.</p>
           <p>This study complements work on reasoning through reinforcement learning [1, 2] and group-relative training [6], extending the task-authoring and review perspective of STEM QA Frontier [3] to post-training outcomes.</p>
-          <p>Observed success and reward contrast guide task selection, but do not directly measure a task’s contribution to subsequent learning. Next steps are to train on a larger expert dataset spanning more domains and difficulty levels, with controlled comparisons to test how matching tasks to the model’s current learning needs affects improvement. We will also explore partial rewards for verifiable intermediate steps and correctly solved subproblems, testing whether richer feedback improves learning on long, difficult tasks while preserving final-answer correctness and resistant to reward hacking.</p>
+          <p>Observed success and response length guide task selection; within-group reward contrast supplies the update signal rather than directly measuring a task’s contribution to subsequent learning. Next steps are to train on a larger expert dataset spanning more domains and difficulty levels, with controlled comparisons to test how matching tasks to the model’s current learning needs affects improvement. We will also explore partial rewards for verifiable intermediate steps and correctly solved subproblems, testing whether richer feedback improves learning on long, difficult tasks while preserving final-answer correctness and evaluating resistance to reward hacking.</p>
         </div>
       </div>
     </section>
@@ -1943,5 +2129,28 @@
   </ol>
     </section>
   </article>
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var roots = document.querySelectorAll(".mr");
+      if (!roots.length) return;
+      var targets = document.querySelectorAll(
+        ".mr .mr-f1, .mr .mr-f2, .mr .mr-f3, .mr .mr-f4, .mr .mr-flow-block, .mr .mr-alloc-block, .mr .mr-chem"
+      );
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        targets.forEach(function (el) { el.classList.add("mr-in"); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("mr-in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2, rootMargin: "0px 0px -8% 0px" });
+      targets.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
 </html>

@@ -14,7 +14,7 @@
       background-color: #121212;
     }
 
-    body.light-mode {
+    body[data-mode="light"] {
       background-color: #ebebf4;
     }
 
@@ -23,14 +23,14 @@
       background: #121212 url("../assets/hero-blur-test.png") top center / cover no-repeat;
     }
 
-    body.light-mode .hero {
+    body[data-mode="light"] .hero {
       background: linear-gradient(180deg, #f7f7fb 0%, #ebebf4 100%);
     }
   </style>
   <style id="dg-consent-custom-style"></style>
   <script src="./load-styles.js"></script>
 </head>
-<body>
+<body >
   <section class="hero" aria-hidden="true"></section>
 </body>
 </html>

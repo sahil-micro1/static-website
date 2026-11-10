@@ -1,0 +1,4832 @@
+{
+  "exact": {
+    "accounts.google.com": {
+      "medium": "inbound",
+      "source": "Google"
+    },
+    "developers.google.com": {
+      "medium": "inbound",
+      "source": "Google"
+    },
+    "drive.google.com": {
+      "medium": "inbound",
+      "source": "Google"
+    },
+    "groups.google.co.uk": {
+      "medium": "inbound",
+      "source": "Google"
+    },
+    "groups.google.com": {
+      "medium": "inbound",
+      "source": "Google"
+    },
+    "maps.google.com": {
+      "medium": "inbound",
+      "source": "Google"
+    },
+    "sites.google.com": {
+      "medium": "inbound",
+      "source": "Google"
+    },
+    "support.google.com": {
+      "medium": "inbound",
+      "source": "Google"
+    },
+    "answers.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "astrology.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "cars.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "eurosport.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "finance.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "games.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "lifestyle.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "match.yahoo.net": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "messenger.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "movies.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "news.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "omg.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "screen.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "shopping.yahoo.net": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "sports.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "travel.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "weather.yahoo.com": {
+      "medium": "inbound",
+      "source": "Yahoo!"
+    },
+    "maps.yandex.by": {
+      "medium": "inbound",
+      "source": "Yandex Maps"
+    },
+    "maps.yandex.com": {
+      "medium": "inbound",
+      "source": "Yandex Maps"
+    },
+    "maps.yandex.ru": {
+      "medium": "inbound",
+      "source": "Yandex Maps"
+    },
+    "maps.yandex.ua": {
+      "medium": "inbound",
+      "source": "Yandex Maps"
+    },
+    "n.maps.yandex.ru": {
+      "medium": "inbound",
+      "source": "Yandex Maps"
+    },
+    "mail.126.com": {
+      "medium": "email",
+      "source": "126 Mail"
+    },
+    "mail.163.com": {
+      "medium": "email",
+      "source": "163 Mail"
+    },
+    "deref-1und1-02.de": {
+      "medium": "email",
+      "source": "1und1"
+    },
+    "webmail.2degreesbroadband.co.nz": {
+      "medium": "email",
+      "source": "2degrees"
+    },
+    "webmail.adam.com.au": {
+      "medium": "email",
+      "source": "Adam Internet"
+    },
+    "com.aol.mobile.aolapp": {
+      "medium": "email",
+      "source": "AOL Mail"
+    },
+    "mail.aol.com": {
+      "medium": "email",
+      "source": "AOL Mail"
+    },
+    "post.ru": {
+      "medium": "email",
+      "source": "Beeline"
+    },
+    "basic.messaging.bigpond.com": {
+      "medium": "email",
+      "source": "Bigpond"
+    },
+    "email.telstra.com": {
+      "medium": "email",
+      "source": "Bigpond"
+    },
+    "webmail.bigpond.com": {
+      "medium": "email",
+      "source": "Bigpond"
+    },
+    "webmail2.bigpond.com": {
+      "medium": "email",
+      "source": "Bigpond"
+    },
+    "email.bluewin.ch": {
+      "medium": "email",
+      "source": "Bluewin"
+    },
+    "rich-v01.bluewin.ch": {
+      "medium": "email",
+      "source": "Bluewin"
+    },
+    "rich-v02.bluewin.ch": {
+      "medium": "email",
+      "source": "Bluewin"
+    },
+    "webmail.commander.net.au": {
+      "medium": "email",
+      "source": "Commander"
+    },
+    "mail.daum.net": {
+      "medium": "email",
+      "source": "Daum Mail"
+    },
+    "mail2.daum.net": {
+      "medium": "email",
+      "source": "Daum Mail"
+    },
+    "webmail.dodo.com.au": {
+      "medium": "email",
+      "source": "Dodo"
+    },
+    "mail.e1.ru": {
+      "medium": "email",
+      "source": "E1.ru"
+    },
+    "com.earthlink.myearthlink": {
+      "medium": "email",
+      "source": "earthlink"
+    },
+    "webmail.freenet.de": {
+      "medium": "email",
+      "source": "Freenet"
+    },
+    "com.google.android.gm": {
+      "medium": "email",
+      "source": "Gmail"
+    },
+    "inbox.google.com": {
+      "medium": "email",
+      "source": "Gmail"
+    },
+    "mail.google.com": {
+      "medium": "email",
+      "source": "Gmail"
+    },
+    "deref-gmx.at": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "deref-gmx.ch": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "deref-gmx.co.uk": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "deref-gmx.com": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "deref-gmx.de": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "deref-gmx.es": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "deref-gmx.fr": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "deref-gmx.it": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "deref-gmx.net": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer-bap.gmx.net": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer-bs.gmx.net": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.at": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.ch": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.co.uk": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.com": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.de": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.es": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.fr": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.it": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "lightmailer.gmx.net": {
+      "medium": "email",
+      "source": "GMX"
+    },
+    "mail.iinet.net.au": {
+      "medium": "email",
+      "source": "iiNet"
+    },
+    "webmail.iinet.net.au": {
+      "medium": "email",
+      "source": "iiNet"
+    },
+    "inbox.com": {
+      "medium": "email",
+      "source": "Inbox.com"
+    },
+    "mail.infomaniak.com": {
+      "medium": "email",
+      "source": "Infomaniak"
+    },
+    "email.ionos.ca": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "email.ionos.co.uk": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "email.ionos.com": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "email.ionos.de": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "email.ionos.es": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "email.ionos.fr": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "email.ionos.it": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "email.ionos.mx": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "mailbusiness.ionos.ca": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "mailbusiness.ionos.co.uk": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "mailbusiness.ionos.com": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "mailbusiness.ionos.de": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "mailbusiness.ionos.es": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "mailbusiness.ionos.fr": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "mailbusiness.ionos.it": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "mailbusiness.ionos.mx": {
+      "medium": "email",
+      "source": "Ionos"
+    },
+    "webmail.iprimus.com.au": {
+      "medium": "email",
+      "source": "iPrimus"
+    },
+    "3c-lxa.mail.com": {
+      "medium": "email",
+      "source": "Mail.com"
+    },
+    "deref-mail.com": {
+      "medium": "email",
+      "source": "Mail.com"
+    },
+    "lightmailer.mail.com": {
+      "medium": "email",
+      "source": "Mail.com"
+    },
+    "e.mail.ru": {
+      "medium": "email",
+      "source": "Mail.ru"
+    },
+    "touch.mail.ru": {
+      "medium": "email",
+      "source": "Mail.ru"
+    },
+    "com.mailchimp.mailchimp": {
+      "medium": "email",
+      "source": "Mailchimp"
+    },
+    "m.mastermail.ru": {
+      "medium": "email",
+      "source": "Mastermail"
+    },
+    "mastermail.ru": {
+      "medium": "email",
+      "source": "Mastermail"
+    },
+    "mail.mynet.com": {
+      "medium": "email",
+      "source": "Mynet Mail"
+    },
+    "mail.naver.com": {
+      "medium": "email",
+      "source": "Naver Mail"
+    },
+    "webmail.netspace.net.au": {
+      "medium": "email",
+      "source": "Netspace"
+    },
+    "webmail.optusnet.com.au": {
+      "medium": "email",
+      "source": "Optus Zoo"
+    },
+    "webmail.optuszoo.com.au": {
+      "medium": "email",
+      "source": "Optus Zoo"
+    },
+    "mail01.orange.fr": {
+      "medium": "email",
+      "source": "Orange Webmail"
+    },
+    "mail02.orange.fr": {
+      "medium": "email",
+      "source": "Orange Webmail"
+    },
+    "messagerie.orange.fr": {
+      "medium": "email",
+      "source": "Orange Webmail"
+    },
+    "messageriepro3.orange.fr": {
+      "medium": "email",
+      "source": "Orange Webmail"
+    },
+    "orange.fr": {
+      "medium": "email",
+      "source": "Orange Webmail"
+    },
+    "wmail.orange.fr": {
+      "medium": "email",
+      "source": "Orange Webmail"
+    },
+    "com.microsoft.office.outlook": {
+      "medium": "email",
+      "source": "Outlook.com"
+    },
+    "mail.live.com": {
+      "medium": "email",
+      "source": "Outlook.com"
+    },
+    "outlook.live.com": {
+      "medium": "email",
+      "source": "Outlook.com"
+    },
+    "mail.proton.me": {
+      "medium": "email",
+      "source": "Proton"
+    },
+    "mail.qip.ru": {
+      "medium": "email",
+      "source": "QIP"
+    },
+    "exmail.qq.com": {
+      "medium": "email",
+      "source": "QQ Mail"
+    },
+    "mail.qq.com": {
+      "medium": "email",
+      "source": "QQ Mail"
+    },
+    "mail.rambler.ru": {
+      "medium": "email",
+      "source": "Rambler"
+    },
+    "email.seznam.cz": {
+      "medium": "email",
+      "source": "Seznam Mail"
+    },
+    "sibmail.com": {
+      "medium": "email",
+      "source": "Sibmail"
+    },
+    "email.t-online.de": {
+      "medium": "email",
+      "source": "T-online"
+    },
+    "webmail.tim.it": {
+      "medium": "email",
+      "source": "TIM"
+    },
+    "mail.ukr.net": {
+      "medium": "email",
+      "source": "Ukr.net"
+    },
+    "upcmail.hispeed.ch": {
+      "medium": "email",
+      "source": "UPC"
+    },
+    "webmail.virginbroadband.com.au": {
+      "medium": "email",
+      "source": "Virgin"
+    },
+    "mail.vodafone.de": {
+      "medium": "email",
+      "source": "Vodafone"
+    },
+    "webmail.vodafone.co.nz": {
+      "medium": "email",
+      "source": "Vodafone"
+    },
+    "3c-bap.web.de": {
+      "medium": "email",
+      "source": "Web.de"
+    },
+    "3c.web.de": {
+      "medium": "email",
+      "source": "Web.de"
+    },
+    "deref-web.de": {
+      "medium": "email",
+      "source": "Web.de"
+    },
+    "lightmailer-bap.web.de": {
+      "medium": "email",
+      "source": "Web.de"
+    },
+    "lightmailer-bs.web.de": {
+      "medium": "email",
+      "source": "Web.de"
+    },
+    "webmail.westnet.com.au": {
+      "medium": "email",
+      "source": "Westnet"
+    },
+    "com.yahoo.mobile.client.android.mail": {
+      "medium": "email",
+      "source": "Yahoo! Mail"
+    },
+    "mail.yahoo.co.jp": {
+      "medium": "email",
+      "source": "Yahoo! Mail"
+    },
+    "mail.yahoo.co.uk": {
+      "medium": "email",
+      "source": "Yahoo! Mail"
+    },
+    "mail.yahoo.com": {
+      "medium": "email",
+      "source": "Yahoo! Mail"
+    },
+    "mail.yahoo.net": {
+      "medium": "email",
+      "source": "Yahoo! Mail"
+    },
+    "mail.yandex.by": {
+      "medium": "email",
+      "source": "Yandex"
+    },
+    "mail.yandex.com": {
+      "medium": "email",
+      "source": "Yandex"
+    },
+    "mail.yandex.kz": {
+      "medium": "email",
+      "source": "Yandex"
+    },
+    "mail.yandex.ru": {
+      "medium": "email",
+      "source": "Yandex"
+    },
+    "mail.yandex.ua": {
+      "medium": "email",
+      "source": "Yandex"
+    },
+    "mail.zoho.com": {
+      "medium": "email",
+      "source": "Zoho"
+    },
+    "badoo.com": {
+      "medium": "social",
+      "source": "Badoo"
+    },
+    "bebo.com": {
+      "medium": "social",
+      "source": "Bebo"
+    },
+    "bilibili.com": {
+      "medium": "social",
+      "source": "bilibili"
+    },
+    "blackplanet.com": {
+      "medium": "social",
+      "source": "BlackPlanet"
+    },
+    "bsky.app": {
+      "medium": "social",
+      "source": "Bluesky"
+    },
+    "go.bsky.app": {
+      "medium": "social",
+      "source": "Bluesky"
+    },
+    "skyfeed.app": {
+      "medium": "social",
+      "source": "Bluesky"
+    },
+    "buzznet.com": {
+      "medium": "social",
+      "source": "Buzznet"
+    },
+    "classmates.com": {
+      "medium": "social",
+      "source": "Classmates"
+    },
+    "global.cyworld.com": {
+      "medium": "social",
+      "source": "Cyworld"
+    },
+    "delicious.com": {
+      "medium": "social",
+      "source": "Delicious"
+    },
+    "discord.com": {
+      "medium": "social",
+      "source": "Discord"
+    },
+    "discord.gg": {
+      "medium": "social",
+      "source": "Discord"
+    },
+    "discordapp.com": {
+      "medium": "social",
+      "source": "Discord"
+    },
+    "disq.us": {
+      "medium": "social",
+      "source": "Disqus"
+    },
+    "disqus.com": {
+      "medium": "social",
+      "source": "Disqus"
+    },
+    "redirect.disqus.com": {
+      "medium": "social",
+      "source": "Disqus"
+    },
+    "donanimhaber.com": {
+      "medium": "social",
+      "source": "Donanimhaber"
+    },
+    "douban.com": {
+      "medium": "social",
+      "source": "Douban"
+    },
+    "douyin.com": {
+      "medium": "social",
+      "source": "Douyin"
+    },
+    "douyu.com": {
+      "medium": "social",
+      "source": "Douyu"
+    },
+    "dribbble.com": {
+      "medium": "social",
+      "source": "Dribbble"
+    },
+    "sourtimes.org": {
+      "medium": "social",
+      "source": "Eksi Sozluk"
+    },
+    "sozluk.com": {
+      "medium": "social",
+      "source": "Eksi Sozluk"
+    },
+    "com.facebook.katana": {
+      "medium": "social",
+      "source": "Facebook"
+    },
+    "facebook.com": {
+      "medium": "social",
+      "source": "Facebook"
+    },
+    "fb.me": {
+      "medium": "social",
+      "source": "Facebook"
+    },
+    "l.facebook.com": {
+      "medium": "social",
+      "source": "Facebook"
+    },
+    "lm.facebook.com": {
+      "medium": "social",
+      "source": "Facebook"
+    },
+    "m.facebook.com": {
+      "medium": "social",
+      "source": "Facebook"
+    },
+    "fetlife.com": {
+      "medium": "social",
+      "source": "Fetlife"
+    },
+    "flickr.com": {
+      "medium": "social",
+      "source": "Flickr"
+    },
+    "flixster.com": {
+      "medium": "social",
+      "source": "Flixster"
+    },
+    "fotolog.com": {
+      "medium": "social",
+      "source": "Fotolog"
+    },
+    "foursquare.com": {
+      "medium": "social",
+      "source": "Foursquare"
+    },
+    "friendsreunited.com": {
+      "medium": "social",
+      "source": "Friends Reunited"
+    },
+    "friendster.com": {
+      "medium": "social",
+      "source": "Friendster"
+    },
+    "gaiaonline.com": {
+      "medium": "social",
+      "source": "Gaia Online"
+    },
+    "geni.com": {
+      "medium": "social",
+      "source": "Geni"
+    },
+    "github.com": {
+      "medium": "social",
+      "source": "GitHub"
+    },
+    "com.google.android.apps.plus": {
+      "medium": "social",
+      "source": "Google+"
+    },
+    "plus.google.com": {
+      "medium": "social",
+      "source": "Google+"
+    },
+    "url.google.com": {
+      "medium": "social",
+      "source": "Google+"
+    },
+    "gree.jp": {
+      "medium": "social",
+      "source": "gree"
+    },
+    "habbo.com": {
+      "medium": "social",
+      "source": "Habbo"
+    },
+    "io.github.hidroh.materialistic": {
+      "medium": "social",
+      "source": "Hacker News"
+    },
+    "news.ycombinator.com": {
+      "medium": "social",
+      "source": "Hacker News"
+    },
+    "hi5.com": {
+      "medium": "social",
+      "source": "hi5"
+    },
+    "hocam.com": {
+      "medium": "social",
+      "source": "Hocam.com"
+    },
+    "huya.com": {
+      "medium": "social",
+      "source": "Huya"
+    },
+    "hyves.nl": {
+      "medium": "social",
+      "source": "Hyves"
+    },
+    "identi.ca": {
+      "medium": "social",
+      "source": "Identi.ca"
+    },
+    "inci.sozlukspot.com": {
+      "medium": "social",
+      "source": "Inci Sozluk"
+    },
+    "incisozluk.cc": {
+      "medium": "social",
+      "source": "Inci Sozluk"
+    },
+    "incisozluk.com": {
+      "medium": "social",
+      "source": "Inci Sozluk"
+    },
+    "com.instagram.android": {
+      "medium": "social",
+      "source": "Instagram"
+    },
+    "instagram.com": {
+      "medium": "social",
+      "source": "Instagram"
+    },
+    "l.instagram.com": {
+      "medium": "social",
+      "source": "Instagram"
+    },
+    "instela.com": {
+      "medium": "social",
+      "source": "Instela"
+    },
+    "itusozluk.com": {
+      "medium": "social",
+      "source": "ITU Sozluk"
+    },
+    "lang-8.com": {
+      "medium": "social",
+      "source": "lang-8"
+    },
+    "last.fm": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.com.br": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.com.tr": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.de": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.es": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.fr": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.it": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.jp": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.pl": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.ru": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "lastfm.se": {
+      "medium": "social",
+      "source": "Last.fm"
+    },
+    "com.linkedin.android": {
+      "medium": "social",
+      "source": "LinkedIn"
+    },
+    "linkedin.android": {
+      "medium": "social",
+      "source": "LinkedIn"
+    },
+    "linkedin.com": {
+      "medium": "social",
+      "source": "LinkedIn"
+    },
+    "lnkd.in": {
+      "medium": "social",
+      "source": "LinkedIn"
+    },
+    "livejournal.com": {
+      "medium": "social",
+      "source": "LiveJournal"
+    },
+    "livejournal.ru": {
+      "medium": "social",
+      "source": "LiveJournal"
+    },
+    "lnk.bio": {
+      "medium": "social",
+      "source": "Lnk.Bio"
+    },
+    "my.mail.ru": {
+      "medium": "social",
+      "source": "Mail.ru"
+    },
+    "bitcoinhackers.org": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "botsin.space": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "c.im": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "chaos.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "cybre.space": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "fosstodon.org": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "friends.nico": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "front-end.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "graphics.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "hachyderm.io": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "indieweb.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "knzk.me": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mamot.fr": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mas.to": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "masto.ai": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.art": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.at": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.cloud": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.eus": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.jalgi.eus": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.nz": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.online": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.scot": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.technology": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.world": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodon.xyz": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodonapp.uk": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mastodont.cat": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mstdn.io": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mstdn.jp": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mstdn.party": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "mstdn.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "newsie.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "ohai.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "org.joinmastodon.android": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "pawoo.net": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "quey.org": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "ro-mastodon.puyo.jp": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "sfba.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "social.tchncs.de": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "social.vivaldi.net": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "tkm.eus": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "toot.community": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "typo.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "universeodon.com": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "vis.social": {
+      "medium": "social",
+      "source": "Mastodon"
+    },
+    "meinvz.net": {
+      "medium": "social",
+      "source": "MeinVZ"
+    },
+    "missevan.com": {
+      "medium": "social",
+      "source": "MissEvan"
+    },
+    "mixi.jp": {
+      "medium": "social",
+      "source": "Mixi"
+    },
+    "moikrug.ru": {
+      "medium": "social",
+      "source": "MoiKrug.ru"
+    },
+    "multiply.com": {
+      "medium": "social",
+      "source": "Multiply"
+    },
+    "myheritage.com": {
+      "medium": "social",
+      "source": "MyHeritage"
+    },
+    "mylife.ru": {
+      "medium": "social",
+      "source": "MyLife"
+    },
+    "myspace.com": {
+      "medium": "social",
+      "source": "Myspace"
+    },
+    "myyearbook.com": {
+      "medium": "social",
+      "source": "myYearbook"
+    },
+    "nk.pl": {
+      "medium": "social",
+      "source": "Nasza-klasa.pl"
+    },
+    "netlog.com": {
+      "medium": "social",
+      "source": "Netlog"
+    },
+    "nicovideo.jp": {
+      "medium": "social",
+      "source": "Niconico"
+    },
+    "odnoklassniki.ru": {
+      "medium": "social",
+      "source": "Odnoklassniki"
+    },
+    "ok.ru": {
+      "medium": "social",
+      "source": "Odnoklassniki"
+    },
+    "orkut.com": {
+      "medium": "social",
+      "source": "Orkut"
+    },
+    "qzone.qq.com": {
+      "medium": "social",
+      "source": "Ozone"
+    },
+    "paper.li": {
+      "medium": "social",
+      "source": "Paper.li"
+    },
+    "peepeth.com": {
+      "medium": "social",
+      "source": "Peepeth"
+    },
+    "at.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "ch.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "cl.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "co.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "com.pinterest": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "dk.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "es.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "hu.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "id.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "ie.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "in.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "it.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "kr.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "mx.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "nl.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "nz.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "ph.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.at": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.ca": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.ch": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.cl": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.co.kr": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.co.uk": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.com.au": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.com.mx": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.de": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.dk": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.es": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.fr": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.ie": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.info": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.it": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.jp": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.nz": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.ph": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.pt": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.ru": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pinterest.se": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "pt.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "ru.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "se.pinterest.com": {
+      "medium": "social",
+      "source": "Pinterest"
+    },
+    "metapixl.com": {
+      "medium": "social",
+      "source": "Pixelfed"
+    },
+    "pix.toot.wales": {
+      "medium": "social",
+      "source": "Pixelfed"
+    },
+    "pixelfed.de": {
+      "medium": "social",
+      "source": "Pixelfed"
+    },
+    "pixelfed.social": {
+      "medium": "social",
+      "source": "Pixelfed"
+    },
+    "pixelfed.uno": {
+      "medium": "social",
+      "source": "Pixelfed"
+    },
+    "pixey.org": {
+      "medium": "social",
+      "source": "Pixelfed"
+    },
+    "pxlmo.com": {
+      "medium": "social",
+      "source": "Pixelfed"
+    },
+    "plaxo.com": {
+      "medium": "social",
+      "source": "Plaxo"
+    },
+    "getpocket.com": {
+      "medium": "social",
+      "source": "Pocket"
+    },
+    "quora.com": {
+      "medium": "social",
+      "source": "Quora"
+    },
+    "com.laurencedawson.reddit_sync": {
+      "medium": "social",
+      "source": "Reddit"
+    },
+    "com.laurencedawson.reddit_sync.pro": {
+      "medium": "social",
+      "source": "Reddit"
+    },
+    "io.syncapps.lemmy_sync": {
+      "medium": "social",
+      "source": "Reddit"
+    },
+    "reddit.com": {
+      "medium": "social",
+      "source": "Reddit"
+    },
+    "com.reddit.frontpage": {
+      "medium": "social",
+      "source": "Reddit"
+    },
+    "np.reddit.com": {
+      "medium": "social",
+      "source": "Reddit"
+    },
+    "pay.reddit.com": {
+      "medium": "social",
+      "source": "Reddit"
+    },
+    "renren.com": {
+      "medium": "social",
+      "source": "Renren"
+    },
+    "web.skype.com": {
+      "medium": "social",
+      "source": "Skype"
+    },
+    "skyrock.com": {
+      "medium": "social",
+      "source": "Skyrock"
+    },
+    "app.slack.com": {
+      "medium": "social",
+      "source": "Slack"
+    },
+    "com.slack": {
+      "medium": "social",
+      "source": "Slack"
+    },
+    "com.snapchat.android": {
+      "medium": "social",
+      "source": "Snapchat"
+    },
+    "snapchat.com": {
+      "medium": "social",
+      "source": "Snapchat"
+    },
+    "sonico.com": {
+      "medium": "social",
+      "source": "Sonico.com"
+    },
+    "gate.sc": {
+      "medium": "social",
+      "source": "SoundCloud"
+    },
+    "soundcloud.com": {
+      "medium": "social",
+      "source": "SoundCloud"
+    },
+    "sourceforge.net": {
+      "medium": "social",
+      "source": "SourceForge"
+    },
+    "stackoverflow.com": {
+      "medium": "social",
+      "source": "StackOverflow"
+    },
+    "studivz.net": {
+      "medium": "social",
+      "source": "StudiVZ"
+    },
+    "stumbleupon.com": {
+      "medium": "social",
+      "source": "StumbleUpon"
+    },
+    "login.tagged.com": {
+      "medium": "social",
+      "source": "Tagged"
+    },
+    "taringa.net": {
+      "medium": "social",
+      "source": "Taringa!"
+    },
+    "org.aka.messenger": {
+      "medium": "social",
+      "source": "Telegram"
+    },
+    "org.telegram.biftogram": {
+      "medium": "social",
+      "source": "Telegram"
+    },
+    "org.telegram.messenger": {
+      "medium": "social",
+      "source": "Telegram"
+    },
+    "org.telegram.messenger.web": {
+      "medium": "social",
+      "source": "Telegram"
+    },
+    "org.telegram.plus": {
+      "medium": "social",
+      "source": "Telegram"
+    },
+    "web.telegram.org": {
+      "medium": "social",
+      "source": "Telegram"
+    },
+    "com.instagram.barcelona": {
+      "medium": "social",
+      "source": "Threads"
+    },
+    "l.threads.com": {
+      "medium": "social",
+      "source": "Threads"
+    },
+    "l.threads.net": {
+      "medium": "social",
+      "source": "Threads"
+    },
+    "threads.com": {
+      "medium": "social",
+      "source": "Threads"
+    },
+    "threads.net": {
+      "medium": "social",
+      "source": "Threads"
+    },
+    "tiktok.com": {
+      "medium": "social",
+      "source": "TikTok"
+    },
+    "com.talklittle.android.tildes": {
+      "medium": "social",
+      "source": "Tildes"
+    },
+    "tildes.net": {
+      "medium": "social",
+      "source": "Tildes"
+    },
+    "tuenti.com": {
+      "medium": "social",
+      "source": "Tuenti"
+    },
+    "t.umblr.com": {
+      "medium": "social",
+      "source": "Tumblr"
+    },
+    "tumblr.com": {
+      "medium": "social",
+      "source": "Tumblr"
+    },
+    "twitcasting.tv": {
+      "medium": "social",
+      "source": "Twitcast"
+    },
+    "com.twitter.android": {
+      "medium": "social",
+      "source": "Twitter"
+    },
+    "t.co": {
+      "medium": "social",
+      "source": "Twitter"
+    },
+    "twitter.com": {
+      "medium": "social",
+      "source": "Twitter"
+    },
+    "x.com": {
+      "medium": "social",
+      "source": "Twitter"
+    },
+    "uludagsozluk.com": {
+      "medium": "social",
+      "source": "Uludag Sozluk"
+    },
+    "ulusozluk.com": {
+      "medium": "social",
+      "source": "Uludag Sozluk"
+    },
+    "v2ex.com": {
+      "medium": "social",
+      "source": "V2EX"
+    },
+    "viadeo.com": {
+      "medium": "social",
+      "source": "Viadeo"
+    },
+    "vimeo.com": {
+      "medium": "social",
+      "source": "Vimeo"
+    },
+    "away.vk.com": {
+      "medium": "social",
+      "source": "Vkontakte"
+    },
+    "m.vk.com": {
+      "medium": "social",
+      "source": "Vkontakte"
+    },
+    "vk.com": {
+      "medium": "social",
+      "source": "Vkontakte"
+    },
+    "vkontakte.ru": {
+      "medium": "social",
+      "source": "Vkontakte"
+    },
+    "vkrugudruzei.ru": {
+      "medium": "social",
+      "source": "vKruguDruzei.ru"
+    },
+    "wayn.com": {
+      "medium": "social",
+      "source": "WAYN"
+    },
+    "channels.weixin.qq.com": {
+      "medium": "social",
+      "source": "WeChat"
+    },
+    "mp.weixin.qq.com": {
+      "medium": "social",
+      "source": "WeChat"
+    },
+    "open.weixin.qq.com": {
+      "medium": "social",
+      "source": "WeChat"
+    },
+    "wechat.com": {
+      "medium": "social",
+      "source": "WeChat"
+    },
+    "weeworld.com": {
+      "medium": "social",
+      "source": "WeeWorld"
+    },
+    "t.cn": {
+      "medium": "social",
+      "source": "Weibo"
+    },
+    "weibo.com": {
+      "medium": "social",
+      "source": "Weibo"
+    },
+    "com.whatsapp": {
+      "medium": "social",
+      "source": "WhatsApp"
+    },
+    "web.whatsapp.com": {
+      "medium": "social",
+      "source": "WhatsApp"
+    },
+    "forums.whirlpool.net.au": {
+      "medium": "social",
+      "source": "Whirlpool"
+    },
+    "login.live.com": {
+      "medium": "social",
+      "source": "Windows Live Spaces"
+    },
+    "l.workplace.com": {
+      "medium": "social",
+      "source": "Workplace"
+    },
+    "lm.workplace.com": {
+      "medium": "social",
+      "source": "Workplace"
+    },
+    "workplace.com": {
+      "medium": "social",
+      "source": "Workplace"
+    },
+    "xanga.com": {
+      "medium": "social",
+      "source": "Xanga"
+    },
+    "xing.com": {
+      "medium": "social",
+      "source": "XING"
+    },
+    "youtu.be": {
+      "medium": "social",
+      "source": "Youtube"
+    },
+    "youtube.com": {
+      "medium": "social",
+      "source": "Youtube"
+    },
+    "search.1and1.com": {
+      "medium": "organic",
+      "source": "1&1"
+    },
+    "1.cz": {
+      "medium": "organic",
+      "source": "1.cz"
+    },
+    "foretag.118700.se": {
+      "medium": "organic",
+      "source": "118 700"
+    },
+    "webben.118700.se": {
+      "medium": "organic",
+      "source": "118 700"
+    },
+    "118700.se": {
+      "medium": "organic",
+      "source": "118 700"
+    },
+    "suche.1und1.de": {
+      "medium": "organic",
+      "source": "1und1"
+    },
+    "2gis.ru": {
+      "medium": "organic",
+      "source": "2gis"
+    },
+    "link.2gis.ru": {
+      "medium": "organic",
+      "source": "2gis"
+    },
+    "so.360.cn": {
+      "medium": "organic",
+      "source": "360.cn"
+    },
+    "so.com": {
+      "medium": "organic",
+      "source": "360.cn"
+    },
+    "m.so.com": {
+      "medium": "organic",
+      "source": "360search"
+    },
+    "sou.com": {
+      "medium": "organic",
+      "source": "360search"
+    },
+    "abacho.at": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "abacho.ch": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "abacho.co.uk": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "abacho.com": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "abacho.de": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "abacho.es": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "abacho.fr": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "abacho.it": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "se.abacho.com": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "tr.abacho.com": {
+      "medium": "organic",
+      "source": "Abacho"
+    },
+    "abcsok.no": {
+      "medium": "organic",
+      "source": "ABCs\u00f8k"
+    },
+    "abcsolk.no": {
+      "medium": "organic",
+      "source": "ABCs\u00f8k"
+    },
+    "verden.abcsok.no": {
+      "medium": "organic",
+      "source": "ABCs\u00f8k"
+    },
+    "acoon.de": {
+      "medium": "organic",
+      "source": "Acoon"
+    },
+    "chercherfr.aguea.com": {
+      "medium": "organic",
+      "source": "Aguea"
+    },
+    "alexa.com": {
+      "medium": "organic",
+      "source": "Alexa"
+    },
+    "search.toolbars.alexa.com": {
+      "medium": "organic",
+      "source": "Alexa"
+    },
+    "rechercher.aliceadsl.fr": {
+      "medium": "organic",
+      "source": "Alice Adsl"
+    },
+    "all.by": {
+      "medium": "organic",
+      "source": "all.by"
+    },
+    "allaverksamheter.se": {
+      "medium": "organic",
+      "source": "Allaverksamheter"
+    },
+    "allesklar.at": {
+      "medium": "organic",
+      "source": "Allesklar"
+    },
+    "allesklar.ch": {
+      "medium": "organic",
+      "source": "Allesklar"
+    },
+    "allesklar.de": {
+      "medium": "organic",
+      "source": "Allesklar"
+    },
+    "alltheinternet.com": {
+      "medium": "organic",
+      "source": "AllTheInternet"
+    },
+    "alltheweb.com": {
+      "medium": "organic",
+      "source": "AllTheWeb"
+    },
+    "alohafind.com": {
+      "medium": "organic",
+      "source": "AlohaFind"
+    },
+    "altavista.de": {
+      "medium": "organic",
+      "source": "Altavista"
+    },
+    "altavista.fr": {
+      "medium": "organic",
+      "source": "Altavista"
+    },
+    "be-fr.altavista.com": {
+      "medium": "organic",
+      "source": "Altavista"
+    },
+    "be-nl.altavista.com": {
+      "medium": "organic",
+      "source": "Altavista"
+    },
+    "listings.altavista.com": {
+      "medium": "organic",
+      "source": "Altavista"
+    },
+    "search.altavista.com": {
+      "medium": "organic",
+      "source": "Altavista"
+    },
+    "altavista.com": {
+      "medium": "organic",
+      "source": "Altavista"
+    },
+    "amazon.com": {
+      "medium": "organic",
+      "source": "Amazon"
+    },
+    "aim.search.aol.com": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "alicesuche.aol.de": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "alicesuchet.aol.de": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "aolbusqueda.aol.com.mx": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "aolrecherche.aol.fr": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "aolsearch.aol.co.uk": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "aolsearch.aol.com": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "aolsearch.com": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "de.aolsearch.com": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "find.web.aol.com": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "o2suche.aol.de": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "recherche.aol.ca": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "recherche.aol.fr": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "search-intl.netscape.com": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "search.aol.co.uk": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "search.aol.com": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "search.aol.it": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "search.hp.my.aol.com.au": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "search.hp.my.aol.de": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "search.hp.my.aol.it": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "suche.aol.de": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "suche.aolsvc.de": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "sucheaol.aol.de": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "suchet2.aol.de": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "aolimages.aol.fr": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "aolrecherches.aol.fr": {
+      "medium": "organic",
+      "source": "AOL"
+    },
+    "apollo7.de": {
+      "medium": "organic",
+      "source": "APOLL07"
+    },
+    "apollo.lv": {
+      "medium": "organic",
+      "source": "Apollo Latvia"
+    },
+    "apontador.com.br": {
+      "medium": "organic",
+      "source": "Apontador"
+    },
+    "sm.aport.ru": {
+      "medium": "organic",
+      "source": "Aport"
+    },
+    "arama.com": {
+      "medium": "organic",
+      "source": "arama"
+    },
+    "arcor.de": {
+      "medium": "organic",
+      "source": "Arcor"
+    },
+    "arianna.libero.it": {
+      "medium": "organic",
+      "source": "Arianna"
+    },
+    "arianna.com": {
+      "medium": "organic",
+      "source": "Arianna"
+    },
+    "ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "ask.reference.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "avira-int.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "avira.search.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "images.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "int.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "int.search-results.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "int.search.tb.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "iwon.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "mws.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "nortonsafe.search.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "search-results.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "search.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "search.tb.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "searchqu.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "uk.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "uk.search-results.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "web.ask.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "ask.co.uk": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "askkids.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "qbyrd.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "www1.search-results.com": {
+      "medium": "organic",
+      "source": "Ask"
+    },
+    "searchatlas.centrum.cz": {
+      "medium": "organic",
+      "source": "Atlas"
+    },
+    "search.auone.jp": {
+      "medium": "organic",
+      "source": "auone"
+    },
+    "sp-search.auone.jp": {
+      "medium": "organic",
+      "source": "auone"
+    },
+    "sp-web.search.auone.jp": {
+      "medium": "organic",
+      "source": "auone"
+    },
+    "sp-image.search.auone.jp": {
+      "medium": "organic",
+      "source": "auone"
+    },
+    "www1.astronaut.at": {
+      "medium": "organic",
+      "source": "Austronaut"
+    },
+    "www1.austronaut.at": {
+      "medium": "organic",
+      "source": "Austronaut"
+    },
+    "www2.austronaut.at": {
+      "medium": "organic",
+      "source": "Austronaut"
+    },
+    "safesearch.avira.com": {
+      "medium": "organic",
+      "source": "Avira SafeSearch"
+    },
+    "search.avira.com": {
+      "medium": "organic",
+      "source": "Avira SafeSearch"
+    },
+    "search.avira.net": {
+      "medium": "organic",
+      "source": "Avira SafeSearch"
+    },
+    "search.babylon.com": {
+      "medium": "organic",
+      "source": "Babylon"
+    },
+    "searchassist.babylon.com": {
+      "medium": "organic",
+      "source": "Babylon"
+    },
+    "baidu.com": {
+      "medium": "organic",
+      "source": "Baidu"
+    },
+    "m.baidu.com": {
+      "medium": "organic",
+      "source": "Baidu"
+    },
+    "news.baidu.com": {
+      "medium": "organic",
+      "source": "Baidu"
+    },
+    "tieba.baidu.com": {
+      "medium": "organic",
+      "source": "Baidu"
+    },
+    "web.gougou.com": {
+      "medium": "organic",
+      "source": "Baidu"
+    },
+    "baidu.co.th": {
+      "medium": "organic",
+      "source": "Baidu"
+    },
+    "www1.baidu.com": {
+      "medium": "organic",
+      "source": "Baidu"
+    },
+    "zhidao.baidu.com": {
+      "medium": "organic",
+      "source": "Baidu"
+    },
+    "cgi.search.biglobe.ne.jp": {
+      "medium": "organic",
+      "source": "Biglobe"
+    },
+    "images.search.biglobe.ne.jp": {
+      "medium": "organic",
+      "source": "Biglobe"
+    },
+    "bing.com": {
+      "medium": "organic",
+      "source": "Bing"
+    },
+    "cc.bingj.com": {
+      "medium": "organic",
+      "source": "Bing"
+    },
+    "dizionario.it.msn.com": {
+      "medium": "organic",
+      "source": "Bing"
+    },
+    "enciclopedia.it.msn.com": {
+      "medium": "organic",
+      "source": "Bing"
+    },
+    "global.bing.com": {
+      "medium": "organic",
+      "source": "Bing"
+    },
+    "m.bing.com": {
+      "medium": "organic",
+      "source": "Bing"
+    },
+    "msnbc.msn.com": {
+      "medium": "organic",
+      "source": "Bing"
+    },
+    "blekko.com": {
+      "medium": "organic",
+      "source": "blekko"
+    },
+    "blogdigger.com": {
+      "medium": "organic",
+      "source": "Blogdigger"
+    },
+    "blogpulse.com": {
+      "medium": "organic",
+      "source": "Blogpulse"
+    },
+    "search.bluewin.ch": {
+      "medium": "organic",
+      "source": "Bluewin"
+    },
+    "search.brave.com": {
+      "medium": "organic",
+      "source": "Brave"
+    },
+    "search.bt.com": {
+      "medium": "organic",
+      "source": "British Telecommunications"
+    },
+    "web.canoe.ca": {
+      "medium": "organic",
+      "source": "canoe.ca"
+    },
+    "morfeo.centrum.cz": {
+      "medium": "organic",
+      "source": "Centrum"
+    },
+    "search.centrum.cz": {
+      "medium": "organic",
+      "source": "Centrum"
+    },
+    "serach.centrum.cz": {
+      "medium": "organic",
+      "source": "Centrum"
+    },
+    "search.certified-toolbar.com": {
+      "medium": "organic",
+      "source": "Certified-Toolbar"
+    },
+    "charter.net": {
+      "medium": "organic",
+      "source": "Charter"
+    },
+    "claro-search.com": {
+      "medium": "organic",
+      "source": "Claro Search"
+    },
+    "pesquisa.clix.pt": {
+      "medium": "organic",
+      "source": "Clix"
+    },
+    "coccoc.com": {
+      "medium": "organic",
+      "source": "Coccoc"
+    },
+    "search.comcast.net": {
+      "medium": "organic",
+      "source": "Comcast"
+    },
+    "serach.comcast.net": {
+      "medium": "organic",
+      "source": "Comcast"
+    },
+    "websearch.cs.com": {
+      "medium": "organic",
+      "source": "Compuserve"
+    },
+    "search.conduit.com": {
+      "medium": "organic",
+      "source": "Conduit"
+    },
+    "images.search.conduit.com": {
+      "medium": "organic",
+      "source": "Conduit.com"
+    },
+    "crawler.com": {
+      "medium": "organic",
+      "source": "Crawler"
+    },
+    "cuil.com": {
+      "medium": "organic",
+      "source": "Cuil"
+    },
+    "daemon-search.com": {
+      "medium": "organic",
+      "source": "Daemon search"
+    },
+    "my.daemon-search.com": {
+      "medium": "organic",
+      "source": "Daemon search"
+    },
+    "dalesearch.com": {
+      "medium": "organic",
+      "source": "Dalesearch"
+    },
+    "dasoertliche.de": {
+      "medium": "organic",
+      "source": "DasOertliche"
+    },
+    "www2.dasoertliche.de": {
+      "medium": "organic",
+      "source": "DasOertliche"
+    },
+    "www1.dastelefonbuch.de": {
+      "medium": "organic",
+      "source": "DasTelefonbuch"
+    },
+    "search.daum.net": {
+      "medium": "organic",
+      "source": "Daum"
+    },
+    "otsing.delfi.ee": {
+      "medium": "organic",
+      "source": "Delfi"
+    },
+    "smart.delfi.lv": {
+      "medium": "organic",
+      "source": "Delfi"
+    },
+    "digg.com": {
+      "medium": "organic",
+      "source": "Digg"
+    },
+    "fr.dir.com": {
+      "medium": "organic",
+      "source": "dir.com"
+    },
+    "search.disconnect.me": {
+      "medium": "organic",
+      "source": "DisconnectSearch"
+    },
+    "dmoz.org": {
+      "medium": "organic",
+      "source": "dmoz"
+    },
+    "editors.dmoz.org": {
+      "medium": "organic",
+      "source": "dmoz"
+    },
+    "google.dodo.com.au": {
+      "medium": "organic",
+      "source": "Dodo"
+    },
+    "duckduckgo.com": {
+      "medium": "organic",
+      "source": "DuckDuckGo"
+    },
+    "duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion": {
+      "medium": "organic",
+      "source": "DuckDuckGo"
+    },
+    "noai.duckduckgo.com": {
+      "medium": "organic",
+      "source": "DuckDuckGo"
+    },
+    "r.duckduckgo.com": {
+      "medium": "organic",
+      "source": "DuckDuckGo"
+    },
+    "search.earthlink.net": {
+      "medium": "organic",
+      "source": "earthlink"
+    },
+    "ecosia.org": {
+      "medium": "organic",
+      "source": "Ecosia"
+    },
+    "ariadna.elmundo.es": {
+      "medium": "organic",
+      "source": "El Mundo"
+    },
+    "eniro.se": {
+      "medium": "organic",
+      "source": "Eniro"
+    },
+    "entireweb.com": {
+      "medium": "organic",
+      "source": "Entireweb"
+    },
+    "eo.st": {
+      "medium": "organic",
+      "source": "eo"
+    },
+    "epicsearch.in": {
+      "medium": "organic",
+      "source": "EpicSearch.in"
+    },
+    "eurip.com": {
+      "medium": "organic",
+      "source": "Eurip"
+    },
+    "euroseek.com": {
+      "medium": "organic",
+      "source": "Euroseek"
+    },
+    "everyclick.com": {
+      "medium": "organic",
+      "source": "Everyclick"
+    },
+    "exalead.com": {
+      "medium": "organic",
+      "source": "Exalead"
+    },
+    "exalead.fr": {
+      "medium": "organic",
+      "source": "Exalead"
+    },
+    "msxml.excite.com": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "search.excite.co.uk": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "search.excite.de": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "search.excite.es": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "search.excite.fr": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "search.excite.it": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "search.excite.nl": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "serach.excite.es": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "excite.co.jp": {
+      "medium": "organic",
+      "source": "Excite"
+    },
+    "fastbrowsersearch.com": {
+      "medium": "organic",
+      "source": "Fast Browser Search"
+    },
+    "finderoo.com": {
+      "medium": "organic",
+      "source": "Finderoo"
+    },
+    "findhurtig.dk": {
+      "medium": "organic",
+      "source": "Findhurtig"
+    },
+    "search.findwide.com": {
+      "medium": "organic",
+      "source": "Findwide"
+    },
+    "fireball.com": {
+      "medium": "organic",
+      "source": "Fireball"
+    },
+    "fireball.de": {
+      "medium": "organic",
+      "source": "Fireball"
+    },
+    "firstsfind.com": {
+      "medium": "organic",
+      "source": "Firstfind"
+    },
+    "fixsuche.de": {
+      "medium": "organic",
+      "source": "Fixsuche"
+    },
+    "flix.de": {
+      "medium": "organic",
+      "source": "Flix"
+    },
+    "inspsearch.com": {
+      "medium": "organic",
+      "source": "Flyingbird"
+    },
+    "viview.inspsearch.com": {
+      "medium": "organic",
+      "source": "Flyingbird"
+    },
+    "search.fooooo.com": {
+      "medium": "organic",
+      "source": "Fooooo"
+    },
+    "forestle.mobi": {
+      "medium": "organic",
+      "source": "Forestle"
+    },
+    "forestle.org": {
+      "medium": "organic",
+      "source": "Forestle"
+    },
+    "recherche.francite.com": {
+      "medium": "organic",
+      "source": "Francite"
+    },
+    "search.free.fr": {
+      "medium": "organic",
+      "source": "Free"
+    },
+    "search1-1.free.fr": {
+      "medium": "organic",
+      "source": "Free"
+    },
+    "search1-2.free.fr": {
+      "medium": "organic",
+      "source": "Free"
+    },
+    "search.freecause.com": {
+      "medium": "organic",
+      "source": "Freecause"
+    },
+    "suche.freenet.de": {
+      "medium": "organic",
+      "source": "Freenet"
+    },
+    "freespoke.com": {
+      "medium": "organic",
+      "source": "Freespoke"
+    },
+    "fresh-weather.com": {
+      "medium": "organic",
+      "source": "Freshweather"
+    },
+    "friendfeed.com": {
+      "medium": "organic",
+      "source": "FriendFeed"
+    },
+    "search.frontier.com": {
+      "medium": "organic",
+      "source": "Frontier"
+    },
+    "gais.cs.ccu.edu.tw": {
+      "medium": "organic",
+      "source": "GAIS"
+    },
+    "search.genieo.com": {
+      "medium": "organic",
+      "source": "Genieo"
+    },
+    "geona.net": {
+      "medium": "organic",
+      "source": "Geona"
+    },
+    "gibiru.com": {
+      "medium": "organic",
+      "source": "Gibiru"
+    },
+    "dir.gigablast.com": {
+      "medium": "organic",
+      "source": "Gigablast"
+    },
+    "gigablast.com": {
+      "medium": "organic",
+      "source": "Gigablast"
+    },
+    "search.globososo.com": {
+      "medium": "organic",
+      "source": "Globososo"
+    },
+    "searches.globososo.com": {
+      "medium": "organic",
+      "source": "Globososo"
+    },
+    "suche.gmx.net": {
+      "medium": "organic",
+      "source": "GMX"
+    },
+    "gnadenmeer.de": {
+      "medium": "organic",
+      "source": "Gnadenmeer"
+    },
+    "gomeo.com": {
+      "medium": "organic",
+      "source": "Gomeo"
+    },
+    "ocnsearch.goo.ne.jp": {
+      "medium": "organic",
+      "source": "goo"
+    },
+    "search.goo.ne.jp": {
+      "medium": "organic",
+      "source": "goo"
+    },
+    "android-app": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "cgi2.nintendo.co.jp": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "com.google.android.googlequicksearchbox": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "darkoogle.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "encrypted.google.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "find.tdc.dk": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "gfsoso.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "go.google.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "googlesyndicatedsearch.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "image.search.smt.docomo.ne.jp": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "ipv6.google.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "isearch.avg.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "it.luna.tv": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "monumentbrowser.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "netlavis.azione.jp": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.1und1.de": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.abv.bg": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.alot.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.avg.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.chedot.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.darkoogle.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.dolphin-browser.jp": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.f-secure.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.foxtab.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.gmx.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.hiyo.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.incredibar.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.incredimail.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.juno.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.leonardo.it": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.nan.so": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.smt.docomo.ne.jp": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.sweetim.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.walla.co.il": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.xfinity.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.zonealarm.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search.zum.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search1.incredimail.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search2.incredimail.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search3.incredimail.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "search4.incredimail.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "searches.f-secure.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "searches.safehomepage.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "searchresults.verizon.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "start.lenovo.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "startab.me": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "webcache.googleusercontent.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "wow.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "cnn.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "delta-search.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "fastweb.it": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "googleearth.de": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "googleearth.fr": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "gooofullsearch.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "kadaza.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "optuszoo.com.au": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "www1.delta-search.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "www2.google.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "cse.google.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "scholar.google.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "translate.google.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "video.google.com": {
+      "medium": "organic",
+      "source": "Google"
+    },
+    "goyellow.de": {
+      "medium": "organic",
+      "source": "Goyellow.de"
+    },
+    "gulesider.no": {
+      "medium": "organic",
+      "source": "Gule Sider"
+    },
+    "haosou.com": {
+      "medium": "organic",
+      "source": "Haosou"
+    },
+    "highbeam.com": {
+      "medium": "organic",
+      "source": "HighBeam"
+    },
+    "class.hit-parade.com": {
+      "medium": "organic",
+      "source": "Hit-Parade"
+    },
+    "req.-hit-parade.com": {
+      "medium": "organic",
+      "source": "Hit-Parade"
+    },
+    "req.hit-parade.com": {
+      "medium": "organic",
+      "source": "Hit-Parade"
+    },
+    "hit-parade.com": {
+      "medium": "organic",
+      "source": "Hit-Parade"
+    },
+    "holmes.ge": {
+      "medium": "organic",
+      "source": "Holmes"
+    },
+    "hooseek.com": {
+      "medium": "organic",
+      "source": "Hooseek"
+    },
+    "hotbot.com": {
+      "medium": "organic",
+      "source": "Hotbot"
+    },
+    "start.iplay.com": {
+      "medium": "organic",
+      "source": "I-play"
+    },
+    "search.i.ua": {
+      "medium": "organic",
+      "source": "I.ua"
+    },
+    "blogs.icerocket.com": {
+      "medium": "organic",
+      "source": "Icerockeet"
+    },
+    "search.icq.com": {
+      "medium": "organic",
+      "source": "ICQ"
+    },
+    "icq.com": {
+      "medium": "organic",
+      "source": "ICQ"
+    },
+    "ilse.nl": {
+      "medium": "organic",
+      "source": "Ilse"
+    },
+    "search.imesh.com": {
+      "medium": "organic",
+      "source": "iMesh"
+    },
+    "www2.inbox.com": {
+      "medium": "organic",
+      "source": "Inbox"
+    },
+    "at.indeed.com": {
+      "medium": "organic",
+      "source": "Indeed"
+    },
+    "au.indeed.com": {
+      "medium": "organic",
+      "source": "Indeed"
+    },
+    "ch.indeed.com": {
+      "medium": "organic",
+      "source": "Indeed"
+    },
+    "de.indeed.com": {
+      "medium": "organic",
+      "source": "Indeed"
+    },
+    "fr.indeed.com": {
+      "medium": "organic",
+      "source": "Indeed"
+    },
+    "it.indeed.com": {
+      "medium": "organic",
+      "source": "Indeed"
+    },
+    "info.com": {
+      "medium": "organic",
+      "source": "info.com"
+    },
+    "clusty.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "dogpile.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "govome.inspsearch.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "home.speedbit.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "infospace.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "isearch.babylon.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "isearch.glarysoft.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "metacrawler.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.avast.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.b1.org": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.chatzum.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.fbdownloader.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.handycafe.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.iminent.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.kiwee.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.magentic.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.magnetic.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.searchcompletion.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.v9.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "search.webssearches.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "searches.vi-view.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "searches3.globososo.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "searchya.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "start.facemoods.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "start.funmoods.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "tattoodle.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "utorrent.inspsearch.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "webcrawler.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "webfetch.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "wsdsold.infospace.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "searchmobileonline.com": {
+      "medium": "organic",
+      "source": "InfoSpace"
+    },
+    "google.interia.pl": {
+      "medium": "organic",
+      "source": "Interia"
+    },
+    "isodelen.se": {
+      "medium": "organic",
+      "source": "Isodelen"
+    },
+    "eu.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "ixquick.de": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s1-eu.ixquick.de": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s1.us.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s2.us.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s3.us.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s4.us.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s5.us.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s8-eu.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "us.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s2-eu4.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "s5-eu4.ixquick.com": {
+      "medium": "organic",
+      "source": "IXquick"
+    },
+    "junglekey.com": {
+      "medium": "organic",
+      "source": "Jungle Key"
+    },
+    "junglekey.fr": {
+      "medium": "organic",
+      "source": "Jungle Key"
+    },
+    "jungle-spider.de": {
+      "medium": "organic",
+      "source": "Jungle Spider"
+    },
+    "juniorsafesearch.com": {
+      "medium": "organic",
+      "source": "Junior Safe Search"
+    },
+    "jyxo.1188.cz": {
+      "medium": "organic",
+      "source": "Jyxo"
+    },
+    "k9safesearch.com": {
+      "medium": "organic",
+      "source": "K9 Safe Search"
+    },
+    "kagi.com": {
+      "medium": "organic",
+      "source": "Kagi"
+    },
+    "karmasearch.org": {
+      "medium": "organic",
+      "source": "KARMA"
+    },
+    "kataweb.it": {
+      "medium": "organic",
+      "source": "Kataweb"
+    },
+    "kensaq.com": {
+      "medium": "organic",
+      "source": "Kensaq"
+    },
+    "kununu.com": {
+      "medium": "organic",
+      "source": "kununu"
+    },
+    "kvasir.no": {
+      "medium": "organic",
+      "source": "Kvasir"
+    },
+    "web.toile.com": {
+      "medium": "organic",
+      "source": "La Toile Du Quebec Via Google"
+    },
+    "toile.com": {
+      "medium": "organic",
+      "source": "La Toile Du Quebec Via Google"
+    },
+    "laban.vn": {
+      "medium": "organic",
+      "source": "Laban"
+    },
+    "latne.lv": {
+      "medium": "organic",
+      "source": "Latne"
+    },
+    "search.lilo.org": {
+      "medium": "organic",
+      "source": "Lilo"
+    },
+    "liveinternet.ru": {
+      "medium": "organic",
+      "source": "Liveinternet"
+    },
+    "lo.st": {
+      "medium": "organic",
+      "source": "Lo.st"
+    },
+    "localmoxie.com": {
+      "medium": "organic",
+      "source": "Local Moxie"
+    },
+    "lookany.com": {
+      "medium": "organic",
+      "source": "LookAny"
+    },
+    "search.lookseek.com": {
+      "medium": "organic",
+      "source": "Lookseek"
+    },
+    "looksmart.com": {
+      "medium": "organic",
+      "source": "Looksmart"
+    },
+    "search.lycos.com": {
+      "medium": "organic",
+      "source": "Lycos"
+    },
+    "maailm.com": {
+      "medium": "organic",
+      "source": "maailm"
+    },
+    "go.mail.ru": {
+      "medium": "organic",
+      "source": "Mail.ru"
+    },
+    "m.mail.ru": {
+      "medium": "organic",
+      "source": "Mail.ru"
+    },
+    "mail.ru": {
+      "medium": "organic",
+      "source": "Mail.ru"
+    },
+    "mamma75.mamma.com": {
+      "medium": "organic",
+      "source": "Mamma"
+    },
+    "mamma.com": {
+      "medium": "organic",
+      "source": "Mamma"
+    },
+    "marktplaats.nl": {
+      "medium": "organic",
+      "source": "Marktplaats"
+    },
+    "maxwebsearch.com": {
+      "medium": "organic",
+      "source": "Maxwebsearch"
+    },
+    "meinestadt.de": {
+      "medium": "organic",
+      "source": "Meinestadt"
+    },
+    "meta.ua": {
+      "medium": "organic",
+      "source": "Meta.ua"
+    },
+    "s1.metacrawler.de": {
+      "medium": "organic",
+      "source": "MetaCrawler DE"
+    },
+    "s2.metacrawler.de": {
+      "medium": "organic",
+      "source": "MetaCrawler DE"
+    },
+    "s3.metacrawler.de": {
+      "medium": "organic",
+      "source": "MetaCrawler DE"
+    },
+    "meta.rrzn.uni-hannover.de": {
+      "medium": "organic",
+      "source": "Metager"
+    },
+    "metager.de": {
+      "medium": "organic",
+      "source": "Metager"
+    },
+    "metager2.de": {
+      "medium": "organic",
+      "source": "Metager2"
+    },
+    "mister-wong.com": {
+      "medium": "organic",
+      "source": "Mister Wong"
+    },
+    "mister-wong.de": {
+      "medium": "organic",
+      "source": "Mister Wong"
+    },
+    "mojeek.com": {
+      "medium": "organic",
+      "source": "Mojeek"
+    },
+    "monster.be": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.ch": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.co.uk": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.cz": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.de": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.fi": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.fr": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.ie": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.it": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monster.lu": {
+      "medium": "organic",
+      "source": "Monster"
+    },
+    "monstercrawler.com": {
+      "medium": "organic",
+      "source": "Monstercrawler"
+    },
+    "mozbot.co.uk": {
+      "medium": "organic",
+      "source": "Mozbot"
+    },
+    "mozbot.com": {
+      "medium": "organic",
+      "source": "Mozbot"
+    },
+    "mozbot.fr": {
+      "medium": "organic",
+      "source": "Mozbot"
+    },
+    "myprivatesearch.com": {
+      "medium": "organic",
+      "source": "MyPrivateSearch"
+    },
+    "kf.mysearch.myway.com": {
+      "medium": "organic",
+      "source": "MySearch"
+    },
+    "ki.mysearch.myway.com": {
+      "medium": "organic",
+      "source": "MySearch"
+    },
+    "ms114.mysearch.com": {
+      "medium": "organic",
+      "source": "MySearch"
+    },
+    "ms146.mysearch.com": {
+      "medium": "organic",
+      "source": "MySearch"
+    },
+    "mysearch.com": {
+      "medium": "organic",
+      "source": "MySearch"
+    },
+    "search.myway.com": {
+      "medium": "organic",
+      "source": "MySearch"
+    },
+    "search.mywebsearch.com": {
+      "medium": "organic",
+      "source": "MySearch"
+    },
+    "searchservice.myspace.com": {
+      "medium": "organic",
+      "source": "Myspace"
+    },
+    "najdi.si": {
+      "medium": "organic",
+      "source": "Najdi"
+    },
+    "search.nate.com": {
+      "medium": "organic",
+      "source": "Nate"
+    },
+    "search.naver.com": {
+      "medium": "organic",
+      "source": "Naver"
+    },
+    "image.search.naver.com": {
+      "medium": "organic",
+      "source": "Naver"
+    },
+    "imagesearch.naver.com": {
+      "medium": "organic",
+      "source": "Naver"
+    },
+    "ko.search.need2find.com": {
+      "medium": "organic",
+      "source": "Needtofind"
+    },
+    "neti.ee": {
+      "medium": "organic",
+      "source": "Neti"
+    },
+    "search.azby.fmworld.net": {
+      "medium": "organic",
+      "source": "Nifty"
+    },
+    "search.nifty.com": {
+      "medium": "organic",
+      "source": "Nifty"
+    },
+    "videosearch.nifty.com": {
+      "medium": "organic",
+      "source": "Nifty"
+    },
+    "nigma.ru": {
+      "medium": "organic",
+      "source": "Nigma"
+    },
+    "oceanhero.today": {
+      "medium": "organic",
+      "source": "OceanHero"
+    },
+    "szukaj.onet.pl": {
+      "medium": "organic",
+      "source": "Onet"
+    },
+    "online.no": {
+      "medium": "organic",
+      "source": "Online.no"
+    },
+    "only-search.com": {
+      "medium": "organic",
+      "source": "OnlySearch"
+    },
+    "1881.no": {
+      "medium": "organic",
+      "source": "Opplysningen 1881"
+    },
+    "busca.orange.es": {
+      "medium": "organic",
+      "source": "Orange"
+    },
+    "lemoteur.ke.voila.fr": {
+      "medium": "organic",
+      "source": "Orange"
+    },
+    "lemoteur.orange.fr": {
+      "medium": "organic",
+      "source": "Orange"
+    },
+    "search.orange.co.uk": {
+      "medium": "organic",
+      "source": "Orange"
+    },
+    "paperball.de": {
+      "medium": "organic",
+      "source": "Paperball"
+    },
+    "extern.peoplecheck.de": {
+      "medium": "organic",
+      "source": "PeopleCheck"
+    },
+    "search.peoplepc.com": {
+      "medium": "organic",
+      "source": "PeoplePC"
+    },
+    "picsearch.com": {
+      "medium": "organic",
+      "source": "Picsearch"
+    },
+    "plazoo.com": {
+      "medium": "organic",
+      "source": "Plazoo"
+    },
+    "plusnetwork.com": {
+      "medium": "organic",
+      "source": "PlusNetwork"
+    },
+    "poisk.ru": {
+      "medium": "organic",
+      "source": "Poisk.ru"
+    },
+    "presearch.com": {
+      "medium": "organic",
+      "source": "Presearch"
+    },
+    "pricerunner.co.uk": {
+      "medium": "organic",
+      "source": "PriceRunner"
+    },
+    "privacywall.org": {
+      "medium": "organic",
+      "source": "PrivacyWall"
+    },
+    "search.qip.ru": {
+      "medium": "organic",
+      "source": "QIP"
+    },
+    "qualigo.at": {
+      "medium": "organic",
+      "source": "Qualigo"
+    },
+    "qualigo.ch": {
+      "medium": "organic",
+      "source": "Qualigo"
+    },
+    "qualigo.de": {
+      "medium": "organic",
+      "source": "Qualigo"
+    },
+    "qualigo.nl": {
+      "medium": "organic",
+      "source": "Qualigo"
+    },
+    "quendu.com": {
+      "medium": "organic",
+      "source": "Quendu"
+    },
+    "lite.qwant.com": {
+      "medium": "organic",
+      "source": "Qwant"
+    },
+    "qwant.com": {
+      "medium": "organic",
+      "source": "Qwant"
+    },
+    "websearch.rakuten.co.jp": {
+      "medium": "organic",
+      "source": "Rakuten"
+    },
+    "nova.rambler.ru": {
+      "medium": "organic",
+      "source": "Rambler"
+    },
+    "riksdelen.se": {
+      "medium": "organic",
+      "source": "Riksdelen"
+    },
+    "search.rr.com": {
+      "medium": "organic",
+      "source": "Road Runner"
+    },
+    "fr2.rpmfind.net": {
+      "medium": "organic",
+      "source": "RPMFind"
+    },
+    "rpmfind.net": {
+      "medium": "organic",
+      "source": "RPMFind"
+    },
+    "pesquisa.sapo.pt": {
+      "medium": "organic",
+      "source": "Sapo"
+    },
+    "scour.com": {
+      "medium": "organic",
+      "source": "Scour.com"
+    },
+    "searchthis.com": {
+      "medium": "organic",
+      "source": "Search This"
+    },
+    "search.ch": {
+      "medium": "organic",
+      "source": "Search.ch"
+    },
+    "search.com": {
+      "medium": "organic",
+      "source": "Search.com"
+    },
+    "searchalot.com": {
+      "medium": "organic",
+      "source": "Searchalot"
+    },
+    "searchcanvas.com": {
+      "medium": "organic",
+      "source": "SearchCanvas"
+    },
+    "results.searchlock.com": {
+      "medium": "organic",
+      "source": "SearchLock"
+    },
+    "searchlock.com": {
+      "medium": "organic",
+      "source": "SearchLock"
+    },
+    "searchy.co.uk": {
+      "medium": "organic",
+      "source": "Searchy"
+    },
+    "search.seesaa.jp": {
+      "medium": "organic",
+      "source": "SeeSaa"
+    },
+    "bg.setooz.com": {
+      "medium": "organic",
+      "source": "Setooz"
+    },
+    "da.setooz.com": {
+      "medium": "organic",
+      "source": "Setooz"
+    },
+    "el.setooz.com": {
+      "medium": "organic",
+      "source": "Setooz"
+    },
+    "fa.setooz.com": {
+      "medium": "organic",
+      "source": "Setooz"
+    },
+    "ur.setooz.com": {
+      "medium": "organic",
+      "source": "Setooz"
+    },
+    "search.seznam.cz": {
+      "medium": "organic",
+      "source": "Seznam"
+    },
+    "videa.seznam.cz": {
+      "medium": "organic",
+      "source": "Seznam"
+    },
+    "sharelook.fr": {
+      "medium": "organic",
+      "source": "Sharelook"
+    },
+    "m.sm.cn": {
+      "medium": "organic",
+      "source": "Shenma"
+    },
+    "m.sp.sm.cn": {
+      "medium": "organic",
+      "source": "Shenma"
+    },
+    "m.yz.sm.cn": {
+      "medium": "organic",
+      "source": "Shenma"
+    },
+    "m.yz2.sm.cn": {
+      "medium": "organic",
+      "source": "Shenma"
+    },
+    "quark.sm.cn": {
+      "medium": "organic",
+      "source": "Shenma"
+    },
+    "so.m.sm.cn": {
+      "medium": "organic",
+      "source": "Shenma"
+    },
+    "yz.m.sm.cn": {
+      "medium": "organic",
+      "source": "Shenma"
+    },
+    "skynet.be": {
+      "medium": "organic",
+      "source": "Skynet"
+    },
+    "sm.de": {
+      "medium": "organic",
+      "source": "sm.de"
+    },
+    "search.smartaddressbar.com": {
+      "medium": "organic",
+      "source": "SmartAddressbar"
+    },
+    "search.smartshopping.com": {
+      "medium": "organic",
+      "source": "SmartShopping"
+    },
+    "search.snap.do": {
+      "medium": "organic",
+      "source": "Snap.do"
+    },
+    "search.snapdo.com": {
+      "medium": "organic",
+      "source": "Snapdo"
+    },
+    "so-net.ne.jp": {
+      "medium": "organic",
+      "source": "So-net"
+    },
+    "video.so-net.ne.jp": {
+      "medium": "organic",
+      "source": "So-net"
+    },
+    "search.softonic.com": {
+      "medium": "organic",
+      "source": "Softonic"
+    },
+    "english.sogou.com": {
+      "medium": "organic",
+      "source": "Sogou"
+    },
+    "m.sogou.com": {
+      "medium": "organic",
+      "source": "Sogou"
+    },
+    "sogou.com": {
+      "medium": "organic",
+      "source": "Sogou"
+    },
+    "wap.sogou.com": {
+      "medium": "organic",
+      "source": "Sogou"
+    },
+    "soso.com": {
+      "medium": "organic",
+      "source": "Sogou"
+    },
+    "sougou.com": {
+      "medium": "organic",
+      "source": "Sogou"
+    },
+    "search.sosodesktop.com": {
+      "medium": "organic",
+      "source": "SoSoDesk"
+    },
+    "sosodesktop.com": {
+      "medium": "organic",
+      "source": "SoSoDesk"
+    },
+    "sputnik.ru": {
+      "medium": "organic",
+      "source": "Sputnik"
+    },
+    "classic.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "eu.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s1-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s10-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s11-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s12-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s13-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s14-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s2-eu4.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s2-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s4-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s5-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s6-eu4.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s6-eu5.ixquick.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s6-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s7-eu4.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s7-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "s8-eu5.startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "startpage.com": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "startpagel6srwcjlue4zgq3zevrujfaow726kjytqbbjyrswwmjzcqd.onion": {
+      "medium": "organic",
+      "source": "StartPage"
+    },
+    "startgoogle.startpagina.nl": {
+      "medium": "organic",
+      "source": "Startpagina"
+    },
+    "startsiden.no": {
+      "medium": "organic",
+      "source": "Startsiden"
+    },
+    "stepstone.at": {
+      "medium": "organic",
+      "source": "StepStone"
+    },
+    "stepstone.be": {
+      "medium": "organic",
+      "source": "StepStone"
+    },
+    "stepstone.de": {
+      "medium": "organic",
+      "source": "StepStone"
+    },
+    "stepstone.dk": {
+      "medium": "organic",
+      "source": "StepStone"
+    },
+    "stepstone.fr": {
+      "medium": "organic",
+      "source": "StepStone"
+    },
+    "stepstone.nl": {
+      "medium": "organic",
+      "source": "StepStone"
+    },
+    "stepstone.se": {
+      "medium": "organic",
+      "source": "StepStone"
+    },
+    "stract.com": {
+      "medium": "organic",
+      "source": "Stract"
+    },
+    "suche.info": {
+      "medium": "organic",
+      "source": "suche.info"
+    },
+    "suchmaschine.com": {
+      "medium": "organic",
+      "source": "Suchmaschine.com"
+    },
+    "suchnase.de": {
+      "medium": "organic",
+      "source": "Suchnase"
+    },
+    "surfcanyon.com": {
+      "medium": "organic",
+      "source": "Surf Canyon"
+    },
+    "swiggle.org.uk": {
+      "medium": "organic",
+      "source": "Swiggle"
+    },
+    "swisscows.com": {
+      "medium": "organic",
+      "source": "Swisscows"
+    },
+    "brisbane.t-online.de": {
+      "medium": "organic",
+      "source": "T-online"
+    },
+    "navigationshilfe.t-online.de": {
+      "medium": "organic",
+      "source": "T-online"
+    },
+    "suche.t-online.de": {
+      "medium": "organic",
+      "source": "T-online"
+    },
+    "talimba.com": {
+      "medium": "organic",
+      "source": "talimba"
+    },
+    "talktalk.co.uk": {
+      "medium": "organic",
+      "source": "TalkTalk"
+    },
+    "tarmot.com": {
+      "medium": "organic",
+      "source": "Tarmot"
+    },
+    "technorati.com": {
+      "medium": "organic",
+      "source": "Technorati"
+    },
+    "search.media.telstra.com.au": {
+      "medium": "organic",
+      "source": "Telstra"
+    },
+    "teoma.com": {
+      "medium": "organic",
+      "source": "Teoma"
+    },
+    "buscador.terra.cl": {
+      "medium": "organic",
+      "source": "Terra"
+    },
+    "buscador.terra.com.br": {
+      "medium": "organic",
+      "source": "Terra"
+    },
+    "buscador.terra.es": {
+      "medium": "organic",
+      "source": "Terra"
+    },
+    "thesmartsearch.net": {
+      "medium": "organic",
+      "source": "The Smart Search"
+    },
+    "hledani.tiscali.cz": {
+      "medium": "organic",
+      "source": "Tiscali"
+    },
+    "search-dyn.tiscali.it": {
+      "medium": "organic",
+      "source": "Tiscali"
+    },
+    "search.tiscali.it": {
+      "medium": "organic",
+      "source": "Tiscali"
+    },
+    "tixuma.de": {
+      "medium": "organic",
+      "source": "Tixuma"
+    },
+    "vshare.toolbarhome.com": {
+      "medium": "organic",
+      "source": "Toolbarhome"
+    },
+    "toolbarhome.com": {
+      "medium": "organic",
+      "source": "Toolbarhome"
+    },
+    "de.toppreise.ch": {
+      "medium": "organic",
+      "source": "Toppreise.ch"
+    },
+    "en.toppreise.ch": {
+      "medium": "organic",
+      "source": "Toppreise.ch"
+    },
+    "fr.toppreise.ch": {
+      "medium": "organic",
+      "source": "Toppreise.ch"
+    },
+    "toppreise.ch": {
+      "medium": "organic",
+      "source": "Toppreise.ch"
+    },
+    "torry.io": {
+      "medium": "organic",
+      "source": "Torry"
+    },
+    "trouvez.com": {
+      "medium": "organic",
+      "source": "Trouvez.com"
+    },
+    "trovarapido.com": {
+      "medium": "organic",
+      "source": "TrovaRapido"
+    },
+    "trusted-search.com": {
+      "medium": "organic",
+      "source": "Trusted Search"
+    },
+    "trusted--search.com": {
+      "medium": "organic",
+      "source": "Trusted-Search"
+    },
+    "search.trustnav.com": {
+      "medium": "organic",
+      "source": "Trustnav"
+    },
+    "tusksearch.com": {
+      "medium": "organic",
+      "source": "TUSK Search"
+    },
+    "search.tut.by": {
+      "medium": "organic",
+      "source": "Tut.by"
+    },
+    "twingly.com": {
+      "medium": "organic",
+      "source": "Twingly"
+    },
+    "search.ukr.net": {
+      "medium": "organic",
+      "source": "Ukr.net"
+    },
+    "busca.uol.com.br": {
+      "medium": "organic",
+      "source": "uol.com.br"
+    },
+    "url.org": {
+      "medium": "organic",
+      "source": "URL.ORGanizier"
+    },
+    "vinden.nl": {
+      "medium": "organic",
+      "source": "Vinden"
+    },
+    "search.vindex.nl": {
+      "medium": "organic",
+      "source": "Vindex"
+    },
+    "vindex.nl": {
+      "medium": "organic",
+      "source": "Vindex"
+    },
+    "mobile.virgilio.it": {
+      "medium": "organic",
+      "source": "Virgilio"
+    },
+    "ricerca.virgilio.it": {
+      "medium": "organic",
+      "source": "Virgilio"
+    },
+    "ricercaimmagini.virgilio.it": {
+      "medium": "organic",
+      "source": "Virgilio"
+    },
+    "ricercanews.virgilio.it": {
+      "medium": "organic",
+      "source": "Virgilio"
+    },
+    "ricercavideo.virgilio.it": {
+      "medium": "organic",
+      "source": "Virgilio"
+    },
+    "search.ke.voila.fr": {
+      "medium": "organic",
+      "source": "Voila"
+    },
+    "lemoteur.fr": {
+      "medium": "organic",
+      "source": "Voila"
+    },
+    "web.volny.cz": {
+      "medium": "organic",
+      "source": "Volny"
+    },
+    "vuhuv.com": {
+      "medium": "organic",
+      "source": "Vuhuv"
+    },
+    "walhello.com": {
+      "medium": "organic",
+      "source": "Walhello"
+    },
+    "walhello.de": {
+      "medium": "organic",
+      "source": "Walhello"
+    },
+    "walhello.info": {
+      "medium": "organic",
+      "source": "Walhello"
+    },
+    "walhello.nl": {
+      "medium": "organic",
+      "source": "Walhello"
+    },
+    "m.suche.web.de": {
+      "medium": "organic",
+      "source": "Web.de"
+    },
+    "suche.web.de": {
+      "medium": "organic",
+      "source": "Web.de"
+    },
+    "web.nl": {
+      "medium": "organic",
+      "source": "Web.nl"
+    },
+    "weborama.com": {
+      "medium": "organic",
+      "source": "Weborama"
+    },
+    "weborama.fr": {
+      "medium": "organic",
+      "source": "Weborama"
+    },
+    "websearch.com": {
+      "medium": "organic",
+      "source": "WebSearch"
+    },
+    "en.wedoo.com": {
+      "medium": "organic",
+      "source": "Wedoo"
+    },
+    "es.wedoo.com": {
+      "medium": "organic",
+      "source": "Wedoo"
+    },
+    "fr.wedoo.com": {
+      "medium": "organic",
+      "source": "Wedoo"
+    },
+    "search.winamp.com": {
+      "medium": "organic",
+      "source": "Winamp"
+    },
+    "szukaj.wp.pl": {
+      "medium": "organic",
+      "source": "Wirtualna Polska"
+    },
+    "witch.de": {
+      "medium": "organic",
+      "source": "Witch"
+    },
+    "woopie.jp": {
+      "medium": "organic",
+      "source": "Woopie"
+    },
+    "search.www.ee": {
+      "medium": "organic",
+      "source": "WWW"
+    },
+    "x-recherche.com": {
+      "medium": "organic",
+      "source": "X-recherche"
+    },
+    "search.offerbox.com": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "benefind.de": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "cercato.it": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "yahoo.co.jp": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "yahoo.com": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "ys.mirostart.com": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "image.yahoo.cn": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "home.kingsoft.jp": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "jp.hao123.com": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "jwsearch.jword.jp": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "image.search.yahoo.co.jp": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "video.search.yahoo.co.jp": {
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    "search.yam.com": {
+      "medium": "organic",
+      "source": "Yam"
+    },
+    "ya.ru": {
+      "medium": "organic",
+      "source": "Yandex"
+    },
+    "yasni.at": {
+      "medium": "organic",
+      "source": "Yasni"
+    },
+    "yasni.ch": {
+      "medium": "organic",
+      "source": "Yasni"
+    },
+    "yasni.co.uk": {
+      "medium": "organic",
+      "source": "Yasni"
+    },
+    "yasni.com": {
+      "medium": "organic",
+      "source": "Yasni"
+    },
+    "yasni.de": {
+      "medium": "organic",
+      "source": "Yasni"
+    },
+    "yatedo.com": {
+      "medium": "organic",
+      "source": "Yatedo"
+    },
+    "yatedo.fr": {
+      "medium": "organic",
+      "source": "Yatedo"
+    },
+    "yellowmap.de": {
+      "medium": "organic",
+      "source": "Yellowmap"
+    },
+    "yep.com": {
+      "medium": "organic",
+      "source": "Yep"
+    },
+    "search.yippy.com": {
+      "medium": "organic",
+      "source": "Yippy"
+    },
+    "yongzin.com": {
+      "medium": "organic",
+      "source": "Yongzin"
+    },
+    "yougoo.fr": {
+      "medium": "organic",
+      "source": "YouGoo"
+    },
+    "uk.zapmeta.com": {
+      "medium": "organic",
+      "source": "Zapmeta"
+    },
+    "p.zhongsou.com": {
+      "medium": "organic",
+      "source": "Zhongsou"
+    },
+    "www3.zoek.nl": {
+      "medium": "organic",
+      "source": "Zoek"
+    },
+    "zoeken.nl": {
+      "medium": "organic",
+      "source": "Zoeken"
+    },
+    "zoohoo.cz": {
+      "medium": "organic",
+      "source": "Zoohoo"
+    },
+    "zoznam.sk": {
+      "medium": "organic",
+      "source": "Zoznam"
+    },
+    "zxuso.com": {
+      "medium": "organic",
+      "source": "Zxuso"
+    },
+    "kwzf.net": {
+      "medium": "organic",
+      "source": "\ubb3b\uc9c0\ub9c8 \uac80\uc0c9"
+    },
+    "acuityplatform.com": {
+      "medium": "paid",
+      "source": "Acuity Ads"
+    },
+    "adform.net": {
+      "medium": "paid",
+      "source": "Adform"
+    },
+    "adfox.ru": {
+      "medium": "paid",
+      "source": "ADFOX"
+    },
+    "ads.adfox.ru": {
+      "medium": "paid",
+      "source": "ADFOX"
+    },
+    "adition.com": {
+      "medium": "paid",
+      "source": "Adition"
+    },
+    "adnet.de": {
+      "medium": "paid",
+      "source": "AdNET"
+    },
+    "adroll.com": {
+      "medium": "paid",
+      "source": "AdRoll"
+    },
+    "adspirit.de": {
+      "medium": "paid",
+      "source": "AdSpirit"
+    },
+    "plusperformance.com": {
+      "medium": "paid",
+      "source": "AdSpirit"
+    },
+    "rtbcity.com": {
+      "medium": "paid",
+      "source": "AdSpirit"
+    },
+    "247realmedia.com": {
+      "medium": "paid",
+      "source": "AppNexus"
+    },
+    "adnxs.com": {
+      "medium": "paid",
+      "source": "AppNexus"
+    },
+    "ib.adnxs.com": {
+      "medium": "paid",
+      "source": "AppNexus"
+    },
+    "wunderloop.net": {
+      "medium": "paid",
+      "source": "AudienceScience"
+    },
+    "bidswitch.net": {
+      "medium": "paid",
+      "source": "BidSwitch"
+    },
+    "casalemedia.com": {
+      "medium": "paid",
+      "source": "Casale Media"
+    },
+    "cas.criteo.com": {
+      "medium": "paid",
+      "source": "Criteo"
+    },
+    "cas.jp.as.criteo.com": {
+      "medium": "paid",
+      "source": "Criteo"
+    },
+    "ad-apac.doubleclick.net": {
+      "medium": "paid",
+      "source": "Doubleclick"
+    },
+    "ad.doubleclick.net": {
+      "medium": "paid",
+      "source": "Doubleclick"
+    },
+    "dp.g.doubleclick.net": {
+      "medium": "paid",
+      "source": "Doubleclick"
+    },
+    "pubads.g.doubleclick.net": {
+      "medium": "paid",
+      "source": "Doubleclick"
+    },
+    "s0.2mdn.net": {
+      "medium": "paid",
+      "source": "Doubleclick"
+    },
+    "s1.2mdn.net": {
+      "medium": "paid",
+      "source": "Doubleclick"
+    },
+    "eyeota.net": {
+      "medium": "paid",
+      "source": "Eyeota"
+    },
+    "flashtalking.com": {
+      "medium": "paid",
+      "source": "Flashtalking"
+    },
+    "servedby.flashtalking.com": {
+      "medium": "paid",
+      "source": "Flashtalking"
+    },
+    "adingo.jp": {
+      "medium": "paid",
+      "source": "Fluct"
+    },
+    "googleads.g.doubleclick.net": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "googleadservices.com": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "imasdk.googleapis.com": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "pagead2.googlesyndication.com": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "partner.googleadservices.com": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "safeframe.googlesyndication.com": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "syndicatedsearch.goog": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "tdsf.doubleclick.net": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "tpc.googlesyndication.com": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "adsensecustomsearchads.com": {
+      "medium": "paid",
+      "source": "Google"
+    },
+    "jivox.com": {
+      "medium": "paid",
+      "source": "Jivox"
+    },
+    "lfstmedia.com": {
+      "medium": "paid",
+      "source": "LifeStreet"
+    },
+    "lowermybills.com": {
+      "medium": "paid",
+      "source": "LowerMyBills"
+    },
+    "microad.jp": {
+      "medium": "paid",
+      "source": "MicroAd"
+    },
+    "mixpo.com": {
+      "medium": "paid",
+      "source": "Mixpo"
+    },
+    "a.mozo.com.au": {
+      "medium": "paid",
+      "source": "Mozo"
+    },
+    "mozo.com.au": {
+      "medium": "paid",
+      "source": "Mozo"
+    },
+    "adadvisor.net": {
+      "medium": "paid",
+      "source": "Neustar AdAdvisor"
+    },
+    "nexage.com": {
+      "medium": "paid",
+      "source": "ONE by AOL"
+    },
+    "openx.net": {
+      "medium": "paid",
+      "source": "OpenX"
+    },
+    "openxenterprise.com": {
+      "medium": "paid",
+      "source": "OpenX"
+    },
+    "servedbyopenx.com": {
+      "medium": "paid",
+      "source": "OpenX"
+    },
+    "us-ads.openx.net": {
+      "medium": "paid",
+      "source": "OpenX"
+    },
+    "paid.outbrain.com": {
+      "medium": "paid",
+      "source": "Outbrain"
+    },
+    "farm.plista.com": {
+      "medium": "paid",
+      "source": "Plista"
+    },
+    "price.ru": {
+      "medium": "paid",
+      "source": "Price.ru"
+    },
+    "v.price.ru": {
+      "medium": "paid",
+      "source": "Price.ru"
+    },
+    "sshowads.pubmatic.com": {
+      "medium": "paid",
+      "source": "PubMatic"
+    },
+    "optimized-by.rubiconproject.com": {
+      "medium": "paid",
+      "source": "Rubicon Project"
+    },
+    "bs.serving-sys.com": {
+      "medium": "paid",
+      "source": "Sizmek"
+    },
+    "sociomantic.com": {
+      "medium": "paid",
+      "source": "Sociomantic Labs"
+    },
+    "sonobi.com": {
+      "medium": "paid",
+      "source": "Sonobi"
+    },
+    "lijit.com": {
+      "medium": "paid",
+      "source": "Sovrn"
+    },
+    "steelhousemedia.com": {
+      "medium": "paid",
+      "source": "SteelHouse"
+    },
+    "sfx.stickyadstv.com": {
+      "medium": "paid",
+      "source": "StickyADS.tv"
+    },
+    "stickyadstv.com": {
+      "medium": "paid",
+      "source": "StickyADS.tv"
+    },
+    "api.taboola.com": {
+      "medium": "paid",
+      "source": "Taboola"
+    },
+    "taboola.com": {
+      "medium": "paid",
+      "source": "Taboola"
+    },
+    "trc.taboola.com": {
+      "medium": "paid",
+      "source": "Taboola"
+    },
+    "torg.mail.ru": {
+      "medium": "paid",
+      "source": "Torg.Mail.ru"
+    },
+    "cdnx.tribalfusion.com": {
+      "medium": "paid",
+      "source": "Tribal Fusion"
+    },
+    "mobile.whitepages.com.au": {
+      "medium": "paid",
+      "source": "White Pages"
+    },
+    "whitepages.com.au": {
+      "medium": "paid",
+      "source": "White Pages"
+    },
+    "an.yandex.ru": {
+      "medium": "paid",
+      "source": "Yandex.Direct"
+    },
+    "yabs.yandex.by": {
+      "medium": "paid",
+      "source": "Yandex.Direct"
+    },
+    "yabs.yandex.com": {
+      "medium": "paid",
+      "source": "Yandex.Direct"
+    },
+    "yabs.yandex.ru": {
+      "medium": "paid",
+      "source": "Yandex.Direct"
+    },
+    "yabs.yandex.ua": {
+      "medium": "paid",
+      "source": "Yandex.Direct"
+    },
+    "m.market.yandex.ru": {
+      "medium": "paid",
+      "source": "Yandex.Market"
+    },
+    "market.yandex.ru": {
+      "medium": "paid",
+      "source": "Yandex.Market"
+    },
+    "yieldmo.com": {
+      "medium": "paid",
+      "source": "Yieldmo"
+    },
+    "z1.zedo.com": {
+      "medium": "paid",
+      "source": "ZEDO"
+    },
+    "zedo.com": {
+      "medium": "paid",
+      "source": "ZEDO"
+    },
+    "ai.baidu.com": {
+      "medium": "ai",
+      "source": "Baidu AI"
+    },
+    "yiyan.baidu.com": {
+      "medium": "ai",
+      "source": "Baidu AI"
+    },
+    "beta.character.ai": {
+      "medium": "ai",
+      "source": "Character.AI"
+    },
+    "character.ai": {
+      "medium": "ai",
+      "source": "Character.AI"
+    },
+    "chat-gpt.org": {
+      "medium": "ai",
+      "source": "Chat+"
+    },
+    "chatplus.com": {
+      "medium": "ai",
+      "source": "Chat+"
+    },
+    "chatglm.cn": {
+      "medium": "ai",
+      "source": "ChatGLM"
+    },
+    "chat.openai.com": {
+      "medium": "ai",
+      "source": "ChatGPT"
+    },
+    "chatgpt.com": {
+      "medium": "ai",
+      "source": "ChatGPT"
+    },
+    "labs.openai.com": {
+      "medium": "ai",
+      "source": "ChatGPT"
+    },
+    "claude.ai": {
+      "medium": "ai",
+      "source": "Claude"
+    },
+    "copilot.microsoft.com": {
+      "medium": "ai",
+      "source": "Copilot"
+    },
+    "chat.deepseek.com": {
+      "medium": "ai",
+      "source": "Deepseek"
+    },
+    "duck.ai": {
+      "medium": "ai",
+      "source": "Duck.ai"
+    },
+    "bard.google.com": {
+      "medium": "ai",
+      "source": "Gemini"
+    },
+    "gemini.google.com": {
+      "medium": "ai",
+      "source": "Gemini"
+    },
+    "grok.com": {
+      "medium": "ai",
+      "source": "Grok"
+    },
+    "iask.ai": {
+      "medium": "ai",
+      "source": "iAsk"
+    },
+    "app.jasper.ai": {
+      "medium": "ai",
+      "source": "Jasper"
+    },
+    "chat.mistral.ai": {
+      "medium": "ai",
+      "source": "Le Chat"
+    },
+    "meta.ai": {
+      "medium": "ai",
+      "source": "Meta AI"
+    },
+    "notebooklm.google.com": {
+      "medium": "ai",
+      "source": "NotebookLM"
+    },
+    "perplexity.ai": {
+      "medium": "ai",
+      "source": "Perplexity"
+    },
+    "poe.com": {
+      "medium": "ai",
+      "source": "Poe"
+    },
+    "chat.qwen.ai": {
+      "medium": "ai",
+      "source": "Qwen"
+    },
+    "app.writesonic.com": {
+      "medium": "ai",
+      "source": "Writesonic"
+    },
+    "you.com": {
+      "medium": "ai",
+      "source": "You"
+    }
+  },
+  "prefixes": [
+    {
+      "prefix": "blogsearch.google",
+      "medium": "organic",
+      "source": "Google"
+    },
+    {
+      "prefix": "images.google",
+      "medium": "organic",
+      "source": "Google"
+    },
+    {
+      "prefix": "news.google",
+      "medium": "organic",
+      "source": "Google"
+    },
+    {
+      "prefix": "images.yandex",
+      "medium": "organic",
+      "source": "Yandex"
+    },
+    {
+      "prefix": "clck.yandex",
+      "medium": "organic",
+      "source": "Yandex"
+    },
+    {
+      "prefix": "search.yahoo",
+      "medium": "organic",
+      "source": "Yahoo!"
+    },
+    {
+      "prefix": "123people",
+      "medium": "organic",
+      "source": "123people"
+    },
+    {
+      "prefix": "gogole",
+      "medium": "organic",
+      "source": "Google"
+    },
+    {
+      "prefix": "googel",
+      "medium": "organic",
+      "source": "Google"
+    },
+    {
+      "prefix": "google",
+      "medium": "organic",
+      "source": "Google"
+    },
+    {
+      "prefix": "gppgle",
+      "medium": "organic",
+      "source": "Google"
+    },
+    {
+      "prefix": "wwwgoogle",
+      "medium": "organic",
+      "source": "Google"
+    },
+    {
+      "prefix": "lycos",
+      "medium": "organic",
+      "source": "Lycos"
+    },
+    {
+      "prefix": "yandex",
+      "medium": "organic",
+      "source": "Yandex"
+    },
+    {
+      "prefix": "zapmeta",
+      "medium": "organic",
+      "source": "Zapmeta"
+    },
+    {
+      "prefix": "zapmetasearch",
+      "medium": "organic",
+      "source": "Zapmeta"
+    }
+  ],
+  "suffixes": [
+    {
+      "suffix": "yahoo.com",
+      "medium": "organic",
+      "source": "Yahoo!"
+    }
+  ],
+  "mediumMap": {
+    "search": "organic",
+    "social": "social",
+    "email": "email",
+    "chatbot": "ai",
+    "unknown": "inbound"
+  }
+}

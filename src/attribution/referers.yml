@@ -1,0 +1,5716 @@
+# #######################################################################################################
+#
+# MERGED REFERER LIST — micro1
+#
+# Sources:
+#   - Matomo searchengine-and-social-list (Socials.yml, SearchEngines.yml, AIAssistants.yml)
+#   - Snowplow referer-parser (referers-5.3.yaml)
+#
+# Format: Snowplow-style  medium → source → domains (+ optional parameters)
+# Domains may include Matomo TLD wildcards like google.{}
+#
+# Later mapping for attribution cookies:
+#   search   → utm_medium=organic
+#   social   → utm_medium=social
+#   email    → utm_medium=email
+#   chatbot  → utm_medium=ai
+#   unknown  → utm_medium=inbound
+#   paid     → skip for inferred UTMs
+#
+# Stats: {"unknown": {"sources": 3, "domains": 30}, "email": {"sources": 49, "domains": 119}, "social": {"sources": 120, "domains": 284}, "search": {"sources": 375, "domains": 2444}, "paid": {"sources": 45, "domains": 84}, "chatbot": {"sources": 27, "domains": 34}}
+#
+# #######################################################################################################
+
+
+# #######################################################################################################
+#
+# MEDIUM-UNKNOWN — known source, unclear medium (overrides search/social for these hosts)
+#
+# #######################################################################################################
+
+unknown:
+
+  Google:
+    domains:
+      - accounts.google.com
+      - developers.google.com
+      - drive.google.com
+      - groups.google.co.uk
+      - groups.google.com
+      - maps.google.com
+      - sites.google.com
+      - support.google.com
+
+  "Yahoo!":
+    domains:
+      - answers.yahoo.com
+      - astrology.yahoo.com
+      - cars.yahoo.com
+      - eurosport.yahoo.com
+      - finance.yahoo.com
+      - games.yahoo.com
+      - lifestyle.yahoo.com
+      - match.yahoo.net
+      - messenger.yahoo.com
+      - movies.yahoo.com
+      - news.yahoo.com
+      - omg.yahoo.com
+      - screen.yahoo.com
+      - shopping.yahoo.net
+      - sports.yahoo.com
+      - travel.yahoo.com
+      - weather.yahoo.com
+
+  "Yandex Maps":
+    parameters:
+      - text
+    domains:
+      - maps.yandex.by
+      - maps.yandex.com
+      - maps.yandex.ru
+      - maps.yandex.ua
+      - n.maps.yandex.ru
+
+# #######################################################################################################
+#
+# EMAIL PROVIDERS
+#
+# #######################################################################################################
+
+email:
+
+  "126 Mail":
+    domains:
+      - mail.126.com
+
+  "163 Mail":
+    domains:
+      - mail.163.com
+
+  1und1:
+    domains:
+      - deref-1und1-02.de
+
+  2degrees:
+    domains:
+      - webmail.2degreesbroadband.co.nz
+
+  "Adam Internet":
+    domains:
+      - webmail.adam.com.au
+
+  "AOL Mail":
+    domains:
+      - com.aol.mobile.aolapp
+      - mail.aol.com
+
+  Beeline:
+    domains:
+      - post.ru
+
+  Bigpond:
+    domains:
+      - basic.messaging.bigpond.com
+      - email.telstra.com
+      - webmail.bigpond.com
+      - webmail2.bigpond.com
+
+  Bluewin:
+    domains:
+      - email.bluewin.ch
+      - rich-v01.bluewin.ch
+      - rich-v02.bluewin.ch
+
+  Commander:
+    domains:
+      - webmail.commander.net.au
+
+  "Daum Mail":
+    domains:
+      - mail.daum.net
+      - mail2.daum.net
+
+  Dodo:
+    domains:
+      - webmail.dodo.com.au
+
+  E1.ru:
+    domains:
+      - mail.e1.ru
+
+  earthlink:
+    domains:
+      - com.earthlink.myearthlink
+
+  Freenet:
+    domains:
+      - webmail.freenet.de
+
+  Gmail:
+    domains:
+      - com.google.android.gm
+      - inbox.google.com
+      - mail.google.com
+
+  GMX:
+    domains:
+      - deref-gmx.at
+      - deref-gmx.ch
+      - deref-gmx.co.uk
+      - deref-gmx.com
+      - deref-gmx.de
+      - deref-gmx.es
+      - deref-gmx.fr
+      - deref-gmx.it
+      - deref-gmx.net
+      - lightmailer-bap.gmx.net
+      - lightmailer-bs.gmx.net
+      - lightmailer.gmx.at
+      - lightmailer.gmx.ch
+      - lightmailer.gmx.co.uk
+      - lightmailer.gmx.com
+      - lightmailer.gmx.de
+      - lightmailer.gmx.es
+      - lightmailer.gmx.fr
+      - lightmailer.gmx.it
+      - lightmailer.gmx.net
+
+  iiNet:
+    domains:
+      - mail.iinet.net.au
+      - webmail.iinet.net.au
+
+  Inbox.com:
+    domains:
+      - inbox.com
+
+  Infomaniak:
+    domains:
+      - mail.infomaniak.com
+
+  Ionos:
+    domains:
+      - email.ionos.ca
+      - email.ionos.co.uk
+      - email.ionos.com
+      - email.ionos.de
+      - email.ionos.es
+      - email.ionos.fr
+      - email.ionos.it
+      - email.ionos.mx
+      - mailbusiness.ionos.ca
+      - mailbusiness.ionos.co.uk
+      - mailbusiness.ionos.com
+      - mailbusiness.ionos.de
+      - mailbusiness.ionos.es
+      - mailbusiness.ionos.fr
+      - mailbusiness.ionos.it
+      - mailbusiness.ionos.mx
+
+  iPrimus:
+    domains:
+      - webmail.iprimus.com.au
+
+  Mail.com:
+    domains:
+      - 3c-lxa.mail.com
+      - deref-mail.com
+      - lightmailer.mail.com
+
+  Mail.ru:
+    domains:
+      - e.mail.ru
+      - touch.mail.ru
+
+  Mailchimp:
+    domains:
+      - com.mailchimp.mailchimp
+
+  Mastermail:
+    domains:
+      - m.mastermail.ru
+      - mastermail.ru
+
+  "Mynet Mail":
+    domains:
+      - mail.mynet.com
+
+  "Naver Mail":
+    domains:
+      - mail.naver.com
+
+  Netspace:
+    domains:
+      - webmail.netspace.net.au
+
+  "Optus Zoo":
+    domains:
+      - webmail.optusnet.com.au
+      - webmail.optuszoo.com.au
+
+  "Orange Webmail":
+    domains:
+      - mail01.orange.fr
+      - mail02.orange.fr
+      - messagerie.orange.fr
+      - messageriepro3.orange.fr
+      - orange.fr
+      - wmail.orange.fr
+
+  Outlook.com:
+    domains:
+      - com.microsoft.office.outlook
+      - mail.live.com
+      - outlook.live.com
+
+  Proton:
+    domains:
+      - mail.proton.me
+
+  QIP:
+    domains:
+      - mail.qip.ru
+
+  "QQ Mail":
+    domains:
+      - exmail.qq.com
+      - mail.qq.com
+
+  Rambler:
+    domains:
+      - mail.rambler.ru
+
+  "Seznam Mail":
+    domains:
+      - email.seznam.cz
+
+  Sibmail:
+    domains:
+      - sibmail.com
+
+  T-online:
+    domains:
+      - email.t-online.de
+
+  TIM:
+    domains:
+      - webmail.tim.it
+
+  Ukr.net:
+    domains:
+      - mail.ukr.net
+
+  UPC:
+    domains:
+      - upcmail.hispeed.ch
+
+  Virgin:
+    domains:
+      - webmail.virginbroadband.com.au
+
+  Vodafone:
+    domains:
+      - mail.vodafone.de
+      - webmail.vodafone.co.nz
+
+  Web.de:
+    domains:
+      - 3c-bap.web.de
+      - 3c.web.de
+      - deref-web.de
+      - lightmailer-bap.web.de
+      - lightmailer-bs.web.de
+
+  Westnet:
+    domains:
+      - webmail.westnet.com.au
+
+  "Yahoo! Mail":
+    domains:
+      - com.yahoo.mobile.client.android.mail
+      - mail.yahoo.co.jp
+      - mail.yahoo.co.uk
+      - mail.yahoo.com
+      - mail.yahoo.net
+
+  Yandex:
+    domains:
+      - mail.yandex.by
+      - mail.yandex.com
+      - mail.yandex.kz
+      - mail.yandex.ru
+      - mail.yandex.ua
+
+  Zoho:
+    domains:
+      - mail.zoho.com
+
+# #######################################################################################################
+#
+# SOCIAL PROVIDERS (Matomo Socials + Snowplow social)
+#
+# #######################################################################################################
+
+social:
+
+  Badoo:
+    domains:
+      - badoo.com
+
+  Bebo:
+    domains:
+      - bebo.com
+
+  bilibili:
+    domains:
+      - bilibili.com
+
+  BlackPlanet:
+    domains:
+      - blackplanet.com
+
+  Bluesky:
+    domains:
+      - bsky.app
+      - go.bsky.app
+      - skyfeed.app
+
+  Buzznet:
+    domains:
+      - buzznet.com
+
+  Classmates:
+    domains:
+      - classmates.com
+
+  Classmates.com:
+    domains:
+      - classmates.com
+
+  Cyworld:
+    domains:
+      - global.cyworld.com
+
+  Delicious:
+    domains:
+      - delicious.com
+
+  Discord:
+    domains:
+      - discord.com
+      - discord.gg
+      - discordapp.com
+
+  Disqus:
+    domains:
+      - disq.us
+      - disqus.com
+      - redirect.disqus.com
+
+  Donanimhaber:
+    domains:
+      - donanimhaber.com
+
+  Douban:
+    domains:
+      - douban.com
+
+  Douyin:
+    domains:
+      - douyin.com
+
+  Douyu:
+    domains:
+      - douyu.com
+
+  Dribbble:
+    domains:
+      - dribbble.com
+
+  "Eksi Sozluk":
+    domains:
+      - sourtimes.org
+      - sozluk.com
+
+  Facebook:
+    domains:
+      - com.facebook.katana
+      - facebook.com
+      - fb.me
+      - l.facebook.com
+      - lm.facebook.com
+      - m.facebook.com
+
+  Fetlife:
+    domains:
+      - fetlife.com
+
+  Flickr:
+    domains:
+      - flickr.com
+
+  Flixster:
+    domains:
+      - flixster.com
+
+  Fotolog:
+    domains:
+      - fotolog.com
+
+  Foursquare:
+    domains:
+      - foursquare.com
+
+  "Friends Reunited":
+    domains:
+      - friendsreunited.com
+
+  Friendster:
+    domains:
+      - friendster.com
+
+  "Gaia Online":
+    domains:
+      - gaiaonline.com
+
+  Geni:
+    domains:
+      - geni.com
+
+  Geni.com:
+    domains:
+      - geni.com
+
+  GitHub:
+    domains:
+      - github.com
+
+  Google+:
+    domains:
+      - com.google.android.apps.plus
+      - plus.google.com
+      - url.google.com
+
+  gree:
+    domains:
+      - gree.jp
+
+  Habbo:
+    domains:
+      - habbo.com
+
+  Haboo:
+    domains:
+      - habbo.com
+
+  "Hacker News":
+    domains:
+      - io.github.hidroh.materialistic
+      - news.ycombinator.com
+
+  hi5:
+    domains:
+      - hi5.com
+
+  Hocam.com:
+    domains:
+      - hocam.com
+
+  Huya:
+    domains:
+      - huya.com
+
+  Hyves:
+    domains:
+      - hyves.nl
+
+  Identi.ca:
+    domains:
+      - identi.ca
+
+  identi.ca:
+    domains:
+      - identi.ca
+
+  "Inci Sozluk":
+    domains:
+      - inci.sozlukspot.com
+      - incisozluk.cc
+      - incisozluk.com
+
+  Instagram:
+    domains:
+      - com.instagram.android
+      - instagram.com
+      - l.instagram.com
+
+  Instela:
+    domains:
+      - instela.com
+
+  "ITU Sozluk":
+    domains:
+      - itusozluk.com
+
+  lang-8:
+    domains:
+      - lang-8.com
+
+  Last.fm:
+    domains:
+      - last.fm
+      - lastfm.com.br
+      - lastfm.com.tr
+      - lastfm.de
+      - lastfm.es
+      - lastfm.fr
+      - lastfm.it
+      - lastfm.jp
+      - lastfm.pl
+      - lastfm.ru
+      - lastfm.se
+
+  LinkedIn:
+    domains:
+      - com.linkedin.android
+      - linkedin.android
+      - linkedin.com
+      - lnkd.in
+
+  LiveJournal:
+    domains:
+      - livejournal.com
+      - livejournal.ru
+
+  Lnk.Bio:
+    domains:
+      - lnk.bio
+
+  Mail.ru:
+    domains:
+      - my.mail.ru
+
+  Mastodon:
+    domains:
+      - bitcoinhackers.org
+      - botsin.space
+      - c.im
+      - chaos.social
+      - cybre.space
+      - fosstodon.org
+      - friends.nico
+      - front-end.social
+      - graphics.social
+      - hachyderm.io
+      - indieweb.social
+      - knzk.me
+      - mamot.fr
+      - mas.to
+      - masto.ai
+      - mastodon.art
+      - mastodon.at
+      - mastodon.cloud
+      - mastodon.eus
+      - mastodon.jalgi.eus
+      - mastodon.nz
+      - mastodon.online
+      - mastodon.scot
+      - mastodon.social
+      - mastodon.technology
+      - mastodon.world
+      - mastodon.xyz
+      - mastodonapp.uk
+      - mastodont.cat
+      - mstdn.io
+      - mstdn.jp
+      - mstdn.party
+      - mstdn.social
+      - newsie.social
+      - ohai.social
+      - org.joinmastodon.android
+      - pawoo.net
+      - quey.org
+      - ro-mastodon.puyo.jp
+      - sfba.social
+      - social.tchncs.de
+      - social.vivaldi.net
+      - tkm.eus
+      - toot.community
+      - typo.social
+      - universeodon.com
+      - vis.social
+
+  MeinVZ:
+    domains:
+      - meinvz.net
+
+  MissEvan:
+    domains:
+      - missevan.com
+
+  Mixi:
+    domains:
+      - mixi.jp
+
+  MoiKrug.ru:
+    domains:
+      - moikrug.ru
+
+  Multiply:
+    domains:
+      - multiply.com
+
+  my.mail.ru:
+    domains:
+      - my.mail.ru
+
+  MyHeritage:
+    domains:
+      - myheritage.com
+
+  MyLife:
+    domains:
+      - mylife.ru
+
+  Myspace:
+    domains:
+      - myspace.com
+
+  myYearbook:
+    domains:
+      - myyearbook.com
+
+  Nasza-klasa.pl:
+    domains:
+      - nk.pl
+
+  Netlog:
+    domains:
+      - netlog.com
+
+  Niconico:
+    domains:
+      - nicovideo.jp
+
+  Odnoklassniki:
+    domains:
+      - odnoklassniki.ru
+      - ok.ru
+
+  Orkut:
+    domains:
+      - orkut.com
+
+  Ozone:
+    domains:
+      - qzone.qq.com
+
+  Paper.li:
+    domains:
+      - paper.li
+
+  Peepeth:
+    domains:
+      - peepeth.com
+
+  Pinterest:
+    domains:
+      - at.pinterest.com
+      - ch.pinterest.com
+      - cl.pinterest.com
+      - co.pinterest.com
+      - com.pinterest
+      - dk.pinterest.com
+      - es.pinterest.com
+      - hu.pinterest.com
+      - id.pinterest.com
+      - ie.pinterest.com
+      - in.pinterest.com
+      - it.pinterest.com
+      - kr.pinterest.com
+      - mx.pinterest.com
+      - nl.pinterest.com
+      - nz.pinterest.com
+      - ph.pinterest.com
+      - pinterest.at
+      - pinterest.ca
+      - pinterest.ch
+      - pinterest.cl
+      - pinterest.co.kr
+      - pinterest.co.uk
+      - pinterest.com
+      - pinterest.com.au
+      - pinterest.com.mx
+      - pinterest.de
+      - pinterest.dk
+      - pinterest.es
+      - pinterest.fr
+      - pinterest.ie
+      - pinterest.info
+      - pinterest.it
+      - pinterest.jp
+      - pinterest.nz
+      - pinterest.ph
+      - pinterest.pt
+      - pinterest.ru
+      - pinterest.se
+      - pt.pinterest.com
+      - ru.pinterest.com
+      - se.pinterest.com
+
+  Pixelfed:
+    domains:
+      - metapixl.com
+      - pix.toot.wales
+      - pixelfed.de
+      - pixelfed.social
+      - pixelfed.uno
+      - pixey.org
+      - pxlmo.com
+
+  Plaxo:
+    domains:
+      - plaxo.com
+
+  Pocket:
+    domains:
+      - getpocket.com
+
+  Quora:
+    domains:
+      - quora.com
+
+  Qzone:
+    domains:
+      - qzone.qq.com
+
+  Reddit:
+    domains:
+      - com.laurencedawson.reddit_sync
+      - com.laurencedawson.reddit_sync.pro
+      - io.syncapps.lemmy_sync
+      - reddit.com
+
+  reddit:
+    domains:
+      - com.reddit.frontpage
+      - np.reddit.com
+      - pay.reddit.com
+      - reddit.com
+
+  Renren:
+    domains:
+      - renren.com
+
+  Skype:
+    domains:
+      - web.skype.com
+
+  Skyrock:
+    domains:
+      - skyrock.com
+
+  Slack:
+    domains:
+      - app.slack.com
+      - com.slack
+
+  Snapchat:
+    domains:
+      - com.snapchat.android
+      - snapchat.com
+
+  Sonico.com:
+    domains:
+      - sonico.com
+
+  SoundCloud:
+    domains:
+      - gate.sc
+      - soundcloud.com
+
+  SourceForge:
+    domains:
+      - sourceforge.net
+
+  Sourceforge:
+    domains:
+      - sourceforge.net
+
+  StackOverflow:
+    domains:
+      - stackoverflow.com
+
+  StudiVZ:
+    domains:
+      - studivz.net
+
+  StumbleUpon:
+    domains:
+      - stumbleupon.com
+
+  Tagged:
+    domains:
+      - login.tagged.com
+
+  "Taringa!":
+    domains:
+      - taringa.net
+
+  Telegram:
+    domains:
+      - org.aka.messenger
+      - org.telegram.biftogram
+      - org.telegram.messenger
+      - org.telegram.messenger.web
+      - org.telegram.plus
+      - web.telegram.org
+
+  Threads:
+    domains:
+      - com.instagram.barcelona
+      - l.threads.com
+      - l.threads.net
+      - threads.com
+      - threads.net
+
+  TikTok:
+    domains:
+      - tiktok.com
+
+  Tildes:
+    domains:
+      - com.talklittle.android.tildes
+      - tildes.net
+
+  Tuenti:
+    domains:
+      - tuenti.com
+
+  Tumblr:
+    domains:
+      - t.umblr.com
+      - tumblr.com
+
+  tumblr:
+    domains:
+      - t.umblr.com
+      - tumblr.com
+
+  Twitcast:
+    domains:
+      - twitcasting.tv
+
+  Twitter:
+    domains:
+      - com.twitter.android
+      - t.co
+      - twitter.com
+      - x.com
+
+  "Uludag Sozluk":
+    domains:
+      - uludagsozluk.com
+      - ulusozluk.com
+
+  V2EX:
+    domains:
+      - v2ex.com
+
+  Viadeo:
+    domains:
+      - viadeo.com
+
+  Vimeo:
+    domains:
+      - vimeo.com
+
+  Vkontakte:
+    domains:
+      - away.vk.com
+      - m.vk.com
+      - vk.com
+      - vkontakte.ru
+
+  vKruguDruzei.ru:
+    domains:
+      - vkrugudruzei.ru
+
+  vkrugudruzei.ru:
+    domains:
+      - vkrugudruzei.ru
+
+  WAYN:
+    domains:
+      - wayn.com
+
+  WeChat:
+    domains:
+      - channels.weixin.qq.com
+      - mp.weixin.qq.com
+      - open.weixin.qq.com
+      - wechat.com
+
+  WeeWorld:
+    domains:
+      - weeworld.com
+
+  Weibo:
+    domains:
+      - t.cn
+      - weibo.com
+
+  WhatsApp:
+    domains:
+      - com.whatsapp
+      - web.whatsapp.com
+
+  Whirlpool:
+    domains:
+      - forums.whirlpool.net.au
+
+  "Windows Live Spaces":
+    domains:
+      - login.live.com
+
+  Workplace:
+    domains:
+      - l.workplace.com
+      - lm.workplace.com
+      - workplace.com
+
+  Xanga:
+    domains:
+      - xanga.com
+
+  XING:
+    domains:
+      - xing.com
+
+  Youtube:
+    domains:
+      - youtu.be
+      - youtube.com
+
+  YouTube:
+    domains:
+      - youtu.be
+      - youtube.com
+
+# #######################################################################################################
+#
+# SEARCH PROVIDERS (Matomo SearchEngines + Snowplow search)
+#
+# #######################################################################################################
+
+search:
+
+  "1&1":
+    parameters:
+      - q
+    domains:
+      - search.1and1.com
+
+  1.cz:
+    parameters:
+      - q
+    domains:
+      - 1.cz
+
+  "118 700":
+    parameters:
+      - q
+    domains:
+      - foretag.118700.se
+      - webben.118700.se
+      - www.118700.se
+
+  123people:
+    parameters:
+      - search_term
+    domains:
+      - "123people.{}"
+      - www.123people.com
+
+  1und1:
+    parameters:
+      - q
+    domains:
+      - suche.1und1.de
+
+  2gis:
+    domains:
+      - 2gis.ru
+      - link.2gis.ru
+      - www.2gis.ru
+      - www.link.2gis.ru
+
+  360.cn:
+    parameters:
+      - q
+    domains:
+      - so.360.cn
+      - www.so.com
+
+  360search:
+    parameters:
+      - q
+    domains:
+      - m.so.com
+      - so.360.cn
+      - www.so.com
+      - www.sou.com
+
+  Abacho:
+    parameters:
+      - q
+    domains:
+      - www.abacho.at
+      - www.abacho.ch
+      - www.abacho.co.uk
+      - www.abacho.com
+      - www.abacho.de
+      - www.abacho.es
+      - www.abacho.fr
+      - www.abacho.it
+      - www.se.abacho.com
+      - www.tr.abacho.com
+
+  ABCsøk:
+    parameters:
+      - q
+    domains:
+      - abcsok.no
+      - abcsolk.no
+      - verden.abcsok.no
+
+  Acoon:
+    parameters:
+      - begriff
+    domains:
+      - www.acoon.de
+
+  Aguea:
+    parameters:
+      - q
+    domains:
+      - chercherfr.aguea.com
+
+  Alexa:
+    parameters:
+      - q
+    domains:
+      - alexa.com
+      - search.toolbars.alexa.com
+
+  "Alice Adsl":
+    parameters:
+      - q
+      - qs
+    domains:
+      - rechercher.aliceadsl.fr
+
+  all.by:
+    parameters:
+      - query
+    domains:
+      - all.by
+
+  All.by:
+    parameters:
+      - query
+    domains:
+      - all.by
+
+  Allaverksamheter:
+    parameters:
+      - What
+    domains:
+      - www.allaverksamheter.se
+
+  Allesklar:
+    parameters:
+      - words
+    domains:
+      - www.allesklar.at
+      - www.allesklar.ch
+      - www.allesklar.de
+
+  AllTheInternet:
+    parameters:
+      - q
+    domains:
+      - www.alltheinternet.com
+
+  AllTheWeb:
+    parameters:
+      - q
+    domains:
+      - www.alltheweb.com
+
+  AlohaFind:
+    parameters:
+      - q
+    domains:
+      - alohafind.com
+
+  Altavista:
+    parameters:
+      - q
+    domains:
+      - altavista.de
+      - altavista.fr
+      - be-fr.altavista.com
+      - be-nl.altavista.com
+      - listings.altavista.com
+      - search.altavista.com
+      - www.altavista.com
+
+  AltaVista:
+    parameters:
+      - q
+    domains:
+      - altavista.de
+      - altavista.fr
+      - be-fr.altavista.com
+      - be-nl.altavista.com
+      - listings.altavista.com
+      - search.altavista.com
+      - www.altavista.com
+
+  Amazon:
+    parameters:
+      - keywords
+    domains:
+      - amazon.com
+      - www.amazon.com
+
+  AOL:
+    parameters:
+      - q
+      - query
+    domains:
+      - aim.search.aol.com
+      - alicesuche.aol.de
+      - alicesuchet.aol.de
+      - aolbusqueda.aol.com.mx
+      - aolrecherche.aol.fr
+      - aolsearch.aol.co.uk
+      - aolsearch.aol.com
+      - aolsearch.com
+      - de.aolsearch.com
+      - find.web.aol.com
+      - o2suche.aol.de
+      - recherche.aol.ca
+      - recherche.aol.fr
+      - search-intl.netscape.com
+      - search.aol.co.uk
+      - search.aol.com
+      - search.aol.it
+      - search.hp.my.aol.com.au
+      - search.hp.my.aol.de
+      - search.hp.my.aol.it
+      - suche.aol.de
+      - suche.aolsvc.de
+      - sucheaol.aol.de
+      - suchet2.aol.de
+      - www.aolimages.aol.fr
+      - www.aolrecherche.aol.fr
+      - www.aolrecherches.aol.fr
+      - www.recherche.aol.fr
+
+  APOLL07:
+    parameters:
+      - query
+    domains:
+      - apollo7.de
+
+  "Apollo Latvia":
+    parameters:
+      - q
+    domains:
+      - apollo.lv
+
+  "Apollo lv":
+    parameters:
+      - q
+    domains:
+      - apollo.lv
+
+  Apollo7:
+    parameters:
+      - query
+    domains:
+      - apollo7.de
+
+  Apontador:
+    parameters:
+      - q
+    domains:
+      - apontador.com.br
+      - www.apontador.com.br
+
+  Aport:
+    parameters:
+      - r
+    domains:
+      - sm.aport.ru
+
+  arama:
+    parameters:
+      - q
+    domains:
+      - arama.com
+
+  Arama:
+    parameters:
+      - q
+    domains:
+      - arama.com
+
+  Arcor:
+    parameters:
+      - Keywords
+    domains:
+      - www.arcor.de
+
+  Arianna:
+    parameters:
+      - query
+    domains:
+      - arianna.libero.it
+      - www.arianna.com
+
+  Ask:
+    parameters:
+      - ask
+      - q
+      - searchfor
+    domains:
+      - ask.com
+      - ask.reference.com
+      - avira-int.ask.com
+      - avira.search.ask.com
+      - images.ask.com
+      - int.ask.com
+      - int.search-results.com
+      - int.search.tb.ask.com
+      - iwon.ask.com
+      - mws.ask.com
+      - nortonsafe.search.ask.com
+      - search-results.com
+      - search.ask.com
+      - search.tb.ask.com
+      - searchqu.com
+      - uk.ask.com
+      - uk.search-results.com
+      - web.ask.com
+      - www.ask.co.uk
+      - www.ask.com
+      - www.askkids.com
+      - www.qbyrd.com
+      - www.search-results.com
+      - www1.search-results.com
+
+  "Ask Toolbar":
+    parameters:
+      - searchfor
+    domains:
+      - search.tb.ask.com
+
+  Atlas:
+    parameters:
+      - q
+    domains:
+      - searchatlas.centrum.cz
+
+  auone:
+    parameters:
+      - q
+    domains:
+      - search.auone.jp
+      - sp-search.auone.jp
+      - sp-web.search.auone.jp
+
+  "auone Images":
+    parameters:
+      - q
+    domains:
+      - sp-image.search.auone.jp
+
+  Austronaut:
+    parameters:
+      - q
+    domains:
+      - www1.astronaut.at
+      - www1.austronaut.at
+      - www2.austronaut.at
+
+  "Avira SafeSearch":
+    parameters:
+      - ask
+      - q
+      - searchfor
+    domains:
+      - safesearch.avira.com
+      - search.avira.com
+      - search.avira.net
+
+  Babylon:
+    parameters:
+      - q
+    domains:
+      - search.babylon.com
+      - searchassist.babylon.com
+
+  Baidu:
+    parameters:
+      - k
+      - kw
+      - wd
+      - word
+    domains:
+      - baidu.com
+      - m.baidu.com
+      - news.baidu.com
+      - tieba.baidu.com
+      - web.gougou.com
+      - www.baidu.co.th
+      - www.baidu.com
+      - www1.baidu.com
+      - zhidao.baidu.com
+
+  Biglobe:
+    parameters:
+      - q
+    domains:
+      - cgi.search.biglobe.ne.jp
+
+  "Biglobe Images":
+    parameters:
+      - q
+    domains:
+      - images.search.biglobe.ne.jp
+
+  Bing:
+    parameters:
+      - Q
+      - q
+    domains:
+      - bing.com
+      - cc.bingj.com
+      - dizionario.it.msn.com
+      - enciclopedia.it.msn.com
+      - global.bing.com
+      - m.bing.com
+      - msnbc.msn.com
+      - www.bing.com
+
+  "Bing Images":
+    parameters:
+      - Q
+      - q
+    domains:
+      - bing.com
+      - www.bing.com
+
+  blekko:
+    parameters:
+      - q
+    domains:
+      - blekko.com
+
+  Blogdigger:
+    parameters:
+      - q
+    domains:
+      - www.blogdigger.com
+
+  Blogpulse:
+    parameters:
+      - query
+    domains:
+      - www.blogpulse.com
+
+  Bluewin:
+    parameters:
+      - q
+      - searchTerm
+    domains:
+      - search.bluewin.ch
+
+  Brave:
+    parameters:
+      - q
+    domains:
+      - search.brave.com
+
+  "British Telecommunications":
+    parameters:
+      - p
+    domains:
+      - search.bt.com
+
+  canoe.ca:
+    parameters:
+      - q
+    domains:
+      - web.canoe.ca
+
+  Canoe.ca:
+    parameters:
+      - q
+    domains:
+      - web.canoe.ca
+
+  Centrum:
+    parameters:
+      - q
+    domains:
+      - morfeo.centrum.cz
+      - search.centrum.cz
+      - serach.centrum.cz
+
+  Certified-Toolbar:
+    parameters:
+      - q
+    domains:
+      - search.certified-toolbar.com
+
+  Charter:
+    parameters:
+      - q
+    domains:
+      - www.charter.net
+
+  ChatGPT:
+    domains:
+      - chat.openai.com
+      - chatgpt.com
+
+  "Claro Search":
+    parameters:
+      - q
+    domains:
+      - claro-search.com
+
+  Clix:
+    parameters:
+      - question
+    domains:
+      - pesquisa.clix.pt
+
+  Coccoc:
+    parameters:
+      - q
+    domains:
+      - coccoc.com
+
+  Comcast:
+    parameters:
+      - q
+    domains:
+      - search.comcast.net
+      - serach.comcast.net
+
+  Compuserve:
+    parameters:
+      - query
+    domains:
+      - websearch.cs.com
+
+  "Compuserve.com (Enhanced by Google)":
+    parameters:
+      - query
+    domains:
+      - websearch.cs.com
+
+  Conduit:
+    parameters:
+      - q
+    domains:
+      - search.conduit.com
+
+  Conduit.com:
+    parameters:
+      - q
+    domains:
+      - images.search.conduit.com
+      - search.conduit.com
+
+  Crawler:
+    parameters:
+      - q
+    domains:
+      - www.crawler.com
+
+  Cuil:
+    parameters:
+      - q
+    domains:
+      - www.cuil.com
+
+  "C\u1ed1c C\u1ed1c":
+    parameters:
+      - query
+    domains:
+      - coccoc.com
+
+  "Daemon search":
+    parameters:
+      - q
+    domains:
+      - daemon-search.com
+      - my.daemon-search.com
+
+  Dalesearch:
+    parameters:
+      - q
+    domains:
+      - www.dalesearch.com
+
+  DasOertliche:
+    parameters:
+      - kw
+      - ph
+    domains:
+      - www.dasoertliche.de
+      - www2.dasoertliche.de
+
+  DasTelefonbuch:
+    parameters:
+      - kw
+    domains:
+      - www1.dastelefonbuch.de
+
+  Daum:
+    parameters:
+      - q
+    domains:
+      - search.daum.net
+
+  Delfi:
+    parameters:
+      - q
+    domains:
+      - otsing.delfi.ee
+
+  "Delfi EE":
+    parameters:
+      - q
+    domains:
+      - otsing.delfi.ee
+
+  "Delfi latvia":
+    parameters:
+      - q
+    domains:
+      - smart.delfi.lv
+
+  "Delfi lv":
+    parameters:
+      - q
+    domains:
+      - smart.delfi.lv
+
+  Digg:
+    parameters:
+      - s
+    domains:
+      - digg.com
+
+  dir.com:
+    parameters:
+      - req
+    domains:
+      - fr.dir.com
+
+  DisconnectSearch:
+    domains:
+      - search.disconnect.me
+
+  dmoz:
+    parameters:
+      - q
+      - search
+    domains:
+      - dmoz.org
+      - editors.dmoz.org
+
+  Dodo:
+    parameters:
+      - q
+    domains:
+      - google.dodo.com.au
+
+  DuckDuckGo:
+    parameters:
+      - q
+    domains:
+      - duckduckgo.com
+      - duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion
+      - noai.duckduckgo.com
+      - r.duckduckgo.com
+
+  earthlink:
+    parameters:
+      - q
+    domains:
+      - search.earthlink.net
+
+  Earthlink:
+    parameters:
+      - q
+    domains:
+      - search.earthlink.net
+
+  Ecosia:
+    parameters:
+      - q
+    domains:
+      - ecosia.org
+      - www.ecosia.org
+
+  "El Mundo":
+    parameters:
+      - q
+    domains:
+      - ariadna.elmundo.es
+
+  Eniro:
+    parameters:
+      - q
+      - search_word
+    domains:
+      - www.eniro.se
+
+  Entireweb:
+    parameters:
+      - q
+    domains:
+      - www.entireweb.com
+
+  eo:
+    parameters:
+      - x_query
+    domains:
+      - eo.st
+
+  EpicSearch.in:
+    parameters:
+      - q
+    domains:
+      - epicsearch.in
+      - www.epicsearch.in
+
+  Eurip:
+    parameters:
+      - q
+    domains:
+      - www.eurip.com
+
+  Euroseek:
+    parameters:
+      - string
+    domains:
+      - www.euroseek.com
+
+  Everyclick:
+    parameters:
+      - keyword
+    domains:
+      - www.everyclick.com
+
+  Exalead:
+    parameters:
+      - q
+    domains:
+      - www.exalead.com
+      - www.exalead.fr
+
+  Excite:
+    parameters:
+      - q
+      - search
+    domains:
+      - msxml.excite.com
+      - search.excite.co.uk
+      - search.excite.de
+      - search.excite.es
+      - search.excite.fr
+      - search.excite.it
+      - search.excite.nl
+      - serach.excite.es
+      - www.excite.co.jp
+
+  Facebook:
+    parameters:
+      - q
+    domains:
+      - www.facebook.com
+
+  "Fast Browser Search":
+    parameters:
+      - q
+    domains:
+      - www.fastbrowsersearch.com
+
+  Finderoo:
+    parameters:
+      - q
+    domains:
+      - www.finderoo.com
+
+  Findhurtig:
+    parameters:
+      - q
+    domains:
+      - www.findhurtig.dk
+
+  Findwide:
+    parameters:
+      - k
+    domains:
+      - search.findwide.com
+
+  Fireball:
+    parameters:
+      - q
+    domains:
+      - fireball.com
+      - www.fireball.de
+
+  Firstfind:
+    parameters:
+      - qry
+    domains:
+      - www.firstsfind.com
+
+  Firstsfind:
+    parameters:
+      - qry
+    domains:
+      - www.firstsfind.com
+
+  Fixsuche:
+    parameters:
+      - q
+    domains:
+      - www.fixsuche.de
+
+  Flix:
+    parameters:
+      - keyword
+    domains:
+      - www.flix.de
+
+  Flix.de:
+    parameters:
+      - keyword
+    domains:
+      - www.flix.de
+
+  Flyingbird:
+    parameters:
+      - q
+    domains:
+      - inspsearch.com
+      - viview.inspsearch.com
+
+  Fooooo:
+    parameters:
+      - q
+    domains:
+      - search.fooooo.com
+
+  Forestle:
+    parameters:
+      - q
+    domains:
+      - forestle.mobi
+      - forestle.org
+      - www.forestle.org
+
+  Francite:
+    parameters:
+      - name
+    domains:
+      - recherche.francite.com
+
+  Free:
+    parameters:
+      - q
+      - qs
+    domains:
+      - search.free.fr
+      - search1-1.free.fr
+      - search1-2.free.fr
+
+  Freecause:
+    parameters:
+      - p
+    domains:
+      - search.freecause.com
+
+  FreeCause:
+    parameters:
+      - p
+    domains:
+      - search.freecause.com
+
+  Freenet:
+    parameters:
+      - Keywords
+      - query
+    domains:
+      - suche.freenet.de
+
+  Freespoke:
+    parameters:
+      - q
+    domains:
+      - freespoke.com
+
+  Freshweather:
+    parameters:
+      - q
+    domains:
+      - www.fresh-weather.com
+
+  FriendFeed:
+    parameters:
+      - q
+    domains:
+      - friendfeed.com
+
+  Frontier:
+    parameters:
+      - q
+    domains:
+      - search.frontier.com
+
+  GAIS:
+    parameters:
+      - q
+    domains:
+      - gais.cs.ccu.edu.tw
+
+  Genieo:
+    parameters:
+      - q
+    domains:
+      - search.genieo.com
+
+  Geona:
+    parameters:
+      - q
+    domains:
+      - geona.net
+
+  Gibiru:
+    parameters:
+      - q
+    domains:
+      - gibiru.com
+      - www.gibiru.com
+
+  Gigablast:
+    parameters:
+      - q
+    domains:
+      - dir.gigablast.com
+      - www.gigablast.com
+
+  "Gigablast (Directory)":
+    parameters:
+      - q
+    domains:
+      - dir.gigablast.com
+
+  Globososo:
+    parameters:
+      - q
+    domains:
+      - search.globososo.com
+      - searches.globososo.com
+
+  GMX:
+    parameters:
+      - su
+    domains:
+      - suche.gmx.net
+
+  Gnadenmeer:
+    parameters:
+      - keyword
+    domains:
+      - www.gnadenmeer.de
+
+  Gomeo:
+    parameters:
+      - Keywords
+    domains:
+      - www.gomeo.com
+
+  goo:
+    parameters:
+      - MT
+    domains:
+      - ocnsearch.goo.ne.jp
+      - search.goo.ne.jp
+
+  Google:
+    parameters:
+      - Keywords
+      - MT
+      - gsc.q
+      - p
+      - q
+      - query
+      - searchTerm
+      - text
+    domains:
+      - android-app
+      - cgi2.nintendo.co.jp
+      - com.google.android.googlequicksearchbox
+      - darkoogle.com
+      - encrypted.google.com
+      - find.tdc.dk
+      - gfsoso.com
+      - go.google.com
+      - gogole.com
+      - "gogole.{}"
+      - googel.com
+      - "googel.{}"
+      - google.ac
+      - google.ad
+      - google.ae
+      - google.am
+      - google.as
+      - google.at
+      - google.az
+      - google.ba
+      - google.be
+      - google.bf
+      - google.bg
+      - google.bi
+      - google.bj
+      - google.bs
+      - google.by
+      - google.ca
+      - google.cat
+      - google.cc
+      - google.cd
+      - google.cf
+      - google.cg
+      - google.ch
+      - google.ci
+      - google.cl
+      - google.cm
+      - google.cn
+      - google.co.bw
+      - google.co.ck
+      - google.co.cr
+      - google.co.id
+      - google.co.il
+      - google.co.in
+      - google.co.jp
+      - google.co.ke
+      - google.co.kr
+      - google.co.ls
+      - google.co.ma
+      - google.co.mz
+      - google.co.nz
+      - google.co.th
+      - google.co.tz
+      - google.co.ug
+      - google.co.uk
+      - google.co.uz
+      - google.co.ve
+      - google.co.vi
+      - google.co.za
+      - google.co.zm
+      - google.co.zw
+      - google.com
+      - google.com.af
+      - google.com.ag
+      - google.com.ai
+      - google.com.ar
+      - google.com.au
+      - google.com.bd
+      - google.com.bh
+      - google.com.bn
+      - google.com.bo
+      - google.com.br
+      - google.com.by
+      - google.com.bz
+      - google.com.co
+      - google.com.cu
+      - google.com.cy
+      - google.com.do
+      - google.com.ec
+      - google.com.eg
+      - google.com.et
+      - google.com.fj
+      - google.com.gh
+      - google.com.gi
+      - google.com.gt
+      - google.com.hk
+      - google.com.jm
+      - google.com.kh
+      - google.com.kw
+      - google.com.lb
+      - google.com.lc
+      - google.com.ly
+      - google.com.mt
+      - google.com.mx
+      - google.com.my
+      - google.com.na
+      - google.com.nf
+      - google.com.ng
+      - google.com.ni
+      - google.com.np
+      - google.com.om
+      - google.com.pa
+      - google.com.pe
+      - google.com.ph
+      - google.com.pk
+      - google.com.pr
+      - google.com.py
+      - google.com.qa
+      - google.com.sa
+      - google.com.sb
+      - google.com.sg
+      - google.com.sl
+      - google.com.sv
+      - google.com.tj
+      - google.com.tn
+      - google.com.tr
+      - google.com.tw
+      - google.com.ua
+      - google.com.uy
+      - google.com.vc
+      - google.com.vn
+      - google.cv
+      - google.cz
+      - google.de
+      - google.dj
+      - google.dk
+      - google.dm
+      - google.dz
+      - google.ee
+      - google.es
+      - google.fi
+      - google.fm
+      - google.fr
+      - google.ga
+      - google.gd
+      - google.ge
+      - google.gf
+      - google.gg
+      - google.gl
+      - google.gm
+      - google.gp
+      - google.gr
+      - google.gy
+      - google.hn
+      - google.hr
+      - google.ht
+      - google.hu
+      - google.ie
+      - google.im
+      - google.io
+      - google.iq
+      - google.is
+      - google.it
+      - google.it.ao
+      - google.je
+      - google.jo
+      - google.kg
+      - google.ki
+      - google.kz
+      - google.la
+      - google.li
+      - google.lk
+      - google.lt
+      - google.lu
+      - google.lv
+      - google.md
+      - google.me
+      - google.mg
+      - google.mk
+      - google.ml
+      - google.mn
+      - google.ms
+      - google.mu
+      - google.mv
+      - google.mw
+      - google.ne
+      - google.nl
+      - google.no
+      - google.nr
+      - google.nu
+      - google.pl
+      - google.pn
+      - google.ps
+      - google.pt
+      - google.ro
+      - google.rs
+      - google.ru
+      - google.rw
+      - google.sc
+      - google.se
+      - google.sh
+      - google.si
+      - google.sk
+      - google.sm
+      - google.sn
+      - google.so
+      - google.st
+      - google.td
+      - google.tg
+      - google.tk
+      - google.tl
+      - google.tm
+      - google.tn
+      - google.to
+      - google.tt
+      - google.us
+      - google.vg
+      - google.vu
+      - google.ws
+      - "google.{}"
+      - googlesyndicatedsearch.com
+      - gppgle.com
+      - "gppgle.{}"
+      - image.search.smt.docomo.ne.jp
+      - ipv6.google.com
+      - isearch.avg.com
+      - it.luna.tv
+      - monumentbrowser.com
+      - netlavis.azione.jp
+      - search.1und1.de
+      - search.abv.bg
+      - search.alot.com
+      - search.avg.com
+      - search.bt.com
+      - search.chedot.com
+      - search.darkoogle.com
+      - search.dolphin-browser.jp
+      - search.f-secure.com
+      - search.foxtab.com
+      - search.gmx.com
+      - search.hiyo.com
+      - search.incredibar.com
+      - search.incredimail.com
+      - search.juno.com
+      - search.leonardo.it
+      - search.nan.so
+      - search.smt.docomo.ne.jp
+      - search.sweetim.com
+      - search.walla.co.il
+      - search.xfinity.com
+      - search.zonealarm.com
+      - search.zum.com
+      - search1.incredimail.com
+      - search2.incredimail.com
+      - search3.incredimail.com
+      - search4.incredimail.com
+      - searches.f-secure.com
+      - searches.safehomepage.com
+      - searchresults.verizon.com
+      - start.lenovo.com
+      - startab.me
+      - suche.1und1.de
+      - suche.gmx.net
+      - webcache.googleusercontent.com
+      - wow.com
+      - www.cnn.com
+      - www.delta-search.com
+      - www.fastweb.it
+      - www.google.ac
+      - www.google.ad
+      - www.google.ae
+      - www.google.am
+      - www.google.as
+      - www.google.at
+      - www.google.az
+      - www.google.ba
+      - www.google.be
+      - www.google.bf
+      - www.google.bg
+      - www.google.bi
+      - www.google.bj
+      - www.google.bs
+      - www.google.by
+      - www.google.ca
+      - www.google.cat
+      - www.google.cc
+      - www.google.cd
+      - www.google.cf
+      - www.google.cg
+      - www.google.ch
+      - www.google.ci
+      - www.google.cl
+      - www.google.cm
+      - www.google.cn
+      - www.google.co.bw
+      - www.google.co.ck
+      - www.google.co.cr
+      - www.google.co.id
+      - www.google.co.il
+      - www.google.co.in
+      - www.google.co.jp
+      - www.google.co.ke
+      - www.google.co.kr
+      - www.google.co.ls
+      - www.google.co.ma
+      - www.google.co.mz
+      - www.google.co.nz
+      - www.google.co.th
+      - www.google.co.tz
+      - www.google.co.ug
+      - www.google.co.uk
+      - www.google.co.uz
+      - www.google.co.ve
+      - www.google.co.vi
+      - www.google.co.za
+      - www.google.co.zm
+      - www.google.co.zw
+      - www.google.com
+      - www.google.com.af
+      - www.google.com.ag
+      - www.google.com.ai
+      - www.google.com.ar
+      - www.google.com.au
+      - www.google.com.bd
+      - www.google.com.bh
+      - www.google.com.bn
+      - www.google.com.bo
+      - www.google.com.br
+      - www.google.com.by
+      - www.google.com.bz
+      - www.google.com.co
+      - www.google.com.cu
+      - www.google.com.cy
+      - www.google.com.do
+      - www.google.com.ec
+      - www.google.com.eg
+      - www.google.com.et
+      - www.google.com.fj
+      - www.google.com.gh
+      - www.google.com.gi
+      - www.google.com.gt
+      - www.google.com.hk
+      - www.google.com.jm
+      - www.google.com.kh
+      - www.google.com.kw
+      - www.google.com.lb
+      - www.google.com.lc
+      - www.google.com.ly
+      - www.google.com.mt
+      - www.google.com.mx
+      - www.google.com.my
+      - www.google.com.na
+      - www.google.com.nf
+      - www.google.com.ng
+      - www.google.com.ni
+      - www.google.com.np
+      - www.google.com.om
+      - www.google.com.pa
+      - www.google.com.pe
+      - www.google.com.ph
+      - www.google.com.pk
+      - www.google.com.pr
+      - www.google.com.py
+      - www.google.com.qa
+      - www.google.com.sa
+      - www.google.com.sb
+      - www.google.com.sg
+      - www.google.com.sl
+      - www.google.com.sv
+      - www.google.com.tj
+      - www.google.com.tn
+      - www.google.com.tr
+      - www.google.com.tw
+      - www.google.com.ua
+      - www.google.com.uy
+      - www.google.com.vc
+      - www.google.com.vn
+      - www.google.cv
+      - www.google.cz
+      - www.google.de
+      - www.google.dj
+      - www.google.dk
+      - www.google.dm
+      - www.google.dz
+      - www.google.ee
+      - www.google.es
+      - www.google.fi
+      - www.google.fm
+      - www.google.fr
+      - www.google.ga
+      - www.google.gd
+      - www.google.ge
+      - www.google.gf
+      - www.google.gg
+      - www.google.gl
+      - www.google.gm
+      - www.google.gp
+      - www.google.gr
+      - www.google.gy
+      - www.google.hn
+      - www.google.hr
+      - www.google.ht
+      - www.google.hu
+      - www.google.ie
+      - www.google.im
+      - www.google.io
+      - www.google.iq
+      - www.google.is
+      - www.google.it
+      - www.google.it.ao
+      - www.google.je
+      - www.google.jo
+      - www.google.kg
+      - www.google.ki
+      - www.google.kz
+      - www.google.la
+      - www.google.li
+      - www.google.lk
+      - www.google.lt
+      - www.google.lu
+      - www.google.lv
+      - www.google.md
+      - www.google.me
+      - www.google.mg
+      - www.google.mk
+      - www.google.ml
+      - www.google.mn
+      - www.google.ms
+      - www.google.mu
+      - www.google.mv
+      - www.google.mw
+      - www.google.ne
+      - www.google.nl
+      - www.google.no
+      - www.google.nr
+      - www.google.nu
+      - www.google.pl
+      - www.google.pn
+      - www.google.ps
+      - www.google.pt
+      - www.google.ro
+      - www.google.rs
+      - www.google.ru
+      - www.google.rw
+      - www.google.sc
+      - www.google.se
+      - www.google.sh
+      - www.google.si
+      - www.google.sk
+      - www.google.sm
+      - www.google.sn
+      - www.google.so
+      - www.google.st
+      - www.google.td
+      - www.google.tg
+      - www.google.tk
+      - www.google.tl
+      - www.google.tm
+      - www.google.tn
+      - www.google.to
+      - www.google.tt
+      - www.google.us
+      - www.google.vg
+      - www.google.vu
+      - www.google.ws
+      - www.googleearth.de
+      - www.googleearth.fr
+      - www.gooofullsearch.com
+      - www.kadaza.com
+      - www.optuszoo.com.au
+      - www1.delta-search.com
+      - www2.google.com
+      - wwwgoogle.com
+      - "wwwgoogle.{}"
+
+  "Google Blogsearch":
+    parameters:
+      - q
+    domains:
+      - blogsearch.google.ac
+      - blogsearch.google.ad
+      - blogsearch.google.ae
+      - blogsearch.google.am
+      - blogsearch.google.as
+      - blogsearch.google.at
+      - blogsearch.google.az
+      - blogsearch.google.ba
+      - blogsearch.google.be
+      - blogsearch.google.bf
+      - blogsearch.google.bg
+      - blogsearch.google.bi
+      - blogsearch.google.bj
+      - blogsearch.google.bs
+      - blogsearch.google.by
+      - blogsearch.google.ca
+      - blogsearch.google.cat
+      - blogsearch.google.cc
+      - blogsearch.google.cd
+      - blogsearch.google.cf
+      - blogsearch.google.cg
+      - blogsearch.google.ch
+      - blogsearch.google.ci
+      - blogsearch.google.cl
+      - blogsearch.google.cm
+      - blogsearch.google.cn
+      - blogsearch.google.co.bw
+      - blogsearch.google.co.ck
+      - blogsearch.google.co.cr
+      - blogsearch.google.co.id
+      - blogsearch.google.co.il
+      - blogsearch.google.co.in
+      - blogsearch.google.co.jp
+      - blogsearch.google.co.ke
+      - blogsearch.google.co.kr
+      - blogsearch.google.co.ls
+      - blogsearch.google.co.ma
+      - blogsearch.google.co.mz
+      - blogsearch.google.co.nz
+      - blogsearch.google.co.th
+      - blogsearch.google.co.tz
+      - blogsearch.google.co.ug
+      - blogsearch.google.co.uk
+      - blogsearch.google.co.uz
+      - blogsearch.google.co.ve
+      - blogsearch.google.co.vi
+      - blogsearch.google.co.za
+      - blogsearch.google.co.zm
+      - blogsearch.google.co.zw
+      - blogsearch.google.com
+      - blogsearch.google.com.af
+      - blogsearch.google.com.ag
+      - blogsearch.google.com.ai
+      - blogsearch.google.com.ar
+      - blogsearch.google.com.au
+      - blogsearch.google.com.bd
+      - blogsearch.google.com.bh
+      - blogsearch.google.com.bn
+      - blogsearch.google.com.bo
+      - blogsearch.google.com.br
+      - blogsearch.google.com.by
+      - blogsearch.google.com.bz
+      - blogsearch.google.com.co
+      - blogsearch.google.com.cu
+      - blogsearch.google.com.cy
+      - blogsearch.google.com.do
+      - blogsearch.google.com.ec
+      - blogsearch.google.com.eg
+      - blogsearch.google.com.et
+      - blogsearch.google.com.fj
+      - blogsearch.google.com.gh
+      - blogsearch.google.com.gi
+      - blogsearch.google.com.gt
+      - blogsearch.google.com.hk
+      - blogsearch.google.com.jm
+      - blogsearch.google.com.kh
+      - blogsearch.google.com.kw
+      - blogsearch.google.com.lb
+      - blogsearch.google.com.lc
+      - blogsearch.google.com.ly
+      - blogsearch.google.com.mt
+      - blogsearch.google.com.mx
+      - blogsearch.google.com.my
+      - blogsearch.google.com.na
+      - blogsearch.google.com.nf
+      - blogsearch.google.com.ng
+      - blogsearch.google.com.ni
+      - blogsearch.google.com.np
+      - blogsearch.google.com.om
+      - blogsearch.google.com.pa
+      - blogsearch.google.com.pe
+      - blogsearch.google.com.ph
+      - blogsearch.google.com.pk
+      - blogsearch.google.com.pr
+      - blogsearch.google.com.py
+      - blogsearch.google.com.qa
+      - blogsearch.google.com.sa
+      - blogsearch.google.com.sb
+      - blogsearch.google.com.sg
+      - blogsearch.google.com.sl
+      - blogsearch.google.com.sv
+      - blogsearch.google.com.tj
+      - blogsearch.google.com.tn
+      - blogsearch.google.com.tr
+      - blogsearch.google.com.tw
+      - blogsearch.google.com.ua
+      - blogsearch.google.com.uy
+      - blogsearch.google.com.vc
+      - blogsearch.google.com.vn
+      - blogsearch.google.cv
+      - blogsearch.google.cz
+      - blogsearch.google.de
+      - blogsearch.google.dj
+      - blogsearch.google.dk
+      - blogsearch.google.dm
+      - blogsearch.google.dz
+      - blogsearch.google.ee
+      - blogsearch.google.es
+      - blogsearch.google.fi
+      - blogsearch.google.fm
+      - blogsearch.google.fr
+      - blogsearch.google.ga
+      - blogsearch.google.gd
+      - blogsearch.google.ge
+      - blogsearch.google.gf
+      - blogsearch.google.gg
+      - blogsearch.google.gl
+      - blogsearch.google.gm
+      - blogsearch.google.gp
+      - blogsearch.google.gr
+      - blogsearch.google.gy
+      - blogsearch.google.hn
+      - blogsearch.google.hr
+      - blogsearch.google.ht
+      - blogsearch.google.hu
+      - blogsearch.google.ie
+      - blogsearch.google.im
+      - blogsearch.google.io
+      - blogsearch.google.iq
+      - blogsearch.google.is
+      - blogsearch.google.it
+      - blogsearch.google.it.ao
+      - blogsearch.google.je
+      - blogsearch.google.jo
+      - blogsearch.google.kg
+      - blogsearch.google.ki
+      - blogsearch.google.kz
+      - blogsearch.google.la
+      - blogsearch.google.li
+      - blogsearch.google.lk
+      - blogsearch.google.lt
+      - blogsearch.google.lu
+      - blogsearch.google.lv
+      - blogsearch.google.md
+      - blogsearch.google.me
+      - blogsearch.google.mg
+      - blogsearch.google.mk
+      - blogsearch.google.ml
+      - blogsearch.google.mn
+      - blogsearch.google.ms
+      - blogsearch.google.mu
+      - blogsearch.google.mv
+      - blogsearch.google.mw
+      - blogsearch.google.ne
+      - blogsearch.google.nl
+      - blogsearch.google.no
+      - blogsearch.google.nr
+      - blogsearch.google.nu
+      - blogsearch.google.pl
+      - blogsearch.google.pn
+      - blogsearch.google.ps
+      - blogsearch.google.pt
+      - blogsearch.google.ro
+      - blogsearch.google.rs
+      - blogsearch.google.ru
+      - blogsearch.google.rw
+      - blogsearch.google.sc
+      - blogsearch.google.se
+      - blogsearch.google.sh
+      - blogsearch.google.si
+      - blogsearch.google.sk
+      - blogsearch.google.sm
+      - blogsearch.google.sn
+      - blogsearch.google.so
+      - blogsearch.google.st
+      - blogsearch.google.td
+      - blogsearch.google.tg
+      - blogsearch.google.tk
+      - blogsearch.google.tl
+      - blogsearch.google.tm
+      - blogsearch.google.to
+      - blogsearch.google.tt
+      - blogsearch.google.us
+      - blogsearch.google.vg
+      - blogsearch.google.vu
+      - blogsearch.google.ws
+
+  "Google Custom Search":
+    parameters:
+      - q
+      - query
+    domains:
+      - cse.google.com
+      - google.com
+
+  "Google Images":
+    parameters:
+      - q
+    domains:
+      - google.ac
+      - google.ad
+      - google.ae
+      - google.am
+      - google.as
+      - google.at
+      - google.az
+      - google.ba
+      - google.be
+      - google.bf
+      - google.bg
+      - google.bi
+      - google.bj
+      - google.bs
+      - google.by
+      - google.ca
+      - google.cat
+      - google.cc
+      - google.cd
+      - google.cf
+      - google.cg
+      - google.ch
+      - google.ci
+      - google.cl
+      - google.cm
+      - google.cn
+      - google.co.bw
+      - google.co.ck
+      - google.co.cr
+      - google.co.id
+      - google.co.il
+      - google.co.in
+      - google.co.jp
+      - google.co.ke
+      - google.co.kr
+      - google.co.ls
+      - google.co.ma
+      - google.co.mz
+      - google.co.nz
+      - google.co.th
+      - google.co.tz
+      - google.co.ug
+      - google.co.uk
+      - google.co.uz
+      - google.co.ve
+      - google.co.vi
+      - google.co.za
+      - google.co.zm
+      - google.co.zw
+      - google.com
+      - google.com.af
+      - google.com.ag
+      - google.com.ai
+      - google.com.ar
+      - google.com.au
+      - google.com.bd
+      - google.com.bh
+      - google.com.bn
+      - google.com.bo
+      - google.com.br
+      - google.com.by
+      - google.com.bz
+      - google.com.co
+      - google.com.cu
+      - google.com.cy
+      - google.com.do
+      - google.com.ec
+      - google.com.eg
+      - google.com.et
+      - google.com.fj
+      - google.com.gh
+      - google.com.gi
+      - google.com.gt
+      - google.com.hk
+      - google.com.jm
+      - google.com.kh
+      - google.com.kw
+      - google.com.lb
+      - google.com.lc
+      - google.com.ly
+      - google.com.mt
+      - google.com.mx
+      - google.com.my
+      - google.com.na
+      - google.com.nf
+      - google.com.ng
+      - google.com.ni
+      - google.com.np
+      - google.com.om
+      - google.com.pa
+      - google.com.pe
+      - google.com.ph
+      - google.com.pk
+      - google.com.pr
+      - google.com.py
+      - google.com.qa
+      - google.com.sa
+      - google.com.sb
+      - google.com.sg
+      - google.com.sl
+      - google.com.sv
+      - google.com.tj
+      - google.com.tn
+      - google.com.tr
+      - google.com.tw
+      - google.com.ua
+      - google.com.uy
+      - google.com.vc
+      - google.com.vn
+      - google.cv
+      - google.cz
+      - google.de
+      - google.dj
+      - google.dk
+      - google.dm
+      - google.dz
+      - google.ee
+      - google.es
+      - google.fi
+      - google.fm
+      - google.fr
+      - google.ga
+      - google.gd
+      - google.ge
+      - google.gf
+      - google.gg
+      - google.gl
+      - google.gm
+      - google.gp
+      - google.gr
+      - google.gy
+      - google.hn
+      - google.hr
+      - google.ht
+      - google.hu
+      - google.ie
+      - google.im
+      - google.io
+      - google.iq
+      - google.is
+      - google.it
+      - google.it.ao
+      - google.je
+      - google.jo
+      - google.kg
+      - google.ki
+      - google.kz
+      - google.la
+      - google.li
+      - google.lk
+      - google.lt
+      - google.lu
+      - google.lv
+      - google.md
+      - google.me
+      - google.mg
+      - google.mk
+      - google.ml
+      - google.mn
+      - google.ms
+      - google.mu
+      - google.mv
+      - google.mw
+      - google.ne
+      - google.nl
+      - google.no
+      - google.nr
+      - google.nu
+      - google.pl
+      - google.pn
+      - google.ps
+      - google.pt
+      - google.ro
+      - google.rs
+      - google.ru
+      - google.rw
+      - google.sc
+      - google.se
+      - google.sh
+      - google.si
+      - google.sk
+      - google.sm
+      - google.sn
+      - google.so
+      - google.st
+      - google.td
+      - google.tg
+      - google.tk
+      - google.tl
+      - google.tm
+      - google.to
+      - google.tt
+      - google.us
+      - google.vg
+      - google.vu
+      - images.google.ac
+      - images.google.ad
+      - images.google.ae
+      - images.google.am
+      - images.google.as
+      - images.google.at
+      - images.google.az
+      - images.google.ba
+      - images.google.be
+      - images.google.bf
+      - images.google.bg
+      - images.google.bi
+      - images.google.bj
+      - images.google.bs
+      - images.google.by
+      - images.google.ca
+      - images.google.cat
+      - images.google.cc
+      - images.google.cd
+      - images.google.cf
+      - images.google.cg
+      - images.google.ch
+      - images.google.ci
+      - images.google.cl
+      - images.google.cm
+      - images.google.cn
+      - images.google.co.bw
+      - images.google.co.ck
+      - images.google.co.cr
+      - images.google.co.id
+      - images.google.co.il
+      - images.google.co.in
+      - images.google.co.jp
+      - images.google.co.ke
+      - images.google.co.kr
+      - images.google.co.ls
+      - images.google.co.ma
+      - images.google.co.mz
+      - images.google.co.nz
+      - images.google.co.th
+      - images.google.co.tz
+      - images.google.co.ug
+      - images.google.co.uk
+      - images.google.co.uz
+      - images.google.co.ve
+      - images.google.co.vi
+      - images.google.co.za
+      - images.google.co.zm
+      - images.google.co.zw
+      - images.google.com
+      - images.google.com.af
+      - images.google.com.ag
+      - images.google.com.ai
+      - images.google.com.ar
+      - images.google.com.au
+      - images.google.com.bd
+      - images.google.com.bh
+      - images.google.com.bn
+      - images.google.com.bo
+      - images.google.com.br
+      - images.google.com.by
+      - images.google.com.bz
+      - images.google.com.co
+      - images.google.com.cu
+      - images.google.com.cy
+      - images.google.com.do
+      - images.google.com.ec
+      - images.google.com.eg
+      - images.google.com.et
+      - images.google.com.fj
+      - images.google.com.gh
+      - images.google.com.gi
+      - images.google.com.gt
+      - images.google.com.hk
+      - images.google.com.jm
+      - images.google.com.kh
+      - images.google.com.kw
+      - images.google.com.lb
+      - images.google.com.lc
+      - images.google.com.ly
+      - images.google.com.mt
+      - images.google.com.mx
+      - images.google.com.my
+      - images.google.com.na
+      - images.google.com.nf
+      - images.google.com.ng
+      - images.google.com.ni
+      - images.google.com.np
+      - images.google.com.om
+      - images.google.com.pa
+      - images.google.com.pe
+      - images.google.com.ph
+      - images.google.com.pk
+      - images.google.com.pr
+      - images.google.com.py
+      - images.google.com.qa
+      - images.google.com.sa
+      - images.google.com.sb
+      - images.google.com.sg
+      - images.google.com.sl
+      - images.google.com.sv
+      - images.google.com.tj
+      - images.google.com.tn
+      - images.google.com.tr
+      - images.google.com.tw
+      - images.google.com.ua
+      - images.google.com.uy
+      - images.google.com.vc
+      - images.google.com.vn
+      - images.google.cv
+      - images.google.cz
+      - images.google.de
+      - images.google.dj
+      - images.google.dk
+      - images.google.dm
+      - images.google.dz
+      - images.google.ee
+      - images.google.es
+      - images.google.fi
+      - images.google.fm
+      - images.google.fr
+      - images.google.ga
+      - images.google.gd
+      - images.google.ge
+      - images.google.gf
+      - images.google.gg
+      - images.google.gl
+      - images.google.gm
+      - images.google.gp
+      - images.google.gr
+      - images.google.gy
+      - images.google.hn
+      - images.google.hr
+      - images.google.ht
+      - images.google.hu
+      - images.google.ie
+      - images.google.im
+      - images.google.io
+      - images.google.iq
+      - images.google.is
+      - images.google.it
+      - images.google.it.ao
+      - images.google.je
+      - images.google.jo
+      - images.google.kg
+      - images.google.ki
+      - images.google.kz
+      - images.google.la
+      - images.google.li
+      - images.google.lk
+      - images.google.lt
+      - images.google.lu
+      - images.google.lv
+      - images.google.md
+      - images.google.me
+      - images.google.mg
+      - images.google.mk
+      - images.google.ml
+      - images.google.mn
+      - images.google.ms
+      - images.google.mu
+      - images.google.mv
+      - images.google.mw
+      - images.google.ne
+      - images.google.nl
+      - images.google.no
+      - images.google.nr
+      - images.google.nu
+      - images.google.pl
+      - images.google.pn
+      - images.google.ps
+      - images.google.pt
+      - images.google.ro
+      - images.google.rs
+      - images.google.ru
+      - images.google.rw
+      - images.google.sc
+      - images.google.se
+      - images.google.sh
+      - images.google.si
+      - images.google.sk
+      - images.google.sm
+      - images.google.sn
+      - images.google.so
+      - images.google.st
+      - images.google.td
+      - images.google.tg
+      - images.google.tk
+      - images.google.tl
+      - images.google.tm
+      - images.google.to
+      - images.google.tt
+      - images.google.us
+      - images.google.vg
+      - images.google.vu
+      - images.google.ws
+
+  "Google Maps":
+    parameters:
+      - q
+
+  "Google News":
+    parameters:
+      - q
+    domains:
+      - news.google.ac
+      - news.google.ad
+      - news.google.ae
+      - news.google.am
+      - news.google.as
+      - news.google.at
+      - news.google.az
+      - news.google.ba
+      - news.google.be
+      - news.google.bf
+      - news.google.bg
+      - news.google.bi
+      - news.google.bj
+      - news.google.bs
+      - news.google.by
+      - news.google.ca
+      - news.google.cat
+      - news.google.cc
+      - news.google.cd
+      - news.google.cf
+      - news.google.cg
+      - news.google.ch
+      - news.google.ci
+      - news.google.cl
+      - news.google.cm
+      - news.google.cn
+      - news.google.co.bw
+      - news.google.co.ck
+      - news.google.co.cr
+      - news.google.co.id
+      - news.google.co.il
+      - news.google.co.in
+      - news.google.co.jp
+      - news.google.co.ke
+      - news.google.co.kr
+      - news.google.co.ls
+      - news.google.co.ma
+      - news.google.co.mz
+      - news.google.co.nz
+      - news.google.co.th
+      - news.google.co.tz
+      - news.google.co.ug
+      - news.google.co.uk
+      - news.google.co.uz
+      - news.google.co.ve
+      - news.google.co.vi
+      - news.google.co.za
+      - news.google.co.zm
+      - news.google.co.zw
+      - news.google.com
+      - news.google.com.af
+      - news.google.com.ag
+      - news.google.com.ai
+      - news.google.com.ar
+      - news.google.com.au
+      - news.google.com.bd
+      - news.google.com.bh
+      - news.google.com.bn
+      - news.google.com.bo
+      - news.google.com.br
+      - news.google.com.by
+      - news.google.com.bz
+      - news.google.com.co
+      - news.google.com.cu
+      - news.google.com.cy
+      - news.google.com.do
+      - news.google.com.ec
+      - news.google.com.eg
+      - news.google.com.et
+      - news.google.com.fj
+      - news.google.com.gh
+      - news.google.com.gi
+      - news.google.com.gt
+      - news.google.com.hk
+      - news.google.com.jm
+      - news.google.com.kh
+      - news.google.com.kw
+      - news.google.com.lb
+      - news.google.com.lc
+      - news.google.com.ly
+      - news.google.com.mt
+      - news.google.com.mx
+      - news.google.com.my
+      - news.google.com.na
+      - news.google.com.nf
+      - news.google.com.ng
+      - news.google.com.ni
+      - news.google.com.np
+      - news.google.com.om
+      - news.google.com.pa
+      - news.google.com.pe
+      - news.google.com.ph
+      - news.google.com.pk
+      - news.google.com.pr
+      - news.google.com.py
+      - news.google.com.qa
+      - news.google.com.sa
+      - news.google.com.sb
+      - news.google.com.sg
+      - news.google.com.sl
+      - news.google.com.sv
+      - news.google.com.tj
+      - news.google.com.tn
+      - news.google.com.tr
+      - news.google.com.tw
+      - news.google.com.ua
+      - news.google.com.uy
+      - news.google.com.vc
+      - news.google.com.vn
+      - news.google.cv
+      - news.google.cz
+      - news.google.de
+      - news.google.dj
+      - news.google.dk
+      - news.google.dm
+      - news.google.dz
+      - news.google.ee
+      - news.google.es
+      - news.google.fi
+      - news.google.fm
+      - news.google.fr
+      - news.google.ga
+      - news.google.gd
+      - news.google.ge
+      - news.google.gf
+      - news.google.gg
+      - news.google.gl
+      - news.google.gm
+      - news.google.gp
+      - news.google.gr
+      - news.google.gy
+      - news.google.hn
+      - news.google.hr
+      - news.google.ht
+      - news.google.hu
+      - news.google.ie
+      - news.google.im
+      - news.google.io
+      - news.google.iq
+      - news.google.is
+      - news.google.it
+      - news.google.it.ao
+      - news.google.je
+      - news.google.jo
+      - news.google.kg
+      - news.google.ki
+      - news.google.kz
+      - news.google.la
+      - news.google.li
+      - news.google.lk
+      - news.google.lt
+      - news.google.lu
+      - news.google.lv
+      - news.google.md
+      - news.google.me
+      - news.google.mg
+      - news.google.mk
+      - news.google.ml
+      - news.google.mn
+      - news.google.ms
+      - news.google.mu
+      - news.google.mv
+      - news.google.mw
+      - news.google.ne
+      - news.google.nl
+      - news.google.no
+      - news.google.nr
+      - news.google.nu
+      - news.google.pl
+      - news.google.pn
+      - news.google.ps
+      - news.google.pt
+      - news.google.ro
+      - news.google.rs
+      - news.google.ru
+      - news.google.rw
+      - news.google.sc
+      - news.google.se
+      - news.google.sh
+      - news.google.si
+      - news.google.sk
+      - news.google.sm
+      - news.google.sn
+      - news.google.so
+      - news.google.st
+      - news.google.td
+      - news.google.tg
+      - news.google.tk
+      - news.google.tl
+      - news.google.tm
+      - news.google.to
+      - news.google.tt
+      - news.google.us
+      - news.google.vg
+      - news.google.vu
+      - news.google.ws
+
+  "Google Product Search":
+    parameters:
+      - q
+    domains:
+      - google.ac
+      - google.ad
+      - google.ae
+      - google.am
+      - google.as
+      - google.at
+      - google.az
+      - google.ba
+      - google.be
+      - google.bf
+      - google.bg
+      - google.bi
+      - google.bj
+      - google.bs
+      - google.by
+      - google.ca
+      - google.cat
+      - google.cc
+      - google.cd
+      - google.cf
+      - google.cg
+      - google.ch
+      - google.ci
+      - google.cl
+      - google.cm
+      - google.cn
+      - google.co.bw
+      - google.co.ck
+      - google.co.cr
+      - google.co.id
+      - google.co.il
+      - google.co.in
+      - google.co.jp
+      - google.co.ke
+      - google.co.kr
+      - google.co.ls
+      - google.co.ma
+      - google.co.mz
+      - google.co.nz
+      - google.co.th
+      - google.co.tz
+      - google.co.ug
+      - google.co.uk
+      - google.co.uz
+      - google.co.ve
+      - google.co.vi
+      - google.co.za
+      - google.co.zm
+      - google.co.zw
+      - google.com
+      - google.com.af
+      - google.com.ag
+      - google.com.ai
+      - google.com.ar
+      - google.com.au
+      - google.com.bd
+      - google.com.bh
+      - google.com.bn
+      - google.com.bo
+      - google.com.br
+      - google.com.by
+      - google.com.bz
+      - google.com.co
+      - google.com.cu
+      - google.com.cy
+      - google.com.do
+      - google.com.ec
+      - google.com.eg
+      - google.com.et
+      - google.com.fj
+      - google.com.gh
+      - google.com.gi
+      - google.com.gt
+      - google.com.hk
+      - google.com.jm
+      - google.com.kh
+      - google.com.kw
+      - google.com.lb
+      - google.com.lc
+      - google.com.ly
+      - google.com.mt
+      - google.com.mx
+      - google.com.my
+      - google.com.na
+      - google.com.nf
+      - google.com.ng
+      - google.com.ni
+      - google.com.np
+      - google.com.om
+      - google.com.pa
+      - google.com.pe
+      - google.com.ph
+      - google.com.pk
+      - google.com.pr
+      - google.com.py
+      - google.com.qa
+      - google.com.sa
+      - google.com.sb
+      - google.com.sg
+      - google.com.sl
+      - google.com.sv
+      - google.com.tj
+      - google.com.tn
+      - google.com.tr
+      - google.com.tw
+      - google.com.ua
+      - google.com.uy
+      - google.com.vc
+      - google.com.vn
+      - google.cv
+      - google.cz
+      - google.de
+      - google.dj
+      - google.dk
+      - google.dm
+      - google.dz
+      - google.ee
+      - google.es
+      - google.fi
+      - google.fm
+      - google.fr
+      - google.ga
+      - google.gd
+      - google.ge
+      - google.gf
+      - google.gg
+      - google.gl
+      - google.gm
+      - google.gp
+      - google.gr
+      - google.gy
+      - google.hn
+      - google.hr
+      - google.ht
+      - google.hu
+      - google.ie
+      - google.im
+      - google.io
+      - google.iq
+      - google.is
+      - google.it
+      - google.it.ao
+      - google.je
+      - google.jo
+      - google.kg
+      - google.ki
+      - google.kz
+      - google.la
+      - google.li
+      - google.lk
+      - google.lt
+      - google.lu
+      - google.lv
+      - google.md
+      - google.me
+      - google.mg
+      - google.mk
+      - google.ml
+      - google.mn
+      - google.ms
+      - google.mu
+      - google.mv
+      - google.mw
+      - google.ne
+      - google.nl
+      - google.no
+      - google.nr
+      - google.nu
+      - google.pl
+      - google.pn
+      - google.ps
+      - google.pt
+      - google.ro
+      - google.rs
+      - google.ru
+      - google.rw
+      - google.sc
+      - google.se
+      - google.sh
+      - google.si
+      - google.sk
+      - google.sm
+      - google.sn
+      - google.so
+      - google.st
+      - google.td
+      - google.tg
+      - google.tk
+      - google.tl
+      - google.tm
+      - google.to
+      - google.tt
+      - google.us
+      - google.vg
+      - google.vu
+      - google.ws
+      - www.google.ac
+      - www.google.ad
+      - www.google.ae
+      - www.google.am
+      - www.google.as
+      - www.google.at
+      - www.google.az
+      - www.google.ba
+      - www.google.be
+      - www.google.bf
+      - www.google.bg
+      - www.google.bi
+      - www.google.bj
+      - www.google.bs
+      - www.google.by
+      - www.google.ca
+      - www.google.cat
+      - www.google.cc
+      - www.google.cd
+      - www.google.cf
+      - www.google.cg
+      - www.google.ch
+      - www.google.ci
+      - www.google.cl
+      - www.google.cm
+      - www.google.cn
+      - www.google.co.bw
+      - www.google.co.ck
+      - www.google.co.cr
+      - www.google.co.id
+      - www.google.co.il
+      - www.google.co.in
+      - www.google.co.jp
+      - www.google.co.ke
+      - www.google.co.kr
+      - www.google.co.ls
+      - www.google.co.ma
+      - www.google.co.mz
+      - www.google.co.nz
+      - www.google.co.th
+      - www.google.co.tz
+      - www.google.co.ug
+      - www.google.co.uk
+      - www.google.co.uz
+      - www.google.co.ve
+      - www.google.co.vi
+      - www.google.co.za
+      - www.google.co.zm
+      - www.google.co.zw
+      - www.google.com
+      - www.google.com.af
+      - www.google.com.ag
+      - www.google.com.ai
+      - www.google.com.ar
+      - www.google.com.au
+      - www.google.com.bd
+      - www.google.com.bh
+      - www.google.com.bn
+      - www.google.com.bo
+      - www.google.com.br
+      - www.google.com.by
+      - www.google.com.bz
+      - www.google.com.co
+      - www.google.com.cu
+      - www.google.com.cy
+      - www.google.com.do
+      - www.google.com.ec
+      - www.google.com.eg
+      - www.google.com.et
+      - www.google.com.fj
+      - www.google.com.gh
+      - www.google.com.gi
+      - www.google.com.gt
+      - www.google.com.hk
+      - www.google.com.jm
+      - www.google.com.kh
+      - www.google.com.kw
+      - www.google.com.lb
+      - www.google.com.lc
+      - www.google.com.ly
+      - www.google.com.mt
+      - www.google.com.mx
+      - www.google.com.my
+      - www.google.com.na
+      - www.google.com.nf
+      - www.google.com.ng
+      - www.google.com.ni
+      - www.google.com.np
+      - www.google.com.om
+      - www.google.com.pa
+      - www.google.com.pe
+      - www.google.com.ph
+      - www.google.com.pk
+      - www.google.com.pr
+      - www.google.com.py
+      - www.google.com.qa
+      - www.google.com.sa
+      - www.google.com.sb
+      - www.google.com.sg
+      - www.google.com.sl
+      - www.google.com.sv
+      - www.google.com.tj
+      - www.google.com.tn
+      - www.google.com.tr
+      - www.google.com.tw
+      - www.google.com.ua
+      - www.google.com.uy
+      - www.google.com.vc
+      - www.google.com.vn
+      - www.google.cv
+      - www.google.cz
+      - www.google.de
+      - www.google.dj
+      - www.google.dk
+      - www.google.dm
+      - www.google.dz
+      - www.google.ee
+      - www.google.es
+      - www.google.fi
+      - www.google.fm
+      - www.google.fr
+      - www.google.ga
+      - www.google.gd
+      - www.google.ge
+      - www.google.gf
+      - www.google.gg
+      - www.google.gl
+      - www.google.gm
+      - www.google.gp
+      - www.google.gr
+      - www.google.gy
+      - www.google.hn
+      - www.google.hr
+      - www.google.ht
+      - www.google.hu
+      - www.google.ie
+      - www.google.im
+      - www.google.io
+      - www.google.iq
+      - www.google.is
+      - www.google.it
+      - www.google.it.ao
+      - www.google.je
+      - www.google.jo
+      - www.google.kg
+      - www.google.ki
+      - www.google.kz
+      - www.google.la
+      - www.google.li
+      - www.google.lk
+      - www.google.lt
+      - www.google.lu
+      - www.google.lv
+      - www.google.md
+      - www.google.me
+      - www.google.mg
+      - www.google.mk
+      - www.google.ml
+      - www.google.mn
+      - www.google.ms
+      - www.google.mu
+      - www.google.mv
+      - www.google.mw
+      - www.google.ne
+      - www.google.nl
+      - www.google.no
+      - www.google.nr
+      - www.google.nu
+      - www.google.pl
+      - www.google.pn
+      - www.google.ps
+      - www.google.pt
+      - www.google.ro
+      - www.google.rs
+      - www.google.ru
+      - www.google.rw
+      - www.google.sc
+      - www.google.se
+      - www.google.sh
+      - www.google.si
+      - www.google.sk
+      - www.google.sm
+      - www.google.sn
+      - www.google.so
+      - www.google.st
+      - www.google.td
+      - www.google.tg
+      - www.google.tk
+      - www.google.tl
+      - www.google.tm
+      - www.google.to
+      - www.google.tt
+      - www.google.us
+      - www.google.vg
+      - www.google.vu
+      - www.google.ws
+
+  "Google Scholar":
+    parameters:
+      - q
+    domains:
+      - scholar.google.com
+
+  "Google Shopping":
+    parameters:
+      - q
+    domains:
+      - google.com
+
+  "Google syndicated search":
+    parameters:
+      - q
+    domains:
+      - googlesyndicatedsearch.com
+
+  "Google Translations":
+    parameters:
+      - q
+    domains:
+      - translate.google.com
+
+  "Google Video":
+    parameters:
+      - q
+    domains:
+      - video.google.com
+
+  Goyellow.de:
+    parameters:
+      - MDN
+    domains:
+      - www.goyellow.de
+
+  GoYellow.de:
+    parameters:
+      - MDN
+    domains:
+      - www.goyellow.de
+
+  "Gule Sider":
+    parameters:
+      - q
+    domains:
+      - www.gulesider.no
+
+  Haosou:
+    parameters:
+      - q
+    domains:
+      - www.haosou.com
+
+  HighBeam:
+    parameters:
+      - q
+    domains:
+      - www.highbeam.com
+
+  Hit-Parade:
+    parameters:
+      - p7
+    domains:
+      - class.hit-parade.com
+      - req.-hit-parade.com
+      - req.hit-parade.com
+      - www.hit-parade.com
+
+  Holmes:
+    parameters:
+      - q
+    domains:
+      - holmes.ge
+
+  Hooseek:
+    parameters:
+      - recherche
+    domains:
+      - www.hooseek.com
+
+  Hooseek.com:
+    parameters:
+      - recherche
+    domains:
+      - www.hooseek.com
+
+  Hotbot:
+    parameters:
+      - query
+    domains:
+      - www.hotbot.com
+
+  I-play:
+    parameters:
+      - q
+    domains:
+      - start.iplay.com
+
+  I.ua:
+    parameters:
+      - q
+    domains:
+      - search.i.ua
+
+  Icerockeet:
+    parameters:
+      - q
+    domains:
+      - blogs.icerocket.com
+
+  Icerocket:
+    parameters:
+      - q
+    domains:
+      - blogs.icerocket.com
+
+  ICQ:
+    parameters:
+      - q
+    domains:
+      - search.icq.com
+      - www.icq.com
+
+  Ilse:
+    parameters:
+      - search_for
+    domains:
+      - www.ilse.nl
+
+  "Ilse NL":
+    parameters:
+      - search_for
+    domains:
+      - www.ilse.nl
+
+  iMesh:
+    parameters:
+      - q
+      - si
+    domains:
+      - search.imesh.com
+
+  Inbox:
+    parameters:
+      - q
+    domains:
+      - www2.inbox.com
+
+  Inbox.com:
+    parameters:
+      - q
+    domains:
+      - inbox.com
+
+  Indeed:
+    domains:
+      - at.indeed.com
+      - au.indeed.com
+      - ch.indeed.com
+      - de.indeed.com
+      - fr.indeed.com
+      - it.indeed.com
+
+  info.com:
+    parameters:
+      - q
+    domains:
+      - www.info.com
+
+  InfoSpace:
+    parameters:
+      - q
+      - s
+    domains:
+      - clusty.com
+      - dogpile.com
+      - govome.inspsearch.com
+      - home.speedbit.com
+      - infospace.com
+      - isearch.babylon.com
+      - isearch.glarysoft.com
+      - metacrawler.com
+      - search.avast.com
+      - search.b1.org
+      - search.chatzum.com
+      - search.fbdownloader.com
+      - search.handycafe.com
+      - search.iminent.com
+      - search.kiwee.com
+      - search.magentic.com
+      - search.magnetic.com
+      - search.searchcompletion.com
+      - search.v9.com
+      - search.webssearches.com
+      - searches.vi-view.com
+      - searches3.globososo.com
+      - searchya.com
+      - start.facemoods.com
+      - start.funmoods.com
+      - tattoodle.com
+      - utorrent.inspsearch.com
+      - webcrawler.com
+      - webfetch.com
+      - wsdsold.infospace.com
+      - www.dogpile.com
+      - www.searchmobileonline.com
+
+  Interia:
+    parameters:
+      - q
+    domains:
+      - www.google.interia.pl
+
+  Isodelen:
+    parameters:
+      - Keywords
+    domains:
+      - www.isodelen.se
+
+  IXquick:
+    parameters:
+      - query
+    domains:
+      - eu.ixquick.com
+      - ixquick.com
+      - ixquick.de
+      - s1-eu.ixquick.de
+      - s1.us.ixquick.com
+      - s2.us.ixquick.com
+      - s3.us.ixquick.com
+      - s4.us.ixquick.com
+      - s5.us.ixquick.com
+      - s8-eu.ixquick.com
+      - us.ixquick.com
+      - www.eu.ixquick.com
+      - www.ixquick.de
+
+  IxQuick:
+    parameters:
+      - query
+    domains:
+      - eu.ixquick.com
+      - ixquick.com
+      - ixquick.de
+      - s1-eu.ixquick.de
+      - s1.us.ixquick.com
+      - s2-eu4.ixquick.com
+      - s2.us.ixquick.com
+      - s3.us.ixquick.com
+      - s4.us.ixquick.com
+      - s5-eu4.ixquick.com
+      - s5.us.ixquick.com
+      - s8-eu.ixquick.com
+      - us.ixquick.com
+      - www.eu.ixquick.com
+      - www.ixquick.de
+
+  "Jungle Key":
+    parameters:
+      - query
+    domains:
+      - junglekey.com
+      - junglekey.fr
+
+  "Jungle Spider":
+    parameters:
+      - q
+    domains:
+      - www.jungle-spider.de
+
+  "Junior Safe Search":
+    parameters:
+      - q
+    domains:
+      - www.juniorsafesearch.com
+
+  Jyxo:
+    parameters:
+      - q
+    domains:
+      - jyxo.1188.cz
+
+  "K9 Safe Search":
+    parameters:
+      - q
+    domains:
+      - k9safesearch.com
+
+  Kagi:
+    parameters:
+      - q
+    domains:
+      - kagi.com
+
+  KARMA:
+    parameters:
+      - q
+    domains:
+      - karmasearch.org
+
+  Kataweb:
+    parameters:
+      - q
+    domains:
+      - www.kataweb.it
+
+  Kensaq:
+    parameters:
+      - q
+    domains:
+      - www.kensaq.com
+
+  kununu:
+    parameters:
+      - q
+    domains:
+      - kununu.com
+
+  Kvasir:
+    parameters:
+      - q
+      - search_word
+    domains:
+      - kvasir.no
+      - www.kvasir.no
+
+  "La Toile Du Quebec Via Google":
+    parameters:
+      - q
+    domains:
+      - web.toile.com
+      - www.toile.com
+
+  "La Toile Du Qu\u00e9bec (Google)":
+    parameters:
+      - q
+    domains:
+      - web.toile.com
+      - www.toile.com
+
+  Laban:
+    parameters:
+      - q
+    domains:
+      - laban.vn
+
+  Latne:
+    parameters:
+      - q
+    domains:
+      - www.latne.lv
+
+  Lilo:
+    parameters:
+      - q
+    domains:
+      - search.lilo.org
+
+  Liveinternet:
+    parameters:
+      - q
+    domains:
+      - liveinternet.ru
+
+  Lo.st:
+    parameters:
+      - x_query
+    domains:
+      - lo.st
+
+  "Local Moxie":
+    parameters:
+      - q
+    domains:
+      - www.localmoxie.com
+
+  LookAny:
+    domains:
+      - www.lookany.com
+
+  Lookseek:
+    parameters:
+      - q
+    domains:
+      - search.lookseek.com
+
+  Looksmart:
+    parameters:
+      - key
+    domains:
+      - www.looksmart.com
+
+  Lycos:
+    parameters:
+      - query
+    domains:
+      - lycos.com
+      - "lycos.{}"
+      - search.lycos.com
+      - www.lycos.com
+
+  maailm:
+    parameters:
+      - tekst
+    domains:
+      - www.maailm.com
+
+  maailm.com:
+    parameters:
+      - tekst
+    domains:
+      - www.maailm.com
+
+  Mail.ru:
+    parameters:
+      - q
+    domains:
+      - go.mail.ru
+      - m.mail.ru
+      - mail.ru
+
+  Mailru:
+    parameters:
+      - q
+    domains:
+      - go.mail.ru
+
+  Mamma:
+    parameters:
+      - query
+    domains:
+      - mamma75.mamma.com
+      - www.mamma.com
+
+  Marktplaats:
+    parameters:
+      - query
+    domains:
+      - www.marktplaats.nl
+
+  Maxwebsearch:
+    parameters:
+      - query
+    domains:
+      - maxwebsearch.com
+
+  Meinestadt:
+    parameters:
+      - words
+    domains:
+      - www.meinestadt.de
+
+  Meinestadt.de:
+    parameters:
+      - words
+    domains:
+      - www.meinestadt.de
+
+  Meta.ua:
+    parameters:
+      - q
+    domains:
+      - meta.ua
+
+  "MetaCrawler DE":
+    parameters:
+      - qry
+    domains:
+      - s1.metacrawler.de
+      - s2.metacrawler.de
+      - s3.metacrawler.de
+
+  MetaCrawler.de:
+    parameters:
+      - qry
+    domains:
+      - s1.metacrawler.de
+      - s2.metacrawler.de
+      - s3.metacrawler.de
+
+  Metager:
+    parameters:
+      - eingabe
+    domains:
+      - meta.rrzn.uni-hannover.de
+      - metager.de
+      - www.metager.de
+
+  Metager2:
+    parameters:
+      - q
+    domains:
+      - metager2.de
+
+  "Mister Wong":
+    parameters:
+      - Keywords
+      - keywords
+    domains:
+      - www.mister-wong.com
+      - www.mister-wong.de
+
+  Mojeek:
+    parameters:
+      - q
+    domains:
+      - www.mojeek.com
+
+  Monster:
+    parameters:
+      - q
+    domains:
+      - www.monster.be
+      - www.monster.ch
+      - www.monster.co.uk
+      - www.monster.cz
+      - www.monster.de
+      - www.monster.fi
+      - www.monster.fr
+      - www.monster.ie
+      - www.monster.it
+      - www.monster.lu
+
+  Monstercrawler:
+    parameters:
+      - qry
+    domains:
+      - www.monstercrawler.com
+
+  Mozbot:
+    parameters:
+      - q
+    domains:
+      - www.mozbot.co.uk
+      - www.mozbot.com
+      - www.mozbot.fr
+
+  mozbot:
+    parameters:
+      - q
+    domains:
+      - www.mozbot.co.uk
+      - www.mozbot.com
+      - www.mozbot.fr
+
+  MyPrivateSearch:
+    parameters:
+      - q
+    domains:
+      - www.myprivatesearch.com
+
+  MySearch:
+    parameters:
+      - searchFor
+      - searchfor
+    domains:
+      - kf.mysearch.myway.com
+      - ki.mysearch.myway.com
+      - ms114.mysearch.com
+      - ms146.mysearch.com
+      - mysearch.com
+      - search.myway.com
+      - search.mywebsearch.com
+      - www.mysearch.com
+
+  MySpace:
+    parameters:
+      - qry
+    domains:
+      - searchservice.myspace.com
+
+  MyWebSearch:
+    parameters:
+      - searchFor
+      - searchfor
+    domains:
+      - kf.mysearch.myway.com
+      - ki.mysearch.myway.com
+      - ms114.mysearch.com
+      - ms146.mysearch.com
+      - search.myway.com
+      - search.mywebsearch.com
+      - www.mysearch.com
+
+  Najdi:
+    parameters:
+      - q
+    domains:
+      - www.najdi.si
+
+  Najdi.si:
+    parameters:
+      - q
+    domains:
+      - www.najdi.si
+
+  Nate:
+    parameters:
+      - q
+    domains:
+      - search.nate.com
+
+  Naver:
+    parameters:
+      - query
+    domains:
+      - search.naver.com
+
+  "Naver Images":
+    parameters:
+      - query
+    domains:
+      - image.search.naver.com
+      - imagesearch.naver.com
+
+  Needtofind:
+    parameters:
+      - searchfor
+    domains:
+      - ko.search.need2find.com
+
+  Neti:
+    parameters:
+      - query
+    domains:
+      - www.neti.ee
+
+  Nifty:
+    parameters:
+      - Text
+      - q
+    domains:
+      - search.azby.fmworld.net
+      - search.nifty.com
+
+  "Nifty Videos":
+    parameters:
+      - kw
+    domains:
+      - videosearch.nifty.com
+
+  Nigma:
+    parameters:
+      - s
+    domains:
+      - nigma.ru
+
+  OceanHero:
+    parameters:
+      - q
+    domains:
+      - oceanhero.today
+
+  Onet:
+    parameters:
+      - qt
+    domains:
+      - szukaj.onet.pl
+
+  Onet.pl:
+    parameters:
+      - qt
+    domains:
+      - szukaj.onet.pl
+
+  Online.no:
+    parameters:
+      - q
+    domains:
+      - online.no
+
+  OnlySearch:
+    parameters:
+      - q
+    domains:
+      - www.only-search.com
+
+  "Opplysningen 1881":
+    parameters:
+      - Query
+    domains:
+      - www.1881.no
+
+  Orange:
+    parameters:
+      - kw
+      - q
+    domains:
+      - busca.orange.es
+      - lemoteur.ke.voila.fr
+      - lemoteur.orange.fr
+      - search.orange.co.uk
+
+  Paperball:
+    parameters:
+      - q
+    domains:
+      - www.paperball.de
+
+  PeopleCheck:
+    parameters:
+      - q
+    domains:
+      - extern.peoplecheck.de
+
+  PeoplePC:
+    parameters:
+      - q
+    domains:
+      - search.peoplepc.com
+
+  Perplexity:
+    parameters:
+      - q
+    domains:
+      - www.perplexity.ai
+
+  Picsearch:
+    parameters:
+      - q
+    domains:
+      - www.picsearch.com
+
+  Plazoo:
+    parameters:
+      - q
+    domains:
+      - www.plazoo.com
+
+  PlusNetwork:
+    parameters:
+      - q
+    domains:
+      - plusnetwork.com
+
+  Poisk.ru:
+    parameters:
+      - q
+    domains:
+      - poisk.ru
+
+  Poisk.Ru:
+    parameters:
+      - text
+    domains:
+      - poisk.ru
+
+  Presearch:
+    parameters:
+      - q
+    domains:
+      - presearch.com
+
+  PriceRunner:
+    parameters:
+      - q
+    domains:
+      - www.pricerunner.co.uk
+
+  PrivacyWall:
+    parameters:
+      - q
+    domains:
+      - www.privacywall.org
+
+  qip:
+    parameters:
+      - query
+    domains:
+      - search.qip.ru
+
+  qip.ru:
+    parameters:
+      - query
+    domains:
+      - search.qip.ru
+
+  Qualigo:
+    parameters:
+      - q
+    domains:
+      - www.qualigo.at
+      - www.qualigo.ch
+      - www.qualigo.de
+      - www.qualigo.nl
+
+  Quendu:
+    parameters:
+      - q
+    domains:
+      - www.quendu.com
+
+  Qwant:
+    parameters:
+      - q
+    domains:
+      - lite.qwant.com
+      - www.qwant.com
+
+  Rakuten:
+    parameters:
+      - qt
+    domains:
+      - websearch.rakuten.co.jp
+
+  Rambler:
+    parameters:
+      - query
+      - words
+    domains:
+      - nova.rambler.ru
+
+  Riksdelen:
+    parameters:
+      - What
+    domains:
+      - www.riksdelen.se
+
+  "Road Runner":
+    parameters:
+      - q
+    domains:
+      - search.rr.com
+
+  "Road Runner Search":
+    parameters:
+      - q
+    domains:
+      - search.rr.com
+
+  RPMFind:
+    parameters:
+      - query
+    domains:
+      - fr2.rpmfind.net
+      - rpmfind.net
+
+  rpmfind:
+    parameters:
+      - query
+    domains:
+      - fr2.rpmfind.net
+      - rpmfind.net
+
+  Sapo:
+    parameters:
+      - q
+    domains:
+      - pesquisa.sapo.pt
+
+  Scour.com:
+    domains:
+      - scour.com
+
+  "Search This":
+    parameters:
+      - q
+    domains:
+      - www.searchthis.com
+
+  Search.ch:
+    parameters:
+      - q
+    domains:
+      - www.search.ch
+
+  Search.com:
+    parameters:
+      - q
+    domains:
+      - www.search.com
+
+  Searchalot:
+    parameters:
+      - q
+    domains:
+      - searchalot.com
+
+  SearchCanvas:
+    parameters:
+      - q
+    domains:
+      - www.searchcanvas.com
+
+  SearchLock:
+    parameters:
+      - q
+    domains:
+      - results.searchlock.com
+      - searchlock.com
+
+  Searchy:
+    parameters:
+      - q
+    domains:
+      - www.searchy.co.uk
+
+  SeeSaa:
+    domains:
+      - search.seesaa.jp
+
+  Setooz:
+    parameters:
+      - query
+    domains:
+      - bg.setooz.com
+      - da.setooz.com
+      - el.setooz.com
+      - fa.setooz.com
+      - ur.setooz.com
+
+  Seznam:
+    parameters:
+      - q
+    domains:
+      - search.seznam.cz
+
+  "Seznam Videa":
+    parameters:
+      - q
+    domains:
+      - videa.seznam.cz
+
+  Sharelook:
+    parameters:
+      - keyword
+    domains:
+      - www.sharelook.fr
+
+  Shenma:
+    parameters:
+      - q
+    domains:
+      - m.sm.cn
+      - m.sp.sm.cn
+      - m.yz.sm.cn
+      - m.yz2.sm.cn
+      - quark.sm.cn
+      - so.m.sm.cn
+      - yz.m.sm.cn
+
+  Skynet:
+    parameters:
+      - q
+    domains:
+      - www.skynet.be
+
+  sm.cn:
+    parameters:
+      - q
+    domains:
+      - m.sm.cn
+      - m.sp.sm.cn
+      - quark.sm.cn
+      - so.m.sm.cn
+      - yz.m.sm.cn
+
+  sm.de:
+    parameters:
+      - q
+    domains:
+      - www.sm.de
+
+  SmartAddressbar:
+    parameters:
+      - s
+    domains:
+      - search.smartaddressbar.com
+
+  SmartShopping:
+    parameters:
+      - keywords
+      - kwd
+    domains:
+      - search.smartshopping.com
+
+  Snap.do:
+    parameters:
+      - q
+    domains:
+      - search.snap.do
+
+  Snapdo:
+    parameters:
+      - q
+    domains:
+      - search.snapdo.com
+
+  So-net:
+    parameters:
+      - query
+    domains:
+      - www.so-net.ne.jp
+
+  "So-net Videos":
+    parameters:
+      - kw
+    domains:
+      - video.so-net.ne.jp
+
+  Softonic:
+    parameters:
+      - q
+    domains:
+      - search.softonic.com
+
+  Sogou:
+    parameters:
+      - keyword
+      - query
+      - w
+    domains:
+      - english.sogou.com
+      - m.sogou.com
+      - sogou.com
+      - wap.sogou.com
+      - www.sogou.com
+      - www.soso.com
+      - www.sougou.com
+
+  Soso:
+    parameters:
+      - w
+    domains:
+      - www.soso.com
+
+  SoSoDesk:
+    parameters:
+      - q
+    domains:
+      - search.sosodesktop.com
+      - sosodesktop.com
+
+  Sputnik:
+    parameters:
+      - q
+    domains:
+      - www.sputnik.ru
+
+  StartPage:
+    parameters:
+      - query
+    domains:
+      - classic.startpage.com
+      - eu.startpage.com
+      - s1-eu5.startpage.com
+      - s10-eu5.startpage.com
+      - s11-eu5.startpage.com
+      - s12-eu5.startpage.com
+      - s13-eu5.startpage.com
+      - s14-eu5.startpage.com
+      - s2-eu4.startpage.com
+      - s2-eu5.startpage.com
+      - s4-eu5.startpage.com
+      - s5-eu5.startpage.com
+      - s6-eu4.startpage.com
+      - s6-eu5.ixquick.com
+      - s6-eu5.startpage.com
+      - s7-eu4.startpage.com
+      - s7-eu5.startpage.com
+      - s8-eu5.startpage.com
+      - startpage.com
+      - startpagel6srwcjlue4zgq3zevrujfaow726kjytqbbjyrswwmjzcqd.onion
+      - www.startpage.com
+
+  Startpagina:
+    parameters:
+      - q
+    domains:
+      - startgoogle.startpagina.nl
+
+  "Startpagina (Google)":
+    parameters:
+      - q
+      - query
+    domains:
+      - startgoogle.startpagina.nl
+
+  Startsiden:
+    parameters:
+      - q
+    domains:
+      - startsiden.no
+      - www.startsiden.no
+
+  StepStone:
+    domains:
+      - www.stepstone.at
+      - www.stepstone.be
+      - www.stepstone.de
+      - www.stepstone.dk
+      - www.stepstone.fr
+      - www.stepstone.nl
+      - www.stepstone.se
+
+  Stract:
+    parameters:
+      - q
+    domains:
+      - stract.com
+
+  suche.info:
+    parameters:
+      - q
+    domains:
+      - suche.info
+
+  Suche.info:
+    parameters:
+      - Keywords
+    domains:
+      - suche.info
+
+  Suchmaschine.com:
+    parameters:
+      - suchstr
+    domains:
+      - www.suchmaschine.com
+
+  Suchnase:
+    parameters:
+      - q
+    domains:
+      - www.suchnase.de
+
+  "Surf Canyon":
+    parameters:
+      - q
+    domains:
+      - surfcanyon.com
+
+  Swiggle:
+    parameters:
+      - q
+    domains:
+      - swiggle.org.uk
+
+  Swisscows:
+    parameters:
+      - query
+    domains:
+      - swisscows.com
+
+  T-Online:
+    parameters:
+      - q
+    domains:
+      - brisbane.t-online.de
+      - navigationshilfe.t-online.de
+      - suche.t-online.de
+
+  talimba:
+    parameters:
+      - search
+    domains:
+      - www.talimba.com
+
+  TalkTalk:
+    parameters:
+      - query
+    domains:
+      - www.talktalk.co.uk
+
+  Tarmot:
+    parameters:
+      - q
+    domains:
+      - tarmot.com
+
+  Technorati:
+    parameters:
+      - q
+    domains:
+      - technorati.com
+
+  Telstra:
+    parameters:
+      - find
+    domains:
+      - search.media.telstra.com.au
+
+  Teoma:
+    parameters:
+      - q
+    domains:
+      - www.teoma.com
+
+  Terra:
+    parameters:
+      - query
+    domains:
+      - buscador.terra.cl
+      - buscador.terra.com.br
+      - buscador.terra.es
+
+  "The Smart Search":
+    parameters:
+      - q
+    domains:
+      - thesmartsearch.net
+      - www.thesmartsearch.net
+
+  Tiscali:
+    parameters:
+      - key
+      - q
+      - query
+    domains:
+      - hledani.tiscali.cz
+      - search-dyn.tiscali.it
+      - search.tiscali.it
+
+  Tixuma:
+    parameters:
+      - sc
+    domains:
+      - www.tixuma.de
+
+  Toolbarhome:
+    parameters:
+      - q
+    domains:
+      - vshare.toolbarhome.com
+      - www.toolbarhome.com
+
+  Toppreise.ch:
+    parameters:
+      - search
+    domains:
+      - de.toppreise.ch
+      - en.toppreise.ch
+      - fr.toppreise.ch
+      - toppreise.ch
+      - www.toppreise.ch
+
+  Torry:
+    parameters:
+      - q
+    domains:
+      - www.torry.io
+
+  Trouvez.com:
+    parameters:
+      - query
+    domains:
+      - www.trouvez.com
+
+  TrovaRapido:
+    parameters:
+      - q
+    domains:
+      - www.trovarapido.com
+
+  "Trusted Search":
+    parameters:
+      - w
+    domains:
+      - www.trusted-search.com
+
+  Trusted-Search:
+    parameters:
+      - w
+    domains:
+      - www.trusted--search.com
+
+  Trustnav:
+    parameters:
+      - q
+    domains:
+      - search.trustnav.com
+
+  "TUSK Search":
+    parameters:
+      - q
+    domains:
+      - tusksearch.com
+
+  Tut.by:
+    parameters:
+      - query
+    domains:
+      - search.tut.by
+
+  Twingly:
+    parameters:
+      - q
+    domains:
+      - www.twingly.com
+
+  UKR.net:
+    parameters:
+      - q
+    domains:
+      - search.ukr.net
+
+  uol.com.br:
+    parameters:
+      - q
+    domains:
+      - busca.uol.com.br
+
+  URL.ORGanizier:
+    parameters:
+      - q
+    domains:
+      - www.url.org
+
+  URL.ORGanzier:
+    parameters:
+      - q
+    domains:
+      - www.url.org
+
+  Vinden:
+    parameters:
+      - q
+    domains:
+      - www.vinden.nl
+
+  Vindex:
+    parameters:
+      - search_for
+    domains:
+      - search.vindex.nl
+      - www.vindex.nl
+
+  Virgilio:
+    parameters:
+      - qrs
+      - qs
+    domains:
+      - mobile.virgilio.it
+      - ricerca.virgilio.it
+      - ricercaimmagini.virgilio.it
+      - ricercanews.virgilio.it
+      - ricercavideo.virgilio.it
+
+  Voila:
+    parameters:
+      - kw
+      - rdata
+    domains:
+      - search.ke.voila.fr
+      - www.lemoteur.fr
+
+  Volny:
+    parameters:
+      - search
+    domains:
+      - web.volny.cz
+
+  Vuhuv:
+    parameters:
+      - q
+    domains:
+      - vuhuv.com
+
+  Walhello:
+    parameters:
+      - key
+    domains:
+      - www.walhello.com
+      - www.walhello.de
+      - www.walhello.info
+      - www.walhello.nl
+
+  Web.de:
+    parameters:
+      - q
+      - su
+    domains:
+      - m.suche.web.de
+      - suche.web.de
+
+  Web.nl:
+    parameters:
+      - zoekwoord
+    domains:
+      - www.web.nl
+
+  Weborama:
+    parameters:
+      - QUERY
+    domains:
+      - www.weborama.com
+
+  weborama:
+    parameters:
+      - QUERY
+    domains:
+      - www.weborama.fr
+
+  WebSearch:
+    parameters:
+      - q
+      - qkw
+    domains:
+      - www.websearch.com
+
+  Wedoo:
+    parameters:
+      - keyword
+    domains:
+      - en.wedoo.com
+      - es.wedoo.com
+      - fr.wedoo.com
+
+  Winamp:
+    parameters:
+      - q
+    domains:
+      - search.winamp.com
+
+  "Wirtualna Polska":
+    parameters:
+      - szukaj
+    domains:
+      - szukaj.wp.pl
+
+  Witch:
+    parameters:
+      - search
+    domains:
+      - www.witch.de
+
+  Woopie:
+    parameters:
+      - kw
+    domains:
+      - www.woopie.jp
+
+  WWW:
+    parameters:
+      - query
+    domains:
+      - search.www.ee
+
+  "www v\u00e4rav":
+    parameters:
+      - query
+    domains:
+      - search.www.ee
+
+  X-recherche:
+    parameters:
+      - MOTS
+    domains:
+      - www.x-recherche.com
+
+  X-Recherche:
+    parameters:
+      - MOTS
+    domains:
+      - www.x-recherche.com
+
+  "Yahoo!":
+    parameters:
+      - p
+      - q
+    domains:
+      - ar.search.yahoo.com
+      - ar.yahoo.com
+      - au.search.yahoo.com
+      - au.yahoo.com
+      - br.search.yahoo.com
+      - br.yahoo.com
+      - ca.search.yahoo.com
+      - ca.yahoo.com
+      - cade.searchde.yahoo.com
+      - cade.yahoo.com
+      - chinese.searchinese.yahoo.com
+      - chinese.yahoo.com
+      - cn.search.yahoo.com
+      - cn.yahoo.com
+      - de.search.yahoo.com
+      - de.yahoo.com
+      - dk.search.yahoo.com
+      - dk.yahoo.com
+      - es.search.yahoo.com
+      - es.yahoo.com
+      - espanol.search.yahoo.com
+      - espanol.searchpanol.yahoo.com
+      - espanol.yahoo.com
+      - fr.search.yahoo.com
+      - fr.yahoo.com
+      - hk.search.yahoo.com
+      - hk.yahoo.com
+      - ie.search.yahoo.com
+      - ie.yahoo.com
+      - in.search.yahoo.com
+      - in.yahoo.com
+      - it.search.yahoo.com
+      - it.yahoo.com
+      - kr.search.yahoo.com
+      - kr.yahoo.com
+      - malaysia.search.yahoo.com
+      - mx.search.yahoo.com
+      - mx.yahoo.com
+      - no.search.yahoo.com
+      - no.yahoo.com
+      - nz.search.yahoo.com
+      - nz.yahoo.com
+      - one.cn.yahoo.com
+      - one.searchn.yahoo.com
+      - qc.search.yahoo.com
+      - qc.yahoo.com
+      - r.search.yahoo.com
+      - ru.search.yahoo.com
+      - ru.yahoo.com
+      - se.search.yahoo.com
+      - se.yahoo.com
+      - search.offerbox.com
+      - search.searcharch.yahoo.com
+      - search.yahoo.co.jp
+      - search.yahoo.com
+      - tw.search.yahoo.com
+      - tw.yahoo.com
+      - uk.search.yahoo.com
+      - uk.yahoo.com
+      - us.search.yahoo.com
+      - us.yahoo.com
+      - www.benefind.de
+      - www.cercato.it
+      - www.yahoo.co.jp
+      - yahoo.com
+      - ys.mirostart.com
+
+  "Yahoo! Directory":
+    parameters:
+      - p
+    domains:
+      - search.yahoo.com
+
+  "Yahoo! Images":
+    parameters:
+      - p
+      - q
+      - va
+    domains:
+      - cade.images.yahoo.com
+      - espanol.images.yahoo.com
+      - image.yahoo.cn
+      - images.search.yahoo.com
+      - qc.images.yahoo.com
+
+  "Yahoo! Japan":
+    parameters:
+      - keyword
+      - p
+      - q
+      - query
+      - vp
+    domains:
+      - home.kingsoft.jp
+      - jp.hao123.com
+      - jwsearch.jword.jp
+      - search.yahoo.co.jp
+
+  "Yahoo! Japan Images":
+    parameters:
+      - p
+    domains:
+      - image.search.yahoo.co.jp
+
+  "Yahoo! Japan Videos":
+    parameters:
+      - p
+    domains:
+      - video.search.yahoo.co.jp
+
+  Yam:
+    parameters:
+      - k
+    domains:
+      - search.yam.com
+
+  Yandex:
+    parameters:
+      - q
+      - text
+    domains:
+      - clck.yandex.by
+      - clck.yandex.com
+      - clck.yandex.ru
+      - clck.yandex.ua
+      - www.yandex.by
+      - www.yandex.com
+      - www.yandex.ru
+      - www.yandex.ua
+      - ya.ru
+      - yandex.by
+      - yandex.com
+      - yandex.ru
+      - yandex.ua
+      - "yandex.{}"
+
+  "Yandex Images":
+    parameters:
+      - text
+    domains:
+      - images.yandex.by
+      - images.yandex.com
+      - images.yandex.ru
+      - images.yandex.ua
+
+  Yasni:
+    parameters:
+      - query
+    domains:
+      - www.yasni.at
+      - www.yasni.ch
+      - www.yasni.co.uk
+      - www.yasni.com
+      - www.yasni.de
+
+  Yatedo:
+    parameters:
+      - q
+    domains:
+      - www.yatedo.com
+      - www.yatedo.fr
+
+  Yellowmap:
+    parameters:
+      -  
+    domains:
+      - yellowmap.de
+
+  Yep:
+    parameters:
+      - q
+    domains:
+      - yep.com
+
+  Yippy:
+    parameters:
+      - q
+      - query
+    domains:
+      - search.yippy.com
+
+  Yongzin:
+    parameters:
+      - word
+    domains:
+      - www.yongzin.com
+
+  You:
+    parameters:
+      - q
+    domains:
+      - you.com
+
+  YouGoo:
+    parameters:
+      - q
+    domains:
+      - www.yougoo.fr
+
+  Zapmeta:
+    parameters:
+      - q
+      - query
+    domains:
+      - uk.zapmeta.com
+      - www.zapmeta.com
+      - www.zapmeta.de
+      - www.zapmeta.nl
+
+  ZapMeta:
+    parameters:
+      - q
+      - query
+    domains:
+      - www.zapmeta.com
+      - "zapmeta.{}"
+      - "zapmetasearch.{}"
+
+  Zhongsou:
+    parameters:
+      - w
+    domains:
+      - p.zhongsou.com
+
+  Zoek:
+    parameters:
+      - q
+    domains:
+      - www3.zoek.nl
+
+  Zoeken:
+    parameters:
+      - q
+    domains:
+      - www.zoeken.nl
+
+  Zoohoo:
+    parameters:
+      - q
+    domains:
+      - zoohoo.cz
+
+  Zoznam:
+    parameters:
+      - s
+    domains:
+      - www.zoznam.sk
+
+  Zxuso:
+    parameters:
+      - wd
+    domains:
+      - www.zxuso.com
+
+  "\ubb3b\uc9c0\ub9c8 \uac80\uc0c9":
+    parameters:
+      - search
+    domains:
+      - kwzf.net
+
+# #######################################################################################################
+#
+# PAID MEDIA (Snowplow; do not use for inferred UTMs)
+#
+# #######################################################################################################
+
+paid:
+
+  "Acuity Ads":
+    domains:
+      - acuityplatform.com
+
+  Adform:
+    domains:
+      - adform.net
+
+  ADFOX:
+    domains:
+      - adfox.ru
+      - ads.adfox.ru
+      - www.adfox.ru
+      - www.ads.adfox.ru
+
+  Adition:
+    domains:
+      - adition.com
+
+  AdNET:
+    domains:
+      - adnet.de
+
+  AdRoll:
+    domains:
+      - adroll.com
+
+  AdSpirit:
+    domains:
+      - adspirit.de
+      - plusperformance.com
+      - rtbcity.com
+
+  AppNexus:
+    domains:
+      - 247realmedia.com
+      - adnxs.com
+      - ib.adnxs.com
+
+  AudienceScience:
+    domains:
+      - wunderloop.net
+
+  BidSwitch:
+    domains:
+      - bidswitch.net
+
+  "Casale Media":
+    domains:
+      - casalemedia.com
+
+  Criteo:
+    domains:
+      - cas.criteo.com
+      - cas.jp.as.criteo.com
+
+  Doubleclick:
+    domains:
+      - ad-apac.doubleclick.net
+      - ad.doubleclick.net
+      - dp.g.doubleclick.net
+      - pubads.g.doubleclick.net
+      - s0.2mdn.net
+      - s1.2mdn.net
+
+  Eyeota:
+    domains:
+      - eyeota.net
+
+  Flashtalking:
+    domains:
+      - flashtalking.com
+      - servedby.flashtalking.com
+
+  Fluct:
+    domains:
+      - adingo.jp
+
+  Google:
+    domains:
+      - googleads.g.doubleclick.net
+      - googleadservices.com
+      - imasdk.googleapis.com
+      - pagead2.googlesyndication.com
+      - partner.googleadservices.com
+      - safeframe.googlesyndication.com
+      - syndicatedsearch.goog
+      - tdsf.doubleclick.net
+      - tpc.googlesyndication.com
+      - www.adsensecustomsearchads.com
+      - www.googleadservices.com
+
+  Jivox:
+    domains:
+      - jivox.com
+
+  LifeStreet:
+    domains:
+      - lfstmedia.com
+
+  LowerMyBills:
+    parameters:
+      - leadid
+    domains:
+      - lowermybills.com
+
+  MicroAd:
+    domains:
+      - microad.jp
+
+  Mixpo:
+    domains:
+      - mixpo.com
+
+  Mozo:
+    domains:
+      - a.mozo.com.au
+      - mozo.com.au
+
+  "Neustar AdAdvisor":
+    domains:
+      - adadvisor.net
+
+  "ONE by AOL":
+    domains:
+      - nexage.com
+
+  OpenX:
+    domains:
+      - openx.net
+      - openxenterprise.com
+      - servedbyopenx.com
+      - us-ads.openx.net
+
+  Outbrain:
+    domains:
+      - paid.outbrain.com
+
+  Plista:
+    domains:
+      - farm.plista.com
+
+  Price.ru:
+    domains:
+      - price.ru
+      - v.price.ru
+
+  PubMatic:
+    domains:
+      - sshowads.pubmatic.com
+
+  "Rubicon Project":
+    domains:
+      - optimized-by.rubiconproject.com
+
+  Sizmek:
+    domains:
+      - bs.serving-sys.com
+
+  "Sociomantic Labs":
+    domains:
+      - sociomantic.com
+
+  Sonobi:
+    domains:
+      - sonobi.com
+
+  Sovrn:
+    domains:
+      - lijit.com
+
+  SteelHouse:
+    domains:
+      - steelhousemedia.com
+
+  StickyADS.tv:
+    domains:
+      - sfx.stickyadstv.com
+      - stickyadstv.com
+
+  Taboola:
+    domains:
+      - api.taboola.com
+      - taboola.com
+      - trc.taboola.com
+
+  Torg.Mail.ru:
+    domains:
+      - torg.mail.ru
+
+  "Tribal Fusion":
+    domains:
+      - cdnx.tribalfusion.com
+
+  "White Pages":
+    domains:
+      - mobile.whitepages.com.au
+      - www.whitepages.com.au
+
+  Yandex.Direct:
+    domains:
+      - an.yandex.ru
+      - yabs.yandex.by
+      - yabs.yandex.com
+      - yabs.yandex.ru
+      - yabs.yandex.ua
+
+  Yandex.Market:
+    domains:
+      - m.market.yandex.ru
+      - market.yandex.ru
+
+  Yieldmo:
+    domains:
+      - yieldmo.com
+
+  ZEDO:
+    domains:
+      - z1.zedo.com
+      - zedo.com
+
+# #######################################################################################################
+#
+# AI / CHATBOT (Matomo AIAssistants + Snowplow chatbot)
+#
+# #######################################################################################################
+
+chatbot:
+
+  "Baidu AI":
+    domains:
+      - ai.baidu.com
+      - yiyan.baidu.com
+
+  Character.AI:
+    domains:
+      - beta.character.ai
+      - character.ai
+
+  Chat+:
+    domains:
+      - chat-gpt.org
+      - chatplus.com
+
+  ChatGLM:
+    domains:
+      - chatglm.cn
+
+  ChatGPT:
+    domains:
+      - chat.openai.com
+      - chatgpt.com
+      - labs.openai.com
+
+  Claude:
+    domains:
+      - claude.ai
+
+  Claude.ai:
+    domains:
+      - claude.ai
+
+  Copilot:
+    domains:
+      - copilot.microsoft.com
+
+  Deepseek:
+    domains:
+      - chat.deepseek.com
+
+  Duck.ai:
+    domains:
+      - duck.ai
+
+  Gemini:
+    domains:
+      - bard.google.com
+      - gemini.google.com
+
+  "Google Gemini":
+    domains:
+      - gemini.google.com
+
+  Grok:
+    domains:
+      - grok.com
+      - x.com
+
+  iAsk:
+    domains:
+      - iask.ai
+
+  Jasper:
+    domains:
+      - app.jasper.ai
+
+  "Le Chat":
+    domains:
+      - chat.mistral.ai
+
+  "Meta AI":
+    domains:
+      - meta.ai
+
+  META.ai:
+    domains:
+      - meta.ai
+
+  "Microsoft Copilot":
+    domains:
+      - copilot.microsoft.com
+
+  Mistral.ai:
+    domains:
+      - chat.mistral.ai
+
+  NotebookLM:
+    domains:
+      - notebooklm.google.com
+
+  Perplexity:
+    domains:
+      - perplexity.ai
+
+  Perplexity.ai:
+    domains:
+      - perplexity.ai
+
+  Poe:
+    domains:
+      - poe.com
+
+  Qwen:
+    domains:
+      - chat.qwen.ai
+
+  Writesonic:
+    domains:
+      - app.writesonic.com
+
+  You:
+    domains:
+      - you.com

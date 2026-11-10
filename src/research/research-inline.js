@@ -581,3 +581,28 @@ window.benchmarks_data["mission-report-bench"] = {
     },
   ],
 };
+
+window.benchmarks_data = window.benchmarks_data || {};
+
+window.benchmarks_data["dual-arm-sim"] = {
+  lastUpdated: "October 30, 2026",
+  defaultTab: "progress",
+  tabs: [
+    {
+      id: "progress",
+      label: "Progress score",
+      rows: [
+        { name: "Gemini 4 Argon *", score: 49.5, iconStyle: "gemini" },
+        { name: "GPT-6 Astra *", score: 49.5, iconStyle: "openai" },
+        { name: "GPT-6.1 Sol", score: 40.8, iconStyle: "openai" },
+        { name: "Gemini 3.8 Flash", score: 38.8, iconStyle: "gemini" },
+        { name: "Claude Fable 5.1", score: 37.8, iconStyle: "claude" },
+        { name: "Claude Sonnet 5.5", score: 26, iconStyle: "claude" },
+        { name: "Claude Opus 5.5", score: 19, iconStyle: "claude" },
+        { name: "Muse Wonder", score: 9.5, iconStyle: "muse" },
+        { name: "Gemini 3.1 Pro", score: 8.5, iconStyle: "gemini" },
+        { name: "Grok 4.7", score: 6.3, iconStyle: "grok" },
+      ],
+    },
+  ],
+};

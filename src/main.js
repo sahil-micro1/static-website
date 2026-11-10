@@ -39,22 +39,8 @@ const utilities = {
     "rediffmail.com",
     "pm.me",
   ],
-  roundCurrency(value) {
-    if (value >= 1e9) return `$${Math.round(value / 1e9)}B`;
-    if (value >= 1e6) return `$${Math.round(value / 1e6)}M`;
-    if (value >= 1e3) return `$${Math.round(value / 1e3)}K`;
-    return `$${Math.round(value)}`;
-  },
   updateInput(inputArr, data) {
     [...inputArr].forEach((input) => (input.value = data));
-  },
-  createCookie(name, data, stringify = false, expiry = 30) {
-    const expireTime = new Date();
-    expireTime.setDate(expireTime.getDate() + expiry);
-
-    document.cookie = `${name}=${encodeURIComponent(
-      stringify ? JSON.stringify(data) : data,
-    )}; path=/; expires=${expireTime}`;
   },
   loadScript(src, defer = false) {
     return new Promise((resolve) => {
@@ -70,110 +56,6 @@ const utilities = {
         resolve();
       });
     });
-  },
-  async getCompanySize(userContactInfo) {
-    function fetchWithTimeout(url, timeout = 5000) {
-      return new Promise((resolve, reject) => {
-        const timer = setTimeout(() => {
-          reject(new Error(`Timeout after ${timeout}ms: ${url}`));
-        }, timeout);
-
-        fetch(url)
-          .then((res) => {
-            clearTimeout(timer);
-            // console.log(res);
-            if (!res.ok) {
-              reject(new Error(`HTTP error ${res.status} from ${url}`));
-            }
-            // Check content type before parsing
-            const contentType = res.headers.get("content-type");
-            if (contentType && contentType.includes("application/json")) {
-              return res.json();
-            } else {
-              // If not JSON, return null
-              return null;
-            }
-          })
-          .then((data) => {
-            if (!data || data?.message === "no-company-found") {
-              resolve(null);
-            } else {
-              resolve(data);
-            }
-          })
-          .catch((err) => {
-            clearTimeout(timer);
-            reject(err);
-          });
-      });
-    }
-
-    try {
-      const domain = userContactInfo.email.split("@")[1];
-
-      if (utilities.freeDomains.includes(domain)) return;
-
-      const personApiUrl = `https://hook.us1.make.com/lxholkn672i1jsfsgrs82geyxn641a0u?email=${encodeURIComponent(
-        userContactInfo.email,
-      )}`;
-      const domainApiUrl = `https://hook.us1.make.com/ax4r7raw56xdx5aemjmsoxuwgbfxhu6y?domain=${encodeURIComponent(
-        domain,
-      )}`;
-
-      // Start both requests in parallel
-      const personRequest = fetchWithTimeout(personApiUrl);
-      const domainRequest = fetchWithTimeout(domainApiUrl);
-
-      let data;
-
-      try {
-        // Try person API first
-        data = await personRequest;
-        if (!data) {
-          // If person API returns null, try domain API
-          console.log("Person API returned no company, trying domain API");
-          data = await domainRequest;
-        }
-      } catch (error) {
-        // If person API fails, try domain API
-        console.log("Person API failed, trying domain API");
-        data = await domainRequest;
-      }
-
-      // If both APIs returned null or failed
-      if (!data) {
-        throw new Error("No company data found from either API");
-      }
-
-      // console.log(data);
-
-      utilities.createCookie("companyInfo", data, true);
-
-      utilities.updateInput(
-        document.querySelectorAll(".input_company-size"),
-        data.size,
-      );
-      utilities.updateInput(
-        document.querySelectorAll(".input_company-linkedin"),
-        data.linkedin,
-      );
-      utilities.updateInput(
-        document.querySelectorAll(".input_company-funding"),
-        this.roundCurrency(data.funding),
-      );
-
-      customTrackData.company = data;
-
-      return data;
-    } catch (error) {
-      console.error(error.message);
-      console.log("couldn't enrich");
-      utilities.updateInput(
-        document.querySelectorAll(".input_company-size"),
-        "couldn't enrich",
-      );
-      return null;
-    }
   },
   loadStyle(href) {
     return new Promise((resolve) => {
@@ -195,624 +77,26 @@ const utilities = {
   removeClassFromEls(arr, className) {
     arr.forEach((el) => el.classList.remove(className));
   },
-  toSnakeCaseObject(originalObj) {
-    const formatToSnakeCase = (input) => {
-      return input
-        .replace(/([a-z])([A-Z])/g, "$1_$2") // camelCase to snake_case
-        .replace(/[\s-]+/g, "_") // spaces and hyphens to underscores
-        .toLowerCase(); // lowercase everything
-    };
-
-    const newObj = {};
-    for (const [key, value] of Object.entries(originalObj)) {
-      const formattedKey = formatToSnakeCase(key);
-      newObj[formattedKey] = value;
-    }
-
-    return newObj;
-  },
 };
 
 const initTracking = {
-  initWidgetCta() {
-    const realLink = document.getElementById("clientRegister");
-    window.addEventListener("message", (event) => {
-      // console.log(event.data);
-      if (
-        event.data.type === "clientRegistration" ||
-        event.data.type === "clientRegistrationInterviewer"
-      ) {
-        if (event.data.cta) {
-          realLink.dataset.text = event.data.cta;
-        }
-
-        if (event.data.widget) {
-          realLink.dataset.widget = event.data.widget;
-        }
-
-        realLink?.click();
-      }
-    });
-  },
-  hutk() {
-    function getUTK(deskTimeout, mobTimeout, interval) {
-      const initialTime = +new Date();
-      let timeout = deskTimeout;
-
-      if (window.innerWidth < 992) timeout = mobTimeout;
-
-      return new Promise(function promiseResolver(resolve, reject) {
-        function checkUTK() {
-          const currentTime = +new Date();
-          if (currentTime - initialTime > timeout) return reject("");
-
-          let utk = getCookieValue("hubspotutk");
-          if (utk !== "") return resolve(utk);
-
-          setTimeout(checkUTK, interval);
-        }
-
-        checkUTK();
-      });
+  async bootAttribution() {
+    if (typeof customTrackData === "undefined") {
+      window.customTrackData = window.customTrackData || { utm: {}, user: {} };
     }
-
-    window.addEventListener("load", async function () {
-      let hutk = getCookieValue("hubspotutk");
-
-      if (!hutk) {
-        try {
-          hutk = await getUTK(10000, 15000, 1000);
-        } catch {
-          hutk = "";
-        }
-      }
-
-      utilities.updateInput(document.querySelectorAll(".hutk_input"), hutk);
-
-      customTrackData.hutk = hutk;
-    });
-  },
-  organicSocialRef() {
-    const ref = document.referrer;
-    const refTwitter =
-      ref.includes("t.co") || ref.includes("twitter") || ref.includes("x.com");
-    const refLinkedin = ref.includes("linkedin") || ref.includes("lnkd");
-    const refFacebook = ref.includes("facebook");
-
-    if (!refTwitter && !refLinkedin && !refFacebook) return;
-
-    if (getCookieValue("utm_cookie_contact")) return;
-
-    let refSource;
-    const utm_cookie_contact = {};
-
-    if (refTwitter) refSource = "twitter";
-    if (refLinkedin) refSource = "linkedin";
-    if (refFacebook) refSource = "facebook";
-
-    utm_cookie_contact.utm_source = refSource;
-    utm_cookie_contact.utm_medium = "social";
-    utm_cookie_contact.utm_term = null;
-    utm_cookie_contact.utm_content = null;
-    utm_cookie_contact.utm_campaign = null;
-
-    utilities.createCookie("utm_cookie_contact", utm_cookie_contact, true);
-  },
-  setRef() {
-    let refCookie = getCookieValue("cus_ref_site");
-
-    if (refCookie) {
-      refCookie = decodeURIComponent(refCookie);
-
-      if (
-        refCookie.includes("micro1.ai") ||
-        refCookie.includes("staging") ||
-        refCookie.includes("meetings")
-      )
-        return;
-
-      customTrackData.cusRef = refCookie;
-
-      utilities.updateInput(
-        document.querySelectorAll(".ref_site_input"),
-        refCookie,
+    const boot = globalThis.__m1BootStaticAttribution;
+    if (typeof boot !== "function") {
+      if (customTrackData.portalParams == null) customTrackData.portalParams = "";
+      console.warn(
+        "attribution bundle missing — load dist/main.min.js (not src/main.js)",
       );
-    }
-
-    let ref = document.referrer;
-
-    if (!ref) return;
-
-    if (
-      ref.includes("micro1.ai") ||
-      ref.includes("staging") ||
-      ref.includes("meetings")
-    )
       return;
-
-    const refObj = new URL(ref);
-
-    ref = refObj.host ? refObj.host : refObj.pathname;
-
-    utilities.createCookie("cus_ref_site", ref);
-
-    customTrackData.cusRef = ref;
-    utilities.updateInput(document.querySelectorAll(".ref_site_input"), ref);
-  },
-  storeUTM() {
-    const utm_source = URLParams.get("utm_source");
-    const utm_campaign = URLParams.get("utm_campaign");
-    const utm_medium = URLParams.get("utm_medium");
-    const utm_content = URLParams.get("utm_content");
-    const utm_term = URLParams.get("utm_term");
-
-    if (utm_source || utm_campaign || utm_medium || utm_content || utm_term) {
-      const curr_cookie_contact = getCookieValue("utm_cookie_contact");
-
-      if (curr_cookie_contact) {
-        const currentCookieUTM = JSON.parse(
-          decodeURIComponent(curr_cookie_contact),
-        );
-
-        if (!utm_campaign && currentCookieUTM.utm_campaign) return;
-      }
-
-      const utm_cookie_contact = {};
-
-      utm_cookie_contact.utm_source = utm_source;
-      utm_cookie_contact.utm_campaign = utm_campaign;
-      utm_cookie_contact.utm_medium = utm_medium;
-      utm_cookie_contact.utm_content = utm_content;
-      utm_cookie_contact.utm_term = utm_term;
-
-      utilities.createCookie("utm_cookie_contact", utm_cookie_contact, true);
     }
-  },
-  fetchUTM() {
     try {
-      const utm_cookie_contact = getCookieValue("utm_cookie_contact");
-
-      if (!utm_cookie_contact) return;
-
-      const { utm_source, utm_campaign, utm_medium, utm_content, utm_term } =
-        JSON.parse(decodeURIComponent(utm_cookie_contact));
-
-      utilities.updateInput(
-        document.querySelectorAll(".utm_source_input"),
-        utm_source,
-      );
-      utilities.updateInput(
-        document.querySelectorAll(".utm_campaign_input"),
-        utm_campaign,
-      );
-      utilities.updateInput(
-        document.querySelectorAll(".utm_medium_input"),
-        utm_medium,
-      );
-      utilities.updateInput(
-        document.querySelectorAll(".utm_content_input"),
-        utm_content,
-      );
-      utilities.updateInput(
-        document.querySelectorAll(".utm_term_input"),
-        utm_term,
-      );
-
-      customTrackData.utm = {
-        utm_source,
-        utm_campaign,
-        utm_medium,
-        utm_content,
-        utm_term,
-      };
+      await boot();
     } catch (err) {
-      console.error(err);
+      console.error("attribution boot failed", err);
     }
-  },
-  trackPages() {
-    // Current page
-    let current_page = location.href;
-    utilities.updateInput(
-      document.querySelectorAll(".current_page_name"),
-      current_page,
-    );
-
-    if (current_page === "/") current_page = "/home";
-
-    customTrackData.current_page = current_page;
-
-    // Last page
-    try {
-      let last_page = decodeURIComponent(getCookieValue("last_page"));
-
-      if (!last_page) {
-        last_page = URLParams.get("last_page");
-      }
-
-      if (last_page) {
-        if (last_page === "/") last_page = "/home";
-
-        utilities.updateInput(
-          document.querySelectorAll(".last_page_name"),
-          last_page,
-        );
-
-        customTrackData.last_page = last_page;
-      }
-
-      utilities.createCookie("last_page", current_page);
-    } catch (err) {
-      console.error(err);
-    }
-
-    // First page
-    (() => {
-      let first_page = decodeURIComponent(getCookieValue("first_page"));
-
-      if (!first_page) {
-        first_page = URLParams.get("first_page");
-
-        if (!first_page) first_page = document.location.href;
-
-        if (first_page === "/") first_page = "/home";
-
-        utilities.createCookie("first_page", first_page);
-      }
-
-      utilities.updateInput(
-        document.querySelectorAll(".first_page_name"),
-        first_page,
-      );
-
-      customTrackData.first_page = first_page;
-    })();
-
-    // Ref parameter
-    (() => {
-      const ref = URLParams.get("ref");
-      if (ref) utilities.createCookie("ref", ref);
-
-      let refCookie = getCookieValue("ref");
-      if (!refCookie) return;
-      try {
-        refCookie = decodeURIComponent(refCookie);
-        utilities.updateInput(
-          document.querySelectorAll(".ref_input"),
-          refCookie,
-        );
-        customTrackData.ref = refCookie;
-      } catch {
-        console.log("error");
-      }
-    })();
-  },
-  setURLParms() {
-    let first_page, last_page;
-
-    if (customTrackData.first_page) {
-      first_page = document.createElement("a");
-      first_page.href = customTrackData.first_page;
-      first_page = first_page.pathname;
-
-      if (first_page === "/") first_page = "/home";
-    }
-    if (customTrackData.current_page) {
-      last_page = document.createElement("a");
-      last_page.href = customTrackData.current_page;
-      last_page = last_page.pathname;
-
-      if (last_page === "/") last_page = "/home";
-    }
-
-    const currentPath = window.location.pathname;
-    const { utm, user } = customTrackData;
-
-    const paramsObj = {
-      ...(utm.utm_campaign && { utm_campaign: utm.utm_campaign }),
-      ...(utm.utm_medium && { utm_medium: utm.utm_medium }),
-      ...(utm.utm_source && { utm_source: utm.utm_source }),
-      ...(utm.utm_content && { utm_content: utm.utm_content }),
-      ...(utm.utm_term && { utm_term: utm.utm_term }),
-      ...(first_page && { first_page: first_page }),
-      ...(last_page && { last_page: last_page }),
-    };
-
-    const addParamsToURLs = function (paramsObj, identifierArr) {
-      const paramsStr = decodeURIComponent(
-        new URLSearchParams(paramsObj).toString(),
-      );
-
-      customTrackData.portalParams = paramsStr;
-
-      utilities.updateInput(
-        document.querySelectorAll(".portal_params"),
-        paramsStr,
-      );
-
-      const links = [
-        ...document.querySelectorAll("a[href]:not([href='#'])"),
-      ].filter((link) => identifierArr.some((str) => link.href.includes(str)));
-
-      links.forEach(
-        (link) =>
-          (link.href += link.href.includes("?")
-            ? `&${paramsStr}`
-            : `?${paramsStr}`),
-      );
-
-      return links;
-    };
-
-    (() => {
-      const paths = ["/letter"];
-
-      addParamsToURLs(paramsObj, paths);
-    })();
-
-    (() => {
-      let hutk;
-
-      hutk = getCookieValue("hubspotutk");
-
-      let deviceId;
-
-      if (window.amplitude) {
-        deviceId = amplitude.getDeviceId();
-      }
-
-      let src;
-
-      if (
-        currentPath.includes("ai-recruiter") ||
-        currentPath.includes("saas") ||
-        currentPath.includes("zara") ||
-        currentPath.includes("pricing") ||
-        currentPath.includes("calculator")
-      ) {
-        src = "ai-interviewer";
-      } else if (
-        currentPath.includes("talent") ||
-        currentPath.includes("/tech/") ||
-        currentPath.includes("vetting")
-      ) {
-        src = "search-talent";
-      } else if (
-        currentPath.includes("data-engine") ||
-        currentPath.includes("human-data")
-      ) {
-        src = "human-data";
-      } else {
-        src = "general";
-      }
-
-      console.log(src);
-
-      const paramsObjPortal = {
-        ...paramsObj,
-        ...(user.first_name && { first_name: user.first_name }),
-        ...(user.last_name && { last_name: user.last_name }),
-        ...(user.email && { email: user.email }),
-        src,
-        ...(hutk && { hutk: hutk }),
-        ...(customTrackData.cusRef && { ref_site: customTrackData.cusRef }),
-        ...(deviceId && { deviceId }),
-        ...(encodeURIComponent(getCookieValue("formSubmitted")) && {
-          formSubmitted: true,
-        }),
-      };
-
-      const domainList = [
-        "client.micro1.ai",
-        "intelligence.micro1.ai",
-        "new-stage.intelligence.micro1.ai",
-        "zara.micro1.ai",
-        "new-stage.talent.micro1.ai",
-        "talent.micro1.ai",
-        "new-stage.client.micro1.ai",
-        "company.micro1.ai",
-        "new-stage.company.micro1.ai"
-      ];
-
-      const portalLinks = addParamsToURLs(paramsObjPortal, domainList);
-
-      portalLinks.forEach((link) => {
-        const accountType = link.dataset.accountType;
-
-        if (accountType) {
-          console.log(link, "changed account type to", accountType);
-          link.href = link.href.replace(`src=${src}`, `src=${accountType}`);
-        }
-
-        if (window.location.host.includes("webflow.io")) {
-          link.href = link.href.replace(
-            "zara.micro1.ai",
-            "new-stage.client.micro1.ai",
-          );
-          link.href = link.href.replace(
-            "talent.micro1.ai",
-            "new-stage.talent.micro1.ai",
-          );
-          link.href = link.href.replace(
-            "intelligence.micro1.ai",
-            "new-stage.intelligence.micro1.ai",
-          );
-          link.href = link.href.replace(
-            "company.micro1.ai",
-            "new-stage.company.micro1.ai",
-          );
-        }
-      });
-
-      const domainListJob = [
-        "jobs.micro1.ai",
-        "dev.d3k2dall9o449y.amplifyapp.com",
-        "refer.micro1.ai",
-        "new-stage.refer.micro1.ai",
-        "interview.micro1.ai",
-        "company.micro1.ai",
-        "new-stage.company.micro1.ai"
-      ];
-
-      const jobLinks = addParamsToURLs(paramsObj, domainListJob);
-
-      jobLinks.forEach((link) => {
-        if (window.location.host.includes("webflow.io")) {
-          link.href = link.href.replace(
-            "jobs.micro1.ai",
-            "dev.d3k2dall9o449y.amplifyapp.com",
-          );
-
-          link.href = link.href.replace(
-            "refer.micro1.ai",
-            "new-stage.refer.micro1.ai",
-          );
-        }
-      });
-
-      // Get user data from meeting form
-      const meetingContainer = document.querySelector(
-        ".meetings-iframe-container",
-      );
-
-      if (meetingContainer) {
-        window.addEventListener("message", (event) => {
-          if (event.data.meetingBookSucceeded) {
-            meetingContainer.querySelector(
-              ".meetings-iframe-container iframe",
-            ).style.height = "auto";
-
-            const product = meetingContainer.dataset.product;
-
-            const { firstName, lastName, email } =
-              event.data.meetingsPayload.bookingResponse.postResponse.contact;
-
-            const userContactInfo = { firstName, lastName, email };
-
-            utilities.createCookie("userContactInfo", userContactInfo, true);
-
-            // send amplitude event
-            const amplitudeEventParams = {
-              ...(customTrackData.company && customTrackData.company),
-              ...(customTrackData.utm && customTrackData.utm),
-              ...(firstName && { first_name: firstName }),
-              ...(lastName && { last_name: lastName }),
-              ...(email && { email }),
-              ...(customTrackData["first_page"] && {
-                first_page: customTrackData["first_page"],
-              }),
-              ...(customTrackData["last_page"] && {
-                last_page: customTrackData["last_page"],
-              }),
-              ...(customTrackData["current_page"] && {
-                current_page: customTrackData["current_page"],
-              }),
-              ...(customTrackData["ref"] && {
-                ref: customTrackData["ref"],
-              }),
-              ...(customTrackData["cusRef"] && {
-                referring_site: customTrackData["cusRef"],
-              }),
-              ...(product && { product }),
-            };
-
-            if (window.amplitude) {
-              window.amplitude.setUserId(amplitudeEventParams.email);
-
-              window.amplitude.track(
-                "Static - Demo booked",
-                amplitudeEventParams,
-              );
-            }
-
-            // set custom params
-            if (email && customTrackData) {
-              let numFormSubmissions = getCookieValue("numFormSubmissons");
-
-              if (numFormSubmissions) {
-                numFormSubmissions = +numFormSubmissions + 1;
-              } else {
-                numFormSubmissions = 1;
-
-                fetch(
-                  "https://hook.us1.make.com/1c8l4ud39pmo2isaas072kr61n9skjt5",
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      email,
-                      properties: { customTrackData },
-                    }),
-                  },
-                );
-              }
-
-              utilities.createCookie(
-                "numFormSubmissons",
-                numFormSubmissions,
-                false,
-                90,
-              );
-            }
-          }
-        });
-      }
-    })();
-  },
-  initCTATracking() {
-    const links = [...document.querySelectorAll("a, button")];
-    const page = window.location.pathname;
-    const host = window.location.host;
-
-    const paths = [
-      "/demo",
-      "/zara-demo",
-      "/book-hiring-call",
-      "/book-cor-demo",
-      "/human-data-demo",
-      "/thank-you-zara",
-      "/thank-you",
-      "/onboard-talent",
-      "/search-talent",
-      "/zara-register",
-      "/human-data-register",
-      "/pricing",
-    ];
-
-    const domainList = [
-      "client.micro1.ai",
-      "intelligence.micro1.ai",
-      "new-stage.intelligence.micro1.ai",
-      "zara.micro1.ai",
-      "new-stage.talent.micro1.ai",
-      "talent.micro1.ai",
-      "new-stage.client.micro1.ai",
-      "jobs.micro1.ai",
-      "dev.d3k2dall9o449y.amplifyapp.com",
-      "refer.micro1.ai",
-      "new-stage.refer.micro1.ai",
-    ];
-
-    const selectedLinks = links.filter(
-      (link) =>
-        link.dataset.formCta ||
-        paths.some((str) => link.href?.includes(str)) ||
-        domainList.some((str) => link.href?.includes(str)),
-    );
-
-    selectedLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        window.amplitude?.track("CTA Clicked", {
-          "[Amplitude] Element Text": link.textContent || link.dataset.text,
-          "[Amplitude] Page Path": page,
-          "[Amplitude] Page Domain": host,
-          "[Amplitude] Element Href": link.href,
-          ...(link.dataset.formCta && { form: link.dataset.formCta }),
-          ...(link.dataset.widget && { widget: link.dataset.widget }),
-        });
-      });
-    });
   },
 };
 
@@ -901,115 +185,6 @@ const initCore = {
           document.querySelector("body").classList.toggle("no-scroll"),
         ),
       );
-  },
-  initCookie() {
-    const consent = getCookieValue("consent");
-    if (consent) return;
-
-    const cookieHTML = `<div class="cookie_bar-wrapper" style="display: flex;opacity:0"><div class="cookie_bar-text">By using micro1.ai, you accept our <a href="/cookie-policy" class="hyperlink is-cookie">cookie policy</a></div><button class="cookie_bar-btn-config"><div class="cookie_bar-icon-embed w-embed"><svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_39346_4883)">
-<path d="M7.5 9.84375C8.79442 9.84375 9.84375 8.79442 9.84375 7.5C9.84375 6.20558 8.79442 5.15625 7.5 5.15625C6.20558 5.15625 5.15625 6.20558 5.15625 7.5C5.15625 8.79442 6.20558 9.84375 7.5 9.84375Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
-<path d="M2.42598 10.435C2.16698 9.98887 1.96855 9.51025 1.83594 9.01174L2.81914 7.78127C2.80801 7.59316 2.80801 7.40455 2.81914 7.21643L1.83652 5.98596C1.96891 5.48738 2.16693 5.00858 2.42539 4.56213L3.99043 4.38635C4.11541 4.24555 4.24865 4.11231 4.38945 3.98733L4.56523 2.42288C5.01104 2.16565 5.48905 1.96881 5.98672 1.83752L7.21719 2.82073C7.4053 2.80959 7.59391 2.80959 7.78203 2.82073L9.0125 1.83811C9.51109 1.9705 9.98988 2.16852 10.4363 2.42698L10.6121 3.99202C10.7529 4.11699 10.8862 4.25024 11.0111 4.39104L12.5756 4.56682C12.8346 5.01293 13.033 5.49156 13.1656 5.99006L12.1824 7.22053C12.1936 7.40865 12.1936 7.59726 12.1824 7.78538L13.165 9.01584C13.0336 9.51429 12.8365 9.99308 12.5791 10.4397L11.0141 10.6155C10.8891 10.7563 10.7558 10.8895 10.615 11.0145L10.4393 12.5789C9.99315 12.8379 9.51452 13.0364 9.01601 13.169L7.78555 12.1858C7.59743 12.1969 7.40882 12.1969 7.2207 12.1858L5.99023 13.1684C5.49179 13.0369 5.013 12.8399 4.56641 12.5824L4.39062 11.0174C4.24982 10.8924 4.11658 10.7592 3.9916 10.6184L2.42598 10.435Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
-</g>
-<defs>
-<clipPath id="clip0_39346_4883">
-<rect width="15" height="15" fill="white"></rect>
-</clipPath>
-</defs>
-</svg></div></button><a href="#" class="cookie_bar-btn w-button">Accept</a></div>`;
-
-    document.body.insertAdjacentHTML("beforeend", cookieHTML);
-
-    const cookieEl = document.querySelector(".cookie_bar-wrapper");
-    const acceptBtn = cookieEl.querySelector(".cookie_bar-btn");
-
-    function acceptAll() {
-      console.log("accept all and hide bar");
-      cookieEl.style.opacity = 0;
-      setTimeout(() => cookieEl.remove(), 300);
-
-      utilities.createCookie(
-        "consent",
-        {
-          essentials: true,
-          marketing: true,
-          analytics: true,
-        },
-        true,
-        180,
-      );
-    }
-
-    acceptBtn.addEventListener("click", acceptAll);
-
-    setTimeout(() => {
-      cookieEl.style.opacity = 1;
-    }, 100);
-
-    // config
-    const configBtn = cookieEl.querySelector(".cookie_bar-btn-config");
-
-    let configWrap;
-
-    configBtn.addEventListener("click", () => {
-      if (!configWrap) {
-        const html = `<div class="cookie_bar-popup" style="opacity: 0;"><div class="cookie_bar-close-bg"></div><div class="cookie_bar-pref"><p class="cookie_bar-title">Manage Consent Preferences</p><div class="w-form"><form id="email-form" name="email-form" data-name="Email Form" method="get" class="cookie_bar-list" data-wf-page-id="692614efa2b230f16f4263a4" data-wf-element-id="62f36d7a-b36c-0ea8-3a2e-caf5fff74b1f" aria-label="Email Form"><div class="cookie_bar-item"><div class="cookie_bar-name">Essentials <span class="cookie_bar-active">Always active</span></div><div class="cookie_bar-desc">Necessary for the site to function. Always on.</div></div><div class="cookie_bar-item"><label class="w-checkbox cookie_bar-check"><div class="w-checkbox-input w-checkbox-input--inputType-custom cookie_bar-check-icon w--redirected-checked"></div><input type="checkbox" id="cookie-type-marketing" name="cookie-type-marketing" data-name="cookie-type-marketing" checked style="opacity:0;position:absolute;z-index:-1"><span class="cookie_bar-type w-form-label" for="cookie-type-marketing">Marketing</span></label><div class="cookie_bar-desc">Used for targeted advertising</div></div><div class="cookie_bar-item"><label class="w-checkbox cookie_bar-check"><div class="w-checkbox-input w-checkbox-input--inputType-custom cookie_bar-check-icon w--redirected-checked"></div><input type="checkbox" id="cookie-type-analytics" name="cookie-type-analytics" data-name="cookie-type-analytics" checked style="opacity:0;position:absolute;z-index:-1"><span class="cookie_bar-type w-form-label" for="cookie-type-analytics">Analytics</span></label><div class="cookie_bar-desc">Measures usage and improves your experience</div></div></form><div class="w-form-done" tabindex="-1" role="region" aria-label="Email Form success"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail" tabindex="-1" role="region" aria-label="Email Form failure"><div>Oops! Something went wrong while submitting the form.</div></div></div><button data-wf--button--variant="primary---small" data-form-cta="" form-element="cookie-save" data-analytics-cta="Save" class="cta_component w-variant-2a6b4eca-50dc-487e-a3b1-89ca400088bd"><div>Save</div></button><div class="cookie_bar-close"><img src="https://cdn.prod.website-files.com/68b095121300aebde21ab3f4/6926f75667ac34b3e0cf9eba_x%20(2).svg" loading="lazy" alt="" class="cookie_bar-close-icon"></div></div></div>`;
-
-        document.body.insertAdjacentHTML("beforeend", html);
-
-        // select els
-        configWrap = document.querySelector(".cookie_bar-popup");
-        const marketingEl = configWrap.querySelector(
-          '[type="checkbox"][name="cookie-type-marketing"]',
-        );
-        const analyticsEl = configWrap.querySelector(
-          '[type="checkbox"][name="cookie-type-analytics"]',
-        );
-        const saveBtn = configWrap.querySelector(
-          '[form-element="cookie-save"]',
-        );
-
-        // on save
-        saveBtn.addEventListener("click", () => {
-          const options = {
-            essentials: true,
-            marketing: marketingEl.checked,
-            analytics: analyticsEl.checked,
-          };
-
-          console.log(options);
-
-          utilities.createCookie("consent", options, true, 180);
-
-          configWrap.style.opacity = 0;
-          cookieEl.style.opacity = 0;
-
-          setTimeout(() => {
-            configWrap.remove();
-            cookieEl?.remove();
-            if (!marketingEl.checked || !analyticsEl.checked)
-              window.location.reload();
-          }, 300);
-        });
-
-        // on close
-        const closeEls = configWrap.querySelectorAll(
-          ".cookie_bar-close-icon, .cookie_bar-close-bg",
-        );
-        closeEls.forEach((el) =>
-          el.addEventListener("click", () => {
-            configWrap.style.opacity = 0;
-            setTimeout(() => (configWrap.style.display = "none"), 300);
-          }),
-        );
-      }
-
-      configWrap.style.display = "flex";
-
-      requestAnimationFrame(() => {
-        configWrap.style.opacity = 1;
-      });
-    });
   },
   async initGsap() {
     await Promise.all([
@@ -1571,30 +746,6 @@ const initForm = {
           return;
         }
 
-        // if (allSteps[currentStep].dataset.stepCheckPoint) {
-        //   if (
-        //     formStep.querySelector(".w-radio.is-checked input")?.value ===
-        //     "Interview your own candidates"
-        //   ) {
-        //     console.log("enable zara");
-
-        //     allSteps = form.querySelectorAll(
-        //       ".form-step-wrap:not([data-step-type=human-data])",
-        //     );
-        //   }
-
-        //   if (
-        //     formStep.querySelector(".w-radio.is-checked input")?.value ===
-        //     "Explore human data"
-        //   ) {
-        //     console.log("enable hd");
-
-        //     allSteps = form.querySelectorAll(
-        //       ".form-step-wrap:not([data-step-type=zara])",
-        //     );
-        //   }
-        // }
-
         if (currentStep + 1 <= allSteps.length - 1) currentStep++;
         showStep(currentStep);
 
@@ -1636,26 +787,6 @@ const initForm = {
           });
         }
 
-        // amplitude
-        const product = formType;
-        const step = currentStep;
-        const question = formStep.querySelector(".step-title")?.textContent;
-        // let answer;
-        console.log(step);
-        // if (product === "general" && step === 2) {
-        //   answer = formStep.querySelector(
-        //     ".radio-wrapper.is-checked input",
-        //   )?.value;
-        // }
-
-        if (window.amplitude) {
-          window.amplitude.track("Static - Moved step in form", {
-            product,
-            step,
-            question,
-            // ...(answer && { answer }),
-          });
-        }
       }
 
       function handleKeydown(e) {
@@ -1689,45 +820,26 @@ const initForm = {
 
         if (!result) return;
 
-        // cookie consent
-        let consent = decodeURIComponent(getCookieValue("consent"));
-
-        if (consent) {
-          consent = JSON.parse(consent);
-
-          let consentStr;
-
-          if (typeof consent === "boolean") {
-            consentStr = "All";
-          }
-
-          if (typeof consent === "object") {
-            if (consent.marketing && consent.analytics) consentStr = "All";
+        // cookie consent from DataGrail (banner owns preferences)
+        try {
+          const api = window.DG_BANNER_API;
+          if (api?.categoryEnabled) {
+            const marketing = !!api.categoryEnabled("marketing");
+            const performance = !!api.categoryEnabled("performance");
+            let consentStr;
+            if (marketing && performance) consentStr = "All";
             else {
               consentStr = "Essentials";
-              if (consent.marketing) consentStr += ", Marketing";
-              if (consent.analytics) consentStr += ", Analytics";
+              if (marketing) consentStr += ", Marketing";
+              if (performance) consentStr += ", Performance";
             }
+            utilities.updateInput(
+              document.querySelectorAll(".input_cookie-consent"),
+              consentStr,
+            );
           }
-
-          utilities.updateInput(
-            document.querySelectorAll(".input_cookie-consent"),
-            consentStr,
-          );
-        }
-
-        // amplitude
-        const product = formType;
-        const step = currentStep + 1;
-        const question =
-          allSteps[currentStep]?.querySelector(".step-title")?.textContent;
-
-        if (window.amplitude) {
-          window.amplitude.track("Static - Moved step in form", {
-            product,
-            step,
-            question,
-          });
+        } catch (err) {
+          console.error(err);
         }
 
         console.log("ready to submit");
@@ -1749,35 +861,6 @@ const initForm = {
 
         const allFormData = new FormData(mainForm);
 
-        const ampFormObj = {};
-
-        for (const pair of allFormData.entries()) {
-          const field = pair[0];
-          const answer = pair[1];
-
-          if (
-            answer &&
-            !field.includes("first-name") &&
-            !field.includes("last-name") &&
-            !field.includes("email") &&
-            !field.includes("form-type")
-          ) {
-            ampFormObj[field] = answer;
-          }
-        }
-
-        const userContactInfo = {
-          firstName: allFormData.get(`${formType}-first-name`),
-          lastName: allFormData.get(`${formType}-last-name`),
-          email: allFormData.get(`${formType}-email`),
-        };
-
-        console.log(userContactInfo);
-
-        utilities.createCookie("userContactInfo", userContactInfo, true);
-
-        utilities.createCookie("formSubmitted", "1", false, 7);
-
         // Twitter conversion code
         if (formType === "talent") {
           window.twq && twq("event", "tw-ocr68-ooizv", {});
@@ -1787,12 +870,9 @@ const initForm = {
         if (formType === "human-data" || formType === "int") {
           window.twq && twq("event", "tw-ocr68-opq5o", {});
 
-          window.lintrk("track", { conversion_id: 23452004 });
+          window.lintrk && window.lintrk("track", { conversion_id: 23452004 });
 
           console.log("tracking code fired human-data");
-
-          // window.lintrk("track", { conversion_id: 21680108 });
-          // window.lintrk("track", { conversion_id: 21680116 });
         }
         if (formType === "ai-interviewer") {
           window.twq && twq("event", "tw-ocr68-opq5p", {});
@@ -1805,44 +885,11 @@ const initForm = {
           console.log("twitter code fired general");
         }
 
-        // set custom params
-        let numFormSubmissions = getCookieValue("numFormSubmissons");
-
-        if (numFormSubmissions) {
-          numFormSubmissions = +numFormSubmissions + 1;
-        } else {
-          numFormSubmissions = 1;
-        }
-
-        utilities.createCookie(
-          "numFormSubmissons",
-          numFormSubmissions,
-          false,
-          90,
-        );
-
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
           event: "form_submit_success",
           product: formType,
         });
-
-        // if general form
-        // const leadType = allFormData.get("general-requirement");
-        // if (leadType) {
-        //   if (leadType === "Explore human data") {
-        //     redirectPath = undefined;
-        //   }
-        // }
-
-        const amplitudeEventParams = utilities.toSnakeCaseObject({
-          ...(userContactInfo && userContactInfo),
-          ...(ampFormObj && ampFormObj),
-          redirectPath,
-          product: formType,
-        });
-
-        console.log(amplitudeEventParams);
 
         if (formType === "data") {
           try {
@@ -1866,11 +913,11 @@ const initForm = {
           }
         }
 
-        await submitFormToMake(amplitudeEventParams);
+        await submitFormToMake();
       }
 
       // submit to make.com
-      async function submitFormToMake(amplitudeEventParams) {
+      async function submitFormToMake() {
         console.log("init form submit");
         const hubspot = `https://hook.us1.make.com/iixlkvnhvlvods3gx3l1rnftpkk92std`;
         const dpSheet = `https://hook.us1.make.com/dzgjuhsc8ynum5pdx1nvtqqv8jm93k1v`;
@@ -1890,16 +937,6 @@ const initForm = {
 
             throw new Error(
               "Form not submitted! Please try again later or contact support@micro1.ai",
-            );
-          }
-
-          // send amplitude event
-          if (window.amplitude) {
-            window.amplitude.setUserId(amplitudeEventParams.email);
-
-            window.amplitude.track(
-              "Static - Form submitted",
-              amplitudeEventParams,
             );
           }
 
@@ -2792,45 +1829,17 @@ const initAfterScroll = {
 
     console.log(sliders);
   },
-  async initDemoWidget() {
-    const widgets = document.querySelectorAll("#interview-widget");
-
-    widgets.forEach((widget) => {
-      const url = widget.dataset.src;
-
-      if (!url) {
-        console.log("Widget URL missing");
-        return;
-      }
-
-      let params = customTrackData.portalParams || "";
-
-      if (!params.includes("hutk")) {
-        const hutk = customTrackData.hutk;
-
-        if (hutk) {
-          if (params && params.length > 0) {
-            params += `&hutk=${hutk}`;
-          } else {
-            params = `hutk=${hutk}`;
-          }
-        }
-      }
-
-      widget.src = `${url}?${params}`;
-
-      console.log("added URL");
-    });
-  },
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("dom-loaded");
 
-  // yo
-  Object.values(initTracking).forEach((fn) => fn());
   Object.values(initCore).forEach((fn) => fn());
   Object.values(initForm).forEach((fn) => fn());
+
+  Promise.resolve(initTracking.bootAttribution()).catch((err) =>
+    console.error(err),
+  );
 
   setTimeout(() => document.body.classList.add("delay-complete"), 3000);
 });

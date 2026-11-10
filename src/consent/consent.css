@@ -7,7 +7,9 @@
   --dg-p-text-font-size: 13px;
   --dg-p-text-line-height: 1.6;
   --dg-body-font-size: 13px;
+  --dg-body-font-size-mobile: 14px;
   --dg-body-line-height: 1.6;
+  --dg-body-line-height-mobile: 1.6;
   --dg-body-font-weight: 400;
   --dg-body-font-color: rgba(255, 255, 255, 0.6);
   --dg-title-font-color: rgba(255, 255, 255, 0.9);
@@ -18,6 +20,7 @@
   --dg-button-font-weight: 500;
   --dg-button-radius: 6px;
   --dg-button-padding: 7px 9px;
+  --dg-button-background: transparent;
   --dg-z-index: 1000;
 
   --dg-focus-outline: rgba(255, 255, 255, 0.35);
@@ -31,10 +34,10 @@
   --dg-btn-reject-border: 1px solid rgba(255, 255, 255, 0.2);
   --dg-btn-reject-color: rgba(255, 255, 255, 0.9);
   --dg-btn-reject-hover-bg: rgba(255, 255, 255, 0.1);
-  --dg-btn-accept-bg: rgba(255, 255, 255, 0.9);
+  --dg-btn-accept-bg: #e6e6e6;
   --dg-btn-accept-border: 1px solid rgba(255, 255, 255, 0.2);
   --dg-btn-accept-color: #191919;
-  --dg-btn-accept-hover-bg: #fff;
+  --dg-btn-accept-hover-bg: #cfcfcf;
 
   --dg-panel-bg: rgba(18, 18, 18, 0.6);
   --dg-panel-border: 1px solid rgba(255, 255, 255, 0.2);
@@ -58,10 +61,10 @@
   --dg-btn-panel-accept-border: 1px solid rgba(255, 255, 255, 0.2);
   --dg-btn-panel-accept-color: rgba(255, 255, 255, 0.9);
   --dg-btn-panel-accept-hover-bg: rgba(255, 255, 255, 0.1);
-  --dg-btn-save-bg: rgba(255, 255, 255, 0.85);
+  --dg-btn-save-bg: #e6e6e6;
   --dg-btn-save-border: 1px solid rgba(255, 255, 255, 0.2);
   --dg-btn-save-color: #191919;
-  --dg-btn-save-hover-bg: #fff;
+  --dg-btn-save-hover-bg: #cfcfcf;
 
   box-shadow: none;
 }
@@ -71,9 +74,9 @@
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) {
-  width: 100%;
-  left: 0;
-  right: 0;
+  width: auto;
+  left: 20px;
+  right: 20px;
   bottom: 1.5rem;
   transform: none;
   max-width: 75rem;
@@ -125,11 +128,11 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   text-underline-position: from-font;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-main-content-explanation a:hover {
-  opacity: 0.75;
+  color: color-mix(in srgb, var(--dg-link-color) 70%, transparent);
 }
 
 :host(.dg-consent-banner.dg-left) .dg-main-content-explanation a,
@@ -162,23 +165,24 @@
   flex-shrink: 0;
   box-sizing: border-box;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.open_layer {
   order: 2;
   width: 103px;
-  background: transparent;
+  background-color: transparent;
   border: none;
   color: var(--dg-btn-open-color);
   padding: 7px 9px;
-  transition: opacity 0.2s ease;
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.reject_all {
   order: 3;
   width: 96px;
   margin-left: 11px;
-  background: var(--dg-btn-reject-bg);
+  background-color: var(--dg-btn-reject-bg);
   border: var(--dg-btn-reject-border);
   color: var(--dg-btn-reject-color);
 }
@@ -187,7 +191,7 @@
   order: 4;
   width: 95px;
   margin-left: 11px;
-  background: var(--dg-btn-accept-bg);
+  background-color: var(--dg-btn-accept-bg);
   border: var(--dg-btn-accept-border);
   color: var(--dg-btn-accept-color);
 }
@@ -198,15 +202,15 @@
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.open_layer:hover {
-  opacity: 0.75;
+  color: var(--dg-link-hover-color);
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.reject_all:hover {
-  background: var(--dg-btn-reject-hover-bg);
+  background-color: var(--dg-btn-reject-hover-bg);
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.accept_all:hover {
-  background: var(--dg-btn-accept-hover-bg);
+  background-color: var(--dg-btn-accept-hover-bg);
 }
 
 /* Settings panel — Figma node 6687:50984 */
@@ -215,8 +219,8 @@
   top: 0;
   bottom: 0;
   left: 0;
-  right: auto;
-  width: min(100%, 28rem);
+  right: 0;
+  width: 100%;
   height: 100vh;
   height: 100dvh;
   max-height: none;
@@ -226,28 +230,38 @@
   box-shadow: none;
 }
 
-:host(.dg-consent-banner.dg-right) {
-  left: auto;
-  right: 0;
+/* Full-viewport blur behind the customize panel */
+:host(.dg-consent-banner.dg-left)::before,
+:host(.dg-consent-banner.dg-right)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  pointer-events: none;
 }
 
 :host(.dg-consent-banner.dg-left) .dg-app,
 :host(.dg-consent-banner.dg-right) .dg-app {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-areas:
     "header header header"
-    "body body body"
-    "policies policies policies"
+    "scroll scroll scroll"
     "links links links"
     "reject accept save";
   grid-template-columns: auto auto minmax(0, 1fr);
-  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
   align-items: stretch;
   gap: 33px 11px;
-  width: 100%;
+  width: min(100%, 28rem);
   height: 100%;
   max-width: none;
   max-height: 100%;
+  margin-right: auto;
   padding: 36px 24px;
   overflow: hidden;
   box-sizing: border-box;
@@ -275,6 +289,8 @@
 }
 
 :host(.dg-consent-banner.dg-right) .dg-app {
+  margin-left: auto;
+  margin-right: 0;
   border-right: none;
   border-left: var(--dg-panel-border);
 }
@@ -337,12 +353,21 @@
   color: var(--dg-link-hover-color);
 }
 
-:host(.dg-consent-banner.dg-left) .dg-main-content-policies,
-:host(.dg-consent-banner.dg-right) .dg-main-content-policies {
-  grid-area: policies;
+:host(.dg-consent-banner.dg-left) .dg-scroll-body,
+:host(.dg-consent-banner.dg-right) .dg-scroll-body {
+  grid-area: scroll;
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 33px;
+}
+
+:host(.dg-consent-banner.dg-left) .dg-main-content-policies,
+:host(.dg-consent-banner.dg-right) .dg-main-content-policies {
+  overflow: visible;
   padding: 0;
 }
 
@@ -478,7 +503,7 @@
   width: auto;
   min-width: 103px;
   margin: 0;
-  background: transparent;
+  background-color: transparent;
   border: none;
   color: var(--dg-btn-panel-reject-color);
   padding: 7px 9px;
@@ -492,7 +517,7 @@
   width: auto;
   min-width: 103px;
   margin: 0;
-  background: var(--dg-btn-panel-accept-bg);
+  background-color: var(--dg-btn-panel-accept-bg);
   border: var(--dg-btn-panel-accept-border);
   color: var(--dg-btn-panel-accept-color);
   padding: 7px 9px;
@@ -508,7 +533,7 @@
   width: auto;
   min-width: 0;
   margin: 0;
-  background: var(--dg-btn-save-bg);
+  background-color: var(--dg-btn-save-bg);
   border: var(--dg-btn-save-border);
   color: var(--dg-btn-save-color);
   padding: 7px 9px;
@@ -523,14 +548,14 @@
 
 :host(.dg-consent-banner.dg-left) .dg-button.accept_all:hover,
 :host(.dg-consent-banner.dg-right) .dg-button.accept_all:hover {
-  background: var(--dg-btn-panel-accept-hover-bg);
+  background-color: var(--dg-btn-panel-accept-hover-bg);
 }
 
 :host(.dg-consent-banner.dg-left) .dg-button.custom:hover,
 :host(.dg-consent-banner.dg-right) .dg-button.custom:hover,
 :host(.dg-consent-banner.dg-left) .dg-button.accept_some:hover,
 :host(.dg-consent-banner.dg-right) .dg-button.accept_some:hover {
-  background: var(--dg-btn-save-hover-bg);
+  background-color: var(--dg-btn-save-hover-bg);
 }
 
 @media screen and (max-width: 600px) {
@@ -538,21 +563,30 @@
   :host(.dg-consent-banner.dg-right) .dg-app {
     grid-template-areas:
       "header"
-      "body"
-      "policies"
+      "scroll"
       "links"
       "accept"
       "reject"
       "save";
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto minmax(0, 1fr) auto auto auto auto;
+    grid-template-rows: auto minmax(0, 1fr) auto auto auto auto;
     gap: 24px;
     padding: 24px 16px;
     --dg-policy-option-heading-size: 16px;
     --dg-policy-option-description-font-size: 14px;
     --dg-policy-option-essential-label-font-size: 14px;
-    --dg-body-font-size: 16px;
+    --dg-body-font-size: 14px;
     --dg-title-font-size: 24px;
+  }
+
+  :host(.dg-consent-banner.dg-left) .dg-scroll-body,
+  :host(.dg-consent-banner.dg-right) .dg-scroll-body {
+    gap: 24px;
+  }
+
+  :host(.dg-consent-banner.dg-left) .dg-main-content-explanation.dg-text-body,
+  :host(.dg-consent-banner.dg-right) .dg-main-content-explanation.dg-text-body {
+    font-size: 14px;
   }
 
   :host(.dg-consent-banner.dg-left) .dg-main-content-policy-option-heading strong,
@@ -561,11 +595,6 @@
   :host(.dg-consent-banner.dg-right) .dg-main-content-policy-option-heading .clickable {
     font-size: 16px;
     line-height: 1.5;
-  }
-
-  :host(.dg-consent-banner.dg-left) .dg-main-content-policy-option-description,
-  :host(.dg-consent-banner.dg-right) .dg-main-content-policy-option-description {
-    font-size: 14px;
   }
 
   :host(.dg-consent-banner.dg-left) .dg-slider.essential-label,
@@ -590,7 +619,7 @@
 
   :host(.dg-consent-banner.dg-left) .dg-button.accept_all,
   :host(.dg-consent-banner.dg-right) .dg-button.accept_all {
-    background: var(--dg-btn-accept-bg);
+    background-color: var(--dg-btn-accept-bg);
     border: var(--dg-btn-accept-border);
     color: var(--dg-btn-accept-color);
   }
@@ -598,7 +627,7 @@
   :host(.dg-consent-banner.dg-left) .dg-button.reject_all,
   :host(.dg-consent-banner.dg-right) .dg-button.reject_all {
     margin-top: -13px;
-    background: var(--dg-btn-reject-bg);
+    background-color: var(--dg-btn-reject-bg);
     border: var(--dg-btn-reject-border);
     color: var(--dg-btn-reject-color);
   }
@@ -608,7 +637,7 @@
   :host(.dg-consent-banner.dg-left) .dg-button.accept_some,
   :host(.dg-consent-banner.dg-right) .dg-button.accept_some {
     margin-top: -13px;
-    background: transparent;
+    background-color: transparent;
     border: none;
     color: var(--dg-btn-open-color);
     padding-top: 4px;
@@ -616,12 +645,12 @@
 
   :host(.dg-consent-banner.dg-left) .dg-button.accept_all:hover,
   :host(.dg-consent-banner.dg-right) .dg-button.accept_all:hover {
-    background: var(--dg-btn-accept-hover-bg);
+    background-color: var(--dg-btn-accept-hover-bg);
   }
 
   :host(.dg-consent-banner.dg-left) .dg-button.reject_all:hover,
   :host(.dg-consent-banner.dg-right) .dg-button.reject_all:hover {
-    background: var(--dg-btn-reject-hover-bg);
+    background-color: var(--dg-btn-reject-hover-bg);
     color: var(--dg-btn-reject-color);
   }
 
@@ -629,8 +658,8 @@
   :host(.dg-consent-banner.dg-right) .dg-button.custom:hover,
   :host(.dg-consent-banner.dg-left) .dg-button.accept_some:hover,
   :host(.dg-consent-banner.dg-right) .dg-button.accept_some:hover {
-    background: transparent;
-    opacity: 0.75;
+    background-color: transparent;
+    color: var(--dg-link-hover-color);
   }
 }
 
@@ -680,11 +709,13 @@
     padding: 7px 11px;
   }
 
-  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-main-content-explanation {
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-main-content-explanation,
+  :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-main-content-explanation.dg-text-body {
     order: 1;
     flex: 0 0 auto;
     width: 100%;
     margin: 0;
+    font-size: 14px;
   }
 
   /* Accept → Reject → Customize */

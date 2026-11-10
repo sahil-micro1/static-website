@@ -1,5 +1,6 @@
 mkdir -p dist prod && \
-npx --yes esbuild src/main.js --minify --outfile=dist/main.min.js && \
+python3 src/attribution/build-referers.py && \
+npx --yes esbuild src/main.entry.js --bundle --format=iife --minify --outfile=dist/main.min.js && \
 npx --yes esbuild src/main.css --minify --outfile=dist/main.min.css && \
 npx --yes esbuild src/research/research.js --minify --outfile=prod/research.min.js && \
 npx --yes esbuild src/research/research.css --minify --outfile=prod/research.min.css && \
@@ -13,7 +14,7 @@ mkdir -p dist/benchmarks/legal && \
 npx --yes esbuild src/benchmarks/legal/embeds.min.css --minify --outfile=dist/benchmarks/legal/embeds.min.css && \
 rm -rf dist/robotics && \
 cp -R src/robotics dist/robotics && \
-git add src ':!src/legal' ':!src/attribution' ':!src/benchmarks/agents' src/legal/cookie.html dist prod push.cli wrangler.jsonc && \
+git add src ':!src/legal' ':!src/benchmarks/agents' src/legal/cookie.html dist prod push.cli wrangler.jsonc && \
 git add -u && \
 git commit -m "release" && \
 git push origin main && \
