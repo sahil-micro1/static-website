@@ -89,9 +89,9 @@ reg("das-recChart",(W,compact)=>{
 });
 
 /* ---------- bimanual grouped ---------- */
-const BI={"claude-fable-5.1": {"done": 0, "early": 2, "missed": 1, "slip": 2, "noatt": 0, "wrong": 2, "never": 13}, "claude-opus-5.5": {"done": 0, "early": 0, "missed": 1, "slip": 1, "noatt": 1, "wrong": 0, "never": 17}, "claude-sonnet-5.5": {"done": 0, "early": 0, "missed": 0, "slip": 1, "noatt": 2, "wrong": 2, "never": 15}, "gemini-3.1-pro": {"done": 0, "early": 0, "missed": 0, "slip": 1, "noatt": 0, "wrong": 0, "never": 19}, "gemini-3.8-flash": {"done": 0, "early": 1, "missed": 7, "slip": 7, "noatt": 1, "wrong": 2, "never": 2}, "gemini-4-argon": {"done": 0, "early": 2, "missed": 3, "slip": 4, "noatt": 0, "wrong": 3, "never": 8}, "muse-wonder": {"done": 0, "early": 0, "missed": 0, "slip": 1, "noatt": 1, "wrong": 0, "never": 18}, "gpt-6-astra": {"done": 0, "early": 5, "missed": 2, "slip": 2, "noatt": 0, "wrong": 1, "never": 10}, "gpt-6.1-sol": {"done": 0, "early": 1, "missed": 1, "slip": 2, "noatt": 0, "wrong": 2, "never": 14}, "grok-4.7": {"done": 0, "early": 0, "missed": 0, "slip": 1, "noatt": 0, "wrong": 1, "never": 18}};
+const BI={"claude-fable-5.1": {"done": 0, "early": 2, "missed": 1, "slip": 2, "noatt": 0, "wrong": 2, "never": 13}, "claude-opus-5.5": {"done": 0, "early": 0, "missed": 1, "slip": 1, "noatt": 1, "wrong": 0, "never": 17}, "claude-sonnet-5.5": {"done": 0, "early": 0, "missed": 0, "slip": 1, "noatt": 2, "wrong": 2, "never": 15}, "gemini-3.1-pro": {"done": 0, "early": 0, "missed": 0, "slip": 1, "noatt": 0, "wrong": 0, "never": 19}, "gemini-3.8-flash": {"done": 0, "early": 1, "missed": 7, "slip": 7, "noatt": 1, "wrong": 2, "never": 2}, "gemini-4-argon": {"done": 0, "early": 2, "missed": 3, "slip": 4, "noatt": 0, "wrong": 3, "never": 8}, "muse-wonder": {"done": 0, "early": 0, "missed": 0, "slip": 1, "noatt": 1, "wrong": 0, "never": 18}, "gpt-6-astra": {"done": 0, "early": 5, "missed": 2, "slip": 2, "noatt": 0, "wrong": 1, "never": 10}, "gpt-6.1-sol": {"done": 0, "early": 1, "missed": 1, "slip": 2, "noatt": 0, "wrong": 2, "never": 14}, "grok-4.7": {"done": 0, "early": 0, "missed": 0, "slip": 1, "noatt": 0, "wrong": 1, "never": 18}, "claude-fable-5.2": {"done": 4, "early": 3, "missed": 0, "slip": 4, "noatt": 0, "wrong": 0, "never": 9}};
 reg("das-biChart",(W,compact)=>{
-  const K=[["early",ST_COL[5],"left arm let go too early"],["missed",ST_COL[4],"right gripper closed on air"],["slip",ST_COL[3],"bottle slipped from the left gripper"],["noatt",ST_COL[2],"lifted, no handoff tried"],["wrong",ST_COL[1],"picked up with the wrong arm"]];
+  const K=[["done","#8FDCA0","handed over"],["early",ST_COL[5],"left arm let go too early"],["missed",ST_COL[4],"right gripper closed on air"],["slip",ST_COL[3],"bottle slipped from the left gripper"],["noatt",ST_COL[2],"lifted, no handoff tried"],["wrong",ST_COL[1],"picked up with the wrong arm"]];
   const sc=m=>{const b=BI[m.id];return b.done*1000+(b.early+b.missed)*20+b.slip+b.noatt;};
   const items=[...LLM].filter(m=>BI[m.id]).sort((a,b)=>sc(b)-sc(a));
   return rows({title:"Sample transfer handoff outcomes by model",items,W,compact,max:20,ticks:[0,5,10,15,20],rightW:24,
@@ -208,30 +208,32 @@ const CLIP_STEM={
   instrument_swap:{
     "claude-fable-5.1":"seed2_moved","claude-opus-5.5":"seed11_moved","claude-sonnet-5.5":"seed14_moved",
     "gemini-3.1-pro":"seed6_moved","gemini-3.8-flash":"seed15_moved","gemini-4-argon":"seed12_grasped",
-    "gpt-6-astra":"seed12_moved","gpt-6.1-sol":"seed12_moved","grok-4.7":"seed3_approached","muse-wonder":"seed10_moved",
+    "gpt-6-astra":"seed12_moved","gpt-6.1-sol":"seed12_moved","grok-4.7":"seed3_approached","muse-wonder":"seed10_moved","claude-fable-5.2":"seed15",
     "gr00t_zs":"seed17_none","pi05_zs":"seed0_approached"
   },
   cartridge_swap:{
     "claude-fable-5.1":"seed19_placed","claude-opus-5.5":"seed8_moved","claude-sonnet-5.5":"seed12_moved",
     "gemini-3.1-pro":"seed14_moved","gemini-3.8-flash":"seed15_moved","gemini-4-argon":"seed17_SUCCESS",
-    "gpt-6-astra":"seed18_SUCCESS","gpt-6.1-sol":"seed2_placed","grok-4.7":"seed18_moved","muse-wonder":"seed12_moved",
+    "gpt-6-astra":"seed18_SUCCESS","gpt-6.1-sol":"seed2_placed","grok-4.7":"seed18_moved","muse-wonder":"seed12_moved","claude-fable-5.2":"seed4",
     "gr00t_zs":"seed6_approached","pi05_zs":"seed1_none"
   },
   parts_kitting:{
     "claude-fable-5.1":"seed0_placed","claude-opus-5.5":"seed2_placed","claude-sonnet-5.5":"seed2_placed",
     "gemini-3.1-pro":"seed0_moved","gemini-3.8-flash":"seed6_moved","gemini-4-argon":"seed18_SUCCESS",
-    "gpt-6-astra":"seed18_placed","gpt-6.1-sol":"seed2_placed","grok-4.7":"seed10_approached","muse-wonder":"seed18_approached",
+    "gpt-6-astra":"seed18_placed","gpt-6.1-sol":"seed2_placed","grok-4.7":"seed10_approached","muse-wonder":"seed18_approached","claude-fable-5.2":"seed16",
     "gr00t_zs":"seed16_grasped","pi05_zs":"seed0_none"
   },
   sample_transfer:{
     "claude-fable-5.1":"seed18_moved","claude-opus-5.5":"seed0_moved","claude-sonnet-5.5":"seed7_moved",
     "gemini-3.1-pro":"seed6_moved","gemini-3.8-flash":"seed4_moved","gemini-4-argon":"seed8_moved",
-    "gpt-6-astra":"seed7_moved","gpt-6.1-sol":"seed11_moved","grok-4.7":"seed19_moved","muse-wonder":"seed3_moved",
+    "gpt-6-astra":"seed7_moved","gpt-6.1-sol":"seed11_moved","grok-4.7":"seed19_moved","muse-wonder":"seed3_moved","claude-fable-5.2":"seed2",
     "gr00t_zs":"seed14_none","pi05_zs":"seed1_none"
   }
 };
 const CLIP_START=1;
-const clipUrl=(task,model,view)=>{const stem=CLIP_STEM[task]&&CLIP_STEM[task][model];return stem?VID_BASE+task+"/"+model+"/"+stem+"_"+view+".mp4#t="+CLIP_START:"";};
+/* Models whose clips live on a different host, same {task}/{model}/{stem}_{view}.mp4 layout */
+const VID_HOST={"claude-fable-5.2":"https://micro1-slimbench.netlify.app/"};
+const clipUrl=(task,model,view)=>{const stem=CLIP_STEM[task]&&CLIP_STEM[task][model];if(!stem)return "";return (VID_HOST[model]||VID_BASE)+task+"/"+model+"/"+stem+"_"+view+".mp4#t="+CLIP_START;};
 /* ---------- recorded episodes viewer ---------- */
 (function(){
   const root=document.getElementById("das-episode"); if(!root) return;
@@ -245,7 +247,9 @@ const clipUrl=(task,model,view)=>{const stem=CLIP_STEM[task]&&CLIP_STEM[task][mo
   const EP_COL=["linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.14))",...ST_COL.slice(1).map(c=>`linear-gradient(90deg,color-mix(in srgb,${c} 70%,#000),${c})`)];
   const CAMS=[["wrist","Wrist camera"],["top","Overhead camera"],["front","Front camera"]];
   const CAMS4=[["wrist","Left wrist camera"],["top","Overhead camera"],["wrist_r","Right wrist camera"],["front","Front camera"]];
-  const S={task:"instrument_swap",model:M[0].id,speed:5,t:CLIP_START,dur:CLIP_START+1,playing:false,raf:0,last:0};
+  /* Fable 5.2 leads the model list; the other models keep their order */
+  const EP_MODELS=[...M].sort((a,b)=>(b.id==="claude-fable-5.2")-(a.id==="claude-fable-5.2"));
+  const S={task:"instrument_swap",model:EP_MODELS[0].id,speed:5,t:CLIP_START,dur:CLIP_START+1,playing:false,raf:0,last:0};
   const $=s=>root.querySelector(s);
   const fmt=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");};
 
@@ -254,7 +258,7 @@ const clipUrl=(task,model,view)=>{const stem=CLIP_STEM[task]&&CLIP_STEM[task][mo
   tasksEl.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;S.task=b.dataset.dasK;tasksEl.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));load(true);});
   /* model chips: full names, one row, scrolls sideways when needed */
   const modelsEl=$("#das-epModels");
-  modelsEl.innerHTML=M.map(m=>`<button type="button" class="das-btn" role="tab" data-das-id="${m.id}" aria-pressed="${m.id===S.model}"><img src="${LOGOS[m.org]}" alt="">${esc(m.name)}</button>`).join("");
+  modelsEl.innerHTML=EP_MODELS.map(m=>`<button type="button" class="das-btn" role="tab" data-das-id="${m.id}" aria-pressed="${m.id===S.model}"><img src="${LOGOS[m.org]}" alt="">${esc(m.name)}</button>`).join("");
   const setSel=()=>{modelsEl.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.dasId===S.model));const on=modelsEl.querySelector('[aria-pressed="true"]');if(!on)return;const box=modelsEl.getBoundingClientRect(),chip=on.getBoundingClientRect(),pad=28;if(chip.left<box.left+pad)modelsEl.scrollLeft-=box.left+pad-chip.left;else if(chip.right>box.right-pad)modelsEl.scrollLeft+=chip.right-(box.right-pad);};
   modelsEl.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;S.model=b.dataset.dasId;setSel();load(true);});
   setSel();

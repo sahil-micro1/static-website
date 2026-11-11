@@ -73,6 +73,18 @@
   display: none;
 }
 
+:host(.dg-consent-banner) .dg-browser-signal-notice {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  border: 0;
+  padding: 0;
+}
+
+:host-context(body:not([data-mode="light"])) .dg-browser-signal-notice svg {
+  filter: invert(1);
+}
+
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) {
   width: auto;
   left: 20px;
@@ -94,6 +106,11 @@
   border-radius: 4px;
   backdrop-filter: blur(21.95px);
   -webkit-backdrop-filter: blur(21.95px);
+}
+
+:host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-app:has(.dg-browser-signal-notice) {
+  max-width: 30rem;
+  margin: 0 auto;
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-app:focus-visible {
@@ -691,6 +708,18 @@
 
 /* Mobile — Figma 7037:38860 */
 @media screen and (max-width: 600px) {
+  :host(.dg-consent-banner) .dg-browser-signal-notice {
+    margin: 0;
+  }
+
+  :host(.dg-consent-banner) .dg-browser-signal-notice svg {
+    display: none;
+  }
+
+  :host(.dg-consent-banner) .dg-browser-signal-notice-text {
+    margin: 0;
+  }
+
   :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) {
     left: 16px;
     right: 16px;
