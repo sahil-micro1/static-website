@@ -3,8 +3,6 @@
  * confirms the Performance category. Nothing is stored before that.
  * See Cookies final.pdf (Static scope).
  */
-import referers from "./referers.json";
-
 const COOKIE_NAME = "m1_attr";
 const TTL_DAYS = 90;
 const OWN_HOST_RE = /(^|\.)micro1\.ai$|(^|\.)webflow\.io$|meetings|staging/i;
@@ -137,9 +135,27 @@ function urlTouchFromLocation(search = location.search) {
   return has ? touch : null;
 }
 
-function lookupReferer(host) {
+const REFERERS_URL = "https://static-website.sahil-773.workers.dev/referers.json";
+
+let referersPromise;
+function loadReferers() {
+  if (!referersPromise) {
+    referersPromise = fetch(REFERERS_URL)
+      .then((r) => {
+        if (!r.ok) throw new Error("referers " + r.status);
+        return r.json();
+      })
+      .catch((err) => {
+        console.error(err);
+        return null;
+      });
+  }
+  return referersPromise;
+}
+
+function lookupReferer(referers, host) {
   const h = stripWww(host);
-  if (!h) return null;
+  if (!h || !referers) return null;
   if (referers.exact[h]) return referers.exact[h];
   for (const p of referers.prefixes || []) {
     if (h === p.prefix || h.startsWith(p.prefix + ".")) {
@@ -154,7 +170,7 @@ function lookupReferer(host) {
   return null;
 }
 
-function inferUtmsFromReferrer(referrerUrl) {
+async function inferUtmsFromReferrer(referrerUrl) {
   if (!referrerUrl) return null;
   let host;
   try {
@@ -164,7 +180,7 @@ function inferUtmsFromReferrer(referrerUrl) {
   }
   if (isOwnHost(host)) return null;
 
-  const hit = lookupReferer(host);
+  const hit = lookupReferer(await loadReferers(), host);
   if (hit) {
     if (hit.medium === "paid") return null;
     return {
@@ -263,7 +279,7 @@ function migrateLegacy(attr) {
   return attr;
 }
 
-function captureAttribution(attr) {
+async function captureAttribution(attr) {
   const page = location.href;
   attr.last.page = page;
   if (!attr.first.page) attr.first.page = page;
@@ -303,7 +319,7 @@ function captureAttribution(attr) {
 
   // Infer from referrer only if no URL UTMs and last has no UTMs yet
   if (!urlHasUtms && !hasAnyUtm(attr.last)) {
-    const inferred = inferUtmsFromReferrer(referrer);
+    const inferred = await inferUtmsFromReferrer(referrer);
     if (inferred) {
       applyLast(attr, inferred);
       if (firstUtmsEmpty(attr)) {
@@ -337,39 +353,6 @@ function updateInputs(selector, value) {
   document.querySelectorAll(selector).forEach((el) => {
     el.value = value;
   });
-}
-
-// Testing only. Reads the hidden inputs the consent callback just wrote.
-const FORM_FIELD_SELECTORS = {
-  utm_source: ".utm_source_input",
-  utm_medium: ".utm_medium_input",
-  utm_campaign: ".utm_campaign_input",
-  utm_content: ".utm_content_input",
-  utm_term: ".utm_term_input",
-  ref_site: ".ref_site_input",
-  ref: ".ref_input",
-  last_page: ".last_page_name",
-  first_page: ".first_page_name",
-  current_page: ".current_page_name",
-  first_utm_source: ".first_utm_source_input",
-  first_utm_medium: ".first_utm_medium_input",
-  first_utm_campaign: ".first_utm_campaign_input",
-  first_utm_content: ".first_utm_content_input",
-  first_utm_term: ".first_utm_term_input",
-  first_ref_site: ".first_ref_site_input",
-  first_ref: ".first_ref_input",
-  cookie_consent: ".input_cookie-consent",
-  hutk: ".hutk_input",
-  portal_params: ".portal_params",
-};
-
-function logFormFields(reason) {
-  const values = {};
-  for (const [key, selector] of Object.entries(FORM_FIELD_SELECTORS)) {
-    const el = document.querySelector(selector);
-    values[key] = el ? el.value : null;
-  }
-  console.log("[m1] form fields — " + reason, values);
 }
 
 function resolveFormTouch(attr, analyticsOn) {
@@ -570,23 +553,15 @@ function performanceAllowed() {
  */
 function onDataGrailConsent(handler) {
   window.dgEvent = window.dgEvent || [];
-  const listen = (event) => (prefs) => {
-    console.log("[m1] DataGrail callback", event, {
-      performance: performanceAllowed(),
-      apiReady: !!window.DG_BANNER_API?.categoryEnabled,
-    });
-    handler(event);
-  };
   window.dgEvent.push({
     event: "initial_preference_callback",
-    params: listen("initial_preference_callback"),
+    params: () => handler(),
   });
   window.dgEvent.push({
     event: "preference_callback",
-    params: listen("preference_callback"),
+    params: () => handler(),
   });
-  console.log("[m1] listening for DataGrail callbacks");
-  if (window.DG_BANNER_API?.categoryEnabled) listen("api already ready")();
+  if (window.DG_BANNER_API?.categoryEnabled) handler();
 }
 
 function pollHutk({ deskTimeout = 10000, mobTimeout = 15000, interval = 1000 } = {}) {
@@ -630,7 +605,6 @@ function fillHutk() {
   pollHutk().then((hutk) => {
     updateInputs(".hutk_input", hutk);
     if (hutk) getTrack().hutk = hutk;
-    logFormFields("hutk filled");
   });
 }
 
@@ -639,38 +613,32 @@ function fillHutk() {
  * Performance on: read, update and write m1_attr, then add UTMs, ref and ref_site to app links.
  * Performance off: store nothing; add this page's UTMs and ref to app and internal links.
  */
-function applyConsent(reason) {
+async function applyConsent() {
   fillConsentFromDataGrail();
 
   if (!performanceAllowed()) {
-    console.log("[m1] performance off — no cookie, stamping this page's URL onto links");
     const urlTouch = urlTouchFromLocation();
     fillAttributionInputs(null, { analyticsOn: false });
     syncSessionTrack(urlTouch, "");
     stampCarryLinks(urlTouch, { internal: true });
-    logFormFields(reason);
     return;
   }
   if (cookieWritten) {
-    console.log("[m1] performance on — cookie already written this page");
-    logFormFields(reason);
     return;
   }
   cookieWritten = true;
-  console.log("[m1] performance on — writing m1_attr");
 
   let attr = readJsonCookie(COOKIE_NAME) || emptyAttr();
   if (!attr.first) attr.first = emptyTouch();
   if (!attr.last) attr.last = emptyTouch();
 
   attr = migrateLegacy(attr);
-  attr = captureAttribution(attr);
+  attr = await captureAttribution(attr);
   writeAttrCookie(attr);
 
   fillAttributionInputs(attr, { analyticsOn: true });
   syncCustomTrackData(attr, "");
   stampCarryLinks(attr.last, { includeRefSite: true });
-  logFormFields(reason);
   fillHutk();
 }
 

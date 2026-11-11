@@ -1,5 +1,6 @@
 mkdir -p dist prod && \
 python3 src/attribution/build-referers.py && \
+python3 -c 'import json,pathlib; p=pathlib.Path("src/attribution/referers.json"); pathlib.Path("dist/referers.json").write_text(json.dumps(json.load(p.open()),separators=(",",":")))' && \
 npx --yes esbuild src/main.entry.js --bundle --format=iife --minify --outfile=dist/main.min.js && \
 npx --yes esbuild src/main.css --minify --outfile=dist/main.min.css && \
 npx --yes esbuild src/research/research.js --minify --outfile=prod/research.min.js && \

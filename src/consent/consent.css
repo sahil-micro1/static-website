@@ -19,7 +19,7 @@
   --dg-button-font-size: 0.875rem;
   --dg-button-font-weight: 500;
   --dg-button-radius: 6px;
-  --dg-button-padding: 7px 9px;
+  --dg-button-padding: 9px 15px;
   --dg-button-background: transparent;
   --dg-z-index: 1000;
 
@@ -188,16 +188,13 @@
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.open_layer {
   order: 2;
-  width: 103px;
   background-color: transparent;
   border: none;
   color: var(--dg-btn-open-color);
-  padding: 7px 9px;
 }
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.reject_all {
   order: 3;
-  width: 96px;
   margin-left: 11px;
   background-color: var(--dg-btn-reject-bg);
   border: var(--dg-btn-reject-border);
@@ -206,7 +203,6 @@
 
 :host(.dg-consent-banner.dg-bottom:not(.dg-left):not(.dg-right)) .dg-button.accept_all {
   order: 4;
-  width: 95px;
   margin-left: 11px;
   background-color: var(--dg-btn-accept-bg);
   border: var(--dg-btn-accept-border);
@@ -518,12 +514,10 @@
   grid-area: reject;
   display: inline-flex;
   width: auto;
-  min-width: 103px;
   margin: 0;
   background-color: transparent;
   border: none;
   color: var(--dg-btn-panel-reject-color);
-  padding: 7px 9px;
   align-self: center;
 }
 
@@ -532,12 +526,10 @@
   grid-area: accept;
   display: inline-flex;
   width: auto;
-  min-width: 103px;
   margin: 0;
   background-color: var(--dg-btn-panel-accept-bg);
   border: var(--dg-btn-panel-accept-border);
   color: var(--dg-btn-panel-accept-color);
-  padding: 7px 9px;
   align-self: center;
 }
 
@@ -548,12 +540,10 @@
   grid-area: save;
   display: inline-flex;
   width: auto;
-  min-width: 0;
   margin: 0;
   background-color: var(--dg-btn-save-bg);
   border: var(--dg-btn-save-border);
   color: var(--dg-btn-save-color);
-  padding: 7px 9px;
   align-self: center;
   justify-self: stretch;
 }

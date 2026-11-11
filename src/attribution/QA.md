@@ -44,9 +44,9 @@ The form’s consent field should read:
 
 ## What to check
 
-Open the browser console and look for lines starting with `[m1]`. Click the arrow on a “form fields” line to see every field. An empty value means that field is blank. After you allow or change cookies, a new line should appear.
+Check the hidden form fields in the page inspector (Elements tab) or by typing a field name in the console. An empty value means that field is blank. Changing cookie choices should update the fields.
 
-Ignore warnings about GSAP, and the DataGrail note about something being pushed before the container started. Those are not part of this test.
+Ignore warnings about GSAP. Those are not part of this test.
 
 ## Tests
 
