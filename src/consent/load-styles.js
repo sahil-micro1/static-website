@@ -20,7 +20,8 @@
   }
 
   document.addEventListener("click", (event) => {
-    const trigger = event.target.closest("[data-datagrall='open-customize']");
+    const path = event.composedPath ? event.composedPath() : [event.target];
+    const trigger = path.find((el) => el.matches?.("[data-datagrall='open-customize']"));
     if (!trigger) return;
     event.preventDefault();
     window.DG_BANNER_API?.showLayer("categories-layer");
