@@ -187,17 +187,16 @@ const initCore = {
       );
   },
   async initGsap() {
-    await Promise.all([
-      utilities.loadScript(
+    if (!window.gsap) {
+      await utilities.loadScript(
         "https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js",
-      ),
-      utilities.loadScript(
+      );
+    }
+    if (!window.ScrollTrigger) {
+      await utilities.loadScript(
         "https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js",
-      ),
-      utilities.loadScript(
-        "https://cdn.jsdelivr.net/gh/timothydesign/script/split-type.js",
-      ),
-    ]);
+      );
+    }
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -1160,33 +1159,6 @@ const initForm = {
 
 // gsap being called in core
 const initGsap = {
-  loadWidget() {
-    const reportWidgets = document.querySelectorAll("#report-widget");
-
-    if (!reportWidgets.length) return;
-
-    gsap.timeline({
-      scrollTrigger: {
-        once: true,
-        start: "top+=10",
-        end: "+=1",
-        onEnter: () => {
-          reportWidgets.forEach((reportWidget) => {
-            const url = reportWidget.dataset.src;
-
-            if (!url) {
-              console.log("Widget URL missing");
-              return;
-            }
-
-            reportWidget.src = url;
-
-            console.log("added URL");
-          });
-        },
-      },
-    });
-  },
   navScroll() {
     const nav = document.querySelector(".nav_component");
 
@@ -1208,39 +1180,6 @@ const initGsap = {
         onEnter: () => nav.classList.add("is-scrolled-500"),
         onLeaveBack: () => nav.classList.remove("is-scrolled-500"),
       },
-    });
-  },
-  textScroll() {
-    const textEl = document.querySelectorAll("[data-animation='split-text']");
-
-    let mm = gsap.matchMedia();
-
-    textEl.forEach((textEl) => {
-      mm.add("(min-width: 992px)", () => {
-        new SplitType(textEl, { types: ["words"] });
-
-        const chars = textEl.querySelectorAll(".word");
-
-        gsap
-          .timeline({
-            scrollTrigger: {
-              trigger: textEl,
-              start: "top bottom",
-              end: "top 35%",
-              scrub: 1,
-              ease: "power1.inOut",
-            },
-          })
-          .from(
-            chars,
-            {
-              duration: 1,
-              opacity: 0.2,
-              stagger: 0.1,
-            },
-            "<",
-          );
-      });
     });
   },
   autoplayVideosMob() {
@@ -1638,53 +1577,6 @@ const initGsapMob = {
   },
 };
 const initGsapDesk = {
-  mapDotsFill() {
-    const wrap = document.querySelectorAll(".bg-map_dots-wrap");
-
-    if (!wrap.length) return;
-
-    wrap.forEach((wrap) => {
-      ScrollTrigger.create({
-        trigger: wrap,
-        top: "top bottom",
-        onEnter: setDotsTimestamp,
-        once: true,
-      });
-
-      function setDotsTimestamp() {
-        const images = wrap.querySelectorAll(".bg-map_dots-img");
-
-        const showNext = () => {
-          const activeIndex = +wrap.dataset.activeIndex;
-          let nextIndex;
-
-          if (images.length - 1 === +wrap.dataset.activeIndex) {
-            nextIndex = 1;
-          } else nextIndex = activeIndex + 1;
-
-          const activeEl = images[activeIndex];
-          const nextEl = images[nextIndex];
-
-          activeEl.style.opacity = 0;
-
-          setTimeout(() => {
-            nextEl.style.opacity = 0.8;
-          }, 1000);
-
-          wrap.dataset.activeIndex = nextIndex;
-        };
-
-        wrap.dataset.activeIndex = 0;
-        setTimeout(() => {
-          images[0].style.opacity = 0.8;
-
-          setInterval(() => {
-            if (wrap.classList.contains("is-visible")) showNext();
-          }, 4000);
-        }, 1000);
-      }
-    });
-  },
   footerLogo() {
     const footerWrap = document.querySelector(".footer_logo-wrap");
 
