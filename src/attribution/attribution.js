@@ -18,6 +18,7 @@ const APP_HOSTS = [
   "dev.d3k2dall9o449y.amplifyapp.com",
   "refer.micro1.ai",
   "new-stage.refer.micro1.ai",
+  "roots.micro1.ai"
 ];
 
 const STAGING_HOSTS = {

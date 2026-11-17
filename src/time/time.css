@@ -1,0 +1,60 @@
+
+  /* V6: static hero video. Everything here targets data-bruce attributes (set in Webflow's element settings), not classes. */
+
+  /* Hero sticker: 4-frame sprite (it-hero-bruce-sticker-loop.webp) played on a loop. */
+  @keyframes bruce-sticker-loop {
+    to {
+      background-position: 133.333% 0;
+    }
+  }
+  [data-bruce='sticker'] {
+    animation: bruce-sticker-loop 1600ms steps(4) infinite;
+  }
+
+  /* The hero footage, framed a little high. It gets its own stacking context so Webflow's video
+   (z-index -100) stays inside it, above its black fill. */
+  [data-bruce='footage'] {
+    z-index: 0;
+  }
+  [data-bruce='footage'] video {
+    object-position: 50% 35%;
+  }
+
+  /* While Bruce's message follows the mouse, the sticker stands in for the cursor across the hero
+   (links and buttons keep their pointer). */
+  [data-bruce='hero'][data-bruce-state='following'],
+  [data-bruce='hero'][data-bruce-state='following'] * {
+    cursor: none;
+  }
+  [data-bruce='hero'][data-bruce-state='following'] a,
+  [data-bruce='hero'][data-bruce-state='following'] a *,
+  [data-bruce='hero'][data-bruce-state='following'] button,
+  [data-bruce='hero'][data-bruce-state='following'] button * {
+    cursor: pointer;
+  }
+
+  /* Over the hero's copy ([data-bruce="content"]) Bruce's message fades out, and back in off it.
+     Opacity is eased in time.js; a CSS transition here is overridden by Webflow and !important snaps. */
+  [data-bruce='cue'][data-bruce-state='hidden'] {
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-bruce='sticker'] {
+      animation: none;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  [bruce-cursor] {
+  animation: fadeIn 1000ms ease-in-out 1s forwards;
+    opacity: 0;
+  }
